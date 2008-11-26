@@ -7,6 +7,7 @@
 //
 
 #import "QuestionsViewController.h"
+#import "SurveyQuestionViewController.h"
 
 
 @implementation QuestionsViewController
@@ -41,16 +42,21 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
     cell.text = [questions objectAtIndex:indexPath.row];
     return cell;
 }
 
-/*
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"Selected row %d", indexPath.row);
+    SurveyQuestionViewController *sqvc = [[SurveyQuestionViewController alloc] initWithNibName:@"SurveyQuestionView" bundle:nil];
+    [self.navigationController pushViewController:sqvc animated:YES];    
+    [sqvc release];    
 }
-*/
+
 
 /*
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
