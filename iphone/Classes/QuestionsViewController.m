@@ -7,7 +7,7 @@
 //
 
 #import "QuestionsViewController.h"
-#import "SurveyQuestionViewController.h"
+#import "SingleQuestionViewController.h"
 
 
 @implementation QuestionsViewController
@@ -17,7 +17,7 @@
 
 // Implement viewDidLoad to do additional setup after loading the view.
 - (void)viewDidLoad {
-    questions = [NSArray arrayWithObjects:@"What kind of detergent do you use", 
+    self.questions = [NSArray arrayWithObjects:@"What kind of detergent do you use", 
                                           @"What is you favorite color", 
                                           @"Take a picture of your closet",
                                           @"How do you feel today",
@@ -31,7 +31,7 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [questions count];
+    return [self.questions count];
 }
 
 
@@ -45,14 +45,14 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
-    cell.text = [questions objectAtIndex:indexPath.row];
+    cell.text = [self.questions objectAtIndex:indexPath.row];
     return cell;
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"Selected row %d", indexPath.row);
-    SurveyQuestionViewController *sqvc = [[SurveyQuestionViewController alloc] initWithNibName:@"SurveyQuestionView" bundle:nil];
+    SingleQuestionViewController *sqvc = [[SingleQuestionViewController alloc] initWithNibName:@"Question" bundle:nil question:[self.questions objectAtIndex:indexPath.row]];
     [self.navigationController pushViewController:sqvc animated:YES];    
     [sqvc release];    
 }

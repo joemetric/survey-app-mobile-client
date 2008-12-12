@@ -1,31 +1,43 @@
 //
-//  SurveyQuestionViewController.m
+//  SingleQuestionViewController.m
 //  JoeMetric
 //
-//  Created by Joseph OBrien on 11/25/08.
+//  Created by Joseph OBrien on 12/12/08.
 //  Copyright 2008 EdgeCase, LLC. All rights reserved.
 //
 
-#import "SurveyQuestionViewController.h"
+#import "SingleQuestionViewController.h"
 
 
-@implementation SurveyQuestionViewController
+@implementation SingleQuestionViewController
 
+@synthesize selectedQuestion;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil question:(NSString *)question {    
+    SingleQuestionViewController *controller = [self initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    controller.selectedQuestion.text = question;
+    return controller;
+}
+    
 // Override initWithNibName:bundle: to load the view using a nib file then perform additional customization that is not appropriate for viewDidLoad.
-//- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-//    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-//        // Custom initialization
-//    }
-//    NSLog(@"SurveyViewController was loaded and called");
-//    return self;
-//}
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+        // Custom initialization
+    }
+    NSLog(@"SingleQuestionViewController is initialized");
+    return self;
+}
+
 
 // Implement loadView to create a view hierarchy programmatically.
 - (void)loadView {
+    [super loadView];
 }
 
+
 // Implement viewDidLoad to do additional setup after loading the view.
-- (void)viewDidLoad {
+- (void)viewDidLoad {   
+    NSLog(@"");
     [super viewDidLoad];
 }
 
@@ -43,6 +55,7 @@
 
 
 - (void)dealloc {
+    [selectedQuestion release];
     [super dealloc];
 }
 
