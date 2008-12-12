@@ -12,11 +12,12 @@
 @implementation SingleQuestionViewController
 
 @synthesize selectedQuestion;
+@synthesize textForSelectedQuestion;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil question:(NSString *)question {    
-    SingleQuestionViewController *controller = [self initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    controller.selectedQuestion.text = question;
-    return controller;
+    [self initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self.textForSelectedQuestion = question;
+    return self;
 }
     
 // Override initWithNibName:bundle: to load the view using a nib file then perform additional customization that is not appropriate for viewDidLoad.
@@ -24,7 +25,6 @@
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         // Custom initialization
     }
-    NSLog(@"SingleQuestionViewController is initialized");
     return self;
 }
 
@@ -37,7 +37,7 @@
 
 // Implement viewDidLoad to do additional setup after loading the view.
 - (void)viewDidLoad {   
-    NSLog(@"");
+    self.selectedQuestion.text = self.textForSelectedQuestion;
     [super viewDidLoad];
 }
 
