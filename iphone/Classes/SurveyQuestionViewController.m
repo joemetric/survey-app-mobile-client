@@ -23,12 +23,10 @@
 
 // Implement loadView to create a view hierarchy programmatically.
 - (void)loadView {
-    NSLog(@"Trying to load the Survey View Controller");
 }
 
 // Implement viewDidLoad to do additional setup after loading the view.
 - (void)viewDidLoad {
-    NSLog(@"Survey Question View Controller loaded");
     [super viewDidLoad];
 }
 

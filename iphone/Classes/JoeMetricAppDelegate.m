@@ -13,6 +13,7 @@
 
 @synthesize window;
 @synthesize tabBarController;
+@synthesize navigationController;
 
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
@@ -36,6 +37,7 @@
 
 
 - (void)dealloc {
+    [navigationController release];
     [tabBarController release];
     [window release];
     [super dealloc];

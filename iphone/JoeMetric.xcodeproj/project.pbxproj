@@ -16,6 +16,11 @@
 		0D68A3EA0EDCD5CC007CE721 /* MainWindowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D68A3E90EDCD5CC007CE721 /* MainWindowViewController.m */; };
 		0D68A4740EDCE5B6007CE721 /* SurveyQuestionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D68A4730EDCE5B6007CE721 /* SurveyQuestionView.xib */; };
 		0D68A47E0EDCEDA7007CE721 /* SurveyQuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D68A47D0EDCEDA7007CE721 /* SurveyQuestionViewController.m */; };
+		0DF9E1EF0EF2ED3400A522A1 /* dollars.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DF9E1EC0EF2ED3400A522A1 /* dollars.png */; };
+		0DF9E1F00EF2ED3400A522A1 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DF9E1ED0EF2ED3400A522A1 /* Icon.png */; };
+		0DF9E1F10EF2ED3400A522A1 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DF9E1EE0EF2ED3400A522A1 /* settings.png */; };
+		0DF9E2210EF2F2F400A522A1 /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DF9E2200EF2F2F400A522A1 /* profile.png */; };
+		0DF9E2240EF2F34500A522A1 /* question.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DF9E2230EF2F34500A522A1 /* question.png */; };
 		1D3623260D0F684500981E51 /* JoeMetricAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* JoeMetricAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -39,6 +44,11 @@
 		0D68A4730EDCE5B6007CE721 /* SurveyQuestionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SurveyQuestionView.xib; sourceTree = "<group>"; };
 		0D68A47C0EDCEDA7007CE721 /* SurveyQuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurveyQuestionViewController.h; sourceTree = "<group>"; };
 		0D68A47D0EDCEDA7007CE721 /* SurveyQuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SurveyQuestionViewController.m; sourceTree = "<group>"; };
+		0DF9E1EC0EF2ED3400A522A1 /* dollars.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dollars.png; sourceTree = SOURCE_ROOT; };
+		0DF9E1ED0EF2ED3400A522A1 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = SOURCE_ROOT; };
+		0DF9E1EE0EF2ED3400A522A1 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = SOURCE_ROOT; };
+		0DF9E2200EF2F2F400A522A1 /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = profile.png; path = ../../../Desktop/profile.png; sourceTree = SOURCE_ROOT; };
+		0DF9E2230EF2F34500A522A1 /* question.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = question.png; path = ../../../Desktop/question.png; sourceTree = SOURCE_ROOT; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* JoeMetricAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoeMetricAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* JoeMetricAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoeMetricAppDelegate.m; sourceTree = "<group>"; };
@@ -68,8 +78,16 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				0D8DC8870EDE35B9007EC072 /* Controllers */,
 				1D3623240D0F684500981E51 /* JoeMetricAppDelegate.h */,
 				1D3623250D0F684500981E51 /* JoeMetricAppDelegate.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		0D8DC8870EDE35B9007EC072 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
 				0D68A3C50EDCD2B6007CE721 /* QuestionsViewController.h */,
 				0D68A3C60EDCD2B6007CE721 /* QuestionsViewController.m */,
 				0D68A3CD0EDCD37A007CE721 /* WalletViewController.h */,
@@ -81,6 +99,19 @@
 				0D68A47C0EDCEDA7007CE721 /* SurveyQuestionViewController.h */,
 				0D68A47D0EDCEDA7007CE721 /* SurveyQuestionViewController.m */,
 			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		0DF9E1EB0EF2ED1800A522A1 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				0DF9E2230EF2F34500A522A1 /* question.png */,
+				0DF9E2200EF2F2F400A522A1 /* profile.png */,
+				0DF9E1EC0EF2ED3400A522A1 /* dollars.png */,
+				0DF9E1ED0EF2ED3400A522A1 /* Icon.png */,
+				0DF9E1EE0EF2ED3400A522A1 /* settings.png */,
+			);
+			name = Images;
 			path = Classes;
 			sourceTree = "<group>";
 		};
@@ -116,6 +147,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0DF9E1EB0EF2ED1800A522A1 /* Images */,
 				28AD73870D9D96C1002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				0D68A3C80EDCD2DB007CE721 /* QuestionsView.xib */,
@@ -183,6 +215,11 @@
 				0D68A3D10EDCD38E007CE721 /* WalletView.xib in Resources */,
 				0D68A3D70EDCD3EF007CE721 /* ProfileView.xib in Resources */,
 				0D68A4740EDCE5B6007CE721 /* SurveyQuestionView.xib in Resources */,
+				0DF9E1EF0EF2ED3400A522A1 /* dollars.png in Resources */,
+				0DF9E1F00EF2ED3400A522A1 /* Icon.png in Resources */,
+				0DF9E1F10EF2ED3400A522A1 /* settings.png in Resources */,
+				0DF9E2210EF2F2F400A522A1 /* profile.png in Resources */,
+				0DF9E2240EF2F34500A522A1 /* question.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
