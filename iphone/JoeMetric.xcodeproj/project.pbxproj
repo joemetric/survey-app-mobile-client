@@ -20,6 +20,7 @@
 		0DF9E22C0EF2F4FC00A522A1 /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DF9E2290EF2F4FC00A522A1 /* profile.png */; };
 		0DF9E22D0EF2F4FC00A522A1 /* question.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DF9E22A0EF2F4FC00A522A1 /* question.png */; };
 		0DF9E22E0EF2F4FC00A522A1 /* wallet.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DF9E22B0EF2F4FC00A522A1 /* wallet.png */; };
+		0DF9E2300EF2F61A00A522A1 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DF9E22F0EF2F61A00A522A1 /* user.png */; };
 		1D3623260D0F684500981E51 /* JoeMetricAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* JoeMetricAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -47,6 +48,7 @@
 		0DF9E2290EF2F4FC00A522A1 /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile.png; sourceTree = "<group>"; };
 		0DF9E22A0EF2F4FC00A522A1 /* question.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = question.png; sourceTree = "<group>"; };
 		0DF9E22B0EF2F4FC00A522A1 /* wallet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wallet.png; sourceTree = "<group>"; };
+		0DF9E22F0EF2F61A00A522A1 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* JoeMetricAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoeMetricAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* JoeMetricAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoeMetricAppDelegate.m; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				0DF9E2290EF2F4FC00A522A1 /* profile.png */,
+				0DF9E22F0EF2F61A00A522A1 /* user.png */,
 				0DF9E22A0EF2F4FC00A522A1 /* question.png */,
 				0DF9E22B0EF2F4FC00A522A1 /* wallet.png */,
 				0DF9E1ED0EF2ED3400A522A1 /* Icon.png */,
@@ -216,6 +219,7 @@
 				0DF9E22C0EF2F4FC00A522A1 /* profile.png in Resources */,
 				0DF9E22D0EF2F4FC00A522A1 /* question.png in Resources */,
 				0DF9E22E0EF2F4FC00A522A1 /* wallet.png in Resources */,
+				0DF9E2300EF2F61A00A522A1 /* user.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
