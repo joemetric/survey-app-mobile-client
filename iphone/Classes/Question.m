@@ -39,7 +39,5 @@
 - (NSString *)questionAndAmountAsString {
     return [NSString stringWithFormat:@"%@ | %@", [self amountAsDollarString] , self.text];
 }
-
-
-
+    
 @end

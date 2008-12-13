@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Question.h"
 
 
 @interface SingleQuestionViewController : UIViewController {
@@ -18,6 +19,6 @@
 @property (nonatomic, retain) UILabel *selectedQuestion;
 @property (nonatomic, retain) NSString *textForSelectedQuestion;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil question:(NSString *)question;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil question:(Question *)question;
 
 @end

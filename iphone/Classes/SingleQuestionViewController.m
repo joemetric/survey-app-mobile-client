@@ -14,9 +14,9 @@
 @synthesize selectedQuestion;
 @synthesize textForSelectedQuestion;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil question:(NSString *)question {    
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil question:(Question *)question {    
     [self initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    self.textForSelectedQuestion = question;
+    self.textForSelectedQuestion = question.text;
     return self;
 }
     
