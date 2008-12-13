@@ -30,8 +30,14 @@
     return self;
 }
 
+- (NSString *)amountAsDollarString {
+    NSNumberFormatter *numberFormatter = [[[NSNumberFormatter alloc] init] autorelease];
+    [numberFormatter setFormat:@"$#,##0.00"];
+    return [numberFormatter stringFromNumber:self.amount];
+}
+
 - (NSString *)questionAndAmountAsString {
-    return [NSString stringWithFormat:@"$%@ | %@", self.amount, self.text];
+    return [NSString stringWithFormat:@"%@ | %@", [self amountAsDollarString] , self.text];
 }
 
 
