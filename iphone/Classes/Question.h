@@ -17,5 +17,6 @@
 
 - (id)initWithText:(NSString *)text amount:(NSDecimalNumber *)amount;
 - (NSString *)questionAndAmountAsString;
+- (NSString *)amountAsDollarString;
 
 @end

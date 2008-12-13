@@ -11,13 +11,17 @@
 
 
 @interface SingleQuestionViewController : UIViewController {
-    IBOutlet UILabel *selectedQuestion;
-    NSString *textForSelectedQuestion;
+    IBOutlet UILabel *_selectedQuestion;
+    IBOutlet UILabel *_selectedAmount;
+    NSString *_textForSelectedQuestion;
+    NSString *_textForSelectedAmount;
 
 }
 
 @property (nonatomic, retain) UILabel *selectedQuestion;
+@property (nonatomic, retain) UILabel *selectedAmount;
 @property (nonatomic, retain) NSString *textForSelectedQuestion;
+@property (nonatomic, retain) NSString *textForSelectedAmount;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil question:(Question *)question;
 

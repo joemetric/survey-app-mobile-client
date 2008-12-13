@@ -11,12 +11,15 @@
 
 @implementation SingleQuestionViewController
 
-@synthesize selectedQuestion;
-@synthesize textForSelectedQuestion;
+@synthesize selectedQuestion = _selectedQuestion;
+@synthesize selectedAmount = _selectedAmount;
+@synthesize textForSelectedQuestion = _textForSelectedQuestion;
+@synthesize textForSelectedAmount = _textForSelectedAmount;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil question:(Question *)question {    
     [self initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     self.textForSelectedQuestion = question.text;
+    self.textForSelectedAmount = [question amountAsDollarString];
     return self;
 }
     
@@ -38,6 +41,7 @@
 // Implement viewDidLoad to do additional setup after loading the view.
 - (void)viewDidLoad {   
     self.selectedQuestion.text = self.textForSelectedQuestion;
+    self.selectedAmount.text = self.textForSelectedAmount;
     [super viewDidLoad];
 }
 
@@ -55,7 +59,10 @@
 
 
 - (void)dealloc {
-    [selectedQuestion release];
+    [self.selectedQuestion release];
+    [self.selectedAmount release];
+    [self.textForSelectedAmount release];
+    [self.textForSelectedQuestion release];
     [super dealloc];
 }
 
