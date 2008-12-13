@@ -14,6 +14,7 @@
 		0D68A3D50EDCD3D6007CE721 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D68A3D40EDCD3D6007CE721 /* ProfileViewController.m */; };
 		0D68A3D70EDCD3EF007CE721 /* ProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D68A3D60EDCD3EF007CE721 /* ProfileView.xib */; };
 		0D68A3EA0EDCD5CC007CE721 /* MainWindowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D68A3E90EDCD5CC007CE721 /* MainWindowViewController.m */; };
+		0DD8C8420EF33C3E00A20937 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD8C8410EF33C3E00A20937 /* Question.m */; };
 		0DF9E1F00EF2ED3400A522A1 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DF9E1ED0EF2ED3400A522A1 /* Icon.png */; };
 		0DF9E22C0EF2F4FC00A522A1 /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DF9E2290EF2F4FC00A522A1 /* profile.png */; };
 		0DF9E22D0EF2F4FC00A522A1 /* question.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DF9E22A0EF2F4FC00A522A1 /* question.png */; };
@@ -41,6 +42,8 @@
 		0D68A3D60EDCD3EF007CE721 /* ProfileView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileView.xib; sourceTree = "<group>"; };
 		0D68A3E80EDCD5CC007CE721 /* MainWindowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindowViewController.h; sourceTree = "<group>"; };
 		0D68A3E90EDCD5CC007CE721 /* MainWindowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindowViewController.m; sourceTree = "<group>"; };
+		0DD8C8400EF33C3E00A20937 /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Question.h; sourceTree = "<group>"; };
+		0DD8C8410EF33C3E00A20937 /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Question.m; sourceTree = "<group>"; };
 		0DF9E1ED0EF2ED3400A522A1 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = SOURCE_ROOT; };
 		0DF9E2290EF2F4FC00A522A1 /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile.png; sourceTree = "<group>"; };
 		0DF9E22A0EF2F4FC00A522A1 /* question.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = question.png; sourceTree = "<group>"; };
@@ -78,6 +81,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				0DD8C8440EF33DB900A20937 /* Models */,
 				0D8DC8870EDE35B9007EC072 /* Controllers */,
 				1D3623240D0F684500981E51 /* JoeMetricAppDelegate.h */,
 				1D3623250D0F684500981E51 /* JoeMetricAppDelegate.m */,
@@ -100,6 +104,15 @@
 				0DF9E3200EF3079100A522A1 /* SingleQuestionViewController.m */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		0DD8C8440EF33DB900A20937 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0DD8C8400EF33C3E00A20937 /* Question.h */,
+				0DD8C8410EF33C3E00A20937 /* Question.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		0DF9E1EB0EF2ED1800A522A1 /* Images */ = {
@@ -237,6 +250,7 @@
 				0D68A3D50EDCD3D6007CE721 /* ProfileViewController.m in Sources */,
 				0D68A3EA0EDCD5CC007CE721 /* MainWindowViewController.m in Sources */,
 				0DF9E3210EF3079100A522A1 /* SingleQuestionViewController.m in Sources */,
+				0DD8C8420EF33C3E00A20937 /* Question.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

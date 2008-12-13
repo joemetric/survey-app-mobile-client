@@ -8,20 +8,24 @@
 
 #import "QuestionsViewController.h"
 #import "SingleQuestionViewController.h"
-
+#import "Question.h"
 
 @implementation QuestionsViewController
 
 @synthesize questions;
 
 
-// Implement viewDidLoad to do additional setup after loading the view.
 - (void)viewDidLoad {
-    self.questions = [NSArray arrayWithObjects:@"What kind of detergent do you use", 
-                                          @"What is you favorite color", 
-                                          @"Take a picture of your closet",
-                                          @"How do you feel today",
-                                          nil];
+    self.questions = [NSArray arrayWithObjects:
+                      [[Question alloc] initWithText:@"What kind of detergent do you use" 
+                                              amount:[[NSDecimalNumber alloc] initWithDouble:3.00]],
+                      [[Question alloc] initWithText:@"What is you favorite color" 
+                                              amount:[[NSDecimalNumber alloc] initWithDouble:4.50]],
+                      [[Question alloc] initWithText:@"Take a picture of your closet"
+                                              amount:[[NSDecimalNumber alloc] initWithDouble:3.75]],
+                      [[Question alloc] initWithText:@"How do you feel today" 
+                                              amount:[[NSDecimalNumber alloc] initWithDouble:2.00]], 
+                    nil];
     [super viewDidLoad];
 }
 
@@ -45,7 +49,8 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
-    cell.text = [self.questions objectAtIndex:indexPath.row];
+    Question *q = [self.questions objectAtIndex:indexPath.row];
+    cell.text = [q questionAndAmountAsString];
     return cell;
 }
 
