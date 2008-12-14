@@ -6,11 +6,11 @@
 //  Copyright 2008 EdgeCase, LLC. All rights reserved.
 //
 
-#import "QuestionsViewController.h"
+#import "QuestionsListViewController.h"
 #import "SingleQuestionViewController.h"
 #import "Question.h"
 
-@implementation QuestionsViewController
+@implementation QuestionsListViewController
 
 @synthesize questions;
 

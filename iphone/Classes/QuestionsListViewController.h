@@ -9,9 +9,8 @@
 #import <UIKit/UIKit.h>
 
 
-@interface QuestionsViewController : UITableViewController {
+@interface QuestionsListViewController : UITableViewController {
   NSArray *questions;
-
 }
 
 @property (nonatomic, retain) NSArray *questions;

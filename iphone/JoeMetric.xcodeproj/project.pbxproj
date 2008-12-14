@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0D68A3C70EDCD2B6007CE721 /* QuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D68A3C60EDCD2B6007CE721 /* QuestionsViewController.m */; };
+		0D68A3C70EDCD2B6007CE721 /* QuestionsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D68A3C60EDCD2B6007CE721 /* QuestionsListViewController.m */; };
 		0D68A3C90EDCD2DB007CE721 /* QuestionsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D68A3C80EDCD2DB007CE721 /* QuestionsView.xib */; };
 		0D68A3CF0EDCD37A007CE721 /* WalletViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D68A3CE0EDCD37A007CE721 /* WalletViewController.m */; };
 		0D68A3D10EDCD38E007CE721 /* WalletView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D68A3D00EDCD38E007CE721 /* WalletView.xib */; };
@@ -34,8 +34,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0D68A3C50EDCD2B6007CE721 /* QuestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionsViewController.h; sourceTree = "<group>"; };
-		0D68A3C60EDCD2B6007CE721 /* QuestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionsViewController.m; sourceTree = "<group>"; };
+		0D68A3C50EDCD2B6007CE721 /* QuestionsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionsListViewController.h; sourceTree = "<group>"; };
+		0D68A3C60EDCD2B6007CE721 /* QuestionsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionsListViewController.m; sourceTree = "<group>"; };
 		0D68A3C80EDCD2DB007CE721 /* QuestionsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionsView.xib; sourceTree = "<group>"; };
 		0D68A3CD0EDCD37A007CE721 /* WalletViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletViewController.h; sourceTree = "<group>"; };
 		0D68A3CE0EDCD37A007CE721 /* WalletViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletViewController.m; sourceTree = "<group>"; };
@@ -100,20 +100,13 @@
 		0D8DC8870EDE35B9007EC072 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				0D68A3C50EDCD2B6007CE721 /* QuestionsViewController.h */,
-				0D68A3C60EDCD2B6007CE721 /* QuestionsViewController.m */,
+				0DD8CAB10EF4D6A800A20937 /* Question View Controllers */,
 				0D68A3CD0EDCD37A007CE721 /* WalletViewController.h */,
 				0D68A3CE0EDCD37A007CE721 /* WalletViewController.m */,
 				0D68A3D30EDCD3D6007CE721 /* ProfileViewController.h */,
 				0D68A3D40EDCD3D6007CE721 /* ProfileViewController.m */,
 				0D68A3E80EDCD5CC007CE721 /* MainWindowViewController.h */,
 				0D68A3E90EDCD5CC007CE721 /* MainWindowViewController.m */,
-				0DF9E31F0EF3079100A522A1 /* SingleQuestionViewController.h */,
-				0DF9E3200EF3079100A522A1 /* SingleQuestionViewController.m */,
-				0DD8C9600EF4884D00A20937 /* SurveyQuestionViewController.h */,
-				0DD8C9610EF4884D00A20937 /* SurveyQuestionViewController.m */,
-				0DD8CA540EF4D43300A20937 /* QuestionViewController.h */,
-				0DD8CA550EF4D43300A20937 /* QuestionViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -125,6 +118,21 @@
 				0DD8C8410EF33C3E00A20937 /* Question.m */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		0DD8CAB10EF4D6A800A20937 /* Question View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0D68A3C50EDCD2B6007CE721 /* QuestionsListViewController.h */,
+				0D68A3C60EDCD2B6007CE721 /* QuestionsListViewController.m */,
+				0DF9E31F0EF3079100A522A1 /* SingleQuestionViewController.h */,
+				0DF9E3200EF3079100A522A1 /* SingleQuestionViewController.m */,
+				0DD8C9600EF4884D00A20937 /* SurveyQuestionViewController.h */,
+				0DD8C9610EF4884D00A20937 /* SurveyQuestionViewController.m */,
+				0DD8CA540EF4D43300A20937 /* QuestionViewController.h */,
+				0DD8CA550EF4D43300A20937 /* QuestionViewController.m */,
+			);
+			name = "Question View Controllers";
 			sourceTree = "<group>";
 		};
 		0DF9E1EB0EF2ED1800A522A1 /* Images */ = {
@@ -259,7 +267,7 @@
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* JoeMetricAppDelegate.m in Sources */,
-				0D68A3C70EDCD2B6007CE721 /* QuestionsViewController.m in Sources */,
+				0D68A3C70EDCD2B6007CE721 /* QuestionsListViewController.m in Sources */,
 				0D68A3CF0EDCD37A007CE721 /* WalletViewController.m in Sources */,
 				0D68A3D50EDCD3D6007CE721 /* ProfileViewController.m in Sources */,
 				0D68A3EA0EDCD5CC007CE721 /* MainWindowViewController.m in Sources */,

@@ -293,7 +293,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>MainWindowViewController</string>
 					<string>UIResponder</string>
-					<string>{{733, 526}, {320, 480}}</string>
+					<string>{{733, 376}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -301,7 +301,7 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>{{21, 331}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>QuestionsViewController</string>
+					<string>QuestionsListViewController</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -377,11 +377,11 @@
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
-					<string key="className">QuestionsViewController</string>
+					<string key="className">QuestionsListViewController</string>
 					<string key="superclassName">UITableViewController</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">Classes/QuestionsViewController.h</string>
+						<string key="minorKey">Classes/QuestionsListViewController.h</string>
 					</object>
 				</object>
 			</object>
