@@ -104,7 +104,7 @@
 						<reference key="IBUINormalTitleColor" ref="640065610"/>
 					</object>
 				</object>
-				<string key="NSFrameSize">{320, 480}</string>
+				<string key="NSFrameSize">{320, 433}</string>
 				<reference key="NSSuperview"/>
 				<reference key="IBUIBackgroundColor" ref="407259194"/>
 			</object>
@@ -121,22 +121,6 @@
 					<int key="connectionID">4</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">selectedQuestion</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="93501591"/>
-					</object>
-					<int key="connectionID">6</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">_selectedAmount</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="252071198"/>
-					</object>
-					<int key="connectionID">8</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">answerQuestion:</string>
 						<reference key="source" ref="1045760332"/>
@@ -144,6 +128,22 @@
 						<int key="IBEventType">7</int>
 					</object>
 					<int key="connectionID">12</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">_selectedQuestionLabel</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="93501591"/>
+					</object>
+					<int key="connectionID">13</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">_selectedAmountLabel</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="252071198"/>
+					</object>
+					<int key="connectionID">14</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -212,7 +212,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>SingleQuestionViewController</string>
 					<string>UIResponder</string>
-					<string>{{416, 330}, {320, 480}}</string>
+					<string>{{450, 387}, {320, 433}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -239,7 +239,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">12</int>
+			<int key="maxID">14</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -255,8 +255,8 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSMutableArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>_selectedAmount</string>
-							<string>_selectedQuestion</string>
+							<string>_selectedAmountLabel</string>
+							<string>_selectedQuestionLabel</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
