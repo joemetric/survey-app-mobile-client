@@ -61,7 +61,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"Selected row %d", indexPath.row);
     SingleQuestionViewController *sqvc = [[SingleQuestionViewController alloc] initWithNibName:@"Question" bundle:nil question:[self.questions objectAtIndex:indexPath.row]];
-    [self.navigationController pushViewController:sqvc animated:YES];    
+    [self.navigationController pushViewController:sqvc animated:YES];  
     [sqvc release];    
 }
 
