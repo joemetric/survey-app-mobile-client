@@ -42,6 +42,7 @@
 - (void)viewDidLoad {   
     self.selectedQuestion.text = self.textForSelectedQuestion;
     self.selectedAmount.text = self.textForSelectedAmount;
+    self.navigationItem.backBarButtonItem.title = @"Back";
     [super viewDidLoad];
 }
 

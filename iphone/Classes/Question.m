@@ -25,7 +25,6 @@
     if (self = [super init]) {
         self.text = text;
         self.amount = amount;
-        // Custom initialization
     }
     return self;
 }
@@ -38,6 +37,12 @@
 
 - (NSString *)questionAndAmountAsString {
     return [NSString stringWithFormat:@"%@ | %@", [self amountAsDollarString] , self.text];
+}
+
+- (void)dealloc {
+    [self.text release];
+    [self.amount release];
+    [super dealloc];
 }
     
 @end
