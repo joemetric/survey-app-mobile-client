@@ -7,19 +7,27 @@
 //
 
 #import "SurveyQuestionViewController.h"
+#import "Question.h"
 
 
 @implementation SurveyQuestionViewController
 
-/*
-// Override initWithNibName:bundle: to load the view using a nib file then perform additional customization that is not appropriate for viewDidLoad.
+@synthesize selectedQuestion = _selectedQuestion;
+@synthesize selectedQuestionLabel = _selectedQuestionLabel;
+@synthesize selectedAmountLabel = _selectedAmountLabel;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil question:(Question *)question {    
+    [self initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self.selectedQuestion = question;
+    return self;
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         // Custom initialization
     }
     return self;
 }
-*/
 
 /*
 // Implement loadView to create a view hierarchy programmatically.
@@ -27,12 +35,12 @@
 }
 */
 
-/*
 // Implement viewDidLoad to do additional setup after loading the view.
 - (void)viewDidLoad {
+    self.selectedQuestionLabel.text = self.selectedQuestion.text;
+    self.selectedAmountLabel.text = [self.selectedQuestion amountAsDollarString];    
     [super viewDidLoad];
 }
-*/
 
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

@@ -31,7 +31,10 @@
 
 -(IBAction)answerQuestion:(id)sender {
     NSLog(@"Answering the question");
-    SurveyQuestionViewController *sqvc = [[SurveyQuestionViewController alloc] initWithNibName:@"SurveyQuestionView" bundle:nil];
+    SurveyQuestionViewController *sqvc = [[SurveyQuestionViewController alloc] 
+                                          initWithNibName:@"SurveyQuestionView" 
+                                                   bundle:nil 
+                                                 question:self.selectedQuestion];
     [self.navigationController pushViewController:sqvc animated:YES];    
     [sqvc release];
 }
