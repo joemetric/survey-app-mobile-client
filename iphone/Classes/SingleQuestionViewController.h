@@ -15,7 +15,6 @@
     IBOutlet UILabel *_selectedAmount;
     NSString *_textForSelectedQuestion;
     NSString *_textForSelectedAmount;
-
 }
 
 @property (nonatomic, retain) UILabel *selectedQuestion;

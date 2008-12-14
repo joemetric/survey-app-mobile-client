@@ -87,14 +87,14 @@
 			isa = PBXGroup;
 			children = (
 				0DD8C8440EF33DB900A20937 /* Models */,
-				0D8DC8870EDE35B9007EC072 /* Controllers */,
+				0D8DC8870EDE35B9007EC072 /* View Controllers */,
 				1D3623240D0F684500981E51 /* JoeMetricAppDelegate.h */,
 				1D3623250D0F684500981E51 /* JoeMetricAppDelegate.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		0D8DC8870EDE35B9007EC072 /* Controllers */ = {
+		0D8DC8870EDE35B9007EC072 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				0D68A3C50EDCD2B6007CE721 /* QuestionsViewController.h */,
@@ -110,7 +110,7 @@
 				0DD8C9600EF4884D00A20937 /* SurveyQuestionViewController.h */,
 				0DD8C9610EF4884D00A20937 /* SurveyQuestionViewController.m */,
 			);
-			name = Controllers;
+			name = "View Controllers";
 			sourceTree = "<group>";
 		};
 		0DD8C8440EF33DB900A20937 /* Models */ = {
