@@ -16,6 +16,7 @@
 
 
 - (void)viewDidLoad {
+    self.navigationItem.title = @"Questions";
     self.questions = [NSArray arrayWithObjects:
                       [[Question alloc] initWithText:@"What kind of detergent do you use" 
                                               amount:[[NSDecimalNumber alloc] initWithDouble:.50]],

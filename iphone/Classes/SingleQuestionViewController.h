@@ -24,5 +24,6 @@
 @property (nonatomic, retain) NSString *textForSelectedAmount;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil question:(Question *)question;
+- (IBAction)answerQuestion:(id)sender;
 
 @end

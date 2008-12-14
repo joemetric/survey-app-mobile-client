@@ -15,6 +15,8 @@
 		0D68A3D70EDCD3EF007CE721 /* ProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D68A3D60EDCD3EF007CE721 /* ProfileView.xib */; };
 		0D68A3EA0EDCD5CC007CE721 /* MainWindowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D68A3E90EDCD5CC007CE721 /* MainWindowViewController.m */; };
 		0DD8C8420EF33C3E00A20937 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD8C8410EF33C3E00A20937 /* Question.m */; };
+		0DD8C95E0EF487C900A20937 /* SurveyQuestionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DD8C95D0EF487C900A20937 /* SurveyQuestionView.xib */; };
+		0DD8C9620EF4884D00A20937 /* SurveyQuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD8C9610EF4884D00A20937 /* SurveyQuestionViewController.m */; };
 		0DF9E1F00EF2ED3400A522A1 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DF9E1ED0EF2ED3400A522A1 /* Icon.png */; };
 		0DF9E22C0EF2F4FC00A522A1 /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DF9E2290EF2F4FC00A522A1 /* profile.png */; };
 		0DF9E22D0EF2F4FC00A522A1 /* question.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DF9E22A0EF2F4FC00A522A1 /* question.png */; };
@@ -44,6 +46,9 @@
 		0D68A3E90EDCD5CC007CE721 /* MainWindowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindowViewController.m; sourceTree = "<group>"; };
 		0DD8C8400EF33C3E00A20937 /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Question.h; sourceTree = "<group>"; };
 		0DD8C8410EF33C3E00A20937 /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Question.m; sourceTree = "<group>"; };
+		0DD8C95D0EF487C900A20937 /* SurveyQuestionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SurveyQuestionView.xib; sourceTree = "<group>"; };
+		0DD8C9600EF4884D00A20937 /* SurveyQuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurveyQuestionViewController.h; sourceTree = "<group>"; };
+		0DD8C9610EF4884D00A20937 /* SurveyQuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SurveyQuestionViewController.m; sourceTree = "<group>"; };
 		0DF9E1ED0EF2ED3400A522A1 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = SOURCE_ROOT; };
 		0DF9E2290EF2F4FC00A522A1 /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile.png; sourceTree = "<group>"; };
 		0DF9E22A0EF2F4FC00A522A1 /* question.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = question.png; sourceTree = "<group>"; };
@@ -102,6 +107,8 @@
 				0D68A3E90EDCD5CC007CE721 /* MainWindowViewController.m */,
 				0DF9E31F0EF3079100A522A1 /* SingleQuestionViewController.h */,
 				0DF9E3200EF3079100A522A1 /* SingleQuestionViewController.m */,
+				0DD8C9600EF4884D00A20937 /* SurveyQuestionViewController.h */,
+				0DD8C9610EF4884D00A20937 /* SurveyQuestionViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -167,6 +174,7 @@
 				0D68A3D00EDCD38E007CE721 /* WalletView.xib */,
 				0D68A3D60EDCD3EF007CE721 /* ProfileView.xib */,
 				0DF9E3140EF3065200A522A1 /* Question.xib */,
+				0DD8C95D0EF487C900A20937 /* SurveyQuestionView.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -233,6 +241,7 @@
 				0DF9E22E0EF2F4FC00A522A1 /* wallet.png in Resources */,
 				0DF9E2300EF2F61A00A522A1 /* user.png in Resources */,
 				0DF9E3150EF3065200A522A1 /* Question.xib in Resources */,
+				0DD8C95E0EF487C900A20937 /* SurveyQuestionView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,6 +260,7 @@
 				0D68A3EA0EDCD5CC007CE721 /* MainWindowViewController.m in Sources */,
 				0DF9E3210EF3079100A522A1 /* SingleQuestionViewController.m in Sources */,
 				0DD8C8420EF33C3E00A20937 /* Question.m in Sources */,
+				0DD8C9620EF4884D00A20937 /* SurveyQuestionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
