@@ -7,6 +7,7 @@
 //
 
 #import "SingleQuestionViewController.h"
+#import "SurveyQuestionViewController.h"
 
 
 @implementation SingleQuestionViewController
@@ -32,7 +33,10 @@
 }
 
 -(IBAction)answerQuestion:(id)sender {
-    NSLog(@"Answer the question");
+    NSLog(@"Answering the question");
+    SurveyQuestionViewController *sqvc = [[SurveyQuestionViewController alloc] initWithNibName:@"SurveyQuestionView" bundle:nil];
+    [self.navigationController pushViewController:sqvc animated:YES];    
+    [sqvc release];
 }
 
 
