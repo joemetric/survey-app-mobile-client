@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "QuestionList.h"
 
 
 @interface QuestionsListViewController : UITableViewController {
-  NSArray *questions;
+  QuestionList *questions;
 }
 
-@property (nonatomic, retain) NSArray *questions;
+@property (nonatomic, retain) QuestionList *questions;
 
 @end

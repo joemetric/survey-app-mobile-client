@@ -7,12 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Question.h"
 
 
+// Right now this is just a wrapper object, but will be an entry 
+// point for our xml parsing, etc...
 @interface QuestionList : NSObject {
     NSArray *questions;
 }
 
--(NSArray *)questions;
+-(Question *)questionAtIndex:(NSUInteger)index;
+-(NSUInteger)count;
 
 @end

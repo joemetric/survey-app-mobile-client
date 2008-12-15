@@ -9,26 +9,15 @@
 #import "QuestionsListViewController.h"
 #import "SingleQuestionViewController.h"
 #import "Question.h"
+#import "QuestionList.h"
 
 @implementation QuestionsListViewController
 
 @synthesize questions;
 
-
 - (void)viewDidLoad {
     self.navigationItem.title = @"Questions";
-    self.questions = [NSArray arrayWithObjects:
-                      [[Question alloc] initWithText:@"What kind of detergent do you use" 
-                                              amount:[[NSDecimalNumber alloc] initWithDouble:.50]],
-                      [[Question alloc] initWithText:@"What is you favorite color" 
-                                              amount:[[NSDecimalNumber alloc] initWithDouble:4.50]],
-                      [[Question alloc] initWithText:@"Take a picture of your closet"
-                                              amount:[[NSDecimalNumber alloc] initWithDouble:3.75]],
-                      [[Question alloc] initWithText:@"How do you feel today" 
-                                              amount:[[NSDecimalNumber alloc] initWithDouble:2.00]], 
-                      [[Question alloc] initWithText:@"Some really really long question that goes on and on and on" 
-                                              amount:[[NSDecimalNumber alloc] initWithDouble:10.00]], 
-                    nil];
+    self.questions = [[QuestionList alloc] init];
     [super viewDidLoad];
 }
 
@@ -36,11 +25,9 @@
     return 1;
 }
 
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.questions count];
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -52,7 +39,7 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
-    Question *q = [self.questions objectAtIndex:indexPath.row];
+    Question *q = [self.questions questionAtIndex:indexPath.row];
     cell.text = [q questionAndAmountAsString];
     return cell;
 }
@@ -60,7 +47,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"Selected row %d", indexPath.row);
-    SingleQuestionViewController *sqvc = [[SingleQuestionViewController alloc] initWithNibName:@"QuestionView" bundle:nil question:[self.questions objectAtIndex:indexPath.row]];
+    SingleQuestionViewController *sqvc = 
+        [[SingleQuestionViewController alloc] initWithNibName:@"QuestionView" 
+                                                       bundle:nil 
+                                                     question:[self.questions questionAtIndex:indexPath.row]];
     [self.navigationController pushViewController:sqvc animated:YES];  
     [sqvc release];    
 }
