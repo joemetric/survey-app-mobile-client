@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D53AC070EF6B6F0000533C1 /* QuestionList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D53AC060EF6B6F0000533C1 /* QuestionList.m */; };
 		0D68A3C70EDCD2B6007CE721 /* QuestionsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D68A3C60EDCD2B6007CE721 /* QuestionsListViewController.m */; };
 		0D68A3C90EDCD2DB007CE721 /* QuestionsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D68A3C80EDCD2DB007CE721 /* QuestionsView.xib */; };
 		0D68A3CF0EDCD37A007CE721 /* WalletViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D68A3CE0EDCD37A007CE721 /* WalletViewController.m */; };
@@ -34,6 +35,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D53AC050EF6B6F0000533C1 /* QuestionList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionList.h; sourceTree = "<group>"; };
+		0D53AC060EF6B6F0000533C1 /* QuestionList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionList.m; sourceTree = "<group>"; };
 		0D68A3C50EDCD2B6007CE721 /* QuestionsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionsListViewController.h; sourceTree = "<group>"; };
 		0D68A3C60EDCD2B6007CE721 /* QuestionsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionsListViewController.m; sourceTree = "<group>"; };
 		0D68A3C80EDCD2DB007CE721 /* QuestionsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionsView.xib; sourceTree = "<group>"; };
@@ -116,6 +119,8 @@
 			children = (
 				0DD8C8400EF33C3E00A20937 /* Question.h */,
 				0DD8C8410EF33C3E00A20937 /* Question.m */,
+				0D53AC050EF6B6F0000533C1 /* QuestionList.h */,
+				0D53AC060EF6B6F0000533C1 /* QuestionList.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -275,6 +280,7 @@
 				0DD8C8420EF33C3E00A20937 /* Question.m in Sources */,
 				0DD8C9620EF4884D00A20937 /* SurveyQuestionViewController.m in Sources */,
 				0DD8CA560EF4D43300A20937 /* QuestionViewController.m in Sources */,
+				0D53AC070EF6B6F0000533C1 /* QuestionList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
