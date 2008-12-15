@@ -13,10 +13,11 @@
 // Right now this is just a wrapper object, but will be an entry 
 // point for our xml parsing, etc...
 @interface QuestionList : NSObject {
-    NSArray *questions;
+    NSMutableArray *questions;
 }
 
 -(Question *)questionAtIndex:(NSUInteger)index;
 -(NSUInteger)count;
+-(void)refreshQuestionList;
 
 @end

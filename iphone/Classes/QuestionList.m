@@ -14,7 +14,7 @@
 
 - (id)init {
     if (self = [super init]) { 
-        questions = [NSArray arrayWithObjects:
+        questions = [NSMutableArray arrayWithObjects:
                           [[Question alloc] initWithText:@"What kind of detergent do you use" 
                                                   amount:[[NSDecimalNumber alloc] initWithDouble:.50]],
                           [[Question alloc] initWithText:@"What is you favorite color" 
@@ -37,6 +37,11 @@
 
 -(NSUInteger)count {
     return [questions count];
+}
+
+-(void)refreshQuestionList {
+    [questions addObject:[[Question alloc] initWithText:[NSString stringWithFormat:@"NewQuestion: %d", [self count]]
+                                                 amount:[[NSDecimalNumber alloc] initWithDouble:1.00]]];
 }
 
 - (void)dealloc {
