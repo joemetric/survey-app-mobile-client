@@ -23,7 +23,7 @@
 		0DF9E22D0EF2F4FC00A522A1 /* question.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DF9E22A0EF2F4FC00A522A1 /* question.png */; };
 		0DF9E22E0EF2F4FC00A522A1 /* wallet.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DF9E22B0EF2F4FC00A522A1 /* wallet.png */; };
 		0DF9E2300EF2F61A00A522A1 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DF9E22F0EF2F61A00A522A1 /* user.png */; };
-		0DF9E3150EF3065200A522A1 /* Question.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DF9E3140EF3065200A522A1 /* Question.xib */; };
+		0DF9E3150EF3065200A522A1 /* QuestionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DF9E3140EF3065200A522A1 /* QuestionView.xib */; };
 		0DF9E3210EF3079100A522A1 /* SingleQuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF9E3200EF3079100A522A1 /* SingleQuestionViewController.m */; };
 		1D3623260D0F684500981E51 /* JoeMetricAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* JoeMetricAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
@@ -57,7 +57,7 @@
 		0DF9E22A0EF2F4FC00A522A1 /* question.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = question.png; sourceTree = "<group>"; };
 		0DF9E22B0EF2F4FC00A522A1 /* wallet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wallet.png; sourceTree = "<group>"; };
 		0DF9E22F0EF2F61A00A522A1 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
-		0DF9E3140EF3065200A522A1 /* Question.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Question.xib; sourceTree = "<group>"; };
+		0DF9E3140EF3065200A522A1 /* QuestionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionView.xib; sourceTree = "<group>"; };
 		0DF9E31F0EF3079100A522A1 /* SingleQuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleQuestionViewController.h; sourceTree = "<group>"; };
 		0DF9E3200EF3079100A522A1 /* SingleQuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleQuestionViewController.m; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -186,7 +186,7 @@
 				0D68A3C80EDCD2DB007CE721 /* QuestionsView.xib */,
 				0D68A3D00EDCD38E007CE721 /* WalletView.xib */,
 				0D68A3D60EDCD3EF007CE721 /* ProfileView.xib */,
-				0DF9E3140EF3065200A522A1 /* Question.xib */,
+				0DF9E3140EF3065200A522A1 /* QuestionView.xib */,
 				0DD8C95D0EF487C900A20937 /* SurveyQuestionView.xib */,
 			);
 			name = Resources;
@@ -253,7 +253,7 @@
 				0DF9E22D0EF2F4FC00A522A1 /* question.png in Resources */,
 				0DF9E22E0EF2F4FC00A522A1 /* wallet.png in Resources */,
 				0DF9E2300EF2F61A00A522A1 /* user.png in Resources */,
-				0DF9E3150EF3065200A522A1 /* Question.xib in Resources */,
+				0DF9E3150EF3065200A522A1 /* QuestionView.xib in Resources */,
 				0DD8C95E0EF487C900A20937 /* SurveyQuestionView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
