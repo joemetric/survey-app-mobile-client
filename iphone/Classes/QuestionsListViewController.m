@@ -6,22 +6,29 @@
 //  Copyright 2008 EdgeCase, LLC. All rights reserved.
 //
 
-#import "QuestionsViewController.h"
-#import "SurveyQuestionViewController.h"
+#import "QuestionsListViewController.h"
+#import "SingleQuestionViewController.h"
+#import "Question.h"
 
-
-@implementation QuestionsViewController
+@implementation QuestionsListViewController
 
 @synthesize questions;
 
 
-// Implement viewDidLoad to do additional setup after loading the view.
 - (void)viewDidLoad {
-    questions = [NSArray arrayWithObjects:@"What kind of detergent do you use", 
-                                          @"What is you favorite color", 
-                                          @"Take a picture of your closet",
-                                          @"How do you feel today",
-                                          nil];
+    self.navigationItem.title = @"Questions";
+    self.questions = [NSArray arrayWithObjects:
+                      [[Question alloc] initWithText:@"What kind of detergent do you use" 
+                                              amount:[[NSDecimalNumber alloc] initWithDouble:.50]],
+                      [[Question alloc] initWithText:@"What is you favorite color" 
+                                              amount:[[NSDecimalNumber alloc] initWithDouble:4.50]],
+                      [[Question alloc] initWithText:@"Take a picture of your closet"
+                                              amount:[[NSDecimalNumber alloc] initWithDouble:3.75]],
+                      [[Question alloc] initWithText:@"How do you feel today" 
+                                              amount:[[NSDecimalNumber alloc] initWithDouble:2.00]], 
+                      [[Question alloc] initWithText:@"Some really really long question that goes on and on and on" 
+                                              amount:[[NSDecimalNumber alloc] initWithDouble:10.00]], 
+                    nil];
     [super viewDidLoad];
 }
 
@@ -31,7 +38,7 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [questions count];
+    return [self.questions count];
 }
 
 
@@ -45,15 +52,16 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
-    cell.text = [questions objectAtIndex:indexPath.row];
+    Question *q = [self.questions objectAtIndex:indexPath.row];
+    cell.text = [q questionAndAmountAsString];
     return cell;
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"Selected row %d", indexPath.row);
-    SurveyQuestionViewController *sqvc = [[SurveyQuestionViewController alloc] initWithNibName:@"SurveyQuestionView" bundle:nil];
-    [self.navigationController pushViewController:sqvc animated:YES];    
+    SingleQuestionViewController *sqvc = [[SingleQuestionViewController alloc] initWithNibName:@"Question" bundle:nil question:[self.questions objectAtIndex:indexPath.row]];
+    [self.navigationController pushViewController:sqvc animated:YES];  
     [sqvc release];    
 }
 
