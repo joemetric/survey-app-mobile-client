@@ -14,18 +14,14 @@
 @synthesize text = _text;
 @synthesize amount = _amount;
 
-// Questions should not be initialized directly
 - (id)init {
-    NSAssert( false, @"Questions should be initialized with initWithText:text:amount." );
-    [self autorelease];
-    return nil;
+    return [super init];
 }
 
 - (id)initWithText:(NSString *)text amount:(NSDecimalNumber *)amount {
-    if (self = [super init]) {
-        self.text = text;
-        self.amount = amount;
-    }
+    [super init];
+    self.text = text;
+    self.amount = amount;
     return self;
 }
 

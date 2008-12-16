@@ -14,7 +14,12 @@
 // point for our xml parsing, etc...
 @interface QuestionList : NSObject {
     NSMutableArray *questions;
+    Question *_currentQuestionObject;
+    NSMutableString *_contentOfCurrentQuestionProperty;
 }
+
+@property (nonatomic, retain) Question *currentQuestionObject;
+@property (nonatomic, retain) NSMutableString *contentOfCurrentQuestionProperty;
 
 -(Question *)questionAtIndex:(NSUInteger)index;
 -(NSUInteger)count;

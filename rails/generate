@@ -676,4 +676,217 @@ no changes added to commit (use "git add" and/or "git commit -a")
 #
 #	[32mdeleted:    rails/DELETEME[m
 #
-[objo-laptop-2 | joemetric ] $ git commit -a -m 'Addnig     ch  ic ng bals  sic ral il
+[objo-laptop-2 | joemetric ] $ git commit -a -m 'Addnig     ch  ic ng bals  sic ral ils app'
+Created commit 2dc895d: Adding basic rails app
+ 59 files changed, 9402 insertions(+), 0 deletions(-)
+ create mode 100644 rails/.gitignore
+ delete mode 100644 rails/DELETEME
+ create mode 100644 rails/README
+ create mode 100644 rails/Rakefile
+ create mode 100644 rails/app/controllers/application.rb
+ create mode 100644 rails/app/controllers/questions_controller.rb
+ create mode 100644 rails/app/helpers/application_helper.rb
+ create mode 100644 rails/app/helpers/questions_helper.rb
+ create mode 100644 rails/app/models/question.rb
+ create mode 100644 rails/app/views/layouts/questions.html.erb
+ create mode 100644 rails/app/views/questions/edit.html.erb
+ create mode 100644 rails/app/views/questions/index.html.erb
+ create mode 100644 rails/app/views/questions/new.html.erb
+ create mode 100644 rails/app/views/questions/show.html.erb
+ create mode 100644 rails/config/boot.rb
+ create mode 100644 rails/config/environment.rb
+ create mode 100644 rails/config/environments/development.rb
+ create mode 100644 rails/config/environments/production.rb
+ create mode 100644 rails/config/environments/test.rb
+ create mode 100644 rails/config/initializers/inflections.rb
+ create mode 100644 rails/config/initializers/mime_types.rb
+ create mode 100644 rails/config/initializers/new_rails_defaults.rb
+ create mode 100644 rails/config/routes.rb
+ create mode 100644 rails/db/migrate/20081215235350_create_questions.rb
+ create mode 100644 rails/db/schema.rb
+ create mode 100644 rails/doc/README_FOR_APP
+ create mode 100644 rails/generate
+ create mode 100644 rails/public/404.html
+ create mode 100644 rails/public/422.html
+ create mode 100644 rails/public/500.html
+ create mode 100755 rails/public/dispatch.cgi
+ create mode 100755 rails/public/dispatch.fcgi
+ create mode 100755 rails/public/dispatch.rb
+ create mode 100644 rails/public/favicon.ico
+ create mode 100644 rails/public/images/rails.png
+ create mode 100644 rails/public/index.html
+ create mode 100644 rails/public/javascripts/application.js
+ create mode 100644 rails/public/javascripts/controls.js
+ create mode 100644 rails/public/javascripts/dragdrop.js
+ create mode 100644 rails/public/javascripts/effects.js
+ create mode 100644 rails/public/javascripts/prototype.js
+ create mode 100644 rails/public/robots.txt
+ create mode 100644 rails/public/stylesheets/scaffold.css
+ create mode 100755 rails/script/about
+ create mode 100755 rails/script/console
+ create mode 100755 rails/script/dbconsole
+ create mode 100755 rails/script/destroy
+ create mode 100755 rails/script/generate
+ create mode 100755 rails/script/performance/benchmarker
+ create mode 100755 rails/script/performance/profiler
+ create mode 100755 rails/script/performance/request
+ create mode 100755 rails/script/plugin
+ create mode 100755 rails/script/process/inspector
+ create mode 100755 rails/script/process/reaper
+ create mode 100755 rails/script/process/spawner
+ create mode 100755 rails/script/runner
+ create mode 100755 rails/script/server
+ create mode 100644 rails/test/fixtures/questions.yml
+ create mode 100644 rails/test/functional/questions_controller_test.rb
+ create mode 100644 rails/test/test_helper.rb
+ create mode 100644 rails/test/unit/question_test.rb
+[objo-laptop-2 | joemetric ] $ ll
+total 0
+-rw-r--r--   1 objo  staff    0 Nov 25 14:39 README
+drwxr-xr-x  16 objo  staff  544 Dec 15 16:24 iphone
+drwxr-xr-x  17 objo  staff  578 Dec 15 18:49 rails
+[objo-laptop-2 | joemetric ] $ git status
+# On branch master
+nothing to commit (working directory clean)
+[objo-laptop-2 | joemetric ] $ git statusll[Kgit status[Kcd ro ails/
+[objo-laptop-2 | rails ] $ ll
+total 128
+-rw-r--r--   1 objo  staff  10619 Dec 15 18:44 README
+-rw-r--r--   1 objo  staff    307 Dec 15 18:44 Rakefile
+drwxr-xr-x   6 objo  staff    204 Dec 15 18:53 app
+drwxr-xr-x   8 objo  staff    272 Dec 15 18:44 config
+drwxr-xr-x   5 objo  staff    170 Dec 15 19:03 db
+drwxr-xr-x   3 objo  staff    102 Dec 15 18:44 doc
+-rw-r--r--   1 objo  staff  48713 Dec 15 19:08 generate
+drwxr-xr-x   3 objo  staff    102 Dec 15 18:44 lib
+drwxr-xr-x   6 objo  staff    204 Dec 15 18:44 log
+drwxr-xr-x  14 objo  staff    476 Dec 15 18:44 public
+drwxr-xr-x  12 objo  staff    408 Dec 15 18:44 script
+drwxr-xr-x   7 objo  staff    238 Dec 15 18:53 test
+drwxr-xr-x   6 objo  staff    204 Dec 15 18:44 tmp
+drwxr-xr-x   3 objo  staff    102 Dec 15 18:44 vendor
+[objo-laptop-2 | rails ] $ z zt  o scriptp /server 
+=> Booting Mongrel (use 'script/server webrick' to force WEBrick)
+=> Rails 2.1.0 application starting on http://0.0.0.0:3000
+=> Call with -d to detach
+=> Ctrl-C to shutdown server
+** Starting Mongrel listening at 0.0.0.0:3000
+** Starting Rails with development environment...
+** Rails loaded.
+** Loading any Rails specific GemPlugins
+** Signals ready.  TERM => stop.  USR2 => restart.  INT => stop (no restart).
+** Rails signals registered.  HUP => reload (without restart).  It might not work well.
+** Mongrel 1.1.4 available at 0.0.0.0:3000
+** Use CTRL-C to stop.
+
+
+Processing QuestionsController#index (for 127.0.0.1 at 2008-12-15 19:27:22) [GET]
+  Session ID: 16957b781423bd21edd51bb9e9f3ef9f
+  Parameters: {"format"=>"xml", "action"=>"index", "controller"=>"questions"}
+  [4;36;1mQuestion Load (0.000729)[0m   [0;1mSELECT * FROM "questions" [0m
+Completed in 0.08031 (12 reqs/sec) | Rendering: 0.06239 (77%) | DB: 0.00073 (0%) | 200 OK [http://localhost/questions.xml]
+
+
+Processing QuestionsController#index (for 127.0.0.1 at 2008-12-15 19:27:44) [GET]
+  Session ID: bb86581dc3206bd3bade21c1f1a67338
+  Parameters: {"format"=>"xml", "action"=>"index", "controller"=>"questions"}
+  [4;35;1mQuestion Load (0.000531)[0m   [0mSELECT * FROM "questions" [0m
+Completed in 0.00908 (110 reqs/sec) | Rendering: 0.00378 (41%) | DB: 0.00053 (5%) | 200 OK [http://localhost/questions.xml]
+
+
+Processing QuestionsController#index (for 127.0.0.1 at 2008-12-15 19:33:28) [GET]
+  Session ID: 46b176e223c67195b85dba1c8f1967d6
+  Parameters: {"format"=>"xml", "action"=>"index", "controller"=>"questions"}
+  [4;36;1mQuestion Load (0.000542)[0m   [0;1mSELECT * FROM "questions" [0m
+Completed in 0.00929 (107 reqs/sec) | Rendering: 0.00391 (42%) | DB: 0.00054 (5%) | 200 OK [http://localhost/questions.xml]
+
+
+Processing QuestionsController#index (for 127.0.0.1 at 2008-12-15 19:35:15) [GET]
+  Session ID: a55fd1cb3ce2804c86339c86a3f721a4
+  Parameters: {"format"=>"xml", "action"=>"index", "controller"=>"questions"}
+  [4;35;1mQuestion Load (0.000570)[0m   [0mSELECT * FROM "questions" [0m
+Completed in 0.02175 (45 reqs/sec) | Rendering: 0.00398 (18%) | DB: 0.00057 (2%) | 200 OK [http://localhost/questions.xml]
+
+
+Processing QuestionsController#index (for 127.0.0.1 at 2008-12-15 19:36:12) [GET]
+  Session ID: 89ac7deaa223b745cece341b4ad6850e
+  Parameters: {"format"=>"xml", "action"=>"index", "controller"=>"questions"}
+  [4;36;1mQuestion Load (0.000532)[0m   [0;1mSELECT * FROM "questions" [0m
+Completed in 0.08191 (12 reqs/sec) | Rendering: 0.07659 (93%) | DB: 0.00053 (0%) | 200 OK [http://localhost/questions.xml]
+
+
+Processing QuestionsController#index (for 127.0.0.1 at 2008-12-15 19:36:32) [GET]
+  Session ID: BAh7ByIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7ADoMY3NyZl9pZCIlZDgyMjBjYzgxZjA4NDI1NmZj
+NTBlNDMzMjNlNmZiZGM=--bd948886d738b085f6c8a11d9bf823af368dc753
+  Parameters: {"action"=>"index", "controller"=>"questions"}
+  [4;35;1mQuestion Load (0.000519)[0m   [0mSELECT * FROM "questions" [0m
+Rendering template within layouts/questions
+Rendering questions/index
+Completed in 0.03513 (28 reqs/sec) | Rendering: 0.02976 (84%) | DB: 0.00052 (1%) | 200 OK [http://localhost/questions]
+
+
+Processing QuestionsController#new (for 127.0.0.1 at 2008-12-15 19:36:34) [GET]
+  Session ID: BAh7ByIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7ADoMY3NyZl9pZCIlZDgyMjBjYzgxZjA4NDI1NmZj
+NTBlNDMzMjNlNmZiZGM=--bd948886d738b085f6c8a11d9bf823af368dc753
+  Parameters: {"action"=>"new", "controller"=>"questions"}
+Rendering template within layouts/questions
+Rendering questions/new
+Completed in 0.03123 (32 reqs/sec) | Rendering: 0.02565 (82%) | DB: 0.00000 (0%) | 200 OK [http://localhost/questions/new]
+
+
+Processing QuestionsController#create (for 127.0.0.1 at 2008-12-15 19:36:44) [POST]
+  Session ID: BAh7ByIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7ADoMY3NyZl9pZCIlZDgyMjBjYzgxZjA4NDI1NmZj
+NTBlNDMzMjNlNmZiZGM=--bd948886d738b085f6c8a11d9bf823af368dc753
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"f386ccc052294f509ac998a67c26c623c0fcc782", "action"=>"create", "question"=>{"text"=>"Hello Ken", "amount"=>"10.00"}, "controller"=>"questions"}
+  [4;36;1mQuestion Create (0.000691)[0m   [0;1mINSERT INTO "questions" ("updated_at", "text", "amount", "created_at") VALUES('2008-12-16 00:36:44', 'Hello Ken', 10.0, '2008-12-16 00:36:44')[0m
+Redirected to http://localhost:3000/questions/3
+Completed in 0.01025 (97 reqs/sec) | DB: 0.00069 (6%) | 302 Found [http://localhost/questions]
+
+
+Processing QuestionsController#show (for 127.0.0.1 at 2008-12-15 19:36:44) [GET]
+  Session ID: BAh7ByIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsGOgtub3RpY2UiJ1F1ZXN0aW9uIHdhcyBzdWNjZXNzZnVsbHkgY3Jl
+YXRlZC4GOgpAdXNlZHsGOwZGOgxjc3JmX2lkIiVkODIyMGNjODFmMDg0MjU2
+ZmM1MGU0MzMyM2U2ZmJkYw==--be0cb25805d730158709c5a5405d132f0fd4df19
+  Parameters: {"action"=>"show", "id"=>"3", "controller"=>"questions"}
+  [4;35;1mQuestion Load (0.000229)[0m   [0mSELECT * FROM "questions" WHERE ("questions"."id" = 3) [0m
+Rendering template within layouts/questions
+Rendering questions/show
+Completed in 0.01798 (55 reqs/sec) | Rendering: 0.01217 (67%) | DB: 0.00023 (1%) | 200 OK [http://localhost/questions/3]
+
+
+Processing QuestionsController#index (for 127.0.0.1 at 2008-12-15 19:36:45) [GET]
+  Session ID: BAh7ByIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsGOgtub3RpY2UiJ1F1ZXN0aW9uIHdhcyBzdWNjZXNzZnVsbHkgY3Jl
+YXRlZC4GOgpAdXNlZHsGOwZUOgxjc3JmX2lkIiVkODIyMGNjODFmMDg0MjU2
+ZmM1MGU0MzMyM2U2ZmJkYw==--40143f1831f1250fee1a4e61aea5d0ff2f9ea828
+  Parameters: {"action"=>"index", "controller"=>"questions"}
+  [4;36;1mQuestion Load (0.000558)[0m   [0;1mSELECT * FROM "questions" [0m
+Rendering template within layouts/questions
+Rendering questions/index
+Completed in 0.00792 (126 reqs/sec) | Rendering: 0.00281 (35%) | DB: 0.00056 (7%) | 200 OK [http://localhost/questions]
+
+
+Processing QuestionsController#index (for 127.0.0.1 at 2008-12-15 19:36:52) [GET]
+  Session ID: 604e08eaffeba49441082511ceef1066
+  Parameters: {"format"=>"xml", "action"=>"index", "controller"=>"questions"}
+  [4;35;1mQuestion Load (0.000610)[0m   [0mSELECT * FROM "questions" [0m
+Completed in 0.00915 (109 reqs/sec) | Rendering: 0.00419 (45%) | DB: 0.00061 (6%) | 200 OK [http://localhost/questions.xml]
+^C** INT signal received.
+Exiting
+[objo-laptop-2 | rails ] $ 
+[objo-laptop-2 | rails ] $ git status
+# On branch master
+# Changed but not updated:
+#   (use "git add <file>..." to update what will be committed)
+#
+#	[32mmodified:   iphone/Classes/Question.m[m
+#	[32mmodified:   iphone/Classes/QuestionList.h[m
+#	[32mmodified:   iphone/Classes/QuestionList.m[m
+#	[32mmodified:   rails/generate[m
+#
+no changes added to commit (use "git add" and/or "git commit -a")
+[objo-laptop-2 | rails ] $ git add     commit -a -m 'ri udimetan   ntary ; ; question adding   fr     
