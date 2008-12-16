@@ -1,0 +1,62 @@
+@import "/stylesheets/reset.css";
+
+
+/* @group Header
+----------------------------------- */
+
+div#header {
+  background: #191919;
+}
+
+div#header ul {
+  overflow: hidden;
+  list-style-type: none;
+  width: 940px;
+  height: 43px;
+  margin: 0 auto;
+  font-family: arial, sans-serif;
+  font-size: 62.5%;
+  background: url(/images/header_logo.png) no-repeat 0% 50%;
+}
+
+div#header ul li {
+  display: inline;
+}
+
+div#header ul li a {
+  float: right;
+  display: block;
+  height: 43px;
+  margin-left: 25px;
+  color: #71df6a;
+  font-size: 1.4em;
+  font-weight: bold;
+  line-height: 43px;
+  text-decoration: none;
+  text-shadow: 1px 1px 1px #000;
+  opacity: 0.999;
+}
+
+div#header ul li a#global_navigation_account {
+  color: #01c6ff;
+}
+
+div#header ul li a:hover,
+div#header ul li a#global_navigation_account:hover {
+  color: #fff;
+}
+
+/* @end Header */
+
+
+/* @group Container
+----------------------------------- */
+
+div#container {
+  width: 940px;
+  margin: 0 auto;
+  font-family: arial, sans-serif;
+  font-size: 62.5%;
+}
+
+/* @end Container */

@@ -14,6 +14,12 @@ class MockupsController < ApplicationController
   def index
     files = Dir.glob "#{Rails.root}/app/views/mockups/[^_]*.erb"
     @pages = files.map { |f| f.scan(/(\w+)\./).flatten.first }
+
+    layout 'application'
+  end
+
+  def sam_create_question
+    layout 'application'
   end
 
   private
