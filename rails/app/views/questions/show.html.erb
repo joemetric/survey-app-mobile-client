@@ -1,0 +1,13 @@
+<p>
+  <b>Text:</b>
+  <%=h @question.text %>
+</p>
+
+<p>
+  <b>Float:</b>
+  <%=h @question.amount %>
+</p>
+
+
+<%= link_to 'Edit', edit_question_path(@question) %> |
+<%= link_to 'Home', questions_path %>

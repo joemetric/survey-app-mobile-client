@@ -1,0 +1,679 @@
+Script started on Mon Dec 15 18:49:47 2008
+[objo-laptop-2 | rails ] $ cd    ll
+total 40
+-rw-r--r--   1 objo  staff  10619 Dec 15 18:44 README
+-rw-r--r--   1 objo  staff    307 Dec 15 18:44 Rakefile
+drwxr-xr-x   6 objo  staff    204 Dec 15 18:44 app
+drwxr-xr-x   8 objo  staff    272 Dec 15 18:44 config
+drwxr-xr-x   3 objo  staff    102 Dec 15 18:49 db
+drwxr-xr-x   3 objo  staff    102 Dec 15 18:44 doc
+-rw-r--r--   1 objo  staff     43 Dec 15 18:49 generate
+drwxr-xr-x   3 objo  staff    102 Dec 15 18:44 lib
+drwxr-xr-x   6 objo  staff    204 Dec 15 18:44 log
+drwxr-xr-x  14 objo  staff    476 Dec 15 18:44 public
+drwxr-xr-x  12 objo  staff    408 Dec 15 18:44 script
+drwxr-xr-x   7 objo  staff    238 Dec 15 18:44 test
+drwxr-xr-x   6 objo  staff    204 Dec 15 18:44 tmp
+drwxr-xr-x   3 objo  staff    102 Dec 15 18:44 vendor
+[objo-laptop-2 | rails ] $ sci rp ipt/generate 
+:0:Warning: Gem::SourceIndex#search support for Regexp patterns is deprecated
+Usage: script/generate generator [options] [args]
+
+Rails Info:
+    -v, --version                    Show the Rails version number and quit.
+    -h, --help                       Show this help message and quit.
+
+General Options:
+    -p, --pretend                    Run but do not make any changes.
+    -f, --force                      Overwrite files that already exist.
+    -s, --skip                       Skip files that already exist.
+    -q, --quiet                      Suppress normal output.
+    -t, --backtrace                  Debugging: show backtrace on errors.
+    -c, --svn                        Modify files with subversion. (Note: svn must be in path)
+    -g, --git                        Modify files with git. (Note: git must be in path)
+
+
+Installed Generators
+  Builtin: controller, integration_test, mailer, migration, model, observer, plugin, resource, scaffold, session_migration
+
+More are available at http://wiki.rubyonrails.org/rails/pages/AvailableGenerators
+  1. Download, for example, login_generator.zip
+  2. Unzip to directory /Users/objo/.rails/generators/login
+     to use the generator with all your Rails apps
+     or to /Users/objo/git/joemetric/rails/lib/generators/login
+     to use with this app only.
+  3. Run generate with no arguments for usage information
+       script/generate login
+
+Generator gems are also available:
+  1. gem search -r generator
+  2. gem install login_generator
+  3. script/generate login
+
+[objo-laptop-2 | rails ] $ 
+[objo-laptop-2 | rails ] $ [5P(reverse-i-search)`': s': script/generate [1@c': [1@r': [1@i': [1@p': script/[2Pserver [1@t': script/generate scaffold color name:string(reverse-i-search)`script': [1P': [1@t': [1@/': [1@g': [1@e': [1@n': [1@e': [1@r': [1@a': [1@t': [1@e': [10P[objo-laptop-2 | rails ] $ script/generate scaffold color[1P[1P[1P[1P[1P[1@q[1@u[1@e[1@s[1@t[1@i[1@o[1@n [1@C[1@C[1@Cname[1P[1P[1P[1P[1P[1P[1P[1@t[1@e[1@x[1@t:string e doubl.      float:amoeu  unt[objo-laptop-2 | rails ] $ script/generate s[1@C[1@C[1@C[1@C[1@C[1@CsCCcaffold[1@;[1@2[1@D[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1@r[1@e[1@s[1@o[1@u[1@r[1@s[1@e[1P[1P[1P[1@r[1@c[1@e
+:0:Warning: Gem::SourceIndex#search support for Regexp patterns is deprecated
+      exists  app/models/
+      exists  app/controllers/
+      exists  app/helpers/
+      create  app/views/questions
+      exists  test/functional/
+      exists  test/unit/
+  dependency  model
+:0:Warning: Gem::SourceIndex#search support for Regexp patterns is deprecated
+      exists    app/models/
+      exists    test/unit/
+      exists    test/fixtures/
+      create    app/models/question.rb
+      create    test/unit/question_test.rb
+      create    test/fixtures/questions.yml
+      create    db/migrate
+      create    db/migrate/20081215235205_create_questions.rb
+      create  app/controllers/questions_controller.rb
+      create  test/functional/questions_controller_test.rb
+      create  app/helpers/questions_helper.rb
+       route  map.resources :questions
+[objo-laptop-2 | rails ] $ script/generate resource question text:string float:amount[objo-laptop-2 | rails ] $ script/generate resource[1P[1P[1P[1P[1P[1P[1P[1P[1@s[1@c[1@a[1@f[1@f[1@o[1@r[1@l[1P[1P[1@l[1@d
+:0:Warning: Gem::SourceIndex#search support for Regexp patterns is deprecated
+  The name 'QuestionsHelper' is either already used in your application or reserved by Ruby on Rails.
+  Please choose an alternative and run this generator again.
+[objo-laptop-2 | rails ] $ script/generate scaffold question text:string float:amountresource question text:string float:amount[objo-laptop-2 | rails ] $ sscript/g[1@C[1@Cgenerate[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1@d[1@e[1@s[1@t[1@r[1@o[1@y
+:0:Warning: Gem::SourceIndex#search support for Regexp patterns is deprecated
+       route  map.resources :questions
+          rm  app/helpers/questions_helper.rb
+          rm  test/functional/questions_controller_test.rb
+          rm  app/controllers/questions_controller.rb
+  dependency  model
+:0:Warning: Gem::SourceIndex#search support for Regexp patterns is deprecated
+    notempty    db/migrate
+    notempty    db
+          rm    db/migrate/20081215235205_create_questions.rb
+          rm    test/fixtures/questions.yml
+          rm    test/unit/question_test.rb
+          rm    app/models/question.rb
+       rmdir    test/fixtures
+    notempty    test
+       rmdir    test/unit
+    notempty    test
+       rmdir    app/models
+    notempty    app
+     missing  test/unit
+    notempty  test
+       rmdir  test/functional
+    notempty  test
+       rmdir  app/views/questions
+    notempty  app/views
+    notempty  app
+    notempty  app/helpers
+    notempty  app
+    notempty  app/controllers
+    notempty  app
+     missing  app/models
+    notempty  app
+[objo-laptop-2 | rails ] $ script/destroy resource question text:string float:amount[objo-laptop-2 | rails ] $ script/[1@generate scaffold question text:string float:amount
+:0:Warning: Gem::SourceIndex#search support for Regexp patterns is deprecated
+      create  app/models/
+      exists  app/controllers/
+      exists  app/helpers/
+      create  app/views/questions
+      exists  app/views/layouts/
+      create  test/functional/
+      create  test/unit/
+      exists  public/stylesheets/
+      create  app/views/questions/index.html.erb
+      create  app/views/questions/show.html.erb
+      create  app/views/questions/new.html.erb
+      create  app/views/questions/edit.html.erb
+      create  app/views/layouts/questions.html.erb
+      create  public/stylesheets/scaffold.css
+      create  app/controllers/questions_controller.rb
+      create  test/functional/questions_controller_test.rb
+      create  app/helpers/questions_helper.rb
+       route  map.resources :questions
+  dependency  model
+:0:Warning: Gem::SourceIndex#search support for Regexp patterns is deprecated
+      exists    app/models/
+      exists    test/unit/
+      create    test/fixtures/
+      create    app/models/question.rb
+      create    test/unit/question_test.rb
+      create    test/fixtures/questions.yml
+      exists    db/migrate
+      create    db/migrate/20081215235350_create_questions.rb
+[objo-laptop-2 | rails ] $ script/generate scaffold question text:string float:amount[objo-laptop-2 | rails ] $ script/[1Pdestroy resource question text:string float:amount[objo-laptop-2 | rails ] $ script/[1@generate scaffold question text:string float:amountresource question text:string float:amountscaffold question text:string float:amount[objo-laptop-2 | rails ] $ script/[1Pdestroy resource question text:string float:amount[objo-laptop-2 | rails ] $ script/[1@generate scaffold question text:string float:amount[objo-laptop-2 | rails ] $ [Kscript/generate 
+:0:Warning: Gem::SourceIndex#search support for Regexp patterns is deprecated
+Usage: script/generate generator [options] [args]
+
+Rails Info:
+    -v, --version                    Show the Rails version number and quit.
+    -h, --help                       Show this help message and quit.
+
+General Options:
+    -p, --pretend                    Run but do not make any changes.
+    -f, --force                      Overwrite files that already exist.
+    -s, --skip                       Skip files that already exist.
+    -q, --quiet                      Suppress normal output.
+    -t, --backtrace                  Debugging: show backtrace on errors.
+    -c, --svn                        Modify files with subversion. (Note: svn must be in path)
+    -g, --git                        Modify files with git. (Note: git must be in path)
+
+
+Installed Generators
+  Builtin: controller, integration_test, mailer, migration, model, observer, plugin, resource, scaffold, session_migration
+
+More are available at http://wiki.rubyonrails.org/rails/pages/AvailableGenerators
+  1. Download, for example, login_generator.zip
+  2. Unzip to directory /Users/objo/.rails/generators/login
+     to use the generator with all your Rails apps
+     or to /Users/objo/git/joemetric/rails/lib/generators/login
+     to use with this app only.
+  3. Run generate with no arguments for usage information
+       script/generate login
+
+Generator gems are also available:
+  1. gem search -r generator
+  2. gem install login_generator
+  3. script/generate login
+
+[objo-laptop-2 | rails ] $ st cl ript= /server 
+=> Booting Mongrel (use 'script/server webrick' to force WEBrick)
+=> Rails 2.1.0 application starting on http://0.0.0.0:3000
+=> Call with -d to detach
+=> Ctrl-C to shutdown server
+** Starting Mongrel listening at 0.0.0.0:3000
+** Starting Rails with development environment...
+** Rails loaded.
+** Loading any Rails specific GemPlugins
+** Signals ready.  TERM => stop.  USR2 => restart.  INT => stop (no restart).
+** Rails signals registered.  HUP => reload (without restart).  It might not work well.
+** Mongrel 1.1.4 available at 0.0.0.0:3000
+** Use CTRL-C to stop.
+
+
+Processing QuestionsController#index (for 127.0.0.1 at 2008-12-15 18:54:59) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--43c4e273ea9185710399a1fc6454d8bf0a0e7ec6
+  Parameters: {"action"=>"index", "controller"=>"questions"}
+  [4;36;1mQuestion Load (0.000000)[0m   [0;1mSQLite3::SQLException: no such table: questions: SELECT * FROM "questions" [0m
+
+
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such table: questions: SELECT * FROM "questions"     ):
+    /Library/Ruby/Gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/abstract_adapter.rb:147:in `log'
+    /Library/Ruby/Gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/sqlite_adapter.rb:132:in `execute'
+    /Library/Ruby/Gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/sqlite_adapter.rb:360:in `catch_schema_changes'
+    /Library/Ruby/Gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/sqlite_adapter.rb:132:in `execute'
+    /Library/Ruby/Gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/sqlite_adapter.rb:263:in `select'
+    /Library/Ruby/Gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/abstract/database_statements.rb:7:in `select_all_without_query_cache'
+    /Library/Ruby/Gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/abstract/query_cache.rb:59:in `select_all'
+    /Library/Ruby/Gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/abstract/query_cache.rb:80:in `cache_sql'
+    /Library/Ruby/Gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/abstract/query_cache.rb:59:in `select_all'
+    /Library/Ruby/Gems/1.8/gems/activerecord-2.1.0/lib/active_record/base.rb:582:in `find_by_sql'
+    /Library/Ruby/Gems/1.8/gems/activerecord-2.1.0/lib/active_record/base.rb:1341:in `find_every'
+    /Library/Ruby/Gems/1.8/gems/activerecord-2.1.0/lib/active_record/base.rb:536:in `find'
+    /app/controllers/questions_controller.rb:5:in `index'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:1162:in `send'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:1162:in `perform_action_without_filters'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/filters.rb:580:in `call_filters'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/filters.rb:573:in `perform_action_without_benchmark'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/rescue.rb:201:in `perform_action_without_caching'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/caching/sql_cache.rb:13:in `perform_action'
+    /Library/Ruby/Gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/abstract/query_cache.rb:33:in `cache'
+    /Library/Ruby/Gems/1.8/gems/activerecord-2.1.0/lib/active_record/query_cache.rb:8:in `cache'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/caching/sql_cache.rb:12:in `perform_action'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:529:in `send'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:529:in `process_without_filters'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/filters.rb:569:in `process_without_session_management_support'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/session_management.rb:130:in `process'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:389:in `process'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:149:in `handle_request'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:107:in `dispatch'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:104:in `synchronize'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:104:in `dispatch'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:120:in `dispatch_cgi'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:35:in `dispatch'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/bin/../lib/mongrel/rails.rb:76:in `process'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/bin/../lib/mongrel/rails.rb:74:in `synchronize'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/bin/../lib/mongrel/rails.rb:74:in `process'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:159:in `process_client'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:158:in `each'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:158:in `process_client'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:285:in `run'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:285:in `initialize'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:285:in `new'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:285:in `run'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:268:in `initialize'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:268:in `new'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:268:in `run'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel/configurator.rb:282:in `run'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel/configurator.rb:281:in `each'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel/configurator.rb:281:in `run'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/bin/mongrel_rails:128:in `run'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel/command.rb:212:in `run'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/bin/mongrel_rails:281
+    /Library/Ruby/Gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:502:in `load'
+    /Library/Ruby/Gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:502:in `load'
+    /Library/Ruby/Gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:354:in `new_constants_in'
+    /Library/Ruby/Gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:502:in `load'
+    /Library/Ruby/Gems/1.8/gems/rails-2.1.0/lib/commands/servers/mongrel.rb:64
+    /Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `require'
+    /Library/Ruby/Gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:509:in `require'
+    /Library/Ruby/Gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:354:in `new_constants_in'
+    /Library/Ruby/Gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:509:in `require'
+    /Library/Ruby/Gems/1.8/gems/rails-2.1.0/lib/commands/server.rb:39
+    /Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `require'
+    script/server:3
+
+Rendering /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/templates/rescues/layout.erb (internal_server_error)
+^C** INT signal received.
+Exiting
+[objo-laptop-2 | rails ] $ 
+[objo-laptop-2 | rails ] $ s rake o od  db:migreat   ate
+(in /Users/objo/git/joemetric/rails)
+== 20081215235350 CreateQuestions: migrating ==================================
+-- create_table(:questions)
+rake aborted!
+undefined method `amount' for #<ActiveRecord::ConnectionAdapters::TableDefinition:0x23a4808>
+
+(See full trace by running task with --trace)
+[objo-laptop-2 | rails ] $ ll nd  nb  ob  o db
+total 8
+-rw-r--r--  1 objo  staff  3072 Dec 15 18:55 development.sqlite3
+drwxr-xr-x  3 objo  staff   102 Dec 15 18:53 migrate
+[objo-laptop-2 | rails ] $ rm n db= = /development.sqlite3 
+[objo-laptop-2 | rails ] $ rm db/development.sqlite3 ll db[Krake db:migrate[1Pscript/server rake db:migrate
+(in /Users/objo/git/joemetric/rails)
+== 20081215235350 CreateQuestions: migrating ==================================
+-- create_table(:questions)
+   -> 0.0025s
+== 20081215235350 CreateQuestions: migrated (0.0026s) =========================
+
+[objo-laptop-2 | rails ] $ rake db:migratem db/development.sqlite3 ll db[Krm db/development.sqlite3 ll db[Krake db:migrate[1Pscript/server generate [2Pserver 
+=> Booting Mongrel (use 'script/server webrick' to force WEBrick)
+=> Rails 2.1.0 application starting on http://0.0.0.0:3000
+=> Call with -d to detach
+=> Ctrl-C to shutdown server
+** Starting Mongrel listening at 0.0.0.0:3000
+** Starting Rails with development environment...
+** Rails loaded.
+** Loading any Rails specific GemPlugins
+** Signals ready.  TERM => stop.  USR2 => restart.  INT => stop (no restart).
+** Rails signals registered.  HUP => reload (without restart).  It might not work well.
+** Mongrel 1.1.4 available at 0.0.0.0:3000
+** Use CTRL-C to stop.
+
+
+Processing QuestionsController#index (for 127.0.0.1 at 2008-12-15 18:59:40) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--43c4e273ea9185710399a1fc6454d8bf0a0e7ec6
+  Parameters: {"action"=>"index", "controller"=>"questions"}
+  [4;36;1mQuestion Load (0.000393)[0m   [0;1mSELECT * FROM "questions" [0m
+Rendering template within layouts/questions
+Rendering questions/index
+Completed in 0.02141 (46 reqs/sec) | Rendering: 0.01595 (74%) | DB: 0.00039 (1%) | 200 OK [http://localhost/questions]
+
+
+Processing QuestionsController#new (for 127.0.0.1 at 2008-12-15 18:59:42) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--43c4e273ea9185710399a1fc6454d8bf0a0e7ec6
+  Parameters: {"action"=>"new", "controller"=>"questions"}
+Rendering template within layouts/questions
+Rendering questions/new
+
+
+ActionView::TemplateError (undefined method `float' for #<Question:0x22b1d38>) on line #12 of questions/new.html.erb:
+9:   </p>
+10:   <p>
+11:     <%= f.label :float %><br />
+12:     <%= f.text_field :float %>
+13:   </p>
+14:   <p>
+15:     <%= f.submit "Create" %>
+
+    /Library/Ruby/Gems/1.8/gems/activerecord-2.1.0/lib/active_record/attribute_methods.rb:256:in `method_missing'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_view/helpers/form_helper.rb:624:in `send'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_view/helpers/form_helper.rb:624:in `value_before_type_cast'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_view/helpers/form_helper.rb:612:in `value_before_type_cast'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_view/helpers/form_helper.rb:535:in `to_input_field_tag'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_view/helpers/form_helper.rb:358:in `text_field'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_view/helpers/form_helper.rb:709:in `send'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_view/helpers/form_helper.rb:709:in `text_field'
+    app/views/questions/new.html.erb:12:in `_run_erb_47app47views47questions47new46html46erb'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_view/helpers/form_helper.rb:317:in `fields_for'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_view/helpers/form_helper.rb:253:in `form_for'
+    app/views/questions/new.html.erb:3:in `_run_erb_47app47views47questions47new46html46erb'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_view/base.rb:338:in `send'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_view/base.rb:338:in `execute'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_view/template_handlers/compilable.rb:29:in `send'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_view/template_handlers/compilable.rb:29:in `render'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_view/template.rb:35:in `render'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_view/template.rb:22:in `render_template'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_view/base.rb:245:in `render_file'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:1108:in `render_for_file'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:865:in `render_with_no_layout'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:880:in `render_with_no_layout'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/layout.rb:251:in `render_without_benchmark'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/benchmarking.rb:51:in `render'
+    /Library/Ruby/Gems/1.8/gems/activesupport-2.1.0/lib/active_support/core_ext/benchmark.rb:8:in `realtime'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/benchmarking.rb:51:in `render'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/mime_responds.rb:131:in `send'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/mime_responds.rb:131:in `custom'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/mime_responds.rb:160:in `call'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/mime_responds.rb:160:in `respond'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/mime_responds.rb:154:in `each'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/mime_responds.rb:154:in `respond'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/mime_responds.rb:107:in `respond_to'
+    app/controllers/questions_controller.rb:29:in `new'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:1162:in `send'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:1162:in `perform_action_without_filters'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/filters.rb:580:in `call_filters'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/filters.rb:573:in `perform_action_without_benchmark'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/rescue.rb:201:in `perform_action_without_caching'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/caching/sql_cache.rb:13:in `perform_action'
+    /Library/Ruby/Gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/abstract/query_cache.rb:33:in `cache'
+    /Library/Ruby/Gems/1.8/gems/activerecord-2.1.0/lib/active_record/query_cache.rb:8:in `cache'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/caching/sql_cache.rb:12:in `perform_action'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:529:in `send'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:529:in `process_without_filters'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/filters.rb:569:in `process_without_session_management_support'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/session_management.rb:130:in `process'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:389:in `process'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:149:in `handle_request'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:107:in `dispatch'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:104:in `synchronize'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:104:in `dispatch'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:120:in `dispatch_cgi'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:35:in `dispatch'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel/rails.rb:76:in `process'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel/rails.rb:74:in `synchronize'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel/rails.rb:74:in `process'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:159:in `process_client'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:158:in `each'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:158:in `process_client'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:285:in `run'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:285:in `initialize'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:285:in `new'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:285:in `run'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:268:in `initialize'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:268:in `new'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:268:in `run'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel/configurator.rb:282:in `run'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel/configurator.rb:281:in `each'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel/configurator.rb:281:in `run'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/bin/mongrel_rails:128:in `run'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel/command.rb:212:in `run'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/bin/mongrel_rails:281
+    /Library/Ruby/Gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:502:in `load'
+    /Library/Ruby/Gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:502:in `load'
+    /Library/Ruby/Gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:354:in `new_constants_in'
+    /Library/Ruby/Gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:502:in `load'
+    /Library/Ruby/Gems/1.8/gems/rails-2.1.0/lib/commands/servers/mongrel.rb:64
+    /Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `require'
+    /Library/Ruby/Gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:509:in `require'
+    /Library/Ruby/Gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:354:in `new_constants_in'
+    /Library/Ruby/Gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:509:in `require'
+    /Library/Ruby/Gems/1.8/gems/rails-2.1.0/lib/commands/server.rb:39
+    /Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `require'
+    script/server:3
+
+Rendering /Library/Ruby/Gems/1.8/gems/actionpack-2.1.0/lib/action_controller/templates/rescues/layout.erb (internal_server_error)
+^C** INT signal received.
+Exiting
+[objo-laptop-2 | rails ] $ 
+[objo-laptop-2 | rails ] $ 
+[objo-laptop-2 | rails ] $ 
+[objo-laptop-2 | rails ] $ mait  te t.  .
+[objo-laptop-2 | rails ] $ mate .script/server rake db:migrate[1Pscript/server 
+=> Booting Mongrel (use 'script/server webrick' to force WEBrick)
+=> Rails 2.1.0 application starting on http://0.0.0.0:3000
+=> Call with -d to detach
+=> Ctrl-C to shutdown server
+** Starting Mongrel listening at 0.0.0.0:3000
+** Starting Rails with development environment...
+** Rails loaded.
+** Loading any Rails specific GemPlugins
+** Signals ready.  TERM => stop.  USR2 => restart.  INT => stop (no restart).
+** Rails signals registered.  HUP => reload (without restart).  It might not work well.
+** Mongrel 1.1.4 available at 0.0.0.0:3000
+** Use CTRL-C to stop.
+
+
+Processing QuestionsController#new (for 127.0.0.1 at 2008-12-15 19:03:16) [GET]
+  Session ID: BAh7ByIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7ADoMY3NyZl9pZCIlZDgyMjBjYzgxZjA4NDI1NmZj
+NTBlNDMzMjNlNmZiZGM=--bd948886d738b085f6c8a11d9bf823af368dc753
+  Parameters: {"action"=>"new", "controller"=>"questions"}
+Rendering template within layouts/questions
+Rendering questions/new
+Completed in 0.01032 (96 reqs/sec) | Rendering: 0.00448 (43%) | DB: 0.00000 (0%) | 200 OK [http://localhost/questions/new]
+
+
+Processing QuestionsController#create (for 127.0.0.1 at 2008-12-15 19:03:33) [POST]
+  Session ID: BAh7ByIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7ADoMY3NyZl9pZCIlZDgyMjBjYzgxZjA4NDI1NmZj
+NTBlNDMzMjNlNmZiZGM=--bd948886d738b085f6c8a11d9bf823af368dc753
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"f386ccc052294f509ac998a67c26c623c0fcc782", "action"=>"create", "question"=>{"text"=>"What color are you wearing?", "amount"=>"2.00"}, "controller"=>"questions"}
+  [4;36;1mQuestion Create (0.000431)[0m   [0;1mINSERT INTO "questions" ("updated_at", "text", "amount", "created_at") VALUES('2008-12-16 00:03:33', 'What color are you wearing?', 2.0, '2008-12-16 00:03:33')[0m
+Redirected to http://localhost:3000/questions/1
+Completed in 0.01063 (94 reqs/sec) | DB: 0.00043 (4%) | 302 Found [http://localhost/questions]
+
+
+Processing QuestionsController#show (for 127.0.0.1 at 2008-12-15 19:03:33) [GET]
+  Session ID: BAh7ByIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsGOgtub3RpY2UiJ1F1ZXN0aW9uIHdhcyBzdWNjZXNzZnVsbHkgY3Jl
+YXRlZC4GOgpAdXNlZHsGOwZGOgxjc3JmX2lkIiVkODIyMGNjODFmMDg0MjU2
+ZmM1MGU0MzMyM2U2ZmJkYw==--be0cb25805d730158709c5a5405d132f0fd4df19
+  Parameters: {"action"=>"show", "id"=>"1", "controller"=>"questions"}
+  [4;35;1mQuestion Load (0.000225)[0m   [0mSELECT * FROM "questions" WHERE ("questions"."id" = 1) [0m
+Rendering template within layouts/questions
+Rendering questions/show
+Completed in 0.00820 (121 reqs/sec) | Rendering: 0.00227 (27%) | DB: 0.00023 (2%) | 200 OK [http://localhost/questions/1]
+
+
+Processing QuestionsController#index (for 127.0.0.1 at 2008-12-15 19:03:37) [GET]
+  Session ID: BAh7ByIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsGOgtub3RpY2UiJ1F1ZXN0aW9uIHdhcyBzdWNjZXNzZnVsbHkgY3Jl
+YXRlZC4GOgpAdXNlZHsGOwZUOgxjc3JmX2lkIiVkODIyMGNjODFmMDg0MjU2
+ZmM1MGU0MzMyM2U2ZmJkYw==--40143f1831f1250fee1a4e61aea5d0ff2f9ea828
+  Parameters: {"action"=>"index", "controller"=>"questions"}
+  [4;36;1mQuestion Load (0.000458)[0m   [0;1mSELECT * FROM "questions" [0m
+Rendering template within layouts/questions
+Rendering questions/index
+Completed in 0.00896 (111 reqs/sec) | Rendering: 0.00361 (40%) | DB: 0.00046 (5%) | 200 OK [http://localhost/questions]
+
+
+Processing QuestionsController#new (for 127.0.0.1 at 2008-12-15 19:03:38) [GET]
+  Session ID: BAh7ByIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7ADoMY3NyZl9pZCIlZDgyMjBjYzgxZjA4NDI1NmZj
+NTBlNDMzMjNlNmZiZGM=--bd948886d738b085f6c8a11d9bf823af368dc753
+  Parameters: {"action"=>"new", "controller"=>"questions"}
+Rendering template within layouts/questions
+Rendering questions/new
+Completed in 0.00853 (117 reqs/sec) | Rendering: 0.00254 (29%) | DB: 0.00000 (0%) | 200 OK [http://localhost/questions/new]
+
+
+Processing QuestionsController#create (for 127.0.0.1 at 2008-12-15 19:03:59) [POST]
+  Session ID: BAh7ByIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7ADoMY3NyZl9pZCIlZDgyMjBjYzgxZjA4NDI1NmZj
+NTBlNDMzMjNlNmZiZGM=--bd948886d738b085f6c8a11d9bf823af368dc753
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"f386ccc052294f509ac998a67c26c623c0fcc782", "action"=>"create", "question"=>{"text"=>"What is your favorite song?", "amount"=>"10.00"}, "controller"=>"questions"}
+  [4;35;1mQuestion Create (0.000356)[0m   [0mINSERT INTO "questions" ("updated_at", "text", "amount", "created_at") VALUES('2008-12-16 00:03:59', 'What is your favorite song?', 10.0, '2008-12-16 00:03:59')[0m
+Redirected to http://localhost:3000/questions/2
+Completed in 0.07836 (12 reqs/sec) | DB: 0.00036 (0%) | 302 Found [http://localhost/questions]
+
+
+Processing QuestionsController#show (for 127.0.0.1 at 2008-12-15 19:03:59) [GET]
+  Session ID: BAh7ByIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsGOgtub3RpY2UiJ1F1ZXN0aW9uIHdhcyBzdWNjZXNzZnVsbHkgY3Jl
+YXRlZC4GOgpAdXNlZHsGOwZGOgxjc3JmX2lkIiVkODIyMGNjODFmMDg0MjU2
+ZmM1MGU0MzMyM2U2ZmJkYw==--be0cb25805d730158709c5a5405d132f0fd4df19
+  Parameters: {"action"=>"show", "id"=>"2", "controller"=>"questions"}
+  [4;36;1mQuestion Load (0.000230)[0m   [0;1mSELECT * FROM "questions" WHERE ("questions"."id" = 2) [0m
+Rendering template within layouts/questions
+Rendering questions/show
+Completed in 0.00765 (130 reqs/sec) | Rendering: 0.00153 (20%) | DB: 0.00023 (3%) | 200 OK [http://localhost/questions/2]
+
+
+Processing QuestionsController#index (for 127.0.0.1 at 2008-12-15 19:04:25) [GET]
+  Session ID: BAh7ByIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsGOgtub3RpY2UiJ1F1ZXN0aW9uIHdhcyBzdWNjZXNzZnVsbHkgY3Jl
+YXRlZC4GOgpAdXNlZHsGOwZUOgxjc3JmX2lkIiVkODIyMGNjODFmMDg0MjU2
+ZmM1MGU0MzMyM2U2ZmJkYw==--40143f1831f1250fee1a4e61aea5d0ff2f9ea828
+  Parameters: {"action"=>"index", "controller"=>"questions"}
+  [4;35;1mQuestion Load (0.000484)[0m   [0mSELECT * FROM "questions" [0m
+Rendering template within layouts/questions
+Rendering questions/index
+Completed in 0.00757 (132 reqs/sec) | Rendering: 0.00258 (34%) | DB: 0.00048 (6%) | 200 OK [http://localhost/questions]
+
+
+Processing QuestionsController#index (for 127.0.0.1 at 2008-12-15 19:04:33) [GET]
+  Session ID: BAh7ByIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7ADoMY3NyZl9pZCIlZDgyMjBjYzgxZjA4NDI1NmZj
+NTBlNDMzMjNlNmZiZGM=--bd948886d738b085f6c8a11d9bf823af368dc753
+  Parameters: {"format"=>"xml", "action"=>"index", "controller"=>"questions"}
+  [4;36;1mQuestion Load (0.000536)[0m   [0;1mSELECT * FROM "questions" [0m
+Completed in 0.08782 (11 reqs/sec) | Rendering: 0.08214 (93%) | DB: 0.00054 (0%) | 200 OK [http://localhost/questions.xml]
+
+
+Processing QuestionsController#index (for 127.0.0.1 at 2008-12-15 19:05:00) [GET]
+  Session ID: BAh7ByIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7ADoMY3NyZl9pZCIlZDgyMjBjYzgxZjA4NDI1NmZj
+NTBlNDMzMjNlNmZiZGM=--bd948886d738b085f6c8a11d9bf823af368dc753
+  Parameters: {"format"=>"xml", "action"=>"index", "controller"=>"questions"}
+  [4;35;1mQuestion Load (0.000537)[0m   [0mSELECT * FROM "questions" [0m
+Completed in 0.02111 (47 reqs/sec) | Rendering: 0.00361 (17%) | DB: 0.00054 (2%) | 200 OK [http://localhost/questions.xml]
+^C** INT signal received.
+Exiting
+[objo-laptop-2 | rails ] $ 
+[objo-laptop-2 | rails ] $ 
+[objo-laptop-2 | rails ] $ 
+[objo-laptop-2 | rails ] $ 
+[objo-laptop-2 | rails ] $ 
+[objo-laptop-2 | rails ] $ 
+[objo-laptop-2 | rails ] $ git statuss 
+# On branch master
+# Changed but not updated:
+#   (use "git add/rm <file>..." to update what will be committed)
+#
+#	[32mdeleted:    rails/DELETEME[m
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	[36mrails/.gitignore[m
+#	[36mrails/README[m
+#	[36mrails/Rakefile[m
+#	[36mrails/app/[m
+#	[36mrails/config/[m
+#	[36mrails/db/[m
+#	[36mrails/doc/[m
+#	[36mrails/generate[m
+#	[36mrails/public/[m
+#	[36mrails/script/[m
+#	[36mrails/test/[m
+no changes added to commit (use "git add" and/or "git commit -a")
+[objo-laptop-2 | rails ] $ git add rail            cd ..
+[objo-laptop-2 | joemetric ] $ git status
+# On branch master
+# Changed but not updated:
+#   (use "git add/rm <file>..." to update what will be committed)
+#
+#	[32mdeleted:    rails/DELETEME[m
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	[36mrails/.gitignore[m
+#	[36mrails/README[m
+#	[36mrails/Rakefile[m
+#	[36mrails/app/[m
+#	[36mrails/config/[m
+#	[36mrails/db/[m
+#	[36mrails/doc/[m
+#	[36mrails/generate[m
+#	[36mrails/public/[m
+#	[36mrails/script/[m
+#	[36mrails/test/[m
+no changes added to commit (use "git add" and/or "git commit -a")
+[objo-laptop-2 | joemetric ] $ git add ro ails/
+[objo-laptop-2 | joemetric ] $ git status
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#	[33mnew file:   rails/.gitignore[m
+#	[33mnew file:   rails/README[m
+#	[33mnew file:   rails/Rakefile[m
+#	[33mnew file:   rails/app/controllers/application.rb[m
+#	[33mnew file:   rails/app/controllers/questions_controller.rb[m
+#	[33mnew file:   rails/app/helpers/application_helper.rb[m
+#	[33mnew file:   rails/app/helpers/questions_helper.rb[m
+#	[33mnew file:   rails/app/models/question.rb[m
+#	[33mnew file:   rails/app/views/layouts/questions.html.erb[m
+#	[33mnew file:   rails/app/views/questions/edit.html.erb[m
+#	[33mnew file:   rails/app/views/questions/index.html.erb[m
+#	[33mnew file:   rails/app/views/questions/new.html.erb[m
+#	[33mnew file:   rails/app/views/questions/show.html.erb[m
+#	[33mnew file:   rails/config/boot.rb[m
+#	[33mnew file:   rails/config/environment.rb[m
+#	[33mnew file:   rails/config/environments/development.rb[m
+#	[33mnew file:   rails/config/environments/production.rb[m
+#	[33mnew file:   rails/config/environments/test.rb[m
+#	[33mnew file:   rails/config/initializers/inflections.rb[m
+#	[33mnew file:   rails/config/initializers/mime_types.rb[m
+#	[33mnew file:   rails/config/initializers/new_rails_defaults.rb[m
+#	[33mnew file:   rails/config/routes.rb[m
+#	[33mnew file:   rails/db/migrate/20081215235350_create_questions.rb[m
+#	[33mnew file:   rails/db/schema.rb[m
+#	[33mnew file:   rails/doc/README_FOR_APP[m
+#	[33mnew file:   rails/generate[m
+#	[33mnew file:   rails/public/404.html[m
+#	[33mnew file:   rails/public/422.html[m
+#	[33mnew file:   rails/public/500.html[m
+#	[33mnew file:   rails/public/dispatch.cgi[m
+#	[33mnew file:   rails/public/dispatch.fcgi[m
+#	[33mnew file:   rails/public/dispatch.rb[m
+#	[33mnew file:   rails/public/favicon.ico[m
+#	[33mnew file:   rails/public/images/rails.png[m
+#	[33mnew file:   rails/public/index.html[m
+#	[33mnew file:   rails/public/javascripts/application.js[m
+#	[33mnew file:   rails/public/javascripts/controls.js[m
+#	[33mnew file:   rails/public/javascripts/dragdrop.js[m
+#	[33mnew file:   rails/public/javascripts/effects.js[m
+#	[33mnew file:   rails/public/javascripts/prototype.js[m
+#	[33mnew file:   rails/public/robots.txt[m
+#	[33mnew file:   rails/public/stylesheets/scaffold.css[m
+#	[33mnew file:   rails/script/about[m
+#	[33mnew file:   rails/script/console[m
+#	[33mnew file:   rails/script/dbconsole[m
+#	[33mnew file:   rails/script/destroy[m
+#	[33mnew file:   rails/script/generate[m
+#	[33mnew file:   rails/script/performance/benchmarker[m
+#	[33mnew file:   rails/script/performance/profiler[m
+#	[33mnew file:   rails/script/performance/request[m
+#	[33mnew file:   rails/script/plugin[m
+#	[33mnew file:   rails/script/process/inspector[m
+#	[33mnew file:   rails/script/process/reaper[m
+#	[33mnew file:   rails/script/process/spawner[m
+#	[33mnew file:   rails/script/runner[m
+#	[33mnew file:   rails/script/server[m
+#	[33mnew file:   rails/test/fixtures/questions.yml[m
+#	[33mnew file:   rails/test/functional/questions_controller_test.rb[m
+#	[33mnew file:   rails/test/test_helper.rb[m
+#	[33mnew file:   rails/test/unit/question_test.rb[m
+#
+# Changed but not updated:
+#   (use "git add/rm <file>..." to update what will be committed)
+#
+#	[32mdeleted:    rails/DELETEME[m
+#
+[objo-laptop-2 | joemetric ] $ git commit -a -m 'Addnig     ch  ic ng bals  sic ral il
