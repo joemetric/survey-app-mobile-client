@@ -52,6 +52,5 @@ a img, input[type="image"] { border: none; }
 * html .clearfix {
   height: 1%;
 }
-.clear {
-  clear: both;
-}
+.clear { clear: both; }
+strong { font-weight: bold; }

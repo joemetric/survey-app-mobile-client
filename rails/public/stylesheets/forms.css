@@ -1,0 +1,60 @@
+div.field {
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+div.field label {
+  float: left;
+  display: block;
+  width: 140px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+div.field label a {
+  display: block;
+  margin-top: 5px;
+  font-weight: normal;
+  text-decoration: none;
+}
+
+div.field label a.add {
+  margin-left: -22px;
+  padding: 2px 0 2px 22px;
+  color: #227e1c;
+  background: url(/images/add.png) no-repeat;
+}
+
+div.field input {
+  float: left;
+  width: 298px;
+  border: 1px solid #aaa;
+  padding: 5px 0;
+  font-size: 14px;
+  background: #fff url(/images/textfield_background.gif) no-repeat;
+}
+
+div.field.checkbox,
+div.field.radio {
+  border: 0;
+  padding: 0;
+  background: none;
+}
+
+div.field textarea {
+  float: left;
+  width: 298px;
+  height: 7em;
+  border: 1px solid #aaa;
+  font-family: arial, sans-serif;
+  font-size: 12px;
+  background: #fff url(/images/textfield_background.gif) no-repeat;
+}
+
+div.field p.note {
+  float: left;
+  width: 300px;
+  padding-left: 20px;
+  font-size: 12px;
+  line-height: 21px;
+}

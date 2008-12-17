@@ -1,16 +1,18 @@
 @import "/stylesheets/reset.css";
+@import "/stylesheets/forms.css";
 
 
 /* @group Header
 ----------------------------------- */
 
 div#header {
+  margin-bottom: 80px;
   background: #191919;
 }
 
 div#header ul {
-  overflow: hidden;
   list-style-type: none;
+  position: relative;
   width: 940px;
   height: 43px;
   margin: 0 auto;
@@ -29,12 +31,12 @@ div#header ul li a {
   height: 43px;
   margin-left: 25px;
   color: #71df6a;
-  font-size: 1.4em;
+  font-size: 14px;
   font-weight: bold;
   line-height: 43px;
   text-decoration: none;
   text-shadow: 1px 1px 1px #000;
-  opacity: 0.999;
+  opacity: 0.999
 }
 
 div#header ul li a#global_navigation_account {
@@ -44,6 +46,36 @@ div#header ul li a#global_navigation_account {
 div#header ul li a:hover,
 div#header ul li a#global_navigation_account:hover {
   color: #fff;
+}
+
+div#header ul li ul {
+  display: none;
+  position: absolute;
+  top: 60px;
+  right: 0;
+  background: none;
+}
+
+div#header ul li.active ul {
+  display: block;
+}
+
+div#header ul li ul li a {
+  height: auto;
+  border-bottom: 1px solid #9bed96;
+  padding-bottom: 3px;
+  color: #34942e;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: inherit;
+  letter-spacing: -0.025em;
+  text-shadow: none;
+  opacity: 1;
+}
+
+div#header ul li ul li a:hover {
+  color: #34942e;
+  border-bottom: 1px solid #34942e;
 }
 
 /* @end Header */
@@ -60,3 +92,101 @@ div#container {
 }
 
 /* @end Container */
+
+
+h1 {
+  position: relative;
+  margin-bottom: 30px;
+  color: #34942e;
+  font-family: "Helvetica Neue", helvetica, arial, sans-serif;
+  font-size: 42px;
+  letter-spacing: -0.03em;
+}
+
+h2 {
+  position: relative;
+  margin-bottom: 35px;
+  color: #222;
+  font-family: "Helvetica Neue", helvetica, arial, sans-serif;
+  font-size: 21px;
+}
+
+h2 span.large_bullet {
+  position: absolute;
+  top: -5px;
+  left: -52px;
+  display: block;
+  width: 32px;
+  height: 32px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 32px;
+  text-align: center;
+  background: url(/images/large_bullet_green.png);
+}
+
+
+div.grey_box {
+  margin-bottom: 21px;
+  background: #f3f3f3;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+
+
+/* @group Create Question
+----------------------------------- */
+
+div.grey_box.create_question { 
+  padding: 30px 30px 30px 80px;
+}
+
+div.grey_box.create_question div.field {
+  margin-left: -22px;
+  padding-left: 22px;
+}
+
+div#create_question_answers {
+  float: left;
+  width: 300px;
+}
+
+div#create_question_answers div.answer {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+div#create_question_answers div.answer input {
+  float: none;
+  width: 268px;
+  height: 25px;
+  padding: 5px 0 0 0;
+}
+
+div#create_question_answers div.answer a.remove {
+  position: absolute;
+  top: 8px;
+  right: -35px;
+  display: block;
+  width: 16px;
+  height: 16px;
+  text-indent: -999em;
+  background: url(/images/delete.png);
+}
+
+div#create_question_answers div.answer a.reorder_answer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 31px;
+  height: 32px;
+  text-indent: -999em;
+  background: url(/images/reorder_field.png);
+}
+
+div#create_question_answers div.answer a.reorder_answer:hover {
+  cursor: move;
+}
+
+/* @end Create Question */
