@@ -8,7 +8,6 @@ $(document).ready(function() {
     }
 
     checkAnswerCount();
-
     return false;
   });
 
@@ -18,8 +17,11 @@ $(document).ready(function() {
     $('#create_question_answers').append(new_answer);
 
     checkAnswerCount();
-
     return false;
+  });
+
+  $('.calendar_link').click(function() {
+    $(this).siblings('input[type=text]').focus();
   });
 });
 

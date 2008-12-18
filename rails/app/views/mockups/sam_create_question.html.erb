@@ -3,11 +3,36 @@
 <h1>Create Question</h1>
 
 <form>
+  <div id="question_type_section" class="grey_box create_question">
+    <h2>
+      <span class="large_bullet">1</span>
+      Question Type
+    </h2>
+
+    <div class="question_category">
+      <h3><strong>Standard</strong> &ndash; $0.10 / question</h3>
+      <div class="field radio">
+        <label><input type="radio" name="question_name" checked="checked" /> Multiple Choice</label>
+      </div>
+      <div class="field radio">
+        <label><input type="radio" name="question_name" /> Essay</label>
+      </div>
+    </div>
+    <div class="question_category">
+      <h3><strong>Premium</strong> &ndash; $1.00 / question</h3>
+      <div class="field radio">
+        <label><input type="radio" name="question_name" /> Photo</label>
+      </div>
+    </div>
+    <br class="clear" />
+  </div> <!-- /div.grey_box.create_question (step 1) -->
+
   <div class="grey_box create_question">
     <h2>
       <span class="large_bullet">2</span>
       The Question!
     </h2>
+
     <div class="field">
       <label>Title</label>
       <input type="text" />
@@ -27,18 +52,74 @@
       </label>
 
       <div id="create_question_answers">
-      <div class="answer">
-        <input type="text">
-        <a href="#" class="reorder_answer">re-order</a>
-        <a href="#" class="remove">remove answer</a>
-      </div>
-      <div class="answer">
-        <input type="text">
-        <a href="#" class="reorder_answer">re-order</a>
-        <a href="#" class="remove">remove answer</a>
+        <div class="answer">
+          <input type="text">
+          <a href="#" class="reorder_answer">re-order</a>
+          <a href="#" class="remove">remove answer</a>
+        </div>
+        <div class="answer">
+          <input type="text">
+          <a href="#" class="reorder_answer">re-order</a>
+          <a href="#" class="remove">remove answer</a>
+        </div>
       </div>
     </div>
-  </div> <!-- /div.grey_box.create_question (step 1) -->
+  </div> <!-- /div.grey_box.create_question (step 2) -->
+
+  <div class="grey_box create_question">
+    <h2>
+      <span class="large_bullet">3</span>
+      Expiration Date
+    </h2>
+
+    <div class="field date">
+      <label>Date</label>
+      <input type="text" value="<%= 7.days.from_now.to_s(:simple) %>" />
+      <img src="/images/calendar.png" alt="select date" class="calendar_link" />
+      <p class="note"><strong>Note:</strong> The default is 7 days after creation.</p>
+    </div>
+  </div> <!-- /div.grey_box.create_question (step 3) -->
+
+  <div id="budget_section" class="grey_box create_question">
+    <h2>
+      <span class="large_bullet">4</span>
+      Budget
+    </h2>
+    <div class="field">
+      <label>Answers</label>
+      <input type="text" />
+      <p>How many answers are you looking for?</p>
+    </div>
+    <div class="field">
+      <label>Value</label>
+      <span class="dollar_sign">$</span>
+      <input type="text" />
+      <p>How much would you like to pay for each answer?</p>
+    </div>
+    <div class="field">
+      <label>Fee</label>
+      <span class="dollar_sign">$</span>
+      <span class="fee">0.10</span> 
+      <p>JoeMetric service fee.</p>
+    </div>
+    <br class="clear" />
+
+    <div id="budget_calculations">
+      <div class="border">
+         <span>10000</span>
+         <img src="/images/multiply.png" alt="" />
+         <img src="/images/left_parentheses.png" alt="" />
+         <span>$ 0.50</span>
+         <img src="/images/plus.png" alt="" />
+         <span>$ 0.10</span>
+         <img src="/images/right_parentheses.png" alt="" />
+         <img src="/images/equal.png" alt="" />
+         <span>$ 6000</span>
+       </div>
+    </div>
+    <p class="note"><strong>Note:</strong> A question can be cancelled and pulled from the JoeMetric network at anytime.</p>
+    <br class="clear" />
+  </div>
 </form>
 
 </div> <!-- /div#container -->
