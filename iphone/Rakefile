@@ -1,6 +1,16 @@
 desc "Run unit tests"
 task :test do
-  sh 'xcodebuild -target "Unit Test" -configuration Debug -sdk iphonesimulator2.1'
+  output = `xcodebuild -target "Unit Test" -configuration Debug -sdk iphonesimulator2.1`
+  if output.grep(/^Executed \d+ tests, with (\d+) failures/).any? do |line|
+      line =~ /(\d+) failures/
+      $1.to_i > 0
+    end
+    exit_code = 1
+  else
+    exit_code = 0
+  end
+  puts output
+  exit exit_code
 end
 
 desc "Clean all targets"
