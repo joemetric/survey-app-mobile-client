@@ -14,10 +14,6 @@
 @synthesize text = _text;
 @synthesize amount = _amount;
 
-- (id)init {
-    return [super init];
-}
-
 - (id)initWithText:(NSString *)text amount:(NSDecimalNumber *)amount {
     [super init];
     self.text = text;
