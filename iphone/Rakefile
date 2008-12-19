@@ -3,4 +3,10 @@ task :test do
   sh 'xcodebuild -target "Unit Test" -configuration Debug -sdk iphonesimulator2.1'
 end
 
+desc "Clean all targets"
+task :clean do
+  sh 'xcodebuild -alltargets -configuration Release clean'
+  sh 'xcodebuild -alltargets -configuration Debug clean'
+end
+
 task :default => [:test]
