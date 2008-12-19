@@ -9,7 +9,7 @@ task :test do
   else
     exit_code = 0
   end
-  puts output
+  puts output.gsub(/^\s+setenv.*\n/, '')
   exit exit_code
 end
 
