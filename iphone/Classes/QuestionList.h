@@ -24,5 +24,6 @@
 -(Question *)questionAtIndex:(NSUInteger)index;
 -(NSUInteger)count;
 -(void)refreshQuestionList;
+-(void)getQuestionsFromWeb;
 
 @end
