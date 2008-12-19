@@ -12,7 +12,7 @@
 @implementation Question
 
 @synthesize text = _text;
-@synthesize amount = _amount;
+// Not synthesizing amount, instead we define a special setter and the getter below.
 
 - (id)init {
     return [super init];
@@ -26,9 +26,9 @@
 	[_amount release];
 	
 	if ([amount isKindOfClass:[NSString class]]) {
-		_amount = [NSDecimalNumber decimalNumberWithString:amount];
+		_amount = [[NSDecimalNumber decimalNumberWithString:amount] retain];
 	} else {
-		_amount = [amount copy];
+		_amount = [[amount copy] retain];
 	}
 }
 
