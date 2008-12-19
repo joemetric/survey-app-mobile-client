@@ -1,15 +1,14 @@
 //
-//  QuestionTest.h
+//  QuestionListTest.m
 //  JoeMetric
 //
 //  Created by Scott Barron on 12/19/08.
 //  Copyright 2008 __MyCompanyName__. All rights reserved.
 //
 
-#import "GTMSenTestCase.h"
-#import "Question.h"
+#import "QuestionListTest.h"
 
-@interface QuestionTest : GTMTestCase {
-}
+
+@implementation QuestionListTest
 
 @end
