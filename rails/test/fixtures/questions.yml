@@ -2,8 +2,8 @@
 
 one:
   text: MyString
-  float: 
+  amount: 1.0
 
 two:
   text: MyString
-  float: 
+  amount: 1.0
