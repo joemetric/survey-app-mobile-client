@@ -10,7 +10,7 @@
 #import "GTMSenTestCase.h"
 #import "Question.h"
 
-@interface QuestionTest : SenTestCase {
+@interface QuestionTest : GTMTestCase {
 }
 
 @end
