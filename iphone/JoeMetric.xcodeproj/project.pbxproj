@@ -32,6 +32,9 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
 		28AD73880D9D96C1002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD73870D9D96C1002E5188 /* MainWindow.xib */; };
+		D2F22B400EFBEA090047CBFA /* GTMIPhoneUnitTestDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F22B3C0EFBEA090047CBFA /* GTMIPhoneUnitTestDelegate.m */; };
+		D2F22B410EFBEA090047CBFA /* GTMIPhoneUnitTestMain.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F22B3D0EFBEA090047CBFA /* GTMIPhoneUnitTestMain.m */; };
+		D2F22B420EFBEA090047CBFA /* GTMSenTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F22B3F0EFBEA090047CBFA /* GTMSenTestCase.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +76,14 @@
 		28AD73870D9D96C1002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D2F22B330EFBE9F60047CBFA /* Unit Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "Unit Test.app"; path = "build/Debug-iphonesimulator/Unit Test.app"; sourceTree = "<group>"; };
+		D2F22B350EFBE9F60047CBFA /* Unit Test-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Unit Test-Info.plist"; sourceTree = "<group>"; };
+		D2F22B3A0EFBEA090047CBFA /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMDefines.h; path = GoogleToolkit/GTMDefines.h; sourceTree = "<group>"; };
+		D2F22B3B0EFBEA090047CBFA /* GTMIPhoneUnitTestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMIPhoneUnitTestDelegate.h; path = GoogleToolkit/GTMIPhoneUnitTestDelegate.h; sourceTree = "<group>"; };
+		D2F22B3C0EFBEA090047CBFA /* GTMIPhoneUnitTestDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTMIPhoneUnitTestDelegate.m; path = GoogleToolkit/GTMIPhoneUnitTestDelegate.m; sourceTree = "<group>"; };
+		D2F22B3D0EFBEA090047CBFA /* GTMIPhoneUnitTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTMIPhoneUnitTestMain.m; path = GoogleToolkit/GTMIPhoneUnitTestMain.m; sourceTree = "<group>"; };
+		D2F22B3E0EFBEA090047CBFA /* GTMSenTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMSenTestCase.h; path = GoogleToolkit/GTMSenTestCase.h; sourceTree = "<group>"; };
+		D2F22B3F0EFBEA090047CBFA /* GTMSenTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTMSenTestCase.m; path = GoogleToolkit/GTMSenTestCase.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +94,13 @@
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2F22B310EFBE9F60047CBFA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				1D6058910D05DD3D006BFB54 /* JoeMetric.app */,
+				D2F22B330EFBE9F60047CBFA /* Unit Test.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -164,11 +183,13 @@
 		29B97314FDCFA39411CA2CEA /* JoeMetric */ = {
 			isa = PBXGroup;
 			children = (
+				D2F22B490EFBEA0D0047CBFA /* Google Toolkit */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				D2F22B350EFBE9F60047CBFA /* Unit Test-Info.plist */,
 			);
 			name = JoeMetric;
 			sourceTree = "<group>";
@@ -207,6 +228,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D2F22B490EFBEA0D0047CBFA /* Google Toolkit */ = {
+			isa = PBXGroup;
+			children = (
+				D2F22B3A0EFBEA090047CBFA /* GTMDefines.h */,
+				D2F22B3B0EFBEA090047CBFA /* GTMIPhoneUnitTestDelegate.h */,
+				D2F22B3C0EFBEA090047CBFA /* GTMIPhoneUnitTestDelegate.m */,
+				D2F22B3D0EFBEA090047CBFA /* GTMIPhoneUnitTestMain.m */,
+				D2F22B3E0EFBEA090047CBFA /* GTMSenTestCase.h */,
+				D2F22B3F0EFBEA090047CBFA /* GTMSenTestCase.m */,
+			);
+			name = "Google Toolkit";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -227,6 +261,24 @@
 			productReference = 1D6058910D05DD3D006BFB54 /* JoeMetric.app */;
 			productType = "com.apple.product-type.application";
 		};
+		D2F22B320EFBE9F60047CBFA /* Unit Test */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D2F22B380EFBE9F70047CBFA /* Build configuration list for PBXNativeTarget "Unit Test" */;
+			buildPhases = (
+				D2F22B2F0EFBE9F60047CBFA /* Resources */,
+				D2F22B300EFBE9F60047CBFA /* Sources */,
+				D2F22B310EFBE9F60047CBFA /* Frameworks */,
+				D2F22B570EFBEA270047CBFA /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Unit Test";
+			productName = "Unit Test";
+			productReference = D2F22B330EFBE9F60047CBFA /* Unit Test.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -240,6 +292,7 @@
 			projectRoot = "";
 			targets = (
 				1D6058900D05DD3D006BFB54 /* JoeMetric */,
+				D2F22B320EFBE9F60047CBFA /* Unit Test */,
 			);
 		};
 /* End PBXProject section */
@@ -263,7 +316,30 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D2F22B2F0EFBE9F60047CBFA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D2F22B570EFBEA270047CBFA /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = ./GoogleToolkit/RunIPhoneUnitTest.sh;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1D60588E0D05DD3D006BFB54 /* Sources */ = {
@@ -281,6 +357,16 @@
 				0DD8C9620EF4884D00A20937 /* SurveyQuestionViewController.m in Sources */,
 				0DD8CA560EF4D43300A20937 /* QuestionViewController.m in Sources */,
 				0D53AC070EF6B6F0000533C1 /* QuestionList.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2F22B300EFBE9F60047CBFA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2F22B400EFBEA090047CBFA /* GTMIPhoneUnitTestDelegate.m in Sources */,
+				D2F22B410EFBEA090047CBFA /* GTMIPhoneUnitTestMain.m in Sources */,
+				D2F22B420EFBEA090047CBFA /* GTMSenTestCase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +426,55 @@
 			};
 			name = Release;
 		};
+		D2F22B360EFBE9F70047CBFA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
+				INFOPLIST_FILE = "Unit Test-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "Unit Test";
+				SDKROOT = iphoneos2.1;
+			};
+			name = Debug;
+		};
+		D2F22B370EFBE9F70047CBFA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
+				INFOPLIST_FILE = "Unit Test-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "Unit Test";
+				SDKROOT = iphoneos2.1;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -357,6 +492,15 @@
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
 				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D2F22B380EFBE9F70047CBFA /* Build configuration list for PBXNativeTarget "Unit Test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2F22B360EFBE9F70047CBFA /* Debug */,
+				D2F22B370EFBE9F70047CBFA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
