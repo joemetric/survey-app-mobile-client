@@ -14,6 +14,24 @@
 @synthesize text = _text;
 @synthesize amount = _amount;
 
+- (id)init {
+    return [super init];
+}
+
+- (NSDecimalNumber *)amount {
+	return _amount;
+}
+
+- (void)setAmount:(id)amount {
+	[_amount release];
+	
+	if ([amount isKindOfClass:[NSString class]]) {
+		_amount = [NSDecimalNumber decimalNumberWithString:amount];
+	} else {
+		_amount = [amount copy];
+	}
+}
+
 - (id)initWithText:(NSString *)text amount:(NSDecimalNumber *)amount {
     [super init];
     self.text = text;

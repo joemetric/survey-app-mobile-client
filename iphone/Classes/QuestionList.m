@@ -128,7 +128,7 @@
     if ([elementName isEqualToString:@"text"]) {
         self.currentQuestionObject.text = self.contentOfCurrentQuestionProperty;
     } else if ([elementName isEqualToString:@"amount"]) {
-        self.currentQuestionObject.amount = [NSDecimalNumber decimalNumberWithString:self.contentOfCurrentQuestionProperty];
+        self.currentQuestionObject.amount = self.contentOfCurrentQuestionProperty;
     }
 }
 
