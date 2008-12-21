@@ -1,15 +1,21 @@
 desc "Run unit tests"
 task :test do
+  exit_code = 0
   output = `xcodebuild -target "Unit Test" -configuration Debug -sdk iphonesimulator2.1`
-  if output.grep(/^Executed \d+ tests, with (\d+) failures/).any? do |line|
-      line =~ /(\d+) failures/
-      $1.to_i > 0
+  output.each do |line| 
+    case 
+    when line =~ /passed/         : exit_code = pass(line)    
+    when line =~ /^\s+setenv.*\n/ : nil
+    when line =~ /(\d+) failures/
+      if $1.to_i > 0
+        exit_code = fail(line)
+      else
+        exit_code = pass(line)
+      end
+    else 
+      puts line
     end
-    exit_code = 1
-  else
-    exit_code = 0
   end
-  puts output.gsub(/^\s+setenv.*\n/, '')
   exit exit_code
 end
 
@@ -20,3 +26,29 @@ task :clean do
 end
 
 task :default => [:test]
+
+def pass(line)
+  color(line, :green)
+  return 0
+end
+
+def fail(line)
+  color(line, :red)
+  return 1
+end
+
+def color(output, color_type)
+  print "#{send(color_type.to_s)}#{output}#{reset}".chomp
+end
+
+def red
+  "\e[01;31m"
+end
+
+def green
+  "\e[01;32m"
+end
+
+def reset
+  "\e[00;m"
+end
