@@ -21,23 +21,30 @@ task :test do
   exit exit_code
 end
 
-desc "Clean all targets"
-task :clean do
-  sh 'xcodebuild -alltargets -configuration Release clean'
-  sh 'xcodebuild -alltargets -configuration Debug clean'
+task :clean_targets do
+  `xcodebuild -alltargets -configuration Release clean`
+  `xcodebuild -alltargets -configuration Debug clean`
+
+  FileList['./build/JoeMetric.build/Debug-iphonesimulator/Unit\ Test.build/Objects-normal/i386/*.o'].each do |file|
+    FileUtils.rm_f(file)
+  end
 end
 
-task :silent_test do
-  
+desc "Clean all targets"
+task :clean => [:clean_targets] do
+  puts "all targets cleaned"
 end
 
 desc "Run code coverage"
-task :cruise do
+task :cruise => [:clean_targets] do
   FileList['./build/JoeMetric.build/Debug-iphonesimulator/Unit\ Test.build/Objects-normal/i386/*.gcda'].each do |file|
+    FileUtils.rm_f(file)
   end
   
   FileList['./build/JoeMetric.build/Debug-iphonesimulator/Unit\ Test.build/Objects-normal/i386/*.gcno'].each do |file|
+    FileUtils.rm_f(file)
   end
+
 
   output = `xcodebuild -target "Unit Test" -configuration Debug -sdk iphonesimulator2.1`
   built = true
