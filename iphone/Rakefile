@@ -7,6 +7,7 @@ task :test do
   output.each do |line| 
     case 
     when line =~ /passed/         : exit_code = pass(line)
+    when line =~ /failed/         : exit_code = fail(line)
     when line =~ /^\s+setenv.*\n/ : nil
     when line =~ /(\d+) failures/
       if $1.to_i > 0
