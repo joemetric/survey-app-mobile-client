@@ -1,10 +1,12 @@
+$silent_test = false
+
 desc "Run unit tests"
 task :test do
   exit_code = 0
   output = `xcodebuild -target "Unit Test" -configuration Debug -sdk iphonesimulator2.1`
   output.each do |line| 
     case 
-    when line =~ /passed/         : exit_code = pass(line)    
+    when line =~ /passed/         : exit_code = pass(line)
     when line =~ /^\s+setenv.*\n/ : nil
     when line =~ /(\d+) failures/
       if $1.to_i > 0
@@ -23,6 +25,41 @@ desc "Clean all targets"
 task :clean do
   sh 'xcodebuild -alltargets -configuration Release clean'
   sh 'xcodebuild -alltargets -configuration Debug clean'
+end
+
+task :silent_test do
+  
+end
+
+desc "Run code coverage"
+task :cruise do
+  FileList['./build/JoeMetric.build/Debug-iphonesimulator/Unit\ Test.build/Objects-normal/i386/*.gcda'].each do |file|
+  end
+  
+  FileList['./build/JoeMetric.build/Debug-iphonesimulator/Unit\ Test.build/Objects-normal/i386/*.gcno'].each do |file|
+  end
+
+  output = `xcodebuild -target "Unit Test" -configuration Debug -sdk iphonesimulator2.1`
+  built = true
+  output.each do |line|
+    if line =~ /(\d+) failures/
+      if $1.to_i > 0
+        built = false
+      end
+    end
+  end
+  
+  if built
+    FileList['./build/JoeMetric.build/Debug-iphonesimulator/Unit\ Test.build/Objects-normal/i386/*.gcda'].each do |file|
+      next if File.basename(file) =~ /^GTM/
+      next if File.basename(file) =~ /Test\.gcda$/
+
+      
+      sh "gcov -n -o build/JoeMetric.build/Debug-iphonesimulator/Unit\\ Test.build/Objects-normal/i386 Classes/#{File.basename(file).sub(/\.gcda$/, '.m')}"
+    end
+  else
+    puts "Unit tests failed, run rake test to see why."
+  end
 end
 
 task :default => [:test]
