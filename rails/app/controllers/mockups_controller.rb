@@ -22,6 +22,10 @@ class MockupsController < ApplicationController
     layout 'application'
   end
 
+  def sam_active_questions
+    layout 'application'
+  end
+
   private
 
     def select_layout
