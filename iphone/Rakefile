@@ -3,22 +3,41 @@ $silent_test = false
 desc "Run unit tests"
 task :test do
   exit_code = 0
-  output = `xcodebuild -target "Unit Test" -configuration Debug -sdk iphonesimulator2.1`
-  output.each do |line| 
-    case 
-    when line =~ /passed/         : exit_code = pass(line)
-    when line =~ /failed/         : exit_code = fail(line)
-    when line =~ /^\s+setenv.*\n/ : nil
-    when line =~ /(\d+) failures/
-      if $1.to_i > 0
-        exit_code = fail(line)
+  tests = 0
+  failures = 0
+  failed_tests = []
+  start = Time.now
+  
+  p = IO.popen('xcodebuild -target "Unit Test" -configuration Debug -sdk iphonesimulator2.1', 'r')
+  while line = p.gets
+    if line =~ /Test Case/
+      tests += 1
+      if line.index('passed')
+        pass('.')
+      elsif line.index('failed')
+        exit_code = 1
+        if line =~ /'-\[(.*)\]'/
+          failed_tests << $1
+        end
+        failures += 1
+        fail('F')
       else
-        exit_code = pass(line)
+        print '.'
       end
-    else 
-      puts line
+      
     end
   end
+  print "\n"
+  puts "Finished in #{Time.now - start} seconds.\n\n"
+  
+  puts "#{tests} tests, #{failures} failures"
+
+  if failures > 0
+    puts "\nFailed tests:"
+    failed_tests.each { |t| puts t }
+    puts ""
+  end
+  
   exit exit_code
 end
 
