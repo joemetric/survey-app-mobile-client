@@ -1,0 +1,27 @@
+<h1>Listing campaigns</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Amount</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% for campaign in @campaigns %>
+  <tr>
+    <td><%= campaign.name %></td>
+    <td><%= campaign.amount %></td>
+    <td><%= link_to 'Show', campaign %></td>
+    <td><%= link_to 'Edit', edit_campaign_path(campaign) %></td>
+    <td><%= link_to 'Destroy', campaign, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Questions', campaign_questions_path(campaign) %>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New campaign', new_campaign_path %>

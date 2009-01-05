@@ -1,0 +1,7 @@
+<p>Name: <%= @campaign.name %></p>
+<p>Amount: <%= @campaign.amount %></p>
+
+<%= link_to 'Questions', campaign_questions_path(@campaign) %><br /><br />
+
+<%= link_to 'Edit', edit_campaign_path(@campaign) %> |
+<%= link_to 'Back', campaigns_path %>
