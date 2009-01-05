@@ -40,13 +40,9 @@
     
     Account *account = [[Account alloc] init];
     [account createCredentialFile];
-    
+
     STAssertTrue([[NSFileManager defaultManager] fileExistsAtPath:[self credentialFilePath]], nil);
 }
-
-
-
-
 
 
 
@@ -61,9 +57,7 @@
  
 
 - (void) removeCredentialFile {
-    NSLog(@"uh?");
     [[NSFileManager defaultManager] removeItemAtPath:[self credentialFilePath] error:nil];
-    // removeItemAtPath:error
 }
 
 - (NSString*)credentialFilePath

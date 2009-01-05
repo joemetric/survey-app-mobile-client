@@ -7,6 +7,8 @@ task :test do
   failures = 0
   failed_tests = []
   start = Time.now
+
+  previous_line = ''
   
   p = IO.popen('xcodebuild -target "Unit Test" -configuration Debug -sdk iphonesimulator2.1', 'r')
   while line = p.gets
@@ -17,15 +19,15 @@ task :test do
       elsif line.index('failed')
         exit_code = 1
         if line =~ /'-\[(.*)\]'/
-          failed_tests << $1
+          failed_tests << [$1, previous_line]
         end
         failures += 1
         fail('F')
       else
         print '.'
       end
-      
     end
+    previous_line = line
   end
   print "\n"
   puts "Finished in #{Time.now - start} seconds.\n\n"
@@ -34,8 +36,13 @@ task :test do
 
   if failures > 0
     puts "\nFailed tests:"
-    failed_tests.each { |t| puts t }
-    puts ""
+    failed_tests.each do |failure|
+      puts failure[0]
+
+      parts = failure[1].split(' ')
+      puts "  #{File.basename(parts[0])} #{parts[1..-1].join(' ')}"
+      puts ""
+    end
   end
   
   exit exit_code
