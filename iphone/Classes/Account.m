@@ -11,9 +11,21 @@
 
 @implementation Account
 
-+ (BOOL) isCreated
+- (BOOL) isCreated
 {
-    return NO;
+    return [[NSFileManager defaultManager] fileExistsAtPath:[self credentialFilePath]];
+}
+
+- (void) createCredentialFile
+{
+    [[NSFileManager defaultManager] createFileAtPath:[self credentialFilePath] contents:nil attributes:nil];
+}
+
+- (NSString*) credentialFilePath
+{
+    NSString *documentFolderPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    NSString *credentialFile = [documentFolderPath stringByAppendingPathComponent:@"credentials.txt"];
+    return credentialFile;
 }
 
 @end

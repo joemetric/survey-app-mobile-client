@@ -19,6 +19,9 @@
 
 }
 
-+ (BOOL) isCreated;
+- (BOOL) isCreated;
+- (BOOL) credentialFileExists;
+- (void) createCredentialFile;
+- (NSString*) credentialFilePath;
 
 @end
