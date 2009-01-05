@@ -108,7 +108,9 @@ def run_tests
       puts failure[0]
 
       parts = failure[1].split(' ')
-      puts "  #{File.basename(parts[0])} #{parts[1..-1].join(' ')}"
+      error_output = parts[1..-1].join(' ').sub(File.dirname(parts[0]), '')
+      
+      puts "  #{File.basename(parts[0])} #{error_output}"
       puts ""
     end
   end
