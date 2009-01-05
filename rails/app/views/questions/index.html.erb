@@ -1,22 +1,21 @@
-<h1>Listing questions</h1>
+<h1>Listing questions in <%= @campaign.name %></h1>
 
 <table>
   <tr>
     <th>Text</th>
-    <th>Float</th>
   </tr>
 
 <% for question in @questions %>
   <tr>
     <td><%=h question.text %></td>
-    <td><%=h question.amount %></td>
-    <td><%= link_to 'Show', question %></td>
-    <td><%= link_to 'Edit', edit_question_path(question) %></td>
-    <td><%= link_to 'Destroy', question, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', [@campaign, question] %></td>
+    <td><%= link_to 'Edit', edit_campaign_question_path(@campaign, question) %></td>
+    <td><%= link_to 'Destroy', [@campaign, question], :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New question', new_question_path %>
+<%= link_to 'New question', new_campaign_question_path(@campaign) %> |
+<%= link_to "Back to #{@campaign.name}", @campaign %>
