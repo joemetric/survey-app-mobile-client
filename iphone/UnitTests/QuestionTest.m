@@ -29,6 +29,6 @@
 {
   Question *question = [[Question alloc] initWithText:@"A question?" amount:[NSDecimalNumber decimalNumberWithString:@"1925.32"]];
 
-  STAssertEqualStrings(@"$1,925.32 | A question?", [question questionAndAmountAsString], @"question and amount");
+  STAssertEqualStrings(@"$1,925.32 : A question?", [question questionAndAmountAsString], @"question and amount");
 }
 @end
