@@ -2,6 +2,74 @@ COVERAGE_THRESHOLD = 72.0
 
 desc "Run unit tests"
 task :test do
+  exit run_tests
+end
+
+task :clean_targets do
+  `xcodebuild -alltargets -configuration Release clean`
+  `xcodebuild -alltargets -configuration Debug clean`
+
+  FileList['./build/JoeMetric.build/Debug-iphonesimulator/Unit\ Test.build/Objects-normal/i386/*.o'].each do |file|
+    FileUtils.rm_f(file)
+  end
+end
+
+desc "Clean all targets"
+task :clean => [:clean_targets] do
+  puts "all targets cleaned"
+end
+
+desc "Run code coverage"
+task :cruise => [:clean_targets] do
+  FileList['./build/JoeMetric.build/Debug-iphonesimulator/Unit\ Test.build/Objects-normal/i386/*.gcda'].each do |file|
+    FileUtils.rm_f(file)
+  end
+  
+  FileList['./build/JoeMetric.build/Debug-iphonesimulator/Unit\ Test.build/Objects-normal/i386/*.gcno'].each do |file|
+    FileUtils.rm_f(file)
+  end
+
+  if run_tests == 0
+    metrics = {}
+    FileList['./build/JoeMetric.build/Debug-iphonesimulator/Unit\ Test.build/Objects-normal/i386/*.gcda'].each do |file|
+      next if File.basename(file) =~ /^GTM/
+      next if File.basename(file) =~ /Test\.gcda$/
+
+      
+      p = IO.popen("gcov -n -o build/JoeMetric.build/Debug-iphonesimulator/Unit\\ Test.build/Objects-normal/i386 Classes/#{File.basename(file).sub(/\.gcda$/, '.m')}", 'r')
+
+      data = p.readlines
+      p.close
+
+      file_name = File.basename(file)
+      percent = 0
+      lines = 0
+      if data[1] =~ /Lines executed:(\d+\.\d+)% of (\d+)/
+        percent = $1.to_f
+        lines = $2.to_i
+        uncovered = lines - ((percent / 100.0) * lines)
+        metrics[file_name] = {'coverage' => percent, 'lines' => lines, 'uncovered' => uncovered}
+      end
+    end
+
+    total_lines = metrics.inject(0.0) { |sum, m| sum + m[1]['lines'] }
+    uncovered_lines = metrics.inject(0.0) { |sum, m| sum + m[1]['uncovered'] }
+
+    coverage = uncovered_lines / total_lines * 100
+    puts "Coverage: %.1f%% (threshold: %.1f%%)" % [coverage, COVERAGE_THRESHOLD]
+    if coverage < COVERAGE_THRESHOLD
+      puts "Coverage must be at least %.1f%% but was %.1f%%" % [COVERAGE_THRESHOLD, coverage]
+      exit 1
+    end
+  else
+    puts "Unit tests failed, coverage not run."
+  end
+end
+
+task :default => [:test]
+
+
+def run_tests
   exit_code = 0
   tests = 0
   failures = 0
@@ -44,83 +112,9 @@ task :test do
       puts ""
     end
   end
-  
-  exit exit_code
+
+  exit_code
 end
-
-task :clean_targets do
-  `xcodebuild -alltargets -configuration Release clean`
-  `xcodebuild -alltargets -configuration Debug clean`
-
-  FileList['./build/JoeMetric.build/Debug-iphonesimulator/Unit\ Test.build/Objects-normal/i386/*.o'].each do |file|
-    FileUtils.rm_f(file)
-  end
-end
-
-desc "Clean all targets"
-task :clean => [:clean_targets] do
-  puts "all targets cleaned"
-end
-
-desc "Run code coverage"
-task :cruise => [:clean_targets] do
-  FileList['./build/JoeMetric.build/Debug-iphonesimulator/Unit\ Test.build/Objects-normal/i386/*.gcda'].each do |file|
-    FileUtils.rm_f(file)
-  end
-  
-  FileList['./build/JoeMetric.build/Debug-iphonesimulator/Unit\ Test.build/Objects-normal/i386/*.gcno'].each do |file|
-    FileUtils.rm_f(file)
-  end
-
-
-  output = `xcodebuild -target "Unit Test" -configuration Debug -sdk iphonesimulator2.1`
-  built = true
-  output.each do |line|
-    if line =~ /(\d+) failures/
-      if $1.to_i > 0
-        built = false
-      end
-    end
-  end
-  
-  if built
-    metrics = {}
-    FileList['./build/JoeMetric.build/Debug-iphonesimulator/Unit\ Test.build/Objects-normal/i386/*.gcda'].each do |file|
-      next if File.basename(file) =~ /^GTM/
-      next if File.basename(file) =~ /Test\.gcda$/
-
-      
-      p = IO.popen("gcov -n -o build/JoeMetric.build/Debug-iphonesimulator/Unit\\ Test.build/Objects-normal/i386 Classes/#{File.basename(file).sub(/\.gcda$/, '.m')}", 'r')
-
-      data = p.readlines
-      p.close
-
-      file_name = File.basename(file)
-      percent = 0
-      lines = 0
-      if data[1] =~ /Lines executed:(\d+\.\d+)% of (\d+)/
-        percent = $1.to_f
-        lines = $2.to_i
-        uncovered = lines - ((percent / 100.0) * lines)
-        metrics[file_name] = {'coverage' => percent, 'lines' => lines, 'uncovered' => uncovered}
-      end
-    end
-
-    total_lines = metrics.inject(0.0) { |sum, m| sum + m[1]['lines'] }
-    uncovered_lines = metrics.inject(0.0) { |sum, m| sum + m[1]['uncovered'] }
-
-    coverage = uncovered_lines / total_lines * 100
-    puts "Coverage: %.1f%% (threshold: %.1f%%)" % [coverage, COVERAGE_THRESHOLD]
-    if coverage < COVERAGE_THRESHOLD
-      puts "Coverage must be at least %.1f%% but was %.1f%%" % [COVERAGE_THRESHOLD, coverage]
-      exit 1
-    end
-  else
-    puts "Unit tests failed, run rake test to see why."
-  end
-end
-
-task :default => [:test]
 
 def pass(line)
   color(line, :green)
