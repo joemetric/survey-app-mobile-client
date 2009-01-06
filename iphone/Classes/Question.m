@@ -46,7 +46,7 @@
 }
 
 - (NSString *)questionAndAmountAsString {
-    return [NSString stringWithFormat:@"%@ : %@", [self amountAsDollarString] , self.text];
+    return [NSString stringWithFormat:@"%@ : %@", [self amountAsDollarString], self.text];
 }
 
 - (void)dealloc {
