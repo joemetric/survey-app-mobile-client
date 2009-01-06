@@ -1,7 +1,16 @@
 COVERAGE_THRESHOLD = 72.0
 
+task :ensure_dirs_exist do
+  docs_dir = File.join('/Users', ENV['USER'], 'Library', 'Application Support', 'iPhone Simulator', 'User', 'Documents')
+  
+  if !File.exist?(docs_dir) || !File.stat(docs_dir).directory?
+    FileUtils.rm_f(docs_dir)
+    FileUtils.mkdir_p(docs_dir)
+  end
+end
+
 desc "Run unit tests"
-task :test do
+task :test => [:ensure_dirs_exist] do
   exit run_tests
 end
 
@@ -20,7 +29,7 @@ task :clean => [:clean_targets] do
 end
 
 desc "Run code coverage"
-task :cruise => [:clean_targets] do
+task :cruise => [:clean_targets, :ensure_dirs_exist] do
   FileList['./build/JoeMetric.build/Debug-iphonesimulator/Unit\ Test.build/Objects-normal/i386/*.gcda'].each do |file|
     FileUtils.rm_f(file)
   end
