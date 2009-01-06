@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0D53AC070EF6B6F0000533C1 /* QuestionList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D53AC060EF6B6F0000533C1 /* QuestionList.m */; };
-		0D68A3C70EDCD2B6007CE721 /* QuestionsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D68A3C60EDCD2B6007CE721 /* QuestionsListViewController.m */; };
+		0D68A3C70EDCD2B6007CE721 /* QuestionListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D68A3C60EDCD2B6007CE721 /* QuestionListViewController.m */; };
 		0D68A3C90EDCD2DB007CE721 /* QuestionsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D68A3C80EDCD2DB007CE721 /* QuestionsView.xib */; };
 		0D68A3CF0EDCD37A007CE721 /* WalletViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D68A3CE0EDCD37A007CE721 /* WalletViewController.m */; };
 		0D68A3D10EDCD38E007CE721 /* WalletView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D68A3D00EDCD38E007CE721 /* WalletView.xib */; };
@@ -43,13 +43,19 @@
 		D2F22BE50EFC076F0047CBFA /* QuestionListTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F22BE40EFC076F0047CBFA /* QuestionListTest.m */; };
 		D2F22BE60EFC077A0047CBFA /* QuestionList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D53AC060EF6B6F0000533C1 /* QuestionList.m */; };
 		FC21C5050F12B3AC00436E7F /* Campaign.m in Sources */ = {isa = PBXBuildFile; fileRef = FC21C5040F12B3AC00436E7F /* Campaign.m */; };
+		FC9755D40F13A88F0077926E /* CampaignList.m in Sources */ = {isa = PBXBuildFile; fileRef = FC9755D30F13A88F0077926E /* CampaignList.m */; };
+		FC9755D50F13A88F0077926E /* CampaignList.m in Sources */ = {isa = PBXBuildFile; fileRef = FC9755D30F13A88F0077926E /* CampaignList.m */; };
+		FC9756860F13B2300077926E /* CampaignListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC9756850F13B2300077926E /* CampaignListViewController.m */; };
+		FC9756870F13B2300077926E /* CampaignListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC9756850F13B2300077926E /* CampaignListViewController.m */; };
+		FC9756890F13B4070077926E /* CampaignListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC9756880F13B4070077926E /* CampaignListView.xib */; };
+		FC97568A0F13B4070077926E /* CampaignListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC9756880F13B4070077926E /* CampaignListView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0D53AC050EF6B6F0000533C1 /* QuestionList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionList.h; sourceTree = "<group>"; };
 		0D53AC060EF6B6F0000533C1 /* QuestionList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionList.m; sourceTree = "<group>"; };
-		0D68A3C50EDCD2B6007CE721 /* QuestionsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionsListViewController.h; sourceTree = "<group>"; };
-		0D68A3C60EDCD2B6007CE721 /* QuestionsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionsListViewController.m; sourceTree = "<group>"; };
+		0D68A3C50EDCD2B6007CE721 /* QuestionListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionListViewController.h; sourceTree = "<group>"; };
+		0D68A3C60EDCD2B6007CE721 /* QuestionListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionListViewController.m; sourceTree = "<group>"; };
 		0D68A3C80EDCD2DB007CE721 /* QuestionsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionsView.xib; sourceTree = "<group>"; };
 		0D68A3CD0EDCD37A007CE721 /* WalletViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletViewController.h; sourceTree = "<group>"; };
 		0D68A3CE0EDCD37A007CE721 /* WalletViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletViewController.m; sourceTree = "<group>"; };
@@ -102,6 +108,11 @@
 		D2F22BE40EFC076F0047CBFA /* QuestionListTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuestionListTest.m; path = UnitTests/QuestionListTest.m; sourceTree = "<group>"; };
 		FC21C5030F12B3AC00436E7F /* Campaign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Campaign.h; sourceTree = "<group>"; };
 		FC21C5040F12B3AC00436E7F /* Campaign.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Campaign.m; sourceTree = "<group>"; };
+		FC9755D20F13A88F0077926E /* CampaignList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CampaignList.h; sourceTree = "<group>"; };
+		FC9755D30F13A88F0077926E /* CampaignList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CampaignList.m; sourceTree = "<group>"; };
+		FC9756840F13B2300077926E /* CampaignListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CampaignListViewController.h; sourceTree = "<group>"; };
+		FC9756850F13B2300077926E /* CampaignListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CampaignListViewController.m; sourceTree = "<group>"; };
+		FC9756880F13B4070077926E /* CampaignListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CampaignListView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +150,7 @@
 		0D8DC8870EDE35B9007EC072 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FC9756830F13B20A0077926E /* Campaign View Controllers */,
 				0DD8CAB10EF4D6A800A20937 /* Question View Controllers */,
 				0D68A3CD0EDCD37A007CE721 /* WalletViewController.h */,
 				0D68A3CE0EDCD37A007CE721 /* WalletViewController.m */,
@@ -161,6 +173,8 @@
 				D2AD6B1B0EFFF66B00DB13FD /* Account.m */,
 				FC21C5030F12B3AC00436E7F /* Campaign.h */,
 				FC21C5040F12B3AC00436E7F /* Campaign.m */,
+				FC9755D20F13A88F0077926E /* CampaignList.h */,
+				FC9755D30F13A88F0077926E /* CampaignList.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -168,8 +182,8 @@
 		0DD8CAB10EF4D6A800A20937 /* Question View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				0D68A3C50EDCD2B6007CE721 /* QuestionsListViewController.h */,
-				0D68A3C60EDCD2B6007CE721 /* QuestionsListViewController.m */,
+				0D68A3C50EDCD2B6007CE721 /* QuestionListViewController.h */,
+				0D68A3C60EDCD2B6007CE721 /* QuestionListViewController.m */,
 				0DF9E31F0EF3079100A522A1 /* SingleQuestionViewController.h */,
 				0DF9E3200EF3079100A522A1 /* SingleQuestionViewController.m */,
 				0DD8C9600EF4884D00A20937 /* SurveyQuestionViewController.h */,
@@ -237,6 +251,7 @@
 				0D68A3D60EDCD3EF007CE721 /* ProfileView.xib */,
 				0DF9E3140EF3065200A522A1 /* QuestionView.xib */,
 				0DD8C95D0EF487C900A20937 /* SurveyQuestionView.xib */,
+				FC9756880F13B4070077926E /* CampaignListView.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -275,6 +290,15 @@
 				D2F22B840EFBF09C0047CBFA /* QuestionTest.m */,
 			);
 			name = "Unit Tests";
+			sourceTree = "<group>";
+		};
+		FC9756830F13B20A0077926E /* Campaign View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FC9756840F13B2300077926E /* CampaignListViewController.h */,
+				FC9756850F13B2300077926E /* CampaignListViewController.m */,
+			);
+			name = "Campaign View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -349,6 +373,7 @@
 				0DF9E2300EF2F61A00A522A1 /* user.png in Resources */,
 				0DF9E3150EF3065200A522A1 /* QuestionView.xib in Resources */,
 				0DD8C95E0EF487C900A20937 /* SurveyQuestionView.xib in Resources */,
+				FC9756890F13B4070077926E /* CampaignListView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,6 +381,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC97568A0F13B4070077926E /* CampaignListView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,7 +410,7 @@
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* JoeMetricAppDelegate.m in Sources */,
-				0D68A3C70EDCD2B6007CE721 /* QuestionsListViewController.m in Sources */,
+				0D68A3C70EDCD2B6007CE721 /* QuestionListViewController.m in Sources */,
 				0D68A3CF0EDCD37A007CE721 /* WalletViewController.m in Sources */,
 				0D68A3D50EDCD3D6007CE721 /* ProfileViewController.m in Sources */,
 				0D68A3EA0EDCD5CC007CE721 /* MainWindowViewController.m in Sources */,
@@ -395,6 +421,8 @@
 				0D53AC070EF6B6F0000533C1 /* QuestionList.m in Sources */,
 				D2AD6B1D0EFFF66B00DB13FD /* Account.m in Sources */,
 				FC21C5050F12B3AC00436E7F /* Campaign.m in Sources */,
+				FC9755D40F13A88F0077926E /* CampaignList.m in Sources */,
+				FC9756860F13B2300077926E /* CampaignListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,6 +439,8 @@
 				D2F22BE50EFC076F0047CBFA /* QuestionListTest.m in Sources */,
 				D2AD6B170EFFF62900DB13FD /* AccountTest.m in Sources */,
 				D2AD6B1C0EFFF66B00DB13FD /* Account.m in Sources */,
+				FC9755D50F13A88F0077926E /* CampaignList.m in Sources */,
+				FC9756870F13B2300077926E /* CampaignListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
