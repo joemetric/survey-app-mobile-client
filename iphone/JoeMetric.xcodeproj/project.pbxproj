@@ -32,6 +32,8 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
 		28AD73880D9D96C1002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD73870D9D96C1002E5188 /* MainWindow.xib */; };
+		D255487C0F13C2950098100B /* Campaign.m in Sources */ = {isa = PBXBuildFile; fileRef = FC21C5040F12B3AC00436E7F /* Campaign.m */; };
+		D25548800F13C2B40098100B /* CampaignTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D255487F0F13C2B40098100B /* CampaignTest.m */; };
 		D2AD6B170EFFF62900DB13FD /* AccountTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AD6B160EFFF62900DB13FD /* AccountTest.m */; };
 		D2AD6B1C0EFFF66B00DB13FD /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AD6B1B0EFFF66B00DB13FD /* Account.m */; };
 		D2AD6B1D0EFFF66B00DB13FD /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AD6B1B0EFFF66B00DB13FD /* Account.m */; };
@@ -84,6 +86,8 @@
 		28AD73870D9D96C1002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D255487E0F13C2B40098100B /* CampaignTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CampaignTest.h; path = UnitTests/CampaignTest.h; sourceTree = "<group>"; };
+		D255487F0F13C2B40098100B /* CampaignTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CampaignTest.m; path = UnitTests/CampaignTest.m; sourceTree = "<group>"; };
 		D2AD6B150EFFF62900DB13FD /* AccountTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccountTest.h; path = UnitTests/AccountTest.h; sourceTree = "<group>"; };
 		D2AD6B160EFFF62900DB13FD /* AccountTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccountTest.m; path = UnitTests/AccountTest.m; sourceTree = "<group>"; };
 		D2AD6B1A0EFFF66B00DB13FD /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
@@ -267,6 +271,8 @@
 		D2F22B860EFBF0A60047CBFA /* Unit Tests */ = {
 			isa = PBXGroup;
 			children = (
+				D255487E0F13C2B40098100B /* CampaignTest.h */,
+				D255487F0F13C2B40098100B /* CampaignTest.m */,
 				D2AD6B150EFFF62900DB13FD /* AccountTest.h */,
 				D2AD6B160EFFF62900DB13FD /* AccountTest.m */,
 				D2F22BE30EFC076F0047CBFA /* QuestionListTest.h */,
@@ -402,6 +408,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D25548800F13C2B40098100B /* CampaignTest.m in Sources */,
+				D255487C0F13C2950098100B /* Campaign.m in Sources */,
 				D2F22BE60EFC077A0047CBFA /* QuestionList.m in Sources */,
 				D2F22BB20EFBF3C30047CBFA /* Question.m in Sources */,
 				D2F22B400EFBEA090047CBFA /* GTMIPhoneUnitTestDelegate.m in Sources */,
