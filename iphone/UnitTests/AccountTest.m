@@ -11,10 +11,18 @@
 
 @implementation AccountTest
 
-- (void) testIsNotCreatedIfCredentailsAreMissing
+- (void)setUp
 {
     [self removeCredentialFile];
+}
 
+- (void)tearDown
+{
+    [self removeCredentialFile];
+}
+
+- (void) testIsNotCreatedIfCredentailsAreMissing
+{
     Account *account = [[Account alloc] init];
     
     STAssertEquals(NO, [account isCreated], nil);
@@ -36,8 +44,6 @@
 
 - (void) testCreateCredentialFile
 {
-    [self removeCredentialFile];
-    
     Account *account = [[Account alloc] init];
     [account createCredentialFile];
 
@@ -50,7 +56,7 @@
 {
     NSString *documentFolderPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
     NSString *credentialFile = [documentFolderPath stringByAppendingPathComponent:@"credentials.txt"];
-    
+
     [[NSFileManager defaultManager] createFileAtPath:credentialFile contents:nil attributes:nil];
 }
 
