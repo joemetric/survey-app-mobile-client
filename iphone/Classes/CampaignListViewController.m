@@ -64,9 +64,10 @@
     QuestionListViewController *questionListViewController = 
 		[[QuestionListViewController alloc] initWithNibName:@"QuestionListView" 
 													 bundle:nil 
-												 campaignId:[[self.campaigns campaignAtIndex:indexPath.row] dbId]];
+												   campaign:[self.campaigns campaignAtIndex:indexPath.row]];
     
-	[self.navigationController pushViewController:questionListViewController animated:YES];  
+	[self.navigationController pushViewController:questionListViewController animated:YES];
+	NSLog(@"Campaign name: %@", questionListViewController.campaignName);
     [questionListViewController release];    
 }
 
