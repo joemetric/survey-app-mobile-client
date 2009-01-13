@@ -7,7 +7,7 @@
 //
 
 #import "CampaignListViewController.h"
-//#import "SingleCampaignViewController.h"
+#import "QuestionListViewController.h"
 #import "Campaign.h"
 #import "CampaignList.h"
 
@@ -54,22 +54,21 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
-    Campaign *q = [self.campaigns campaignAtIndex:indexPath.row];
-    cell.text = [q campaignAndAmountAsString];
+    Campaign *campaign = [self.campaigns campaignAtIndex:indexPath.row];
+    cell.text = [campaign nameAndAmountAsString];
     return cell;
 }
 
-/*
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"Selected row %d", indexPath.row);
-    SingleCampaignViewController *sqvc = 
-	[[SingleCampaignViewController alloc] initWithNibName:@"CampaignView" 
-												   bundle:nil 
-												 campaign:[self.campaigns campaignAtIndex:indexPath.row]];
-    [self.navigationController pushViewController:sqvc animated:YES];  
-    [sqvc release];    
+    QuestionListViewController *questionListViewController = 
+		[[QuestionListViewController alloc] initWithNibName:@"QuestionListView" 
+													 bundle:nil 
+												 campaignId:[[self.campaigns campaignAtIndex:indexPath.row] dbId]];
+    
+	[self.navigationController pushViewController:questionListViewController animated:YES];  
+    [questionListViewController release];    
 }
-*/
 
 - (void)dealloc {
     [campaigns release];

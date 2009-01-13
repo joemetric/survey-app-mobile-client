@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		0D53AC070EF6B6F0000533C1 /* QuestionList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D53AC060EF6B6F0000533C1 /* QuestionList.m */; };
 		0D68A3C70EDCD2B6007CE721 /* QuestionListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D68A3C60EDCD2B6007CE721 /* QuestionListViewController.m */; };
-		0D68A3C90EDCD2DB007CE721 /* QuestionsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D68A3C80EDCD2DB007CE721 /* QuestionsView.xib */; };
+		0D68A3C90EDCD2DB007CE721 /* QuestionListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D68A3C80EDCD2DB007CE721 /* QuestionListView.xib */; };
 		0D68A3CF0EDCD37A007CE721 /* WalletViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D68A3CE0EDCD37A007CE721 /* WalletViewController.m */; };
 		0D68A3D10EDCD38E007CE721 /* WalletView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D68A3D00EDCD38E007CE721 /* WalletView.xib */; };
 		0D68A3D50EDCD3D6007CE721 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D68A3D40EDCD3D6007CE721 /* ProfileViewController.m */; };
@@ -58,7 +58,7 @@
 		0D53AC060EF6B6F0000533C1 /* QuestionList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionList.m; sourceTree = "<group>"; };
 		0D68A3C50EDCD2B6007CE721 /* QuestionListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionListViewController.h; sourceTree = "<group>"; };
 		0D68A3C60EDCD2B6007CE721 /* QuestionListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionListViewController.m; sourceTree = "<group>"; };
-		0D68A3C80EDCD2DB007CE721 /* QuestionsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionsView.xib; sourceTree = "<group>"; };
+		0D68A3C80EDCD2DB007CE721 /* QuestionListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionListView.xib; sourceTree = "<group>"; };
 		0D68A3CD0EDCD37A007CE721 /* WalletViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletViewController.h; sourceTree = "<group>"; };
 		0D68A3CE0EDCD37A007CE721 /* WalletViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletViewController.m; sourceTree = "<group>"; };
 		0D68A3D00EDCD38E007CE721 /* WalletView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletView.xib; sourceTree = "<group>"; };
@@ -250,7 +250,7 @@
 				0DF9E1EB0EF2ED1800A522A1 /* Images */,
 				28AD73870D9D96C1002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* Info.plist */,
-				0D68A3C80EDCD2DB007CE721 /* QuestionsView.xib */,
+				0D68A3C80EDCD2DB007CE721 /* QuestionListView.xib */,
 				0D68A3D00EDCD38E007CE721 /* WalletView.xib */,
 				0D68A3D60EDCD3EF007CE721 /* ProfileView.xib */,
 				0DF9E3140EF3065200A522A1 /* QuestionView.xib */,
@@ -369,7 +369,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				28AD73880D9D96C1002E5188 /* MainWindow.xib in Resources */,
-				0D68A3C90EDCD2DB007CE721 /* QuestionsView.xib in Resources */,
+				0D68A3C90EDCD2DB007CE721 /* QuestionListView.xib in Resources */,
 				0D68A3D10EDCD38E007CE721 /* WalletView.xib in Resources */,
 				0D68A3D70EDCD3EF007CE721 /* ProfileView.xib in Resources */,
 				0DF9E1F00EF2ED3400A522A1 /* Icon.png in Resources */,

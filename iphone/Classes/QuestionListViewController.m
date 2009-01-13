@@ -13,7 +13,21 @@
 
 @implementation QuestionListViewController
 
+@synthesize campaignId = _campaignId;
 @synthesize questions;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil campaignId:(NSString *)campaignId {    
+    [self initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self.campaignId = campaignId;
+    return self;
+}
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+        // Custom initialization
+    }
+    return self;
+}
 
 - (void)awakeFromNib {
     self.navigationItem.title = @"Questions";

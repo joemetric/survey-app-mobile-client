@@ -11,9 +11,13 @@
 
 
 @interface QuestionListViewController : UITableViewController {
-  QuestionList *questions;
+	NSString *_campaignId;
+	QuestionList *questions;
 }
 
+@property (nonatomic, retain) NSString *campaignId;
 @property (nonatomic, retain) QuestionList *questions;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil campaignId:(NSString *)campaignId;
 
 @end
