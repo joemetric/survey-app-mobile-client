@@ -1,24 +1,17 @@
-$silent_test = false
+COVERAGE_THRESHOLD = 72.0
+
+task :ensure_dirs_exist do
+  docs_dir = File.join('/Users', ENV['USER'], 'Library', 'Application Support', 'iPhone Simulator', 'User', 'Documents')
+  
+  if !File.exist?(docs_dir) || !File.stat(docs_dir).directory?
+    FileUtils.rm_f(docs_dir)
+    FileUtils.mkdir_p(docs_dir)
+  end
+end
 
 desc "Run unit tests"
-task :test do
-  exit_code = 0
-  output = `xcodebuild -target "Unit Test" -configuration Debug -sdk iphonesimulator2.1`
-  output.each do |line| 
-    case 
-    when line =~ /passed/         : exit_code = pass(line)
-    when line =~ /^\s+setenv.*\n/ : nil
-    when line =~ /(\d+) failures/
-      if $1.to_i > 0
-        exit_code = fail(line)
-      else
-        exit_code = pass(line)
-      end
-    else 
-      puts line
-    end
-  end
-  exit exit_code
+task :test => [:ensure_dirs_exist] do
+  exit run_tests
 end
 
 task :clean_targets do
@@ -36,7 +29,7 @@ task :clean => [:clean_targets] do
 end
 
 desc "Run code coverage"
-task :cruise => [:clean_targets] do
+task :cruise => [:clean_targets, :ensure_dirs_exist] do
   FileList['./build/JoeMetric.build/Debug-iphonesimulator/Unit\ Test.build/Objects-normal/i386/*.gcda'].each do |file|
     FileUtils.rm_f(file)
   end
@@ -45,31 +38,94 @@ task :cruise => [:clean_targets] do
     FileUtils.rm_f(file)
   end
 
-
-  output = `xcodebuild -target "Unit Test" -configuration Debug -sdk iphonesimulator2.1`
-  built = true
-  output.each do |line|
-    if line =~ /(\d+) failures/
-      if $1.to_i > 0
-        built = false
-      end
-    end
-  end
-  
-  if built
+  if run_tests == 0
+    metrics = {}
     FileList['./build/JoeMetric.build/Debug-iphonesimulator/Unit\ Test.build/Objects-normal/i386/*.gcda'].each do |file|
       next if File.basename(file) =~ /^GTM/
       next if File.basename(file) =~ /Test\.gcda$/
 
       
-      sh "gcov -n -o build/JoeMetric.build/Debug-iphonesimulator/Unit\\ Test.build/Objects-normal/i386 Classes/#{File.basename(file).sub(/\.gcda$/, '.m')}"
+      p = IO.popen("gcov -n -o build/JoeMetric.build/Debug-iphonesimulator/Unit\\ Test.build/Objects-normal/i386 Classes/#{File.basename(file).sub(/\.gcda$/, '.m')}", 'r')
+
+      data = p.readlines
+      p.close
+
+      file_name = File.basename(file)
+      percent = 0
+      lines = 0
+      if data[1] =~ /Lines executed:(\d+\.\d+)% of (\d+)/
+        percent = $1.to_f
+        lines = $2.to_i
+        uncovered = lines - ((percent / 100.0) * lines)
+        metrics[file_name] = {'coverage' => percent, 'lines' => lines, 'uncovered' => uncovered}
+      end
+    end
+
+    total_lines = metrics.inject(0.0) { |sum, m| sum + m[1]['lines'] }
+    uncovered_lines = metrics.inject(0.0) { |sum, m| sum + m[1]['uncovered'] }
+
+    coverage = uncovered_lines / total_lines * 100
+    puts "Coverage: %.1f%% (threshold: %.1f%%)" % [coverage, COVERAGE_THRESHOLD]
+    if coverage < COVERAGE_THRESHOLD
+      puts "Coverage must be at least %.1f%% but was %.1f%%" % [COVERAGE_THRESHOLD, coverage]
+      exit 1
     end
   else
-    puts "Unit tests failed, run rake test to see why."
+    puts "Unit tests failed, coverage not run."
   end
 end
 
 task :default => [:test]
+
+
+def run_tests
+  exit_code = 0
+  tests = 0
+  failures = 0
+  failed_tests = []
+  start = Time.now
+
+  previous_line = ''
+  
+  p = IO.popen('xcodebuild -target "Unit Test" -configuration Debug -sdk iphonesimulator2.1', 'r')
+  while line = p.gets
+    if line =~ /Test Case/
+      tests += 1
+      if line.index('passed')
+        pass('.')
+      elsif line.index('failed')
+        exit_code = 1
+        if line =~ /'-\[(.*)\]'/
+          failed_tests << [$1, previous_line]
+        end
+        failures += 1
+        fail('F')
+      else
+        print '.'
+      end
+    end
+    previous_line = line
+  end
+  print "\n"
+  puts "Finished in #{Time.now - start} seconds.\n\n"
+  
+  puts "#{tests} tests, #{failures} failures"
+
+  if failures > 0
+    puts "\nFailed tests:"
+    failed_tests.each do |failure|
+      puts failure[0]
+
+      parts = failure[1].split(' ')
+      error_output = parts[1..-1].join(' ').sub(File.dirname(parts[0]), '')
+      
+      puts "  #{File.basename(parts[0])} #{error_output}"
+      puts ""
+    end
+  end
+
+  exit_code
+end
 
 def pass(line)
   color(line, :green)

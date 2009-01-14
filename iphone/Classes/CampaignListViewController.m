@@ -1,27 +1,27 @@
 //
-//  QuestionsViewController.m
+//  CampaignListViewController.m
 //  JoeMetric
 //
-//  Created by Joseph OBrien on 11/25/08.
-//  Copyright 2008 EdgeCase, LLC. All rights reserved.
+//  Created by Jon Distad on 1/6/09.
+//  Copyright 2009 EdgeCase LLC. All rights reserved.
 //
 
-#import "QuestionsListViewController.h"
-#import "SingleQuestionViewController.h"
-#import "Question.h"
-#import "QuestionList.h"
+#import "CampaignListViewController.h"
+//#import "SingleCampaignViewController.h"
+#import "Campaign.h"
+#import "CampaignList.h"
 
-@implementation QuestionsListViewController
+@implementation CampaignListViewController
 
-@synthesize questions;
+@synthesize campaigns;
 
 - (void)awakeFromNib {
-    self.navigationItem.title = @"Questions";
-    self.questions = [[QuestionList alloc] init];
+    self.navigationItem.title = @"Campaigns";
+    self.campaigns = [[CampaignList alloc] init];
     
     // add our custom button to show our modal view controller
     UIButton* modalViewButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
-    [modalViewButton addTarget:self action:@selector(refreshQuestions) forControlEvents:UIControlEventTouchUpInside];
+    [modalViewButton addTarget:self action:@selector(refreshCampaigns) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *modalButton = [[UIBarButtonItem alloc] initWithCustomView:modalViewButton];
     self.navigationItem.rightBarButtonItem = modalButton;
     [modalViewButton release];
@@ -31,8 +31,8 @@
     [super viewDidLoad];
 }
 
--(void)refreshQuestions {
-    [self.questions refreshQuestionList];
+-(void)refreshCampaigns {
+    [self.campaigns refreshCampaignList];
     [self.tableView reloadData];
 }
 
@@ -41,7 +41,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.questions count];
+    return [self.campaigns count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -54,25 +54,25 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
-    Question *q = [self.questions questionAtIndex:indexPath.row];
-    cell.text = [q questionAndAmountAsString];
+    Campaign *q = [self.campaigns campaignAtIndex:indexPath.row];
+    cell.text = [q campaignAndAmountAsString];
     return cell;
 }
 
-
+/*
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"Selected row %d", indexPath.row);
-    SingleQuestionViewController *sqvc = 
-        [[SingleQuestionViewController alloc] initWithNibName:@"QuestionView" 
-                                                       bundle:nil 
-                                                     question:[self.questions questionAtIndex:indexPath.row]];
+    SingleCampaignViewController *sqvc = 
+	[[SingleCampaignViewController alloc] initWithNibName:@"CampaignView" 
+												   bundle:nil 
+												 campaign:[self.campaigns campaignAtIndex:indexPath.row]];
     [self.navigationController pushViewController:sqvc animated:YES];  
     [sqvc release];    
 }
-
+*/
 
 - (void)dealloc {
-    [questions release];
+    [campaigns release];
     [super dealloc];
 }
 

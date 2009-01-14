@@ -15,7 +15,7 @@
 @property (nonatomic, retain) NSString *text;
 @property (nonatomic, retain) NSDecimalNumber *amount;
 
-- (id)initWithText:(NSString *)text amount:(NSDecimalNumber *)amount;
+- (id)initWithText:(NSString *)text amount:(id)amount;
 - (NSString *)questionAndAmountAsString;
 - (NSString *)amountAsDollarString;
 

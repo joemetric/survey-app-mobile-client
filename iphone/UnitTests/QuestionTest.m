@@ -3,7 +3,7 @@
 //  JoeMetric
 //
 //  Created by Scott Barron on 12/19/08.
-//  Copyright 2008 __MyCompanyName__. All rights reserved.
+//  Copyright 2008 EdgeCase, LLC. All rights reserved.
 //
 
 #import "QuestionTest.h"
@@ -29,6 +29,6 @@
 {
   Question *question = [[Question alloc] initWithText:@"A question?" amount:[NSDecimalNumber decimalNumberWithString:@"1925.32"]];
 
-  STAssertEqualStrings(@"$1,925.32 | A question?", [question questionAndAmountAsString], @"question and amount");
+  STAssertEqualStrings(@"$1,925.32 : A question?", [question questionAndAmountAsString], @"question and amount");
 }
 @end

@@ -1,17 +1,17 @@
 //
-//  Question.m
+//  Campaign.m
 //  JoeMetric
 //
-//  Created by Joseph OBrien on 12/12/08.
-//  Copyright 2008 EdgeCase, LLC. All rights reserved.
+//  Created by Jon Distad on 1/5/09.
+//  Copyright 2009 EdgeCase LLC. All rights reserved.
 //
 
-#import "Question.h"
+#import "Campaign.h"
 
 
-@implementation Question
+@implementation Campaign
 
-@synthesize text = _text;
+@synthesize name = _name;
 // Not synthesizing amount, instead we define a special setter and the getter below.
 
 - (id)init {
@@ -32,9 +32,9 @@
 	}
 }
 
-- (id)initWithText:(NSString *)text amount:(NSDecimalNumber *)amount {
+- (id)initWithName:(NSString *)name amount:(NSDecimalNumber *)amount {
     [super init];
-    self.text = text;
+    self.name = name;
     self.amount = amount;
     return self;
 }
@@ -45,14 +45,15 @@
     return [numberFormatter stringFromNumber:self.amount];
 }
 
-- (NSString *)questionAndAmountAsString {
-    return [NSString stringWithFormat:@"%@ : %@", [self amountAsDollarString], self.text];
+- (NSString *)campaignAndAmountAsString {
+    return [NSString stringWithFormat:@"%@ : %@", [self amountAsDollarString], self.name];
 }
 
 - (void)dealloc {
-    [self.text release];
+    [self.name release];
     [self.amount release];
     [super dealloc];
 }
-    
+
 @end
+
