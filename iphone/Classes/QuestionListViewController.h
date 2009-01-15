@@ -10,7 +10,7 @@
 #import "QuestionList.h"
 
 
-@interface QuestionsListViewController : UITableViewController {
+@interface QuestionListViewController : UITableViewController {
   QuestionList *questions;
 }
 
