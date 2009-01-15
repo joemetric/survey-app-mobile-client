@@ -14,6 +14,13 @@ task :test => [:ensure_dirs_exist] do
   exit run_tests
 end
 
+task :test_raw do
+  p = IO.popen('xcodebuild -target "Unit Test" -configuration Debug -sdk iphonesimulator2.1', 'r')
+  while l = p.gets do
+    puts l
+  end
+end
+
 task :clean_targets do
   `xcodebuild -alltargets -configuration Release clean`
   `xcodebuild -alltargets -configuration Debug clean`
