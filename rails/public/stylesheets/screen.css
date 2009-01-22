@@ -11,13 +11,9 @@ div#header {
 }
 
 div#header ul {
-  list-style-type: none;
-  position: relative;
   width: 940px;
   height: 43px;
   margin: 0 auto;
-  font-family: arial, sans-serif;
-  font-size: 62.5%;
   background: url(/images/header_logo.png) no-repeat 0% 50%;
 }
 
@@ -35,8 +31,8 @@ div#header ul li a {
   font-weight: bold;
   line-height: 43px;
   text-decoration: none;
-  text-shadow: 1px 1px 1px #000;
-  opacity: 0.999
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.75);
+  opacity: 0.999;
 }
 
 div#header ul li a#global_navigation_account {
@@ -48,36 +44,6 @@ div#header ul li a#global_navigation_account:hover {
   color: #fff;
 }
 
-div#header ul li ul {
-  display: none;
-  position: absolute;
-  top: 60px;
-  right: 0;
-  background: none;
-}
-
-div#header ul li.active ul {
-  display: block;
-}
-
-div#header ul li ul li a {
-  height: auto;
-  border-bottom: 1px solid #9bed96;
-  padding-bottom: 3px;
-  color: #34942e;
-  font-size: 16px;
-  font-weight: normal;
-  line-height: inherit;
-  letter-spacing: -0.025em;
-  text-shadow: none;
-  opacity: 1;
-}
-
-div#header ul li ul li a:hover {
-  color: #34942e;
-  border-bottom: 1px solid #34942e;
-}
-
 /* @end Header */
 
 
@@ -87,18 +53,19 @@ div#header ul li ul li a:hover {
 div#container {
   width: 940px;
   margin: 0 auto;
-  font-family: arial, sans-serif;
   font-size: 62.5%;
 }
 
 /* @end Container */
 
+h1, h2, h3, h4 {
+  font-family: "Helvetica Neue", helvetica, arial, sans-serif;
+}
 
 h1 {
   position: relative;
   margin-bottom: 30px;
   color: #34942e;
-  font-family: "Helvetica Neue", helvetica, arial, sans-serif;
   font-size: 42px;
   letter-spacing: -0.03em;
 }
@@ -107,7 +74,6 @@ h2 {
   position: relative;
   margin-bottom: 35px;
   color: #222;
-  font-family: "Helvetica Neue", helvetica, arial, sans-serif;
   font-size: 21px;
 }
 
