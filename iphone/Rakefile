@@ -14,6 +14,13 @@ task :test => [:ensure_dirs_exist] do
   exit run_tests
 end
 
+task :test_raw do
+  p = IO.popen('xcodebuild -target "Unit Test" -configuration Debug -sdk iphonesimulator2.1', 'r')
+  while l = p.gets do
+    puts l
+  end
+end
+
 task :clean_targets do
   `xcodebuild -alltargets -configuration Release clean`
   `xcodebuild -alltargets -configuration Debug clean`
@@ -39,35 +46,13 @@ task :cruise => [:clean_targets, :ensure_dirs_exist] do
   end
 
   if run_tests == 0
-    metrics = {}
-    FileList['./build/JoeMetric.build/Debug-iphonesimulator/Unit\ Test.build/Objects-normal/i386/*.gcda'].each do |file|
-      next if File.basename(file) =~ /^GTM/
-      next if File.basename(file) =~ /Test\.gcda$/
-
-      
-      p = IO.popen("gcov -n -o build/JoeMetric.build/Debug-iphonesimulator/Unit\\ Test.build/Objects-normal/i386 Classes/#{File.basename(file).sub(/\.gcda$/, '.m')}", 'r')
-
-      data = p.readlines
-      p.close
-
-      file_name = File.basename(file)
-      percent = 0
-      lines = 0
-      if data[1] =~ /Lines executed:(\d+\.\d+)% of (\d+)/
-        percent = $1.to_f
-        lines = $2.to_i
-        uncovered = lines - ((percent / 100.0) * lines)
-        metrics[file_name] = {'coverage' => percent, 'lines' => lines, 'uncovered' => uncovered}
-      end
-    end
-
-    total_lines = metrics.inject(0.0) { |sum, m| sum + m[1]['lines'] }
-    uncovered_lines = metrics.inject(0.0) { |sum, m| sum + m[1]['uncovered'] }
-
-    coverage = uncovered_lines / total_lines * 100
-    puts "Coverage: %.1f%% (threshold: %.1f%%)" % [coverage, COVERAGE_THRESHOLD]
-    if coverage < COVERAGE_THRESHOLD
-      puts "Coverage must be at least %.1f%% but was %.1f%%" % [COVERAGE_THRESHOLD, coverage]
+    require 'ocov'
+    project = OCov::Project.new(File.dirname(__FILE__))
+    project.analyze_and_report
+    
+    puts "Coverage: %.1f%% (threshold: %.1f%%)" % [project.total_coverage, COVERAGE_THRESHOLD]
+    if project.total_coverage < COVERAGE_THRESHOLD
+      puts "Coverage must be at least %.1f%% but was %.1f%%" % [COVERAGE_THRESHOLD, project.total_coverage]
       exit 1
     end
   else
