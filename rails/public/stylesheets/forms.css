@@ -34,7 +34,7 @@ div.field input {
   background: #fff url(/images/textfield_background.gif) no-repeat;
 }
 
-div.field input[type=text]:focus,
+div.field input:focus,
 div.field textarea:focus {
   border: 1px solid #666;
 }
