@@ -1,5 +1,6 @@
 @import "/stylesheets/reset.css";
 @import "/stylesheets/forms.css";
+@import "/stylesheets/error.css";
 
 
 /* @group Header
@@ -94,7 +95,9 @@ h2 span.large_bullet {
 
 
 div.grey_box {
+  overflow: hidden;
   margin-bottom: 21px;
+  padding: 30px 30px 30px 80px;
   background: #f3f3f3;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -103,10 +106,6 @@ div.grey_box {
 
 /* @group Create Question
 ----------------------------------- */
-
-div.grey_box.create_question { 
-  padding: 30px 30px 30px 80px;
-}
 
 div.grey_box.create_question div.field {
   margin-left: -22px;
@@ -176,52 +175,6 @@ div#question_type_section div.field label {
 
 div#question_type_section div.field label.active {
   font-weight: bold;
-}
-
-div#budget_section div.field {
-  float: left;
-  position: relative;
-  width: 140px;
-  margin-right: 80px;
-}
-
-div#budget_section div.field p {
-  font-size: 12px;
-  line-height: 21px;
-}
-
-div#budget_section p.note {
-  width: 215px;
-  margin-top: 25px;
-}
-
-div#budget_section div.field label {
-  float: none;
-  margin-bottom: 17px;
-}
-
-div#budget_section div.field input {
-  float: none;
-  width: 75px;
-  font-size: 18px;
-  font-weight: bold;
-}
-
-div#budget_section span.dollar_sign {
-  position: absolute;
-  top: 41px;
-  left: 8px;
-  color: #26a01e;
-  font-size: 14px;
-}
-
-div#budget_section span.fee {
-  display: block;
-  height: 34px;
-  color: #191919;
-  font-size: 18px;
-  font-weight: bold;
-  line-height: 34px;
 }
 
 div#budget_calculations {

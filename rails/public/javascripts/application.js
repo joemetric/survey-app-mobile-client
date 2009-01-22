@@ -1,8 +1,9 @@
 $(document).ready(function() {
 
+  // for create question mockup
   checkAnswerCount();
 
-  $('#create_question_answers').find('.remove').ensure('click', function() {
+  $('#create_question_answers').find('.remove').live('click', function() {
     if($('#create_question_answers .answer').length > 2) {
       $(this).parents('.answer:first').remove();
     }
@@ -18,7 +19,8 @@ $(document).ready(function() {
 
     checkAnswerCount();
     return false;
-  });
+  });  
+  // end for create question mockup
 
   $('.calendar_link').click(function() {
     $(this).siblings('input[type=text]').focus();
