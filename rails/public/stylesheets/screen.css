@@ -71,6 +71,13 @@ h1 {
   letter-spacing: -0.03em;
 }
 
+h1 span.campaign {
+  margin-left: 10px;
+  color: #666;
+  font-size: 18px;
+  letter-spacing: 0;
+}
+
 h2 {
   position: relative;
   margin-bottom: 35px;
