@@ -48,7 +48,6 @@
 		FC9755D40F13A88F0077926E /* CampaignList.m in Sources */ = {isa = PBXBuildFile; fileRef = FC9755D30F13A88F0077926E /* CampaignList.m */; };
 		FC9755D50F13A88F0077926E /* CampaignList.m in Sources */ = {isa = PBXBuildFile; fileRef = FC9755D30F13A88F0077926E /* CampaignList.m */; };
 		FC9756860F13B2300077926E /* CampaignListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC9756850F13B2300077926E /* CampaignListViewController.m */; };
-		FC9756870F13B2300077926E /* CampaignListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC9756850F13B2300077926E /* CampaignListViewController.m */; };
 		FC9756890F13B4070077926E /* CampaignListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC9756880F13B4070077926E /* CampaignListView.xib */; };
 		FC97568A0F13B4070077926E /* CampaignListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC9756880F13B4070077926E /* CampaignListView.xib */; };
 /* End PBXBuildFile section */
@@ -448,7 +447,6 @@
 				D2AD6B170EFFF62900DB13FD /* AccountTest.m in Sources */,
 				D2AD6B1C0EFFF66B00DB13FD /* Account.m in Sources */,
 				FC9755D50F13A88F0077926E /* CampaignList.m in Sources */,
-				FC9756870F13B2300077926E /* CampaignListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

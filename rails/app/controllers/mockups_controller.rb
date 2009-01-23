@@ -18,14 +18,10 @@ class MockupsController < ApplicationController
     layout 'application'
   end
 
-  def sam_create_question
-    layout 'application'
-  end
-
   private
 
     def select_layout
-      @layout || false
+      @layout || 'application'
     end
 
     def layout(name)

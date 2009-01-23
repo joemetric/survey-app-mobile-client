@@ -1,0 +1,6 @@
+/* @group PNG Fixes
+----------------------------------- */
+
+img { behavior: url(/javascripts/iepngfix.htc); }
+
+/* @end PNG Fixes */
