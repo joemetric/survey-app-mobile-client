@@ -64,71 +64,8 @@
     </div>
   </div> <!-- /div.grey_box.create_question (step 2) -->
 
-
-
-
-
-<!-- STEP 3 MEANT FOR SURVEY FORM 
-
-  <div class="grey_box create_question">
-    <h2>
-      <span class="large_bullet">3</span>
-      Expiration Date
-    </h2>
-
-    <div class="field date">
-      <label>Date</label>
-      <input type="text" value="<%= 7.days.from_now.to_s(:simple) %>" />
-      <img src="/images/calendar.png" alt="select date" class="calendar_link" />
-      <p class="note"><strong>Note:</strong> The default is 7 days after creation.</p>
-    </div>
-  </div> --> <!-- /div.grey_box.create_question (step 3) -->
-
-<!-- STEP 4 MEANT FOR SURVEY FORM 
-
-  <div id="budget_section" class="grey_box create_question">
-    <h2>
-      <span class="large_bullet">4</span>
-      Budget
-    </h2>
-    <div class="field">
-      <label>Answers</label>
-      <input type="text" />
-      <p>How many answers are you looking for?</p>
-    </div>
-    <div class="field">
-      <label>Value</label>
-      <span class="dollar_sign">$</span>
-      <input type="text" />
-      <p>How much would you like to pay for each answer?</p>
-    </div>
-    <div class="field">
-      <label>Fee</label>
-      <span class="dollar_sign">$</span>
-      <span class="fee">0.10</span> 
-      <p>JoeMetric service fee.</p>
-    </div>
-    <br class="clear" />
-
-    <div id="budget_calculations">
-      <div class="border">
-         <span>10000</span>
-         <img src="/images/multiply.png" alt="" />
-         <img src="/images/left_parentheses.png" alt="" />
-         <span>$ 0.50</span>
-         <img src="/images/plus.png" alt="" />
-         <span>$ 0.10</span>
-         <img src="/images/right_parentheses.png" alt="" />
-         <img src="/images/equal.png" alt="" />
-         <span>$ 6000</span>
-       </div>
-    </div>
-    <p class="note"><strong>Note:</strong> A question can be cancelled and pulled from the JoeMetric network at anytime.</p>
-    <br class="clear" />
-  </div> -->
-
   <div class="submit">
-    <input type="submit" value="submit" />
-    <a href="#" id="iphone_preview">preview</a>
+    <input type="image" src="/images/save_question_button.png" alt="Save Changes" />
+    <a href="#" class="cancel_button">cancel</a>
   </div>
 </form>
