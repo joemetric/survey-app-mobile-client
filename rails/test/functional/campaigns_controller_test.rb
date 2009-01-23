@@ -1,4 +1,4 @@
-require 'test_helper'
+require File.join(File.dirname(__FILE__), '..', 'test_helper')
 
 class CampaignsControllerTest < ActionController::TestCase
   def test_should_get_index
@@ -14,7 +14,7 @@ class CampaignsControllerTest < ActionController::TestCase
 
   def test_should_create_campaign
     assert_difference('Campaign.count') do
-      post :create, :campaign => { }
+      post :create, :campaign => { :name => "new campaign", :amount => 1.2 }
     end
 
     assert_redirected_to campaign_path(assigns(:campaign))

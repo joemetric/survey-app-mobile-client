@@ -1,9 +1,10 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
+  id: 1
   text: MyString
-  amount: 1.0
+  campaign_id: 1
 
 two:
+  id: 2
   text: MyString
-  amount: 1.0
