@@ -68,6 +68,7 @@
     
 	[self.navigationController pushViewController:questionListViewController animated:YES];
 	NSLog(@"Campaign name: %@", questionListViewController.campaignName);
+	NSLog(@"Campaign id: %@", questionListViewController.campaignId);
     [questionListViewController release];    
 }
 

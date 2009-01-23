@@ -90,8 +90,8 @@
 
 - (void)dealloc {
     [questions release];
-	[campaignId release];
-	[campaignName release];
+	[_campaignId release];
+	[_campaignName release];
     [super dealloc];
 }
 
