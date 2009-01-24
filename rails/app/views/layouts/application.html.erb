@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/ie.css" />
   <![endif]-->
 </head>
-<body>
+<body class="<%= "#{params[:controller]} #{params[:action]}" %>">
   <%= render :partial => 'shared/header' %>
   <div id="container">
     <%= yield %>

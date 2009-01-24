@@ -68,6 +68,10 @@ p.note span {
   font-weight: bold;
 }
 
+body.campaigns.edit p.note {
+  display: none;
+}
+
 div.field.date input {
   width: 110px;
   font-size: 16px;
