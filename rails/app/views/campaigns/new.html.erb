@@ -3,27 +3,10 @@
 <% form_for(@campaign) do |f| %>
   <%= f.error_messages %>
 
-  <div class="grey_box">
-    <h2>
-      <span class="large_bullet">1</span>
-      Campaign Details
-    </h2>
-
-    <div class="field">
-      <%= f.label :name %>
-      <%= f.text_field :name %>
-      <p class="note"><span>Example:</span> iPod Feature Study for Apple</p>
-    </div>
-
-    <div class="field">
-      <%= f.label :amount %>
-      <%= f.text_field :amount %>
-      <p class="note"><span>Example:</span> iPod Feature Study for Apple</p>
-    </div>
-  </div> <!-- /div.grey_box (step 1) -->
+  <%= render :partial => 'form', :locals => { :f => f } %>
 
   <div class="submit">
     <input type="image" src="/images/create_survey_button.png" alt="create survey" />
-    <a href="#" class="cancel_button">cancel</a>
+    <%= link_to 'cancel', campaigns_path, :class => 'cancel_button' %>
   </div>
 <% end %>
