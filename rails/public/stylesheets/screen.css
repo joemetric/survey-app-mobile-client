@@ -76,9 +76,9 @@ h1 {
 }
 
 h1 span.campaign {
-  margin-left: 10px;
-  color: #666;
-  font-size: 18px;
+  display: block;
+  color: #444;
+  font-size: 15px;
   letter-spacing: 0;
 }
 
@@ -227,7 +227,7 @@ div#budget_calculations div.border {
 /* @group Active Campaigns 
 ----------------------------------- */
 
-div.campaigns {
+div#campaigns {
   overflow: hidden;
   margin-left: -20px;
 }
@@ -241,7 +241,7 @@ div.grey_box.campaign_progress {
 
 div.grey_box.campaign_progress h2 {
   margin: 0 0 6px 0;
-  font-size: 15px;
+  font-size: 18px;
   font-weight: bold;
 }
 
