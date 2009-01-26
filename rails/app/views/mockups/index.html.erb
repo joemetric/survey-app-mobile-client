@@ -3,7 +3,7 @@
   <ul id="mockups">
   <% @pages.each do |page| -%>
     <li>
-      <%= link_to page.gsub('_', ' '), :action => page -%>
+      <%= link_to(page.gsub('_', ' ').gsub('/', ': '), :action => page) unless page == 'index' -%>
     </li>
   <% end -%>
   </ul>
