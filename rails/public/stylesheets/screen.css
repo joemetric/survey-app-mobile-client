@@ -243,6 +243,7 @@ div.grey_box.campaign_progress h2 {
   margin: 0 0 6px 0;
   font-size: 18px;
   font-weight: bold;
+  text-shadow: 1px 1px 1px #fff;
 }
 
 div.grey_box.campaign_progress p {
@@ -251,7 +252,7 @@ div.grey_box.campaign_progress p {
 
 div.grey_box.campaign_progress p.expiration {
   margin-bottom: 25px;
-  color: #333;
+  color: #555;
   font-weight: bold;
 }
 
@@ -269,7 +270,6 @@ div.grey_box.campaign_progress p.expiration span {
 
 div.grey_box.campaign_progress p.stats {
   overflow: hidden;
-  width: 290px;
   margin-bottom: 15px;
   padding: 0 10px 0 0;
   font-weight: bold;
@@ -289,6 +289,7 @@ div.grey_box.campaign_progress p.stats span.number {
   color: #227d1c;
   font-size: 21px;
   text-align: right;
+  text-shadow: 1px 1px 1px #fff;
 }
 
 div.grey_box.campaign_progress p.stats span.type {
