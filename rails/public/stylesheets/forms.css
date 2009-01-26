@@ -34,7 +34,7 @@ div.field input {
   background: #fff url(/images/textfield_background.gif) no-repeat;
 }
 
-div.field input[type=text]:focus,
+div.field input:focus,
 div.field textarea:focus {
   border: 1px solid #666;
 }
@@ -64,6 +64,14 @@ p.note {
   line-height: 21px;
 }
 
+p.note span {
+  font-weight: bold;
+}
+
+body.campaigns.edit p.note {
+  display: none;
+}
+
 div.field.date input {
   width: 110px;
   font-size: 16px;
@@ -78,3 +86,87 @@ div.field.date img.calendar_link {
 div.field.date p.note {
   padding-left: 160px;
 }
+
+div.submit {
+  overflow: hidden;
+  margin-bottom: 30px;
+  padding: 15px 0 0 80px;
+}
+
+div.submit input {
+  float: left;
+  margin-right: 10px;
+}
+
+div.submit a.cancel {
+  float: left;
+  display: block;
+  height: 33px;
+  margin: 0 10px;
+  color: #d00;
+  font-size: 12px;
+  line-height: 33px;
+}
+
+div.submit a.cancel_button {
+  float: left;
+  display: block;
+  width: 105px;
+  height: 33px;  
+  margin: 0 10px;
+  text-indent: -999em;
+  background: url(/images/cancel_button.png);
+}
+
+
+/* @group SAM: Create Campaign
+----------------------------------- */
+
+div#budget_section div.field {
+  float: left;
+  position: relative;
+  width: 140px;
+  margin-right: 80px;
+}
+
+div#budget_section div.field p {
+  padding-top: 7px;
+  font-size: 12px;
+  line-height: 21px;
+}
+
+div#budget_section p.note {
+  width: 215px;
+  margin-top: 25px;
+}
+
+div#budget_section div.field label {
+  float: none;
+  margin-bottom: 17px;
+}
+
+div#budget_section div.field input {
+  float: none;
+  width: 75px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+div#budget_section span.dollar_sign {
+  position: absolute;
+  top: 41px;
+  left: 8px;
+  color: #26a01e;
+  font-size: 14px;
+}
+
+div#budget_section span.fee {
+  display: block;
+  height: 34px;
+  color: #191919;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 34px;
+}
+
+/* @end SAM: Create Campaign */

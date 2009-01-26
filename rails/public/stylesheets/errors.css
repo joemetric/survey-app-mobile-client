@@ -1,0 +1,32 @@
+div.field div.fieldWithErrors input {
+  border: 1px solid #d00;
+}
+
+div.field div.fieldWithErrors label {
+  color: #d00;
+}
+
+div#errorExplanation {
+  width: 400px;
+  margin-bottom: 20px;
+  padding: 7px 7px 12px 7px;
+}
+
+div#errorExplanation h2 {
+  margin-bottom: 15px;
+  padding: 5px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: left;
+  background-color: #c00;
+}
+
+div#errorExplanation p {
+  display: none;
+}
+
+div#errorExplanation ul li {
+  padding-left: 5px;
+  font-size: 12px;
+}

@@ -10,10 +10,27 @@
 #import "SingleQuestionViewController.h"
 #import "Question.h"
 #import "QuestionList.h"
+#import "Campaign.h"
 
 @implementation QuestionListViewController
 
+@synthesize campaignId = _campaignId;
+@synthesize campaignName = _campaignName;
 @synthesize questions;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil campaign:(Campaign *)campaign {  
+    [self initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self.campaignId = campaign.dbId;
+	self.campaignName = campaign.name;
+    return self;
+}
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+        // Custom initialization
+    }
+    return self;
+}
 
 - (void)awakeFromNib {
     self.navigationItem.title = @"Questions";
@@ -73,6 +90,8 @@
 
 - (void)dealloc {
     [questions release];
+	[_campaignId release];
+	[_campaignName release];
     [super dealloc];
 }
 

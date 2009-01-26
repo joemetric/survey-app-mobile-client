@@ -3,18 +3,10 @@
 <% form_for(@campaign) do |f| %>
   <%= f.error_messages %>
 
-  <p>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :amount %>
-    <%= f.text_field :amount %>
-  </p>
+  <%= render :partial => 'form', :locals => { :f => f } %>
 
-  <p>
-    <%= f.submit "Create" %>
-  </p>
+  <div class="submit">
+    <input type="image" src="/images/create_survey_button.png" alt="create survey" />
+    <%= link_to 'cancel', campaigns_path, :class => 'cancel_button' %>
+  </div>
 <% end %>
-
-<%= link_to 'Back', campaigns_path %>

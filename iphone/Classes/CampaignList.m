@@ -22,15 +22,20 @@
     if (self = [super init]) { 
         campaigns = [NSMutableArray arrayWithObjects:
 					 [[Campaign alloc] initWithName:@"Detergent Campaigns!" 
-											 amount:[[NSDecimalNumber alloc] initWithDouble:.50]],
+											 amount:[[NSDecimalNumber alloc] initWithDouble:.50]
+											   dbId:@"0"],
 					 [[Campaign alloc] initWithName:@"Rainbows for Turtles Campaign" 
-											 amount:[[NSDecimalNumber alloc] initWithDouble:4.50]],
+											 amount:[[NSDecimalNumber alloc] initWithDouble:4.50]
+											   dbId:@"0"],
 					 [[Campaign alloc] initWithName:@"Closet Campaigns (SCANDELOUS!)"
-											 amount:[[NSDecimalNumber alloc] initWithDouble:3.75]],
+											 amount:[[NSDecimalNumber alloc] initWithDouble:3.75]
+											   dbId:@"0"],
 					 [[Campaign alloc] initWithName:@"Campaign of the Day" 
-											 amount:[[NSDecimalNumber alloc] initWithDouble:2.00]], 
+											 amount:[[NSDecimalNumber alloc] initWithDouble:2.00]
+											   dbId:@"0"],
 					 [[Campaign alloc] initWithName:@"Some really really long campaign that goes on and on and on" 
-											 amount:[[NSDecimalNumber alloc] initWithDouble:10.00]], 
+											 amount:[[NSDecimalNumber alloc] initWithDouble:10.00]
+											   dbId:@"0"],
 					 nil];
         [campaigns retain];
     }
@@ -112,9 +117,7 @@
         return;
     }
     
-    if ([elementName isEqualToString:@"name"]) {
-        [self createStringBufferForProperty];
-    } else if ([elementName isEqualToString:@"amount"]) {
+    if ([elementName isEqualToString:@"name"] || [elementName isEqualToString:@"amount"] || [elementName isEqualToString:@"id"]) {
         [self createStringBufferForProperty];
     } else {
         self.contentOfCurrentCampaignProperty = nil;
@@ -129,7 +132,9 @@
         self.currentCampaignObject.name = self.contentOfCurrentCampaignProperty;
     } else if ([elementName isEqualToString:@"amount"]) {
         self.currentCampaignObject.amount = self.contentOfCurrentCampaignProperty;
-    }
+    } else if ([elementName isEqualToString:@"id"]) {
+		self.currentCampaignObject.dbId = self.contentOfCurrentCampaignProperty;
+	}
 }
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string

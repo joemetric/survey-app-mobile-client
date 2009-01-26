@@ -1,5 +1,6 @@
 @import "/stylesheets/reset.css";
 @import "/stylesheets/forms.css";
+@import "/stylesheets/errors.css";
 
 
 /* @group Header
@@ -11,13 +12,9 @@ div#header {
 }
 
 div#header ul {
-  list-style-type: none;
-  position: relative;
   width: 940px;
   height: 43px;
   margin: 0 auto;
-  font-family: arial, sans-serif;
-  font-size: 62.5%;
   background: url(/images/header_logo.png) no-repeat 0% 50%;
 }
 
@@ -35,8 +32,8 @@ div#header ul li a {
   font-weight: bold;
   line-height: 43px;
   text-decoration: none;
-  text-shadow: 1px 1px 1px #000;
-  opacity: 0.999
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.75);
+  opacity: 0.999;
 }
 
 div#header ul li a#global_navigation_account {
@@ -48,36 +45,6 @@ div#header ul li a#global_navigation_account:hover {
   color: #fff;
 }
 
-div#header ul li ul {
-  display: none;
-  position: absolute;
-  top: 60px;
-  right: 0;
-  background: none;
-}
-
-div#header ul li.active ul {
-  display: block;
-}
-
-div#header ul li ul li a {
-  height: auto;
-  border-bottom: 1px solid #9bed96;
-  padding-bottom: 3px;
-  color: #34942e;
-  font-size: 16px;
-  font-weight: normal;
-  line-height: inherit;
-  letter-spacing: -0.025em;
-  text-shadow: none;
-  opacity: 1;
-}
-
-div#header ul li ul li a:hover {
-  color: #34942e;
-  border-bottom: 1px solid #34942e;
-}
-
 /* @end Header */
 
 
@@ -87,27 +54,34 @@ div#header ul li ul li a:hover {
 div#container {
   width: 940px;
   margin: 0 auto;
-  font-family: arial, sans-serif;
   font-size: 62.5%;
 }
 
 /* @end Container */
 
+h1, h2, h3, h4 {
+  font-family: "Helvetica Neue", helvetica, arial, sans-serif;
+}
 
 h1 {
   position: relative;
   margin-bottom: 30px;
   color: #34942e;
-  font-family: "Helvetica Neue", helvetica, arial, sans-serif;
   font-size: 42px;
   letter-spacing: -0.03em;
+}
+
+h1 span.campaign {
+  margin-left: 10px;
+  color: #666;
+  font-size: 18px;
+  letter-spacing: 0;
 }
 
 h2 {
   position: relative;
   margin-bottom: 35px;
   color: #222;
-  font-family: "Helvetica Neue", helvetica, arial, sans-serif;
   font-size: 21px;
 }
 
@@ -128,8 +102,10 @@ h2 span.large_bullet {
 
 
 div.grey_box {
+  overflow: hidden;
   margin-bottom: 21px;
-  background: #f3f3f3;
+  padding: 30px 30px 30px 80px;
+  background: #eee;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
 }
@@ -137,10 +113,6 @@ div.grey_box {
 
 /* @group Create Question
 ----------------------------------- */
-
-div.grey_box.create_question { 
-  padding: 30px 30px 30px 80px;
-}
 
 div.grey_box.create_question div.field {
   margin-left: -22px;
@@ -212,52 +184,6 @@ div#question_type_section div.field label.active {
   font-weight: bold;
 }
 
-div#budget_section div.field {
-  float: left;
-  position: relative;
-  width: 140px;
-  margin-right: 80px;
-}
-
-div#budget_section div.field p {
-  font-size: 12px;
-  line-height: 21px;
-}
-
-div#budget_section p.note {
-  width: 215px;
-  margin-top: 25px;
-}
-
-div#budget_section div.field label {
-  float: none;
-  margin-bottom: 17px;
-}
-
-div#budget_section div.field input {
-  float: none;
-  width: 75px;
-  font-size: 18px;
-  font-weight: bold;
-}
-
-div#budget_section span.dollar_sign {
-  position: absolute;
-  top: 41px;
-  left: 8px;
-  color: #26a01e;
-  font-size: 14px;
-}
-
-div#budget_section span.fee {
-  display: block;
-  height: 34px;
-  color: #191919;
-  font-size: 18px;
-  font-weight: bold;
-  line-height: 34px;
-}
-
 div#budget_calculations {
   overflow: hidden;
   float: left;
@@ -292,3 +218,11 @@ div#budget_calculations div.border {
 }
 
 /* @end Create Question */
+
+
+/* @group Active Questions
+----------------------------------- */
+
+
+
+/* @end Active Questions */

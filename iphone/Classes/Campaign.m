@@ -12,7 +12,8 @@
 @implementation Campaign
 
 @synthesize name = _name;
-// Not synthesizing amount, instead we define a special setter and the getter below.
+@synthesize dbId = _dbId;
+// Not synthesizing amount or dbId, instead we define special setters and the getters below.
 
 - (id)init {
     return [super init];
@@ -32,10 +33,11 @@
 	}
 }
 
-- (id)initWithName:(NSString *)name amount:(NSDecimalNumber *)amount {
+- (id)initWithName:(NSString *)name amount:(id)amount dbId:(NSString *)dbId {
     [super init];
     self.name = name;
     self.amount = amount;
+	self.dbId = dbId;
     return self;
 }
 
@@ -45,7 +47,7 @@
     return [numberFormatter stringFromNumber:self.amount];
 }
 
-- (NSString *)campaignAndAmountAsString {
+- (NSString *)nameAndAmountAsString {
     return [NSString stringWithFormat:@"%@ : %@", [self amountAsDollarString], self.name];
 }
 
