@@ -2,6 +2,10 @@
 @import "/stylesheets/forms.css";
 @import "/stylesheets/errors.css";
 
+ul#mockups { font-size: 16px; }
+ul#mockups li { margin-bottom: 10px; }
+ul#mockups li a { border-bottom: 1px dotted blue; color: blue; text-decoration: none; }
+
 
 /* @group Header
 ----------------------------------- */
