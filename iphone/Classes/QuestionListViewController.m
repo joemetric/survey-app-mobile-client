@@ -20,8 +20,8 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil survey:(Survey *)survey {  
     [self initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    self.surveyId = survey.dbId;
-	self.surveyName = survey.name;
+    self.surveyId = survey.itemId;
+    self.surveyName = survey.name;
     return self;
 }
 

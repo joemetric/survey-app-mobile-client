@@ -9,7 +9,6 @@
 #import "SurveyListViewController.h"
 #import "QuestionListViewController.h"
 #import "Survey.h"
-#import "SurveyList.h"
 
 @implementation SurveyListViewController
 
@@ -17,7 +16,7 @@
 
 - (void)awakeFromNib {
     self.navigationItem.title = @"Surveys";
-    self.surveys = [[SurveyList alloc] init];
+    self.surveys = [Survey findAll];
     
     // add our custom button to show our modal view controller
     UIButton* modalViewButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
@@ -32,7 +31,7 @@
 }
 
 -(void)refreshSurveys {
-    [self.surveys refreshSurveyList];
+    self.surveys = [Survey findAll];
     [self.tableView reloadData];
 }
 
@@ -54,7 +53,7 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
-    Survey *survey = [self.surveys surveyAtIndex:indexPath.row];
+    Survey *survey = [self.surveys objectAtIndex:indexPath.row];
     cell.text = [survey nameAndAmountAsString];
     return cell;
 }
@@ -62,13 +61,15 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"Selected row %d", indexPath.row);
     QuestionListViewController *questionListViewController = 
-		[[QuestionListViewController alloc] initWithNibName:@"QuestionListView" 
-													 bundle:nil 
-												   survey:[self.surveys surveyAtIndex:indexPath.row]];
+        [[QuestionListViewController alloc] initWithNibName:@"QuestionListView" 
+                                            bundle:nil 
+                                            survey:[self.surveys objectAtIndex:indexPath.row]];
     
-	[self.navigationController pushViewController:questionListViewController animated:YES];
-	NSLog(@"Survey name: %@", questionListViewController.surveyName);
-	NSLog(@"Survey id: %@", questionListViewController.surveyId);
+    [self.navigationController pushViewController:questionListViewController animated:YES];
+
+    NSLog(@"Survey name: %@", questionListViewController.surveyName);
+    NSLog(@"Survey id: %@", questionListViewController.surveyId);
+
     [questionListViewController release];    
 }
 

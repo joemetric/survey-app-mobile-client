@@ -7,13 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SurveyList.h"
-
 
 @interface SurveyListViewController : UITableViewController {
-	SurveyList *surveys;
+    NSArray *surveys;
 }
 
-@property (nonatomic, retain) SurveyList *surveys;
+@property (nonatomic, retain) NSArray *surveys;
 
 @end

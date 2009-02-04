@@ -8,37 +8,41 @@
 
 #import "Survey.h"
 
-
 @implementation Survey
 
-@synthesize name = _name;
-@synthesize dbId = _dbId;
-// Not synthesizing amount or dbId, instead we define special setters and the getters below.
+@synthesize name;
+@synthesize amount;
 
-- (id)init {
-    return [super init];
++ (NSString *)resourceName
+{
+    return @"campaigns"; // TODO change to surveys after the rails app changes
 }
 
-- (NSDecimalNumber *)amount {
-	return _amount;
++ (NSString *)resourceKey
+{
+    return @"campaign"; // TODO change to survey after the rails app changes
 }
 
-- (void)setAmount:(id)amount {
-	[_amount release];
-	
-	if ([amount isKindOfClass:[NSString class]]) {
-		_amount = [[NSDecimalNumber decimalNumberWithString:amount] retain];
-	} else {
-		_amount = [[amount copy] retain];
-	}
++ (id)newFromDictionary:(NSDictionary *) dict
+{
+    Survey *survey = [[Survey alloc] init];
+    survey.itemId  = [[[dict objectForKey:[self resourceKey]] objectForKey:@"id"] integerValue];
+    survey.name    = [[dict objectForKey:[self resourceKey]] objectForKey:@"name"];
+    survey.amount  = [[dict objectForKey:[self resourceKey]] objectForKey:@"amount"];
+    return survey;
 }
+    
+- (NSDictionary *)toDictionary
+{
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    [parameters setObject:self.name forKey:@"name"];
+    [parameters setObject:self.name forKey:@"amount"];
 
-- (id)initWithName:(NSString *)name amount:(id)amount dbId:(NSString *)dbId {
-    [super init];
-    self.name = name;
-    self.amount = amount;
-	self.dbId = dbId;
-    return self;
+    NSMutableDictionary *container = [[NSMutableDictionary alloc] init];
+    [container setObject:parameters forKey:[[self class] resourceKey]];
+
+    [parameters release];
+    return [container autorelease];
 }
 
 - (NSString *)amountAsDollarString {
