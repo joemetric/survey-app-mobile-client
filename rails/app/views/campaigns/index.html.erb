@@ -1,27 +1,28 @@
-<h1>Listing Campaigns</h1>
+<h1>In Progress</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Amount</th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% for campaign in @campaigns %>
-  <tr>
-    <td><%= campaign.name %></td>
-    <td><%= campaign.amount %></td>
-    <td><%= link_to 'Show', campaign %></td>
-    <td><%= link_to 'Edit', edit_campaign_path(campaign) %></td>
-    <td><%= link_to 'Destroy', campaign, :confirm => 'Are you sure?', :method => :delete %></td>
-    <td><%= link_to 'Questions', campaign_questions_path(campaign) %>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New campaign', new_campaign_path %>
+<div id="campaigns">
+  <% for campaign in @campaigns %>
+    <div class="grey_box campaign_progress">
+      <h2><%= campaign.name %></h2>
+      <p class="expiration"><span>Expires:</span> December 21, 2012 at 12:01am</p>
+      <p class="actions">
+        <%= link_to 'view details', campaign %>
+        <%= link_to 'edit campaign', edit_campaign_path(campaign) %>
+      </p>
+      <p class="stats">
+        <%= link_to 'view', "#{campaign_path(campaign)}#complete" %>
+        <span class="number">218</span>
+        <span class="type">Responses Completed</span>
+      </p>
+      <p class="stats highlight">
+        <%= link_to 'view', "#{campaign_path(campaign)}#pending" %>
+        <span class="number">68</span>
+        <span class="type">Responses Pending Review</span>
+      </p>
+      <p class="stats">
+        <span class="number">714</span>
+        <span class="type">Responses Remaining</span>
+      </p>
+    </div> <!-- /div.grey_box -->
+  <% end %>
+</div> <!-- /div#campaigns -->

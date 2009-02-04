@@ -2,6 +2,10 @@
 @import "/stylesheets/forms.css";
 @import "/stylesheets/errors.css";
 
+ul#mockups { font-size: 16px; }
+ul#mockups li { margin-bottom: 10px; }
+ul#mockups li a { border-bottom: 1px dotted #99f; color: blue; text-decoration: none; }
+
 
 /* @group Header
 ----------------------------------- */
@@ -72,9 +76,9 @@ h1 {
 }
 
 h1 span.campaign {
-  margin-left: 10px;
-  color: #666;
-  font-size: 18px;
+  display: block;
+  color: #444;
+  font-size: 15px;
   letter-spacing: 0;
 }
 
@@ -220,9 +224,86 @@ div#budget_calculations div.border {
 /* @end Create Question */
 
 
-/* @group Active Questions
+/* @group Active Campaigns 
 ----------------------------------- */
 
+div#campaigns {
+  overflow: hidden;
+  margin-left: -20px;
+}
 
+div.grey_box.campaign_progress {
+  float: left;
+  width: 400px;
+  margin-left: 20px;
+  padding: 30px 30px 15px 30px;
+}
 
-/* @end Active Questions */
+div.grey_box.campaign_progress h2 {
+  margin: 0 0 6px 0;
+  font-size: 18px;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px #fff;
+}
+
+div.grey_box.campaign_progress p {
+  font-size: 12px;
+}
+
+div.grey_box.campaign_progress p.expiration {
+  margin-bottom: 25px;
+  color: #555;
+  font-weight: bold;
+}
+
+div.grey_box.campaign_progress p.actions {
+  margin-bottom: 20px;
+}
+
+div.grey_box.campaign_progress p.actions a {
+  margin-right: 10px;
+}
+
+div.grey_box.campaign_progress p.expiration span {
+  font-weight: normal;
+}
+
+div.grey_box.campaign_progress p.stats {
+  overflow: hidden;
+  margin-bottom: 15px;
+  padding: 0 10px 0 0;
+  font-weight: bold;
+}
+
+div.grey_box.campaign_progress p.stats.highlight {
+  border: 1px solid #cdcdb9;
+  padding: 5px 10px 5px 0;
+  background: #f2f2b2;
+}
+
+div.grey_box.campaign_progress p.stats span.number {
+  float: left;
+  display: block;
+  width: 70px;
+  margin-right: 10px;
+  color: #227d1c;
+  font-size: 21px;
+  text-align: right;
+  text-shadow: 1px 1px 1px #fff;
+}
+
+div.grey_box.campaign_progress p.stats span.type {
+  float: left;
+  display: block;
+  line-height: 21px;
+}
+
+div.grey_box.campaign_progress p.stats a {
+  float: right;
+  display: block;
+  color: #000;
+  font-weight: normal;
+  line-height: 21px;
+}
+
+/* @end Active Campaigns */

@@ -1,8 +1,10 @@
 <div id="container">
   <h1>Mockups</h1>
-  <ul style="font-size: 16px;">
+  <ul id="mockups">
   <% @pages.each do |page| -%>
-    <li style="margin-bottom: 10px;"><%= link_to page, :action => page -%></li>
+    <li>
+      <%= link_to(page.gsub('_', ' ').gsub('/', ': '), :action => page) unless page == 'index' -%>
+    </li>
   <% end -%>
   </ul>
 </div>
