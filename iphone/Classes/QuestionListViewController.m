@@ -10,18 +10,18 @@
 #import "SingleQuestionViewController.h"
 #import "Question.h"
 #import "QuestionList.h"
-#import "Campaign.h"
+#import "Survey.h"
 
 @implementation QuestionListViewController
 
-@synthesize campaignId = _campaignId;
-@synthesize campaignName = _campaignName;
+@synthesize surveyId = _surveyId;
+@synthesize surveyName = _surveyName;
 @synthesize questions;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil campaign:(Campaign *)campaign {  
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil survey:(Survey *)survey {  
     [self initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    self.campaignId = campaign.dbId;
-	self.campaignName = campaign.name;
+    self.surveyId = survey.dbId;
+	self.surveyName = survey.name;
     return self;
 }
 
@@ -90,8 +90,8 @@
 
 - (void)dealloc {
     [questions release];
-	[_campaignId release];
-	[_campaignName release];
+	[_surveyId release];
+	[_surveyName release];
     [super dealloc];
 }
 

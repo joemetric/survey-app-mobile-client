@@ -8,19 +8,19 @@
 
 #import <UIKit/UIKit.h>
 #import "QuestionList.h"
-#import "Campaign.h"
+#import "Survey.h"
 
 
 @interface QuestionListViewController : UITableViewController {
-	NSString *_campaignId;
-	IBOutlet UINavigationItem *_campaignName;
+	NSString *_surveyId;
+	IBOutlet UINavigationItem *_surveyName;
 	QuestionList *questions;
 }
 
-@property (nonatomic, retain) NSString *campaignId;
-@property (nonatomic, retain) UINavigationItem *campaignName;
+@property (nonatomic, retain) NSString *surveyId;
+@property (nonatomic, retain) UINavigationItem *surveyName;
 @property (nonatomic, retain) QuestionList *questions;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil campaign:(Campaign *)campaign;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil survey:(Survey *)survey;
 
 @end
