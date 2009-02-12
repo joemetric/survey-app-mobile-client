@@ -15,9 +15,15 @@
 // NO:
 //   enter credentials and create account
 
-@interface Account : NSObject {
+#import "Resource.h"
 
+@interface Account : Resource {
+    NSString *username;
+    NSString *password;
 }
+
+@property (nonatomic, retain) NSString *username;
+@property (nonatomic, retain) NSString *password;
 
 - (BOOL) isCreated;
 - (BOOL) credentialFileExists;
