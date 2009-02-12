@@ -81,6 +81,7 @@
 - (void)dealloc {
     [questions release];
     [survey release];
+    [surveyName release];
     [super dealloc];
 }
 

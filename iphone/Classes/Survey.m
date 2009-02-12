@@ -64,8 +64,8 @@
 }
 
 - (void)dealloc {
-    [self.name release];
-    [self.amount release];
+    [name release];
+    [amount release];
     [super dealloc];
 }
 

@@ -12,9 +12,9 @@
 
 @implementation QuestionViewController
 
-@synthesize selectedQuestion = _selectedQuestion;
-@synthesize selectedQuestionLabel = _selectedQuestionLabel;
-@synthesize selectedAmountLabel = _selectedAmountLabel;
+@synthesize selectedQuestion;
+@synthesize selectedQuestionLabel;
+@synthesize selectedAmountLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil question:(Question *)question {    
     [self initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -50,9 +50,9 @@
 
 
 - (void)dealloc {
-    [self.selectedQuestion release];
-    [self.selectedQuestionLabel release];
-    [self.selectedAmountLabel release];
+    [selectedQuestion release];
+    [selectedQuestionLabel release];
+    [selectedAmountLabel release];
     [super dealloc];
 }
 

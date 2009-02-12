@@ -11,9 +11,9 @@
 
 
 @interface QuestionViewController : UIViewController {
-    IBOutlet UILabel *_selectedQuestionLabel;
-    IBOutlet UILabel *_selectedAmountLabel;
-    Question *_selectedQuestion;
+    IBOutlet UILabel *selectedQuestionLabel;
+    IBOutlet UILabel *selectedAmountLabel;
+    Question *selectedQuestion;
 }
 
 @property (nonatomic, retain) UILabel *selectedQuestionLabel;
