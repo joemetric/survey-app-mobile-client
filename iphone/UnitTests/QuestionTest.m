@@ -13,22 +13,26 @@
 
 - (void) testAmountAsDollarStringWithZero
 {
-  Question *question = [[Question alloc] initWithText:@"" amount:[NSDecimalNumber zero]];
+    Question *question = [[Question alloc] init];
+    question.amount = [NSDecimalNumber zero];
     
-  STAssertEqualStrings(@"$0.00", [question amountAsDollarString], @"zero format");
+    STAssertEqualStrings(@"$0.00", [question amountAsDollarString], @"zero format");
 }
 
 - (void) testAmountAsDollarStringWithNonZero
 {
-  Question *question = [[Question alloc] initWithText:@"" amount:[NSDecimalNumber decimalNumberWithString:@"1925.32"]];
+    Question *question = [[Question alloc] init];
+    question.amount = [NSDecimalNumber decimalNumberWithString:@"1925.32"];
     
-  STAssertEqualStrings(@"$1,925.32", [question amountAsDollarString], @"non-zero format");
+    STAssertEqualStrings(@"$1,925.32", [question amountAsDollarString], @"non-zero format");
 }
 
 - (void) testQuestionAndAmountAsString
 {
-  Question *question = [[Question alloc] initWithText:@"A question?" amount:[NSDecimalNumber decimalNumberWithString:@"1925.32"]];
-
-  STAssertEqualStrings(@"$1,925.32 : A question?", [question questionAndAmountAsString], @"question and amount");
+    Question *question = [[Question alloc] init];
+    question.text = @"A question?";
+    question.amount = [NSDecimalNumber decimalNumberWithString:@"1925.32"];
+    
+    STAssertEqualStrings(@"$1,925.32 : A question?", [question questionAndAmountAsString], @"question and amount");
 }
 @end

@@ -8,36 +8,43 @@
 
 #import "Question.h"
 
-
 @implementation Question
 
-@synthesize text = _text;
-// Not synthesizing amount, instead we define a special setter and the getter below.
+@synthesize text;
+@synthesize amount;
 
-- (id)init {
-    return [super init];
++ (NSString *)resourceName
+{
+    return @"questions";
 }
 
-- (NSDecimalNumber *)amount {
-	return _amount;
++ (NSString *)resourceKey
+{
+    return @"question";
 }
 
-- (void)setAmount:(id)amount {
-	[_amount release];
-	
-	if ([amount isKindOfClass:[NSString class]]) {
-		_amount = [[NSDecimalNumber decimalNumberWithString:amount] retain];
-	} else {
-		_amount = [[amount copy] retain];
-	}
++ (id)newFromDictionary:(NSDictionary *)dict
+{
+    Question *question = [[Question alloc] init];
+    question.itemId = [[[dict objectForKey:[self resourceKey]] objectForKey:@"id"] integerValue];
+    question.text = [[dict objectForKey:[self resourceKey]] objectForKey:@"text"];
+    question.amount = [[dict objectForKey:[self resourceKey]] objectForKey:@"amount"];
+    return question;
 }
 
-- (id)initWithText:(NSString *)text amount:(NSDecimalNumber *)amount {
-    [super init];
-    self.text = text;
-    self.amount = amount;
-    return self;
+- (NSDictionary *)toDictionary
+{
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    [parameters setObject:self.text forKey:@"text"];
+    [parameters setObject:self.amount forKey:@"amount"];
+
+    NSMutableDictionary *container = [[NSMutableDictionary alloc] init];
+    [container setObject:parameters forKey:[[self class] resourceKey]];
+
+    [parameters release];
+    return [container autorelease];
 }
+
 
 - (NSString *)amountAsDollarString {
     NSNumberFormatter *numberFormatter = [[[NSNumberFormatter alloc] init] autorelease];
@@ -50,8 +57,8 @@
 }
 
 - (void)dealloc {
-    [self.text release];
-    [self.amount release];
+    [text release];
+    [amount release];
     [super dealloc];
 }
     

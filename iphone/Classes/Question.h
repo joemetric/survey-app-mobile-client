@@ -6,16 +6,16 @@
 //  Copyright 2008 EdgeCase, LLC. All rights reserved.
 //
 
+#import "Resource.h"
 
-@interface Question : NSObject {
-    NSString *_text;
-    NSDecimalNumber *_amount;
+@interface Question : Resource {
+    NSString        *text;
+    NSDecimalNumber *amount;
 }
 
 @property (nonatomic, retain) NSString *text;
 @property (nonatomic, retain) NSDecimalNumber *amount;
 
-- (id)initWithText:(NSString *)text amount:(id)amount;
 - (NSString *)questionAndAmountAsString;
 - (NSString *)amountAsDollarString;
 
