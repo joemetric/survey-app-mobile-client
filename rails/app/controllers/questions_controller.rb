@@ -8,6 +8,7 @@ class QuestionsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @questions }
+      format.json { render :json => @questions }
     end
   end
 
