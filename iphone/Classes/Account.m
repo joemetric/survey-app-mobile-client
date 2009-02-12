@@ -29,7 +29,7 @@
     Account *account = [[Account alloc] init];
     account.itemId   = [[[dict objectForKey:[self resourceKey]] objectForKey:@"id"] integerValue];
     account.username = [[dict objectForKey:[self resourceKey]] objectForKey:@"username"];
-    account.username = [[dict objectForKey:[self resourceKey]] objectForKey:@"username"];
+    account.password = [[dict objectForKey:[self resourceKey]] objectForKey:@"password"];
     return account;
 }
 
