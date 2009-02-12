@@ -11,6 +11,7 @@
 + (id) findWithId:(NSInteger) item_id;
 + (id) createWithParams:(NSDictionary*) parameters;
 + (BOOL) deleteWithId:(NSInteger) item_id;
++ (id) findAllFromRelation:(id) relative;
 
 - (BOOL)update;
 - (NSDictionary *)toDictionary;

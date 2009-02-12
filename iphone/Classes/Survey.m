@@ -7,6 +7,7 @@
 //
 
 #import "Survey.h"
+#import "Question.h"
 
 @implementation Survey
 
@@ -59,7 +60,7 @@
 
 - (NSArray *)questions
 {
-    return [[[NSArray alloc] init] autorelease];
+    return [Question findAllFromRelation:self];
 }
 
 - (void)dealloc {

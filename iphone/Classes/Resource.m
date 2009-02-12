@@ -47,6 +47,24 @@
     return [items autorelease];
 }
 
++ (id) findAllFromRelation:(id) relative
+{
+    NSString *path = [NSString stringWithFormat:@"/%@/%d/%@.json", [[relative class] resourceName], [relative itemId], [self resourceName]];
+    Rest           *rest = [[Rest alloc] initWithHost:@"foo:bar@localhost" atPort:3000];
+    NSMutableArray *items = [[NSMutableArray alloc] init];
+    id              item;
+    
+    NSArray *item_dicts = [rest GET:path];
+    for (id dict in item_dicts) {
+        item = [self newFromDictionary:dict];
+        [items addObject:item];
+        [item release];
+    }
+
+    [rest release];
+    return [items autorelease];
+}
+
 // SHOW - GET
 + (id) findWithId:(NSInteger) item_id
 {
