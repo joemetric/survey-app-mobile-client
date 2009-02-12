@@ -113,9 +113,20 @@ def run_tests
 end
 
 desc "Run the clang static analyzer on the classes files"
-task :scan do
-  Dir.glob("Classes/*.m").each do |m|
-    scan m
+task :scan => [:clean] do
+  puts "Scanning"
+  `xcodebuild -sdk iphonesimulator2.1`
+  o = `scan-build xcodebuild -sdk iphonesimulator2.1`
+  puts o
+  if o =~ /scan-view (\/.+)'/
+    results_dir = $1
+    if File.exist?(File.join(results_dir, 'index.html'))
+      `open #{File.join(results_dir, 'index.html')}`
+    else
+      puts "Couldn't find results in #{results_dir}"
+    end
+  else
+    puts "no report."
   end
 end
 
@@ -143,8 +154,4 @@ end
 
 def reset
   "\e[00;m"
-end
-
-def scan(file)
-  puts `scan-build gcc -g -c #{file}`
 end
