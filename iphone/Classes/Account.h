@@ -26,7 +26,7 @@
 @property (nonatomic, retain) NSString *password;
 
 - (BOOL) isCreated;
-- (BOOL) credentialFileExists;
+// - (BOOL) credentialFileExists;
 - (void) createCredentialFile;
 - (NSString*) credentialFilePath;
 
