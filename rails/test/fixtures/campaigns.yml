@@ -1,11 +1,4 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
 one:
   id: 1
-  name: Campaign1
-  amount: 5
-
-two:
-  id: 2
-  name: Campaign2
-  amount: 3
+  name: Test Survey One
+  amount: 123.45
