@@ -33,8 +33,7 @@
 
 - (void)awakeFromNib {
     self.navigationItem.title = @"Questions";
-    self.questions = [[NSArray alloc] init]; // TODO - survey.questions
-    // self.questions = [[QuestionList alloc] init];
+    self.questions = [survey questions];
     
     // add our custom button to show our modal view controller
     UIButton* modalViewButton = [UIButton buttonWithType:UIButtonTypeInfoLight];

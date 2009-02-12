@@ -45,14 +45,21 @@
     return [container autorelease];
 }
 
-- (NSString *)amountAsDollarString {
+- (NSString *)amountAsDollarString
+{
     NSNumberFormatter *numberFormatter = [[[NSNumberFormatter alloc] init] autorelease];
     [numberFormatter setFormat:@"$#,##0.00"];
     return [numberFormatter stringFromNumber:self.amount];
 }
 
-- (NSString *)nameAndAmountAsString {
+- (NSString *)nameAndAmountAsString
+{
     return [NSString stringWithFormat:@"%@ : %@", [self amountAsDollarString], self.name];
+}
+
+- (NSArray *)questions
+{
+    return [[[NSArray alloc] init] autorelease];
 }
 
 - (void)dealloc {
