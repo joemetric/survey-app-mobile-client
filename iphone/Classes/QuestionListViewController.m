@@ -17,13 +17,6 @@
 @synthesize surveyName;
 @synthesize questions;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil survey:(Survey *)aSurvey {  
-    [self initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    self.survey = aSurvey;
-    //    self.surveyName = survey.name;
-    return self;
-}
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         // Custom initialization
@@ -33,7 +26,6 @@
 
 - (void)awakeFromNib {
     self.navigationItem.title = @"Questions";
-    self.questions = [survey questions];
     
     // add our custom button to show our modal view controller
     UIButton* modalViewButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
@@ -48,7 +40,7 @@
 }
 
 -(void)refreshQuestions {
-    // [self.questions refreshQuestionList];
+    self.questions = [survey questions];
     [self.tableView reloadData];
 }
 

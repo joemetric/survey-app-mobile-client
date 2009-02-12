@@ -21,7 +21,6 @@
 @property (nonatomic, retain) NSArray *questions;
 @property (nonatomic, retain) UINavigationItem *surveyName;
 
-// TODO - needed?
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil survey:(Survey *)survey;
+-(void)refreshQuestions;
 
 @end

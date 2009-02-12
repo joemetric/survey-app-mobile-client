@@ -59,16 +59,15 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"Selected row %d", indexPath.row);
     QuestionListViewController *questionListViewController = 
         [[QuestionListViewController alloc] initWithNibName:@"QuestionListView" 
-                                            bundle:nil 
-                                            survey:[self.surveys objectAtIndex:indexPath.row]];
+                                            bundle:nil];
+    
+    questionListViewController.survey = [self.surveys objectAtIndex:indexPath.row];
+    [questionListViewController refreshQuestions];
     
     [self.navigationController pushViewController:questionListViewController animated:YES];
-
-    NSLog(@"Survey name: %@", questionListViewController.surveyName);
-
+    
     [questionListViewController release];    
 }
 
