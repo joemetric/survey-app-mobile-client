@@ -67,5 +67,6 @@
 {
     [username release];
     [password release];
+    [super dealloc];
 }
 @end
