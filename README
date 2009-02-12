@@ -1,0 +1,9 @@
+In the rails app:
+
+rake db:migrate
+rake db:fixtures:load
+./script/server start
+
+
+In xcode:
+Build & Go
