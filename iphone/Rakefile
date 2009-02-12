@@ -112,6 +112,13 @@ def run_tests
   exit_code
 end
 
+desc "Run the clang static analyzer on the classes files"
+task :scan do
+  Dir.glob("Classes/*.m").each do |m|
+    scan m
+  end
+end
+
 def pass(line)
   color(line, :green)
   return 0
@@ -136,4 +143,8 @@ end
 
 def reset
   "\e[00;m"
+end
+
+def scan(file)
+  puts `scan-build gcc -g -c #{file}`
 end
