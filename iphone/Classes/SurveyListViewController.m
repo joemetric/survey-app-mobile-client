@@ -68,7 +68,6 @@
     [self.navigationController pushViewController:questionListViewController animated:YES];
 
     NSLog(@"Survey name: %@", questionListViewController.surveyName);
-    NSLog(@"Survey id: %@", questionListViewController.surveyId);
 
     [questionListViewController release];    
 }

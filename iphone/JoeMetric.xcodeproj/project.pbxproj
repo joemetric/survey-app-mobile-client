@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0D53AC070EF6B6F0000533C1 /* QuestionList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D53AC060EF6B6F0000533C1 /* QuestionList.m */; };
 		0D68A3C70EDCD2B6007CE721 /* QuestionListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D68A3C60EDCD2B6007CE721 /* QuestionListViewController.m */; };
 		0D68A3C90EDCD2DB007CE721 /* QuestionListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D68A3C80EDCD2DB007CE721 /* QuestionListView.xib */; };
 		0D68A3CF0EDCD37A007CE721 /* WalletViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D68A3CE0EDCD37A007CE721 /* WalletViewController.m */; };
@@ -53,7 +52,6 @@
 		D2F22B850EFBF09C0047CBFA /* QuestionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F22B840EFBF09C0047CBFA /* QuestionTest.m */; };
 		D2F22BB20EFBF3C30047CBFA /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD8C8410EF33C3E00A20937 /* Question.m */; };
 		D2F22BE50EFC076F0047CBFA /* QuestionListTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F22BE40EFC076F0047CBFA /* QuestionListTest.m */; };
-		D2F22BE60EFC077A0047CBFA /* QuestionList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D53AC060EF6B6F0000533C1 /* QuestionList.m */; };
 		FC21C5050F12B3AC00436E7F /* Survey.m in Sources */ = {isa = PBXBuildFile; fileRef = FC21C5040F12B3AC00436E7F /* Survey.m */; };
 		FC9756860F13B2300077926E /* SurveyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC9756850F13B2300077926E /* SurveyListViewController.m */; };
 		FC9756890F13B4070077926E /* SurveyListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC9756880F13B4070077926E /* SurveyListView.xib */; };
@@ -61,8 +59,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0D53AC050EF6B6F0000533C1 /* QuestionList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionList.h; sourceTree = "<group>"; };
-		0D53AC060EF6B6F0000533C1 /* QuestionList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionList.m; sourceTree = "<group>"; };
 		0D68A3C50EDCD2B6007CE721 /* QuestionListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionListViewController.h; sourceTree = "<group>"; };
 		0D68A3C60EDCD2B6007CE721 /* QuestionListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionListViewController.m; sourceTree = "<group>"; };
 		0D68A3C80EDCD2DB007CE721 /* QuestionListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionListView.xib; sourceTree = "<group>"; };
@@ -191,8 +187,6 @@
 				D2955DF70F3A36E6002675C9 /* Rest.m */,
 				0DD8C8400EF33C3E00A20937 /* Question.h */,
 				0DD8C8410EF33C3E00A20937 /* Question.m */,
-				0D53AC050EF6B6F0000533C1 /* QuestionList.h */,
-				0D53AC060EF6B6F0000533C1 /* QuestionList.m */,
 				D2AD6B1A0EFFF66B00DB13FD /* Account.h */,
 				D2AD6B1B0EFFF66B00DB13FD /* Account.m */,
 				FC21C5030F12B3AC00436E7F /* Survey.h */,
@@ -457,7 +451,6 @@
 				0DD8C8420EF33C3E00A20937 /* Question.m in Sources */,
 				0DD8C9620EF4884D00A20937 /* SurveyQuestionViewController.m in Sources */,
 				0DD8CA560EF4D43300A20937 /* QuestionViewController.m in Sources */,
-				0D53AC070EF6B6F0000533C1 /* QuestionList.m in Sources */,
 				D2AD6B1D0EFFF66B00DB13FD /* Account.m in Sources */,
 				FC21C5050F12B3AC00436E7F /* Survey.m in Sources */,
 				FC9756860F13B2300077926E /* SurveyListViewController.m in Sources */,
@@ -475,7 +468,6 @@
 			files = (
 				D2955DEB0F3A18CA002675C9 /* SurveyTest.m in Sources */,
 				D255487C0F13C2950098100B /* Survey.m in Sources */,
-				D2F22BE60EFC077A0047CBFA /* QuestionList.m in Sources */,
 				D2F22BB20EFBF3C30047CBFA /* Question.m in Sources */,
 				D2F22B400EFBEA090047CBFA /* GTMIPhoneUnitTestDelegate.m in Sources */,
 				D2F22B410EFBEA090047CBFA /* GTMIPhoneUnitTestMain.m in Sources */,

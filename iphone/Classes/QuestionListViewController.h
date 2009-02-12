@@ -7,20 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "QuestionList.h"
-#import "Survey.h"
 
+@class Survey;
 
 @interface QuestionListViewController : UITableViewController {
-	NSString *_surveyId;
-	IBOutlet UINavigationItem *_surveyName;
-	QuestionList *questions;
+    Survey *survey;
+    NSArray *questions;
+
+    IBOutlet UINavigationItem *surveyName;
 }
 
-@property (nonatomic, retain) NSString *surveyId;
+@property (nonatomic, retain) Survey *survey;
+@property (nonatomic, retain) NSArray *questions;
 @property (nonatomic, retain) UINavigationItem *surveyName;
-@property (nonatomic, retain) QuestionList *questions;
 
+// TODO - needed?
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil survey:(Survey *)survey;
 
 @end

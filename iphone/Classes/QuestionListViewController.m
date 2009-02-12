@@ -9,19 +9,18 @@
 #import "QuestionListViewController.h"
 #import "SingleQuestionViewController.h"
 #import "Question.h"
-#import "QuestionList.h"
 #import "Survey.h"
 
 @implementation QuestionListViewController
 
-@synthesize surveyId = _surveyId;
-@synthesize surveyName = _surveyName;
+@synthesize survey;
+@synthesize surveyName;
 @synthesize questions;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil survey:(Survey *)survey {  
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil survey:(Survey *)aSurvey {  
     [self initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    self.surveyId = survey.itemId;
-    self.surveyName = survey.name;
+    self.survey = aSurvey;
+    //    self.surveyName = survey.name;
     return self;
 }
 
@@ -34,7 +33,8 @@
 
 - (void)awakeFromNib {
     self.navigationItem.title = @"Questions";
-    self.questions = [[QuestionList alloc] init];
+    self.questions = [[NSArray alloc] init]; // TODO - survey.questions
+    // self.questions = [[QuestionList alloc] init];
     
     // add our custom button to show our modal view controller
     UIButton* modalViewButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
@@ -49,7 +49,7 @@
 }
 
 -(void)refreshQuestions {
-    [self.questions refreshQuestionList];
+    // [self.questions refreshQuestionList];
     [self.tableView reloadData];
 }
 
@@ -71,7 +71,7 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
-    Question *q = [self.questions questionAtIndex:indexPath.row];
+    Question *q = [self.questions objectAtIndex:indexPath.row];
     cell.text = [q questionAndAmountAsString];
     return cell;
 }
@@ -82,7 +82,7 @@
     SingleQuestionViewController *sqvc = 
         [[SingleQuestionViewController alloc] initWithNibName:@"QuestionView" 
                                                        bundle:nil 
-                                                     question:[self.questions questionAtIndex:indexPath.row]];
+                                                     question:[self.questions objectAtIndex:indexPath.row]];
     [self.navigationController pushViewController:sqvc animated:YES];  
     [sqvc release];    
 }
@@ -90,8 +90,7 @@
 
 - (void)dealloc {
     [questions release];
-	[_surveyId release];
-	[_surveyName release];
+    [survey release];
     [super dealloc];
 }
 
