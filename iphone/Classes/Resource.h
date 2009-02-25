@@ -1,19 +1,26 @@
 #import <Foundation/Foundation.h>
+#import "RestDelegate.h"
 
-@interface Resource : NSObject {
+@class Rest;
+
+@interface Resource : NSObject <RestDelegate> {
     NSInteger itemId;
+    NSString *path;
+    Rest *rest;
+    id delegate;
 }
 
+@property (nonatomic, retain) NSString *path;
+@property (nonatomic, retain) Rest *rest;
 @property (nonatomic) NSInteger itemId;
+@property (nonatomic, assign) id delegate;
 
 + (id)newFromDictionary:(NSDictionary *) dict;
-+ (NSArray *) findAll;
-+ (id) findWithId:(NSInteger) item_id;
++ (void) findAllWithDelegate:(id)delegate;
 + (id) createWithParams:(NSDictionary*) parameters;
-+ (BOOL) deleteWithId:(NSInteger) item_id;
-+ (id) findAllFromRelation:(id) relative;
++ (void) findAllFromRelation:(id) relative withDelegate:(id) delegate;
 
-- (BOOL)update;
 - (NSDictionary *)toDictionary;
 
+- (id)initWithPath:(NSString *)path;
 @end

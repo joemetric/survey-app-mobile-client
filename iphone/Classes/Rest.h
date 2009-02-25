@@ -1,20 +1,23 @@
 #import <Foundation/Foundation.h>
+#import "RestDelegate.h"
 
 @interface Rest : NSObject {
     NSString *host;
     NSInteger port;
+    NSURLConnection *conn;
     NSMutableURLRequest *request;
-    id delegate;
+    NSObject<RestDelegate> *delegate;
+    SEL action;
 }
 
 @property (nonatomic, retain) NSString *host;
 @property (nonatomic) NSInteger port;
 
-@property (nonatomic, assign) id delegate;
+@property (nonatomic, assign) NSObject<RestDelegate> *delegate;
 
 - (id)initWithHost:(NSString *)host atPort:(NSInteger)port;
 
-- (id)GET:(NSString*) path;
+- (void)GET:(NSString*) path withCallback:(SEL)callback;
 - (NSDictionary *)POST:(NSString *)path withParameters:(NSDictionary *)parameters;
 - (BOOL)PUT:(NSString *)path withParameters:(NSDictionary *)parameters;
 - (BOOL)DELETE:(NSString *)path;

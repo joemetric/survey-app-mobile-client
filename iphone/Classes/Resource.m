@@ -1,9 +1,13 @@
 #import "Resource.h"
 #import "Rest.h"
+#import "JSON.h"
 
 @implementation Resource
 
 @synthesize itemId;
+@synthesize rest;
+@synthesize path;
+@synthesize delegate;
 
 + (id)newFromDictionary:(NSDictionary *) dict
 {
@@ -29,73 +33,87 @@
     return @"";
 }
 
-+ (NSArray *) findAll
+- (void) findAllReceived:(NSData *)data
 {
-    NSString       *path = [NSString stringWithFormat:@"/%@.json", [self resourceName]];
-    Rest           *rest = [[Rest alloc] initWithHost:@"foo:bar@localhost" atPort:3000];
+    NSString      *dataStr;
+    NSArray       *item_dicts;
+
+    dataStr = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+    item_dicts = [dataStr JSONFragmentValue];
+    [dataStr release];
+    
     NSMutableArray *items = [[NSMutableArray alloc] init];
     id              item;
     
-    NSArray *item_dicts = [rest GET:path];
     for (id dict in item_dicts) {
-        item = [self newFromDictionary:dict];
+        item = [[self class] newFromDictionary:dict];
         [items addObject:item];
         [item release];
     }
 
-    [rest release];
-    return [items autorelease];
+    if ([delegate respondsToSelector:@selector(itemsReceived:)]) {
+        [delegate itemsReceived:items];
+    }
+    [items autorelease];
 }
 
-+ (id) findAllFromRelation:(id) relative
++ (void) findAllWithDelegate:(id)delegate
 {
-    NSString *path = [NSString stringWithFormat:@"/%@/%d/%@.json", [[relative class] resourceName], [relative itemId], [self resourceName]];
-    Rest           *rest = [[Rest alloc] initWithHost:@"foo:bar@localhost" atPort:3000];
+    Resource *resource = [[self alloc] initWithPath:[NSString stringWithFormat:@"/%@.json",
+                                                                  [self resourceName]]];
+    resource.delegate = delegate;
+
+    [resource.rest GET:resource.path withCallback:@selector(findAllReceived:)];
+}
+
+
+- (void)findAllFromRelationReceived:(NSData *)data
+{
+    NSString *dataStr;
     NSMutableArray *items = [[NSMutableArray alloc] init];
     id              item;
+    NSArray *item_dicts;
+
+    dataStr = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+    item_dicts = [dataStr JSONFragmentValue];
+    [dataStr release];
     
-    NSArray *item_dicts = [rest GET:path];
     for (id dict in item_dicts) {
-        item = [self newFromDictionary:dict];
+        item = [[self class] newFromDictionary:dict];
         [items addObject:item];
         [item release];
     }
 
-    [rest release];
-    return [items autorelease];
+    if ([delegate respondsToSelector:@selector(itemsReceived:)]) {
+        [delegate itemsReceived:items];
+    }
+    [items autorelease];
 }
 
-// SHOW - GET
-+ (id) findWithId:(NSInteger) item_id
++ (void) findAllFromRelation:(id) relative withDelegate:(id)delegate
 {
-    NSString *path = [NSString stringWithFormat:@"/%@/%d.json", [self resourceName], item_id];
-    Rest *rest      = [[Rest alloc] initWithHost:@"foo:bar@localhost" atPort:3000];
+    Resource *resource = [[self alloc] initWithPath:[NSString stringWithFormat:@"/%@/%d/%@.json",
+                                                                  [[relative class] resourceName],
+                                                                  [relative itemId],
+                                                                  [self resourceName]]];
+    resource.delegate = delegate;
 
-    NSDictionary *item_dict = [rest GET:path];
-    [rest release];
-
-    if (item_dict == nil) {
-        return nil;
-    }
-
-    id item = [self newFromDictionary:item_dict];
-
-    return [item autorelease];
+    [resource.rest GET:resource.path withCallback:@selector(findAllFromRelationReceived:)];
 }
 
 // CREATE - POST
+// STODO - asychronize
 + (id) createWithParams:(NSDictionary *)parameters
 {
-    
-    NSString *path = [NSString stringWithFormat:@"/%@.json", [self resourceName]];
-    Rest     *rest = [[Rest alloc] initWithHost:@"foo:bar@localhost" atPort:3000];
+    Resource *resource = [[Resource alloc] initWithPath:[NSString stringWithFormat:@"/%@.json", [self resourceName]]];
+
     id item;
 
     NSMutableDictionary *container = [[NSMutableDictionary alloc] init];
     [container setObject:parameters forKey:[self resourceKey]];
     
-    NSDictionary *item_dict = [rest POST:path withParameters:container];
-    [rest release];
+    NSDictionary *item_dict = [resource.rest POST:resource.path withParameters:container];
+    [resource release];
 
     [container release];
     
@@ -108,30 +126,22 @@
     return [item autorelease];
 }
 
-// DELETE - DELETE
-+ (BOOL) deleteWithId:(NSInteger) item_id
+- (id)initWithPath:(NSString *)aPath
 {
-    NSString *path = [NSString stringWithFormat:@"/%@/%d.json", [self resourceName], item_id];
-    Rest     *rest = [[Rest alloc] initWithHost:@"foo:bar@localhost" atPort:3000];
+    if (self = [super init]) {
+        self.path = aPath;
+        self.rest = [[Rest alloc] initWithHost:@"foo:bar@localhost" atPort:3000];
+        self.rest.delegate = self;
+    }
 
-    BOOL results = [rest DELETE:path];
-
-    [rest release];
-
-    return results;
+    return self;
 }
 
-// UPDATE - PUT
-- (BOOL) update
+- (void)dealloc
 {
-    NSString *path = [NSString stringWithFormat:@"/%@/%d.json", [[self class] resourceName], self.itemId];
-    Rest     *rest = [[Rest alloc] initWithHost:@"foo:bar@localhost" atPort:3000];
-
-    BOOL results = [rest PUT:path withParameters:[self toDictionary]];
-    
+    [path release];
     [rest release];
-
-    return results;
+    [super dealloc];
 }
 
 @end

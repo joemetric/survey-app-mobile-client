@@ -39,9 +39,14 @@
     [super viewDidLoad];
 }
 
--(void)refreshQuestions {
-    self.questions = [survey questions];
+-(void)itemsReceived:(NSArray *)items {
+    self.questions = items;
     [self.tableView reloadData];
+}
+
+-(void)refreshQuestions {
+    NSLog(@"Refreshing the questions");
+    [Question findAllFromRelation:self.survey withDelegate:self];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

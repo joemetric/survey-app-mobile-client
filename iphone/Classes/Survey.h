@@ -16,7 +16,6 @@
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) NSDecimalNumber *amount;
 
-- (NSArray *)questions;
 - (NSString *)nameAndAmountAsString;
 - (NSString *)amountAsDollarString;
 

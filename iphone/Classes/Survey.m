@@ -58,11 +58,6 @@
     return [NSString stringWithFormat:@"%@ : %@", [self amountAsDollarString], self.name];
 }
 
-- (NSArray *)questions
-{
-    return [Question findAllFromRelation:self];
-}
-
 - (void)dealloc {
     [name release];
     [amount release];

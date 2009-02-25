@@ -7,38 +7,54 @@
 @synthesize port;
 @synthesize delegate;
 
+- (void)cancelConnection
+{
+    [conn cancel];
+    [conn release];
+    conn = nil;
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    [self.delegate performSelector:action withObject:data];
+}
+
+- (void)startConnection:(NSURLRequest *)aRequest
+{
+    [self cancelConnection];
+    conn = [[NSURLConnection alloc] initWithRequest:aRequest
+                                    delegate:self
+                                    startImmediately:YES];
+    if (!conn) {
+        if ([delegate respondsToSelector:@selector(rest:didFailWithError:)]) {
+            NSMutableDictionary *info = [NSMutableDictionary dictionaryWithObject:[aRequest URL] forKey:NSErrorFailingURLStringKey];
+            [info setObject:@"Could not open connection" forKey:NSLocalizedDescriptionKey];
+            NSError *error = [NSError errorWithDomain:@"Rest" code:1 userInfo:info];
+            [delegate rest:self didFailWithError:error];
+        }
+    }
+}
+
+
+
 - (NSString *)hostString
 {
     return [NSString stringWithFormat:@"%@:%d", self.host, self.port];
 }
 
-- (id)GET:(NSString *)path
+- (void)GET:(NSString *)path withCallback:(SEL)callback
 {
     NSURL         *url = [[NSURL alloc] initWithScheme:@"http" host:[self hostString] path:path];
-    NSURLResponse *response;
-    NSData        *data;
-    NSString      *dataStr;
-    id             fragment; // Could be an NSDictionary, NSArray, or other type
-
+    action = callback;
+    
     NSLog(@"GET: %@", url);
 
     [request setHTTPMethod:@"GET"];
     [request setURL:url];
-    
-    data     = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:NULL];
 
+    [self startConnection:request];
+    
     [url release];
-
-    if ([(NSHTTPURLResponse*)response statusCode] != 200) {
-        return nil;
-    }
-
-    dataStr  = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-    fragment = [dataStr JSONFragmentValue];
-
-    [dataStr release];
-    
-    return fragment;
 }
 
 - (NSDictionary *)POST:(NSString *)path withParameters:(NSDictionary *)parameters
@@ -58,7 +74,8 @@
         NSString *params = [parameters JSONRepresentation];
         [request setHTTPBody:[params dataUsingEncoding:NSUTF8StringEncoding]];
     }
-    
+
+    // STODO
     data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:NULL];
 
     [url release];
@@ -90,6 +107,7 @@
         [request setHTTPBody:[params dataUsingEncoding:NSUTF8StringEncoding]];
     }
 
+    // STODO
     [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:NULL];
 
     [url release];
@@ -106,6 +124,7 @@
     [request setHTTPMethod:@"DELETE"];
     [request setURL:url];
 
+    // STODO
     [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:NULL];
 
     [url release];
@@ -117,6 +136,7 @@
     if (self = [super init]) {
         host = [hostName copy];
         port = portNumber;
+        delegate = nil;
 
         NSMutableDictionary* headers = [[[NSMutableDictionary alloc] init] autorelease];
         [headers setValue:@"application/json" forKey:@"Content-Type"];

@@ -16,7 +16,7 @@
 
 - (void)awakeFromNib {
     self.navigationItem.title = @"Surveys";
-    self.surveys = [Survey findAll];
+    [Survey findAllWithDelegate:self];
     
     // add our custom button to show our modal view controller
     UIButton* modalViewButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
@@ -30,9 +30,13 @@
     [super viewDidLoad];
 }
 
--(void)refreshSurveys {
-    self.surveys = [Survey findAll];
+-(void)itemsReceived:(NSArray *)items {
+    self.surveys = items;
     [self.tableView reloadData];
+}
+    
+-(void)refreshSurveys {
+    [Survey findAllWithDelegate:self];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
