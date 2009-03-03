@@ -76,7 +76,7 @@
 						<object class="IBUIViewController" id="485279110">
 							<object class="IBUINavigationItem" key="IBUINavigationItem" id="507356255">
 								<reference key="IBUINavigationBar"/>
-								<string key="IBUITitle">Item</string>
+								<string key="IBUITitle">Surveys</string>
 							</object>
 							<reference key="IBUIParentViewController" ref="368218537"/>
 							<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>

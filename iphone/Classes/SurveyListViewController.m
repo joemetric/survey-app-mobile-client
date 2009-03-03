@@ -15,7 +15,6 @@
 @synthesize surveys;
 
 - (void)awakeFromNib {
-    self.navigationItem.title = @"Surveys";
     [Survey findAllWithDelegate:self];
     
     // add our custom button to show our modal view controller

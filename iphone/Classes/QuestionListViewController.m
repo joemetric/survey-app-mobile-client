@@ -24,12 +24,6 @@
     return self;
 }
 
-- (void)awakeFromNib {
-    self.navigationItem.title = @"Questions";
-    
-    // add our custom button to show our modal view controller
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     UIButton* modalViewButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
