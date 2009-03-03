@@ -28,15 +28,15 @@
     self.navigationItem.title = @"Questions";
     
     // add our custom button to show our modal view controller
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
     UIButton* modalViewButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
     [modalViewButton addTarget:self action:@selector(refreshQuestions) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *modalButton = [[UIBarButtonItem alloc] initWithCustomView:modalViewButton];
     self.navigationItem.rightBarButtonItem = modalButton;
     [modalViewButton release];
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
 }
 
 -(void)itemsReceived:(NSArray *)items {
