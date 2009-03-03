@@ -45,7 +45,6 @@
 }
 
 -(void)refreshQuestions {
-    NSLog(@"Refreshing the questions");
     [Question findAllFromRelation:self.survey withDelegate:self];
 }
 
