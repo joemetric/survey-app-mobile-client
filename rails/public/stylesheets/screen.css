@@ -246,22 +246,45 @@ div.grey_box.campaign_progress h2 {
   text-shadow: 1px 1px 1px #fff;
 }
 
+div.grey_box.campaign_progress h2 a {
+  color: #222;
+  text-decoration: none;
+}
+
 div.grey_box.campaign_progress p {
   font-size: 12px;
 }
 
 div.grey_box.campaign_progress p.expiration {
-  margin-bottom: 25px;
+  margin-bottom: 20px;
   color: #555;
   font-weight: bold;
 }
 
 div.grey_box.campaign_progress p.actions {
+  overflow: hidden;
   margin-bottom: 20px;
 }
 
 div.grey_box.campaign_progress p.actions a {
   margin-right: 10px;
+}
+
+div.grey_box.campaign_progress p.actions a.button {
+  float: left;
+  display: block;
+  height: 20px;
+  text-indent: -999em;
+}
+
+div.grey_box.campaign_progress p.actions a.button.view_details {
+  width: 96px;
+  background: url(/images/view_details_button.png);
+}
+
+div.grey_box.campaign_progress p.actions a.button.edit_survey {
+  width: 92px;
+  background: url(/images/edit_survey_button.png);
 }
 
 div.grey_box.campaign_progress p.expiration span {
