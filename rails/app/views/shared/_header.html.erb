@@ -1,11 +1,11 @@
 <div id="header">
   <ul>
   <% if current_user %>
-    <li><a href="#" id="global_navigation_account">Account</a></li>
+    <li><%= link_to 'Log Out', logout_path, :class => 'account' %></li>
+    <li><%= link_to 'Account', '#', :class => 'account' %> </li>
     <!-- li><a href="#">Analyze &amp; Report</a></li -->
     <li><%= link_to 'In Progress', campaigns_path %></li>
     <li><%= link_to 'Create', new_campaign_path %></li>
-    <li><%= link_to 'Log Out', logout_path %></li>
   <% end %>
   </ul>
 </div>
