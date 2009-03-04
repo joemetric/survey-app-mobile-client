@@ -22,19 +22,12 @@
     [window addSubview:tabBarController.view];
 }
 
-
-/*
-// Optional UITabBarControllerDelegate method
-- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
+- (NSURLCredential *)getCredentials {
+    // Looks up credential information
+    return [NSURLCredential credentialWithUser:@"quentin"
+                            password:@"monkey"
+                            persistence:NSURLCredentialPersistenceForSession];
 }
-*/
-
-/*
-// Optional UITabBarControllerDelegate method
-- (void)tabBarController:(UITabBarController *)tabBarController didEndCustomizingViewControllers:(NSArray *)viewControllers changed:(BOOL)changed {
-}
-*/
-
 
 - (void)dealloc {
     [navigationController release];

@@ -126,11 +126,16 @@
     return [item autorelease];
 }
 
+- (NSURLCredential *)getCredentials
+{
+    return [[UIApplication sharedApplication].delegate getCredentials];
+}
+
 - (id)initWithPath:(NSString *)aPath
 {
     if (self = [super init]) {
         self.path = aPath;
-        self.rest = [[Rest alloc] initWithHost:@"quentin:monkey@localhost" atPort:3000];
+        self.rest = [[Rest alloc] initWithHost:@"localhost" atPort:3000];
         self.rest.delegate = self;
     }
 
