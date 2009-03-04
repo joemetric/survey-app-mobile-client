@@ -17,8 +17,6 @@
 @synthesize credentials;
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
-    
-    // Add the tab bar controller's current view as a subview of the window
     [window addSubview:tabBarController.view];
 }
 
@@ -38,6 +36,7 @@
     menu.cancelButtonIndex = 2;
 
     [menu showInView:[window contentView]];
+    // CLANG reports menu as leaking, but it isn't.  It's released above.
 }
 
 - (void) initCredentialsFilePath {
@@ -78,6 +77,7 @@
     [navigationController release];
     [tabBarController release];
     [window release];
+    [credentials release];
     [super dealloc];
 }
 

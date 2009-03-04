@@ -134,14 +134,13 @@
 
     Account *account = [Account createWithParams:params];
     if (account) {
-        NSLog(@"Account was created!");
         [self saveAccount:sender];
     } else {
         // Pop up an alert or something?
         NSLog(@"Account creation hath FAILED");
     }
     
-    NSLog(@"Created account: %@", account);
+    [params release];
 }
 
 - (IBAction)saveAccount:(id)sender
