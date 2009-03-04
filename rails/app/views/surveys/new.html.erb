@@ -1,12 +1,12 @@
 <h1>Create Survey</h1>
 
-<% form_for(@campaign) do |f| %>
+<% form_for(@survey) do |f| %>
   <%= f.error_messages %>
 
   <%= render :partial => 'form', :locals => { :f => f } %>
 
   <div class="submit">
     <input type="image" src="/images/create_survey_button.png" alt="create survey" />
-    <%= link_to 'cancel', campaigns_path, :class => 'cancel_button' %>
+    <%= link_to 'cancel', surveys_path, :class => 'cancel_button' %>
   </div>
 <% end %>

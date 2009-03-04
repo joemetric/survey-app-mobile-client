@@ -1,6 +1,6 @@
 <h1>Editing question</h1>
 
-<% form_for([@campaign, @question]) do |f| %>
+<% form_for([@survey, @question]) do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -12,5 +12,5 @@
   </p>
 <% end %>
 
-<%= link_to 'Show', [@campaign, @question] %> |
-<%= link_to 'Back', campaign_questions_path(@campaign) %>
+<%= link_to 'Show', [@survey, @question] %> |
+<%= link_to 'Back', survey_questions_path(@survey) %>

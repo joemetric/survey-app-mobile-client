@@ -1,11 +1,11 @@
 <%= link_to 'cancel', campaign_questions_path, :class => 'cancel_button header' %>
 
 <h1>
-  <span class="campaign">Survey: <strong><%= @campaign.name %></strong></span>
+  <span class="campaign">Survey: <strong><%= @survey.name %></strong></span>
   Create Question <span class="count">2 of 3</span>
 </h1>
 
-<% form_for([@campaign, @question]) do |f| %>
+<% form_for([@survey, @question]) do |f| %>
   <%= f.error_messages %>
   <div class="grey_box">
     <div class="field">
