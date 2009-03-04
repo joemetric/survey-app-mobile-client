@@ -130,7 +130,7 @@
 {
     if (self = [super init]) {
         self.path = aPath;
-        self.rest = [[Rest alloc] initWithHost:@"foo:bar@localhost" atPort:3000];
+        self.rest = [[Rest alloc] initWithHost:@"quentin:monkey@localhost" atPort:3000];
         self.rest.delegate = self;
     }
 

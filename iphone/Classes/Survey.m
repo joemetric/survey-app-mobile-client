@@ -16,12 +16,12 @@
 
 + (NSString *)resourceName
 {
-    return @"campaigns"; // TODO change to surveys after the rails app changes
+    return @"surveys";
 }
 
 + (NSString *)resourceKey
 {
-    return @"campaign"; // TODO change to survey after the rails app changes
+    return @"survey";
 }
 
 + (id)newFromDictionary:(NSDictionary *) dict
