@@ -7,7 +7,7 @@
 //
 
 #import "ProfileViewController.h"
-
+#import "Account.h"
 
 @implementation ProfileViewController
 
@@ -27,7 +27,7 @@
 }
 */
 
-
+/*
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
@@ -49,6 +49,7 @@
     // Configure the cell
     return cell;
 }
+*/
 
 /*
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -111,6 +112,26 @@
     [super dealloc];
 }
 
+- (IBAction)createAccount:(id)sender
+{
+    NSLog(@"Creating with: %@ : %@", [usernameField text], [passwordField text]);
+
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    [params setObject:[usernameField text] forKey:@"login"];
+    [params setObject:@"foo@bar.com" forKey:@"email"];
+    [params setObject:[passwordField text] forKey:@"password"];
+    [params setObject:[passwordField text] forKey:@"password_confirmation"];
+
+    Account *account = [Account createWithParams:params];
+    if (account) {
+        NSLog(@"Account was created!");
+    } else {
+        // Pop up an alert or something?
+        NSLog(@"Account creation hath FAILED");
+    }
+    
+    NSLog(@"Created account: %@", account);
+}
 
 @end
 

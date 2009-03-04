@@ -16,12 +16,12 @@
 
 + (NSString *)resourceName
 {
-    return @"spotters";
+    return @"users";
 }
 
 + (NSString *)resourceKey
 {
-    return @"spotter";
+    return @"user";
 }
 
 + (id)newFromDictionary:(NSDictionary *) dict

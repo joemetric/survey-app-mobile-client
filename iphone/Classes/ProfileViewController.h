@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 
 
-@interface ProfileViewController : UITableViewController {
-
+@interface ProfileViewController : UIViewController {
+    IBOutlet UITextField *usernameField;
+    IBOutlet UITextField *passwordField;
 }
 
+- (IBAction)createAccount:(id)sender;
 @end
