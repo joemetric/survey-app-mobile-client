@@ -7,10 +7,10 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resource :session
 
-  map.root :controller => 'campaigns'
+  map.root :controller => 'surveys'
 
-  map.resources :campaigns do |campaign|
-    campaign.resources :questions
+  map.resources :surveys do |survey|
+    survey.resources :questions
   end
 
   # Install the default routes as the lowest priority.

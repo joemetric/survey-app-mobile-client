@@ -1,4 +1,4 @@
-<h1>Listing questions in <%= @campaign.name %></h1>
+<h1>Listing questions in <%= @survey.name %></h1>
 
 <table>
   <tr>
@@ -8,14 +8,14 @@
 <% for question in @questions %>
   <tr>
     <td><%=h question.text %></td>
-    <td><%= link_to 'Show', [@campaign, question] %></td>
-    <td><%= link_to 'Edit', edit_campaign_question_path(@campaign, question) %></td>
-    <td><%= link_to 'Destroy', [@campaign, question], :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', [@survey, question] %></td>
+    <td><%= link_to 'Edit', edit_survey_question_path(@survey, question) %></td>
+    <td><%= link_to 'Destroy', [@survey, question], :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New question', new_campaign_question_path(@campaign) %> |
-<%= link_to "Back to #{@campaign.name}", @campaign %>
+<%= link_to 'New question', new_survey_question_path(@survey) %> |
+<%= link_to "Back to #{@survey.name}", @survey %>

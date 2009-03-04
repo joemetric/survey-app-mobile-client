@@ -1,21 +1,21 @@
 <h1>In Progress</h1>
 
-<div id="campaigns">
-  <% for campaign in @campaigns %>
-    <div class="grey_box campaign_progress">
-      <h2><%= link_to campaign.name, campaign_path(campaign) %></h2>
+<div id="surveys">
+  <% for survey in @surveys %>
+    <div class="grey_box survey_progress">
+      <h2><%= link_to survey.name, survey_path(survey) %></h2>
       <p class="expiration"><span>Expires:</span> December 21, 2012 at 12:01am</p>
       <p class="actions">
-        <%= link_to 'view details', campaign, :class => 'button view_details' %>
-        <%= link_to 'edit campaign', edit_campaign_path(campaign), :class => 'button edit_survey' %>
+        <%= link_to 'view details', survey, :class => 'button view_details' %>
+        <%= link_to 'edit survey', edit_survey_path(survey), :class => 'button edit_survey' %>
       </p>
       <p class="stats">
-        <%= link_to 'view', "#{campaign_path(campaign)}#complete" %>
+        <%= link_to 'view', "#{survey_path(survey)}#complete" %>
         <span class="number">218</span>
         <span class="type">Responses Completed</span>
       </p>
       <p class="stats highlight">
-        <%= link_to 'view', "#{campaign_path(campaign)}#pending" %>
+        <%= link_to 'view', "#{survey_path(survey)}#pending" %>
         <span class="number">68</span>
         <span class="type">Responses Pending Review</span>
       </p>
@@ -25,4 +25,4 @@
       </p>
     </div> <!-- /div.grey_box -->
   <% end %>
-</div> <!-- /div#campaigns -->
+</div> <!-- /div#surveys -->
