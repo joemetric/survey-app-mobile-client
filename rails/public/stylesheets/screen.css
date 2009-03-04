@@ -294,13 +294,13 @@ div.grey_box.campaign_progress p.expiration span {
 div.grey_box.campaign_progress p.stats {
   overflow: hidden;
   margin-bottom: 15px;
-  padding: 0 10px 0 0;
+  border: 1px solid #eee;
+  padding: 5px 10px 5px 0;
   font-weight: bold;
 }
 
 div.grey_box.campaign_progress p.stats.highlight {
   border: 1px solid #cdcdb9;
-  padding: 5px 10px 5px 0;
   background: #f2f2b2;
 }
 
