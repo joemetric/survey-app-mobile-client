@@ -3,11 +3,11 @@
 <div id="campaigns">
   <% for campaign in @campaigns %>
     <div class="grey_box campaign_progress">
-      <h2><%= campaign.name %></h2>
+      <h2><%= link_to campaign.name, campaign_path(campaign) %></h2>
       <p class="expiration"><span>Expires:</span> December 21, 2012 at 12:01am</p>
       <p class="actions">
-        <%= link_to 'view details', campaign %>
-        <%= link_to 'edit campaign', edit_campaign_path(campaign) %>
+        <%= link_to 'view details', campaign, :class => 'button view_details' %>
+        <%= link_to 'edit campaign', edit_campaign_path(campaign), :class => 'button edit_survey' %>
       </p>
       <p class="stats">
         <%= link_to 'view', "#{campaign_path(campaign)}#complete" %>
