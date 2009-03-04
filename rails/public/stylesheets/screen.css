@@ -40,7 +40,7 @@ div#header ul li a {
   opacity: 0.999;
 }
 
-div#header ul li a#global_navigation_account {
+div#header ul li a.account {
   color: #01c6ff;
 }
 

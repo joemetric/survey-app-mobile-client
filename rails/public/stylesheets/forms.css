@@ -93,6 +93,10 @@ div.submit {
   padding: 15px 0 0 80px;
 }
 
+form#login_form div.submit {
+  padding-left: 140px;
+}
+
 div.submit input {
   float: left;
   margin-right: 10px;
