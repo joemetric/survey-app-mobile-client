@@ -23,6 +23,7 @@
 {
     if ([challenge previousFailureCount] > 0) {
         [[challenge sender] cancelAuthenticationChallenge:challenge];
+        [delegate authenticationFailed];
         return; // Really, fire off alert
     }
 

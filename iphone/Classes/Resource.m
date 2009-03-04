@@ -131,6 +131,11 @@
     return [[UIApplication sharedApplication].delegate getCredentials];
 }
 
+- (void)authenticationFailed
+{
+    [[UIApplication sharedApplication].delegate authenticationFailed];
+}
+
 - (id)initWithPath:(NSString *)aPath
 {
     if (self = [super init]) {

@@ -22,6 +22,24 @@
     [window addSubview:tabBarController.view];
 }
 
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    tabBarController.selectedIndex = 2;
+    [actionSheet release];
+}
+
+- (void)authenticationFailed {
+    UIActionSheet *menu = [[UIActionSheet alloc] init];
+    menu.delegate = self;
+    menu.title = @"Authentication Failed";
+    [menu addButtonWithTitle:@"Create Account"];
+    [menu addButtonWithTitle:@"Update Credentials"];
+    [menu addButtonWithTitle:@"Cancel"];
+    menu.cancelButtonIndex = 2;
+
+    [menu showInView:[window contentView]];
+}
+
 - (void) initCredentialsFilePath {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
@@ -44,7 +62,6 @@
 }
 
 - (void)saveCredentials {
-    NSLog(@"Updating credentials: %@", credentials);
     [credentials writeToFile:credentialsFilePath atomically:YES];
 }
 

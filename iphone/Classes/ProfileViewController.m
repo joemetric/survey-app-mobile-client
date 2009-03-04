@@ -24,9 +24,17 @@
 // Implement viewDidLoad to do additional setup after loading the view.
 - (void)viewDidLoad {
     [super viewDidLoad];
+    usernameField.delegate = self;
+    passwordField.delegate = self;
+    
     JoeMetricAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     usernameField.text = [appDelegate.credentials objectForKey:@"username"];
     passwordField.text = [appDelegate.credentials objectForKey:@"password"];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
 }
 
 /*
