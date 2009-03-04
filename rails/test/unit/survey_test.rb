@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class CampaignTest < ActiveSupport::TestCase
+class SurveyTest < ActiveSupport::TestCase
   # Replace this with your real tests.
   def test_truth
     assert true

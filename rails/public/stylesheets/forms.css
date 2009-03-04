@@ -93,6 +93,10 @@ div.submit {
   padding: 15px 0 0 80px;
 }
 
+form#login_form div.submit {
+  padding-left: 140px;
+}
+
 div.submit input {
   float: left;
   margin-right: 10px;
@@ -108,7 +112,7 @@ div.submit a.cancel {
   line-height: 33px;
 }
 
-div.submit a.cancel_button {
+a.cancel_button {
   float: left;
   display: block;
   width: 105px;
@@ -116,6 +120,11 @@ div.submit a.cancel_button {
   margin: 0 10px;
   text-indent: -999em;
   background: url(/images/cancel_button.png);
+}
+
+a.cancel_button.header {
+  float: right;
+  margin-top: 23px;
 }
 
 

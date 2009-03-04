@@ -1,11 +1,11 @@
 module AuthenticatedTestHelper
-  # Sets the current sam in the session from the sam fixtures.
-  def login_as(sam)
-    @request.session[:sam_id] = sam ? sams(sam).id : nil
+  # Sets the current user in the session from the user fixtures.
+  def login_as(user)
+    @request.session[:user_id] = user ? users(user).id : nil
   end
 
-  def authorize_as(sam)
-    @request.env["HTTP_AUTHORIZATION"] = sam ? ActionController::HttpAuthentication::Basic.encode_credentials(sams(sam).login, 'monkey') : nil
+  def authorize_as(user)
+    @request.env["HTTP_AUTHORIZATION"] = user ? ActionController::HttpAuthentication::Basic.encode_credentials(users(user).login, 'monkey') : nil
   end
   
 end

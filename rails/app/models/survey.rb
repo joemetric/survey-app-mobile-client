@@ -1,4 +1,4 @@
-class Campaign < ActiveRecord::Base
+class Survey < ActiveRecord::Base
   has_many :questions
 
   validates_presence_of :name, :amount

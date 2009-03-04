@@ -4,6 +4,8 @@ require 'test_help'
 require 'shoulda'
 
 class Test::Unit::TestCase
+  include AuthenticatedTestHelper
+
   # Transactional fixtures accelerate your tests by wrapping each test method
   # in a transaction that's rolled back on completion.  This ensures that the
   # test database remains unchanged so your fixtures don't have to be reloaded

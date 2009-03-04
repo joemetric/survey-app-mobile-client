@@ -1,6 +1,6 @@
 class Question < ActiveRecord::Base
-  belongs_to :campaign
+  belongs_to :survey
 
   validates_presence_of :text
-  validates_uniqueness_of :text, :scope => :campaign_id
+  validates_uniqueness_of :text, :scope => :survey_id
 end

@@ -1,34 +1,34 @@
 module AuthenticatedSystem
   protected
-    # Returns true or false if the sam is logged in.
-    # Preloads @current_sam with the sam model if they're logged in.
+    # Returns true or false if the user is logged in.
+    # Preloads @current_user with the user model if they're logged in.
     def logged_in?
-      !!current_sam
+      !!current_user
     end
 
-    # Accesses the current sam from the session.
+    # Accesses the current user from the session.
     # Future calls avoid the database because nil is not equal to false.
-    def current_sam
-      @current_sam ||= (login_from_session || login_from_basic_auth || login_from_cookie) unless @current_sam == false
+    def current_user
+      @current_user ||= (login_from_session || login_from_basic_auth || login_from_cookie) unless @current_user == false
     end
 
-    # Store the given sam id in the session.
-    def current_sam=(new_sam)
-      session[:sam_id] = new_sam ? new_sam.id : nil
-      @current_sam = new_sam || false
+    # Store the given user id in the session.
+    def current_user=(new_user)
+      session[:user_id] = new_user ? new_user.id : nil
+      @current_user = new_user || false
     end
 
-    # Check if the sam is authorized
+    # Check if the user is authorized
     #
     # Override this method in your controllers if you want to restrict access
-    # to only a few actions or if you want to check if the sam
+    # to only a few actions or if you want to check if the user
     # has the correct rights.
     #
     # Example:
     #
     #  # only allow nonbobs
     #  def authorized?
-    #    current_sam.login != "bob"
+    #    current_user.login != "bob"
     #  end
     #
     def authorized?(action = action_name, resource = nil)
@@ -58,7 +58,7 @@ module AuthenticatedSystem
     # The default action is to redirect to the login screen.
     #
     # Override this method in your controllers if you want to have special
-    # behavior in case the sam is not authorized
+    # behavior in case the user is not authorized
     # to access the requested action.  For example, a popup window might
     # simply close itself.
     def access_denied
@@ -93,25 +93,25 @@ module AuthenticatedSystem
       session[:return_to] = nil
     end
 
-    # Inclusion hook to make #current_sam and #logged_in?
+    # Inclusion hook to make #current_user and #logged_in?
     # available as ActionView helper methods.
     def self.included(base)
-      base.send :helper_method, :current_sam, :logged_in?, :authorized? if base.respond_to? :helper_method
+      base.send :helper_method, :current_user, :logged_in?, :authorized? if base.respond_to? :helper_method
     end
 
     #
     # Login
     #
 
-    # Called from #current_sam.  First attempt to login by the sam id stored in the session.
+    # Called from #current_user.  First attempt to login by the user id stored in the session.
     def login_from_session
-      self.current_sam = Sam.find_by_id(session[:sam_id]) if session[:sam_id]
+      self.current_user = User.find_by_id(session[:user_id]) if session[:user_id]
     end
 
-    # Called from #current_sam.  Now, attempt to login by basic authentication information.
+    # Called from #current_user.  Now, attempt to login by basic authentication information.
     def login_from_basic_auth
       authenticate_with_http_basic do |login, password|
-        self.current_sam = Sam.authenticate(login, password)
+        self.current_user = User.authenticate(login, password)
       end
     end
     
@@ -119,14 +119,14 @@ module AuthenticatedSystem
     # Logout
     #
 
-    # Called from #current_sam.  Finaly, attempt to login by an expiring token in the cookie.
-    # for the paranoid: we _should_ be storing sam_token = hash(cookie_token, request IP)
+    # Called from #current_user.  Finaly, attempt to login by an expiring token in the cookie.
+    # for the paranoid: we _should_ be storing user_token = hash(cookie_token, request IP)
     def login_from_cookie
-      sam = cookies[:auth_token] && Sam.find_by_remember_token(cookies[:auth_token])
-      if sam && sam.remember_token?
-        self.current_sam = sam
+      user = cookies[:auth_token] && User.find_by_remember_token(cookies[:auth_token])
+      if user && user.remember_token?
+        self.current_user = user
         handle_remember_cookie! false # freshen cookie token (keeping date)
-        self.current_sam
+        self.current_user
       end
     end
 
@@ -135,10 +135,10 @@ module AuthenticatedSystem
     # However, **all session state variables should be unset here**.
     def logout_keeping_session!
       # Kill server-side auth cookie
-      @current_sam.forget_me if @current_sam.is_a? Sam
-      @current_sam = false     # not logged in, and don't do it for me
+      @current_user.forget_me if @current_user.is_a? User
+      @current_user = false     # not logged in, and don't do it for me
       kill_remember_cookie!     # Kill client-side auth cookie
-      session[:sam_id] = nil   # keeps the session but kill our variable
+      session[:user_id] = nil   # keeps the session but kill our variable
       # explicitly kill any other session variables you set
     end
 
@@ -160,18 +160,18 @@ module AuthenticatedSystem
     # and they should be changed at each login
 
     def valid_remember_cookie?
-      return nil unless @current_sam
-      (@current_sam.remember_token?) && 
-        (cookies[:auth_token] == @current_sam.remember_token)
+      return nil unless @current_user
+      (@current_user.remember_token?) && 
+        (cookies[:auth_token] == @current_user.remember_token)
     end
     
     # Refresh the cookie auth token if it exists, create it otherwise
     def handle_remember_cookie!(new_cookie_flag)
-      return unless @current_sam
+      return unless @current_user
       case
-      when valid_remember_cookie? then @current_sam.refresh_token # keeping same expiry date
-      when new_cookie_flag        then @current_sam.remember_me 
-      else                             @current_sam.forget_me
+      when valid_remember_cookie? then @current_user.refresh_token # keeping usere expiry date
+      when new_cookie_flag        then @current_user.remember_me 
+      else                             @current_user.forget_me
       end
       send_remember_cookie!
     end
@@ -182,8 +182,8 @@ module AuthenticatedSystem
     
     def send_remember_cookie!
       cookies[:auth_token] = {
-        :value   => @current_sam.remember_token,
-        :expires => @current_sam.remember_token_expires_at }
+        :value   => @current_user.remember_token,
+        :expires => @current_user.remember_token_expires_at }
     end
 
 end

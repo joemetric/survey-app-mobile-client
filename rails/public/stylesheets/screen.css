@@ -16,6 +16,7 @@ div#header {
 }
 
 div#header ul {
+  position: relative;
   width: 940px;
   height: 43px;
   margin: 0 auto;
@@ -40,7 +41,16 @@ div#header ul li a {
   opacity: 0.999;
 }
 
-div#header ul li a#global_navigation_account {
+div#header ul li a#home_link {
+  position: absolute;
+  top: 0;
+  left: -8px;
+  width: 100px;
+  margin-left: 0;
+  text-indent: -999em;
+}
+
+div#header ul li a.account {
   color: #01c6ff;
 }
 
@@ -75,11 +85,18 @@ h1 {
   letter-spacing: -0.03em;
 }
 
-h1 span.campaign {
+h1 span.survey,
+h1 span.count {
   display: block;
-  color: #444;
+  color: #555;
   font-size: 15px;
   letter-spacing: 0;
+}
+
+h1 span.count {
+  display: inline;
+  margin-left: 5px;
+  font-size: 21px;
 }
 
 h2 {
@@ -224,64 +241,87 @@ div#budget_calculations div.border {
 /* @end Create Question */
 
 
-/* @group Active Campaigns 
+/* @group Active Surveys 
 ----------------------------------- */
 
-div#campaigns {
+div#surveys {
   overflow: hidden;
   margin-left: -20px;
 }
 
-div.grey_box.campaign_progress {
+div.grey_box.survey_progress {
   float: left;
   width: 400px;
   margin-left: 20px;
   padding: 30px 30px 15px 30px;
 }
 
-div.grey_box.campaign_progress h2 {
+div.grey_box.survey_progress h2 {
   margin: 0 0 6px 0;
   font-size: 18px;
   font-weight: bold;
   text-shadow: 1px 1px 1px #fff;
 }
 
-div.grey_box.campaign_progress p {
+div.grey_box.survey_progress h2 a {
+  color: #222;
+  text-decoration: none;
+}
+
+div.grey_box.survey_progress p {
   font-size: 12px;
 }
 
-div.grey_box.campaign_progress p.expiration {
-  margin-bottom: 25px;
+div.grey_box.survey_progress p.expiration {
+  margin-bottom: 20px;
   color: #555;
   font-weight: bold;
 }
 
-div.grey_box.campaign_progress p.actions {
+div.grey_box.survey_progress p.actions {
+  overflow: hidden;
   margin-bottom: 20px;
 }
 
-div.grey_box.campaign_progress p.actions a {
+div.grey_box.survey_progress p.actions a {
   margin-right: 10px;
 }
 
-div.grey_box.campaign_progress p.expiration span {
+div.grey_box.survey_progress p.actions a.button {
+  float: left;
+  display: block;
+  height: 20px;
+  text-indent: -999em;
+}
+
+div.grey_box.survey_progress p.actions a.button.view_details {
+  width: 96px;
+  background: url(/images/view_details_button.png);
+}
+
+div.grey_box.survey_progress p.actions a.button.edit_survey {
+  width: 92px;
+  background: url(/images/edit_survey_button.png);
+}
+
+div.grey_box.survey_progress p.expiration span {
   font-weight: normal;
 }
 
-div.grey_box.campaign_progress p.stats {
+div.grey_box.survey_progress p.stats {
   overflow: hidden;
   margin-bottom: 15px;
-  padding: 0 10px 0 0;
+  border: 1px solid #eee;
+  padding: 5px 10px 5px 0;
   font-weight: bold;
 }
 
-div.grey_box.campaign_progress p.stats.highlight {
+div.grey_box.survey_progress p.stats.highlight {
   border: 1px solid #cdcdb9;
-  padding: 5px 10px 5px 0;
   background: #f2f2b2;
 }
 
-div.grey_box.campaign_progress p.stats span.number {
+div.grey_box.survey_progress p.stats span.number {
   float: left;
   display: block;
   width: 70px;
@@ -292,13 +332,13 @@ div.grey_box.campaign_progress p.stats span.number {
   text-shadow: 1px 1px 1px #fff;
 }
 
-div.grey_box.campaign_progress p.stats span.type {
+div.grey_box.survey_progress p.stats span.type {
   float: left;
   display: block;
   line-height: 21px;
 }
 
-div.grey_box.campaign_progress p.stats a {
+div.grey_box.survey_progress p.stats a {
   float: right;
   display: block;
   color: #000;
@@ -306,4 +346,4 @@ div.grey_box.campaign_progress p.stats a {
   line-height: 21px;
 }
 
-/* @end Active Campaigns */
+/* @end Active Surveys */

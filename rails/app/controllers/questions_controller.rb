@@ -1,9 +1,9 @@
 class QuestionsController < ApplicationController
-  before_filter :find_campaign
+  before_filter :find_survey
   # GET /questions
   # GET /questions.xml
   def index
-    @questions = @campaign.questions
+    @questions = @survey.questions
 
     respond_to do |format|
       format.html # index.html.erb
@@ -42,12 +42,12 @@ class QuestionsController < ApplicationController
   # POST /questions
   # POST /questions.xml
   def create
-    @question = @campaign.questions.build(params[:question])
+    @question = @survey.questions.build(params[:question])
 
     respond_to do |format|
       if @question.save
         flash[:notice] = 'Question was successfully created.'
-        format.html { redirect_to([@campaign, @question]) }
+        format.html { redirect_to([@survey, @question]) }
         format.xml  { render :xml => @question, :status => :created, :location => @question }
       else
         format.html { render :action => "new" }
@@ -64,7 +64,7 @@ class QuestionsController < ApplicationController
     respond_to do |format|
       if @question.update_attributes(params[:question])
         flash[:notice] = 'Question was successfully updated.'
-        format.html { redirect_to([@campaign, @question]) }
+        format.html { redirect_to([@survey, @question]) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -80,18 +80,18 @@ class QuestionsController < ApplicationController
     @question.destroy
 
     respond_to do |format|
-      format.html { redirect_to(campaign_questions_url(@campaign)) }
+      format.html { redirect_to(survey_questions_url(@survey)) }
       format.xml  { head :ok }
     end
   end
 
 protected
 
-  def find_campaign
-    @campaign ||= Campaign.find(params[:campaign_id])
+  def find_survey
+    @survey ||= Survey.find(params[:survey_id])
   end
 
   def find_question
-    @campaign.questions.find(params[:id])
+    @survey.questions.find(params[:id])
   end
 end
