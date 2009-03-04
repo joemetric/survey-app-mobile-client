@@ -22,7 +22,9 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    tabBarController.selectedIndex = 2;
+    if (buttonIndex != 2) {
+        tabBarController.selectedIndex = 2;
+    }
     [actionSheet release];
 }
 

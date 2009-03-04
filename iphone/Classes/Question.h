@@ -11,10 +11,12 @@
 @interface Question : Resource {
     NSString        *text;
     NSDecimalNumber *amount;
+    NSString        *questionType;
 }
 
 @property (nonatomic, retain) NSString *text;
 @property (nonatomic, retain) NSDecimalNumber *amount;
+@property (nonatomic, retain) NSString *questionType;
 
 - (NSString *)questionAndAmountAsString;
 - (NSString *)amountAsDollarString;

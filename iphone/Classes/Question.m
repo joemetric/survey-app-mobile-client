@@ -26,9 +26,10 @@
 + (id)newFromDictionary:(NSDictionary *)dict
 {
     Question *question = [[Question alloc] init];
-    question.itemId = [[[dict objectForKey:[self resourceKey]] objectForKey:@"id"] integerValue];
-    question.text = [[dict objectForKey:[self resourceKey]] objectForKey:@"text"];
-    question.amount = [[dict objectForKey:[self resourceKey]] objectForKey:@"amount"];
+    question.itemId       = [[[dict objectForKey:[self resourceKey]] objectForKey:@"id"] integerValue];
+    question.text         = [[dict objectForKey:[self resourceKey]] objectForKey:@"text"];
+    question.amount       = [[dict objectForKey:[self resourceKey]] objectForKey:@"amount"];
+    question.questionType = [[dict objectForKey:[self resourceKey]] objectForKey:@"question_type"];
     return question;
 }
 
@@ -37,6 +38,7 @@
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
     [parameters setObject:self.text forKey:@"text"];
     [parameters setObject:self.amount forKey:@"amount"];
+    [parameters setObject:self.questionType forKey:@"question_type"];
 
     NSMutableDictionary *container = [[NSMutableDictionary alloc] init];
     [container setObject:parameters forKey:[[self class] resourceKey]];
