@@ -15,4 +15,5 @@
 }
 
 - (IBAction)createAccount:(id)sender;
+- (IBAction)saveAccount:(id)sender;
 @end

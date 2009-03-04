@@ -6,6 +6,7 @@
 //  Copyright 2008 EdgeCase, LLC. All rights reserved.
 //
 
+#import "JoeMetricAppDelegate.h"
 #import "ProfileViewController.h"
 #import "Account.h"
 
@@ -20,12 +21,13 @@
 }
 */
 
-/*
 // Implement viewDidLoad to do additional setup after loading the view.
 - (void)viewDidLoad {
     [super viewDidLoad];
+    JoeMetricAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    usernameField.text = [appDelegate.credentials objectForKey:@"username"];
+    passwordField.text = [appDelegate.credentials objectForKey:@"password"];
 }
-*/
 
 /*
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -125,6 +127,7 @@
     Account *account = [Account createWithParams:params];
     if (account) {
         NSLog(@"Account was created!");
+        [self saveAccount:sender];
     } else {
         // Pop up an alert or something?
         NSLog(@"Account creation hath FAILED");
@@ -133,5 +136,16 @@
     NSLog(@"Created account: %@", account);
 }
 
+- (IBAction)saveAccount:(id)sender
+{
+    NSMutableDictionary *credentials = [[NSMutableDictionary alloc] initWithCapacity: 2];
+    [credentials setObject:[usernameField text] forKey:@"username"];
+    [credentials setObject:[passwordField text] forKey:@"password"];
+
+
+    JoeMetricAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    appDelegate.credentials = credentials;
+    [appDelegate saveCredentials];
+}
 @end
 

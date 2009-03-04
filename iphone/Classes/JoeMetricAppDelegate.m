@@ -14,7 +14,7 @@
 @synthesize window;
 @synthesize tabBarController;
 @synthesize navigationController;
-
+@synthesize credentials;
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
     
@@ -22,10 +22,38 @@
     [window addSubview:tabBarController.view];
 }
 
+- (void) initCredentialsFilePath {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    credentialsFilePath = [documentsDirectory stringByAppendingPathComponent:@"authprefs.plist"];
+    [credentialsFilePath retain];
+}
+
+- (void)loadCredentials {
+    if (credentialsFilePath == nil)
+        [self initCredentialsFilePath];
+    
+    if ([[NSFileManager defaultManager] fileExistsAtPath: credentialsFilePath]) {
+        credentials = [[NSMutableDictionary alloc]
+                          initWithContentsOfFile:credentialsFilePath];
+    } else {
+        credentials = [[NSMutableDictionary alloc] initWithCapacity: 2];
+        [credentials setObject:@"" forKey:@"username"];
+        [credentials setObject:@"" forKey:@"password"];
+    }
+}
+
+- (void)saveCredentials {
+    NSLog(@"Updating credentials: %@", credentials);
+    [credentials writeToFile:credentialsFilePath atomically:YES];
+}
+
 - (NSURLCredential *)getCredentials {
-    // Looks up credential information
-    return [NSURLCredential credentialWithUser:@"quentin"
-                            password:@"monkey"
+    if (credentials == nil)
+        [self loadCredentials];
+    
+    return [NSURLCredential credentialWithUser:[credentials objectForKey:@"username"]
+                            password:[credentials objectForKey:@"password"]
                             persistence:NSURLCredentialPersistenceForSession];
 }
 
