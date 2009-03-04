@@ -1,15 +1,20 @@
-<h1>New question for <%= @campaign.name %></h1>
+<%= link_to 'cancel', campaign_questions_path, :class => 'cancel_button header' %>
+
+<h1>
+  <span class="campaign">Survey: <strong><%= @campaign.name %></strong></span>
+  Create Question <span class="count">2 of 3</span>
+</h1>
 
 <% form_for([@campaign, @question]) do |f| %>
   <%= f.error_messages %>
-
-  <p>
-    <%= f.label :text %><br />
-    <%= f.text_field :text %>
-  </p>
-  <p>
-    <%= f.submit "Create" %>
-  </p>
+  <div class="grey_box">
+    <div class="field">
+      <%= f.label :text %>
+      <%= f.text_field :text %>
+    </div>
+  </div>
+  <div class="submit">
+    <input type="image" alt="create question" src="/images/create_question_button.png" />
+    <%= link_to 'cancel', campaign_questions_path, :class => 'cancel_button' %>
+  </div>
 <% end %>
-
-<%= link_to 'Back', campaign_questions_path %>

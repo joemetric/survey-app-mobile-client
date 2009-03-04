@@ -16,6 +16,7 @@ div#header {
 }
 
 div#header ul {
+  position: relative;
   width: 940px;
   height: 43px;
   margin: 0 auto;
@@ -38,6 +39,15 @@ div#header ul li a {
   text-decoration: none;
   text-shadow: 1px 1px 1px rgba(0,0,0,0.75);
   opacity: 0.999;
+}
+
+div#header ul li a#home_link {
+  position: absolute;
+  top: 0;
+  left: -8px;
+  width: 100px;
+  margin-left: 0;
+  text-indent: -999em;
 }
 
 div#header ul li a.account {
@@ -75,11 +85,18 @@ h1 {
   letter-spacing: -0.03em;
 }
 
-h1 span.campaign {
+h1 span.campaign,
+h1 span.count {
   display: block;
-  color: #444;
+  color: #555;
   font-size: 15px;
   letter-spacing: 0;
+}
+
+h1 span.count {
+  display: inline;
+  margin-left: 5px;
+  font-size: 21px;
 }
 
 h2 {
