@@ -1,6 +1,10 @@
 require File.join(File.dirname(__FILE__), '..', 'test_helper')
 
 class QuestionsControllerTest < ActionController::TestCase
+  def setup
+    login_as :quentin
+  end
+  
   def test_should_get_index
     get :index, :campaign_id => campaigns(:one).id
     assert_response :success
