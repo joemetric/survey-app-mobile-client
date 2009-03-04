@@ -12,13 +12,14 @@
       <%= password_field_tag 'password', nil %>
     </div>
 
-    <!-- Uncomment this if you want this functionality
     <p><%= label_tag 'remember_me', 'Remember me' %>
     <%= check_box_tag 'remember_me', '1', @remember_me %></p>
-    -->
 
-    <div class="submit">
-      <input type="image" src="/images/login_button.png" alt="login" />
-    </div>
+
+  <div class="submit">
+    <p>
+      <%= image_submit_tag 'login_button.png', :alt => 'Log in' %>
+      or <%= link_to 'Sign up!', new_user_path %>
+    </p>
   </div>
 <% end -%>
