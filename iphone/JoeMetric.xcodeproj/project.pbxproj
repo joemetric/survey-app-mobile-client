@@ -49,6 +49,10 @@
 		D2F22B850EFBF09C0047CBFA /* QuestionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F22B840EFBF09C0047CBFA /* QuestionTest.m */; };
 		D2F22BB20EFBF3C30047CBFA /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD8C8410EF33C3E00A20937 /* Question.m */; };
 		D2F2EF750F6030EB00A8BB57 /* QuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F2EF740F6030EB00A8BB57 /* QuestionViewController.m */; };
+		D2F2EF9B0F60384E00A8BB57 /* FreeTextAnswerController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F2EF9A0F60384E00A8BB57 /* FreeTextAnswerController.m */; };
+		D2F2EF9E0F60385A00A8BB57 /* PictureAnswerController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F2EF9D0F60385A00A8BB57 /* PictureAnswerController.m */; };
+		D2F2EFA30F60389100A8BB57 /* FreeTextAnswerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2F2EFA20F60389100A8BB57 /* FreeTextAnswerView.xib */; };
+		D2F2EFA50F60389D00A8BB57 /* PictureAnswerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2F2EFA40F60389D00A8BB57 /* PictureAnswerView.xib */; };
 		FC21C5050F12B3AC00436E7F /* Survey.m in Sources */ = {isa = PBXBuildFile; fileRef = FC21C5040F12B3AC00436E7F /* Survey.m */; };
 		FC9756860F13B2300077926E /* SurveyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC9756850F13B2300077926E /* SurveyListViewController.m */; };
 		FC9756890F13B4070077926E /* SurveyListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC9756880F13B4070077926E /* SurveyListView.xib */; };
@@ -115,6 +119,12 @@
 		D2F22B840EFBF09C0047CBFA /* QuestionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuestionTest.m; path = UnitTests/QuestionTest.m; sourceTree = "<group>"; };
 		D2F2EF730F6030EB00A8BB57 /* QuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionViewController.h; sourceTree = "<group>"; };
 		D2F2EF740F6030EB00A8BB57 /* QuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionViewController.m; sourceTree = "<group>"; };
+		D2F2EF990F60384E00A8BB57 /* FreeTextAnswerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FreeTextAnswerController.h; sourceTree = "<group>"; };
+		D2F2EF9A0F60384E00A8BB57 /* FreeTextAnswerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FreeTextAnswerController.m; sourceTree = "<group>"; };
+		D2F2EF9C0F60385A00A8BB57 /* PictureAnswerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureAnswerController.h; sourceTree = "<group>"; };
+		D2F2EF9D0F60385A00A8BB57 /* PictureAnswerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureAnswerController.m; sourceTree = "<group>"; };
+		D2F2EFA20F60389100A8BB57 /* FreeTextAnswerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FreeTextAnswerView.xib; sourceTree = "<group>"; };
+		D2F2EFA40F60389D00A8BB57 /* PictureAnswerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PictureAnswerView.xib; sourceTree = "<group>"; };
 		FC21C5030F12B3AC00436E7F /* Survey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Survey.h; sourceTree = "<group>"; };
 		FC21C5040F12B3AC00436E7F /* Survey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Survey.m; sourceTree = "<group>"; };
 		FC9756840F13B2300077926E /* SurveyListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurveyListViewController.h; sourceTree = "<group>"; };
@@ -236,6 +246,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D2F2EF9F0F60386600A8BB57 /* Answer Views */,
 				0DF9E1EB0EF2ED1800A522A1 /* Images */,
 				28AD73870D9D96C1002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* Info.plist */,
@@ -302,8 +313,21 @@
 		D2F2EF680F602F8900A8BB57 /* Answer View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D2F2EF990F60384E00A8BB57 /* FreeTextAnswerController.h */,
+				D2F2EF9A0F60384E00A8BB57 /* FreeTextAnswerController.m */,
+				D2F2EF9C0F60385A00A8BB57 /* PictureAnswerController.h */,
+				D2F2EF9D0F60385A00A8BB57 /* PictureAnswerController.m */,
 			);
 			name = "Answer View Controllers";
+			sourceTree = "<group>";
+		};
+		D2F2EF9F0F60386600A8BB57 /* Answer Views */ = {
+			isa = PBXGroup;
+			children = (
+				D2F2EFA20F60389100A8BB57 /* FreeTextAnswerView.xib */,
+				D2F2EFA40F60389D00A8BB57 /* PictureAnswerView.xib */,
+			);
+			name = "Answer Views";
 			sourceTree = "<group>";
 		};
 		FC9756830F13B20A0077926E /* Survey View Controllers */ = {
@@ -392,6 +416,8 @@
 				0DF9E3150EF3065200A522A1 /* QuestionView.xib in Resources */,
 				0DD8C95E0EF487C900A20937 /* SurveyQuestionView.xib in Resources */,
 				FC9756890F13B4070077926E /* SurveyListView.xib in Resources */,
+				D2F2EFA30F60389100A8BB57 /* FreeTextAnswerView.xib in Resources */,
+				D2F2EFA50F60389D00A8BB57 /* PictureAnswerView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,6 +468,8 @@
 				D266E01C0F3A400200C20691 /* NSString+SBJSON.m in Sources */,
 				D266E01D0F3A400200C20691 /* SBJSON.m in Sources */,
 				D2F2EF750F6030EB00A8BB57 /* QuestionViewController.m in Sources */,
+				D2F2EF9B0F60384E00A8BB57 /* FreeTextAnswerController.m in Sources */,
+				D2F2EF9E0F60385A00A8BB57 /* PictureAnswerController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

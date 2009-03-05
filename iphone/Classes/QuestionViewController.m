@@ -8,6 +8,8 @@
 
 #import "QuestionViewController.h"
 #import "Question.h"
+#import "FreeTextAnswerController.h"
+#import "PictureAnswerController.h"
 
 @implementation QuestionViewController
 
@@ -17,7 +19,7 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil question:(Question *)aQuestion
 {
-    if ([self initWithNibName:nibBundleOrNil bundle:nibBundleOrNil]) {
+    if ([self initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         self.question = aQuestion;
     }
     return self;
@@ -59,8 +61,38 @@
     // Release anything that's not essential, such as cached data
 }
 
-- (void)answerQuestion:(id)sender
-{
+- (void)answerFreeTextQuestion {
+    FreeTextAnswerController *ftac = [[FreeTextAnswerController alloc] initWithNibName:@"FreeTextAnswerView"
+                                                                       bundle:nil]; // TODO
+    [self.navigationController pushViewController:ftac animated:YES];
+    [ftac release];
+}
+
+- (void)answerPictureQuestion {
+    // pass in question
+    PictureAnswerController *pac = [[PictureAnswerController alloc] initWithNibName:@"PictureAnswerView"
+                                                                     bundle:nil]; // TODO
+    [self.navigationController pushViewController:pac animated:YES];
+    [pac release];
+}
+
+- (void)answerQuestion:(id)sender {
+    NSLog(@"Answering question for type: %@", self.question.questionType);
+    
+    if ([self.question.questionType isEqualToString:@"picture"]) {
+        NSLog(@"Answering a picture question");
+        [self answerPictureQuestion];
+        return;
+    }
+
+    if ([self.question.questionType isEqualToString:@"freetext"]) {
+        NSLog(@"Answering a free text question");
+        [self answerFreeTextQuestion];
+        return;
+    }
+
+    NSLog(@"Unknown question type");
+    // show an alert
 }
 
 - (void)dealloc {
