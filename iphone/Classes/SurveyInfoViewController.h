@@ -12,12 +12,14 @@
 
 @interface SurveyInfoViewController : UIViewController {
     UILabel *surveyName;
+    UILabel *surveyAmount;
     Survey *survey;
 }
 
 - (IBAction)takeSurvey:(id) sender;
 
 @property (nonatomic, assign) IBOutlet UILabel *surveyName;
+@property (nonatomic, assign) IBOutlet UILabel *surveyAmount;
 @property (nonatomic, assign) Survey *survey;
 
 @end

@@ -13,6 +13,7 @@
 @implementation SurveyInfoViewController
 
 @synthesize surveyName;
+@synthesize surveyAmount;
 @synthesize survey;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil survey:(Survey *)aSurvey {
@@ -25,6 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.surveyName.text = self.survey.name;
+    self.surveyAmount.text = [self.survey amountAsDollarString];
 }
 
 /*
