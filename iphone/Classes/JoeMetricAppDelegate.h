@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JoeMetricAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> {
+@interface JoeMetricAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate, UIActionSheetDelegate> {
     UIWindow *window;
     UITabBarController *tabBarController;
     UINavigationController *navigationController;
@@ -20,4 +20,9 @@
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
 @property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
 @property (nonatomic, retain) NSMutableDictionary *credentials;
+
+- (void)saveCredentials;
+- (NSURLCredential *)getCredentials;
+- (void)authenticationFailed;
+
 @end

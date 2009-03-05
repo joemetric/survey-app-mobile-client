@@ -27,7 +27,7 @@
     usernameField.delegate = self;
     passwordField.delegate = self;
     
-    JoeMetricAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    JoeMetricAppDelegate *appDelegate = (JoeMetricAppDelegate*)[[UIApplication sharedApplication] delegate];
     usernameField.text = [appDelegate.credentials objectForKey:@"username"];
     passwordField.text = [appDelegate.credentials objectForKey:@"password"];
 }
@@ -150,7 +150,7 @@
     [credentials setObject:[passwordField text] forKey:@"password"];
 
 
-    JoeMetricAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    JoeMetricAppDelegate *appDelegate = (JoeMetricAppDelegate*)[[UIApplication sharedApplication] delegate];
     appDelegate.credentials = credentials;
     [appDelegate saveCredentials];
 }

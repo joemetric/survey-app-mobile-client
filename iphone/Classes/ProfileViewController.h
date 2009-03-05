@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface ProfileViewController : UIViewController {
+@interface ProfileViewController : UIViewController <UITextFieldDelegate> {
     IBOutlet UITextField *usernameField;
     IBOutlet UITextField *passwordField;
 }

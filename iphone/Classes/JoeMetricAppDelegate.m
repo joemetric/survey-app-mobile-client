@@ -37,7 +37,7 @@
     [menu addButtonWithTitle:@"Cancel"];
     menu.cancelButtonIndex = 2;
 
-    [menu showInView:[window contentView]];
+    [menu showInView:[tabBarController view]];
     // CLANG reports menu as leaking, but it isn't.  It's released above.
 }
 
