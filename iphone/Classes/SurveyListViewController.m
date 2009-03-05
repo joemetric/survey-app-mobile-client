@@ -7,7 +7,7 @@
 //
 
 #import "SurveyListViewController.h"
-#import "QuestionListViewController.h"
+#import "SurveyInfoViewController.h"
 #import "Survey.h"
 
 @implementation SurveyListViewController
@@ -62,16 +62,12 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    QuestionListViewController *questionListViewController = 
-        [[QuestionListViewController alloc] initWithNibName:@"QuestionListView" 
-                                            bundle:nil];
-    
-    questionListViewController.survey = [self.surveys objectAtIndex:indexPath.row];
-    [questionListViewController refreshQuestions];
-    
-    [self.navigationController pushViewController:questionListViewController animated:YES];
-    
-    [questionListViewController release];    
+    SurveyInfoViewController *sivc = [[SurveyInfoViewController alloc] initWithNibName:@"SurveyInfoView"
+                                                                       bundle:nil
+                                                                       survey:[self.surveys objectAtIndex:indexPath.row]];
+
+    [self.navigationController pushViewController:sivc animated:YES];
+    [sivc release];
 }
 
 - (void)dealloc {

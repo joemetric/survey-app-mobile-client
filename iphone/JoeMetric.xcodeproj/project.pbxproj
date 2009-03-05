@@ -53,6 +53,8 @@
 		D2F2EF9E0F60385A00A8BB57 /* PictureAnswerController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F2EF9D0F60385A00A8BB57 /* PictureAnswerController.m */; };
 		D2F2EFA30F60389100A8BB57 /* FreeTextAnswerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2F2EFA20F60389100A8BB57 /* FreeTextAnswerView.xib */; };
 		D2F2EFA50F60389D00A8BB57 /* PictureAnswerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2F2EFA40F60389D00A8BB57 /* PictureAnswerView.xib */; };
+		D2F2EFF50F606AB500A8BB57 /* SurveyInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F2EFF40F606AB500A8BB57 /* SurveyInfoViewController.m */; };
+		D2F2EFF70F606ACD00A8BB57 /* SurveyInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2F2EFF60F606ACD00A8BB57 /* SurveyInfoView.xib */; };
 		FC21C5050F12B3AC00436E7F /* Survey.m in Sources */ = {isa = PBXBuildFile; fileRef = FC21C5040F12B3AC00436E7F /* Survey.m */; };
 		FC9756860F13B2300077926E /* SurveyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC9756850F13B2300077926E /* SurveyListViewController.m */; };
 		FC9756890F13B4070077926E /* SurveyListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC9756880F13B4070077926E /* SurveyListView.xib */; };
@@ -125,6 +127,9 @@
 		D2F2EF9D0F60385A00A8BB57 /* PictureAnswerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureAnswerController.m; sourceTree = "<group>"; };
 		D2F2EFA20F60389100A8BB57 /* FreeTextAnswerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FreeTextAnswerView.xib; sourceTree = "<group>"; };
 		D2F2EFA40F60389D00A8BB57 /* PictureAnswerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PictureAnswerView.xib; sourceTree = "<group>"; };
+		D2F2EFF30F606AB500A8BB57 /* SurveyInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurveyInfoViewController.h; sourceTree = "<group>"; };
+		D2F2EFF40F606AB500A8BB57 /* SurveyInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SurveyInfoViewController.m; sourceTree = "<group>"; };
+		D2F2EFF60F606ACD00A8BB57 /* SurveyInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SurveyInfoView.xib; sourceTree = "<group>"; };
 		FC21C5030F12B3AC00436E7F /* Survey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Survey.h; sourceTree = "<group>"; };
 		FC21C5040F12B3AC00436E7F /* Survey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Survey.m; sourceTree = "<group>"; };
 		FC9756840F13B2300077926E /* SurveyListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurveyListViewController.h; sourceTree = "<group>"; };
@@ -256,6 +261,7 @@
 				0DF9E3140EF3065200A522A1 /* QuestionView.xib */,
 				0DD8C95D0EF487C900A20937 /* SurveyQuestionView.xib */,
 				FC9756880F13B4070077926E /* SurveyListView.xib */,
+				D2F2EFF60F606ACD00A8BB57 /* SurveyInfoView.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -339,6 +345,8 @@
 				FC9756850F13B2300077926E /* SurveyListViewController.m */,
 				D2F2EF730F6030EB00A8BB57 /* QuestionViewController.h */,
 				D2F2EF740F6030EB00A8BB57 /* QuestionViewController.m */,
+				D2F2EFF30F606AB500A8BB57 /* SurveyInfoViewController.h */,
+				D2F2EFF40F606AB500A8BB57 /* SurveyInfoViewController.m */,
 			);
 			name = "Survey View Controllers";
 			sourceTree = "<group>";
@@ -418,6 +426,7 @@
 				FC9756890F13B4070077926E /* SurveyListView.xib in Resources */,
 				D2F2EFA30F60389100A8BB57 /* FreeTextAnswerView.xib in Resources */,
 				D2F2EFA50F60389D00A8BB57 /* PictureAnswerView.xib in Resources */,
+				D2F2EFF70F606ACD00A8BB57 /* SurveyInfoView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,6 +479,7 @@
 				D2F2EF750F6030EB00A8BB57 /* QuestionViewController.m in Sources */,
 				D2F2EF9B0F60384E00A8BB57 /* FreeTextAnswerController.m in Sources */,
 				D2F2EF9E0F60385A00A8BB57 /* PictureAnswerController.m in Sources */,
+				D2F2EFF50F606AB500A8BB57 /* SurveyInfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
