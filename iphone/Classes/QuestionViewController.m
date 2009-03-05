@@ -77,23 +77,43 @@
     [pac release];
 }
 
+- (void)alertView:(UIAlertView*)alert clickedButtonAtIndex:(NSInteger)index
+{
+    NSLog(@"bye bye alert");
+}
+
+- (void)unknownQuestionType {
+    NSLog(@"Unknown question type");
+    UIAlertView *baseAlert = [[UIAlertView alloc]
+                                 initWithTitle:@"Unknown Question Type"
+                                 message:@""
+                                 delegate:self
+                                 cancelButtonTitle:nil
+                                 otherButtonTitles:@"OK", nil];
+    [baseAlert show];
+}
+
 - (void)answerQuestion:(id)sender {
     NSLog(@"Answering question for type: %@", self.question.questionType);
+
+    if (self.question.questionType == [NSNull null]) {
+        [self unknownQuestionType];
+        return;
+    }
     
     if ([self.question.questionType isEqualToString:@"picture"]) {
         NSLog(@"Answering a picture question");
         [self answerPictureQuestion];
         return;
     }
-
+    
     if ([self.question.questionType isEqualToString:@"freetext"]) {
         NSLog(@"Answering a free text question");
         [self answerFreeTextQuestion];
         return;
     }
 
-    NSLog(@"Unknown question type");
-    // show an alert
+    [self unknownQuestionType];
 }
 
 - (void)dealloc {
