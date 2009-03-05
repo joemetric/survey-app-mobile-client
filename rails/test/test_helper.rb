@@ -2,6 +2,9 @@ ENV["RAILS_ENV"] = "test"
 require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
 require 'test_help'
 require 'shoulda'
+Dir[File.expand_path(File.dirname(__FILE__) + "/mixins/*")].each do |file|
+  require file
+end
 
 class Test::Unit::TestCase
   include AuthenticatedTestHelper
