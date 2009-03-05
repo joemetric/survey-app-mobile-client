@@ -7,7 +7,7 @@
 //
 
 #import "QuestionListViewController.h"
-#import "SingleQuestionViewController.h"
+#import "QuestionViewController.h"
 #import "Question.h"
 #import "Survey.h"
 
@@ -67,12 +67,12 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    SingleQuestionViewController *sqvc = 
-        [[SingleQuestionViewController alloc] initWithNibName:@"QuestionView" 
-                                              bundle:nil 
-                                              question:[self.questions objectAtIndex:indexPath.row]];
-    [self.navigationController pushViewController:sqvc animated:YES];  
-    [sqvc release];    
+    QuestionViewController *qvc = 
+        [[QuestionViewController alloc] initWithNibName:@"QuestionView" 
+                                        bundle:nil
+                                        question:[self.questions objectAtIndex:indexPath.row]];
+    [self.navigationController pushViewController:qvc animated:YES];  
+    [qvc release];    
 }
 
 

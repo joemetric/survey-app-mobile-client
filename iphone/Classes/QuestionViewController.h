@@ -2,24 +2,26 @@
 //  QuestionViewController.h
 //  JoeMetric
 //
-//  Created by Joseph OBrien on 12/14/08.
-//  Copyright 2008 EdgeCase, LLC. All rights reserved.
+//  Created by Scott Barron on 3/5/09.
+//  Copyright 2009 EdgeCase, LLC. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "Question.h"
 
+@class Question;
 
 @interface QuestionViewController : UIViewController {
-    IBOutlet UILabel *selectedQuestionLabel;
-    IBOutlet UILabel *selectedAmountLabel;
-    Question *selectedQuestion;
+    UILabel *questionLabel;
+    UILabel *amountLabel;
+    Question *question;
 }
 
-@property (nonatomic, retain) UILabel *selectedQuestionLabel;
-@property (nonatomic, retain) UILabel *selectedAmountLabel;
-@property (nonatomic, retain) Question *selectedQuestion;
+@property (nonatomic, retain) IBOutlet UILabel *questionLabel;
+@property (nonatomic, retain) IBOutlet UILabel *amountLabel;
+@property (nonatomic, retain) Question *question;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil question:(Question *)question;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil question:(Question *)aQuestion;
+
+- (IBAction)answerQuestion:(id)sender;
 
 @end
