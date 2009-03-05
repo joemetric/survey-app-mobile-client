@@ -1,7 +1,7 @@
-<%= link_to 'cancel', campaign_questions_path, :class => 'cancel_button header' %>
+<%= link_to 'cancel', survey_questions_path, :class => 'cancel_button header' %>
 
 <h1>
-  <span class="campaign">Survey: <strong><%= @survey.name %></strong></span>
+  <span class="survey">Survey: <strong><%= @survey.name %></strong></span>
   Create Question <span class="count">2 of 3</span>
 </h1>
 
@@ -15,6 +15,6 @@
   </div>
   <div class="submit">
     <input type="image" alt="create question" src="/images/create_question_button.png" />
-    <%= link_to 'cancel', campaign_questions_path, :class => 'cancel_button' %>
+    <%= link_to 'cancel', survey_questions_path, :class => 'cancel_button' %>
   </div>
 <% end %>
