@@ -79,7 +79,7 @@
 
 - (void)alertView:(UIAlertView*)alert clickedButtonAtIndex:(NSInteger)index
 {
-    NSLog(@"bye bye alert");
+    [alert release];
 }
 
 - (void)unknownQuestionType {
@@ -91,6 +91,7 @@
                                  cancelButtonTitle:nil
                                  otherButtonTitles:@"OK", nil];
     [baseAlert show];
+    // CLANG reports menu as leaking, but it isn't.  It's released above.
 }
 
 - (void)answerQuestion:(id)sender {

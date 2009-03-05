@@ -70,6 +70,7 @@
 
 
 - (void)dealloc {
+    [question release];
     [super dealloc];
 }
 

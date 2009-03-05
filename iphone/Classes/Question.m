@@ -62,6 +62,7 @@
 - (void)dealloc {
     [text release];
     [amount release];
+    [questionType release];
     [super dealloc];
 }
     
