@@ -22,4 +22,6 @@
 @property (nonatomic, assign) IBOutlet UILabel *surveyAmount;
 @property (nonatomic, assign) Survey *survey;
 
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil survey:(Survey *)aSurvey;
+
 @end
