@@ -1,4 +1,4 @@
-class IncompatibleDemographicType
+class IncompatibleType
 end
 
 module DemographicTestSuite
@@ -9,18 +9,22 @@ module DemographicTestSuite
 
   module TestMethods
     def demographic_tests
-      proc { |klass|
+      proc { |demographic_type|
         context "when providing required API" do
 
           setup do
-            @this_model = klass.new
-            @incompatible_model = IncompatibleDemographicType.new
+            @this_model = demographic_type.new
+            @incompatible_model = IncompatibleType.new
           end
 
           context "when determining whether it is within another demographic" do
 
             should "understand the concept of 'within'" do
               assert @this_model.respond_to?(:within?)
+            end
+
+            should "have a within check" do
+              assert @this_model.respond_to?(:within_check)
             end
 
             should "not consider itself within demographics of incompatible types" do
@@ -34,8 +38,8 @@ module DemographicTestSuite
             context "when the base cases have been passed" do
 
               setup do
-                @this_model = flexmock(klass.new)
-                @compatible_model = flexmock(klass.new)
+                @this_model = flexmock(demographic_type.new)
+                @compatible_model = flexmock(demographic_type.new)
               end
 
               should "delegate to its within check" do
@@ -51,8 +55,8 @@ module DemographicTestSuite
       }
     end
 
-    def run_demographic_tests_for klass
-      demographic_tests.call klass
+    def run_demographic_tests_for demographic_type
+      demographic_tests.call demographic_type
     end
   end
 

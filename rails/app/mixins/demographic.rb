@@ -1,5 +1,5 @@
 module Demographic
-  
+
   def within? other
     raise IncompatibleDemographic unless self.class === other
 
