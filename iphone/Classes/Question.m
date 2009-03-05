@@ -12,6 +12,7 @@
 
 @synthesize text;
 @synthesize amount;
+@synthesize questionType;
 
 + (NSString *)resourceName
 {
