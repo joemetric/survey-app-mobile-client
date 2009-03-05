@@ -63,15 +63,16 @@
 
 - (void)answerFreeTextQuestion {
     FreeTextAnswerController *ftac = [[FreeTextAnswerController alloc] initWithNibName:@"FreeTextAnswerView"
-                                                                       bundle:nil]; // TODO
+                                                                       bundle:nil
+                                                                       question:self.question];
     [self.navigationController pushViewController:ftac animated:YES];
     [ftac release];
 }
 
 - (void)answerPictureQuestion {
-    // pass in question
     PictureAnswerController *pac = [[PictureAnswerController alloc] initWithNibName:@"PictureAnswerView"
-                                                                     bundle:nil]; // TODO
+                                                                    bundle:nil
+                                                                    question:self.question];
     [self.navigationController pushViewController:pac animated:YES];
     [pac release];
 }

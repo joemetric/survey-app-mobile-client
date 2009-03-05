@@ -7,25 +7,19 @@
 //
 
 #import "FreeTextAnswerController.h"
-
+#import "Question.h"
 
 @implementation FreeTextAnswerController
 
-/*
-// The designated initializer. Override to perform setup that is required before the view is loaded.
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-        // Custom initialization
+@synthesize question;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil question:(Question *)aQuestion
+{
+    if ([self initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+        self.question = aQuestion;
     }
     return self;
 }
-*/
-
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView {
-}
-*/
 
 /*
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.

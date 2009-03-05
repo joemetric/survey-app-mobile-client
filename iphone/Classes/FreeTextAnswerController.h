@@ -8,9 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class Question;
 
 @interface FreeTextAnswerController : UIViewController {
-
+    Question *question;
 }
+
+@property (nonatomic, retain) Question *question;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil question:(Question *)aQuestion;
 
 @end
