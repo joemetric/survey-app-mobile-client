@@ -22,12 +22,38 @@
     return self;
 }
 
-/*
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex < 2) {
+        UIImagePickerController *p = [[UIImagePickerController alloc] init];
+        p.delegate = self;
+        
+        if (buttonIndex == 0) {
+            p.sourceType = UIImagePickerControllerSourceTypeCamera;
+        } else {
+            p.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        }
+        
+        [self presentModalViewController:p animated:YES];
+    }
+
+    [actionSheet release];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UIActionSheet *menu = [[UIActionSheet alloc] init];
+    menu.delegate = self;
+    menu.title = @"Choose an image to send";
+    [menu addButtonWithTitle:@"Take Snapshot"];
+    [menu addButtonWithTitle:@"Library Photo"];
+    [menu addButtonWithTitle:@"Cancel"];
+    menu.cancelButtonIndex = 2;
+
+    [menu showInView:[self view]];
+    // CLANG reports menu as leaking, but it isn't.  It's released above.
+    
 }
-*/
 
 /*
 // Override to allow orientations other than the default portrait orientation.

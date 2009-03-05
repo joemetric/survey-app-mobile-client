@@ -10,7 +10,7 @@
 
 @class Question;
 
-@interface PictureAnswerController : UIViewController {
+@interface PictureAnswerController : UIViewController <UIImagePickerControllerDelegate, UIActionSheetDelegate, UINavigationControllerDelegate> {
     Question *question;
 }
 
