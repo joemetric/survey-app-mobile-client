@@ -20,4 +20,7 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil question:(Question *)aQuestion;
 
+- (IBAction)sendAnswer:(id)sender;
+- (IBAction)changePicture:(id)sender;
+
 @end

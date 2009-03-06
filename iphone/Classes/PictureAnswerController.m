@@ -56,6 +56,16 @@
     imageView.image = image;
 }
 
+- (IBAction)sendAnswer:(id)sender
+{
+    NSLog(@"Submitting picture");
+}
+
+- (IBAction)changePicture:(id)sender
+{
+    [menu showInView:[self view]];
+}
+
 /*
 // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
