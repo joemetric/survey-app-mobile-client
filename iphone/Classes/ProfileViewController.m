@@ -6,8 +6,9 @@
 //  Copyright 2008 EdgeCase, LLC. All rights reserved.
 //
 
+#import "JoeMetricAppDelegate.h"
 #import "ProfileViewController.h"
-
+#import "Account.h"
 
 @implementation ProfileViewController
 
@@ -20,14 +21,23 @@
 }
 */
 
-/*
 // Implement viewDidLoad to do additional setup after loading the view.
 - (void)viewDidLoad {
     [super viewDidLoad];
+    usernameField.delegate = self;
+    passwordField.delegate = self;
+    
+    JoeMetricAppDelegate *appDelegate = (JoeMetricAppDelegate*)[[UIApplication sharedApplication] delegate];
+    usernameField.text = [appDelegate.credentials objectForKey:@"username"];
+    passwordField.text = [appDelegate.credentials objectForKey:@"password"];
 }
-*/
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
+}
 
+/*
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
@@ -49,6 +59,7 @@
     // Configure the cell
     return cell;
 }
+*/
 
 /*
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -111,6 +122,37 @@
     [super dealloc];
 }
 
+- (IBAction)createAccount:(id)sender
+{
+    NSLog(@"Creating with: %@ : %@", [usernameField text], [passwordField text]);
 
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    [params setObject:[usernameField text] forKey:@"login"];
+    [params setObject:@"foo@bar.com" forKey:@"email"];
+    [params setObject:[passwordField text] forKey:@"password"];
+    [params setObject:[passwordField text] forKey:@"password_confirmation"];
+
+    Account *account = [Account createWithParams:params];
+    if (account) {
+        [self saveAccount:sender];
+    } else {
+        // Pop up an alert or something?
+        NSLog(@"Account creation hath FAILED");
+    }
+    
+    [params release];
+}
+
+- (IBAction)saveAccount:(id)sender
+{
+    NSMutableDictionary *credentials = [[NSMutableDictionary alloc] initWithCapacity: 2];
+    [credentials setObject:[usernameField text] forKey:@"username"];
+    [credentials setObject:[passwordField text] forKey:@"password"];
+
+
+    JoeMetricAppDelegate *appDelegate = (JoeMetricAppDelegate*)[[UIApplication sharedApplication] delegate];
+    appDelegate.credentials = credentials;
+    [appDelegate saveCredentials];
+}
 @end
 

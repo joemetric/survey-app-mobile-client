@@ -16,15 +16,12 @@
 		0D68A3EA0EDCD5CC007CE721 /* MainWindowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D68A3E90EDCD5CC007CE721 /* MainWindowViewController.m */; };
 		0DD8C8420EF33C3E00A20937 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD8C8410EF33C3E00A20937 /* Question.m */; };
 		0DD8C95E0EF487C900A20937 /* SurveyQuestionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DD8C95D0EF487C900A20937 /* SurveyQuestionView.xib */; };
-		0DD8C9620EF4884D00A20937 /* SurveyQuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD8C9610EF4884D00A20937 /* SurveyQuestionViewController.m */; };
-		0DD8CA560EF4D43300A20937 /* QuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD8CA550EF4D43300A20937 /* QuestionViewController.m */; };
 		0DF9E1F00EF2ED3400A522A1 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DF9E1ED0EF2ED3400A522A1 /* Icon.png */; };
 		0DF9E22C0EF2F4FC00A522A1 /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DF9E2290EF2F4FC00A522A1 /* profile.png */; };
 		0DF9E22D0EF2F4FC00A522A1 /* question.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DF9E22A0EF2F4FC00A522A1 /* question.png */; };
 		0DF9E22E0EF2F4FC00A522A1 /* wallet.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DF9E22B0EF2F4FC00A522A1 /* wallet.png */; };
 		0DF9E2300EF2F61A00A522A1 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DF9E22F0EF2F61A00A522A1 /* user.png */; };
 		0DF9E3150EF3065200A522A1 /* QuestionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DF9E3140EF3065200A522A1 /* QuestionView.xib */; };
-		0DF9E3210EF3079100A522A1 /* SingleQuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF9E3200EF3079100A522A1 /* SingleQuestionViewController.m */; };
 		1D3623260D0F684500981E51 /* JoeMetricAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* JoeMetricAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -51,6 +48,13 @@
 		D2F22B420EFBEA090047CBFA /* GTMSenTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F22B3F0EFBEA090047CBFA /* GTMSenTestCase.m */; };
 		D2F22B850EFBF09C0047CBFA /* QuestionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F22B840EFBF09C0047CBFA /* QuestionTest.m */; };
 		D2F22BB20EFBF3C30047CBFA /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD8C8410EF33C3E00A20937 /* Question.m */; };
+		D2F2EF750F6030EB00A8BB57 /* QuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F2EF740F6030EB00A8BB57 /* QuestionViewController.m */; };
+		D2F2EF9B0F60384E00A8BB57 /* FreeTextAnswerController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F2EF9A0F60384E00A8BB57 /* FreeTextAnswerController.m */; };
+		D2F2EF9E0F60385A00A8BB57 /* PictureAnswerController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F2EF9D0F60385A00A8BB57 /* PictureAnswerController.m */; };
+		D2F2EFA30F60389100A8BB57 /* FreeTextAnswerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2F2EFA20F60389100A8BB57 /* FreeTextAnswerView.xib */; };
+		D2F2EFA50F60389D00A8BB57 /* PictureAnswerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2F2EFA40F60389D00A8BB57 /* PictureAnswerView.xib */; };
+		D2F2EFF50F606AB500A8BB57 /* SurveyInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F2EFF40F606AB500A8BB57 /* SurveyInfoViewController.m */; };
+		D2F2EFF70F606ACD00A8BB57 /* SurveyInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2F2EFF60F606ACD00A8BB57 /* SurveyInfoView.xib */; };
 		FC21C5050F12B3AC00436E7F /* Survey.m in Sources */ = {isa = PBXBuildFile; fileRef = FC21C5040F12B3AC00436E7F /* Survey.m */; };
 		FC9756860F13B2300077926E /* SurveyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC9756850F13B2300077926E /* SurveyListViewController.m */; };
 		FC9756890F13B4070077926E /* SurveyListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC9756880F13B4070077926E /* SurveyListView.xib */; };
@@ -72,18 +76,12 @@
 		0DD8C8400EF33C3E00A20937 /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Question.h; sourceTree = "<group>"; };
 		0DD8C8410EF33C3E00A20937 /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Question.m; sourceTree = "<group>"; };
 		0DD8C95D0EF487C900A20937 /* SurveyQuestionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SurveyQuestionView.xib; sourceTree = "<group>"; };
-		0DD8C9600EF4884D00A20937 /* SurveyQuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurveyQuestionViewController.h; sourceTree = "<group>"; };
-		0DD8C9610EF4884D00A20937 /* SurveyQuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SurveyQuestionViewController.m; sourceTree = "<group>"; };
-		0DD8CA540EF4D43300A20937 /* QuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionViewController.h; sourceTree = "<group>"; };
-		0DD8CA550EF4D43300A20937 /* QuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionViewController.m; sourceTree = "<group>"; };
 		0DF9E1ED0EF2ED3400A522A1 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = SOURCE_ROOT; };
 		0DF9E2290EF2F4FC00A522A1 /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile.png; sourceTree = "<group>"; };
 		0DF9E22A0EF2F4FC00A522A1 /* question.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = question.png; sourceTree = "<group>"; };
 		0DF9E22B0EF2F4FC00A522A1 /* wallet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wallet.png; sourceTree = "<group>"; };
 		0DF9E22F0EF2F61A00A522A1 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
 		0DF9E3140EF3065200A522A1 /* QuestionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionView.xib; sourceTree = "<group>"; };
-		0DF9E31F0EF3079100A522A1 /* SingleQuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleQuestionViewController.h; sourceTree = "<group>"; };
-		0DF9E3200EF3079100A522A1 /* SingleQuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleQuestionViewController.m; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* JoeMetricAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoeMetricAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* JoeMetricAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoeMetricAppDelegate.m; sourceTree = "<group>"; };
@@ -121,6 +119,17 @@
 		D2F22B3F0EFBEA090047CBFA /* GTMSenTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTMSenTestCase.m; path = GoogleToolkit/GTMSenTestCase.m; sourceTree = "<group>"; };
 		D2F22B830EFBF09C0047CBFA /* QuestionTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuestionTest.h; path = UnitTests/QuestionTest.h; sourceTree = "<group>"; };
 		D2F22B840EFBF09C0047CBFA /* QuestionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuestionTest.m; path = UnitTests/QuestionTest.m; sourceTree = "<group>"; };
+		D2F2EF730F6030EB00A8BB57 /* QuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionViewController.h; sourceTree = "<group>"; };
+		D2F2EF740F6030EB00A8BB57 /* QuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionViewController.m; sourceTree = "<group>"; };
+		D2F2EF990F60384E00A8BB57 /* FreeTextAnswerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FreeTextAnswerController.h; sourceTree = "<group>"; };
+		D2F2EF9A0F60384E00A8BB57 /* FreeTextAnswerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FreeTextAnswerController.m; sourceTree = "<group>"; };
+		D2F2EF9C0F60385A00A8BB57 /* PictureAnswerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureAnswerController.h; sourceTree = "<group>"; };
+		D2F2EF9D0F60385A00A8BB57 /* PictureAnswerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureAnswerController.m; sourceTree = "<group>"; };
+		D2F2EFA20F60389100A8BB57 /* FreeTextAnswerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FreeTextAnswerView.xib; sourceTree = "<group>"; };
+		D2F2EFA40F60389D00A8BB57 /* PictureAnswerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PictureAnswerView.xib; sourceTree = "<group>"; };
+		D2F2EFF30F606AB500A8BB57 /* SurveyInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurveyInfoViewController.h; sourceTree = "<group>"; };
+		D2F2EFF40F606AB500A8BB57 /* SurveyInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SurveyInfoViewController.m; sourceTree = "<group>"; };
+		D2F2EFF60F606ACD00A8BB57 /* SurveyInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SurveyInfoView.xib; sourceTree = "<group>"; };
 		FC21C5030F12B3AC00436E7F /* Survey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Survey.h; sourceTree = "<group>"; };
 		FC21C5040F12B3AC00436E7F /* Survey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Survey.m; sourceTree = "<group>"; };
 		FC9756840F13B2300077926E /* SurveyListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurveyListViewController.h; sourceTree = "<group>"; };
@@ -163,8 +172,8 @@
 		0D8DC8870EDE35B9007EC072 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D2F2EF680F602F8900A8BB57 /* Answer View Controllers */,
 				FC9756830F13B20A0077926E /* Survey View Controllers */,
-				0DD8CAB10EF4D6A800A20937 /* Question View Controllers */,
 				0D68A3CD0EDCD37A007CE721 /* WalletViewController.h */,
 				0D68A3CE0EDCD37A007CE721 /* WalletViewController.m */,
 				0D68A3D30EDCD3D6007CE721 /* ProfileViewController.h */,
@@ -190,21 +199,6 @@
 				FC21C5040F12B3AC00436E7F /* Survey.m */,
 			);
 			name = Models;
-			sourceTree = "<group>";
-		};
-		0DD8CAB10EF4D6A800A20937 /* Question View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				0D68A3C50EDCD2B6007CE721 /* QuestionListViewController.h */,
-				0D68A3C60EDCD2B6007CE721 /* QuestionListViewController.m */,
-				0DF9E31F0EF3079100A522A1 /* SingleQuestionViewController.h */,
-				0DF9E3200EF3079100A522A1 /* SingleQuestionViewController.m */,
-				0DD8C9600EF4884D00A20937 /* SurveyQuestionViewController.h */,
-				0DD8C9610EF4884D00A20937 /* SurveyQuestionViewController.m */,
-				0DD8CA540EF4D43300A20937 /* QuestionViewController.h */,
-				0DD8CA550EF4D43300A20937 /* QuestionViewController.m */,
-			);
-			name = "Question View Controllers";
 			sourceTree = "<group>";
 		};
 		0DF9E1EB0EF2ED1800A522A1 /* Images */ = {
@@ -257,6 +251,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D2F2EF9F0F60386600A8BB57 /* Answer Views */,
 				0DF9E1EB0EF2ED1800A522A1 /* Images */,
 				28AD73870D9D96C1002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* Info.plist */,
@@ -266,6 +261,7 @@
 				0DF9E3140EF3065200A522A1 /* QuestionView.xib */,
 				0DD8C95D0EF487C900A20937 /* SurveyQuestionView.xib */,
 				FC9756880F13B4070077926E /* SurveyListView.xib */,
+				D2F2EFF60F606ACD00A8BB57 /* SurveyInfoView.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -320,11 +316,37 @@
 			name = "Unit Tests";
 			sourceTree = "<group>";
 		};
+		D2F2EF680F602F8900A8BB57 /* Answer View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D2F2EF990F60384E00A8BB57 /* FreeTextAnswerController.h */,
+				D2F2EF9A0F60384E00A8BB57 /* FreeTextAnswerController.m */,
+				D2F2EF9C0F60385A00A8BB57 /* PictureAnswerController.h */,
+				D2F2EF9D0F60385A00A8BB57 /* PictureAnswerController.m */,
+			);
+			name = "Answer View Controllers";
+			sourceTree = "<group>";
+		};
+		D2F2EF9F0F60386600A8BB57 /* Answer Views */ = {
+			isa = PBXGroup;
+			children = (
+				D2F2EFA20F60389100A8BB57 /* FreeTextAnswerView.xib */,
+				D2F2EFA40F60389D00A8BB57 /* PictureAnswerView.xib */,
+			);
+			name = "Answer Views";
+			sourceTree = "<group>";
+		};
 		FC9756830F13B20A0077926E /* Survey View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0D68A3C50EDCD2B6007CE721 /* QuestionListViewController.h */,
+				0D68A3C60EDCD2B6007CE721 /* QuestionListViewController.m */,
 				FC9756840F13B2300077926E /* SurveyListViewController.h */,
 				FC9756850F13B2300077926E /* SurveyListViewController.m */,
+				D2F2EF730F6030EB00A8BB57 /* QuestionViewController.h */,
+				D2F2EF740F6030EB00A8BB57 /* QuestionViewController.m */,
+				D2F2EFF30F606AB500A8BB57 /* SurveyInfoViewController.h */,
+				D2F2EFF40F606AB500A8BB57 /* SurveyInfoViewController.m */,
 			);
 			name = "Survey View Controllers";
 			sourceTree = "<group>";
@@ -402,6 +424,9 @@
 				0DF9E3150EF3065200A522A1 /* QuestionView.xib in Resources */,
 				0DD8C95E0EF487C900A20937 /* SurveyQuestionView.xib in Resources */,
 				FC9756890F13B4070077926E /* SurveyListView.xib in Resources */,
+				D2F2EFA30F60389100A8BB57 /* FreeTextAnswerView.xib in Resources */,
+				D2F2EFA50F60389D00A8BB57 /* PictureAnswerView.xib in Resources */,
+				D2F2EFF70F606ACD00A8BB57 /* SurveyInfoView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,10 +467,7 @@
 				0D68A3CF0EDCD37A007CE721 /* WalletViewController.m in Sources */,
 				0D68A3D50EDCD3D6007CE721 /* ProfileViewController.m in Sources */,
 				0D68A3EA0EDCD5CC007CE721 /* MainWindowViewController.m in Sources */,
-				0DF9E3210EF3079100A522A1 /* SingleQuestionViewController.m in Sources */,
 				0DD8C8420EF33C3E00A20937 /* Question.m in Sources */,
-				0DD8C9620EF4884D00A20937 /* SurveyQuestionViewController.m in Sources */,
-				0DD8CA560EF4D43300A20937 /* QuestionViewController.m in Sources */,
 				D2AD6B1D0EFFF66B00DB13FD /* Account.m in Sources */,
 				FC21C5050F12B3AC00436E7F /* Survey.m in Sources */,
 				FC9756860F13B2300077926E /* SurveyListViewController.m in Sources */,
@@ -454,6 +476,10 @@
 				D266E01B0F3A400200C20691 /* NSObject+SBJSON.m in Sources */,
 				D266E01C0F3A400200C20691 /* NSString+SBJSON.m in Sources */,
 				D266E01D0F3A400200C20691 /* SBJSON.m in Sources */,
+				D2F2EF750F6030EB00A8BB57 /* QuestionViewController.m in Sources */,
+				D2F2EF9B0F60384E00A8BB57 /* FreeTextAnswerController.m in Sources */,
+				D2F2EF9E0F60385A00A8BB57 /* PictureAnswerController.m in Sources */,
+				D2F2EFF50F606AB500A8BB57 /* SurveyInfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

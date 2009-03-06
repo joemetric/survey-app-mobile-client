@@ -126,11 +126,21 @@
     return [item autorelease];
 }
 
+- (NSURLCredential *)getCredentials
+{
+    return [[UIApplication sharedApplication].delegate getCredentials];
+}
+
+- (void)authenticationFailed
+{
+    [[UIApplication sharedApplication].delegate authenticationFailed];
+}
+
 - (id)initWithPath:(NSString *)aPath
 {
     if (self = [super init]) {
         self.path = aPath;
-        self.rest = [[Rest alloc] initWithHost:@"foo:bar@localhost" atPort:3000];
+        self.rest = [[Rest alloc] initWithHost:@"localhost" atPort:3000];
         self.rest.delegate = self;
     }
 

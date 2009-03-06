@@ -7,7 +7,7 @@
 //
 
 #import "QuestionListViewController.h"
-#import "SingleQuestionViewController.h"
+#import "QuestionViewController.h"
 #import "Question.h"
 #import "Survey.h"
 
@@ -22,12 +22,6 @@
         // Custom initialization
     }
     return self;
-}
-
-- (void)awakeFromNib {
-    self.navigationItem.title = @"Questions";
-    
-    // add our custom button to show our modal view controller
 }
 
 - (void)viewDidLoad {
@@ -45,7 +39,6 @@
 }
 
 -(void)refreshQuestions {
-    NSLog(@"Refreshing the questions");
     [Question findAllFromRelation:self.survey withDelegate:self];
 }
 
@@ -74,12 +67,12 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    SingleQuestionViewController *sqvc = 
-        [[SingleQuestionViewController alloc] initWithNibName:@"QuestionView" 
-                                              bundle:nil 
-                                              question:[self.questions objectAtIndex:indexPath.row]];
-    [self.navigationController pushViewController:sqvc animated:YES];  
-    [sqvc release];    
+    QuestionViewController *qvc = 
+        [[QuestionViewController alloc] initWithNibName:@"QuestionView" 
+                                        bundle:nil
+                                        question:[self.questions objectAtIndex:indexPath.row]];
+    [self.navigationController pushViewController:qvc animated:YES];  
+    [qvc release];    
 }
 
 

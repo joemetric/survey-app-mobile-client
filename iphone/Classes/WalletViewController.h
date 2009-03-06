@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface WalletViewController : UITableViewController {
+@interface WalletViewController : UIViewController {
 
 }
 

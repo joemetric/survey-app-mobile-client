@@ -1,5 +1,5 @@
 //
-//  QuestionViewController.h
+//  PictureAnswerController.h
 //  JoeMetric
 //
 //  Created by Scott Barron on 3/5/09.
@@ -10,19 +10,17 @@
 
 @class Question;
 
-@interface QuestionViewController : UIViewController <UIAlertViewDelegate> {
-    UILabel *questionLabel;
-    UILabel *amountLabel;
+@interface PictureAnswerController : UIViewController <UIImagePickerControllerDelegate, UIActionSheetDelegate, UINavigationControllerDelegate> {
+    IBOutlet UIImageView *imageView;
     Question *question;
-    UIAlertView *baseAlert;
+    UIActionSheet *menu;
 }
 
-@property (nonatomic, retain) IBOutlet UILabel *questionLabel;
-@property (nonatomic, retain) IBOutlet UILabel *amountLabel;
 @property (nonatomic, retain) Question *question;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil question:(Question *)aQuestion;
 
-- (IBAction)answerQuestion:(id)sender;
+- (IBAction)sendAnswer:(id)sender;
+- (IBAction)changePicture:(id)sender;
 
 @end

@@ -19,6 +19,19 @@
     [self.delegate performSelector:action withObject:data];
 }
 
+- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
+{
+    if ([challenge previousFailureCount] > 0) {
+        [[challenge sender] cancelAuthenticationChallenge:challenge];
+        [delegate authenticationFailed];
+        return; // Really, fire off alert
+    }
+
+    [[challenge sender] useCredential:[delegate getCredentials] forAuthenticationChallenge:challenge];
+}
+
+
+
 - (void)startConnection:(NSURLRequest *)aRequest
 {
     [self cancelConnection];
