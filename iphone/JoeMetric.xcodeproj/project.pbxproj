@@ -28,6 +28,7 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
 		28AD73880D9D96C1002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD73870D9D96C1002E5188 /* MainWindow.xib */; };
+		392676560F61A01600A889B8 /* refresh_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 392676550F61A01600A889B8 /* refresh_icon.png */; };
 		D255487C0F13C2950098100B /* Survey.m in Sources */ = {isa = PBXBuildFile; fileRef = FC21C5040F12B3AC00436E7F /* Survey.m */; };
 		D266E01B0F3A400200C20691 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D266E0160F3A400200C20691 /* NSObject+SBJSON.m */; };
 		D266E01C0F3A400200C20691 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D266E0180F3A400200C20691 /* NSString+SBJSON.m */; };
@@ -91,6 +92,7 @@
 		28A0AB4B0D9B1048005BE974 /* JoeMetric_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoeMetric_Prefix.pch; sourceTree = "<group>"; };
 		28AD73870D9D96C1002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		392676550F61A01600A889B8 /* refresh_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh_icon.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D266E0140F3A400200C20691 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		D266E0150F3A400200C20691 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				0DF9E2290EF2F4FC00A522A1 /* profile.png */,
+				392676550F61A01600A889B8 /* refresh_icon.png */,
 				0DF9E22F0EF2F61A00A522A1 /* user.png */,
 				0DF9E22A0EF2F4FC00A522A1 /* question.png */,
 				0DF9E22B0EF2F4FC00A522A1 /* wallet.png */,
@@ -427,6 +430,7 @@
 				D2F2EFA30F60389100A8BB57 /* FreeTextAnswerView.xib in Resources */,
 				D2F2EFA50F60389D00A8BB57 /* PictureAnswerView.xib in Resources */,
 				D2F2EFF70F606ACD00A8BB57 /* SurveyInfoView.xib in Resources */,
+				392676560F61A01600A889B8 /* refresh_icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
