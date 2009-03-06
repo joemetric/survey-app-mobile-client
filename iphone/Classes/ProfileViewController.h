@@ -12,6 +12,7 @@
 @interface ProfileViewController : UIViewController <UITextFieldDelegate> {
     IBOutlet UITextField *usernameField;
     IBOutlet UITextField *passwordField;
+    IBOutlet UITextField *emailField;
 }
 
 - (IBAction)createAccount:(id)sender;
