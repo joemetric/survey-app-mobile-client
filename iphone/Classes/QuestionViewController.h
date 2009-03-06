@@ -10,10 +10,11 @@
 
 @class Question;
 
-@interface QuestionViewController : UIViewController {
+@interface QuestionViewController : UIViewController <UIAlertViewDelegate> {
     UILabel *questionLabel;
     UILabel *amountLabel;
     Question *question;
+    UIAlertView *baseAlert;
 }
 
 @property (nonatomic, retain) IBOutlet UILabel *questionLabel;

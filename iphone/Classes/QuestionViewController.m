@@ -21,11 +21,17 @@
 {
     if ([self initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         self.question = aQuestion;
-    }
+        baseAlert = [[UIAlertView alloc]
+                        initWithTitle:@"Unknown Question Type"
+                        message:@""
+                        delegate:self
+                        cancelButtonTitle:nil
+                        otherButtonTitles:@"OK", nil];
+     }
     return self;
 }
 
-    
+
 /*
 // The designated initializer. Override to perform setup that is required before the view is loaded.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -83,15 +89,7 @@
 }
 
 - (void)unknownQuestionType {
-    NSLog(@"Unknown question type");
-    UIAlertView *baseAlert = [[UIAlertView alloc]
-                                 initWithTitle:@"Unknown Question Type"
-                                 message:@""
-                                 delegate:self
-                                 cancelButtonTitle:nil
-                                 otherButtonTitles:@"OK", nil];
     [baseAlert show];
-    // CLANG reports menu as leaking, but it isn't.  It's released above.
 }
 
 - (void)answerQuestion:(id)sender {

@@ -14,6 +14,7 @@
     UINavigationController *navigationController;
     NSString *credentialsFilePath;
     NSMutableDictionary *credentials;
+    UIActionSheet *authAlertMenu;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;

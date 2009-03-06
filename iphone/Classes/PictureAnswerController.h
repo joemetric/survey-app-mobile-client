@@ -11,7 +11,9 @@
 @class Question;
 
 @interface PictureAnswerController : UIViewController <UIImagePickerControllerDelegate, UIActionSheetDelegate, UINavigationControllerDelegate> {
+    IBOutlet UIImageView *imageView;
     Question *question;
+    UIActionSheet *menu;
 }
 
 @property (nonatomic, retain) Question *question;

@@ -18,6 +18,14 @@
 {
     if ([self initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         self.question = aQuestion;
+        
+        menu = [[UIActionSheet alloc] init];
+        menu.delegate = self;
+        menu.title = @"Choose an image to send";
+        [menu addButtonWithTitle:@"Take Snapshot"];
+        [menu addButtonWithTitle:@"Library Photo"];
+        [menu addButtonWithTitle:@"Cancel"];
+        menu.cancelButtonIndex = 2;
     }
     return self;
 }
@@ -36,23 +44,16 @@
         
         [self presentModalViewController:p animated:YES];
     }
-
-    [actionSheet release];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UIActionSheet *menu = [[UIActionSheet alloc] init];
-    menu.delegate = self;
-    menu.title = @"Choose an image to send";
-    [menu addButtonWithTitle:@"Take Snapshot"];
-    [menu addButtonWithTitle:@"Library Photo"];
-    [menu addButtonWithTitle:@"Cancel"];
-    menu.cancelButtonIndex = 2;
-
     [menu showInView:[self view]];
-    // CLANG reports menu as leaking, but it isn't.  It's released above.
-    
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo
+{
+    imageView.image = image;
 }
 
 /*
@@ -71,6 +72,7 @@
 
 - (void)dealloc {
     [question release];
+    [menu release];
     [super dealloc];
 }
 

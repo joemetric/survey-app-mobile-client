@@ -29,15 +29,17 @@
 }
 
 - (void)authenticationFailed {
-    UIActionSheet *menu = [[UIActionSheet alloc] init];
-    menu.delegate = self;
-    menu.title = @"Authentication Failed";
-    [menu addButtonWithTitle:@"Create Account"];
-    [menu addButtonWithTitle:@"Update Credentials"];
-    [menu addButtonWithTitle:@"Cancel"];
-    menu.cancelButtonIndex = 2;
+    if (!authAlertMenu) {
+        authAlertMenu = [[UIActionSheet alloc] init];
+        authAlertMenu.delegate = self;
+        authAlertMenu.title = @"Authentication Failed";
+        [authAlertMenu addButtonWithTitle:@"Create Account"];
+        [authAlertMenu addButtonWithTitle:@"Update Credentials"];
+        [authAlertMenu addButtonWithTitle:@"Cancel"];
+        authAlertMenu.cancelButtonIndex = 2;
+    }
 
-    [menu showInView:[tabBarController view]];
+    [authAlertMenu showInView:[tabBarController view]];
     // CLANG reports menu as leaking, but it isn't.  It's released above.
 }
 
@@ -80,6 +82,7 @@
     [tabBarController release];
     [window release];
     [credentials release];
+    [authAlertMenu release];
     [super dealloc];
 }
 
