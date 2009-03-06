@@ -26,10 +26,12 @@
     [super viewDidLoad];
     usernameField.delegate = self;
     passwordField.delegate = self;
+    emailField.delegate = self;
     
     JoeMetricAppDelegate *appDelegate = (JoeMetricAppDelegate*)[[UIApplication sharedApplication] delegate];
     usernameField.text = [appDelegate.credentials objectForKey:@"username"];
     passwordField.text = [appDelegate.credentials objectForKey:@"password"];
+    emailField.text = [appDelegate.credentials objectForKey:@"email"];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -128,7 +130,7 @@
 
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setObject:[usernameField text] forKey:@"login"];
-    [params setObject:@"foo@bar.com" forKey:@"email"];
+    [params setObject:[emailField text] forKey:@"email"];
     [params setObject:[passwordField text] forKey:@"password"];
     [params setObject:[passwordField text] forKey:@"password_confirmation"];
 

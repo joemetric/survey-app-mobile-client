@@ -13,6 +13,7 @@
 
 @synthesize username;
 @synthesize password;
+@synthesize email;
 
 + (NSString *)resourceName
 {
@@ -30,6 +31,7 @@
     account.itemId   = [[[dict objectForKey:[self resourceKey]] objectForKey:@"id"] integerValue];
     account.username = [[dict objectForKey:[self resourceKey]] objectForKey:@"username"];
     account.password = [[dict objectForKey:[self resourceKey]] objectForKey:@"password"];
+    account.email = [[dict objectForKey:[self resourceKey]] objectForKey:@"email"];
     return account;
 }
 
@@ -38,6 +40,7 @@
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
     [parameters setObject:self.username forKey:@"name"];
     [parameters setObject:self.password forKey:@"password"];
+    [parameters setObject:self.email forKey:@"email"];
 
     NSMutableDictionary *container = [[NSMutableDictionary alloc] init];
     [container setObject:parameters forKey:[[self class] resourceKey]];
@@ -50,6 +53,7 @@
 {
     [username release];
     [password release];
+    [email release];
     [super dealloc];
 }
 @end
