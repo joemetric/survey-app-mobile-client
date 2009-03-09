@@ -18,7 +18,13 @@
     [Survey findAllWithDelegate:self];
     
     // add our custom button to show our modal view controller
+    UIImage *image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle]
+                                                          pathForResource:@"refresh_icon"
+                                                          ofType:@"png"]];
+
     UIButton* modalViewButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
+    [modalViewButton setImage:image forState:UIControlStateNormal];
+
     [modalViewButton addTarget:self action:@selector(refreshSurveys) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *modalButton = [[UIBarButtonItem alloc] initWithCustomView:modalViewButton];
     self.navigationItem.rightBarButtonItem = modalButton;

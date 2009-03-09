@@ -26,7 +26,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UIImage *image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle]
+                                                          pathForResource:@"refresh_icon"
+                                                          ofType:@"png"]];
+    
     UIButton* modalViewButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
+    [modalViewButton setImage:image forState:UIControlStateNormal];
+    
     [modalViewButton addTarget:self action:@selector(refreshQuestions) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *modalButton = [[UIBarButtonItem alloc] initWithCustomView:modalViewButton];
     self.navigationItem.rightBarButtonItem = modalButton;
