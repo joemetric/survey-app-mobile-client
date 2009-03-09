@@ -53,7 +53,15 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo
 {
+    NSLog(@"Selected image");
     imageView.image = image;
+    [[self parentViewController] dismissModalViewControllerAnimated:YES];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    NSLog(@"cancelling picker");
+    [[self parentViewController] dismissModalViewControllerAnimated:YES];
 }
 
 - (IBAction)sendAnswer:(id)sender
