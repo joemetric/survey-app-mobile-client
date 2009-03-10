@@ -93,11 +93,13 @@
 
     [url release];
 
+    dataStr  = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+
     if ([(NSHTTPURLResponse*)response statusCode] != 200) {
+        NSLog(@"FAILURE HERE: %@", dataStr);
         return nil;
     }
-    
-    dataStr  = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+
     fragment = [dataStr JSONFragmentValue];
 
     [dataStr release];
