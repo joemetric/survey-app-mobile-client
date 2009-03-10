@@ -14,6 +14,9 @@
     IBOutlet UIImageView *imageView;
     Question *question;
     UIActionSheet *menu;
+    int snapshotButtonIndex;
+    int libraryButtonIndex;
+    int cancelButtonIndex;
 }
 
 @property (nonatomic, retain) Question *question;
