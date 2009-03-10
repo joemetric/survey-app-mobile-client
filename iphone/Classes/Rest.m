@@ -97,6 +97,7 @@
 
     if ([(NSHTTPURLResponse*)response statusCode] != 200) {
         NSLog(@"FAILURE HERE: %@", dataStr);
+        [dataStr release];
         return nil;
     }
 
