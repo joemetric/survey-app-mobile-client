@@ -22,8 +22,13 @@
         menu = [[UIActionSheet alloc] init];
         menu.delegate = self;
         menu.title = @"Choose an image to send";
-        [menu addButtonWithTitle:@"Take Snapshot"];
-        [menu addButtonWithTitle:@"Library Photo"];
+
+        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+            [menu addButtonWithTitle:@"Take Snapshot"];
+
+        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary])
+            [menu addButtonWithTitle:@"Library Photo"];
+        
         [menu addButtonWithTitle:@"Cancel"];
         menu.cancelButtonIndex = 2;
     }
