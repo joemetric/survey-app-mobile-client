@@ -44,6 +44,8 @@
 		D2AD6B170EFFF62900DB13FD /* AccountTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AD6B160EFFF62900DB13FD /* AccountTest.m */; };
 		D2AD6B1C0EFFF66B00DB13FD /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AD6B1B0EFFF66B00DB13FD /* Account.m */; };
 		D2AD6B1D0EFFF66B00DB13FD /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AD6B1B0EFFF66B00DB13FD /* Account.m */; };
+		D2C6934E0F669F600009E3A7 /* Answer.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6934D0F669F600009E3A7 /* Answer.m */; };
+		D2C6934F0F669F600009E3A7 /* Answer.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6934D0F669F600009E3A7 /* Answer.m */; };
 		D2F22B400EFBEA090047CBFA /* GTMIPhoneUnitTestDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F22B3C0EFBEA090047CBFA /* GTMIPhoneUnitTestDelegate.m */; };
 		D2F22B410EFBEA090047CBFA /* GTMIPhoneUnitTestMain.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F22B3D0EFBEA090047CBFA /* GTMIPhoneUnitTestMain.m */; };
 		D2F22B420EFBEA090047CBFA /* GTMSenTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F22B3F0EFBEA090047CBFA /* GTMSenTestCase.m */; };
@@ -111,6 +113,8 @@
 		D2AD6B160EFFF62900DB13FD /* AccountTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccountTest.m; path = UnitTests/AccountTest.m; sourceTree = "<group>"; };
 		D2AD6B1A0EFFF66B00DB13FD /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
 		D2AD6B1B0EFFF66B00DB13FD /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Account.m; sourceTree = "<group>"; };
+		D2C6934C0F669F600009E3A7 /* Answer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Answer.h; sourceTree = "<group>"; };
+		D2C6934D0F669F600009E3A7 /* Answer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Answer.m; sourceTree = "<group>"; };
 		D2F22B330EFBE9F60047CBFA /* Unit Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Unit Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2F22B350EFBE9F60047CBFA /* Unit Test-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Unit Test-Info.plist"; sourceTree = "<group>"; };
 		D2F22B3A0EFBEA090047CBFA /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMDefines.h; path = GoogleToolkit/GTMDefines.h; sourceTree = "<group>"; };
@@ -199,6 +203,8 @@
 				D2AD6B1B0EFFF66B00DB13FD /* Account.m */,
 				FC21C5030F12B3AC00436E7F /* Survey.h */,
 				FC21C5040F12B3AC00436E7F /* Survey.m */,
+				D2C6934C0F669F600009E3A7 /* Answer.h */,
+				D2C6934D0F669F600009E3A7 /* Answer.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -484,6 +490,7 @@
 				D2F2EF9B0F60384E00A8BB57 /* FreeTextAnswerController.m in Sources */,
 				D2F2EF9E0F60385A00A8BB57 /* PictureAnswerController.m in Sources */,
 				D2F2EFF50F606AB500A8BB57 /* SurveyInfoViewController.m in Sources */,
+				D2C6934E0F669F600009E3A7 /* Answer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,6 +512,7 @@
 				D266E01E0F3A400200C20691 /* NSObject+SBJSON.m in Sources */,
 				D266E01F0F3A400200C20691 /* NSString+SBJSON.m in Sources */,
 				D266E0200F3A400200C20691 /* SBJSON.m in Sources */,
+				D2C6934F0F669F600009E3A7 /* Answer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
