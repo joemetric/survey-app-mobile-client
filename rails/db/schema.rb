@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090305005100) do
+ActiveRecord::Schema.define(:version => 20090312022239) do
 
   create_table "locations", :force => true do |t|
     t.integer  "owner_id"
@@ -51,6 +51,9 @@ ActiveRecord::Schema.define(:version => 20090305005100) do
     t.string   "remember_token",            :limit => 40
     t.datetime "remember_token_expires_at"
     t.boolean  "admin",                                    :default => false, :null => false
+    t.date     "birthdate"
+    t.integer  "income"
+    t.string   "gender"
   end
 
   add_index "users", ["login"], :name => "index_sams_on_login", :unique => true

@@ -47,8 +47,8 @@ class User < ActiveRecord::Base
     write_attribute :email, (value ? value.downcase : nil)
   end
 
-  protected
-    
-
+  def age
+    @age ||= Age.new birthdate
+  end
 
 end

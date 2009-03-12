@@ -1,9 +1,6 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  # Be sure to include AuthenticatedTestHelper in test/test_helper.rb instead.
-  # Then, you can remove it from this and the functional test.
-  include AuthenticatedTestHelper
   fixtures :users
 
   def test_should_create_user
@@ -92,6 +89,32 @@ class UserTest < ActiveSupport::TestCase
     assert_not_nil users(:quentin).remember_token
     assert_not_nil users(:quentin).remember_token_expires_at
     assert users(:quentin).remember_token_expires_at.between?(before, after)
+  end
+
+  context "Demographic data" do
+     
+    setup do
+      @user = User.new
+    end
+
+    context "when accessing the age" do
+      
+      should "return an Age object" do
+        assert @user.age.is_a?(Age)
+      end
+
+      should "pass the birthdate to the age initializer" do
+        @user.birthdate = Date.today
+        flexmock(Age).should_receive(:new).with(Date.today)
+        @user.age
+      end
+
+      should "cache the age object" do
+        assert_same @user.age, @user.age
+      end
+
+    end
+
   end
 
 protected
