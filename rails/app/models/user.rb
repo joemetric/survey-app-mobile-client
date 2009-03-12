@@ -48,7 +48,11 @@ class User < ActiveRecord::Base
   end
 
   def age
-    @age ||= Age.new birthdate
+    @age ||= birthdate.extend(Age)
+  end
+
+  def income
+    @income ||= self[:income].to_s.extend(Income)
   end
 
 end

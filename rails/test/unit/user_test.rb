@@ -99,18 +99,72 @@ class UserTest < ActiveSupport::TestCase
 
     context "when accessing the age" do
       
-      should "return an Age object" do
-        assert @user.age.is_a?(Age)
-      end
-
-      should "pass the birthdate to the age initializer" do
-        @user.birthdate = Date.today
-        flexmock(Age).should_receive(:new).with(Date.today)
-        @user.age
-      end
-
       should "cache the age object" do
         assert_same @user.age, @user.age
+      end
+
+      context "when checking whether this age is within another" do
+        
+        setup do
+          @user.birthdate = 10.years.ago.to_date
+        end
+        
+        should "be true when the age is the minimum" do
+          assert @user.age.within?(10, 15)
+        end
+        
+        should "be true when the birthdate falls within the range of ages" do
+          assert @user.age.within?(5, 15)
+        end
+        
+        should "be true when the age is the maximum" do
+          assert @user.age.within?(5, 10)
+        end
+        
+        should "be false when the birthdate when it is less than the minimum age" do
+          assert !@user.age.within?(15, 20)
+        end
+        
+        should "be false when the birthdate when it is greater than the maximum age" do
+          assert !@user.age.within?(5, 9)
+        end
+
+      end
+
+    end
+
+    context "when accessing the income" do
+
+      should "cache the age object" do
+        assert_same @user.income, @user.income
+      end
+
+      context "when checking whether this income is within another" do
+        
+        setup do
+          @user.income = 10
+        end
+        
+        should "be true when the income is the minimum" do
+          assert @user.income.within?(10, 15)
+        end
+        
+        should "be true when the income falls within the range of incomes" do
+          assert @user.income.within?(5, 15)
+        end
+        
+        should "be true when the income is the maximum" do
+          assert @user.income.within?(5, 10)
+        end
+        
+        should "be false when the income when it is less than the minimum income" do
+          assert !@user.income.within?(15, 20)
+        end
+        
+        should "be false when the income when it is greater than the maximum income" do
+          assert !@user.income.within?(5, 9)
+        end
+
       end
 
     end
