@@ -9,6 +9,11 @@
 #import "SurveyListViewController.h"
 #import "SurveyInfoViewController.h"
 #import "Survey.h"
+#import "ResourceDelegate.h"
+
+@interface SurveyListViewController (Private)
+- (void)refreshSurveys;
+@end
 
 @implementation SurveyListViewController
 
@@ -29,19 +34,19 @@
     [modalViewButton release];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [self refreshSurveys];
-}
-
--(void)itemsReceived:(NSArray *)items {
-    self.surveys = items;
-    [self.tableView reloadData];
-}
-    
 -(void)refreshSurveys {
     [Survey findAllWithDelegate:self];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [self refreshSurveys];
+}
+
+-(void)resource:(Resource*)res itemsReceived:(NSArray *)items {
+    self.surveys = items;
+    [self.tableView reloadData];
+}
+    
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }

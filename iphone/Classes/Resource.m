@@ -1,6 +1,8 @@
 #import "Resource.h"
+#import "ResourceDelegate.h"
 #import "Rest.h"
 #import "JSON.h"
+#import "JoeMetricAppDelegate.h"
 
 @implementation Resource
 
@@ -51,9 +53,7 @@
         [item release];
     }
 
-    if ([delegate respondsToSelector:@selector(itemsReceived:)]) {
-        [delegate itemsReceived:items];
-    }
+    [delegate resource:self itemsReceived:items];
     [items autorelease];
 }
 
@@ -84,9 +84,7 @@
         [item release];
     }
 
-    if ([delegate respondsToSelector:@selector(itemsReceived:)]) {
-        [delegate itemsReceived:items];
-    }
+    [delegate resource:self itemsReceived:items];
     [items autorelease];
 }
 
@@ -128,12 +126,12 @@
 
 - (NSURLCredential *)getCredentials
 {
-    return [[UIApplication sharedApplication].delegate getCredentials];
+    return [(JoeMetricAppDelegate*)[UIApplication sharedApplication].delegate getCredentials];
 }
 
 - (void)authenticationFailed
 {
-    [[UIApplication sharedApplication].delegate authenticationFailed];
+    [(JoeMetricAppDelegate*)[UIApplication sharedApplication].delegate authenticationFailed];
 }
 
 - (id)initWithPath:(NSString *)aPath

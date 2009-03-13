@@ -20,26 +20,27 @@
     [window addSubview:tabBarController.view];
 }
 
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (buttonIndex != 2) {
-        tabBarController.selectedIndex = 2;
-    }
-    [actionSheet release];
-}
+//- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+//{
+//    if (buttonIndex != 2) {
+//        tabBarController.selectedIndex = 2;
+//    }
+//    [actionSheet release];
+//}
 
 - (void)authenticationFailed {
-    if (!authAlertMenu) {
-        authAlertMenu = [[UIActionSheet alloc] init];
-        authAlertMenu.delegate = self;
-        authAlertMenu.title = @"Authentication Failed";
-        [authAlertMenu addButtonWithTitle:@"Create Account"];
-        [authAlertMenu addButtonWithTitle:@"Update Credentials"];
-        [authAlertMenu addButtonWithTitle:@"Cancel"];
-        authAlertMenu.cancelButtonIndex = 2;
-    }
-
-    [authAlertMenu showInView:[tabBarController view]];
+	tabBarController.selectedIndex = 2;
+//    if (!authAlertMenu) {
+//        authAlertMenu = [[UIActionSheet alloc] init];
+//        authAlertMenu.delegate = self;
+//        authAlertMenu.title = @"Authentication Failed";
+//        [authAlertMenu addButtonWithTitle:@"Create Account"];
+//        [authAlertMenu addButtonWithTitle:@"Update Credentials"];
+//        [authAlertMenu addButtonWithTitle:@"Cancel"];
+//        authAlertMenu.cancelButtonIndex = 2;
+//    }
+//
+//    [authAlertMenu showInView:[tabBarController view]];
     // CLANG reports menu as leaking, but it isn't.  It's released above.
 }
 
@@ -74,7 +75,7 @@
     
     return [NSURLCredential credentialWithUser:[credentials objectForKey:@"username"]
                             password:[credentials objectForKey:@"password"]
-                            persistence:NSURLCredentialPersistenceForSession];
+                            persistence:NSURLCredentialPersistenceNone];
 }
 
 - (void)dealloc {

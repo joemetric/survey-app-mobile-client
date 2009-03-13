@@ -2,12 +2,13 @@
 #import "RestDelegate.h"
 
 @class Rest;
+@protocol ResourceDelegate;
 
 @interface Resource : NSObject <RestDelegate> {
     NSInteger itemId;
     NSString *path;
     Rest *rest;
-    id delegate;
+    NSObject<ResourceDelegate>* delegate;
 }
 
 @property (nonatomic, retain) NSString *path;

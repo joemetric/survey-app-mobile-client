@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ResourceDelegate.h"
 
 @class Survey;
 
-@interface QuestionListViewController : UITableViewController {
+@interface QuestionListViewController : UITableViewController <ResourceDelegate> {
     Survey *survey;
     NSArray *questions;
 

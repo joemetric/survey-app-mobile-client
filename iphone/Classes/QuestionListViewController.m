@@ -10,6 +10,7 @@
 #import "QuestionViewController.h"
 #import "Question.h"
 #import "Survey.h"
+#import "ResourceDelegate.h"
 
 @implementation QuestionListViewController
 
@@ -39,7 +40,7 @@
     [modalViewButton release];
 }
 
--(void)itemsReceived:(NSArray *)items {
+- (void)resource:(Resource*)res itemsReceived:(NSArray *)items {
     self.questions = items;
     [self.tableView reloadData];
 }

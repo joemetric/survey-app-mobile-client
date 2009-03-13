@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ResourceDelegate.h"
 
-@interface SurveyListViewController : UITableViewController {
+@interface SurveyListViewController : UITableViewController<ResourceDelegate> {
     NSArray *surveys;
 }
 

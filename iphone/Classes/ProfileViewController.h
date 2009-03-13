@@ -8,13 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@class CredentialsViewController;
 
-@interface ProfileViewController : UIViewController <UITextFieldDelegate> {
-    IBOutlet UITextField *usernameField;
-    IBOutlet UITextField *passwordField;
-    IBOutlet UITextField *emailField;
+@interface ProfileViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
+	UITableView* tableView;
+	CredentialsViewController* credentialsController;
 }
 
-- (IBAction)createAccount:(id)sender;
-- (IBAction)saveAccount:(id)sender;
+//- (IBAction)createAccount:(id)sender;
+//- (IBAction)saveAccount:(id)sender;
+
+@property (nonatomic, retain) IBOutlet UITableView* tableView;
+@property (nonatomic, retain) CredentialsViewController* credentialsController;
+
 @end

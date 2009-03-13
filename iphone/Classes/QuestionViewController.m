@@ -95,7 +95,7 @@
 - (void)answerQuestion:(id)sender {
     NSLog(@"Answering question for type: %@", self.question.questionType);
 
-    if (self.question.questionType == [NSNull null]) {
+    if (self.question.questionType == nil) {
         [self unknownQuestionType];
         return;
     }

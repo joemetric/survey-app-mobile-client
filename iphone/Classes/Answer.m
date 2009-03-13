@@ -34,7 +34,7 @@
 - (NSDictionary *)toDictionary
 {
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
-    [parameters setObject:self.questionId forKey:@"question_id"];
+    [parameters setObject:[NSNumber numberWithInt:self.questionId] forKey:@"question_id"];
 
     NSMutableDictionary *container = [[NSMutableDictionary alloc] init];
     [container setObject:parameters forKey:[[self class] resourceKey]];
