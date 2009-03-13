@@ -47,7 +47,45 @@ class UsersControllerTest < ActionController::TestCase
     end
   end
   
+  context "successfully updating user through json" do
+    QUENTIN_ID = Fixtures::identify(:quentin)
 
+    setup do
+      put :update, :id=>QUENTIN_ID, 
+        :user=>{:income=>'123456', :birthdate=>'21 May 2002', :gender=>'M'},:format=>'json'
+      @user = users(:quentin)
+    end
+    
+    should "cause fields to be updated" do
+      assert_equal '123456', @user.income
+      assert_equal Date::civil(2002, 5, 21), @user.birthdate
+      assert_equal 'M', @user.gender
+      
+    end
+    
+    should_route :put, "/users/#{QUENTIN_ID}", :controller=>:users, :action=>:update, :id=>QUENTIN_ID
+    
+    should_respond_with :success
+    should_respond_with_content_type :json
+    
+    should "return user in json form" do
+      assert_equal @user.to_json, @response.body
+    end
+    
+  end
+  
+  context "failing to update user through json" do
+    setup do
+      put :update, :id=>QUENTIN_ID, :user=>{:email=>''}, :format=>'json'
+    end
+    should_respond_with :unprocessable_entity
+    should_respond_with_content_type :json
+    
+    should "contain the errors" do
+      assert_match /can\'t be blank/, @response.body
+    end
+ 
+  end
   
 
   protected

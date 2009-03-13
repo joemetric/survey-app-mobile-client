@@ -6,7 +6,18 @@ class UsersController < ApplicationController
   def new
     @user = User.new
   end
- 
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(params[:user])
+      respond_to do |f|
+        f.json {render :json=>@user}
+      end
+    else
+      render :json => @user.errors, :status => :unprocessable_entity
+    end
+  end
+
   def create
     logout_keeping_session!
 
