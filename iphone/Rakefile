@@ -1,3 +1,5 @@
+load 'Autotest.rake'
+
 COVERAGE_THRESHOLD = 72.0
 
 task :ensure_dirs_exist do
