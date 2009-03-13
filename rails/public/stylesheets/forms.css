@@ -97,6 +97,25 @@ form#login_form div.submit {
   padding-left: 140px;
 }
 
+form#login_form div.checkbox {
+  padding-left: 135px;
+}
+
+form#login_form div.checkbox input {
+  margin-right: 5px;
+}
+
+form#login_form div.checkbox label {
+  font-weight: normal;
+  line-height: 22px;
+}
+
+form#login_form div.submit p {
+  height: 32px;
+  font-size: 12px;
+  line-height: 30px;
+}
+
 div.submit input {
   float: left;
   margin-right: 10px;

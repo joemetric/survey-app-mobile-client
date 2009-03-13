@@ -47,8 +47,12 @@ class User < ActiveRecord::Base
     write_attribute :email, (value ? value.downcase : nil)
   end
 
-  protected
-    
+  def age
+    @age ||= birthdate.extend(Age)
+  end
 
+  def income
+    @income ||= self[:income].to_s.extend(Income)
+  end
 
 end

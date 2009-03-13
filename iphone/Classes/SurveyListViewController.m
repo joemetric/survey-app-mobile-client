@@ -15,8 +15,6 @@
 @synthesize surveys;
 
 - (void)awakeFromNib {
-    [Survey findAllWithDelegate:self];
-    
     // add our custom button to show our modal view controller
     UIImage *image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle]
                                                           pathForResource:@"refresh_icon"
@@ -31,8 +29,8 @@
     [modalViewButton release];
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (void)viewDidAppear:(BOOL)animated {
+    [self refreshSurveys];
 }
 
 -(void)itemsReceived:(NSArray *)items {

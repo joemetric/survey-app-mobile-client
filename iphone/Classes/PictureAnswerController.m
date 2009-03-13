@@ -18,32 +18,47 @@
 {
     if ([self initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         self.question = aQuestion;
+
+        snapshotButtonIndex = libraryButtonIndex = cancelButtonIndex = -1;
         
         menu = [[UIActionSheet alloc] init];
         menu.delegate = self;
         menu.title = @"Choose an image to send";
-        [menu addButtonWithTitle:@"Take Snapshot"];
-        [menu addButtonWithTitle:@"Library Photo"];
+
+        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+            snapshotButtonIndex = menu.numberOfButtons;
+            [menu addButtonWithTitle:@"Take Snapshot"];
+        }
+
+        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
+            libraryButtonIndex = menu.numberOfButtons;
+            [menu addButtonWithTitle:@"Library Photo"];
+        }
+
+        cancelButtonIndex = menu.numberOfButtons;
         [menu addButtonWithTitle:@"Cancel"];
-        menu.cancelButtonIndex = 2;
+        
+        menu.cancelButtonIndex = cancelButtonIndex;
     }
     return self;
 }
 
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex < 2) {
-        UIImagePickerController *p = [[UIImagePickerController alloc] init];
-        p.delegate = self;
-        
-        if (buttonIndex == 0) {
-            p.sourceType = UIImagePickerControllerSourceTypeCamera;
-        } else {
-            p.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        }
-        
-        [self presentModalViewController:p animated:YES];
+    if (buttonIndex == cancelButtonIndex) {
+        return;
     }
+    
+    UIImagePickerController *p = [[UIImagePickerController alloc] init];
+    p.delegate = self;
+
+    if (buttonIndex == snapshotButtonIndex) {
+        p.sourceType = UIImagePickerControllerSourceTypeCamera;
+    } else {
+        p.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
+        
+    [self presentModalViewController:p animated:YES];
 }
 
 - (void)viewDidLoad {

@@ -129,10 +129,25 @@
     NSLog(@"Creating with: %@ : %@", [usernameField text], [passwordField text]);
 
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    [params setObject:[usernameField text] forKey:@"login"];
-    [params setObject:[emailField text] forKey:@"email"];
-    [params setObject:[passwordField text] forKey:@"password"];
-    [params setObject:[passwordField text] forKey:@"password_confirmation"];
+    if (usernameField.text) {
+        [params setObject:[usernameField text] forKey:@"login"];
+    } else {
+        [params setObject:@"" forKey:@"login"];
+    }
+
+    if (emailField.text) {
+        [params setObject:emailField.text forKey:@"email"];
+    } else {
+        [params setObject:@"" forKey:@"email"];
+    }
+
+    if (passwordField.text) {
+        [params setObject:[passwordField text] forKey:@"password"];
+        [params setObject:[passwordField text] forKey:@"password_confirmation"];
+    } else {
+        [params setObject:@"" forKey:@"password"];
+        [params setObject:@"" forKey:@"password_confirmation"];
+    }
 
     Account *account = [Account createWithParams:params];
     if (account) {

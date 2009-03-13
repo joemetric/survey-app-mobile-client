@@ -25,7 +25,13 @@ class UsersController < ApplicationController
           render :action => 'new'
         end
       }
-      format.json { render :json => status ? @user : '' }
+      format.json {
+        if status
+          render :json => @user
+        else
+          render :json => @user.errors, :status => :unprocessable_entity
+        end
+      }
     end
   end
 end

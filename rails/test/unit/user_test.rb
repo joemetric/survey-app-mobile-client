@@ -1,9 +1,6 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  # Be sure to include AuthenticatedTestHelper in test/test_helper.rb instead.
-  # Then, you can remove it from this and the functional test.
-  include AuthenticatedTestHelper
   fixtures :users
 
   def test_should_create_user
@@ -92,6 +89,86 @@ class UserTest < ActiveSupport::TestCase
     assert_not_nil users(:quentin).remember_token
     assert_not_nil users(:quentin).remember_token_expires_at
     assert users(:quentin).remember_token_expires_at.between?(before, after)
+  end
+
+  context "Demographic data" do
+     
+    setup do
+      @user = User.new
+    end
+
+    context "when accessing the age" do
+      
+      should "cache the age object" do
+        assert_same @user.age, @user.age
+      end
+
+      context "when checking whether this age is within another" do
+        
+        setup do
+          @user.birthdate = 10.years.ago.to_date
+        end
+        
+        should "be true when the age is the minimum" do
+          assert @user.age.within?(10, 15)
+        end
+        
+        should "be true when the birthdate falls within the range of ages" do
+          assert @user.age.within?(5, 15)
+        end
+        
+        should "be true when the age is the maximum" do
+          assert @user.age.within?(5, 10)
+        end
+        
+        should "be false when the birthdate when it is less than the minimum age" do
+          assert !@user.age.within?(15, 20)
+        end
+        
+        should "be false when the birthdate when it is greater than the maximum age" do
+          assert !@user.age.within?(5, 9)
+        end
+
+      end
+
+    end
+
+    context "when accessing the income" do
+
+      should "cache the age object" do
+        assert_same @user.income, @user.income
+      end
+
+      context "when checking whether this income is within another" do
+        
+        setup do
+          @user.income = 10
+        end
+        
+        should "be true when the income is the minimum" do
+          assert @user.income.within?(10, 15)
+        end
+        
+        should "be true when the income falls within the range of incomes" do
+          assert @user.income.within?(5, 15)
+        end
+        
+        should "be true when the income is the maximum" do
+          assert @user.income.within?(5, 10)
+        end
+        
+        should "be false when the income when it is less than the minimum income" do
+          assert !@user.income.within?(15, 20)
+        end
+        
+        should "be false when the income when it is greater than the maximum income" do
+          assert !@user.income.within?(5, 9)
+        end
+
+      end
+
+    end
+
   end
 
 protected
