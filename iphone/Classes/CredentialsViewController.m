@@ -26,25 +26,38 @@
 	self.errorLabel.text = @"";
 	[self.activityIndicator startAnimating];
 
-	Rest* testRest = [[[Rest alloc] initWithHost:@"localhost" atPort:3000] autorelease];
+	NSString* hostString = [NSString stringWithFormat:@"%@:%@@locahost", self.username.text, self.password.text];
+	Rest* testRest = [[[Rest alloc] initWithHost:hostString atPort:3000] autorelease];
 	testRest.delegate = self;
 	[testRest GET:@"/surveys.json" withCallback:@selector(receivedTestData:)];
 }
 
 - (void) clearCredentials {
-	NSDictionary* creds = [[NSURLCredentialStorage sharedCredentialStorage] allCredentials];
-	for( NSURLProtectionSpace* key in creds ) {
-		NSDictionary* credDictionary = [creds objectForKey:key];
-		NSArray* credValues = [credDictionary allValues];
-		
-		for( NSURLCredential* cred in credValues ) {
-			[[NSURLCredentialStorage sharedCredentialStorage] removeCredential:cred	forProtectionSpace:key];
-		}
-	}
-	Rest* testRest = [[[Rest alloc] initWithHost:@"localhost" atPort:3000] autorelease];
-	testRest.delegate = self;
-	[testRest GET:@"/sessions/new" withCallback:@selector(dummyCallback:)];
+//	NSDictionary* creds = [[NSURLCredentialStorage sharedCredentialStorage] allCredentials];
+//	for( NSURLProtectionSpace* key in creds ) {
+//		NSDictionary* credDictionary = [creds objectForKey:key];
+//		NSArray* credValues = [credDictionary allValues];
+//		
+//		for( NSURLCredential* cred in credValues ) {
+//			[[NSURLCredentialStorage sharedCredentialStorage] removeCredential:cred	forProtectionSpace:key];
+//		}
+//	}
+
+//	NSString *urlString = @"http://localhost:3000";
+//	NSURL *url = [NSURL URLWithString:urlString];
+//	
+//	NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+//	NSEnumerator *enumerator = [[cookieStorage cookiesForURL:url] objectEnumerator];
+//	NSHTTPCookie *cookie = nil;
+//	while (cookie = [enumerator nextObject]) {
+//		NSLog(@"deleting cookie");
+//		[cookieStorage deleteCookie:cookie];
+//	}	
 	
+//	NSString* hostString = [NSString stringWithFormat:@"%@@%@:locahost", self.username.text, self.password.text];
+//	Rest* testRest = [[[Rest alloc] initWithHost:hostString atPort:3000] autorelease];
+//	testRest.delegate = self;
+//	[testRest GET:@"/sessions/destroy" withCallback:@selector(dummyCallback:)];	
 }
 
 - (NSURLCredential *)getCredentials {

@@ -31,6 +31,7 @@
 		392676560F61A01600A889B8 /* refresh_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 392676550F61A01600A889B8 /* refresh_icon.png */; };
 		548D9BC20F6AB49900629CCE /* CredentialsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 548D9BC10F6AB49900629CCE /* CredentialsView.xib */; };
 		548D9BC60F6AB5D100629CCE /* CredentialsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 548D9BC50F6AB5D100629CCE /* CredentialsViewController.m */; };
+		54D2A5630F6C53D800C0C316 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 54D2A5620F6C53D800C0C316 /* Settings.bundle */; };
 		D255487C0F13C2950098100B /* Survey.m in Sources */ = {isa = PBXBuildFile; fileRef = FC21C5040F12B3AC00436E7F /* Survey.m */; };
 		D266E01B0F3A400200C20691 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D266E0160F3A400200C20691 /* NSObject+SBJSON.m */; };
 		D266E01C0F3A400200C20691 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D266E0180F3A400200C20691 /* NSString+SBJSON.m */; };
@@ -99,9 +100,10 @@
 		392676550F61A01600A889B8 /* refresh_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh_icon.png; sourceTree = "<group>"; };
 		548D9B100F6AAE7300629CCE /* RestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestDelegate.h; sourceTree = "<group>"; };
 		548D9B120F6AAEC100629CCE /* ResourceDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceDelegate.h; sourceTree = "<group>"; };
-		548D9BC10F6AB49900629CCE /* CredentialsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CredentialsView.xib; path = Classes/CredentialsView.xib; sourceTree = "<group>"; };
+		548D9BC10F6AB49900629CCE /* CredentialsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CredentialsView.xib; sourceTree = "<group>"; };
 		548D9BC40F6AB5D100629CCE /* CredentialsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CredentialsViewController.h; sourceTree = "<group>"; };
 		548D9BC50F6AB5D100629CCE /* CredentialsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CredentialsViewController.m; sourceTree = "<group>"; };
+		54D2A5620F6C53D800C0C316 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D266E0140F3A400200C20691 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		D266E0150F3A400200C20691 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 				19C28FACFE9D520D11CA2CBB /* Products */,
 				D2F22B490EFBEA0D0047CBFA /* Google Toolkit */,
 				D2F22B350EFBE9F60047CBFA /* Unit Test-Info.plist */,
+				54D2A5620F6C53D800C0C316 /* Settings.bundle */,
 			);
 			name = JoeMetric;
 			sourceTree = "<group>";
@@ -450,6 +453,7 @@
 				D2F2EFF70F606ACD00A8BB57 /* SurveyInfoView.xib in Resources */,
 				392676560F61A01600A889B8 /* refresh_icon.png in Resources */,
 				548D9BC20F6AB49900629CCE /* CredentialsView.xib in Resources */,
+				54D2A5630F6C53D800C0C316 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
