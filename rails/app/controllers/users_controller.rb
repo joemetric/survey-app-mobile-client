@@ -17,6 +17,10 @@ class UsersController < ApplicationController
       render :json => @user.errors, :status => :unprocessable_entity
     end
   end
+  
+  def show_current
+    render :json=>current_user
+  end
 
   def create
     sleep(5)
