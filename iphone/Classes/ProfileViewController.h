@@ -21,9 +21,8 @@
 	ValidCredentialsProfileDataSource* validCredentials;
 }
 
-//- (IBAction)createAccount:(id)sender;
-//- (IBAction)saveAccount:(id)sender;
 - (void) displayModalCredentialsController;
+- (void) displayModalNewAccountController;
 
 
 @property (nonatomic, retain) IBOutlet UITableView* tableView;
