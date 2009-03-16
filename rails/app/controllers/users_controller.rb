@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   skip_before_filter :login_required
+  before_filter :login_required, :except=>[:new, :create]
 
   # render new.rhtml
   def new
@@ -9,6 +10,9 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+    if @user != current_user
+      return render(:json=>'[["base", "Can only change own details"]]', :status=>:unprocessable_entity)
+    end
     if @user.update_attributes(params[:user])
       respond_to do |f|
         f.json {render :json=>@user}
