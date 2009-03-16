@@ -5,6 +5,7 @@ require 'users_controller'
 class UsersController; def rescue_action(e) raise e end; end
 
 class UsersControllerTest < ActionController::TestCase
+  QUENTIN_ID = Fixtures::identify(:quentin)
 
   fixtures :users
 
@@ -48,12 +49,12 @@ class UsersControllerTest < ActionController::TestCase
   end
   
   context "successfully updating user through json" do
-    QUENTIN_ID = Fixtures::identify(:quentin)
-
+ 
     setup do
+      login_as :quentin
       put :update, :id=>QUENTIN_ID, 
         :user=>{:income=>'123456', :birthdate=>'21 May 2002', :gender=>'M'},:format=>'json'
-      @user = users(:quentin)
+      @user = users(:quentin).reload
     end
     
     should "cause fields to be updated" do
@@ -74,6 +75,29 @@ class UsersControllerTest < ActionController::TestCase
     
   end
   
+  context "attempting to update a user other than the logged-in user" do
+    setup do
+      login_as :aaron
+      put :update, :id=>QUENTIN_ID, :user=>{},:format=>'json'
+    end
+    
+    should_respond_with :unprocessable_entity   
+  end
+ 
+  context "failing to update user through json" do
+    setup do
+      login_as :quentin
+      put :update, :id=>QUENTIN_ID, :user=>{:email=>''}, :format=>'json'
+    end
+    should_respond_with :unprocessable_entity
+    should_respond_with_content_type :json
+    
+    should "contain the errors" do
+      assert_match /can\'t be blank/, @response.body
+    end
+ 
+  end
+  
  
   context "showing logged in user, using json" do
     setup do
@@ -92,17 +116,29 @@ class UsersControllerTest < ActionController::TestCase
     should_route :get, '/users/current', :action=>:show_current, :controller=>:users
   end
   
-  context "failing to update user through json" do
-    setup do
-      put :update, :id=>QUENTIN_ID, :user=>{:email=>''}, :format=>'json'
+  
+  context "unauthenticated user" do
+    should "be able to create user" do
+      post :create
+      assert_response :success
     end
-    should_respond_with :unprocessable_entity
-    should_respond_with_content_type :json
     
-    should "contain the errors" do
-      assert_match /can\'t be blank/, @response.body
+    should "be able to display new" do
+      get :new
+      assert_response :success
     end
- 
+
+    should "be denied update" do
+      put :update, :id=>QUENTIN_ID, :user=>{},:format=>'json'
+      assert_response 401
+    end
+
+    should "be denied show_current" do
+      put :update, :id=>QUENTIN_ID, :user=>{},:format=>'json'
+      assert_response 401
+    end
+    
+    
   end
   
 
