@@ -8,73 +8,43 @@
 
 #import "JoeMetricAppDelegate.h"
 
+@interface JoeMetricAppDelegate (Private)
+- (void) initializeSettings;
+@end
+
 
 @implementation JoeMetricAppDelegate
 
 @synthesize window;
 @synthesize tabBarController;
 @synthesize navigationController;
-@synthesize credentials;
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
     [window addSubview:tabBarController.view];
+	
+	[self initializeSettings];
 }
 
-//- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-//{
-//    if (buttonIndex != 2) {
-//        tabBarController.selectedIndex = 2;
-//    }
-//    [actionSheet release];
-//}
+- (void) initializeSettings {
+	if ([[NSUserDefaults standardUserDefaults] stringForKey:@"username"] == nil)
+	{
+		// since no default values have been set (i.e. no preferences file created), create it here
+		NSDictionary *appDefaults =  [NSDictionary dictionaryWithObjectsAndKeys:
+									  @"", @"username",
+									  @"", @"password",
+									  nil];
+		[[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
+		[[NSUserDefaults standardUserDefaults] synchronize];
+	}
+}
 
 - (void)authenticationFailed {
 	tabBarController.selectedIndex = 2;
-//    if (!authAlertMenu) {
-//        authAlertMenu = [[UIActionSheet alloc] init];
-//        authAlertMenu.delegate = self;
-//        authAlertMenu.title = @"Authentication Failed";
-//        [authAlertMenu addButtonWithTitle:@"Create Account"];
-//        [authAlertMenu addButtonWithTitle:@"Update Credentials"];
-//        [authAlertMenu addButtonWithTitle:@"Cancel"];
-//        authAlertMenu.cancelButtonIndex = 2;
-//    }
-//
-//    [authAlertMenu showInView:[tabBarController view]];
-    // CLANG reports menu as leaking, but it isn't.  It's released above.
-}
-
-- (void) initCredentialsFilePath {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    credentialsFilePath = [documentsDirectory stringByAppendingPathComponent:@"authprefs.plist"];
-    [credentialsFilePath retain];
-}
-
-- (void)loadCredentials {
-    if (credentialsFilePath == nil)
-        [self initCredentialsFilePath];
-    
-    if ([[NSFileManager defaultManager] fileExistsAtPath: credentialsFilePath]) {
-        credentials = [[NSMutableDictionary alloc]
-                          initWithContentsOfFile:credentialsFilePath];
-    } else {
-        credentials = [[NSMutableDictionary alloc] initWithCapacity: 2];
-        [credentials setObject:@"" forKey:@"username"];
-        [credentials setObject:@"" forKey:@"password"];
-    }
-}
-
-- (void)saveCredentials {
-    [credentials writeToFile:credentialsFilePath atomically:YES];
 }
 
 - (NSURLCredential *)getCredentials {
-    if (credentials == nil)
-        [self loadCredentials];
-    
-    return [NSURLCredential credentialWithUser:[credentials objectForKey:@"username"]
-                            password:[credentials objectForKey:@"password"]
+    return [NSURLCredential credentialWithUser:[[NSUserDefaults standardUserDefaults] stringForKey:@"username"]
+                            password:[[NSUserDefaults standardUserDefaults] stringForKey:@"password"]
                             persistence:NSURLCredentialPersistenceNone];
 }
 
@@ -82,8 +52,6 @@
     [navigationController release];
     [tabBarController release];
     [window release];
-    [credentials release];
-    [authAlertMenu release];
     [super dealloc];
 }
 

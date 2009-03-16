@@ -16,6 +16,7 @@
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
+	NSLog(@"Rest#connection:DidReceiveData:");
     [self.delegate performSelector:action withObject:data];
 }
 

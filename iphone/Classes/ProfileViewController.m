@@ -8,78 +8,88 @@
 
 #import "JoeMetricAppDelegate.h"
 #import "ProfileViewController.h"
+#import "NoCredentialsProfileDataSource.h"
+#import "ValidCredentialsProfileDataSource.h"
 #import "CredentialsViewController.h"
 #import "Account.h"
 
+@interface ProfileViewController (Private)
+- (BOOL) hasValidCredentials;
+- (NSObject<UITableViewDelegate, UITableViewDataSource>*) tableDelegate;
+@end
+
 @implementation ProfileViewController
-@synthesize tableView, credentialsController;
+@synthesize tableView, credentialsController, noCredentials, validCredentials;
 
 
 // Implement viewDidLoad to do additional setup after loading the view.
 - (void)viewDidLoad {
-    [super viewDidLoad];
+	NSLog(@"viewDidLoad!!!");
+	self.noCredentials = [[[NoCredentialsProfileDataSource alloc] init] autorelease];
+	self.noCredentials.profileViewController = self;
+	
+	self.validCredentials = [[[ValidCredentialsProfileDataSource alloc] init] autorelease];
+	self.validCredentials.profileViewController = self;
+    
+	[super viewDidLoad];
 }
+
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     return YES;
 }
 
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-- (NSString*)tableView:(UITableView*) tv titleForHeaderInSection:(NSInteger) section {
-	return @"Account";
-}
-
-- (NSString*)tableView:(UITableView*) tv titleForFooterInSection:(NSInteger) section {
-	return @"\n\nWe don't seem to have any account details\n\nPlease login to your account\nif you have one, or create a new account.";
-}
-
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
-}
-
-
-- (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tv dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
-    }
-    // Configure the cell
-	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-	cell.selectionStyle = UITableViewCellSelectionStyleNone;
-	if( indexPath.row == 0 )
-		cell.text = @"Login";
-	else
-		cell.text = @"Signup";
-    return cell;
-}
-
 - (void)dismissModalViewControllerAnimated:(BOOL)animated {
-	//do stuff
+	[self.tableView reloadData];
 	[super dismissModalViewControllerAnimated:animated];
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	NSLog(@"SELECT");
-	if( indexPath.row == 0 ) {
-		//push modal controller for user/pass
-		if( self.credentialsController == nil ) {
-			self.credentialsController = [[[CredentialsViewController alloc] initWithNibName:@"CredentialsView" bundle:nil] autorelease];
-			self.credentialsController.profileView = self;
-		}
-		[self presentModalViewController:self.credentialsController animated:YES];
-	} else if( indexPath.row == 1 ) {
-		//push modal controller for create account
-	} 
+- (void) displayModalCredentialsController {
+	if( self.credentialsController == nil ) {
+		self.credentialsController = [[[CredentialsViewController alloc] initWithNibName:@"CredentialsView" bundle:nil] autorelease];
+		self.credentialsController.profileView = self;
+	}
+	[self presentModalViewController:self.credentialsController animated:YES];
 }
+
+- (BOOL) hasValidCredentials {
+	return [[[NSUserDefaults standardUserDefaults] stringForKey:@"username"] isEqualToString:(@"quentin")];
+}
+
+- (NSObject<UITableViewDelegate, UITableViewDataSource>*) tableDelegate {
+	if( [self hasValidCredentials] == YES )
+		return self.validCredentials;
+	else
+		return self.noCredentials;
+}
+
+#pragma mark TableViewDelegate and DataSource methods
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tv {
+	return [[self tableDelegate] numberOfSectionsInTableView:tv];
+}
+
+- (NSString*)tableView:(UITableView*) tv titleForHeaderInSection:(NSInteger) section {
+	return [[self tableDelegate] tableView:tv titleForHeaderInSection:section];
+}
+
+- (NSString*)tableView:(UITableView*) tv titleForFooterInSection:(NSInteger) section {
+	return [[self tableDelegate] tableView:tv titleForFooterInSection:section];
+}
+
+- (NSInteger)tableView:(UITableView *)tv numberOfRowsInSection:(NSInteger)section {
+	return [[self tableDelegate] tableView:tv numberOfRowsInSection:section];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	return [[self tableDelegate] tableView:tv cellForRowAtIndexPath:indexPath];
+}
+
+- (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	[[self tableDelegate] tableView:tv didSelectRowAtIndexPath:indexPath];
+}
+
+
 
 
 - (void)dealloc {
