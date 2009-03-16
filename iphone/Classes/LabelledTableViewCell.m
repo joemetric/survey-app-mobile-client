@@ -11,6 +11,7 @@
 
 @implementation LabelledTableViewCell
 @synthesize label, textField;
+@synthesize tableView;
 
 - (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithFrame:frame reuseIdentifier:reuseIdentifier]) {
@@ -29,14 +30,15 @@
 
 #pragma mark -
 #pragma mark UITextFieldDelegate
-- (void) textFieldShouldReturn:(UITextField*)tf {
+- (BOOL) textFieldShouldReturn:(UITextField*)tf {
 	[tf resignFirstResponder];
+	return YES;
 }
-
 
 - (void)dealloc {
 	[label release];
 	[textField release];
+	[tableView release];
     [super dealloc];
 }
 

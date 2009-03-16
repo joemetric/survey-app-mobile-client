@@ -12,8 +12,10 @@
 @interface LabelledTableViewCell : UITableViewCell <UITextFieldDelegate> {
 	UILabel* label;
 	UITextField* textField;
+	UITableView* tableView;
 }
 
+@property (nonatomic, retain) IBOutlet UITableView* tableView;
 @property (nonatomic, retain) IBOutlet UILabel* label;
 @property (nonatomic, retain) IBOutlet UITextField* textField;
 

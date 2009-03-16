@@ -37,32 +37,47 @@
 - (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	NSArray* nib = [[NSBundle mainBundle] loadNibNamed:@"LabelledTableViewCell" owner:self options:nil];
 	LabelledTableViewCell* cell = (LabelledTableViewCell*)[nib objectAtIndex:0];
+	cell.tableView = self.tableView;
 
 	if( indexPath.section == 0 )
 	{
 		if( indexPath.row == 0 ) {
 			cell.label.text = @"Username";
-			self.username = cell.textField;
+			cell.textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+			cell.textField.autocorrectionType = UITextAutocorrectionTypeNo;
+			self.username = cell.textField;			
 		}
 		else if( indexPath.row == 1) {
 			cell.label.text = @"Password";
+			cell.textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+			cell.textField.autocorrectionType = UITextAutocorrectionTypeNo;
+			cell.textField.secureTextEntry = YES;
 			self.password = cell.textField;
 		}
 		else {
 			cell.label.text = @"Email";			
+			cell.textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+			cell.textField.autocorrectionType = UITextAutocorrectionTypeNo;
+			cell.textField.keyboardType = UIKeyboardTypeEmailAddress;
 			self.emailAddress = cell.textField;
 		}
 	} else {
 		if( indexPath.row == 0 ) {
 			cell.label.text = @"Date of Birth";
+			cell.textField.placeholder = @"dd-mmm-yyyy";
+			cell.textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
 			self.dob = cell.textField;
 		}
 		else if( indexPath.row == 1) {
 			cell.label.text = @"Income";
+			cell.textField.placeholder = @"99999";
+			cell.textField.keyboardType = UIKeyboardTypeNumberPad;
 			self.income = cell.textField;
 		}
 		else {
 			cell.label.text = @"Gender";	
+			cell.textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+			cell.textField.placeholder = @"M or F";
 			self.gender = cell.textField;
 		}
 		
@@ -81,6 +96,9 @@
     [params setObject:emailAddress.text forKey:@"email"];
     [params setObject:password.text forKey:@"password"];
     [params setObject:password.text forKey:@"password_confirmation"];
+    [params setObject:income.text forKey:@"income"];
+    [params setObject:dob.text forKey:@"birthdate"];
+    [params setObject:gender.text forKey:@"gender"];
     Account *account = [Account createWithParams:params];
 	[self.activityIndicator stopAnimating];
     if (account) {
