@@ -59,7 +59,7 @@
 	if( indexPath.row == 0 ) {
 		[self.profileViewController displayModalCredentialsController];
 	} else if( indexPath.row == 1 ) {
-		//push modal controller for create account
+		[self.profileViewController displayModalNewAccountController];
 	} 
 }
 

@@ -11,6 +11,7 @@
 #import "NoCredentialsProfileDataSource.h"
 #import "ValidCredentialsProfileDataSource.h"
 #import "CredentialsViewController.h"
+#import "NewAccountViewController.h"
 #import "Account.h"
 
 @interface ProfileViewController (Private)
@@ -19,7 +20,7 @@
 @end
 
 @implementation ProfileViewController
-@synthesize tableView, credentialsController, noCredentials, validCredentials;
+@synthesize tableView, credentialsController, newAccountController, noCredentials, validCredentials;
 
 
 // Implement viewDidLoad to do additional setup after loading the view.
@@ -53,8 +54,16 @@
 	[self presentModalViewController:self.credentialsController animated:YES];
 }
 
+- (void) displayModalNewAccountController {
+	if( self.newAccountController == nil ) {
+		self.newAccountController = [[[NewAccountViewController alloc] initWithNibName:@"NewAccountView" bundle:nil] autorelease];
+		self.newAccountController.profileView = self;
+	}
+	[self presentModalViewController:self.newAccountController animated:YES];
+}
+
 - (BOOL) hasValidCredentials {
-	return [[[NSUserDefaults standardUserDefaults] stringForKey:@"username"] isEqualToString:(@"quentin")];
+	return ![[[NSUserDefaults standardUserDefaults] stringForKey:@"username"] isEqualToString:(@"")];
 }
 
 - (NSObject<UITableViewDelegate, UITableViewDataSource>*) tableDelegate {
