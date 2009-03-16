@@ -18,13 +18,14 @@
 }
 
 - (IBAction) signup {
+	[self.activityIndicator startAnimating];
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setObject:username.text forKey:@"login"];
     [params setObject:emailAddress.text forKey:@"email"];
     [params setObject:password.text forKey:@"password"];
     [params setObject:password.text forKey:@"password_confirmation"];
-
     Account *account = [Account createWithParams:params];
+	[self.activityIndicator stopAnimating];
     if (account) {
 		[[NSUserDefaults standardUserDefaults] setObject:username.text forKey:@"username"];
 		[[NSUserDefaults standardUserDefaults] setObject:password.text forKey:@"password"];
