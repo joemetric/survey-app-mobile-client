@@ -73,6 +73,7 @@
 		return self.noCredentials;
 }
 
+#pragma mark -
 #pragma mark TableViewDelegate and DataSource methods
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tv {
 	return [[self tableDelegate] numberOfSectionsInTableView:tv];

@@ -24,7 +24,6 @@
 - (void) displayModalCredentialsController;
 - (void) displayModalNewAccountController;
 
-
 @property (nonatomic, retain) IBOutlet UITableView* tableView;
 @property (nonatomic, retain) CredentialsViewController* credentialsController;
 @property (nonatomic, retain) NewAccountViewController* newAccountController;
