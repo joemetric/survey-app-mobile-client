@@ -1,5 +1,5 @@
 //
-//  LabelledTableViewCell.h
+//  SegmentedTableViewCell.h
 //  JoeMetric
 //
 //  Created by Alan Francis on 16/03/2009.
@@ -9,14 +9,14 @@
 #import <UIKit/UIKit.h>
 
 
-@interface LabelledTableViewCell : UITableViewCell <UITextFieldDelegate> {
+@interface SegmentedTableViewCell : UITableViewCell {
 	UILabel* label;
-	UITextField* textField;
-	UITableView* tableView;
+	UISegmentedControl* segControl;
+	UITableView* tableView;	
 }
 
 @property (nonatomic, retain) UITableView* tableView;
 @property (nonatomic, retain) IBOutlet UILabel* label;
-@property (nonatomic, retain) IBOutlet UITextField* textField;
+@property (nonatomic, retain) IBOutlet UISegmentedControl* segControl;
 
 @end
