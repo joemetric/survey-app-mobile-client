@@ -74,6 +74,24 @@ class UsersControllerTest < ActionController::TestCase
     
   end
   
+ 
+  context "showing logged in user, using json" do
+    setup do
+      login_as :quentin
+      get :show_current, :format=>:json
+    end
+    
+    should_respond_with :success
+    should_respond_with_content_type :json
+
+    should "return current user in json form" do
+      assert_equal users(:quentin).to_json, @response.body
+    end
+
+    
+    should_route :get, '/users/current', :action=>:show_current, :controller=>:users
+  end
+  
   context "failing to update user through json" do
     setup do
       put :update, :id=>QUENTIN_ID, :user=>{:email=>''}, :format=>'json'
