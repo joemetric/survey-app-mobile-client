@@ -62,6 +62,7 @@ NSDate* fromShortIso8601(NSString *shortDate){
 
 - (void)populateFromReceivedData:(NSData *)data{
 	NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSLog(@"%@", str);
 	NSDictionary *dict = (NSDictionary *)[str JSONFragmentValue];
 	[str release];
 	[self populateFromDictionary:dict];

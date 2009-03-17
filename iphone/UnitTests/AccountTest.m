@@ -59,18 +59,6 @@ NSData* fromAsciiString(NSString *string){
   STAssertNULL(account.birthdate, nil);
 }
 
--(void)testNilly{
-  NSString *bid = [NSNull null];
-  if ([NSNull null] == bid || nil == bid){
-    
-  }
-  else{
-    STFail(@"oooh");
-  }
-  
-}
-
-
 
 -(void)testNewFromDictionary{
   NSDictionary *params = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"rita", @"456",  nil] forKeys:[NSArray arrayWithObjects:@"login", @"id", nil]];

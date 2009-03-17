@@ -9,10 +9,13 @@
 #import <Foundation/Foundation.h>
 
 @class ProfileViewController;
+@class Account;
 
 @interface ValidCredentialsProfileDataSource : NSObject <UITableViewDataSource, UITableViewDelegate> {
 	ProfileViewController* profileViewController;
+    Account *account;
 }
 
 @property (nonatomic, retain) ProfileViewController* profileViewController;
+@property (nonatomic, retain) Account *account;
 @end

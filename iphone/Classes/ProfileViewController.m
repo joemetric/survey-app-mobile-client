@@ -21,8 +21,12 @@
 @end
 
 @implementation ProfileViewController
-@synthesize tableView, credentialsController, newAccountController, noCredentials, validCredentials, account;
+@synthesize tableView, credentialsController, newAccountController, noCredentials, validCredentials;
 
+-(void)accountLoaded:(Account*) account{
+    NSLog(@"loaded: %@", account.username);
+    [self.tableView reloadData];
+}
 
 // Implement viewDidLoad to do additional setup after loading the view.
 - (void)viewDidLoad {
@@ -37,8 +41,7 @@
     
 
     NSLog(@"APPEAR");
-    self.account = [Account currentAccount];
-    NSLog(@"Account: %@", account);
+    self.validCredentials.account = [Account currentAccountWithCallback:@selector(accountLoaded:)on:self];
 	
     [super viewDidLoad];
 }
@@ -113,7 +116,6 @@
 - (void)dealloc {
 	[tableView release];
 	[credentialsController release];
-    [account release];
     [super dealloc];
 }
 

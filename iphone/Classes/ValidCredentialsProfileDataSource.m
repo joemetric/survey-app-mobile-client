@@ -8,9 +8,10 @@
 
 #import "ValidCredentialsProfileDataSource.h"
 #import "ProfileViewController.h"
+#import "Account.h"
 
 @implementation ValidCredentialsProfileDataSource
-@synthesize profileViewController;
+@synthesize profileViewController, account;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 	NSLog(@"numberOf Sections!");
@@ -47,16 +48,18 @@
 		cell.textAlignment = UITextAlignmentLeft;
 		switch (indexPath.row) {
 			case 0:
-				cell.text = @"ZipCode: 61601";
+				cell.text =[NSString stringWithFormat:@"%@", account.email];
 				break;
 			case 1:
-				cell.text = @"Height: 6'3";
+				cell.text = [NSString stringWithFormat:@"%@", account.birthdate];
 				break;
 			case 2:
-				cell.text = @"Hair: Long";
+				cell.text = [NSString stringWithFormat:@"$%10d", account.income];
 				break;
 			case 3:
-				cell.text = @"Facial Tatoos: Yes";
+                NSLog(@"sex:%@", account.gender);
+				cell.text =[NSString stringWithFormat:@"%@", account.gender];
+                NSLog(@"sex:%@", cell.text);
 				break;
 			default:
 				break;
@@ -70,6 +73,7 @@
 
 - (void) dealloc {
 	[profileViewController release];
+    [account release];
 	[super dealloc];
 }
 
