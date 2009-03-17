@@ -14,10 +14,13 @@
     NSString *gender;
     NSInteger income;
     NSDate *birthdate;
+    id callMeBackOnLoadDelegate;
+    SEL callMeBackOnLoadSelector; 
+    
 }
 
 
-+(Account*) currentAccount;
++(Account*) currentAccountWithCallback:(SEL)callme on:(id)delegate;
 - (void)populateFromReceivedData:(NSData *)data;
 
 @property (nonatomic, retain) NSString *username;
