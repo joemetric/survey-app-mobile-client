@@ -1,16 +1,16 @@
 //
-//  LabelledTableViewCell.m
+//  SegmentedTableViewCell.m
 //  JoeMetric
 //
 //  Created by Alan Francis on 16/03/2009.
 //  Copyright 2009 Cardboard Software (Scotland), Ltd.. All rights reserved.
 //
 
-#import "LabelledTableViewCell.h"
+#import "SegmentedTableViewCell.h"
 
 
-@implementation LabelledTableViewCell
-@synthesize label, textField;
+@implementation SegmentedTableViewCell
+@synthesize label, segControl;
 @synthesize tableView;
 
 - (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
@@ -22,20 +22,15 @@
 
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+
     [super setSelected:selected animated:animated];
     // Configure the view for the selected state
 }
 
-#pragma mark -
-#pragma mark UITextFieldDelegate
-- (BOOL) textFieldShouldReturn:(UITextField*)tf {
-	[tf resignFirstResponder];
-	return YES;
-}
 
 - (void)dealloc {
 	[label release];
-	[textField release];
+	[segControl release];
 	[tableView release];
     [super dealloc];
 }

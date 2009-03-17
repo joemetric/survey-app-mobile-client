@@ -35,6 +35,10 @@
 		547608D10F6E5B6B007CCC58 /* NewAccountView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 547608D00F6E5B6B007CCC58 /* NewAccountView.xib */; };
 		548D9BC20F6AB49900629CCE /* CredentialsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 548D9BC10F6AB49900629CCE /* CredentialsView.xib */; };
 		548D9BC60F6AB5D100629CCE /* CredentialsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 548D9BC50F6AB5D100629CCE /* CredentialsViewController.m */; };
+		54A630360F6EA99B0038382D /* SegmentedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A630350F6EA99B0038382D /* SegmentedTableViewCell.m */; };
+		54A630380F6EAA6D0038382D /* SegmentedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54A630370F6EAA6D0038382D /* SegmentedTableViewCell.xib */; };
+		54A6308B0F6EB2240038382D /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A6308A0F6EB2240038382D /* DatePickerViewController.m */; };
+		54A630900F6EB2D20038382D /* DatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54A6308F0F6EB2D20038382D /* DatePickerView.xib */; };
 		54D2A5630F6C53D800C0C316 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 54D2A5620F6C53D800C0C316 /* Settings.bundle */; };
 		54FA56FB0F6E439200939C65 /* NoCredentialsProfileDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 54FA56FA0F6E439200939C65 /* NoCredentialsProfileDataSource.m */; };
 		54FA56FE0F6E43F100939C65 /* ValidCredentialsProfileDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 54FA56FD0F6E43F100939C65 /* ValidCredentialsProfileDataSource.m */; };
@@ -115,6 +119,12 @@
 		548D9BC10F6AB49900629CCE /* CredentialsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CredentialsView.xib; sourceTree = "<group>"; };
 		548D9BC40F6AB5D100629CCE /* CredentialsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CredentialsViewController.h; sourceTree = "<group>"; };
 		548D9BC50F6AB5D100629CCE /* CredentialsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CredentialsViewController.m; sourceTree = "<group>"; };
+		54A630340F6EA99B0038382D /* SegmentedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentedTableViewCell.h; sourceTree = "<group>"; };
+		54A630350F6EA99B0038382D /* SegmentedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentedTableViewCell.m; sourceTree = "<group>"; };
+		54A630370F6EAA6D0038382D /* SegmentedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SegmentedTableViewCell.xib; sourceTree = "<group>"; };
+		54A630890F6EB2240038382D /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
+		54A6308A0F6EB2240038382D /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
+		54A6308F0F6EB2D20038382D /* DatePickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DatePickerView.xib; sourceTree = "<group>"; };
 		54D2A5620F6C53D800C0C316 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		54FA56F90F6E439200939C65 /* NoCredentialsProfileDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoCredentialsProfileDataSource.h; sourceTree = "<group>"; };
 		54FA56FA0F6E439200939C65 /* NoCredentialsProfileDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoCredentialsProfileDataSource.m; sourceTree = "<group>"; };
@@ -300,6 +310,8 @@
 				D2F2EFF60F606ACD00A8BB57 /* SurveyInfoView.xib */,
 				547608D00F6E5B6B007CCC58 /* NewAccountView.xib */,
 				5420E3120F6E7F5B00DC2BDE /* LabelledTableViewCell.xib */,
+				54A630370F6EAA6D0038382D /* SegmentedTableViewCell.xib */,
+				54A6308F0F6EB2D20038382D /* DatePickerView.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -329,6 +341,10 @@
 				547608CD0F6E5B37007CCC58 /* NewAccountViewController.m */,
 				5420E3150F6E82E800DC2BDE /* LabelledTableViewCell.h */,
 				5420E3160F6E82E800DC2BDE /* LabelledTableViewCell.m */,
+				54A630340F6EA99B0038382D /* SegmentedTableViewCell.h */,
+				54A630350F6EA99B0038382D /* SegmentedTableViewCell.m */,
+				54A630890F6EB2240038382D /* DatePickerViewController.h */,
+				54A6308A0F6EB2240038382D /* DatePickerViewController.m */,
 			);
 			name = "Profile View Controllers";
 			sourceTree = "<group>";
@@ -488,6 +504,8 @@
 				54D2A5630F6C53D800C0C316 /* Settings.bundle in Resources */,
 				547608D10F6E5B6B007CCC58 /* NewAccountView.xib in Resources */,
 				5420E3130F6E7F5B00DC2BDE /* LabelledTableViewCell.xib in Resources */,
+				54A630380F6EAA6D0038382D /* SegmentedTableViewCell.xib in Resources */,
+				54A630900F6EB2D20038382D /* DatePickerView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -547,6 +565,8 @@
 				54FA56FE0F6E43F100939C65 /* ValidCredentialsProfileDataSource.m in Sources */,
 				547608CE0F6E5B37007CCC58 /* NewAccountViewController.m in Sources */,
 				5420E3170F6E82E800DC2BDE /* LabelledTableViewCell.m in Sources */,
+				54A630360F6EA99B0038382D /* SegmentedTableViewCell.m in Sources */,
+				54A6308B0F6EB2240038382D /* DatePickerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
