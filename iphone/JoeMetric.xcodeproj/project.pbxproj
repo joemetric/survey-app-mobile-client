@@ -134,7 +134,6 @@
 		D2955DF50F3A36E6002675C9 /* Resource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Resource.m; sourceTree = "<group>"; };
 		D2955DF60F3A36E6002675C9 /* Rest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rest.h; sourceTree = "<group>"; };
 		D2955DF70F3A36E6002675C9 /* Rest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rest.m; sourceTree = "<group>"; };
-		D2AD6B150EFFF62900DB13FD /* AccountTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccountTest.h; path = UnitTests/AccountTest.h; sourceTree = "<group>"; };
 		D2AD6B160EFFF62900DB13FD /* AccountTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccountTest.m; path = UnitTests/AccountTest.m; sourceTree = "<group>"; };
 		D2AD6B1A0EFFF66B00DB13FD /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
 		D2AD6B1B0EFFF66B00DB13FD /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Account.m; sourceTree = "<group>"; };
@@ -366,7 +365,6 @@
 			children = (
 				D2955DEC0F3A18DE002675C9 /* SurveyTest.h */,
 				D2955DEA0F3A18CA002675C9 /* SurveyTest.m */,
-				D2AD6B150EFFF62900DB13FD /* AccountTest.h */,
 				D2AD6B160EFFF62900DB13FD /* AccountTest.m */,
 				D2F22B830EFBF09C0047CBFA /* QuestionTest.h */,
 				D2F22B840EFBF09C0047CBFA /* QuestionTest.m */,

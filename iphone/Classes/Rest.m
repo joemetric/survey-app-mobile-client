@@ -95,7 +95,7 @@
     [url release];
 
     dataStr  = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-
+    NSLog(@"ds: %@", dataStr);
     if ([(NSHTTPURLResponse*)response statusCode] != 200) {
         NSLog(@"FAILURE HERE: %@", dataStr);
         [dataStr release];

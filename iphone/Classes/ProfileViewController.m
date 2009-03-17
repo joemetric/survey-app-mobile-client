@@ -13,6 +13,7 @@
 #import "CredentialsViewController.h"
 #import "NewAccountViewController.h"
 #import "Account.h"
+#import "Rest.h"
 
 @interface ProfileViewController (Private)
 - (BOOL) hasValidCredentials;
@@ -20,19 +21,26 @@
 @end
 
 @implementation ProfileViewController
-@synthesize tableView, credentialsController, newAccountController, noCredentials, validCredentials;
+@synthesize tableView, credentialsController, newAccountController, noCredentials, validCredentials, account;
 
 
 // Implement viewDidLoad to do additional setup after loading the view.
 - (void)viewDidLoad {
 	NSLog(@"viewDidLoad!!!");
+    
+    
 	self.noCredentials = [[[NoCredentialsProfileDataSource alloc] init] autorelease];
 	self.noCredentials.profileViewController = self;
 	
 	self.validCredentials = [[[ValidCredentialsProfileDataSource alloc] init] autorelease];
 	self.validCredentials.profileViewController = self;
     
-	[super viewDidLoad];
+
+    NSLog(@"APPEAR");
+    self.account = [Account currentAccount];
+    NSLog(@"Account: %@", account);
+	
+    [super viewDidLoad];
 }
 
 
@@ -105,6 +113,7 @@
 - (void)dealloc {
 	[tableView release];
 	[credentialsController release];
+    [account release];
     [super dealloc];
 }
 

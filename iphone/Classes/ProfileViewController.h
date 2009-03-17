@@ -12,6 +12,7 @@
 @class NewAccountViewController;
 @class NoCredentialsProfileDataSource;
 @class ValidCredentialsProfileDataSource;
+@class Account;
 
 @interface ProfileViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
 	UITableView* tableView;
@@ -19,6 +20,7 @@
 	NewAccountViewController* newAccountController;
 	NoCredentialsProfileDataSource* noCredentials;
 	ValidCredentialsProfileDataSource* validCredentials;
+    Account *account;
 }
 
 - (void) displayModalCredentialsController;
@@ -29,5 +31,6 @@
 @property (nonatomic, retain) NewAccountViewController* newAccountController;
 @property (nonatomic, retain) NoCredentialsProfileDataSource* noCredentials;
 @property (nonatomic, retain) ValidCredentialsProfileDataSource* validCredentials;
+@property (nonatomic, retain) Account *account;
 
 @end

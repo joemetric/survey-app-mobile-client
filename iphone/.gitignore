@@ -1,2 +1,3 @@
 coverage
 .built
+*tm_build_errors
