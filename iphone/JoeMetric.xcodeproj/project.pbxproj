@@ -201,6 +201,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				D20F918C0F714B9B00137D71 /* Rest */,
 				0DD8C8440EF33DB900A20937 /* Models */,
 				0D8DC8870EDE35B9007EC072 /* View Controllers */,
 				1D3623240D0F684500981E51 /* JoeMetricAppDelegate.h */,
@@ -226,11 +227,6 @@
 		0DD8C8440EF33DB900A20937 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				548D9B100F6AAE7300629CCE /* RestDelegate.h */,
-				D2955DF40F3A36E6002675C9 /* Resource.h */,
-				D2955DF50F3A36E6002675C9 /* Resource.m */,
-				D2955DF60F3A36E6002675C9 /* Rest.h */,
-				D2955DF70F3A36E6002675C9 /* Rest.m */,
 				0DD8C8400EF33C3E00A20937 /* Question.h */,
 				0DD8C8410EF33C3E00A20937 /* Question.m */,
 				D2AD6B1A0EFFF66B00DB13FD /* Account.h */,
@@ -239,7 +235,6 @@
 				FC21C5040F12B3AC00436E7F /* Survey.m */,
 				D2C6934C0F669F600009E3A7 /* Answer.h */,
 				D2C6934D0F669F600009E3A7 /* Answer.m */,
-				548D9B120F6AAEC100629CCE /* ResourceDelegate.h */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -347,6 +342,19 @@
 				54A6308A0F6EB2240038382D /* DatePickerViewController.m */,
 			);
 			name = "Profile View Controllers";
+			sourceTree = "<group>";
+		};
+		D20F918C0F714B9B00137D71 /* Rest */ = {
+			isa = PBXGroup;
+			children = (
+				548D9B120F6AAEC100629CCE /* ResourceDelegate.h */,
+				548D9B100F6AAE7300629CCE /* RestDelegate.h */,
+				D2955DF40F3A36E6002675C9 /* Resource.h */,
+				D2955DF50F3A36E6002675C9 /* Resource.m */,
+				D2955DF60F3A36E6002675C9 /* Rest.h */,
+				D2955DF70F3A36E6002675C9 /* Rest.m */,
+			);
+			name = Rest;
 			sourceTree = "<group>";
 		};
 		D266E0130F3A400200C20691 /* JSON */ = {
