@@ -9,5 +9,6 @@
 - (void)restHasBadCredentials:(Rest *)rest;
 - (void)rest:(Rest *)rest didFailWithError:(NSError *)error;
 - (void)rest:(Rest *)rest didReceiveStatusCode:(int)statusCode;
-
+- (void)authenticationFailed;
+- (NSURLCredential *)getCredentials;
 @end
