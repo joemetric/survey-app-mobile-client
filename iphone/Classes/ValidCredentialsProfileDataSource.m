@@ -14,6 +14,8 @@
 @implementation ValidCredentialsProfileDataSource
 @synthesize profileViewController, account;
 
+
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 	NSLog(@"numberOf Sections!");
     return 2;
@@ -40,7 +42,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
 	static NSString *CellIdentifier = @"Cell";
-	LabelledTableViewReadOnlyCell *cell = [tv dequeueReusableCellWithIdentifier:CellIdentifier];
+	LabelledTableViewReadOnlyCell *cell = (LabelledTableViewReadOnlyCell*)[tv dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil) { cell = [self loadLabelledCell];}
 	// Configure the cell
 	if( indexPath.section == 0 ) {
@@ -60,11 +62,11 @@
                 cell.label.text = @"email";
 				break;
 			case 1:
-				cell.valueField.text = [NSString stringWithFormat:@"%@", account.birthdate];
+				cell.valueField.text = [dateFormatter stringFromDate:account.birthdate];
                 cell.label.text = @"date of birth";
 				break;
 			case 2:
-				cell.valueField.text = [NSString stringWithFormat:@"$%d", account.income];
+				cell.valueField.text = [numberFormatter stringFromNumber:[NSNumber numberWithInteger:account.income]];
                 cell.label.text = @"income";
 				break;
 			case 3:
@@ -83,7 +85,19 @@
 - (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
+
+-(id) init{
+	numberFormatter = [[NSNumberFormatter alloc] init];
+	[numberFormatter setFormat:@"$#,##0"];
+	dateFormatter = [[NSDateFormatter alloc] init];
+	dateFormatter.dateFormat =  @"dd MMM yyyy";
+	
+	return self;
+}
+
 - (void) dealloc {
+	[numberFormatter release];
+	[dateFormatter release];
 	[profileViewController release];
     [account release];
 	[super dealloc];

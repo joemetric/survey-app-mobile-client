@@ -14,6 +14,8 @@
 @interface ValidCredentialsProfileDataSource : NSObject <UITableViewDataSource, UITableViewDelegate> {
 	ProfileViewController* profileViewController;
     Account *account;
+	NSNumberFormatter *numberFormatter;
+	NSDateFormatter *dateFormatter;
 }
 
 @property (nonatomic, retain) ProfileViewController* profileViewController;
