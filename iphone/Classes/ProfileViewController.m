@@ -40,7 +40,6 @@
 	self.validCredentials.profileViewController = self;
     
 
-    NSLog(@"APPEAR");
     self.validCredentials.account = [Account currentAccountWithCallback:@selector(accountLoaded:)on:self];
 	
     [super viewDidLoad];
@@ -118,53 +117,5 @@
 	[credentialsController release];
     [super dealloc];
 }
-
-//- (IBAction)createAccount:(id)sender
-//{
-//    NSLog(@"Creating with: %@ : %@", [usernameField text], [passwordField text]);
-//
-//    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-//    if (usernameField.text) {
-//        [params setObject:[usernameField text] forKey:@"login"];
-//    } else {
-//        [params setObject:@"" forKey:@"login"];
-//    }
-//
-//    if (emailField.text) {
-//        [params setObject:emailField.text forKey:@"email"];
-//    } else {
-//        [params setObject:@"" forKey:@"email"];
-//    }
-//
-//    if (passwordField.text) {
-//        [params setObject:[passwordField text] forKey:@"password"];
-//        [params setObject:[passwordField text] forKey:@"password_confirmation"];
-//    } else {
-//        [params setObject:@"" forKey:@"password"];
-//        [params setObject:@"" forKey:@"password_confirmation"];
-//    }
-//
-//    Account *account = [Account createWithParams:params];
-//    if (account) {
-//        [self saveAccount:sender];
-//    } else {
-//        // Pop up an alert or something?
-//        NSLog(@"Account creation hath FAILED");
-//    }
-//    
-//    [params release];
-//}
-//
-//- (IBAction)saveAccount:(id)sender
-//{
-//    NSMutableDictionary *credentials = [[NSMutableDictionary alloc] initWithCapacity: 2];
-//    [credentials setObject:[usernameField text] forKey:@"username"];
-//    [credentials setObject:[passwordField text] forKey:@"password"];
-//
-//
-//    JoeMetricAppDelegate *appDelegate = (JoeMetricAppDelegate*)[[UIApplication sharedApplication] delegate];
-//    appDelegate.credentials = credentials;
-//    [appDelegate saveCredentials];
-//}
 @end
 
