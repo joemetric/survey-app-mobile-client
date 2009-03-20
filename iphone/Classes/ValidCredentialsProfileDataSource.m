@@ -9,9 +9,12 @@
 #import "ValidCredentialsProfileDataSource.h"
 #import "ProfileViewController.h"
 #import "Account.h"
+#import "LabelledTableViewReadOnlyCell.h"
 
 @implementation ValidCredentialsProfileDataSource
 @synthesize profileViewController, account;
+
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 	NSLog(@"numberOf Sections!");
@@ -30,17 +33,24 @@
     return section == 0 ? 1 : 4;
 }
 
+- (LabelledTableViewReadOnlyCell*) loadLabelledCell {
+	NSArray* nib = [[NSBundle mainBundle] loadNibNamed:@"LabelledTableViewReadOnlyCell" owner:self options:nil];
+	return (LabelledTableViewReadOnlyCell*)[nib objectAtIndex:0];
+}
+
+
 - (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
 	static NSString *CellIdentifier = @"Cell";
-	UITableViewCell *cell = [tv dequeueReusableCellWithIdentifier:CellIdentifier];
-	if (cell == nil) { cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];}
+	LabelledTableViewReadOnlyCell *cell = (LabelledTableViewReadOnlyCell*)[tv dequeueReusableCellWithIdentifier:CellIdentifier];
+	if (cell == nil) { cell = [self loadLabelledCell];}
 	// Configure the cell
 	if( indexPath.section == 0 ) {
 		cell.accessoryType = UITableViewCellAccessoryNone;
 		cell.selectionStyle = UITableViewCellSelectionStyleNone;
 		cell.textAlignment = UITextAlignmentCenter;
-		cell.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"username"];
+		cell.valueField.text = [NSString stringWithFormat:@"%@", account.username];
+        cell.label.text = @"username";
 	}
 	else {
 		cell.accessoryType = UITableViewCellAccessoryNone;
@@ -48,19 +58,21 @@
 		cell.textAlignment = UITextAlignmentLeft;
 		switch (indexPath.row) {
 			case 0:
-				cell.text =[NSString stringWithFormat:@"%@", account.email];
+				cell.valueField.text =[NSString stringWithFormat:@"%@", account.email];
+                cell.label.text = @"email";
 				break;
 			case 1:
-				cell.text = [NSString stringWithFormat:@"%@", account.birthdate];
+				cell.valueField.text = [dateFormatter stringFromDate:account.birthdate];
+                cell.label.text = @"date of birth";
 				break;
 			case 2:
-				cell.text = [NSString stringWithFormat:@"$%10d", account.income];
+				cell.valueField.text = [numberFormatter stringFromNumber:[NSNumber numberWithInteger:account.income]];
+                cell.label.text = @"income";
 				break;
 			case 3:
-                NSLog(@"sex:%@", account.gender);
-				cell.text =[NSString stringWithFormat:@"%@", account.gender];
-                NSLog(@"sex:%@", cell.text);
-				break;
+  				cell.valueField.text =[NSString stringWithFormat:@"%@", account.gender];
+                cell.label.text = @"gender";
+ 				break;
 			default:
 				break;
 		}
@@ -68,10 +80,24 @@
 	return cell;
 }
 
+
+
 - (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
+
+-(id) init{
+	numberFormatter = [[NSNumberFormatter alloc] init];
+	[numberFormatter setFormat:@"$#,##0"];
+	dateFormatter = [[NSDateFormatter alloc] init];
+	dateFormatter.dateFormat =  @"dd MMM yyyy";
+	
+	return self;
+}
+
 - (void) dealloc {
+	[numberFormatter release];
+	[dateFormatter release];
 	[profileViewController release];
     [account release];
 	[super dealloc];

@@ -71,6 +71,15 @@
 		D2F2EFA50F60389D00A8BB57 /* PictureAnswerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2F2EFA40F60389D00A8BB57 /* PictureAnswerView.xib */; };
 		D2F2EFF50F606AB500A8BB57 /* SurveyInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F2EFF40F606AB500A8BB57 /* SurveyInfoViewController.m */; };
 		D2F2EFF70F606ACD00A8BB57 /* SurveyInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2F2EFF60F606ACD00A8BB57 /* SurveyInfoView.xib */; };
+		DA7F48BC0F7142660001E019 /* LabelledTableViewReadOnlyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA7F48BB0F7142650001E019 /* LabelledTableViewReadOnlyCell.xib */; };
+		DA7F48C10F7143890001E019 /* LabelledTableViewReadOnlyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7F48C00F7143890001E019 /* LabelledTableViewReadOnlyCell.m */; };
+		DA7F48EC0F714D060001E019 /* ValidCredentialsProfileDataSourceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7F48E50F714C6A0001E019 /* ValidCredentialsProfileDataSourceTest.m */; };
+		DA7F49080F71506A0001E019 /* ValidCredentialsProfileDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 54FA56FD0F6E43F100939C65 /* ValidCredentialsProfileDataSource.m */; };
+		DA7F49290F7150D00001E019 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
+		DA7F49BA0F71557D0001E019 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		DA7F49BB0F7155890001E019 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		DA7F49DC0F715E400001E019 /* LabelledTableViewReadOnlyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA7F48BB0F7142650001E019 /* LabelledTableViewReadOnlyCell.xib */; };
+		DA7F49DF0F715EF70001E019 /* LabelledTableViewReadOnlyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7F48C00F7143890001E019 /* LabelledTableViewReadOnlyCell.m */; };
 		FC21C5050F12B3AC00436E7F /* Survey.m in Sources */ = {isa = PBXBuildFile; fileRef = FC21C5040F12B3AC00436E7F /* Survey.m */; };
 		FC9756860F13B2300077926E /* SurveyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC9756850F13B2300077926E /* SurveyListViewController.m */; };
 		FC9756890F13B4070077926E /* SurveyListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC9756880F13B4070077926E /* SurveyListView.xib */; };
@@ -170,6 +179,10 @@
 		D2F2EFF30F606AB500A8BB57 /* SurveyInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurveyInfoViewController.h; sourceTree = "<group>"; };
 		D2F2EFF40F606AB500A8BB57 /* SurveyInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SurveyInfoViewController.m; sourceTree = "<group>"; };
 		D2F2EFF60F606ACD00A8BB57 /* SurveyInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SurveyInfoView.xib; sourceTree = "<group>"; };
+		DA7F48BB0F7142650001E019 /* LabelledTableViewReadOnlyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelledTableViewReadOnlyCell.xib; sourceTree = "<group>"; };
+		DA7F48BF0F7143890001E019 /* LabelledTableViewReadOnlyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelledTableViewReadOnlyCell.h; sourceTree = "<group>"; };
+		DA7F48C00F7143890001E019 /* LabelledTableViewReadOnlyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelledTableViewReadOnlyCell.m; sourceTree = "<group>"; };
+		DA7F48E50F714C6A0001E019 /* ValidCredentialsProfileDataSourceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ValidCredentialsProfileDataSourceTest.m; path = UnitTests/ValidCredentialsProfileDataSourceTest.m; sourceTree = "<group>"; };
 		FC21C5030F12B3AC00436E7F /* Survey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Survey.h; sourceTree = "<group>"; };
 		FC21C5040F12B3AC00436E7F /* Survey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Survey.m; sourceTree = "<group>"; };
 		FC9756840F13B2300077926E /* SurveyListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurveyListViewController.h; sourceTree = "<group>"; };
@@ -192,6 +205,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA7F49BB0F7155890001E019 /* Foundation.framework in Frameworks */,
+				DA7F49BA0F71557D0001E019 /* UIKit.framework in Frameworks */,
+				DA7F49290F7150D00001E019 /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +291,7 @@
 				D2F22B490EFBEA0D0047CBFA /* Google Toolkit */,
 				D2F22B350EFBE9F60047CBFA /* Unit Test-Info.plist */,
 				54D2A5620F6C53D800C0C316 /* Settings.bundle */,
+				DA7F48BB0F7142650001E019 /* LabelledTableViewReadOnlyCell.xib */,
 			);
 			name = JoeMetric;
 			sourceTree = "<group>";
@@ -340,6 +357,8 @@
 				54A630350F6EA99B0038382D /* SegmentedTableViewCell.m */,
 				54A630890F6EB2240038382D /* DatePickerViewController.h */,
 				54A6308A0F6EB2240038382D /* DatePickerViewController.m */,
+				DA7F48BF0F7143890001E019 /* LabelledTableViewReadOnlyCell.h */,
+				DA7F48C00F7143890001E019 /* LabelledTableViewReadOnlyCell.m */,
 			);
 			name = "Profile View Controllers";
 			sourceTree = "<group>";
@@ -387,6 +406,7 @@
 		D2F22B860EFBF0A60047CBFA /* Unit Tests */ = {
 			isa = PBXGroup;
 			children = (
+				DA7F48E50F714C6A0001E019 /* ValidCredentialsProfileDataSourceTest.m */,
 				D2955DEC0F3A18DE002675C9 /* SurveyTest.h */,
 				D2955DEA0F3A18CA002675C9 /* SurveyTest.m */,
 				D2AD6B160EFFF62900DB13FD /* AccountTest.m */,
@@ -514,6 +534,7 @@
 				5420E3130F6E7F5B00DC2BDE /* LabelledTableViewCell.xib in Resources */,
 				54A630380F6EAA6D0038382D /* SegmentedTableViewCell.xib in Resources */,
 				54A630900F6EB2D20038382D /* DatePickerView.xib in Resources */,
+				DA7F48BC0F7142660001E019 /* LabelledTableViewReadOnlyCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -521,6 +542,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA7F49DC0F715E400001E019 /* LabelledTableViewReadOnlyCell.xib in Resources */,
 				FC97568A0F13B4070077926E /* SurveyListView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -575,6 +597,7 @@
 				5420E3170F6E82E800DC2BDE /* LabelledTableViewCell.m in Sources */,
 				54A630360F6EA99B0038382D /* SegmentedTableViewCell.m in Sources */,
 				54A6308B0F6EB2240038382D /* DatePickerViewController.m in Sources */,
+				DA7F48C10F7143890001E019 /* LabelledTableViewReadOnlyCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,17 +606,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2955DEB0F3A18CA002675C9 /* SurveyTest.m in Sources */,
+				DA7F49080F71506A0001E019 /* ValidCredentialsProfileDataSource.m in Sources */,
 				D255487C0F13C2950098100B /* Survey.m in Sources */,
 				D2F22BB20EFBF3C30047CBFA /* Question.m in Sources */,
 				D2F22B400EFBEA090047CBFA /* GTMIPhoneUnitTestDelegate.m in Sources */,
 				D2F22B410EFBEA090047CBFA /* GTMIPhoneUnitTestMain.m in Sources */,
 				D2F22B420EFBEA090047CBFA /* GTMSenTestCase.m in Sources */,
+				DA7F48EC0F714D060001E019 /* ValidCredentialsProfileDataSourceTest.m in Sources */,
 				D2F22B850EFBF09C0047CBFA /* QuestionTest.m in Sources */,
 				D2AD6B170EFFF62900DB13FD /* AccountTest.m in Sources */,
 				D2AD6B1C0EFFF66B00DB13FD /* Account.m in Sources */,
 				D2955DF80F3A36E6002675C9 /* Resource.m in Sources */,
 				D2955DF90F3A36E6002675C9 /* Rest.m in Sources */,
 				D266E01E0F3A400200C20691 /* NSObject+SBJSON.m in Sources */,
+				DA7F49DF0F715EF70001E019 /* LabelledTableViewReadOnlyCell.m in Sources */,
 				D266E01F0F3A400200C20691 /* NSString+SBJSON.m in Sources */,
 				D266E0200F3A400200C20691 /* SBJSON.m in Sources */,
 				D2C6934F0F669F600009E3A7 /* Answer.m in Sources */,
