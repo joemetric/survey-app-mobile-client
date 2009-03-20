@@ -6,6 +6,7 @@
 //  Copyright 2008 EdgeCase, LLC. All rights reserved.
 //
 #import "Resource.h"
+typedef enum {accountLoadStatusNotLoaded, accountLoadStatusLoaded, accountLoadStatusLoadFailed, accountLoadStatusUnauthorized} AccountLoadStatus;
 
 @interface Account : Resource {
     NSString *username;
@@ -14,8 +15,10 @@
     NSString *gender;
     NSInteger income;
     NSDate *birthdate;
+    
     id callMeBackOnLoadDelegate;
     SEL callMeBackOnLoadSelector; 
+    AccountLoadStatus accountLoadStatus;
     
 }
 
@@ -29,6 +32,8 @@
 @property (nonatomic, retain) NSString *gender;
 @property (nonatomic) NSInteger income;
 @property (nonatomic, retain) NSDate *birthdate;
+@property(nonatomic, readonly) AccountLoadStatus accountLoadStatus;
+
 
 
 

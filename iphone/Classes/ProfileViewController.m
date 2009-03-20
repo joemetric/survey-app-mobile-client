@@ -21,16 +21,14 @@
 @end
 
 @implementation ProfileViewController
-@synthesize tableView, credentialsController, newAccountController, noCredentials, validCredentials;
+@synthesize tableView, credentialsController, newAccountController, noCredentials, validCredentials, account;
 
--(void)accountLoaded:(Account*) account{
-    NSLog(@"loaded: %@", account.username);
+-(void)accountLoadStatusChanged:(Account*) _account{
     [self.tableView reloadData];
 }
 
 // Implement viewDidLoad to do additional setup after loading the view.
 - (void)viewDidLoad {
-	NSLog(@"viewDidLoad!!!");
     
     
 	self.noCredentials = [[[NoCredentialsProfileDataSource alloc] init] autorelease];
@@ -38,9 +36,7 @@
 	
 	self.validCredentials = [[[ValidCredentialsProfileDataSource alloc] init] autorelease];
 	self.validCredentials.profileViewController = self;
-    
-
-    self.validCredentials.account = [Account currentAccountWithCallback:@selector(accountLoaded:)on:self];
+	self.validCredentials.account = [Account currentAccountWithCallback:@selector(accountLoadStatusChanged:) on:self];
 	
     [super viewDidLoad];
 }
@@ -73,7 +69,7 @@
 }
 
 - (BOOL) hasValidCredentials {
-	return ![[[NSUserDefaults standardUserDefaults] stringForKey:@"username"] isEqualToString:(@"")];
+	return self.validCredentials.account.accountLoadStatus != accountLoadStatusUnauthorized;
 }
 
 - (NSObject<UITableViewDelegate, UITableViewDataSource>*) tableDelegate {

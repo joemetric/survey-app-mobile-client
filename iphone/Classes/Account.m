@@ -36,6 +36,7 @@ NSDate* fromShortIso8601(NSString *shortDate){
 @synthesize birthdate;
 @synthesize callMeBackOnLoadSelector;
 @synthesize callMeBackOnLoadDelegate;
+@synthesize accountLoadStatus;
 
 + (NSString *)resourceName
 {

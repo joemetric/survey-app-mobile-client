@@ -51,7 +51,7 @@ module AutoTest
     output = `xcodebuild -target "Unit Test" -configuration Debug -sdk iphonesimulator2.1`
     failure_line = nil
     output.each do |line|
-      if line =~ /error:|^Executed.*(\d+) failures/
+      if line =~ /error:|^Executed.*(\d+) failures|Undefined symbols/
         if $1.nil? || $1.to_i > 0
           failure_line||= line
           line.colour = :red
@@ -59,7 +59,7 @@ module AutoTest
           line.colour = :green
         end
       end
-      print line.coloured
+      print line.coloured unless line =~/Merge mismatch|setenv/
     end
     failure_line
   end
