@@ -59,6 +59,11 @@ NSData* fromAsciiString(NSString *string){
 	STAssertNULL(account.birthdate, nil);
 }
 
+-(void)testBecomesUnauthorisedWhenUnauthorised{
+	[account authenticationFailed];
+	STAssertEquals(accountLoadStatusUnauthorized, account.accountLoadStatus, nil);
+}
+
 
 -(void)testNewFromDictionary{
 	NSDictionary *params = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"rita", @"456",  nil] forKeys:[NSArray arrayWithObjects:@"login", @"id", nil]];

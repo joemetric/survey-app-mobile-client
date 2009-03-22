@@ -60,10 +60,9 @@ NSDate* fromShortIso8601(NSString *shortDate){
 
 }
 
-
 - (void)populateFromReceivedData:(NSData *)data{
 	NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    NSLog(@"%@", str);
+    NSLog(@"populateFromReceivedData: '%@'", str);
 	NSDictionary *dict = (NSDictionary *)[str JSONFragmentValue];
 	[str release];
 	[self populateFromDictionary:dict];
@@ -76,8 +75,13 @@ NSDate* fromShortIso8601(NSString *shortDate){
 	Account *result = [[[Account alloc] initWithPath:@"/users/user"] autorelease];
 	result.callMeBackOnLoadSelector = callme;
 	result.callMeBackOnLoadDelegate = delegate;    
-	[result.rest GET:@"/users/current" withCallback:@selector(populateFromReceivedData:)];
+	[result.rest GET:@"/users/current.json" withCallback:@selector(populateFromReceivedData:)];
     return result;
+}
+
+-(void)authenticationFailed{
+	accountLoadStatus = accountLoadStatusUnauthorized;
+	[callMeBackOnLoadDelegate performSelector:callMeBackOnLoadSelector withObject:self];
 }
 
 

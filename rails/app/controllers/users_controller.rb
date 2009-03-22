@@ -21,6 +21,11 @@ class UsersController < ApplicationController
       render :json => @user.errors, :status => :unprocessable_entity
     end
   end
+
+  def show
+    return show_current if 'current' == params[:id]
+    render :status=>404, :text=>'Not supported'
+  end
   
   def show_current
     render :json=>current_user

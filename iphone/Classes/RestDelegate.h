@@ -9,5 +9,6 @@
 - (void)restHasBadCredentials:(Rest *)rest;
 - (void)rest:(Rest *)rest didFailWithError:(NSError *)error;
 - (void)rest:(Rest *)rest didReceiveStatusCode:(int)statusCode;
+- (void)rest:(Rest *)rest finishedLoading:(NSString *)data;
 
 @end
