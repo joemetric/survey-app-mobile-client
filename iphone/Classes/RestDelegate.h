@@ -6,9 +6,13 @@
 
 @optional
 - (void)rest:(Rest *)rest didRetrieveData:(NSData *)data;
-- (void)restHasBadCredentials:(Rest *)rest;
 - (void)rest:(Rest *)rest didFailWithError:(NSError *)error;
 - (void)rest:(Rest *)rest didReceiveStatusCode:(int)statusCode;
 - (void)rest:(Rest *)rest finishedLoading:(NSString *)data;
+
+/* Out of step with the other method sigs.  Passing the rest object is more idiomatic Cocoa, but
+   isn't actually useful.  Can't decided whether to change this sig, or the others.
+*/
+- (void)authenticationFailed; 
 
 @end
