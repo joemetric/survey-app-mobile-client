@@ -138,7 +138,7 @@
 {
     if (self = [super init]) {
         self.path = aPath;
-        self.rest = [[Rest alloc] initWithHost:@"localhost" atPort:3000];
+        self.rest = [[Rest alloc] init];
         self.rest.delegate = self;
     }
 

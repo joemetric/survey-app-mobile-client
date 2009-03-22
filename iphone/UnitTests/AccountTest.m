@@ -65,6 +65,8 @@ NSData* fromAsciiString(NSString *string){
 }
 
 
+
+
 -(void)testNewFromDictionary{
 	NSDictionary *params = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"rita", @"456",  nil] forKeys:[NSArray arrayWithObjects:@"login", @"id", nil]];
 	NSDictionary *user = [NSDictionary dictionaryWithObject:params forKey:@"user"];

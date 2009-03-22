@@ -28,7 +28,7 @@
 	[self.activityIndicator startAnimating];
 
 	NSString* hostString = [NSString stringWithFormat:@"localhost"];
-	Rest* testRest = [[[Rest alloc] initWithHost:hostString atPort:3000] autorelease];
+	Rest* testRest = [[[Rest alloc] init] autorelease];
 	testRest.delegate = self;
 	[testRest GET:@"/surveys.json" withCallback:@selector(receivedTestData:)];
 }

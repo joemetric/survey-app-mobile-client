@@ -1,5 +1,6 @@
 #import "Rest.h"
 #import "JSON.h"
+#import "RestConfiguration.h"
 
 @implementation Rest
 
@@ -27,7 +28,7 @@
 		[[challenge sender] cancelAuthenticationChallenge:challenge];
 	}
 	else{
-		[[challenge sender] useCredential:[delegate getCredentials] forAuthenticationChallenge:challenge];
+		[[challenge sender] useCredential:[RestConfiguration urlCredential] forAuthenticationChallenge:challenge];
 	}
 }
 
@@ -156,29 +157,28 @@
 	return [(NSHTTPURLResponse*)response statusCode] == 200;
 }
 
-- (id)initWithHost:(NSString *)hostName atPort:(NSInteger)portNumber
-{
-	if (self = [super init]) {
-		host = [hostName copy];
-		port = portNumber;
-		delegate = nil;
-
-		NSMutableDictionary* headers = [[[NSMutableDictionary alloc] init] autorelease];
-		[headers setValue:@"application/json" forKey:@"Content-Type"];
-		[headers setValue:@"text/json" forKey:@"Accept"];
-		[headers setValue:@"no-cache" forKey:@"Cache-Control"];
-		[headers setValue:@"no-cache" forKey:@"Pragma"];
-		[headers setValue:@"close" forKey:@"Connection"]; // Avoid HTTP 1.1 "keep alive" for the connection
-
-		request = [NSMutableURLRequest requestWithURL:nil
-			cachePolicy:NSURLRequestUseProtocolCachePolicy
-			timeoutInterval:60.0];
-		[request retain];
-		[request setAllHTTPHeaderFields:headers];
-	}
-
-	return self;
+-(id) init{
+	[super init];
+	
+    host = [RestConfiguration host];
+    port = [RestConfiguration port];
+    
+    NSMutableDictionary* headers = [[[NSMutableDictionary alloc] init] autorelease];
+    [headers setValue:@"application/json" forKey:@"Content-Type"];
+    [headers setValue:@"text/json" forKey:@"Accept"];
+    [headers setValue:@"no-cache" forKey:@"Cache-Control"];
+    [headers setValue:@"no-cache" forKey:@"Pragma"];
+    [headers setValue:@"close" forKey:@"Connection"]; // Avoid HTTP 1.1 "keep alive" for the connection
+    
+    request = [NSMutableURLRequest requestWithURL:nil
+                                      cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                  timeoutInterval:60.0];
+    [request retain]; 
+    [request setAllHTTPHeaderFields:headers];
+    
+    return self;
 }
+
 
 - (void)dealloc{
 	self.delegate = nil;

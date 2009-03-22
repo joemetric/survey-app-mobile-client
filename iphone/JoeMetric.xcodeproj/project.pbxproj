@@ -87,6 +87,9 @@
 		DA86BEC50F73E42700CC6EBE /* SurveyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DA86BEC00F73E42700CC6EBE /* SurveyTest.m */; };
 		DA86BEC60F73E42700CC6EBE /* ValidCredentialsProfileDataSourceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DA86BEC10F73E42700CC6EBE /* ValidCredentialsProfileDataSourceTest.m */; };
 		DA86BEC80F73E45D00CC6EBE /* RestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DA86BEC70F73E45D00CC6EBE /* RestTest.m */; };
+		DA86C0020F75C4A200CC6EBE /* RestConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = DA86C0010F75C4A200CC6EBE /* RestConfiguration.m */; };
+		DA86C0040F75C4CA00CC6EBE /* RestConfigurationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DA86C0030F75C4CA00CC6EBE /* RestConfigurationTest.m */; };
+		DA86C0A00F75EB9D00CC6EBE /* RestConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = DA86C0010F75C4A200CC6EBE /* RestConfiguration.m */; };
 		FC21C5050F12B3AC00436E7F /* Survey.m in Sources */ = {isa = PBXBuildFile; fileRef = FC21C5040F12B3AC00436E7F /* Survey.m */; };
 		FC9756860F13B2300077926E /* SurveyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC9756850F13B2300077926E /* SurveyListViewController.m */; };
 		FC9756890F13B4070077926E /* SurveyListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC9756880F13B4070077926E /* SurveyListView.xib */; };
@@ -192,6 +195,9 @@
 		DA86BEC00F73E42700CC6EBE /* SurveyTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SurveyTest.m; sourceTree = "<group>"; };
 		DA86BEC10F73E42700CC6EBE /* ValidCredentialsProfileDataSourceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValidCredentialsProfileDataSourceTest.m; sourceTree = "<group>"; };
 		DA86BEC70F73E45D00CC6EBE /* RestTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestTest.m; sourceTree = "<group>"; };
+		DA86C0000F75C4A200CC6EBE /* RestConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestConfiguration.h; sourceTree = "<group>"; };
+		DA86C0010F75C4A200CC6EBE /* RestConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestConfiguration.m; sourceTree = "<group>"; };
+		DA86C0030F75C4CA00CC6EBE /* RestConfigurationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestConfigurationTest.m; sourceTree = "<group>"; };
 		FC21C5030F12B3AC00436E7F /* Survey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Survey.h; sourceTree = "<group>"; };
 		FC21C5040F12B3AC00436E7F /* Survey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Survey.m; sourceTree = "<group>"; };
 		FC9756840F13B2300077926E /* SurveyListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurveyListViewController.h; sourceTree = "<group>"; };
@@ -265,6 +271,8 @@
 				D2C6934C0F669F600009E3A7 /* Answer.h */,
 				D2C6934D0F669F600009E3A7 /* Answer.m */,
 				548D9B120F6AAEC100629CCE /* ResourceDelegate.h */,
+				DA86C0000F75C4A200CC6EBE /* RestConfiguration.h */,
+				DA86C0010F75C4A200CC6EBE /* RestConfiguration.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -415,6 +423,7 @@
 				DA86BEC00F73E42700CC6EBE /* SurveyTest.m */,
 				DA86BEC10F73E42700CC6EBE /* ValidCredentialsProfileDataSourceTest.m */,
 				DA86BEC70F73E45D00CC6EBE /* RestTest.m */,
+				DA86C0030F75C4CA00CC6EBE /* RestConfigurationTest.m */,
 			);
 			path = UnitTests;
 			sourceTree = "<group>";
@@ -588,6 +597,7 @@
 				D266E01B0F3A400200C20691 /* NSObject+SBJSON.m in Sources */,
 				D266E01C0F3A400200C20691 /* NSString+SBJSON.m in Sources */,
 				D266E01D0F3A400200C20691 /* SBJSON.m in Sources */,
+				DA86C0A00F75EB9D00CC6EBE /* RestConfiguration.m in Sources */,
 				D2F2EF750F6030EB00A8BB57 /* QuestionViewController.m in Sources */,
 				D2F2EF9B0F60384E00A8BB57 /* FreeTextAnswerController.m in Sources */,
 				D2F2EF9E0F60385A00A8BB57 /* PictureAnswerController.m in Sources */,
@@ -633,6 +643,8 @@
 				DA86BEC50F73E42700CC6EBE /* SurveyTest.m in Sources */,
 				DA86BEC60F73E42700CC6EBE /* ValidCredentialsProfileDataSourceTest.m in Sources */,
 				DA86BEC80F73E45D00CC6EBE /* RestTest.m in Sources */,
+				DA86C0020F75C4A200CC6EBE /* RestConfiguration.m in Sources */,
+				DA86C0040F75C4CA00CC6EBE /* RestConfigurationTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

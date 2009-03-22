@@ -82,7 +82,7 @@
 	authenticationFailed = NO;
 	restDelegate = [[StubRestDelegate alloc] init];
 	implementsNothingRestDelegate = [[ImplementsNothingStubRestDelegate alloc] init];
-    testee = [[Rest alloc] initWithHost:@"test.host" atPort:2121];
+    testee = [[Rest alloc] init];
     testee.delegate = restDelegate;
 }
 
