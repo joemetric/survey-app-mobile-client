@@ -77,6 +77,7 @@
 
 - (void)dealloc {
     [question release];
+    [questionList release];
     [super dealloc];
 }
 

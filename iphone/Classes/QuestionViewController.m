@@ -82,6 +82,7 @@
     PictureAnswerController *pac = [[PictureAnswerController alloc] initWithNibName:@"PictureAnswerView"
                                                                     bundle:nil
                                                                     question:self.question];
+    pac.questionList = questionList;
     [self.navigationController pushViewController:pac animated:YES];
     [pac release];
 }
