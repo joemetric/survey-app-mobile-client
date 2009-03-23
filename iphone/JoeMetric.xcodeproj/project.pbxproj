@@ -667,6 +667,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Paul Wilson";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -679,6 +680,7 @@
 				GCC_PREFIX_HEADER = JoeMetric_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				PRODUCT_NAME = JoeMetric;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "66AC5C1E-4775-43F9-8D96-EFF8DBA01395";
 			};
 			name = Debug;
 		};

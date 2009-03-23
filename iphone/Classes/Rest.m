@@ -16,9 +16,17 @@
 }
 
 
+-(void)connectionDidFinishLoading:(NSURLConnection *)connection {
+	if ([delegate respondsToSelector:@selector(rest:didFinishLoading:)]){
+        NSString *strbuffer = [[[NSString alloc] initWithData:buffer encoding:NSUTF8StringEncoding] autorelease];
+		[self.delegate rest:self didFinishLoading:strbuffer];
+	}
+	[buffer setLength:0];
+}
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
 	NSLog(@"Rest#connection:DidReceiveData:");
+	[buffer appendData:data];
 	[self.delegate performSelector:action withObject:data];
 }
 
@@ -165,29 +173,32 @@
 
 -(id) init{
 	[super init];
-	
-    host = [RestConfiguration host];
-    port = [RestConfiguration port];
-    
-    NSMutableDictionary* headers = [[[NSMutableDictionary alloc] init] autorelease];
-    [headers setValue:@"application/json" forKey:@"Content-Type"];
-    [headers setValue:@"text/json" forKey:@"Accept"];
-    [headers setValue:@"no-cache" forKey:@"Cache-Control"];
-    [headers setValue:@"no-cache" forKey:@"Pragma"];
-    [headers setValue:@"close" forKey:@"Connection"]; // Avoid HTTP 1.1 "keep alive" for the connection
-    
-    request = [NSMutableURLRequest requestWithURL:nil
-                                      cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                  timeoutInterval:60.0];
-    [request retain]; 
-    [request setAllHTTPHeaderFields:headers];
-    
-    return self;
+
+	host = [RestConfiguration host];
+	port = [RestConfiguration port];
+
+	NSMutableDictionary* headers = [[[NSMutableDictionary alloc] init] autorelease];
+	[headers setValue:@"application/json" forKey:@"Content-Type"];
+	[headers setValue:@"text/json" forKey:@"Accept"];
+	[headers setValue:@"no-cache" forKey:@"Cache-Control"];
+	[headers setValue:@"no-cache" forKey:@"Pragma"];
+	[headers setValue:@"close" forKey:@"Connection"]; // Avoid HTTP 1.1 "keep alive" for the connection
+
+	request = [NSMutableURLRequest requestWithURL:nil
+		cachePolicy:NSURLRequestUseProtocolCachePolicy
+		timeoutInterval:60.0];
+	[request retain]; 
+	[request setAllHTTPHeaderFields:headers];
+
+	buffer = [[NSMutableData alloc] init];
+
+	return self;
 }
 
 
 - (void)dealloc{
 	self.delegate = nil;
+	[buffer release];
 	[host release];
 	[request release];
 	[super dealloc];
