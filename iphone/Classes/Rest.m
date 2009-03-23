@@ -226,6 +226,8 @@
                                    timeoutInterval:60.0];
     [request retain]; 
     [request setAllHTTPHeaderFields:headers];
+
+	buffer = [[NSMutableData alloc] init];
     
     return self;
 }
