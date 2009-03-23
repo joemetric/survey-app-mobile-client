@@ -9,6 +9,7 @@
 #import "Account.h"
 #import "Rest.h"
 #import "JSON.h"
+#import "JoeMetricAppDelegate.h"
 
 NSDate* fromShortIso8601(NSString *shortDate){
 	if ([NSNull null] == (id)shortDate || nil == shortDate) return  nil;
@@ -81,9 +82,11 @@ NSDate* fromShortIso8601(NSString *shortDate){
 
 
 +(Account*) currentAccount{
-	Account *result = [[[Account alloc] initWithPath:@"/users/user"] autorelease];
-	[result.rest GET:@"/users/current.json" withCallback:@selector(populateFromReceivedData:)];
-    return result;
+	return ((JoeMetricAppDelegate*)[UIApplication sharedApplication].delegate).currentAccount;
+}
+
+-(void)load{
+	[self.rest GET:@"/users/current.json" withCallback:@selector(populateFromReceivedData:)];
 }
 
 -(void)authenticationFailed{

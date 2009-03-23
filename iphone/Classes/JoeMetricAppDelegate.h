@@ -7,16 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class Account;
 @interface JoeMetricAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate, UIActionSheetDelegate> {
     UIWindow *window;
     UITabBarController *tabBarController;
     UINavigationController *navigationController;
+	Account* currentAccount;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
 @property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
+@property (nonatomic, readonly) Account* currentAccount;
 
 - (void)authenticationFailed;
 

@@ -18,11 +18,14 @@
 @synthesize window;
 @synthesize tabBarController;
 @synthesize navigationController;
+@synthesize currentAccount;
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
     [window addSubview:tabBarController.view];
 	
 	[self initializeSettings];
+	currentAccount = [[Account alloc] initWithPath:@"/users/user"];
+	[currentAccount load];
 }
 
 - (void) initializeSettings {
@@ -44,6 +47,7 @@
 
 
 - (void)dealloc {
+	[currentAccount release];
     [navigationController release];
     [tabBarController release];
     [window release];
