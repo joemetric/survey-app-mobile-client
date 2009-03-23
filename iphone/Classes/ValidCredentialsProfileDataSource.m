@@ -41,7 +41,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-	static NSString *CellIdentifier = @"Cell";
+	static NSString *CellIdentifier = @"ValidCredentialsCell";
 	LabelledTableViewReadOnlyCell *cell = (LabelledTableViewReadOnlyCell*)[tv dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil) { cell = [self loadLabelledCell];}
 	// Configure the cell

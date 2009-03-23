@@ -27,6 +27,7 @@ typedef enum {accountLoadStatusNotLoaded, accountLoadStatusLoaded, accountLoadSt
 +(Account*) currentAccount;
 - (void)populateFromReceivedData:(NSData *)data;
 -(void)onChangeNotify:(SEL)callme on:(id)callMeObj;
+-(void)loadCurrent;
 
 @property (nonatomic, retain) NSString *username;
 @property (nonatomic, retain) NSString *password;

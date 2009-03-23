@@ -7,6 +7,7 @@
 //
 
 #import "JoeMetricAppDelegate.h"
+#import "Account.h"
 
 @interface JoeMetricAppDelegate (Private)
 - (void) initializeSettings;
@@ -25,7 +26,7 @@
 	
 	[self initializeSettings];
 	currentAccount = [[Account alloc] initWithPath:@"/users/user"];
-	[currentAccount load];
+	[currentAccount loadCurrent];
 }
 
 - (void) initializeSettings {

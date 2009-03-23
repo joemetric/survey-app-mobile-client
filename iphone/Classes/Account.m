@@ -69,9 +69,7 @@ NSDate* fromShortIso8601(NSString *shortDate){
 	NSDictionary *dict = (NSDictionary *)[str JSONFragmentValue];
 	[str release];
 	[self populateFromDictionary:dict];
-	[callMeBackOnLoadDelegate performSelector:callMeBackOnLoadSelector withObject:self];
-	self.callMeBackOnLoadDelegate = nil;
-	self.callMeBackOnLoadSelector = nil;  
+	[self changeLoadStatusTo: accountLoadStatusLoaded];
 }
 
 
@@ -85,7 +83,7 @@ NSDate* fromShortIso8601(NSString *shortDate){
 	return ((JoeMetricAppDelegate*)[UIApplication sharedApplication].delegate).currentAccount;
 }
 
--(void)load{
+-(void)loadCurrent{
 	[self.rest GET:@"/users/current.json" withCallback:@selector(populateFromReceivedData:)];
 }
 

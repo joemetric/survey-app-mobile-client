@@ -49,6 +49,7 @@ NSData* fromAsciiString(NSString *string){
 	STAssertEquals(25283, account.income, nil);
 	STAssertEqualStrings(@"27 Mar 1973", [dateFormatter stringFromDate:account.birthdate], nil);
 	STAssertEquals(1, accountChangeNotificationCount, @"accountChangeNotificationCount");
+	STAssertEquals(accountLoadStatusLoaded, account.accountLoadStatus, @"accountLoadStatus");
 }
 
 -(void)testPopulationWithMostlyEmptyData{
@@ -79,6 +80,8 @@ NSData* fromAsciiString(NSString *string){
 	STAssertEquals(1, accountChangeNotificationCount, @"accountChangeNotificationCount");
 	STAssertEqualStrings(error, account.lastLoadError, @"lastLoadError");
 }
+
+
 
 
 

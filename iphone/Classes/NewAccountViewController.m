@@ -154,6 +154,10 @@
     if (account) {
 		[[NSUserDefaults standardUserDefaults] setObject:username.text forKey:@"username"];
 		[[NSUserDefaults standardUserDefaults] setObject:password.text forKey:@"password"];
+        
+        /** Hack - create account from currentAccount resource **/
+        [[Account currentAccount] loadCurrent];
+        
 		[self.profileView dismissModalViewControllerAnimated:YES];
     } else {
 		UIAlertView* alert = [[[UIAlertView alloc] initWithTitle:@"Account Creation Failed" message:@"We were unable to create an account with those details" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] autorelease];
