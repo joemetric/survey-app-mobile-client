@@ -10,8 +10,6 @@ NSInteger gProfileViewControllerTableReloadedCount;
 @interface Account(ProfileViewControllerTest)
 +(Account*) currentAccount;
 -(void)setAccountLoadStatus:(AccountLoadStatus)loadStatus;
-@property(nonatomic) SEL callMeBackOnLoadSelector;
-@property(nonatomic, retain) id callMeBackOnLoadDelegate;
 
 @end
 
@@ -88,10 +86,8 @@ NSInteger gProfileViewControllerTableReloadedCount;
 
 -(void)testTableReloadedWhenAccountChanges{
 	[testee viewDidLoad];
-	STAssertEqualStrings(testee, gAccount.callMeBackOnLoadDelegate, nil);
-	[gAccount.callMeBackOnLoadDelegate performSelector:gAccount.callMeBackOnLoadSelector withObject:gAccount];
-	STAssertEquals(1, gProfileViewControllerTableReloadedCount, nil);
-	
+	[gAccount authenticationFailed];
+	STAssertEquals(1, gProfileViewControllerTableReloadedCount, nil);	
 }
 
 

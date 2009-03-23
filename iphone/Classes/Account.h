@@ -17,8 +17,8 @@ typedef enum {accountLoadStatusNotLoaded, accountLoadStatusLoaded, accountLoadSt
     NSDate *birthdate;
 	NSError *lastLoadError;
     
-    id callMeBackOnLoadDelegate;
-    SEL callMeBackOnLoadSelector; 
+    id callbackObject;
+    SEL callbackSelector; 
     AccountLoadStatus accountLoadStatus;
     
 }

@@ -24,8 +24,8 @@ NSDate* fromShortIso8601(NSString *shortDate){
 -(void) changeLoadStatusTo:(AccountLoadStatus)status;
 -(void) changeLoadStatusTo:(AccountLoadStatus)status withError:(NSError*)error;
 
-@property(nonatomic, retain) id callMeBackOnLoadDelegate;
-@property(nonatomic) SEL callMeBackOnLoadSelector; 
+@property(nonatomic, retain) id callbackObject;
+@property(nonatomic) SEL callbackSelector; 
 
 @end
 
@@ -38,8 +38,8 @@ NSDate* fromShortIso8601(NSString *shortDate){
 @synthesize gender;
 @synthesize income;
 @synthesize birthdate;
-@synthesize callMeBackOnLoadSelector;
-@synthesize callMeBackOnLoadDelegate;
+@synthesize callbackObject;
+@synthesize callbackSelector;
 @synthesize accountLoadStatus;
 @synthesize lastLoadError;
 
@@ -74,8 +74,8 @@ NSDate* fromShortIso8601(NSString *shortDate){
 
 
 -(void)onChangeNotify:(SEL)callme on:(id)callMeObj{
-	self.callMeBackOnLoadSelector = callme;
-	self.callMeBackOnLoadDelegate = callMeObj;    
+	self.callbackSelector = callme;
+	self.callbackObject = callMeObj;    
 }
 
 
@@ -125,7 +125,7 @@ NSDate* fromShortIso8601(NSString *shortDate){
 
 -(void) changeLoadStatusTo:(AccountLoadStatus)status withError:(NSError*)error{
 	accountLoadStatus = status;
-	[callMeBackOnLoadDelegate performSelector:callMeBackOnLoadSelector withObject:self];
+	[callbackObject performSelector:callbackSelector withObject:self];
 	self.lastLoadError = error;		
 }
 
@@ -137,8 +137,8 @@ NSDate* fromShortIso8601(NSString *shortDate){
 	[email release];
 	[gender release];
 	[birthdate release];
-	self.callMeBackOnLoadDelegate = nil;
-	self.callMeBackOnLoadSelector = nil;  
+	self.callbackObject = nil;
+	self.callbackSelector = nil;  
 	self.lastLoadError = nil;
 	[super dealloc];
 }
