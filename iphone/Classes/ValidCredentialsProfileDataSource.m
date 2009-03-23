@@ -88,7 +88,9 @@
 
 -(id) init{
 	numberFormatter = [[NSNumberFormatter alloc] init];
-	[numberFormatter setFormat:@"$#,##0"];
+    [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+	[numberFormatter setCurrencySymbol:@"$"];
+    [numberFormatter setMaximumFractionDigits:0];
 	dateFormatter = [[NSDateFormatter alloc] init];
 	dateFormatter.dateFormat =  @"dd MMM yyyy";
 	

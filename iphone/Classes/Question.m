@@ -51,7 +51,8 @@
 
 - (NSString *)amountAsDollarString {
     NSNumberFormatter *numberFormatter = [[[NSNumberFormatter alloc] init] autorelease];
-    [numberFormatter setFormat:@"$#,##0.00"];
+	[numberFormatter setCurrencySymbol:@"$"];
+    [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
     return [numberFormatter stringFromNumber:self.amount];
 }
 
