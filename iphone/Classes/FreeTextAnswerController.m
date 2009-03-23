@@ -8,10 +8,13 @@
 
 #import "FreeTextAnswerController.h"
 #import "Question.h"
+#import "Answer.h"
+#import "QuestionListViewController.h"
 
 @implementation FreeTextAnswerController
 
 @synthesize question;
+@synthesize questionList;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil question:(Question *)aQuestion
 {
@@ -28,6 +31,27 @@
 
 - (void)submitAnswer:(id)sender {
     NSLog(@"Submitting answer");
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    [params setObject:[NSNumber numberWithInteger:question.itemId] forKey:@"question_id"];
+    [params setObject:question.questionType forKey:@"question_type"];
+    [params setObject:answerField.text forKey:@"answer_string"];
+
+    Answer *answer = [Answer createWithParams:params];
+
+    if (answer) {
+        NSLog(@"Answer was a success!");
+        [self.navigationController popToViewController:self.questionList animated:YES];
+    } else {
+        UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Answering Failed"
+                                                   message:@"We were unable to create an answer"
+                                                   delegate:nil
+                                                   cancelButtonTitle:@"OK"
+                                                   otherButtonTitles:nil]
+                                 autorelease];
+        [alert show];
+    }
+
+    [params release];
 }
 
 /*
@@ -52,6 +76,7 @@
 
 
 - (void)dealloc {
+    [question release];
     [super dealloc];
 }
 

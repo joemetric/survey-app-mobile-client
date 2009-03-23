@@ -78,6 +78,7 @@
         [[QuestionViewController alloc] initWithNibName:@"QuestionView" 
                                         bundle:nil
                                         question:[self.questions objectAtIndex:indexPath.row]];
+    qvc.questionList = self;
     [self.navigationController pushViewController:qvc animated:YES];  
     [qvc release];    
 }

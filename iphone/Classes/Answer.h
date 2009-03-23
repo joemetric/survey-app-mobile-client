@@ -11,8 +11,10 @@
 
 @interface Answer : Resource {
     NSInteger questionId;
+    NSString *questionType;
 }
 
 @property (nonatomic) NSInteger questionId;
+@property (nonatomic, retain) NSString *questionType;
 
 @end

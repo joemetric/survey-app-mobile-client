@@ -10,12 +10,14 @@
 #import "Question.h"
 #import "FreeTextAnswerController.h"
 #import "PictureAnswerController.h"
+#import "QuestionListViewController.h"
 
 @implementation QuestionViewController
 
 @synthesize amountLabel;
 @synthesize questionLabel;
 @synthesize question;
+@synthesize questionList;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil question:(Question *)aQuestion
 {
@@ -71,6 +73,7 @@
     FreeTextAnswerController *ftac = [[FreeTextAnswerController alloc] initWithNibName:@"FreeTextAnswerView"
                                                                        bundle:nil
                                                                        question:self.question];
+    ftac.questionList = questionList;
     [self.navigationController pushViewController:ftac animated:YES];
     [ftac release];
 }
@@ -119,6 +122,7 @@
     [questionLabel release];
     [amountLabel release];
     [question release];
+    [questionList release];
     [super dealloc];
 }
 

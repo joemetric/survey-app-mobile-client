@@ -12,6 +12,7 @@
 @implementation Answer
 
 @synthesize questionId;
+@synthesize questionType;
 
 + (NSString *)resourceName
 {
@@ -28,6 +29,7 @@
     Answer *answer = [[Answer alloc] init];
     answer.itemId = [[[dict objectForKey:[self resourceKey]] objectForKey:@"id"] integerValue];
     answer.questionId = [[[dict objectForKey:[self resourceKey]] objectForKey:@"question_id"] integerValue];
+    answer.questionType = [[dict objectForKey:[self resourceKey]] objectForKey:@"question_type"];
     return answer;
 }
 
@@ -35,6 +37,7 @@
 {
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
     [parameters setObject:[NSNumber numberWithInt:self.questionId] forKey:@"question_id"];
+    [parameters setObject:self.questionType forKey:@"question_type"];
 
     NSMutableDictionary *container = [[NSMutableDictionary alloc] init];
     [container setObject:parameters forKey:[[self class] resourceKey]];
@@ -45,6 +48,7 @@
 
 - (void)dealloc
 {
+    [questionType release];
     [super dealloc];
 }
 

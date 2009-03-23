@@ -9,13 +9,16 @@
 #import <UIKit/UIKit.h>
 
 @class Question;
+@class QuestionListViewController;
 
 @interface FreeTextAnswerController : UIViewController <UITextFieldDelegate> {
     Question *question;
+    QuestionListViewController *questionList;
     IBOutlet UITextField *answerField;
 }
 
-@property (nonatomic, assign) Question *question;
+@property (nonatomic, retain) Question *question;
+@property (nonatomic, retain) QuestionListViewController *questionList;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil question:(Question *)aQuestion;
 
