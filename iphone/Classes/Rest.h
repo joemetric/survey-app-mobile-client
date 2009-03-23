@@ -23,4 +23,6 @@
 - (BOOL)PUT:(NSString *)path withParameters:(NSDictionary *)parameters;
 - (BOOL)DELETE:(NSString *)path;
 
+- (BOOL)uploadData:(NSData *)data toURL:(NSURL *)url;
+
 @end
