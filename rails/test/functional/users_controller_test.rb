@@ -102,7 +102,7 @@ class UsersControllerTest < ActionController::TestCase
   context "showing logged in user, using json" do
     setup do
       login_as :quentin
-      get :show_current, :format=>:json
+      get :show, :id=>'current', :format=>:json
     end
     
     should_respond_with :success
@@ -111,9 +111,15 @@ class UsersControllerTest < ActionController::TestCase
     should "return current user in json form" do
       assert_equal users(:quentin).to_json, @response.body
     end
-
+  end
+  
+  context "show user without id current 404s" do
+    setup do
+      login_as :quentin
+      get :show, :id=>QUENTIN_ID, :format=>:json
+    end
     
-    should_route :get, '/users/current', :action=>:show_current, :controller=>:users
+    should_respond_with 404
   end
   
   
@@ -134,7 +140,7 @@ class UsersControllerTest < ActionController::TestCase
     end
 
     should "be denied show_current" do
-      put :update, :id=>QUENTIN_ID, :user=>{},:format=>'json'
+      get :show, :id=>'current', :user=>{},:format=>'json'
       assert_response 401
     end
     

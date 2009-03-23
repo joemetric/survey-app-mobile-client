@@ -15,10 +15,11 @@
 
 @property (nonatomic, assign) NSObject<RestDelegate> *delegate;
 
-- (id)initWithHost:(NSString *)host atPort:(NSInteger)port;
 
+-(NSURLCredential*) getCredential;
 - (void)GET:(NSString*) path withCallback:(SEL)callback;
 - (NSDictionary *)POST:(NSString *)path withParameters:(NSDictionary *)parameters;
 - (BOOL)PUT:(NSString *)path withParameters:(NSDictionary *)parameters;
 - (BOOL)DELETE:(NSString *)path;
+
 @end

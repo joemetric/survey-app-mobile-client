@@ -7,6 +7,7 @@
 //
 
 #import "JoeMetricAppDelegate.h"
+#import "Account.h"
 
 @interface JoeMetricAppDelegate (Private)
 - (void) initializeSettings;
@@ -18,11 +19,14 @@
 @synthesize window;
 @synthesize tabBarController;
 @synthesize navigationController;
+@synthesize currentAccount;
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
     [window addSubview:tabBarController.view];
 	
 	[self initializeSettings];
+	currentAccount = [[Account alloc] initWithPath:@"/users/user"];
+	[currentAccount loadCurrent];
 }
 
 - (void) initializeSettings {
@@ -42,13 +46,9 @@
 	tabBarController.selectedIndex = 2;
 }
 
-- (NSURLCredential *)getCredentials {
-    return [NSURLCredential credentialWithUser:[[NSUserDefaults standardUserDefaults] stringForKey:@"username"]
-                            password:[[NSUserDefaults standardUserDefaults] stringForKey:@"password"]
-                            persistence:NSURLCredentialPersistenceNone];
-}
 
 - (void)dealloc {
+	[currentAccount release];
     [navigationController release];
     [tabBarController release];
     [window release];

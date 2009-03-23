@@ -40,7 +40,7 @@
 
 -(void)assertCorrectValue:(NSString*)value forSection:(NSInteger)section row:(NSInteger)row label:(NSString*) label{
 	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:section];
-	LabelledTableViewReadOnlyCell *cell = [testee tableView:nil cellForRowAtIndexPath:indexPath];
+	LabelledTableViewReadOnlyCell *cell = (LabelledTableViewReadOnlyCell*)[testee tableView:nil cellForRowAtIndexPath:indexPath];
     STAssertNotNil(cell, [NSString stringWithFormat:@"cell for %@", label]);
     STAssertNotNil(cell.valueField, [NSString stringWithFormat:@"value field for %@", label]);
     STAssertNotNil(cell.label, [NSString stringWithFormat:@"label for %@", label]);

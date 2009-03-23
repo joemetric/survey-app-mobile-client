@@ -9,6 +9,8 @@
 #import "CredentialsViewController.h"
 #import "JoeMetricAppDelegate.h"
 #import "Rest.h"
+#import "RestConfiguration.h"
+#import "Account.h"
 
 @interface CredentialsViewController (Private)
 - (void) clearCredentials;
@@ -27,14 +29,13 @@
 	self.errorLabel.text = @"";
 	[self.activityIndicator startAnimating];
 
-	NSString* hostString = [NSString stringWithFormat:@"localhost"];
-	Rest* testRest = [[[Rest alloc] initWithHost:hostString atPort:3000] autorelease];
+	Rest* testRest = [[[Rest alloc] init] autorelease];
 	testRest.delegate = self;
 	[testRest GET:@"/surveys.json" withCallback:@selector(receivedTestData:)];
 }
 
-- (NSURLCredential *)getCredentials {
-	NSLog(@"getCredentials");
+- (NSURLCredential *)getCredential {
+	NSLog(@"getCredential");
     return [NSURLCredential credentialWithUser:self.username.text
 									  password:self.password.text
 								   persistence:NSURLCredentialPersistenceNone];	
@@ -53,10 +54,10 @@
 - (void) receivedTestData:(NSData*)testData {
 	NSLog(@"receivedTestData: %@", [[[NSString alloc] initWithBytes:testData.bytes length:testData.length encoding:NSUTF8StringEncoding] autorelease]);
 	
-	[[NSUserDefaults standardUserDefaults] setObject:username.text forKey:@"username"];
-	[[NSUserDefaults standardUserDefaults] setObject:password.text forKey:@"password"];
-	[[NSUserDefaults standardUserDefaults] synchronize];
-	
+    [RestConfiguration setPassword:password.text];
+    [RestConfiguration setUsername:username.text];
+    [[Account currentAccount] loadCurrent];
+    
 	self.errorLabel.text = @"";
 	[self.activityIndicator stopAnimating];
 	[self.profileView dismissModalViewControllerAnimated:YES];

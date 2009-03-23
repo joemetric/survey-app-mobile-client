@@ -49,12 +49,10 @@
 		D266E01E0F3A400200C20691 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D266E0160F3A400200C20691 /* NSObject+SBJSON.m */; };
 		D266E01F0F3A400200C20691 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D266E0180F3A400200C20691 /* NSString+SBJSON.m */; };
 		D266E0200F3A400200C20691 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D266E01A0F3A400200C20691 /* SBJSON.m */; };
-		D2955DEB0F3A18CA002675C9 /* SurveyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D2955DEA0F3A18CA002675C9 /* SurveyTest.m */; };
 		D2955DF80F3A36E6002675C9 /* Resource.m in Sources */ = {isa = PBXBuildFile; fileRef = D2955DF50F3A36E6002675C9 /* Resource.m */; };
 		D2955DF90F3A36E6002675C9 /* Rest.m in Sources */ = {isa = PBXBuildFile; fileRef = D2955DF70F3A36E6002675C9 /* Rest.m */; };
 		D2955DFA0F3A36E6002675C9 /* Resource.m in Sources */ = {isa = PBXBuildFile; fileRef = D2955DF50F3A36E6002675C9 /* Resource.m */; };
 		D2955DFB0F3A36E6002675C9 /* Rest.m in Sources */ = {isa = PBXBuildFile; fileRef = D2955DF70F3A36E6002675C9 /* Rest.m */; };
-		D2AD6B170EFFF62900DB13FD /* AccountTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AD6B160EFFF62900DB13FD /* AccountTest.m */; };
 		D2AD6B1C0EFFF66B00DB13FD /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AD6B1B0EFFF66B00DB13FD /* Account.m */; };
 		D2AD6B1D0EFFF66B00DB13FD /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AD6B1B0EFFF66B00DB13FD /* Account.m */; };
 		D2C6934E0F669F600009E3A7 /* Answer.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6934D0F669F600009E3A7 /* Answer.m */; };
@@ -62,7 +60,6 @@
 		D2F22B400EFBEA090047CBFA /* GTMIPhoneUnitTestDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F22B3C0EFBEA090047CBFA /* GTMIPhoneUnitTestDelegate.m */; };
 		D2F22B410EFBEA090047CBFA /* GTMIPhoneUnitTestMain.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F22B3D0EFBEA090047CBFA /* GTMIPhoneUnitTestMain.m */; };
 		D2F22B420EFBEA090047CBFA /* GTMSenTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F22B3F0EFBEA090047CBFA /* GTMSenTestCase.m */; };
-		D2F22B850EFBF09C0047CBFA /* QuestionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F22B840EFBF09C0047CBFA /* QuestionTest.m */; };
 		D2F22BB20EFBF3C30047CBFA /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD8C8410EF33C3E00A20937 /* Question.m */; };
 		D2F2EF750F6030EB00A8BB57 /* QuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F2EF740F6030EB00A8BB57 /* QuestionViewController.m */; };
 		D2F2EF9B0F60384E00A8BB57 /* FreeTextAnswerController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F2EF9A0F60384E00A8BB57 /* FreeTextAnswerController.m */; };
@@ -73,13 +70,29 @@
 		D2F2EFF70F606ACD00A8BB57 /* SurveyInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2F2EFF60F606ACD00A8BB57 /* SurveyInfoView.xib */; };
 		DA7F48BC0F7142660001E019 /* LabelledTableViewReadOnlyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA7F48BB0F7142650001E019 /* LabelledTableViewReadOnlyCell.xib */; };
 		DA7F48C10F7143890001E019 /* LabelledTableViewReadOnlyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7F48C00F7143890001E019 /* LabelledTableViewReadOnlyCell.m */; };
-		DA7F48EC0F714D060001E019 /* ValidCredentialsProfileDataSourceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7F48E50F714C6A0001E019 /* ValidCredentialsProfileDataSourceTest.m */; };
 		DA7F49080F71506A0001E019 /* ValidCredentialsProfileDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 54FA56FD0F6E43F100939C65 /* ValidCredentialsProfileDataSource.m */; };
 		DA7F49290F7150D00001E019 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
 		DA7F49BA0F71557D0001E019 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		DA7F49BB0F7155890001E019 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		DA7F49DC0F715E400001E019 /* LabelledTableViewReadOnlyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA7F48BB0F7142650001E019 /* LabelledTableViewReadOnlyCell.xib */; };
 		DA7F49DF0F715EF70001E019 /* LabelledTableViewReadOnlyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7F48C00F7143890001E019 /* LabelledTableViewReadOnlyCell.m */; };
+		DA86BE730F72B29C00CC6EBE /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D68A3D40EDCD3D6007CE721 /* ProfileViewController.m */; };
+		DA86BE760F72B2D400CC6EBE /* CredentialsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 548D9BC50F6AB5D100629CCE /* CredentialsViewController.m */; };
+		DA86BE770F72B2E300CC6EBE /* NewAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 547608CD0F6E5B37007CCC58 /* NewAccountViewController.m */; };
+		DA86BE780F72B2FB00CC6EBE /* NoCredentialsProfileDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 54FA56FA0F6E439200939C65 /* NoCredentialsProfileDataSource.m */; };
+		DA86BE7A0F72B31900CC6EBE /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A6308A0F6EB2240038382D /* DatePickerViewController.m */; };
+		DA86BEC20F73E42700CC6EBE /* AccountTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DA86BEBB0F73E42700CC6EBE /* AccountTest.m */; };
+		DA86BEC30F73E42700CC6EBE /* ProfileViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DA86BEBC0F73E42700CC6EBE /* ProfileViewControllerTest.m */; };
+		DA86BEC40F73E42700CC6EBE /* QuestionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DA86BEBE0F73E42700CC6EBE /* QuestionTest.m */; };
+		DA86BEC50F73E42700CC6EBE /* SurveyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DA86BEC00F73E42700CC6EBE /* SurveyTest.m */; };
+		DA86BEC60F73E42700CC6EBE /* ValidCredentialsProfileDataSourceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DA86BEC10F73E42700CC6EBE /* ValidCredentialsProfileDataSourceTest.m */; };
+		DA86BEC80F73E45D00CC6EBE /* RestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DA86BEC70F73E45D00CC6EBE /* RestTest.m */; };
+		DA86C0020F75C4A200CC6EBE /* RestConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = DA86C0010F75C4A200CC6EBE /* RestConfiguration.m */; };
+		DA86C0040F75C4CA00CC6EBE /* RestConfigurationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DA86C0030F75C4CA00CC6EBE /* RestConfigurationTest.m */; };
+		DA86C0A00F75EB9D00CC6EBE /* RestConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = DA86C0010F75C4A200CC6EBE /* RestConfiguration.m */; };
+		DA86C18C0F778D8300CC6EBE /* NoAccountDataProfileDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = DA86C18B0F778D8300CC6EBE /* NoAccountDataProfileDataSource.m */; };
+		DA86C18D0F778D8400CC6EBE /* NoAccountDataProfileDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = DA86C18B0F778D8300CC6EBE /* NoAccountDataProfileDataSource.m */; };
+		DA86C1AD0F77983E00CC6EBE /* NoAccountDataProfileDataSourceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DA86C1AC0F77983E00CC6EBE /* NoAccountDataProfileDataSourceTest.m */; };
 		FC21C5050F12B3AC00436E7F /* Survey.m in Sources */ = {isa = PBXBuildFile; fileRef = FC21C5040F12B3AC00436E7F /* Survey.m */; };
 		FC9756860F13B2300077926E /* SurveyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC9756850F13B2300077926E /* SurveyListViewController.m */; };
 		FC9756890F13B4070077926E /* SurveyListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC9756880F13B4070077926E /* SurveyListView.xib */; };
@@ -147,13 +160,10 @@
 		D266E0180F3A400200C20691 /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
 		D266E0190F3A400200C20691 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
 		D266E01A0F3A400200C20691 /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
-		D2955DEA0F3A18CA002675C9 /* SurveyTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SurveyTest.m; path = UnitTests/SurveyTest.m; sourceTree = "<group>"; };
-		D2955DEC0F3A18DE002675C9 /* SurveyTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SurveyTest.h; path = UnitTests/SurveyTest.h; sourceTree = "<group>"; };
 		D2955DF40F3A36E6002675C9 /* Resource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Resource.h; sourceTree = "<group>"; };
 		D2955DF50F3A36E6002675C9 /* Resource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Resource.m; sourceTree = "<group>"; };
 		D2955DF60F3A36E6002675C9 /* Rest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rest.h; sourceTree = "<group>"; };
 		D2955DF70F3A36E6002675C9 /* Rest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rest.m; sourceTree = "<group>"; };
-		D2AD6B160EFFF62900DB13FD /* AccountTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccountTest.m; path = UnitTests/AccountTest.m; sourceTree = "<group>"; };
 		D2AD6B1A0EFFF66B00DB13FD /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
 		D2AD6B1B0EFFF66B00DB13FD /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Account.m; sourceTree = "<group>"; };
 		D2C6934C0F669F600009E3A7 /* Answer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Answer.h; sourceTree = "<group>"; };
@@ -166,8 +176,6 @@
 		D2F22B3D0EFBEA090047CBFA /* GTMIPhoneUnitTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTMIPhoneUnitTestMain.m; path = GoogleToolkit/GTMIPhoneUnitTestMain.m; sourceTree = "<group>"; };
 		D2F22B3E0EFBEA090047CBFA /* GTMSenTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMSenTestCase.h; path = GoogleToolkit/GTMSenTestCase.h; sourceTree = "<group>"; };
 		D2F22B3F0EFBEA090047CBFA /* GTMSenTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTMSenTestCase.m; path = GoogleToolkit/GTMSenTestCase.m; sourceTree = "<group>"; };
-		D2F22B830EFBF09C0047CBFA /* QuestionTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuestionTest.h; path = UnitTests/QuestionTest.h; sourceTree = "<group>"; };
-		D2F22B840EFBF09C0047CBFA /* QuestionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuestionTest.m; path = UnitTests/QuestionTest.m; sourceTree = "<group>"; };
 		D2F2EF730F6030EB00A8BB57 /* QuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionViewController.h; sourceTree = "<group>"; };
 		D2F2EF740F6030EB00A8BB57 /* QuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionViewController.m; sourceTree = "<group>"; };
 		D2F2EF990F60384E00A8BB57 /* FreeTextAnswerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FreeTextAnswerController.h; sourceTree = "<group>"; };
@@ -182,7 +190,20 @@
 		DA7F48BB0F7142650001E019 /* LabelledTableViewReadOnlyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelledTableViewReadOnlyCell.xib; sourceTree = "<group>"; };
 		DA7F48BF0F7143890001E019 /* LabelledTableViewReadOnlyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelledTableViewReadOnlyCell.h; sourceTree = "<group>"; };
 		DA7F48C00F7143890001E019 /* LabelledTableViewReadOnlyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelledTableViewReadOnlyCell.m; sourceTree = "<group>"; };
-		DA7F48E50F714C6A0001E019 /* ValidCredentialsProfileDataSourceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ValidCredentialsProfileDataSourceTest.m; path = UnitTests/ValidCredentialsProfileDataSourceTest.m; sourceTree = "<group>"; };
+		DA86BEBB0F73E42700CC6EBE /* AccountTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountTest.m; sourceTree = "<group>"; };
+		DA86BEBC0F73E42700CC6EBE /* ProfileViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewControllerTest.m; sourceTree = "<group>"; };
+		DA86BEBD0F73E42700CC6EBE /* QuestionTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionTest.h; sourceTree = "<group>"; };
+		DA86BEBE0F73E42700CC6EBE /* QuestionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionTest.m; sourceTree = "<group>"; };
+		DA86BEBF0F73E42700CC6EBE /* SurveyTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurveyTest.h; sourceTree = "<group>"; };
+		DA86BEC00F73E42700CC6EBE /* SurveyTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SurveyTest.m; sourceTree = "<group>"; };
+		DA86BEC10F73E42700CC6EBE /* ValidCredentialsProfileDataSourceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValidCredentialsProfileDataSourceTest.m; sourceTree = "<group>"; };
+		DA86BEC70F73E45D00CC6EBE /* RestTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestTest.m; sourceTree = "<group>"; };
+		DA86C0000F75C4A200CC6EBE /* RestConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestConfiguration.h; sourceTree = "<group>"; };
+		DA86C0010F75C4A200CC6EBE /* RestConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestConfiguration.m; sourceTree = "<group>"; };
+		DA86C0030F75C4CA00CC6EBE /* RestConfigurationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestConfigurationTest.m; sourceTree = "<group>"; };
+		DA86C18A0F778D8300CC6EBE /* NoAccountDataProfileDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoAccountDataProfileDataSource.h; sourceTree = "<group>"; };
+		DA86C18B0F778D8300CC6EBE /* NoAccountDataProfileDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoAccountDataProfileDataSource.m; sourceTree = "<group>"; };
+		DA86C1AC0F77983E00CC6EBE /* NoAccountDataProfileDataSourceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoAccountDataProfileDataSourceTest.m; sourceTree = "<group>"; };
 		FC21C5030F12B3AC00436E7F /* Survey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Survey.h; sourceTree = "<group>"; };
 		FC21C5040F12B3AC00436E7F /* Survey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Survey.m; sourceTree = "<group>"; };
 		FC9756840F13B2300077926E /* SurveyListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurveyListViewController.h; sourceTree = "<group>"; };
@@ -217,7 +238,6 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				D20F918C0F714B9B00137D71 /* Rest */,
 				0DD8C8440EF33DB900A20937 /* Models */,
 				0D8DC8870EDE35B9007EC072 /* View Controllers */,
 				1D3623240D0F684500981E51 /* JoeMetricAppDelegate.h */,
@@ -243,6 +263,11 @@
 		0DD8C8440EF33DB900A20937 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				548D9B100F6AAE7300629CCE /* RestDelegate.h */,
+				D2955DF40F3A36E6002675C9 /* Resource.h */,
+				D2955DF50F3A36E6002675C9 /* Resource.m */,
+				D2955DF60F3A36E6002675C9 /* Rest.h */,
+				D2955DF70F3A36E6002675C9 /* Rest.m */,
 				0DD8C8400EF33C3E00A20937 /* Question.h */,
 				0DD8C8410EF33C3E00A20937 /* Question.m */,
 				D2AD6B1A0EFFF66B00DB13FD /* Account.h */,
@@ -251,6 +276,9 @@
 				FC21C5040F12B3AC00436E7F /* Survey.m */,
 				D2C6934C0F669F600009E3A7 /* Answer.h */,
 				D2C6934D0F669F600009E3A7 /* Answer.m */,
+				548D9B120F6AAEC100629CCE /* ResourceDelegate.h */,
+				DA86C0000F75C4A200CC6EBE /* RestConfiguration.h */,
+				DA86C0010F75C4A200CC6EBE /* RestConfiguration.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -284,7 +312,7 @@
 				D266E0130F3A400200C20691 /* JSON */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
-				D2F22B860EFBF0A60047CBFA /* Unit Tests */,
+				D2F22B860EFBF0A60047CBFA /* UnitTests */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
@@ -359,21 +387,10 @@
 				54A6308A0F6EB2240038382D /* DatePickerViewController.m */,
 				DA7F48BF0F7143890001E019 /* LabelledTableViewReadOnlyCell.h */,
 				DA7F48C00F7143890001E019 /* LabelledTableViewReadOnlyCell.m */,
+				DA86C18A0F778D8300CC6EBE /* NoAccountDataProfileDataSource.h */,
+				DA86C18B0F778D8300CC6EBE /* NoAccountDataProfileDataSource.m */,
 			);
 			name = "Profile View Controllers";
-			sourceTree = "<group>";
-		};
-		D20F918C0F714B9B00137D71 /* Rest */ = {
-			isa = PBXGroup;
-			children = (
-				548D9B120F6AAEC100629CCE /* ResourceDelegate.h */,
-				548D9B100F6AAE7300629CCE /* RestDelegate.h */,
-				D2955DF40F3A36E6002675C9 /* Resource.h */,
-				D2955DF50F3A36E6002675C9 /* Resource.m */,
-				D2955DF60F3A36E6002675C9 /* Rest.h */,
-				D2955DF70F3A36E6002675C9 /* Rest.m */,
-			);
-			name = Rest;
 			sourceTree = "<group>";
 		};
 		D266E0130F3A400200C20691 /* JSON */ = {
@@ -403,17 +420,21 @@
 			name = "Google Toolkit";
 			sourceTree = "<group>";
 		};
-		D2F22B860EFBF0A60047CBFA /* Unit Tests */ = {
+		D2F22B860EFBF0A60047CBFA /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
-				DA7F48E50F714C6A0001E019 /* ValidCredentialsProfileDataSourceTest.m */,
-				D2955DEC0F3A18DE002675C9 /* SurveyTest.h */,
-				D2955DEA0F3A18CA002675C9 /* SurveyTest.m */,
-				D2AD6B160EFFF62900DB13FD /* AccountTest.m */,
-				D2F22B830EFBF09C0047CBFA /* QuestionTest.h */,
-				D2F22B840EFBF09C0047CBFA /* QuestionTest.m */,
+				DA86BEBB0F73E42700CC6EBE /* AccountTest.m */,
+				DA86BEBC0F73E42700CC6EBE /* ProfileViewControllerTest.m */,
+				DA86BEBD0F73E42700CC6EBE /* QuestionTest.h */,
+				DA86BEBE0F73E42700CC6EBE /* QuestionTest.m */,
+				DA86BEBF0F73E42700CC6EBE /* SurveyTest.h */,
+				DA86BEC00F73E42700CC6EBE /* SurveyTest.m */,
+				DA86BEC10F73E42700CC6EBE /* ValidCredentialsProfileDataSourceTest.m */,
+				DA86BEC70F73E45D00CC6EBE /* RestTest.m */,
+				DA86C0030F75C4CA00CC6EBE /* RestConfigurationTest.m */,
+				DA86C1AC0F77983E00CC6EBE /* NoAccountDataProfileDataSourceTest.m */,
 			);
-			name = "Unit Tests";
+			path = UnitTests;
 			sourceTree = "<group>";
 		};
 		D2F2EF680F602F8900A8BB57 /* Answer View Controllers */ = {
@@ -585,6 +606,7 @@
 				D266E01B0F3A400200C20691 /* NSObject+SBJSON.m in Sources */,
 				D266E01C0F3A400200C20691 /* NSString+SBJSON.m in Sources */,
 				D266E01D0F3A400200C20691 /* SBJSON.m in Sources */,
+				DA86C0A00F75EB9D00CC6EBE /* RestConfiguration.m in Sources */,
 				D2F2EF750F6030EB00A8BB57 /* QuestionViewController.m in Sources */,
 				D2F2EF9B0F60384E00A8BB57 /* FreeTextAnswerController.m in Sources */,
 				D2F2EF9E0F60385A00A8BB57 /* PictureAnswerController.m in Sources */,
@@ -598,6 +620,7 @@
 				54A630360F6EA99B0038382D /* SegmentedTableViewCell.m in Sources */,
 				54A6308B0F6EB2240038382D /* DatePickerViewController.m in Sources */,
 				DA7F48C10F7143890001E019 /* LabelledTableViewReadOnlyCell.m in Sources */,
+				DA86C18D0F778D8400CC6EBE /* NoAccountDataProfileDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -605,24 +628,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2955DEB0F3A18CA002675C9 /* SurveyTest.m in Sources */,
+				DA86BE730F72B29C00CC6EBE /* ProfileViewController.m in Sources */,
 				DA7F49080F71506A0001E019 /* ValidCredentialsProfileDataSource.m in Sources */,
 				D255487C0F13C2950098100B /* Survey.m in Sources */,
 				D2F22BB20EFBF3C30047CBFA /* Question.m in Sources */,
 				D2F22B400EFBEA090047CBFA /* GTMIPhoneUnitTestDelegate.m in Sources */,
 				D2F22B410EFBEA090047CBFA /* GTMIPhoneUnitTestMain.m in Sources */,
 				D2F22B420EFBEA090047CBFA /* GTMSenTestCase.m in Sources */,
-				DA7F48EC0F714D060001E019 /* ValidCredentialsProfileDataSourceTest.m in Sources */,
-				D2F22B850EFBF09C0047CBFA /* QuestionTest.m in Sources */,
-				D2AD6B170EFFF62900DB13FD /* AccountTest.m in Sources */,
+				DA86BE760F72B2D400CC6EBE /* CredentialsViewController.m in Sources */,
 				D2AD6B1C0EFFF66B00DB13FD /* Account.m in Sources */,
+				DA86BE780F72B2FB00CC6EBE /* NoCredentialsProfileDataSource.m in Sources */,
 				D2955DF80F3A36E6002675C9 /* Resource.m in Sources */,
+				DA86BE770F72B2E300CC6EBE /* NewAccountViewController.m in Sources */,
 				D2955DF90F3A36E6002675C9 /* Rest.m in Sources */,
 				D266E01E0F3A400200C20691 /* NSObject+SBJSON.m in Sources */,
+				DA86BE7A0F72B31900CC6EBE /* DatePickerViewController.m in Sources */,
 				DA7F49DF0F715EF70001E019 /* LabelledTableViewReadOnlyCell.m in Sources */,
 				D266E01F0F3A400200C20691 /* NSString+SBJSON.m in Sources */,
 				D266E0200F3A400200C20691 /* SBJSON.m in Sources */,
 				D2C6934F0F669F600009E3A7 /* Answer.m in Sources */,
+				DA86BEC20F73E42700CC6EBE /* AccountTest.m in Sources */,
+				DA86BEC30F73E42700CC6EBE /* ProfileViewControllerTest.m in Sources */,
+				DA86BEC40F73E42700CC6EBE /* QuestionTest.m in Sources */,
+				DA86BEC50F73E42700CC6EBE /* SurveyTest.m in Sources */,
+				DA86BEC60F73E42700CC6EBE /* ValidCredentialsProfileDataSourceTest.m in Sources */,
+				DA86BEC80F73E45D00CC6EBE /* RestTest.m in Sources */,
+				DA86C0020F75C4A200CC6EBE /* RestConfiguration.m in Sources */,
+				DA86C0040F75C4CA00CC6EBE /* RestConfigurationTest.m in Sources */,
+				DA86C18C0F778D8300CC6EBE /* NoAccountDataProfileDataSource.m in Sources */,
+				DA86C1AD0F77983E00CC6EBE /* NoAccountDataProfileDataSourceTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

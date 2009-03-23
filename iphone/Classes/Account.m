@@ -9,6 +9,7 @@
 #import "Account.h"
 #import "Rest.h"
 #import "JSON.h"
+#import "JoeMetricAppDelegate.h"
 
 NSDate* fromShortIso8601(NSString *shortDate){
 	if ([NSNull null] == (id)shortDate || nil == shortDate) return  nil;
@@ -20,8 +21,11 @@ NSDate* fromShortIso8601(NSString *shortDate){
 }
 
 @interface Account()
-@property(nonatomic, retain) id callMeBackOnLoadDelegate;
-@property(nonatomic) SEL callMeBackOnLoadSelector; 
+-(void) changeLoadStatusTo:(AccountLoadStatus)status;
+-(void) changeLoadStatusTo:(AccountLoadStatus)status withError:(NSError*)error;
+
+@property(nonatomic, retain) id callbackObject;
+@property(nonatomic) SEL callbackSelector; 
 
 @end
 
@@ -34,16 +38,16 @@ NSDate* fromShortIso8601(NSString *shortDate){
 @synthesize gender;
 @synthesize income;
 @synthesize birthdate;
-@synthesize callMeBackOnLoadSelector;
-@synthesize callMeBackOnLoadDelegate;
+@synthesize callbackObject;
+@synthesize callbackSelector;
+@synthesize accountLoadStatus;
+@synthesize lastLoadError;
 
-+ (NSString *)resourceName
-{
++ (NSString *)resourceName{
 	return @"users";
 }
 
-+ (NSString *)resourceKey
-{
++ (NSString *)resourceKey{
 	return @"user";
 }
 
@@ -59,25 +63,38 @@ NSDate* fromShortIso8601(NSString *shortDate){
 
 }
 
-
 - (void)populateFromReceivedData:(NSData *)data{
 	NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    NSLog(@"%@", str);
+    NSLog(@"populateFromReceivedData: '%@'", str);
 	NSDictionary *dict = (NSDictionary *)[str JSONFragmentValue];
 	[str release];
 	[self populateFromDictionary:dict];
-	[callMeBackOnLoadDelegate performSelector:callMeBackOnLoadSelector withObject:self];
-	self.callMeBackOnLoadDelegate = nil;
-	self.callMeBackOnLoadSelector = nil;  
+	[self changeLoadStatusTo: accountLoadStatusLoaded];
 }
 
-+(Account*) currentAccountWithCallback:(SEL)callme on:(id)delegate{
-	Account *result = [[[Account alloc] initWithPath:@"/users/user"] autorelease];
-	result.callMeBackOnLoadSelector = callme;
-	result.callMeBackOnLoadDelegate = delegate;    
-	[result.rest GET:@"/users/current" withCallback:@selector(populateFromReceivedData:)];
-    return result;
+
+-(void)onChangeNotify:(SEL)callme on:(id)callMeObj{
+	self.callbackSelector = callme;
+	self.callbackObject = callMeObj;    
 }
+
+
++(Account*) currentAccount{
+	return ((JoeMetricAppDelegate*)[UIApplication sharedApplication].delegate).currentAccount;
+}
+
+-(void)loadCurrent{
+	[self.rest GET:@"/users/current.json" withCallback:@selector(populateFromReceivedData:)];
+}
+
+-(void)authenticationFailed{
+	[self changeLoadStatusTo:accountLoadStatusUnauthorized];
+}
+
+- (void)rest:(Rest *)rest didFailWithError:(NSError *)error{
+	[self changeLoadStatusTo:accountLoadStatusLoadFailed withError:error];
+}
+
 
 
 + (id)newFromDictionary:(NSDictionary *) dict
@@ -102,6 +119,15 @@ NSDate* fromShortIso8601(NSString *shortDate){
 	return [container autorelease];
 }
 
+-(void) changeLoadStatusTo:(AccountLoadStatus)status{
+	[self changeLoadStatusTo:status withError:nil];
+}
+
+-(void) changeLoadStatusTo:(AccountLoadStatus)status withError:(NSError*)error{
+	accountLoadStatus = status;
+	[callbackObject performSelector:callbackSelector withObject:self];
+	self.lastLoadError = error;		
+}
 
 
 - (void) dealloc
@@ -111,8 +137,9 @@ NSDate* fromShortIso8601(NSString *shortDate){
 	[email release];
 	[gender release];
 	[birthdate release];
-	self.callMeBackOnLoadDelegate = nil;
-	self.callMeBackOnLoadSelector = nil;  
+	self.callbackObject = nil;
+	self.callbackSelector = nil;  
+	self.lastLoadError = nil;
 	[super dealloc];
 }
 @end

@@ -124,10 +124,6 @@
     return [item autorelease];
 }
 
-- (NSURLCredential *)getCredentials
-{
-    return [(JoeMetricAppDelegate*)[UIApplication sharedApplication].delegate getCredentials];
-}
 
 - (void)authenticationFailed
 {
@@ -138,7 +134,7 @@
 {
     if (self = [super init]) {
         self.path = aPath;
-        self.rest = [[Rest alloc] initWithHost:@"localhost" atPort:3000];
+        self.rest = [[Rest alloc] init];
         self.rest.delegate = self;
     }
 

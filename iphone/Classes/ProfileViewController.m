@@ -9,6 +9,7 @@
 #import "JoeMetricAppDelegate.h"
 #import "ProfileViewController.h"
 #import "NoCredentialsProfileDataSource.h"
+#import "NoAccountDataProfileDataSource.h"
 #import "ValidCredentialsProfileDataSource.h"
 #import "CredentialsViewController.h"
 #import "NewAccountViewController.h"
@@ -21,35 +22,32 @@
 @end
 
 @implementation ProfileViewController
-@synthesize tableView, credentialsController, newAccountController, noCredentials, validCredentials;
+@synthesize tableView, credentialsController, newAccountController, noCredentials, validCredentials, noAccountData, account;
 
--(void)accountLoaded:(Account*) account{
-    NSLog(@"loaded: %@", account.username);
-    [self.tableView reloadData];
+-(void)accountLoadStatusChanged:(Account*) _account{
+	[self.tableView reloadData];
 }
 
 // Implement viewDidLoad to do additional setup after loading the view.
 - (void)viewDidLoad {
-	NSLog(@"viewDidLoad!!!");
-    
-    
+
+
 	self.noCredentials = [[[NoCredentialsProfileDataSource alloc] init] autorelease];
 	self.noCredentials.profileViewController = self;
-	
+
 	self.validCredentials = [[[ValidCredentialsProfileDataSource alloc] init] autorelease];
 	self.validCredentials.profileViewController = self;
-    
+	self.validCredentials.account = [Account currentAccount];
+	self.noAccountData = [[[NoAccountDataProfileDataSource alloc] init] autorelease];
+	[[Account currentAccount] onChangeNotify:@selector(accountLoadStatusChanged:) on:self];
 
-    NSLog(@"APPEAR");
-    self.validCredentials.account = [Account currentAccountWithCallback:@selector(accountLoaded:)on:self];
-	
-    [super viewDidLoad];
+	[super viewDidLoad];
 }
 
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [textField resignFirstResponder];
-    return YES;
+	[textField resignFirstResponder];
+	return YES;
 }
 
 - (void)dismissModalViewControllerAnimated:(BOOL)animated {
@@ -73,15 +71,20 @@
 	[self presentModalViewController:self.newAccountController animated:YES];
 }
 
-- (BOOL) hasValidCredentials {
-	return ![[[NSUserDefaults standardUserDefaults] stringForKey:@"username"] isEqualToString:(@"")];
-}
 
 - (NSObject<UITableViewDelegate, UITableViewDataSource>*) tableDelegate {
-	if( [self hasValidCredentials] == YES )
-		return self.validCredentials;
-	else
+	switch([Account currentAccount].accountLoadStatus){
+	case accountLoadStatusUnauthorized:
 		return self.noCredentials;
+	case accountLoadStatusNotLoaded:
+		self.noAccountData.message = @"Loading account details.";
+		return self.noAccountData;	
+	case accountLoadStatusLoadFailed:
+		self.noAccountData.message = @"Unable to load account details.";
+		return self.noAccountData;
+	default:
+		return self.validCredentials;
+	}
 }
 
 #pragma mark -
@@ -116,55 +119,10 @@
 - (void)dealloc {
 	[tableView release];
 	[credentialsController release];
-    [super dealloc];
+	[noAccountData release];
+	[noCredentials release];
+	[validCredentials release];
+	[super dealloc];
 }
-
-//- (IBAction)createAccount:(id)sender
-//{
-//    NSLog(@"Creating with: %@ : %@", [usernameField text], [passwordField text]);
-//
-//    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-//    if (usernameField.text) {
-//        [params setObject:[usernameField text] forKey:@"login"];
-//    } else {
-//        [params setObject:@"" forKey:@"login"];
-//    }
-//
-//    if (emailField.text) {
-//        [params setObject:emailField.text forKey:@"email"];
-//    } else {
-//        [params setObject:@"" forKey:@"email"];
-//    }
-//
-//    if (passwordField.text) {
-//        [params setObject:[passwordField text] forKey:@"password"];
-//        [params setObject:[passwordField text] forKey:@"password_confirmation"];
-//    } else {
-//        [params setObject:@"" forKey:@"password"];
-//        [params setObject:@"" forKey:@"password_confirmation"];
-//    }
-//
-//    Account *account = [Account createWithParams:params];
-//    if (account) {
-//        [self saveAccount:sender];
-//    } else {
-//        // Pop up an alert or something?
-//        NSLog(@"Account creation hath FAILED");
-//    }
-//    
-//    [params release];
-//}
-//
-//- (IBAction)saveAccount:(id)sender
-//{
-//    NSMutableDictionary *credentials = [[NSMutableDictionary alloc] initWithCapacity: 2];
-//    [credentials setObject:[usernameField text] forKey:@"username"];
-//    [credentials setObject:[passwordField text] forKey:@"password"];
-//
-//
-//    JoeMetricAppDelegate *appDelegate = (JoeMetricAppDelegate*)[[UIApplication sharedApplication] delegate];
-//    appDelegate.credentials = credentials;
-//    [appDelegate saveCredentials];
-//}
 @end
 
