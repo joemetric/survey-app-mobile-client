@@ -41,6 +41,7 @@
 @public
 	NSError *errorFromCallback;
 	BOOL authenticationFailed;
+    NSString *dataFromConnectionFinishedLoading;
 }
 @end
 
@@ -53,6 +54,14 @@
 - (void)rest:(Rest *)rest didFailWithError:(NSError *)error{
 	STAssertNotNil(rest, nil);
 	errorFromCallback = error;
+}
+
+- (void)rest:(Rest *)rest didFinishLoading:(NSString *)data{
+	dataFromConnectionFinishedLoading = data;
+}
+
+-(void)anAction:(NSData*)data{
+	
 }
 
 @end
@@ -72,6 +81,20 @@
 									  password:@"rest delegate password"
 								   persistence:NSURLCredentialPersistenceNone];	
 }
+@end
+
+
+@interface Rest(RestTest)
+-(void) setAction:(SEL)action;
+@end
+
+
+@implementation Rest(RestTest)
+-(void) setAction:(SEL)_action{
+	action =_action;
+}
+
+
 @end
 
 @interface RestTest:GTMTestCase{
@@ -99,6 +122,7 @@
 	restDelegateWithCredentials = [[StubRestDelegateWithCredentials alloc] init];
 	testee = [[Rest alloc] init];
 	testee.delegate = restDelegate;
+	[testee setAction:@selector(anAction:)];
 }
 
 -(void)tearDown{
@@ -155,6 +179,29 @@
 	[testee connection:nil didReceiveAuthenticationChallenge:challenge]; 
 	STAssertEqualStrings(@"rest delegate username", sender->credentialUsed.user, nil);
 	STAssertEqualStrings(@"rest delegate password", sender->credentialUsed.password, nil);
+}
+
+-(void)testDelegateReceivesNotificationWithDataAsStringWhenConnectionFinishesLoading{
+    [testee connection:nil didReceiveData:[@"hello " dataUsingEncoding:NSUTF8StringEncoding]];
+    [testee connection:nil didReceiveData:[@"matey" dataUsingEncoding:NSUTF8StringEncoding]];
+	[testee connectionDidFinishLoading:nil];
+	STAssertEqualStrings(@"hello matey", restDelegate->dataFromConnectionFinishedLoading, nil);
+    
+}
+
+-(void)testNotificationDataResetAfterFinishedLoading{
+    [testee connection:nil didReceiveData:[@"hello " dataUsingEncoding:NSUTF8StringEncoding]];
+	[testee connectionDidFinishLoading:nil];
+
+    [testee connection:nil didReceiveData:[@"matey" dataUsingEncoding:NSUTF8StringEncoding]];
+	[testee connectionDidFinishLoading:nil];
+	STAssertEqualStrings(@"matey", restDelegate->dataFromConnectionFinishedLoading, nil);
+	
+}
+
+-(void)testRestDidFinishLoadingOnDelegateIsOptional{
+	testee.delegate = implementsNothingRestDelegate;
+	[testee connectionDidFinishLoading:nil];	
 }
 
 

@@ -7,6 +7,7 @@
     NSURLConnection *conn;
     NSMutableURLRequest *request;
     NSObject<RestDelegate> *delegate;
+	NSMutableData *buffer;
     SEL action;
 }
 
