@@ -232,17 +232,10 @@
 
 
 - (void)dealloc{
-<<<<<<< HEAD:iphone/Classes/Rest.m
 	self.delegate = nil;
 	[buffer release];
 	[host release];
 	[request release];
 	[super dealloc];
-=======
-    self.delegate = nil;
-    [host release];
-    [request release];
-    [super dealloc];
->>>>>>> code in Rest to handle uploading data:iphone/Classes/Rest.m
 }
 @end
