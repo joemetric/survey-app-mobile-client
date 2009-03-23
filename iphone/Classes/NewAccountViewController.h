@@ -14,6 +14,7 @@
 @interface NewAccountViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate> {
 	UITextField* username;
 	UITextField* password;
+	UITextField* passwordConfirmation;
 	UITextField* emailAddress;
 	UITextField* income;
 	UITextField* dob;
@@ -36,6 +37,7 @@
 
 @property (nonatomic, retain) UITextField* username;
 @property (nonatomic, retain) UITextField* password;
+@property (nonatomic, retain) UITextField* passwordConfirmation;
 @property (nonatomic, retain) UITextField* income;
 @property (nonatomic, retain) UISegmentedControl* gender;
 @property (nonatomic, retain) UITextField* dob;
