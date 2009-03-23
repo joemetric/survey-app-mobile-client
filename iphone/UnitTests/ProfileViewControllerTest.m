@@ -1,10 +1,17 @@
 #import "GTMSenTestCase.h"
 #import "ProfileViewController.h"
 #import "Account.h"
+#import "NoAccountDataProfileDataSource.h"
+#import "ValidCredentialsProfileDataSource.h"
+#import "NoCredentialsProfileDataSource.h"
+
 
 Account *gAccount;
 NSInteger gProfileViewControllerTableReloadedCount;
 
+@interface ProfileViewController(ProfileViewControllerTest)
+- (NSObject<UITableViewDelegate, UITableViewDataSource>*) tableDelegate;
+@end
 
 
 @interface Account(ProfileViewControllerTest)
