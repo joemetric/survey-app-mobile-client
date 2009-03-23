@@ -124,10 +124,6 @@
     return [item autorelease];
 }
 
-- (NSURLCredential *)getCredentials
-{
-    return [(JoeMetricAppDelegate*)[UIApplication sharedApplication].delegate getCredentials];
-}
 
 - (void)authenticationFailed
 {

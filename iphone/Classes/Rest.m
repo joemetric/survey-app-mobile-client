@@ -22,13 +22,19 @@
 	[self.delegate performSelector:action withObject:data];
 }
 
+-(NSURLCredential*) getCredential{
+	return [RestConfiguration urlCredential];
+}
+
 - (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
 {
 	if ([challenge previousFailureCount] > 0) {
 		[[challenge sender] cancelAuthenticationChallenge:challenge];
 	}
 	else{
-		[[challenge sender] useCredential:[RestConfiguration urlCredential] forAuthenticationChallenge:challenge];
+		id credentialSource = self;
+		if([delegate respondsToSelector:@selector(getCredential)]) credentialSource = delegate;
+		[[challenge sender] useCredential:[credentialSource getCredential] forAuthenticationChallenge:challenge];
 	}
 }
 

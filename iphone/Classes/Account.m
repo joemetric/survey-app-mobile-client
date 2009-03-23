@@ -20,6 +20,9 @@ NSDate* fromShortIso8601(NSString *shortDate){
 }
 
 @interface Account()
+-(void) changeLoadStatusTo:(AccountLoadStatus)status;
+-(void) changeLoadStatusTo:(AccountLoadStatus)status withError:(NSError*)error;
+
 @property(nonatomic, retain) id callMeBackOnLoadDelegate;
 @property(nonatomic) SEL callMeBackOnLoadSelector; 
 
@@ -37,14 +40,13 @@ NSDate* fromShortIso8601(NSString *shortDate){
 @synthesize callMeBackOnLoadSelector;
 @synthesize callMeBackOnLoadDelegate;
 @synthesize accountLoadStatus;
+@synthesize lastLoadError;
 
-+ (NSString *)resourceName
-{
++ (NSString *)resourceName{
 	return @"users";
 }
 
-+ (NSString *)resourceKey
-{
++ (NSString *)resourceKey{
 	return @"user";
 }
 
@@ -71,18 +73,27 @@ NSDate* fromShortIso8601(NSString *shortDate){
 	self.callMeBackOnLoadSelector = nil;  
 }
 
-+(Account*) currentAccountWithCallback:(SEL)callme on:(id)delegate{
+
+-(void)onChangeNotify:(SEL)callme on:(id)callMeObj{
+	self.callMeBackOnLoadSelector = callme;
+	self.callMeBackOnLoadDelegate = callMeObj;    
+}
+
+
++(Account*) currentAccount{
 	Account *result = [[[Account alloc] initWithPath:@"/users/user"] autorelease];
-	result.callMeBackOnLoadSelector = callme;
-	result.callMeBackOnLoadDelegate = delegate;    
 	[result.rest GET:@"/users/current.json" withCallback:@selector(populateFromReceivedData:)];
     return result;
 }
 
 -(void)authenticationFailed{
-	accountLoadStatus = accountLoadStatusUnauthorized;
-	[callMeBackOnLoadDelegate performSelector:callMeBackOnLoadSelector withObject:self];
+	[self changeLoadStatusTo:accountLoadStatusUnauthorized];
 }
+
+- (void)rest:(Rest *)rest didFailWithError:(NSError *)error{
+	[self changeLoadStatusTo:accountLoadStatusLoadFailed withError:error];
+}
+
 
 
 + (id)newFromDictionary:(NSDictionary *) dict
@@ -107,6 +118,15 @@ NSDate* fromShortIso8601(NSString *shortDate){
 	return [container autorelease];
 }
 
+-(void) changeLoadStatusTo:(AccountLoadStatus)status{
+	[self changeLoadStatusTo:status withError:nil];
+}
+
+-(void) changeLoadStatusTo:(AccountLoadStatus)status withError:(NSError*)error{
+	accountLoadStatus = status;
+	[callMeBackOnLoadDelegate performSelector:callMeBackOnLoadSelector withObject:self];
+	self.lastLoadError = error;		
+}
 
 
 - (void) dealloc
@@ -118,6 +138,7 @@ NSDate* fromShortIso8601(NSString *shortDate){
 	[birthdate release];
 	self.callMeBackOnLoadDelegate = nil;
 	self.callMeBackOnLoadSelector = nil;  
+	self.lastLoadError = nil;
 	[super dealloc];
 }
 @end

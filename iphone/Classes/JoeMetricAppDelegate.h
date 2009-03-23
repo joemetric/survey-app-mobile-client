@@ -18,7 +18,6 @@
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
 @property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
 
-- (NSURLCredential *)getCredentials;
 - (void)authenticationFailed;
 
 @end

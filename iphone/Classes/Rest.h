@@ -16,7 +16,7 @@
 @property (nonatomic, assign) NSObject<RestDelegate> *delegate;
 
 
-
+-(NSURLCredential*) getCredential;
 - (void)GET:(NSString*) path withCallback:(SEL)callback;
 - (NSDictionary *)POST:(NSString *)path withParameters:(NSDictionary *)parameters;
 - (BOOL)PUT:(NSString *)path withParameters:(NSDictionary *)parameters;

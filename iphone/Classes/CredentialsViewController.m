@@ -33,8 +33,8 @@
 	[testRest GET:@"/surveys.json" withCallback:@selector(receivedTestData:)];
 }
 
-- (NSURLCredential *)getCredentials {
-	NSLog(@"getCredentials");
+- (NSURLCredential *)getCredential {
+	NSLog(@"getCredential");
     return [NSURLCredential credentialWithUser:self.username.text
 									  password:self.password.text
 								   persistence:NSURLCredentialPersistenceNone];	

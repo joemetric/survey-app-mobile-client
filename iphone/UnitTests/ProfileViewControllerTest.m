@@ -8,7 +8,7 @@ NSInteger gProfileViewControllerTableReloadedCount;
 
 
 @interface Account(ProfileViewControllerTest)
-+(Account*) currentAccountWithCallback:(SEL)callme on:(id)delegate;
++(Account*) currentAccount;
 -(void)setAccountLoadStatus:(AccountLoadStatus)loadStatus;
 @property(nonatomic) SEL callMeBackOnLoadSelector;
 @property(nonatomic, retain) id callMeBackOnLoadDelegate;
@@ -17,9 +17,7 @@ NSInteger gProfileViewControllerTableReloadedCount;
 
 @implementation Account(ProfileViewControllerTest)
 
-+(Account*) currentAccountWithCallback:(SEL)callme on:(id)delegate{
-	gAccount.callMeBackOnLoadDelegate = delegate;
-	gAccount.callMeBackOnLoadSelector = callme;
++(Account*) currentAccount{
     return gAccount;
 }
 
@@ -90,7 +88,7 @@ NSInteger gProfileViewControllerTableReloadedCount;
 
 -(void)testTableReloadedWhenAccountChanges{
 	[testee viewDidLoad];
-	STAssertEquals(testee, gAccount.callMeBackOnLoadDelegate, nil);
+	STAssertEqualStrings(testee, gAccount.callMeBackOnLoadDelegate, nil);
 	[gAccount.callMeBackOnLoadDelegate performSelector:gAccount.callMeBackOnLoadSelector withObject:gAccount];
 	STAssertEquals(1, gProfileViewControllerTableReloadedCount, nil);
 	

@@ -36,7 +36,8 @@
 	
 	self.validCredentials = [[[ValidCredentialsProfileDataSource alloc] init] autorelease];
 	self.validCredentials.profileViewController = self;
-	self.validCredentials.account = [Account currentAccountWithCallback:@selector(accountLoadStatusChanged:) on:self];
+	self.validCredentials.account = [Account currentAccount];
+    [self.validCredentials.account onChangeNotify:@selector(accountLoadStatusChanged:) on:self];
 	
     [super viewDidLoad];
 }

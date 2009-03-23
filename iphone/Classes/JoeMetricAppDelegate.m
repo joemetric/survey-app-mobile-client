@@ -42,11 +42,6 @@
 	tabBarController.selectedIndex = 2;
 }
 
-- (NSURLCredential *)getCredentials {
-    return [NSURLCredential credentialWithUser:[[NSUserDefaults standardUserDefaults] stringForKey:@"username"]
-                            password:[[NSUserDefaults standardUserDefaults] stringForKey:@"password"]
-                            persistence:NSURLCredentialPersistenceNone];
-}
 
 - (void)dealloc {
     [navigationController release];

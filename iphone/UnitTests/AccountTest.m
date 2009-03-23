@@ -6,9 +6,9 @@
 @interface AccountTest : GTMTestCase{
 	NSDateFormatter *dateFormatter;
 	Account *account;
+	NSInteger accountChangeNotificationCount;
 }
-
-@property(nonatomic, retain) Account *account;
+@property(nonatomic, retain) Account* account;
 @end
 
 NSData* fromAsciiString(NSString *string){
@@ -18,11 +18,17 @@ NSData* fromAsciiString(NSString *string){
 @implementation AccountTest
 @synthesize account;
 
+-(void)accountChanged:(Account*)_account{
+	STAssertEquals(account, _account, nil);
+	accountChangeNotificationCount++;
+}
+
 - (void)setUp{
 	dateFormatter = [[NSDateFormatter alloc] init];
 	dateFormatter.dateFormat = @"dd MMM yyyy";
-	self.account = [[Account alloc] init];
-	[account release];
+	self.account = [[[Account alloc] init] autorelease];
+	[account onChangeNotify:@selector(accountChanged:) on:self];
+	accountChangeNotificationCount = 0;
 
 }
 
@@ -42,6 +48,7 @@ NSData* fromAsciiString(NSString *string){
 	STAssertEqualStrings(@"M", account.gender, nil);
 	STAssertEquals(25283, account.income, nil);
 	STAssertEqualStrings(@"27 Mar 1973", [dateFormatter stringFromDate:account.birthdate], nil);
+	STAssertEquals(1, accountChangeNotificationCount, @"accountChangeNotificationCount");
 }
 
 -(void)testPopulationWithMostlyEmptyData{
@@ -61,7 +68,16 @@ NSData* fromAsciiString(NSString *string){
 
 -(void)testBecomesUnauthorisedWhenUnauthorised{
 	[account authenticationFailed];
-	STAssertEquals(accountLoadStatusUnauthorized, account.accountLoadStatus, nil);
+	STAssertEquals(accountLoadStatusUnauthorized, account.accountLoadStatus, @"accountLoadStatus");
+	STAssertEquals(1, accountChangeNotificationCount, @"accountChangeNotificationCount");
+}
+
+-(void)testStatusBecomesFailedOnError{
+	NSError *error = [NSError errorWithDomain:@"test.host" code:NSURLErrorTimedOut userInfo:nil];
+	[account rest:nil didFailWithError:error];
+	STAssertEquals(accountLoadStatusLoadFailed, account.accountLoadStatus, @"accountLoadStatus");
+	STAssertEquals(1, accountChangeNotificationCount, @"accountChangeNotificationCount");
+	STAssertEqualStrings(error, account.lastLoadError, @"lastLoadError");
 }
 
 

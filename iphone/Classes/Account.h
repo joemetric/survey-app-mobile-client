@@ -15,6 +15,7 @@ typedef enum {accountLoadStatusNotLoaded, accountLoadStatusLoaded, accountLoadSt
     NSString *gender;
     NSInteger income;
     NSDate *birthdate;
+	NSError *lastLoadError;
     
     id callMeBackOnLoadDelegate;
     SEL callMeBackOnLoadSelector; 
@@ -23,13 +24,15 @@ typedef enum {accountLoadStatusNotLoaded, accountLoadStatusLoaded, accountLoadSt
 }
 
 
-+(Account*) currentAccountWithCallback:(SEL)callme on:(id)delegate;
++(Account*) currentAccount;
 - (void)populateFromReceivedData:(NSData *)data;
+-(void)onChangeNotify:(SEL)callme on:(id)callMeObj;
 
 @property (nonatomic, retain) NSString *username;
 @property (nonatomic, retain) NSString *password;
 @property (nonatomic, retain) NSString *email;
 @property (nonatomic, retain) NSString *gender;
+@property (nonatomic, retain) NSError *lastLoadError;
 @property (nonatomic) NSInteger income;
 @property (nonatomic, retain) NSDate *birthdate;
 @property(nonatomic, readonly) AccountLoadStatus accountLoadStatus;
