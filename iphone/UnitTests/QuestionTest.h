@@ -10,6 +10,7 @@
 #import "Question.h"
 
 @interface QuestionTest : GTMTestCase {
+
 }
 
 @end
