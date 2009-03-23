@@ -11,6 +11,7 @@
 #import "SegmentedTableViewCell.h"
 #import "DatePickerViewController.h"
 #import "Account.h"
+#import "RestConfiguration.h"
 
 @interface NewAccountViewController (Private)
 - (LabelledTableViewCell*) loadLabelledCellWthText:(NSString*)labelText;
@@ -152,8 +153,8 @@
     Account *account = [Account createWithParams:params];
 	[self.activityIndicator stopAnimating];
     if (account) {
-		[[NSUserDefaults standardUserDefaults] setObject:username.text forKey:@"username"];
-		[[NSUserDefaults standardUserDefaults] setObject:password.text forKey:@"password"];
+		[RestConfiguration setPassword:password.text];
+        [RestConfiguration setUsername:username.text];
         
         /** Hack - create account from currentAccount resource **/
         [[Account currentAccount] loadCurrent];

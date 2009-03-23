@@ -9,6 +9,8 @@
 #import "CredentialsViewController.h"
 #import "JoeMetricAppDelegate.h"
 #import "Rest.h"
+#import "RestConfiguration.h"
+#import "Account.h"
 
 @interface CredentialsViewController (Private)
 - (void) clearCredentials;
@@ -52,10 +54,10 @@
 - (void) receivedTestData:(NSData*)testData {
 	NSLog(@"receivedTestData: %@", [[[NSString alloc] initWithBytes:testData.bytes length:testData.length encoding:NSUTF8StringEncoding] autorelease]);
 	
-	[[NSUserDefaults standardUserDefaults] setObject:username.text forKey:@"username"];
-	[[NSUserDefaults standardUserDefaults] setObject:password.text forKey:@"password"];
-	[[NSUserDefaults standardUserDefaults] synchronize];
-	
+    [RestConfiguration setPassword:password.text];
+    [RestConfiguration setUsername:username.text];
+    [[Account currentAccount] loadCurrent];
+    
 	self.errorLabel.text = @"";
 	[self.activityIndicator stopAnimating];
 	[self.profileView dismissModalViewControllerAnimated:YES];
