@@ -20,7 +20,7 @@
 @end
 
 @implementation NewAccountViewController
-@synthesize username, password, emailAddress, gender, dob, income;
+@synthesize username, password, passwordConfirmation, emailAddress, gender, dob, income;
 @synthesize activityIndicator, profileView, tableView, datePicker;;
 @synthesize keyboardIsShowing;
 
@@ -76,18 +76,48 @@
 }
 
 - (BOOL) textFieldShouldReturn:(UITextField*)textField {
-	[textField resignFirstResponder];
+	if( textField == username ) {
+		[password becomeFirstResponder];
+		[username resignFirstResponder];
+	} else if( textField == password ) {
+		[passwordConfirmation becomeFirstResponder];
+		[password resignFirstResponder];
+	} else if( textField == passwordConfirmation ) {
+		[emailAddress becomeFirstResponder];
+		[passwordConfirmation resignFirstResponder];
+	} else if( textField == emailAddress ) {
+		[emailAddress resignFirstResponder];
+		[income becomeFirstResponder];
+		[income becomeFirstResponder];
+	} else if( textField == income ) {
+		[textField resignFirstResponder];
+	}
+	
+
 	return YES;
 }
 
 - (void) textFieldDidBeginEditing:(UITextField *)textField {
-	[self.tableView scrollToNearestSelectedRowAtScrollPosition:UITableViewScrollPositionTop animated:YES];
+	if( textField == username ) {
+		[tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionNone animated:YES];
+	} else if( textField == password ) {
+		[tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0] atScrollPosition:UITableViewScrollPositionNone animated:YES];
+	} else if( textField == passwordConfirmation ) {
+		[tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0] atScrollPosition:UITableViewScrollPositionNone animated:YES];
+	} else if( textField == emailAddress ) {
+		NSLog(@"email");
+		[tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0] atScrollPosition:UITableViewScrollPositionNone animated:YES];
+	} else if( textField == income ) {
+		NSLog(@"income");
+		[tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:1] atScrollPosition:UITableViewScrollPositionNone animated:YES];
+	}
 }
 
 - (void)dealloc {
 	[tableView release];
 	[username release];
 	[password release];
+	[passwordConfirmation release];
 	[emailAddress release];
 	[gender release];
 	[dob release];
@@ -109,7 +139,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tv numberOfRowsInSection:(NSInteger)section {
-	return section = 0 ? 3 : 3;
+	return section == 0 ? 4 : 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -129,6 +159,13 @@
 			cell.textField.delegate = self;
 			return cell;
 		}
+		else if( indexPath.row == 2) {
+			LabelledTableViewCell* cell = [self loadLabelledCellWthText:@"P/W Confirm"];
+			cell.textField.secureTextEntry = YES;
+			self.passwordConfirmation = cell.textField;
+			cell.textField.delegate = self;
+			return cell;
+		}
 		else {
 			LabelledTableViewCell* cell = [self loadLabelledCellWthText:@"Email"];
 			cell.textField.keyboardType = UIKeyboardTypeEmailAddress;
@@ -138,20 +175,20 @@
 		}
 	} else {
 		if( indexPath.row == 0 ) {
+			LabelledTableViewCell* cell = [self loadLabelledCellWthText:@"Income"];
+			cell.textField.placeholder = @"99999";
+			cell.textField.delegate = self;
+			cell.textField.keyboardType = UIKeyboardTypeNumberPad;
+			self.income = cell.textField;
+			return cell;
+		}
+		else if( indexPath.row == 1) {
 			LabelledTableViewCell* cell = [self loadLabelledCellWthText:@"Date of Birth"];
 			cell.textField.placeholder = @"Dec 12, 1971";
 			cell.textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
 			cell.textField.enabled = NO;
 			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 			self.dob = cell.textField;
-			return cell;
-		}
-		else if( indexPath.row == 1) {
-			LabelledTableViewCell* cell = [self loadLabelledCellWthText:@"Income"];
-			cell.textField.placeholder = @"99999";
-			cell.textField.delegate = self;
-			cell.textField.keyboardType = UIKeyboardTypeNumberPad;
-			self.income = cell.textField;
 			return cell;
 		}
 		else {
@@ -175,9 +212,18 @@
 
 - (void) tableView:(UITableView*)tv didSelectRowAtIndexPath:(NSIndexPath*)indexPath {
 	NSLog(@"CELL SELECT!");
-	// date of birth
-	if( indexPath.section == 1 && indexPath.row == 0 ) {
-		if( self.datePicker == nil ) {
+	if( indexPath.section == 0 && indexPath.row == 0 ) {
+		[username becomeFirstResponder];
+	} else if( indexPath.section == 0 && indexPath.row == 1 ) {
+		[password becomeFirstResponder];
+	} else if( indexPath.section == 0 && indexPath.row == 2 ) {
+		[passwordConfirmation becomeFirstResponder];
+	} else if( indexPath.section == 0 && indexPath.row == 3 ) {
+		[emailAddress becomeFirstResponder];
+	} else if( indexPath.section == 1 && indexPath.row == 0 ) {
+		[income becomeFirstResponder];
+	} else if( indexPath.section == 1 && indexPath.row == 1 ) {
+			if( self.datePicker == nil ) {
 			self.datePicker = [[[DatePickerViewController alloc] initWithNibName:@"DatePickerView" bundle:nil] autorelease];
 			self.datePicker.newAccountView = self;
 		}
@@ -212,7 +258,7 @@
     [params setObject:username.text forKey:@"login"];
     [params setObject:emailAddress.text forKey:@"email"];
     [params setObject:password.text forKey:@"password"];
-    [params setObject:password.text forKey:@"password_confirmation"];
+    [params setObject:passwordConfirmation.text forKey:@"password_confirmation"];
     [params setObject:income.text forKey:@"income"];
     [params setObject:dob.text forKey:@"birthdate"];
     [params setObject:(gender.selectedSegmentIndex == 0 ? @"M" : @"F") forKey:@"gender"];
