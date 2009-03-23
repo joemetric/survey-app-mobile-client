@@ -13,6 +13,7 @@
 #import "Account.h"
 #import "RestConfiguration.h"
 
+
 @interface NewAccountViewController (Private)
 - (LabelledTableViewCell*) loadLabelledCellWthText:(NSString*)labelText;
 - (SegmentedTableViewCell*) loadSegmentedCell;
@@ -21,6 +22,67 @@
 @implementation NewAccountViewController
 @synthesize username, password, emailAddress, gender, dob, income;
 @synthesize activityIndicator, profileView, tableView, datePicker;;
+@synthesize keyboardIsShowing;
+
+- (void)viewWillAppear:(BOOL)animated {
+	[[NSNotificationCenter defaultCenter] addObserver:self
+										  selector:@selector(keyboardWillShow:)
+										  name:UIKeyboardWillShowNotification
+										  object:nil];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self
+										  selector:@selector(keyboardWillHide:)
+										  name:UIKeyboardWillHideNotification
+										  object:nil];	
+	[super viewWillAppear:animated];
+}
+
+-(void) keyboardWillShow:(NSNotification *)note
+{
+    CGRect keyboardBounds;
+    [[note.userInfo valueForKey:UIKeyboardBoundsUserInfoKey] getValue: &keyboardBounds];
+    CGFloat keyboardHeight = keyboardBounds.size.height;
+    if (self.keyboardIsShowing == NO)
+    {
+        self.keyboardIsShowing = YES;
+        CGRect frame = self.tableView.frame;
+        frame.size.height -= keyboardHeight;
+		
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationBeginsFromCurrentState:YES];
+        [UIView setAnimationDuration:0.3f];
+        self.tableView.frame = frame;
+        [UIView commitAnimations];
+    }
+}
+
+-(void) keyboardWillHide:(NSNotification *)note
+{
+    CGRect keyboardBounds;
+    [[note.userInfo valueForKey:UIKeyboardBoundsUserInfoKey] getValue: &keyboardBounds];
+    CGFloat keyboardHeight = keyboardBounds.size.height;
+    if (self.keyboardIsShowing == YES)
+    {
+        self.keyboardIsShowing = NO;
+        CGRect frame = self.tableView.frame;
+        frame.size.height += keyboardHeight;
+		
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationBeginsFromCurrentState:YES];
+        [UIView setAnimationDuration:0.3f];
+        self.tableView.frame = frame;
+        [UIView commitAnimations];
+    }
+}
+
+- (BOOL) textFieldShouldReturn:(UITextField*)textField {
+	[textField resignFirstResponder];
+	return YES;
+}
+
+- (void) textFieldDidBeginEditing:(UITextField *)textField {
+	[self.tableView scrollToNearestSelectedRowAtScrollPosition:UITableViewScrollPositionTop animated:YES];
+}
 
 - (void)dealloc {
 	[tableView release];
@@ -56,19 +118,22 @@
 	{
 		if( indexPath.row == 0 ) {
 			LabelledTableViewCell* cell = [self loadLabelledCellWthText:@"Username"];
-			self.username = cell.textField;			
+			self.username = cell.textField;	
+			cell.textField.delegate = self;
 			return cell;
 		}
 		else if( indexPath.row == 1) {
 			LabelledTableViewCell* cell = [self loadLabelledCellWthText:@"Password"];
 			cell.textField.secureTextEntry = YES;
 			self.password = cell.textField;
+			cell.textField.delegate = self;
 			return cell;
 		}
 		else {
 			LabelledTableViewCell* cell = [self loadLabelledCellWthText:@"Email"];
 			cell.textField.keyboardType = UIKeyboardTypeEmailAddress;
 			self.emailAddress = cell.textField;
+			cell.textField.delegate = self;
 			return cell;
 		}
 	} else {
@@ -84,6 +149,7 @@
 		else if( indexPath.row == 1) {
 			LabelledTableViewCell* cell = [self loadLabelledCellWthText:@"Income"];
 			cell.textField.placeholder = @"99999";
+			cell.textField.delegate = self;
 			cell.textField.keyboardType = UIKeyboardTypeNumberPad;
 			self.income = cell.textField;
 			return cell;

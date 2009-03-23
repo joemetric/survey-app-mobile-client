@@ -11,7 +11,7 @@
 @class ProfileViewController;
 @class DatePickerViewController;
 
-@interface NewAccountViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
+@interface NewAccountViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate> {
 	UITextField* username;
 	UITextField* password;
 	UITextField* emailAddress;
@@ -25,6 +25,8 @@
 	DatePickerViewController* datePicker;
 	
 	ProfileViewController* profileView;
+	
+	BOOL keyboardIsShowing;
 }
 
 - (IBAction) signup;
@@ -44,4 +46,5 @@
 
 @property (nonatomic, retain) IBOutlet DatePickerViewController* datePicker;
 
+@property (nonatomic) BOOL keyboardIsShowing;
 @end
