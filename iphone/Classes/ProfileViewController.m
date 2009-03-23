@@ -9,6 +9,7 @@
 #import "JoeMetricAppDelegate.h"
 #import "ProfileViewController.h"
 #import "NoCredentialsProfileDataSource.h"
+#import "NoAccountDataProfileDataSource.h"
 #import "ValidCredentialsProfileDataSource.h"
 #import "CredentialsViewController.h"
 #import "NewAccountViewController.h"
@@ -21,31 +22,32 @@
 @end
 
 @implementation ProfileViewController
-@synthesize tableView, credentialsController, newAccountController, noCredentials, validCredentials, account;
+@synthesize tableView, credentialsController, newAccountController, noCredentials, validCredentials, noAccountData, account;
 
 -(void)accountLoadStatusChanged:(Account*) _account{
-    [self.tableView reloadData];
+	[self.tableView reloadData];
 }
 
 // Implement viewDidLoad to do additional setup after loading the view.
 - (void)viewDidLoad {
-    
-    
+
+
 	self.noCredentials = [[[NoCredentialsProfileDataSource alloc] init] autorelease];
 	self.noCredentials.profileViewController = self;
-	
+
 	self.validCredentials = [[[ValidCredentialsProfileDataSource alloc] init] autorelease];
 	self.validCredentials.profileViewController = self;
 	self.validCredentials.account = [Account currentAccount];
-    [self.validCredentials.account onChangeNotify:@selector(accountLoadStatusChanged:) on:self];
-	
-    [super viewDidLoad];
+	self.noAccountData = [[[NoAccountDataProfileDataSource alloc] init] autorelease];
+	[[Account currentAccount] onChangeNotify:@selector(accountLoadStatusChanged:) on:self];
+
+	[super viewDidLoad];
 }
 
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [textField resignFirstResponder];
-    return YES;
+	[textField resignFirstResponder];
+	return YES;
 }
 
 - (void)dismissModalViewControllerAnimated:(BOOL)animated {
@@ -69,15 +71,20 @@
 	[self presentModalViewController:self.newAccountController animated:YES];
 }
 
-- (BOOL) hasValidCredentials {
-	return self.validCredentials.account.accountLoadStatus != accountLoadStatusUnauthorized;
-}
 
 - (NSObject<UITableViewDelegate, UITableViewDataSource>*) tableDelegate {
-	if( [self hasValidCredentials] == YES )
-		return self.validCredentials;
-	else
+	switch([Account currentAccount].accountLoadStatus){
+	case accountLoadStatusUnauthorized:
 		return self.noCredentials;
+	case accountLoadStatusNotLoaded:
+		self.noAccountData.message = @"Loading account details.";
+		return self.noAccountData;	
+	case accountLoadStatusLoadFailed:
+		self.noAccountData.message = @"Unable to load account details.";
+		return self.noAccountData;
+	default:
+		return self.validCredentials;
+	}
 }
 
 #pragma mark -
@@ -112,7 +119,10 @@
 - (void)dealloc {
 	[tableView release];
 	[credentialsController release];
-    [super dealloc];
+	[noAccountData release];
+	[noCredentials release];
+	[validCredentials release];
+	[super dealloc];
 }
 @end
 
