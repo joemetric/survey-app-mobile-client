@@ -207,7 +207,7 @@
 #pragma mark Button actions
 
 - (IBAction) signup {
-	[self.activityIndicator startAnimating];
+    [self.activityIndicator startAnimating];
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setObject:username.text forKey:@"login"];
     [params setObject:emailAddress.text forKey:@"email"];
@@ -217,19 +217,20 @@
     [params setObject:dob.text forKey:@"birthdate"];
     [params setObject:(gender.selectedSegmentIndex == 0 ? @"M" : @"F") forKey:@"gender"];
     Account *account = [Account createWithParams:params];
-	[self.activityIndicator stopAnimating];
+    [self.activityIndicator stopAnimating];
     if (account) {
-		[RestConfiguration setPassword:password.text];
+        [RestConfiguration setPassword:password.text];
         [RestConfiguration setUsername:username.text];
         
         /** Hack - create account from currentAccount resource **/
         [[Account currentAccount] loadCurrent];
         
-		[self.profileView dismissModalViewControllerAnimated:YES];
+        [self.profileView dismissModalViewControllerAnimated:YES];
     } else {
-		UIAlertView* alert = [[[UIAlertView alloc] initWithTitle:@"Account Creation Failed" message:@"We were unable to create an account with those details" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] autorelease];
-		[alert show];
-    }	
+        UIAlertView* alert = [[[UIAlertView alloc] initWithTitle:@"Account Creation Failed" message:@"We were unable to create an account with those details" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] autorelease];
+        [alert show];
+    }
+    [params release];
 }
 
 - (IBAction) cancel {

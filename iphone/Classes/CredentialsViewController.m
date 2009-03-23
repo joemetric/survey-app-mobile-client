@@ -69,8 +69,11 @@
 
 
 - (void)dealloc {
-	[username dealloc];
-	[password dealloc];
+    [profileView release];
+    [errorLabel release];
+    [activityIndicator release];
+    [username release];
+    [password release];
     [super dealloc];
 }
 

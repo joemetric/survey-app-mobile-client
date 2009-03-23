@@ -99,7 +99,7 @@ NSDate* fromShortIso8601(NSString *shortDate){
 
 + (id)newFromDictionary:(NSDictionary *) dict
 {
-	Account *account = [[[Account alloc] init] retain];
+	Account *account = [[Account alloc] init];
 	[account populateFromDictionary:dict];
 	return account;
 }

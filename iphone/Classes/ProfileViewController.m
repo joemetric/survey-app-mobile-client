@@ -122,6 +122,8 @@
 	[noAccountData release];
 	[noCredentials release];
 	[validCredentials release];
+        [newAccountController release];
+        [account release];
 	[super dealloc];
 }
 @end

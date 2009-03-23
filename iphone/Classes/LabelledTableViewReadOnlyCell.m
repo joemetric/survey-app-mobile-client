@@ -21,6 +21,8 @@
 
 
 - (void)dealloc {
+    [label release];
+    [valueField release];
     [super dealloc];
 }
 
