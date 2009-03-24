@@ -131,8 +131,8 @@ NSDate* fromShortIso8601(NSString *shortDate){
 
 
 -(id) init{
-	[super init];
-	errors = [NSDictionary dictionary];
+	[super initWithPath:@""];
+	errors = [[NSDictionary alloc] init];
 }
 
 
@@ -140,6 +140,7 @@ NSDate* fromShortIso8601(NSString *shortDate){
 {
 	[username release];
 	[password release];
+	[errors release];
 	[email release];
 	[gender release];
 	[birthdate release];

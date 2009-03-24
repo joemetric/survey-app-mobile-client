@@ -25,7 +25,7 @@
     [window addSubview:tabBarController.view];
 	
 	[self initializeSettings];
-	currentAccount = [[Account alloc] initWithPath:@"/users/user"];
+	currentAccount = [[Account alloc] init];
 	[currentAccount loadCurrent];
 }
 

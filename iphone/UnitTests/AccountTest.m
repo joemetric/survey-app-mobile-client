@@ -26,7 +26,7 @@ NSData* fromAsciiString(NSString *string){
 - (void)setUp{
 	dateFormatter = [[NSDateFormatter alloc] init];
 	dateFormatter.dateFormat = @"dd MMM yyyy";
-	self.account = [[[Account alloc] initWithPath:@"/users/user"] autorelease];
+	self.account = [[[Account alloc] init] autorelease];
 	[account onChangeNotify:@selector(accountChanged:) on:self];
 	accountChangeNotificationCount = 0;
 
@@ -62,7 +62,7 @@ NSData* fromAsciiString(NSString *string){
 -(void)testNewFromDictionaryWith_NSNull_Birthdate{
 	NSDictionary *params = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"456", [NSNull null],  nil] forKeys:[NSArray arrayWithObjects:@"id", @"birthdate", nil]];
 	NSDictionary *user = [NSDictionary dictionaryWithObject:params forKey:@"user"];
-	self.account = [Account newFromDictionary:user];
+	self.account = [[Account newFromDictionary:user] autorelease];
 	STAssertEquals(456, account.itemId, nil);
 	STAssertNULL(account.birthdate, nil);
 }
@@ -86,14 +86,16 @@ NSData* fromAsciiString(NSString *string){
 -(void)testNewFromDictionary{
 	NSDictionary *params = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"rita", @"456",  nil] forKeys:[NSArray arrayWithObjects:@"login", @"id", nil]];
 	NSDictionary *user = [NSDictionary dictionaryWithObject:params forKey:@"user"];
-	self.account = [Account newFromDictionary:user];
+	self.account = [[Account newFromDictionary:user] autorelease];
 	STAssertEquals(456, account.itemId, nil);
 	STAssertEqualStrings(@"rita", account.username, nil);
 
 }
 
--(void)testErrorsInitiallyEmpty{
+
+-(void)testProperlyInitialised{
 	STAssertEquals(0, (NSInteger) account.errors.count, nil);
+	STAssertNotNil(account.rest, nil);
 }
 
 @end
