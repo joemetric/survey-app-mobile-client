@@ -26,7 +26,7 @@ NSData* fromAsciiString(NSString *string){
 - (void)setUp{
 	dateFormatter = [[NSDateFormatter alloc] init];
 	dateFormatter.dateFormat = @"dd MMM yyyy";
-	self.account = [[[Account alloc] init] autorelease];
+	self.account = [[[Account alloc] initWithPath:@"/users/user"] autorelease];
 	[account onChangeNotify:@selector(accountChanged:) on:self];
 	accountChangeNotificationCount = 0;
 
@@ -83,9 +83,6 @@ NSData* fromAsciiString(NSString *string){
 
 
 
-
-
-
 -(void)testNewFromDictionary{
 	NSDictionary *params = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"rita", @"456",  nil] forKeys:[NSArray arrayWithObjects:@"login", @"id", nil]];
 	NSDictionary *user = [NSDictionary dictionaryWithObject:params forKey:@"user"];
@@ -93,6 +90,10 @@ NSData* fromAsciiString(NSString *string){
 	STAssertEquals(456, account.itemId, nil);
 	STAssertEqualStrings(@"rita", account.username, nil);
 
+}
+
+-(void)testErrorsInitiallyEmpty{
+	STAssertEquals(0, (NSInteger) account.errors.count, nil);
 }
 
 @end

@@ -42,6 +42,7 @@ NSDate* fromShortIso8601(NSString *shortDate){
 @synthesize callbackSelector;
 @synthesize accountLoadStatus;
 @synthesize lastLoadError;
+@synthesize errors;
 
 + (NSString *)resourceName{
 	return @"users";
@@ -97,8 +98,7 @@ NSDate* fromShortIso8601(NSString *shortDate){
 
 
 
-+ (id)newFromDictionary:(NSDictionary *) dict
-{
++ (id)newFromDictionary:(NSDictionary *) dict{
 	Account *account = [[Account alloc] init];
 	[account populateFromDictionary:dict];
 	return account;
@@ -127,6 +127,12 @@ NSDate* fromShortIso8601(NSString *shortDate){
 	accountLoadStatus = status;
 	[callbackObject performSelector:callbackSelector withObject:self];
 	self.lastLoadError = error;		
+}
+
+
+-(id) init{
+	[super init];
+	errors = [NSDictionary dictionary];
 }
 
 

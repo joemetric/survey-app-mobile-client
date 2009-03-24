@@ -16,6 +16,7 @@ typedef enum {accountLoadStatusNotLoaded, accountLoadStatusLoaded, accountLoadSt
     NSInteger income;
     NSDate *birthdate;
 	NSError *lastLoadError;
+	NSDictionary* errors;
     
     id callbackObject;
     SEL callbackSelector; 
@@ -37,7 +38,7 @@ typedef enum {accountLoadStatusNotLoaded, accountLoadStatusLoaded, accountLoadSt
 @property (nonatomic) NSInteger income;
 @property (nonatomic, retain) NSDate *birthdate;
 @property(nonatomic, readonly) AccountLoadStatus accountLoadStatus;
-
+@property (nonatomic, retain) NSDictionary* errors;
 
 
 
