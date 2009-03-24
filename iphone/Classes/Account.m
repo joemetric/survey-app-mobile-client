@@ -132,7 +132,8 @@ NSDate* fromShortIso8601(NSString *shortDate){
 
 -(id) init{
 	[super initWithPath:@""];
-	errors = [[NSDictionary alloc] init];
+	self.errors = [[NSDictionary alloc] init];
+    return self;
 }
 
 
