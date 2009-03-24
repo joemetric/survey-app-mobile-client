@@ -1,5 +1,6 @@
 #import "GTMSenTestCase.h"
 #import "Account.h"
+#import "Rest.h"
 
 
 
@@ -11,9 +12,9 @@
 @property(nonatomic, retain) Account* account;
 @end
 
-NSData* fromAsciiString(NSString *string){
-	return [string dataUsingEncoding:NSASCIIStringEncoding];
-}
+
+
+
 
 @implementation AccountTest
 @synthesize account;
@@ -37,10 +38,19 @@ NSData* fromAsciiString(NSString *string){
 	self.account = nil;
 }
 
--(void)testPopulationFromData{
-	NSData *data = fromAsciiString(@"{\"user\": { \"birthdate\": \"1973-03-27\", \"id\": 123, \"gender\":\"M\", \"login\": \"marvin\", \"income\": \"25283\", \"email\": \"marvin@example.com\"}}");
 
-	[account populateFromReceivedData:data];
+-(void)testPopulationWithMostlyEmptyData{
+	NSString *data = @"{\"user\": { \"id\": 123},\"birthdate\": null}";
+	[account rest:nil didFinishLoading:data];
+	STAssertEquals(123, account.itemId, nil);
+
+}
+
+
+-(void)testPopulationFromRestDidFinishLoading{
+	NSString *data = @"{\"user\": { \"birthdate\": \"1973-03-27\", \"id\": 123, \"gender\":\"M\", \"login\": \"marvin\", \"income\": \"25283\", \"email\": \"marvin@example.com\"}}";
+
+	[account rest:nil didFinishLoading:data];
 
 	STAssertEquals(123, account.itemId, nil);
 	STAssertEqualStrings(@"marvin", account.username,nil);
@@ -52,12 +62,7 @@ NSData* fromAsciiString(NSString *string){
 	STAssertEquals(accountLoadStatusLoaded, account.accountLoadStatus, @"accountLoadStatus");
 }
 
--(void)testPopulationWithMostlyEmptyData{
-	NSData *data = fromAsciiString(@"{\"user\": { \"id\": 123},\"birthdate\": null}");
-	[account populateFromReceivedData:data];
-	STAssertEquals(123, account.itemId, nil);
 
-}
 
 -(void)testNewFromDictionaryWith_NSNull_Birthdate{
 	NSDictionary *params = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"456", [NSNull null],  nil] forKeys:[NSArray arrayWithObjects:@"id", @"birthdate", nil]];
