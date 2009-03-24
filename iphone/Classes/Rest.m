@@ -98,10 +98,17 @@
 	NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@%@", [self hostString], path]];
 	action = nil;
 
+	NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
+
+    [req addValue:@"no-cache" forHTTPHeaderField:@"Cache-Control"];
+    [req addValue:@"no-cache" forHTTPHeaderField:@"Pragma"];
+    [req addValue:@"text/json" forHTTPHeaderField:@"Accept"];
+    [req addValue:@"close" forHTTPHeaderField:@"Connection"];
+    
 	[request setHTTPMethod:@"GET"];
 	[request setURL:url];
 
-	[NSURLConnection connectionWithRequest:request delegate:self];
+	[NSURLConnection connectionWithRequest:req delegate:self];
 
 }
 
