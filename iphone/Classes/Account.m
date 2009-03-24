@@ -73,6 +73,13 @@ NSDate* fromShortIso8601(NSString *shortDate){
 	[self changeLoadStatusTo: accountLoadStatusLoaded];
 }
 
+- (void)rest:(Rest *)rest didFinishLoading:(NSString *)data{
+	NSDictionary *dict = (NSDictionary *)[data JSONFragmentValue];
+	[self populateFromDictionary:dict];
+	[self changeLoadStatusTo: accountLoadStatusLoaded];
+}
+
+
 
 -(void)onChangeNotify:(SEL)callme on:(id)callMeObj{
 	self.callbackSelector = callme;
@@ -85,7 +92,7 @@ NSDate* fromShortIso8601(NSString *shortDate){
 }
 
 -(void)loadCurrent{
-	[self.rest GET:@"/users/current.json" withCallback:@selector(populateFromReceivedData:)];
+	[self.rest GET:@"/users/current.json"];
 }
 
 -(void)authenticationFailed{
@@ -131,8 +138,9 @@ NSDate* fromShortIso8601(NSString *shortDate){
 
 
 -(id) init{
-	[super init];
-	errors = [NSDictionary dictionary];
+	[super initWithPath:@""];
+	self.errors = [[NSDictionary alloc] init];
+    return self;
 }
 
 
@@ -140,6 +148,7 @@ NSDate* fromShortIso8601(NSString *shortDate){
 {
 	[username release];
 	[password release];
+	[errors release];
 	[email release];
 	[gender release];
 	[birthdate release];

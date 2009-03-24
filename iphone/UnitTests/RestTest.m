@@ -60,10 +60,6 @@
 	dataFromConnectionFinishedLoading = data;
 }
 
--(void)anAction:(NSData*)data{
-	
-}
-
 @end
 
 @interface ImplementsNothingStubRestDelegate : NSObject<RestDelegate>
@@ -84,18 +80,23 @@
 @end
 
 
-@interface Rest(RestTest)
--(void) setAction:(SEL)action;
+@interface NSURLConnection(RestTest)
++ (NSURLConnection *)connectionWithRequest:(NSURLRequest *)request delegate:(id)delegate;
+
 @end
 
+NSURLRequest* connectionRequest ;
+id connectionDelegate;
 
-@implementation Rest(RestTest)
--(void) setAction:(SEL)_action{
-	action =_action;
+@implementation NSURLConnection(RestTest)
++ (NSURLConnection *)connectionWithRequest:(NSURLRequest *)request delegate:(id)delegate{
+	connectionRequest = request;
+	connectionDelegate = delegate;
+	return @"pretend connection";
 }
 
-
 @end
+
 
 @interface RestTest:GTMTestCase{
 	Rest *testee;
@@ -122,7 +123,8 @@
 	restDelegateWithCredentials = [[StubRestDelegateWithCredentials alloc] init];
 	testee = [[Rest alloc] init];
 	testee.delegate = restDelegate;
-	[testee setAction:@selector(anAction:)];
+	connectionRequest = nil;
+	connectionDelegate = nil;
 }
 
 -(void)tearDown{
@@ -202,6 +204,15 @@
 -(void)testRestDidFinishLoadingOnDelegateIsOptional{
 	testee.delegate = implementsNothingRestDelegate;
 	[testee connectionDidFinishLoading:nil];	
+}
+
+-(void)testGET{
+	[testee GET:@"/blah/woot"];	
+	STAssertNotNil(connectionRequest, @"connectionRequest");
+	STAssertEqualStrings(testee, connectionDelegate, nil);
+	
+	STAssertEqualStrings(@"GET", [connectionRequest HTTPMethod], @"method");
+	STAssertEqualStrings(@"http://localhost:3000/blah/woot", [[connectionRequest URL] absoluteString], @"url");
 }
 
 

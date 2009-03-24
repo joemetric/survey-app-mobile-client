@@ -18,7 +18,7 @@
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection {
 	if ([delegate respondsToSelector:@selector(rest:didFinishLoading:)]){
-        NSString *strbuffer = [[[NSString alloc] initWithData:buffer encoding:NSUTF8StringEncoding] autorelease];
+		NSString *strbuffer = [[[NSString alloc] initWithData:buffer encoding:NSUTF8StringEncoding] autorelease];
 		[self.delegate rest:self didFinishLoading:strbuffer];
 	}
 	[buffer setLength:0];
@@ -27,7 +27,7 @@
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
 	NSLog(@"Rest#connection:DidReceiveData:");
 	[buffer appendData:data];
-	[self.delegate performSelector:action withObject:data];
+	if (action) [self.delegate performSelector:action withObject:data];
 }
 
 -(NSURLCredential*) getCredential{
@@ -60,15 +60,15 @@
 {
 	[self cancelConnection];
 	conn = [[NSURLConnection alloc] initWithRequest:aRequest
-                                        delegate:self
-                                        startImmediately:YES];
+		delegate:self
+		startImmediately:YES];
 	if (!conn) {
-            if ([delegate respondsToSelector:@selector(rest:didFailWithError:)]) {
-                NSMutableDictionary *info = [NSMutableDictionary dictionaryWithObject:[aRequest URL] forKey:NSErrorFailingURLStringKey];
-                [info setObject:@"Could not open connection" forKey:NSLocalizedDescriptionKey];
-                NSError *error = [NSError errorWithDomain:@"Rest" code:1 userInfo:info];
-                [delegate rest:self didFailWithError:error];
-            }
+		if ([delegate respondsToSelector:@selector(rest:didFailWithError:)]) {
+			NSMutableDictionary *info = [NSMutableDictionary dictionaryWithObject:[aRequest URL] forKey:NSErrorFailingURLStringKey];
+			[info setObject:@"Could not open connection" forKey:NSLocalizedDescriptionKey];
+			NSError *error = [NSError errorWithDomain:@"Rest" code:1 userInfo:info];
+			[delegate rest:self didFailWithError:error];
+		}
 	}
 }
 
@@ -93,6 +93,19 @@
 
 	[url release];
 }
+
+- (void)GET:(NSString*) path{
+	NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@%@", [self hostString], path]];
+	action = nil;
+
+	[request setHTTPMethod:@"GET"];
+	[request setURL:url];
+
+	[NSURLConnection connectionWithRequest:request delegate:self];
+
+}
+
+
 
 - (NSDictionary *)POST:(NSString *)path withParameters:(NSDictionary *)parameters
 {
@@ -173,64 +186,66 @@
 
 - (BOOL)uploadData:(NSData *)data toURL:(NSURL *)url
 {
-    NSString *stringBoundary = [NSString stringWithString:@"0xJoeMetricBoundary"];
-    
-    NSMutableDictionary *headers = [[[NSMutableDictionary alloc] init] autorelease];
-    [headers setValue:@"no-cache" forKey:@"Cache-Control"];
-    [headers setValue:@"no-cache" forKey:@"Pragma"];
-    [headers setValue:[NSString stringWithFormat:@"multipart/form-data; boundary=%@", stringBoundary]
-             forKey:@"Content-Type"];
-    
-    request = [NSMutableURLRequest requestWithURL:url
-                                   cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                   timeoutInterval:60.0];
-    [request setHTTPMethod:@"POST"];
-    [request setAllHTTPHeaderFields:headers];
-    
-    NSMutableData *postData = [NSMutableData dataWithCapacity:[data length] + 512];
-    [postData appendData:[[NSString stringWithFormat:@"--%@\r\n", stringBoundary]
-                             dataUsingEncoding:NSUTF8StringEncoding]];
-    [postData appendData:[@"Content-Disposition: form-data; name=\"image\"; filename=\"test.bin\"\r\n\r\n" 
-                           dataUsingEncoding:NSUTF8StringEncoding]];
-    [postData appendData:data];
-    [postData appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n", stringBoundary]
-                             dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    [request setHTTPBody:postData];
+	NSString *stringBoundary = [NSString stringWithString:@"0xJoeMetricBoundary"];
 
-    NSURLResponse *response = [[NSURLResponse alloc] init];
-    [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:NULL];
+	NSMutableDictionary *headers = [[[NSMutableDictionary alloc] init] autorelease];
+	[headers setValue:@"no-cache" forKey:@"Cache-Control"];
+	[headers setValue:@"no-cache" forKey:@"Pragma"];
+	[headers setValue:[NSString stringWithFormat:@"multipart/form-data; boundary=%@", stringBoundary]
+		forKey:@"Content-Type"];
 
-    BOOL success = [(NSHTTPURLResponse*)response statusCode] == 200;
-    
-    [response release];
+	request = [NSMutableURLRequest requestWithURL:url
+		cachePolicy:NSURLRequestUseProtocolCachePolicy
+		timeoutInterval:60.0];
+	[request setHTTPMethod:@"POST"];
+	[request setAllHTTPHeaderFields:headers];
 
-    return success;
+	NSMutableData *postData = [NSMutableData dataWithCapacity:[data length] + 512];
+	[postData appendData:[[NSString stringWithFormat:@"--%@\r\n", stringBoundary]
+		dataUsingEncoding:NSUTF8StringEncoding]];
+	[postData appendData:[@"Content-Disposition: form-data; name=\"image\"; filename=\"test.bin\"\r\n\r\n" 
+		dataUsingEncoding:NSUTF8StringEncoding]];
+	[postData appendData:data];
+	[postData appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n", stringBoundary]
+		dataUsingEncoding:NSUTF8StringEncoding]];
+
+	[request setHTTPBody:postData];
+
+	NSURLResponse *response = [[NSURLResponse alloc] init];
+	[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:NULL];
+
+	BOOL success = [(NSHTTPURLResponse*)response statusCode] == 200;
+
+	[response release];
+
+	return success;
 }
 
 -(id) init{
-    [super init];
-    
-    host = [RestConfiguration host];
-    port = [RestConfiguration port];
-    
-    NSMutableDictionary* headers = [[[NSMutableDictionary alloc] init] autorelease];
-    [headers setValue:@"application/json" forKey:@"Content-Type"];
-    [headers setValue:@"text/json" forKey:@"Accept"];
-    [headers setValue:@"no-cache" forKey:@"Cache-Control"];
-    [headers setValue:@"no-cache" forKey:@"Pragma"];
-    [headers setValue:@"close" forKey:@"Connection"]; // Avoid HTTP 1.1 "keep alive" for the connection
-    
-    request = [NSMutableURLRequest requestWithURL:nil
-                                   cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                   timeoutInterval:60.0];
-    [request retain]; 
-    [request setAllHTTPHeaderFields:headers];
+	[super init];
+
+	host = [RestConfiguration host];
+	port = [RestConfiguration port];
+
+	NSMutableDictionary* headers = [[[NSMutableDictionary alloc] init] autorelease];
+	[headers setValue:@"application/json" forKey:@"Content-Type"];
+	[headers setValue:@"text/json" forKey:@"Accept"];
+	[headers setValue:@"no-cache" forKey:@"Cache-Control"];
+	[headers setValue:@"no-cache" forKey:@"Pragma"];
+	[headers setValue:@"close" forKey:@"Connection"]; // Avoid HTTP 1.1 "keep alive" for the connection
+
+	request = [NSMutableURLRequest requestWithURL:nil
+		cachePolicy:NSURLRequestUseProtocolCachePolicy
+		timeoutInterval:60.0];
+	[request retain]; 
+	[request setAllHTTPHeaderFields:headers];
 
 	buffer = [[NSMutableData alloc] init];
-    
-    return self;
+
+	return self;
 }
+
+
 
 
 - (void)dealloc{
