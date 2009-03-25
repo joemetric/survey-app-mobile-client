@@ -3,6 +3,21 @@
 #import "RestConfiguration.h"
 #import "RestStubbing.h"
 
+@interface StubRestDelegate : NSObject<RestDelegate>{
+@public
+	NSError *errorFromCallback;
+	BOOL authenticationFailed;
+    NSString *dataFromConnectionFinishedLoading;
+}
+@end
+
+@interface ImplementsNothingStubRestDelegate : NSObject<RestDelegate>
+@end
+
+@interface StubRestDelegateWithCredentials  : NSObject<RestDelegate>
+@end
+
+
 @interface RestTest:GTMTestCase{
 	Rest *testee;
 	StubSender *sender;
@@ -12,6 +27,34 @@
 	StubRestDelegate *restDelegate;
 	ImplementsNothingStubRestDelegate *implementsNothingRestDelegate;
 	StubRestDelegateWithCredentials* restDelegateWithCredentials;
+}
+@end
+
+@implementation StubRestDelegate
+
+-(void)authenticationFailed{
+	authenticationFailed = YES;
+}
+
+- (void)rest:(Rest *)rest didFailWithError:(NSError *)error{
+	errorFromCallback = error;
+}
+
+- (void)rest:(Rest *)rest didFinishLoading:(NSString *)data{
+	dataFromConnectionFinishedLoading = data;
+}
+
+@end
+
+
+@implementation ImplementsNothingStubRestDelegate
+@end
+
+@implementation StubRestDelegateWithCredentials
+- (NSURLCredential *)getCredential {
+    return [NSURLCredential credentialWithUser:@"rest delegate username"
+									  password:@"rest delegate password"
+								   persistence:NSURLCredentialPersistenceNone];	
 }
 @end
 

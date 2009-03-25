@@ -20,33 +20,6 @@
 }
 @end
 
-@implementation StubRestDelegate
-
--(void)authenticationFailed{
-	authenticationFailed = YES;
-}
-
-- (void)rest:(Rest *)rest didFailWithError:(NSError *)error{
-	errorFromCallback = error;
-}
-
-- (void)rest:(Rest *)rest didFinishLoading:(NSString *)data{
-	dataFromConnectionFinishedLoading = data;
-}
-
-@end
-
-
-@implementation ImplementsNothingStubRestDelegate
-@end
-
-@implementation StubRestDelegateWithCredentials
-- (NSURLCredential *)getCredential {
-    return [NSURLCredential credentialWithUser:@"rest delegate username"
-									  password:@"rest delegate password"
-								   persistence:NSURLCredentialPersistenceNone];	
-}
-@end
 
 
 

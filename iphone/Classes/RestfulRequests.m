@@ -2,11 +2,11 @@
 #import "RestConfiguration.h"
 
 @implementation RestfulRequests
-@synthesize delegate;
+@synthesize observer;
 
-+(id)restfulRequestsWithDelegate:(NSObject<RestDelegate>*)delegate{
++(id)restfulRequestsWithObserver:(NSObject<RestfulRequestsObserver>*)observer{
 	RestfulRequests* result = [[[RestfulRequests alloc] init] autorelease];
-	result.delegate = delegate;
+	result.observer = observer;
 	return result;
 }
 
@@ -18,7 +18,7 @@
 
 -(void)dealloc{
 	[buffer release];
-	self.delegate = nil;
+	self.observer = nil;
 	[super dealloc];
 }
 
@@ -50,9 +50,9 @@
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error{
 	if ([error code] == NSURLErrorUserCancelledAuthentication){
-		if ([delegate respondsToSelector:@selector(authenticationFailed)]) [delegate authenticationFailed];
+		[observer authenticationFailed];
 	}else{
-		if ([delegate respondsToSelector:@selector(rest:didFailWithError:)]) [delegate rest:nil didFailWithError:error];
+		[observer failedWithError:error];
 	}
 }
 
@@ -63,10 +63,8 @@
 
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection {
-	if ([delegate respondsToSelector:@selector(rest:didFinishLoading:)]){
-		NSString *strbuffer = [[[NSString alloc] initWithData:buffer encoding:NSUTF8StringEncoding] autorelease];
-		[self.delegate rest:nil didFinishLoading:strbuffer];
-	}
+	NSString *strbuffer = [[[NSString alloc] initWithData:buffer encoding:NSUTF8StringEncoding] autorelease];
+	[self.observer finishedLoading:strbuffer];
 	[buffer setLength:0];
 }
 

@@ -41,7 +41,7 @@
 
 -(void)testPopulationWithMostlyEmptyData{
 	NSString *data = @"{\"user\": { \"id\": 123},\"birthdate\": null}";
-	[account rest:nil didFinishLoading:data];
+	[account finishedLoading:data];
 	STAssertEquals(123, account.itemId, nil);
 
 }
@@ -50,7 +50,7 @@
 -(void)testPopulationFromRestDidFinishLoading{
 	NSString *data = @"{\"user\": { \"birthdate\": \"1973-03-27\", \"id\": 123, \"gender\":\"M\", \"login\": \"marvin\", \"income\": \"25283\", \"email\": \"marvin@example.com\"}}";
 
-	[account rest:nil didFinishLoading:data];
+	[account finishedLoading:data];
 
 	STAssertEquals(123, account.itemId, nil);
 	STAssertEqualStrings(@"marvin", account.username,nil);
@@ -80,7 +80,7 @@
 
 -(void)testStatusBecomesFailedOnError{
 	NSError *error = [NSError errorWithDomain:@"test.host" code:NSURLErrorTimedOut userInfo:nil];
-	[account rest:nil didFailWithError:error];
+	[account failedWithError:error];
 	STAssertEquals(accountLoadStatusLoadFailed, account.accountLoadStatus, @"accountLoadStatus");
 	STAssertEquals(1, accountChangeNotificationCount, @"accountChangeNotificationCount");
 	STAssertEqualStrings(error, account.lastLoadError, @"lastLoadError");
@@ -95,6 +95,17 @@
 	STAssertEquals(456, account.itemId, nil);
 	STAssertEqualStrings(@"rita", account.username, nil);
 
+}
+
+-(void)testCreate{
+    account.birthdate = [dateFormatter dateFromString:@"15 July 1969"];
+    account.email = @"bobby@bobo.net";
+    account.username = @"bobby";
+    account.password = @"pingupanga";
+    account.income = 12345;
+    account.gender = @"F";
+    
+    [account createNew];
 }
 
 

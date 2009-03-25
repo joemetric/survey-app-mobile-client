@@ -1,14 +1,9 @@
-//
-//  Account.h
-//  JoeMetric
-//
-//  Created by Scott Barron on 12/22/08.
-//  Copyright 2008 EdgeCase, LLC. All rights reserved.
-//
 #import "Resource.h"
+#import "RestfulRequests.h"
+
 typedef enum {accountLoadStatusNotLoaded, accountLoadStatusLoaded, accountLoadStatusLoadFailed, accountLoadStatusUnauthorized} AccountLoadStatus;
 
-@interface Account : Resource {
+@interface Account : Resource<RestfulRequestsObserver> {
     NSString *username;
     NSString *password;
     NSString *email;
@@ -29,6 +24,7 @@ typedef enum {accountLoadStatusNotLoaded, accountLoadStatusLoaded, accountLoadSt
 - (void)populateFromReceivedData:(NSData *)data;
 -(void)onChangeNotify:(SEL)callme on:(id)callMeObj;
 -(void)loadCurrent;
+-(void)createNew;
 
 @property (nonatomic, retain) NSString *username;
 @property (nonatomic, retain) NSString *password;

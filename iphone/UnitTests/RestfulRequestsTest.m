@@ -3,14 +3,35 @@
 #import "RestfulRequests.h"
 #import "RestConfiguration.h"
 
+@interface StubRestfulRequestsObserver : NSObject<RestfulRequestsObserver>{
+@public
+	NSError *errorFromCallback;
+	BOOL authenticationFailed;
+    NSString *dataFromConnectionFinishedLoading;
+}
+@end
+
+@implementation StubRestfulRequestsObserver
+-(void)authenticationFailed{
+	authenticationFailed = YES;
+}
+
+- (void)failedWithError:(NSError *)error{
+	errorFromCallback = error;
+}
+
+- (void)finishedLoading:(NSString *)data{
+	dataFromConnectionFinishedLoading = data;
+}
+
+@end
+
 
 @interface RestfulRequestsTest : GTMTestCase{
 	StubSender *sender;
 	StubbedAuthenticationChallenge *challenge;
 	NSError *errorFromCallback;
-	StubRestDelegate *restDelegate;
-	ImplementsNothingStubRestDelegate *implementsNothingRestDelegate;
-	StubRestDelegateWithCredentials* restDelegateWithCredentials;
+	StubRestfulRequestsObserver *restObserver;
 }
 RestfulRequests* testee;
 @end
@@ -22,23 +43,17 @@ RestfulRequests* testee;
 	sender = [[StubSender alloc] init];
 	challenge = [StubbedAuthenticationChallenge alloc];
 	challenge.sender = sender;
-	restDelegate = [[StubRestDelegate alloc] init];
-	implementsNothingRestDelegate = [[ImplementsNothingStubRestDelegate alloc] init];
-	restDelegateWithCredentials = [[StubRestDelegateWithCredentials alloc] init];
-	testee = [[Rest alloc] init];
-	testee.delegate = restDelegate;
+	restObserver = [[StubRestfulRequestsObserver alloc] init];
 	connectionRequest = nil;
 	connectionDelegate = nil;
-    testee = [[RestfulRequests restfulRequestsWithDelegate:restDelegate] retain];
+    testee = [[RestfulRequests restfulRequestsWithObserver:restObserver] retain];
 }
 
 -(void)tearDown{
 	[sender release];
 	[challenge release];
 	[errorFromCallback release];
-	[restDelegate release];
-	[implementsNothingRestDelegate release];
-	[restDelegateWithCredentials release];
+	[restObserver release];
     [testee release];
 }
 
@@ -78,28 +93,16 @@ RestfulRequests* testee;
 -(void)testAuthenticationFailedErrorPassedToDelegate{
 	NSError *error = [NSError errorWithDomain:@"test.host" code:NSURLErrorUserCancelledAuthentication userInfo:nil];
 	[testee connection:nil didFailWithError:error];
-	STAssertTrue(restDelegate->authenticationFailed,nil);   
-}
-
--(void)testAuthenticationFailedOnDelegatIsOptional{
-	testee.delegate = implementsNothingRestDelegate;
-	NSError *error = [NSError errorWithDomain:@"test.host" code:NSURLErrorUserCancelledAuthentication userInfo:nil];
-	[testee connection:nil didFailWithError:error];	
+	STAssertTrue(restObserver->authenticationFailed,nil);   
 }
 
 
 -(void)testErrorPassedToDelegate{
 	NSError *error = [NSError errorWithDomain:@"test.host" code:NSURLErrorTimedOut userInfo:nil];
 	[testee connection:nil didFailWithError:error];
-	STAssertEquals(error, restDelegate->errorFromCallback, nil);
+	STAssertEquals(error, restObserver->errorFromCallback, nil);
 }
 
--(void)testRestFailedWithErrorOnDelegateIsOptional{
-	testee.delegate = implementsNothingRestDelegate;
-	NSError *error = [NSError errorWithDomain:@"test.host" code:NSURLErrorTimedOut userInfo:nil];
-	[testee connection:nil didFailWithError:error];
-
-}
 
 
 
@@ -107,7 +110,7 @@ RestfulRequests* testee;
     [testee connection:nil didReceiveData:[@"hello " dataUsingEncoding:NSUTF8StringEncoding]];
     [testee connection:nil didReceiveData:[@"matey" dataUsingEncoding:NSUTF8StringEncoding]];
 	[testee connectionDidFinishLoading:nil];
-	STAssertEqualStrings(@"hello matey", restDelegate->dataFromConnectionFinishedLoading, nil);
+	STAssertEqualStrings(@"hello matey", restObserver->dataFromConnectionFinishedLoading, nil);
     
 }
 
@@ -117,15 +120,9 @@ RestfulRequests* testee;
 
     [testee connection:nil didReceiveData:[@"matey" dataUsingEncoding:NSUTF8StringEncoding]];
 	[testee connectionDidFinishLoading:nil];
-	STAssertEqualStrings(@"matey", restDelegate->dataFromConnectionFinishedLoading, nil);
+	STAssertEqualStrings(@"matey", restObserver->dataFromConnectionFinishedLoading, nil);
 	
 }
-
--(void)testRestDidFinishLoadingOnDelegateIsOptional{
-	testee.delegate = implementsNothingRestDelegate;
-	[testee connectionDidFinishLoading:nil];	
-}
-
 
 
 @end

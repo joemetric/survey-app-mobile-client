@@ -10,7 +10,6 @@
 #import "Rest.h"
 #import "JSON.h"
 #import "JoeMetricAppDelegate.h"
-#import "RestfulRequests.h"
 
 NSDate* fromShortIso8601(NSString *shortDate){
 	if ([NSNull null] == (id)shortDate || nil == shortDate) return  nil;
@@ -74,7 +73,7 @@ NSDate* fromShortIso8601(NSString *shortDate){
 	[self changeLoadStatusTo: accountLoadStatusLoaded];
 }
 
-- (void)rest:(Rest *)rest didFinishLoading:(NSString *)data{
+- (void)finishedLoading:(NSString *)data{
 	NSDictionary *dict = (NSDictionary *)[data JSONFragmentValue];
 	[self populateFromDictionary:dict];
 	[self changeLoadStatusTo: accountLoadStatusLoaded];
@@ -87,20 +86,22 @@ NSDate* fromShortIso8601(NSString *shortDate){
 	self.callbackObject = callMeObj;    
 }
 
+-(void)createNew{
+}
 
 +(Account*) currentAccount{
 	return ((JoeMetricAppDelegate*)[UIApplication sharedApplication].delegate).currentAccount;
 }
 
 -(void)loadCurrent{
-	[[RestfulRequests restfulRequestsWithDelegate:self] GET:@"/users/current.json"];
+	[[RestfulRequests restfulRequestsWithObserver:self] GET:@"/users/current.json"];
 }
 
 -(void)authenticationFailed{
 	[self changeLoadStatusTo:accountLoadStatusUnauthorized];
 }
 
-- (void)rest:(Rest *)rest didFailWithError:(NSError *)error{
+- (void)failedWithError:(NSError *)error{
 	[self changeLoadStatusTo:accountLoadStatusLoadFailed withError:error];
 }
 
