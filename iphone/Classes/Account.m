@@ -10,6 +10,7 @@
 #import "Rest.h"
 #import "JSON.h"
 #import "JoeMetricAppDelegate.h"
+#import "RestfulRequests.h"
 
 NSDate* fromShortIso8601(NSString *shortDate){
 	if ([NSNull null] == (id)shortDate || nil == shortDate) return  nil;

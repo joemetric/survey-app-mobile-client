@@ -93,6 +93,10 @@
 		DA86C18C0F778D8300CC6EBE /* NoAccountDataProfileDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = DA86C18B0F778D8300CC6EBE /* NoAccountDataProfileDataSource.m */; };
 		DA86C18D0F778D8400CC6EBE /* NoAccountDataProfileDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = DA86C18B0F778D8300CC6EBE /* NoAccountDataProfileDataSource.m */; };
 		DA86C1AD0F77983E00CC6EBE /* NoAccountDataProfileDataSourceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DA86C1AC0F77983E00CC6EBE /* NoAccountDataProfileDataSourceTest.m */; };
+		DA86C2E90F79629300CC6EBE /* RestfulRequests.m in Sources */ = {isa = PBXBuildFile; fileRef = DA86C2E80F79629300CC6EBE /* RestfulRequests.m */; };
+		DA86C2EA0F79629300CC6EBE /* RestfulRequests.m in Sources */ = {isa = PBXBuildFile; fileRef = DA86C2E80F79629300CC6EBE /* RestfulRequests.m */; };
+		DA86C2F10F7A2E8C00CC6EBE /* RestfulRequestsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DA86C2F00F7A2E8C00CC6EBE /* RestfulRequestsTest.m */; };
+		DA86C3290F7A433B00CC6EBE /* RestStubbing.m in Sources */ = {isa = PBXBuildFile; fileRef = DA86C3280F7A433B00CC6EBE /* RestStubbing.m */; };
 		FC21C5050F12B3AC00436E7F /* Survey.m in Sources */ = {isa = PBXBuildFile; fileRef = FC21C5040F12B3AC00436E7F /* Survey.m */; };
 		FC9756860F13B2300077926E /* SurveyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC9756850F13B2300077926E /* SurveyListViewController.m */; };
 		FC9756890F13B4070077926E /* SurveyListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC9756880F13B4070077926E /* SurveyListView.xib */; };
@@ -204,6 +208,11 @@
 		DA86C18A0F778D8300CC6EBE /* NoAccountDataProfileDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoAccountDataProfileDataSource.h; sourceTree = "<group>"; };
 		DA86C18B0F778D8300CC6EBE /* NoAccountDataProfileDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoAccountDataProfileDataSource.m; sourceTree = "<group>"; };
 		DA86C1AC0F77983E00CC6EBE /* NoAccountDataProfileDataSourceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoAccountDataProfileDataSourceTest.m; sourceTree = "<group>"; };
+		DA86C2E70F79629300CC6EBE /* RestfulRequests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestfulRequests.h; sourceTree = "<group>"; };
+		DA86C2E80F79629300CC6EBE /* RestfulRequests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestfulRequests.m; sourceTree = "<group>"; };
+		DA86C2F00F7A2E8C00CC6EBE /* RestfulRequestsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestfulRequestsTest.m; sourceTree = "<group>"; };
+		DA86C2F80F7A3D4B00CC6EBE /* RestStubbing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestStubbing.h; sourceTree = "<group>"; };
+		DA86C3280F7A433B00CC6EBE /* RestStubbing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestStubbing.m; sourceTree = "<group>"; };
 		FC21C5030F12B3AC00436E7F /* Survey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Survey.h; sourceTree = "<group>"; };
 		FC21C5040F12B3AC00436E7F /* Survey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Survey.m; sourceTree = "<group>"; };
 		FC9756840F13B2300077926E /* SurveyListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurveyListViewController.h; sourceTree = "<group>"; };
@@ -279,6 +288,8 @@
 				548D9B120F6AAEC100629CCE /* ResourceDelegate.h */,
 				DA86C0000F75C4A200CC6EBE /* RestConfiguration.h */,
 				DA86C0010F75C4A200CC6EBE /* RestConfiguration.m */,
+				DA86C2E70F79629300CC6EBE /* RestfulRequests.h */,
+				DA86C2E80F79629300CC6EBE /* RestfulRequests.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -433,6 +444,9 @@
 				DA86BEC70F73E45D00CC6EBE /* RestTest.m */,
 				DA86C0030F75C4CA00CC6EBE /* RestConfigurationTest.m */,
 				DA86C1AC0F77983E00CC6EBE /* NoAccountDataProfileDataSourceTest.m */,
+				DA86C2F00F7A2E8C00CC6EBE /* RestfulRequestsTest.m */,
+				DA86C2F80F7A3D4B00CC6EBE /* RestStubbing.h */,
+				DA86C3280F7A433B00CC6EBE /* RestStubbing.m */,
 			);
 			path = UnitTests;
 			sourceTree = "<group>";
@@ -621,6 +635,7 @@
 				54A6308B0F6EB2240038382D /* DatePickerViewController.m in Sources */,
 				DA7F48C10F7143890001E019 /* LabelledTableViewReadOnlyCell.m in Sources */,
 				DA86C18D0F778D8400CC6EBE /* NoAccountDataProfileDataSource.m in Sources */,
+				DA86C2EA0F79629300CC6EBE /* RestfulRequests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -657,6 +672,9 @@
 				DA86C0040F75C4CA00CC6EBE /* RestConfigurationTest.m in Sources */,
 				DA86C18C0F778D8300CC6EBE /* NoAccountDataProfileDataSource.m in Sources */,
 				DA86C1AD0F77983E00CC6EBE /* NoAccountDataProfileDataSourceTest.m in Sources */,
+				DA86C2E90F79629300CC6EBE /* RestfulRequests.m in Sources */,
+				DA86C2F10F7A2E8C00CC6EBE /* RestfulRequestsTest.m in Sources */,
+				DA86C3290F7A433B00CC6EBE /* RestStubbing.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

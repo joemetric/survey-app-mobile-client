@@ -1,28 +1,27 @@
 #import "GTMSenTestCase.h"
-#import "Rest.h"
-#import "RestConfiguration.h"
 #import "RestStubbing.h"
+#import "RestfulRequests.h"
+#import "RestConfiguration.h"
 
-@interface RestTest:GTMTestCase{
-	Rest *testee;
+
+@interface RestfulRequestsTest : GTMTestCase{
 	StubSender *sender;
 	StubbedAuthenticationChallenge *challenge;
 	NSError *errorFromCallback;
-	BOOL authenticationFailed;
 	StubRestDelegate *restDelegate;
 	ImplementsNothingStubRestDelegate *implementsNothingRestDelegate;
 	StubRestDelegateWithCredentials* restDelegateWithCredentials;
 }
+RestfulRequests* testee;
 @end
 
 
+@implementation RestfulRequestsTest
 
-@implementation RestTest
 -(void)setUp{
 	sender = [[StubSender alloc] init];
 	challenge = [StubbedAuthenticationChallenge alloc];
 	challenge.sender = sender;
-	authenticationFailed = NO;
 	restDelegate = [[StubRestDelegate alloc] init];
 	implementsNothingRestDelegate = [[ImplementsNothingStubRestDelegate alloc] init];
 	restDelegateWithCredentials = [[StubRestDelegateWithCredentials alloc] init];
@@ -30,21 +29,51 @@
 	testee.delegate = restDelegate;
 	connectionRequest = nil;
 	connectionDelegate = nil;
+    testee = [[RestfulRequests restfulRequestsWithDelegate:restDelegate] retain];
 }
 
 -(void)tearDown{
-	[restDelegate release];
-	[implementsNothingRestDelegate release];
 	[sender release];
 	[challenge release];
+	[errorFromCallback release];
+	[restDelegate release];
+	[implementsNothingRestDelegate release];
 	[restDelegateWithCredentials release];
-	[testee release];
+    [testee release];
 }
+
+-(void)testGET{
+	[testee GET:@"/blah/woot"];	
+	STAssertNotNil(connectionRequest, @"connectionRequest");
+	STAssertEqualStrings(testee, connectionDelegate, nil);
+	
+	STAssertEqualStrings(@"GET", [connectionRequest HTTPMethod], @"method");
+	STAssertEqualStrings(@"http://localhost:3000/blah/woot", [[connectionRequest URL] absoluteString], @"url");
+    
+	NSDictionary* headers = [connectionRequest allHTTPHeaderFields];
+	STAssertEqualStrings(@"no-cache", [headers valueForKey:@"Cache-Control"], nil);
+	STAssertEqualStrings(@"no-cache", [headers valueForKey:@"Pragma"], nil);
+	STAssertEqualStrings(@"text/json", [headers valueForKey:@"Accept"], nil);
+	STAssertEqualStrings(@"close", [headers valueForKey:@"Connection"], nil);
+}
+
+
 -(void)testAuthenticationFailedCancelsTheChallenge{
 	challenge.previousFailureCount=1;
 	[testee connection:nil didReceiveAuthenticationChallenge:challenge]; 
 	STAssertEqualStrings(challenge, sender->cancelledChallenge, nil);
 }
+
+-(void)testUsesRestConfigurationUrlCredentials{
+	challenge.previousFailureCount=0;
+	[RestConfiguration setUsername:@"marvin"];
+	[RestConfiguration setPassword:@"monkeyBoy"];
+	[testee connection:nil didReceiveAuthenticationChallenge:challenge]; 
+	STAssertEqualStrings(@"marvin", sender->credentialUsed.user, nil);
+	STAssertEqualStrings(@"monkeyBoy", sender->credentialUsed.password, nil);
+	
+}
+
 
 -(void)testAuthenticationFailedErrorPassedToDelegate{
 	NSError *error = [NSError errorWithDomain:@"test.host" code:NSURLErrorUserCancelledAuthentication userInfo:nil];
@@ -72,21 +101,7 @@
 
 }
 
--(void) testUsesRestConfigurationUrlCredentialsByDefault{
-	[RestConfiguration setUsername:@"marvin"];
-	[RestConfiguration setPassword:@"monkeyBoy"];
-	[testee connection:nil didReceiveAuthenticationChallenge:challenge]; 
-	STAssertEqualStrings(@"marvin", sender->credentialUsed.user, nil);
-	STAssertEqualStrings(@"monkeyBoy", sender->credentialUsed.password, nil);
-	
-}
 
--(void) testUsesDelegateCredentialsIfProvided{
-	testee.delegate = restDelegateWithCredentials;
-	[testee connection:nil didReceiveAuthenticationChallenge:challenge]; 
-	STAssertEqualStrings(@"rest delegate username", sender->credentialUsed.user, nil);
-	STAssertEqualStrings(@"rest delegate password", sender->credentialUsed.password, nil);
-}
 
 -(void)testDelegateReceivesNotificationWithDataAsStringWhenConnectionFinishesLoading{
     [testee connection:nil didReceiveData:[@"hello " dataUsingEncoding:NSUTF8StringEncoding]];
@@ -111,23 +126,6 @@
 	[testee connectionDidFinishLoading:nil];	
 }
 
--(void)xtestGET{
-	[testee GET:@"/blah/woot"];	
-	STAssertNotNil(connectionRequest, @"connectionRequest");
-	// STAssertEqualStrings(testee, connectionDelegate, nil);
-	
-	STAssertEqualStrings(@"GET", [connectionRequest HTTPMethod], @"method");
-	STAssertEqualStrings(@"http://localhost:3000/blah/woot", [[connectionRequest URL] absoluteString], @"url");
-
-	NSDictionary* headers = [connectionRequest allHTTPHeaderFields];
-	STAssertEqualStrings(@"no-cache", [headers valueForKey:@"Cache-Control"], nil);
-	STAssertEqualStrings(@"no-cache", [headers valueForKey:@"Pragma"], nil);
-	STAssertEqualStrings(@"text/json", [headers valueForKey:@"Accept"], nil);
-	STAssertEqualStrings(@"close", [headers valueForKey:@"Connection"], nil);
-}
 
 
 @end
-
-
-

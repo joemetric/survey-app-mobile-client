@@ -1,6 +1,7 @@
 #import "Rest.h"
 #import "JSON.h"
 #import "RestConfiguration.h"
+#import "RestfulRequests.h"
 
 @implementation Rest
 
@@ -95,20 +96,8 @@
 }
 
 - (void)GET:(NSString*) path{
-	NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@%@", [self hostString], path]];
-	action = nil;
-
-	NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
-
-    [req addValue:@"no-cache" forHTTPHeaderField:@"Cache-Control"];
-    [req addValue:@"no-cache" forHTTPHeaderField:@"Pragma"];
-    [req addValue:@"text/json" forHTTPHeaderField:@"Accept"];
-    [req addValue:@"close" forHTTPHeaderField:@"Connection"];
-    
-	[request setHTTPMethod:@"GET"];
-	[request setURL:url];
-
-	[NSURLConnection connectionWithRequest:req delegate:self];
+	RestfulRequests* restfulRequests = [[[RestfulRequests alloc] init] autorelease];
+	[restfulRequests GET:path];
 
 }
 
