@@ -5,4 +5,15 @@ class Survey < ActiveRecord::Base
 
   validates_presence_of :name, :amount
   validates_uniqueness_of :name
+
+  def bundle
+    attributes_hash = attributes.dup
+    attributes_hash["questions"] = []
+    
+    questions.each do |question|
+      attributes_hash["questions"] << {"question" => question.attributes}
+    end
+    
+    {"survey" => attributes_hash}
+  end
 end
