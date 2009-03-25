@@ -8,6 +8,7 @@
 
 #import "JoeMetricAppDelegate.h"
 #import "Account.h"
+#import "SurveyManager.h"
 
 @interface JoeMetricAppDelegate (Private)
 - (void) initializeSettings;
@@ -27,6 +28,10 @@
 	[self initializeSettings];
 	currentAccount = [[Account alloc] init];
 	[currentAccount loadCurrent];
+    NSLog(@"Firing off survey manager");
+    SurveyManager *sm = [[SurveyManager alloc] init];
+    [sm loadSurveysFromNetwork];
+    [sm release];
 }
 
 - (void) initializeSettings {

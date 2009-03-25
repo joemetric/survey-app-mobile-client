@@ -6,15 +6,18 @@
 //  Copyright 2009 EdgeCase LLC. All rights reserved.
 //
 
-#import "Resource.h"
-
-@interface Survey : Resource {
+@interface Survey : NSObject {
+    NSInteger        itemId;
     NSString        *name;
     NSDecimalNumber *amount;
 }
 
+@property (nonatomic, assign) NSInteger itemId;
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) NSDecimalNumber *amount;
+
++ (id)newFromDictionary:(NSDictionary *) dict;
++ (NSArray *)findAll;
 
 - (NSString *)nameAndAmountAsString;
 - (NSString *)amountAsDollarString;

@@ -35,16 +35,12 @@
 }
 
 -(void)refreshSurveys {
-    [Survey findAllWithDelegate:self];
+    self.surveys = [Survey findAll];
+    [self.tableView reloadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [self refreshSurveys];
-}
-
--(void)resource:(Resource*)res itemsReceived:(NSArray *)items {
-    self.surveys = items;
-    [self.tableView reloadData];
 }
     
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
