@@ -18,7 +18,6 @@
 
 
 -(NSURLCredential*) getCredential;
-- (void)GET:(NSString*) path;
 
 - (void)GET:(NSString*) path withCallback:(SEL)callback;
 - (NSDictionary *)POST:(NSString *)path withParameters:(NSDictionary *)parameters;

@@ -1,7 +1,6 @@
 #import "Rest.h"
 #import "JSON.h"
 #import "RestConfiguration.h"
-#import "RestfulRequests.h"
 
 @implementation Rest
 
@@ -95,11 +94,6 @@
 	[url release];
 }
 
-- (void)GET:(NSString*) path{
-	RestfulRequests* restfulRequests = [[[RestfulRequests alloc] init] autorelease];
-	[restfulRequests GET:path];
-
-}
 
 
 

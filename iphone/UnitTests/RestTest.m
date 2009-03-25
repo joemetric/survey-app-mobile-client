@@ -154,20 +154,6 @@
 	[testee connectionDidFinishLoading:nil];	
 }
 
--(void)xtestGET{
-	[testee GET:@"/blah/woot"];	
-	STAssertNotNil(connectionRequest, @"connectionRequest");
-	// STAssertEqualStrings(testee, connectionDelegate, nil);
-	
-	STAssertEqualStrings(@"GET", [connectionRequest HTTPMethod], @"method");
-	STAssertEqualStrings(@"http://localhost:3000/blah/woot", [[connectionRequest URL] absoluteString], @"url");
-
-	NSDictionary* headers = [connectionRequest allHTTPHeaderFields];
-	STAssertEqualStrings(@"no-cache", [headers valueForKey:@"Cache-Control"], nil);
-	STAssertEqualStrings(@"no-cache", [headers valueForKey:@"Pragma"], nil);
-	STAssertEqualStrings(@"text/json", [headers valueForKey:@"Accept"], nil);
-	STAssertEqualStrings(@"close", [headers valueForKey:@"Connection"], nil);
-}
 
 
 @end

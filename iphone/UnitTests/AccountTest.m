@@ -1,6 +1,7 @@
 #import "GTMSenTestCase.h"
 #import "Account.h"
 #import "Rest.h"
+#import "RestStubbing.h"
 
 
 
@@ -106,6 +107,9 @@
     account.gender = @"F";
     
     [account createNew];
+	// STAssertNotNil(connectionRequest, nil);
+
+
 }
 
 

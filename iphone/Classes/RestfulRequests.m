@@ -22,20 +22,30 @@
 	[super dealloc];
 }
 
-- (void)GET:(NSString*) path{
+-(NSMutableURLRequest*)jsonRequestWithHttpMethod:(NSString*)httpMethod andPath:(NSString*) path{
 	NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@:%d%@", [RestConfiguration host], [RestConfiguration port], path]];
 
-	NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
-    
-    [req addValue:@"no-cache" forHTTPHeaderField:@"Cache-Control"];
-    [req addValue:@"no-cache" forHTTPHeaderField:@"Pragma"];
-    [req addValue:@"text/json" forHTTPHeaderField:@"Accept"];
-    [req addValue:@"close" forHTTPHeaderField:@"Connection"];
-    
-    
-	[NSURLConnection connectionWithRequest:req delegate:self];
-    
+	NSMutableURLRequest* result = [NSMutableURLRequest requestWithURL:url];
+	result.HTTPMethod = httpMethod;
+    [result addValue:@"no-cache" forHTTPHeaderField:@"Cache-Control"];
+    [result addValue:@"no-cache" forHTTPHeaderField:@"Pragma"];
+    [result addValue:@"text/json" forHTTPHeaderField:@"Accept"];
+    [result addValue:@"close" forHTTPHeaderField:@"Connection"];
+	return result;
+}
+
+- (void)GET:(NSString*) path{
+	NSMutableURLRequest *req = [self jsonRequestWithHttpMethod:@"GET" andPath:path];    
+ 	[NSURLConnection connectionWithRequest:req delegate:self];
 } 
+
+
+-(void)POST:(NSString*) path withParams:(NSDictionary*)params{
+	NSMutableURLRequest *req = [self jsonRequestWithHttpMethod:@"POST" andPath:path];    
+	req.HTTPBody = [params JSONRepresentation];
+	[NSURLConnection connectionWithRequest:req delegate:self];
+}
+
 
 
 - (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
