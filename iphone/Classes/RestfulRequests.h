@@ -2,14 +2,14 @@
 #import "RestDelegate.h"
 
 @interface RestfulRequests : NSObject {
-    id<RestDelegate> delegate;
+    NSObject<RestDelegate>* delegate;
 	NSMutableData *buffer;
 
 }
 
-+(id)restfulRequestsWithDelegate:(id<RestDelegate>)delegate;
++(id)restfulRequestsWithDelegate:(NSObject<RestDelegate>*)delegate;
 
-@property (nonatomic, assign) id<RestDelegate> delegate;
+@property (nonatomic, assign) NSObject<RestDelegate>* delegate;
 - (void)GET:(NSString*) path;
 
 @end

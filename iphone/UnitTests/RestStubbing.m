@@ -1,5 +1,4 @@
 #import "RestStubbing.h"
-#import "GTMSenTestCase.h"
 
 
 @implementation StubbedAuthenticationChallenge
@@ -28,7 +27,6 @@
 }
 
 - (void)rest:(Rest *)rest didFailWithError:(NSError *)error{
-	STAssertNotNil(rest, nil);
 	errorFromCallback = error;
 }
 

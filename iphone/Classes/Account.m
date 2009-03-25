@@ -93,7 +93,7 @@ NSDate* fromShortIso8601(NSString *shortDate){
 }
 
 -(void)loadCurrent{
-	[self.rest GET:@"/users/current.json"];
+	[[RestfulRequests restfulRequestsWithDelegate:self] GET:@"/users/current.json"];
 }
 
 -(void)authenticationFailed{

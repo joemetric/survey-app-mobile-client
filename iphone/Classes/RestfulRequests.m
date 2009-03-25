@@ -4,7 +4,7 @@
 @implementation RestfulRequests
 @synthesize delegate;
 
-+(id)restfulRequestsWithDelegate:(id<RestDelegate>)delegate{
++(id)restfulRequestsWithDelegate:(NSObject<RestDelegate>*)delegate{
 	RestfulRequests* result = [[[RestfulRequests alloc] init] autorelease];
 	result.delegate = delegate;
 	return result;
@@ -52,7 +52,7 @@
 	if ([error code] == NSURLErrorUserCancelledAuthentication){
 		if ([delegate respondsToSelector:@selector(authenticationFailed)]) [delegate authenticationFailed];
 	}else{
-		if ([delegate respondsToSelector:@selector(rest:didFailWithError:)]) [delegate rest:self didFailWithError:error];
+		if ([delegate respondsToSelector:@selector(rest:didFailWithError:)]) [delegate rest:nil didFailWithError:error];
 	}
 }
 
@@ -65,7 +65,7 @@
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection {
 	if ([delegate respondsToSelector:@selector(rest:didFinishLoading:)]){
 		NSString *strbuffer = [[[NSString alloc] initWithData:buffer encoding:NSUTF8StringEncoding] autorelease];
-		[self.delegate rest:self didFinishLoading:strbuffer];
+		[self.delegate rest:nil didFinishLoading:strbuffer];
 	}
 	[buffer setLength:0];
 }
