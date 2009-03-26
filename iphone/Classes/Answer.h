@@ -10,11 +10,15 @@
     NSInteger itemId;
     NSInteger questionId;
     NSString *questionType;
+    NSString *answerString;
+    NSString *answerFile;
 }
 
 @property (nonatomic) NSInteger itemId;
 @property (nonatomic) NSInteger questionId;
 @property (nonatomic, retain) NSString *questionType;
+@property (nonatomic, retain) NSString *answerString;
+@property (nonatomic, retain) NSString *answerFile;
 
 + (id)newFromDictionary:(NSDictionary *)dict;
 

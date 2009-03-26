@@ -14,6 +14,8 @@
 @synthesize itemId;
 @synthesize questionId;
 @synthesize questionType;
+@synthesize answerString;
+@synthesize answerFile;
 
 + (id)newFromDictionary:(NSDictionary *)dict
 {
@@ -21,6 +23,8 @@
     answer.itemId = [[dict objectForKey:@"id"] integerValue];
     answer.questionId = [[dict objectForKey:@"question_id"] integerValue];
     answer.questionType = [dict objectForKey:@"question_type"];
+    answer.answerString = [dict objectForKey:@"answer_string"];
+    answer.answerFile = [dict objectForKey:@"answer_file"];
     return answer;
 }
 
@@ -29,7 +33,11 @@
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
     [parameters setObject:[NSNumber numberWithInt:self.questionId] forKey:@"question_id"];
     [parameters setObject:self.questionType forKey:@"question_type"];
-          
+    if (self.answerString)
+        [parameters setObject:self.answerString forKey:@"answer_string"];
+    if (self.answerFile)
+        [parameters setObject:self.answerFile forKey:@"answer_file"];
+    
     return [parameters autorelease];
 }
 
@@ -39,13 +47,13 @@
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSString *answerDirectory = [documentsDirectory stringByAppendingPathComponent:@"answers"];
-    NSString *answerFile = [answerDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%d.plist", self.questionId]];
+    NSString *answerFilePath = [answerDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%d.plist", self.questionId]];
 
     [[NSFileManager defaultManager] createDirectoryAtPath:answerDirectory attributes:nil];
 
-    NSLog(@"Storing answer: %@", answerFile);
+    NSLog(@"Storing answer: %@", answerFilePath);
     
-    [[self toDictionary] writeToFile:answerFile atomically:YES];
+    [[self toDictionary] writeToFile:answerFilePath atomically:YES];
     
     return YES;
 }
