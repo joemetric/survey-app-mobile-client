@@ -48,7 +48,6 @@
                                             bundle:nil];
     
     questionListViewController.survey = self.survey;
-    [questionListViewController refreshQuestions];
     
     [self.navigationController pushViewController:questionListViewController animated:YES];
     

@@ -15,6 +15,7 @@
 @synthesize itemId;
 @synthesize name;
 @synthesize amount;
+@synthesize questions;
 
 + (id)newFromDictionary:(NSDictionary *) dict
 {
@@ -22,6 +23,13 @@
     survey.itemId  = [[dict objectForKey:@"id"] integerValue];
     survey.name    = [dict objectForKey:@"name"];
     survey.amount  = [dict objectForKey:@"amount"];
+    
+    // questions?
+    for (id question in [dict objectForKey:@"questions"]) {
+        [survey.questions addObject:[Question newFromDictionary:[question objectForKey:@"question"]]];
+    }
+    
+    NSLog(@"Survey Questions: %@", survey.questions);
     return survey;
 }
 
@@ -46,6 +54,13 @@
 - (NSString *)nameAndAmountAsString
 {
     return [NSString stringWithFormat:@"%@ : %@", [self amountAsDollarString], self.name];
+}
+
+- (id)init {
+    if (self = [super init]) {
+        self.questions = [[NSMutableArray alloc] initWithCapacity:0];
+    }
+    return self;
 }
 
 - (void)dealloc {

@@ -10,11 +10,13 @@
     NSInteger        itemId;
     NSString        *name;
     NSDecimalNumber *amount;
+    NSMutableArray  *questions;
 }
 
 @property (nonatomic, assign) NSInteger itemId;
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) NSDecimalNumber *amount;
+@property (nonatomic, retain) NSMutableArray *questions;
 
 + (id)newFromDictionary:(NSDictionary *) dict;
 + (NSArray *)findAll;

@@ -38,6 +38,7 @@
     UIBarButtonItem *modalButton = [[UIBarButtonItem alloc] initWithCustomView:modalViewButton];
     self.navigationItem.rightBarButtonItem = modalButton;
     [modalViewButton release];
+    [self refreshQuestions];
 }
 
 - (void)resource:(Resource*)res itemsReceived:(NSArray *)items {
@@ -46,7 +47,8 @@
 }
 
 -(void)refreshQuestions {
-    [Question findAllFromRelation:self.survey withDelegate:self];
+    self.questions = survey.questions; // STODO change
+    [self.tableView reloadData];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

@@ -54,6 +54,10 @@
     [dataStr release];
 }
 
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    NSLog(@"Connection error: %@", error);
+}
+
 
 - (BOOL)loadSurveysFromNetwork {
     // connection to app, download, write plist
@@ -105,9 +109,9 @@
 }
 
 - (void)dealloc {
-    [host release];
-    [buffer release];
-    [request release];
+//    [host release];
+//    [buffer release];
+//    [request release];
     [super dealloc];
 }
 @end

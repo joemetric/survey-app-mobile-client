@@ -6,17 +6,19 @@
 //  Copyright 2008 EdgeCase, LLC. All rights reserved.
 //
 
-#import "Resource.h"
-
-@interface Question : Resource {
+@interface Question : NSObject {
+    NSInteger        itemId;
     NSString        *text;
     NSDecimalNumber *amount;
     NSString        *questionType;
 }
 
+@property (nonatomic, assign) NSInteger itemId;
 @property (nonatomic, retain) NSString *text;
 @property (nonatomic, retain) NSDecimalNumber *amount;
 @property (nonatomic, retain) NSString *questionType;
+
++ (id)newFromDictionary:(NSDictionary *)dict;
 
 - (NSString *)questionAndAmountAsString;
 - (NSString *)amountAsDollarString;
