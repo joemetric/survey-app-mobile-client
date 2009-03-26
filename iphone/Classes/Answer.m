@@ -11,25 +11,16 @@
 
 @implementation Answer
 
+@synthesize itemId;
 @synthesize questionId;
 @synthesize questionType;
-
-+ (NSString *)resourceName
-{
-    return @"answers";
-}
-
-+ (NSString *)resourceKey
-{
-    return @"answer";
-}
 
 + (id)newFromDictionary:(NSDictionary *)dict
 {
     Answer *answer = [[Answer alloc] init];
-    answer.itemId = [[[dict objectForKey:[self resourceKey]] objectForKey:@"id"] integerValue];
-    answer.questionId = [[[dict objectForKey:[self resourceKey]] objectForKey:@"question_id"] integerValue];
-    answer.questionType = [[dict objectForKey:[self resourceKey]] objectForKey:@"question_type"];
+    answer.itemId = [[dict objectForKey:@"id"] integerValue];
+    answer.questionId = [[dict objectForKey:@"question_id"] integerValue];
+    answer.questionType = [dict objectForKey:@"question_type"];
     return answer;
 }
 
@@ -38,12 +29,25 @@
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
     [parameters setObject:[NSNumber numberWithInt:self.questionId] forKey:@"question_id"];
     [parameters setObject:self.questionType forKey:@"question_type"];
+          
+    return [parameters autorelease];
+}
 
-    NSMutableDictionary *container = [[NSMutableDictionary alloc] init];
-    [container setObject:parameters forKey:[[self class] resourceKey]];
 
-    [parameters release];
-    return [container autorelease];
+- (BOOL)store {
+    NSLog(@"Storing answer");
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *answerDirectory = [documentsDirectory stringByAppendingPathComponent:@"answers"];
+    NSString *answerFile = [answerDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%d.plist", self.questionId]];
+
+    [[NSFileManager defaultManager] createDirectoryAtPath:answerDirectory attributes:nil];
+
+    NSLog(@"Storing answer: %@", answerFile);
+    
+    [[self toDictionary] writeToFile:answerFile atomically:YES];
+    
+    return YES;
 }
 
 - (void)dealloc
