@@ -61,6 +61,8 @@
 - (void)dealloc
 {
     [questionType release];
+    [answerFile release];
+    [answerString release];
     [super dealloc];
 }
 
