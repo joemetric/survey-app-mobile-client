@@ -45,10 +45,10 @@
 - (IBAction)takeSurvey:(id) sender {
     QuestionListViewController *questionListViewController = 
         [[QuestionListViewController alloc] initWithNibName:@"QuestionListView" 
-                                            bundle:nil];
+                                                     bundle:nil
+                                                     survey:self.survey];
     
-    questionListViewController.survey = self.survey;
-    
+
     [self.navigationController pushViewController:questionListViewController animated:YES];
     
     [questionListViewController release];

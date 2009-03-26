@@ -9,7 +9,6 @@
 #import "SurveyListViewController.h"
 #import "SurveyInfoViewController.h"
 #import "Survey.h"
-#import "ResourceDelegate.h"
 
 @interface SurveyListViewController (Private)
 - (void)refreshSurveys;
