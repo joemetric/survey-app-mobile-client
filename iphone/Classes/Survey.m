@@ -66,6 +66,7 @@
 - (void)dealloc {
     [name release];
     [amount release];
+    [questions release];
     [super dealloc];
 }
 

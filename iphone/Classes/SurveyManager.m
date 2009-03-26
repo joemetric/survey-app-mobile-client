@@ -109,9 +109,7 @@
 }
 
 - (void)dealloc {
-//    [host release];
-//    [buffer release];
-//    [request release];
+    [buffer release];
     [super dealloc];
 }
 @end
