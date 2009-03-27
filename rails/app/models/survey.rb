@@ -11,9 +11,9 @@ class Survey < ActiveRecord::Base
     attributes_hash["questions"] = []
     
     questions.each do |question|
-      attributes_hash["questions"] << {"question" => question.attributes}
+      attributes_hash["questions"] << question.attributes
     end
     
-    {"survey" => attributes_hash}
+    attributes_hash
   end
 end

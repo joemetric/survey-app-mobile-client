@@ -46,8 +46,8 @@
     // Can do 'sync' by checking updated_at from the plist
     for (id survey in surveys) {
         NSString *surveyFilePath = [surveyDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.plist", 
-                                                                                    [[survey objectForKey:@"survey"] objectForKey:@"id"]]];
-        [[survey objectForKey:@"survey"] writeToFile:surveyFilePath atomically:YES];
+                                                                                    [survey objectForKey:@"id"]]];
+        [survey writeToFile:surveyFilePath atomically:YES];
         NSLog(@"Wrote survey: %@", surveyFilePath);
     }
 

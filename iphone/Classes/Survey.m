@@ -26,7 +26,7 @@
     
     // questions?
     for (id question in [dict objectForKey:@"questions"]) {
-        [survey.questions addObject:[Question newFromDictionary:[question objectForKey:@"question"]]];
+        [survey.questions addObject:[Question newFromDictionary:question]];
     }
     
     NSLog(@"Survey Questions: %@", survey.questions);
