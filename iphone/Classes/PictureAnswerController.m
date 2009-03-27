@@ -96,6 +96,7 @@
     [self.navigationController popToViewController:self.questionList animated:YES];
 
     [params release];
+    [answer release];
 }
 
 - (IBAction)changePicture:(id)sender
