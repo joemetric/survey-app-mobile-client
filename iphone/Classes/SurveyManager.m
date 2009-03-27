@@ -26,12 +26,15 @@
     }
 }
 
-// STODO - need to also use didFinishLoading
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    [buffer appendData:data];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     NSString *dataStr;
     NSArray *surveys;
     
-    dataStr = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+    dataStr = [[NSString alloc] initWithData:buffer encoding:NSASCIIStringEncoding];
     
     surveys = [dataStr JSONFragmentValue];
     
