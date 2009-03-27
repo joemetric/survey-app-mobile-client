@@ -24,7 +24,7 @@
     survey.itemId    = [[dict objectForKey:@"id"] integerValue];
     survey.name      = [dict objectForKey:@"name"];
     survey.amount    = [dict objectForKey:@"amount"];
-    survey.updatedAt = [NSDate dateWithNaturalLanguageString:[dict objectForKey:@"updated_at"]];
+    survey.updatedAt = [NSDate dateWithTimeIntervalSince1970:[[dict objectForKey:@"updated_at"] intValue]];
     
     for (id question in [dict objectForKey:@"questions"]) {
         [survey.questions addObject:[Question newFromDictionary:question]];
