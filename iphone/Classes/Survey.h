@@ -11,12 +11,14 @@
     NSString        *name;
     NSDecimalNumber *amount;
     NSMutableArray  *questions;
+    NSDate          *updatedAt;
 }
 
 @property (nonatomic, assign) NSInteger itemId;
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) NSDecimalNumber *amount;
 @property (nonatomic, retain) NSMutableArray *questions;
+@property (nonatomic, retain) NSDate *updatedAt;
 
 + (id)newFromDictionary:(NSDictionary *) dict;
 + (NSArray *)findAll;

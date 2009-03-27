@@ -16,20 +16,20 @@
 @synthesize name;
 @synthesize amount;
 @synthesize questions;
+@synthesize updatedAt;
 
 + (id)newFromDictionary:(NSDictionary *) dict
 {
-    Survey *survey = [[Survey alloc] init];
-    survey.itemId  = [[dict objectForKey:@"id"] integerValue];
-    survey.name    = [dict objectForKey:@"name"];
-    survey.amount  = [dict objectForKey:@"amount"];
+    Survey *survey   = [[Survey alloc] init];
+    survey.itemId    = [[dict objectForKey:@"id"] integerValue];
+    survey.name      = [dict objectForKey:@"name"];
+    survey.amount    = [dict objectForKey:@"amount"];
+    survey.updatedAt = [NSDate dateWithNaturalLanguageString:[dict objectForKey:@"updated_at"]];
     
-    // questions?
     for (id question in [dict objectForKey:@"questions"]) {
         [survey.questions addObject:[Question newFromDictionary:question]];
     }
     
-    NSLog(@"Survey Questions: %@", survey.questions);
     return survey;
 }
 
@@ -37,7 +37,9 @@
     NSMutableArray *surveys = [[NSMutableArray alloc] initWithCapacity:0];
     
     for (id surveyDict in [SurveyManager loadSurveysFromLocal]) {
-        [surveys addObject:[self newFromDictionary:surveyDict]];
+        Survey *survey = [self newFromDictionary:surveyDict];
+        [surveys addObject:survey];
+        [survey release];
     }
     
     return [surveys autorelease];
@@ -67,6 +69,7 @@
     [name release];
     [amount release];
     [questions release];
+    [updatedAt release];
     [super dealloc];
 }
 
