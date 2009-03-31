@@ -63,7 +63,7 @@ RestfulRequests* testee;
 	STAssertEqualStrings(@"no-cache", [headers valueForKey:@"Pragma"], nil);
 	STAssertEqualStrings(@"text/json", [headers valueForKey:@"Accept"], nil);
 	STAssertEqualStrings(@"close", [headers valueForKey:@"Connection"], nil);
-
+	STAssertEqualStrings(@"application/json", [headers valueForKey:@"Content-Type"], nil);
 }
 
 -(void)testGET{

@@ -1,5 +1,6 @@
 #import "RestfulRequests.h"
 #import "RestConfiguration.h"
+#import "JSON.h"
 
 @implementation RestfulRequests
 @synthesize observer;
@@ -31,6 +32,7 @@
     [result addValue:@"no-cache" forHTTPHeaderField:@"Pragma"];
     [result addValue:@"text/json" forHTTPHeaderField:@"Accept"];
     [result addValue:@"close" forHTTPHeaderField:@"Connection"];
+	[result addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
 	return result;
 }
 

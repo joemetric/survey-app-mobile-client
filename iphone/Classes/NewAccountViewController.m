@@ -253,6 +253,14 @@
 #pragma mark Button actions
 
 - (IBAction) signup {
+	Account* account = [Account currentAccount];
+	account.username = username.text;
+	account.password = password.text;
+	account.email = emailAddress.text;
+	[account createNew];
+}
+
+- (IBAction) xsignup {
     [self.activityIndicator startAnimating];
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setObject:username.text forKey:@"login"];
