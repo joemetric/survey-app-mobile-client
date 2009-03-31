@@ -74,6 +74,10 @@
 }
 
 
+-(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
+	[buffer setLength:0];	
+}
+
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection {
 	NSString *strbuffer = [[[NSString alloc] initWithData:buffer encoding:NSUTF8StringEncoding] autorelease];
 	[self.observer finishedLoading:strbuffer];

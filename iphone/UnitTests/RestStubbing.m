@@ -40,5 +40,17 @@
 
 @end
 
+
+@implementation StubNSHTTPURLResponse
+@synthesize statusCode;
+
++(id) stubNSHTTPURLResponseWithStatusCode:(NSInteger)statusCode{
+	StubNSHTTPURLResponse* result = [[[StubNSHTTPURLResponse alloc] init] autorelease];
+	result.statusCode = statusCode;
+	return result;
+}
+
+@end
+
 NSURLRequest* connectionRequest ;
 id connectionDelegate;

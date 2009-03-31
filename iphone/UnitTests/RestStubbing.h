@@ -25,6 +25,16 @@
 -(NSString*) httpBodyAsString;
 @end
 
+
+@interface StubNSHTTPURLResponse : NSHTTPURLResponse{
+	NSInteger statusCode;
+}
+
++(id) stubNSHTTPURLResponseWithStatusCode:(NSInteger)statusCode;
+
+@property(nonatomic) NSInteger statusCode;
+@end
+
 extern NSURLRequest* connectionRequest ;
 extern id connectionDelegate;
 

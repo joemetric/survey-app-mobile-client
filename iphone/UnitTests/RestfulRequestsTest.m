@@ -146,4 +146,15 @@ RestfulRequests* testee;
 }
 
 
+-(void)testNotificationDataResetAfterReceivingResponse{
+	[testee connection:nil didReceiveData:[@"hello " dataUsingEncoding:NSUTF8StringEncoding]];
+	[testee connection:nil didReceiveResponse:[StubNSHTTPURLResponse stubNSHTTPURLResponseWithStatusCode:200]];
+
+	[testee connection:nil didReceiveData:[@"matey" dataUsingEncoding:NSUTF8StringEncoding]];
+	[testee connectionDidFinishLoading:nil];
+	STAssertEqualStrings(@"matey", restObserver->dataFromConnectionFinishedLoading, nil);
+
+}
+
+
 @end
