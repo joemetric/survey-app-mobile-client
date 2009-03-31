@@ -10,6 +10,7 @@
 #import "Rest.h"
 #import "JSON.h"
 #import "JoeMetricAppDelegate.h"
+#import "RestConfiguration.h"
 
 NSDate* fromShortIso8601(NSString *shortDate){
 	if ([NSNull null] == (id)shortDate || nil == shortDate) return  nil;
@@ -55,7 +56,6 @@ NSDate* fromShortIso8601(NSString *shortDate){
 
 -(void)populateFromDictionary:(NSDictionary*)dict{
 	NSDictionary *params = [dict objectForKey:@"user"];
-	self.username = [params objectForKey:@"login"];
 	self.email = [params objectForKey:@"email"];
 	self.gender = [params objectForKey:@"gender"];
 	self.income = [[params objectForKey:@"income"] integerValue];
@@ -74,9 +74,14 @@ NSDate* fromShortIso8601(NSString *shortDate){
 }
 
 - (void)finishedLoading:(NSString *)data{
+    NSLog(@"data:%@", data);
 	NSDictionary *dict = (NSDictionary *)[data JSONFragmentValue];
+
 	[self populateFromDictionary:dict];
 	[self changeLoadStatusTo: accountLoadStatusLoaded];
+
+	[RestConfiguration setUsername:username];
+	[RestConfiguration setPassword:password];
 }
 
 
@@ -153,6 +158,8 @@ NSDate* fromShortIso8601(NSString *shortDate){
 -(id) init{
 	[super initWithPath:@""];
 	self.errors = [[NSDictionary alloc] init];
+	self.username = [RestConfiguration username];
+	self.password = [RestConfiguration password];
     return self;
 }
 

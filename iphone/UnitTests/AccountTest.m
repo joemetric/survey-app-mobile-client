@@ -3,6 +3,7 @@
 #import "Rest.h"
 #import "RestStubbing.h"
 #import "NSString+Regex.h"
+#import "RestConfiguration.h"
 
 
 
@@ -48,6 +49,27 @@
 
 }
 
+-(void)testUsernameAndPasswordTakenFromRestConfiguration{
+	[RestConfiguration setUsername:@"rita"];
+	[RestConfiguration setPassword:@"my little secret"];
+
+	self.account = [[[Account alloc] init] autorelease];
+
+	STAssertEqualStrings(@"rita", account.username, nil);
+	STAssertEqualStrings(@"my little secret", account.password, nil);
+}
+
+
+-(void)testOnAccountDetailsLodedUsernameAndPasswordSavedToRestConfiguration{
+	account.username = @"marvin";
+	account.password = @"sue's secret";
+	
+	[account finishedLoading:@"{\"user\": { \"id\": 123},\"birthdate\": null}"];
+	
+	STAssertEqualStrings(@"marvin", [RestConfiguration username], nil);
+	STAssertEqualStrings(@"sue's secret", [RestConfiguration password], nil);
+}
+
 
 -(void)testPopulationFromRestDidFinishLoading{
 	NSString *data = @"{\"user\": { \"birthdate\": \"1973-03-27\", \"id\": 123, \"gender\":\"M\", \"login\": \"marvin\", \"income\": \"25283\", \"email\": \"marvin@example.com\"}}";
@@ -91,13 +113,14 @@
 
 
 -(void)testNewFromDictionary{
-	NSDictionary *params = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"rita", @"456",  nil] forKeys:[NSArray arrayWithObjects:@"login", @"id", nil]];
+	NSDictionary *params = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"rita@sue.com", @"456",  nil] forKeys:[NSArray arrayWithObjects:@"email", @"id", nil]];
 	NSDictionary *user = [NSDictionary dictionaryWithObject:params forKey:@"user"];
 	self.account = [[Account newFromDictionary:user] autorelease];
 	STAssertEquals(456, account.itemId, nil);
-	STAssertEqualStrings(@"rita", account.username, nil);
+	STAssertEqualStrings(@"rita@sue.com", account.email, nil);
 
 }
+
 
 -(void)testCreate{
     account.birthdate = [dateFormatter dateFromString:@"15 July 1969"];

@@ -17,14 +17,16 @@
 #import "Rest.h"
 
 @interface ProfileViewController (Private)
-- (BOOL) hasValidCredentials;
 - (NSObject<UITableViewDelegate, UITableViewDataSource>*) tableDelegate;
 @end
 
 @implementation ProfileViewController
-@synthesize tableView, credentialsController, newAccountController, noCredentials, validCredentials, noAccountData, account;
+@synthesize tableView, credentialsController, newAccountController, noCredentials, validCredentials, noAccountData;
 
 -(void)accountLoadStatusChanged:(Account*) _account{
+	if (accountLoadStatusLoaded == [Account currentAccount].accountLoadStatus){
+		[self dismissModalViewControllerAnimated:YES];
+	}
 	[self.tableView reloadData];
 }
 
@@ -64,6 +66,7 @@
 }
 
 - (void) displayModalNewAccountController {
+	[self dismissModalViewControllerAnimated:YES];
 	if( self.newAccountController == nil ) {
 		self.newAccountController = [[[NewAccountViewController alloc] initWithNibName:@"NewAccountView" bundle:nil] autorelease];
 		self.newAccountController.profileView = self;
@@ -74,15 +77,15 @@
 
 - (NSObject<UITableViewDelegate, UITableViewDataSource>*) tableDelegate {
 	switch([Account currentAccount].accountLoadStatus){
-	case accountLoadStatusUnauthorized:
+		case accountLoadStatusUnauthorized:
 		return self.noCredentials;
-	case accountLoadStatusNotLoaded:
+		case accountLoadStatusNotLoaded:
 		self.noAccountData.message = @"Loading account details.";
 		return self.noAccountData;	
-	case accountLoadStatusLoadFailed:
+		case accountLoadStatusLoadFailed:
 		self.noAccountData.message = @"Unable to load account details.";
 		return self.noAccountData;
-	default:
+		default:
 		return self.validCredentials;
 	}
 }
@@ -122,8 +125,7 @@
 	[noAccountData release];
 	[noCredentials release];
 	[validCredentials release];
-        [newAccountController release];
-        [account release];
+	[newAccountController release];
 	[super dealloc];
 }
 @end

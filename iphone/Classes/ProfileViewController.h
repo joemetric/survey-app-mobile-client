@@ -22,7 +22,6 @@
 	NoCredentialsProfileDataSource* noCredentials;
 	ValidCredentialsProfileDataSource* validCredentials;
 	NoAccountDataProfileDataSource* noAccountData;
-	Account *account;
 }
 
 - (void) displayModalCredentialsController;
@@ -34,6 +33,5 @@
 @property (nonatomic, retain) NoCredentialsProfileDataSource* noCredentials;
 @property (nonatomic, retain) ValidCredentialsProfileDataSource* validCredentials;
 @property (nonatomic, retain) NoAccountDataProfileDataSource* noAccountData;
-@property (nonatomic, retain) Account *account;
 
 @end
