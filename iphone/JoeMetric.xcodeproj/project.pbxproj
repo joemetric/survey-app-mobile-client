@@ -33,6 +33,8 @@
 		5420E3170F6E82E800DC2BDE /* LabelledTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5420E3160F6E82E800DC2BDE /* LabelledTableViewCell.m */; };
 		547608CE0F6E5B37007CCC58 /* NewAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 547608CD0F6E5B37007CCC58 /* NewAccountViewController.m */; };
 		547608D10F6E5B6B007CCC58 /* NewAccountView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 547608D00F6E5B6B007CCC58 /* NewAccountView.xib */; };
+		5488C43C0F8241DE00B29C76 /* WalletViewTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5488C43B0F8241DE00B29C76 /* WalletViewTableCell.xib */; };
+		5488C4410F8243C500B29C76 /* WalletViewTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5488C4400F8243C500B29C76 /* WalletViewTableCell.m */; };
 		548D9BC20F6AB49900629CCE /* CredentialsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 548D9BC10F6AB49900629CCE /* CredentialsView.xib */; };
 		548D9BC60F6AB5D100629CCE /* CredentialsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 548D9BC50F6AB5D100629CCE /* CredentialsViewController.m */; };
 		54A630360F6EA99B0038382D /* SegmentedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A630350F6EA99B0038382D /* SegmentedTableViewCell.m */; };
@@ -140,6 +142,9 @@
 		547608CC0F6E5B37007CCC58 /* NewAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewAccountViewController.h; sourceTree = "<group>"; };
 		547608CD0F6E5B37007CCC58 /* NewAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewAccountViewController.m; sourceTree = "<group>"; };
 		547608D00F6E5B6B007CCC58 /* NewAccountView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewAccountView.xib; sourceTree = "<group>"; };
+		5488C43B0F8241DE00B29C76 /* WalletViewTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletViewTableCell.xib; sourceTree = "<group>"; };
+		5488C43F0F8243C500B29C76 /* WalletViewTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletViewTableCell.h; sourceTree = "<group>"; };
+		5488C4400F8243C500B29C76 /* WalletViewTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletViewTableCell.m; sourceTree = "<group>"; };
 		548D9B100F6AAE7300629CCE /* RestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestDelegate.h; sourceTree = "<group>"; };
 		548D9B120F6AAEC100629CCE /* ResourceDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceDelegate.h; sourceTree = "<group>"; };
 		548D9BC10F6AB49900629CCE /* CredentialsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CredentialsView.xib; sourceTree = "<group>"; };
@@ -258,11 +263,10 @@
 		0D8DC8870EDE35B9007EC072 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5488C43E0F8243A200B29C76 /* Wallet View Controllers */,
 				54FA56FF0F6E444900939C65 /* Profile View Controllers */,
 				D2F2EF680F602F8900A8BB57 /* Answer View Controllers */,
 				FC9756830F13B20A0077926E /* Survey View Controllers */,
-				0D68A3CD0EDCD37A007CE721 /* WalletViewController.h */,
-				0D68A3CE0EDCD37A007CE721 /* WalletViewController.m */,
 				0D68A3E80EDCD5CC007CE721 /* MainWindowViewController.h */,
 				0D68A3E90EDCD5CC007CE721 /* MainWindowViewController.m */,
 			);
@@ -330,7 +334,6 @@
 				D2F22B490EFBEA0D0047CBFA /* Google Toolkit */,
 				D2F22B350EFBE9F60047CBFA /* Unit Test-Info.plist */,
 				54D2A5620F6C53D800C0C316 /* Settings.bundle */,
-				DA7F48BB0F7142650001E019 /* LabelledTableViewReadOnlyCell.xib */,
 			);
 			name = JoeMetric;
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 				548D9BC10F6AB49900629CCE /* CredentialsView.xib */,
 				0D68A3C80EDCD2DB007CE721 /* QuestionListView.xib */,
 				0D68A3D00EDCD38E007CE721 /* WalletView.xib */,
+				DA7F48BB0F7142650001E019 /* LabelledTableViewReadOnlyCell.xib */,
 				0D68A3D60EDCD3EF007CE721 /* ProfileView.xib */,
 				0DF9E3140EF3065200A522A1 /* QuestionView.xib */,
 				0DD8C95D0EF487C900A20937 /* SurveyQuestionView.xib */,
@@ -363,6 +367,7 @@
 				5420E3120F6E7F5B00DC2BDE /* LabelledTableViewCell.xib */,
 				54A630370F6EAA6D0038382D /* SegmentedTableViewCell.xib */,
 				54A6308F0F6EB2D20038382D /* DatePickerView.xib */,
+				5488C43B0F8241DE00B29C76 /* WalletViewTableCell.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -375,6 +380,17 @@
 				288765070DF74369002DB57D /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5488C43E0F8243A200B29C76 /* Wallet View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0D68A3CD0EDCD37A007CE721 /* WalletViewController.h */,
+				0D68A3CE0EDCD37A007CE721 /* WalletViewController.m */,
+				5488C43F0F8243C500B29C76 /* WalletViewTableCell.h */,
+				5488C4400F8243C500B29C76 /* WalletViewTableCell.m */,
+			);
+			name = "Wallet View Controllers";
 			sourceTree = "<group>";
 		};
 		54FA56FF0F6E444900939C65 /* Profile View Controllers */ = {
@@ -570,6 +586,7 @@
 				54A630380F6EAA6D0038382D /* SegmentedTableViewCell.xib in Resources */,
 				54A630900F6EB2D20038382D /* DatePickerView.xib in Resources */,
 				DA7F48BC0F7142660001E019 /* LabelledTableViewReadOnlyCell.xib in Resources */,
+				5488C43C0F8241DE00B29C76 /* WalletViewTableCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -636,6 +653,7 @@
 				DA7F48C10F7143890001E019 /* LabelledTableViewReadOnlyCell.m in Sources */,
 				DA86C18D0F778D8400CC6EBE /* NoAccountDataProfileDataSource.m in Sources */,
 				DA86C2EA0F79629300CC6EBE /* RestfulRequests.m in Sources */,
+				5488C4410F8243C500B29C76 /* WalletViewTableCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
