@@ -51,7 +51,7 @@ module AutoTest
     output = `xcodebuild -target "Unit Test" -configuration Debug -sdk iphonesimulator2.1 2>&1`
     failure_line = nil
     output.each do |line|
-      if line =~ /error:|^Executed.*(\d+) failures|Undefined symbols|PurpleSystemEventPort|FAILED/
+      if line =~ /error:|^Executed.*(\d+) failures|Undefined symbols|PurpleSystemEventPort|FAILED|Segmentation fault/
         if $1.nil? || $1.to_i > 0
           failure_line||= line
           line.colour = :red

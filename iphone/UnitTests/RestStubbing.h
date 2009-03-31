@@ -21,6 +21,10 @@
 
 @end
 
+@interface NSURLRequest(RestStubbing)
+-(NSString*) httpBodyAsString;
+@end
+
 extern NSURLRequest* connectionRequest ;
 extern id connectionDelegate;
 

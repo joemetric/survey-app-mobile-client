@@ -42,7 +42,7 @@
 
 -(void)POST:(NSString*) path withParams:(NSDictionary*)params{
 	NSMutableURLRequest *req = [self jsonRequestWithHttpMethod:@"POST" andPath:path];    
-	req.HTTPBody = [params JSONRepresentation];
+	req.HTTPBody = [[params JSONRepresentation] dataUsingEncoding:NSUTF8StringEncoding];
 	[NSURLConnection connectionWithRequest:req delegate:self];
 }
 

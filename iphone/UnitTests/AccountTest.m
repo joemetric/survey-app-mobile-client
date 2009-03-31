@@ -2,6 +2,7 @@
 #import "Account.h"
 #import "Rest.h"
 #import "RestStubbing.h"
+#import "NSString+Regex.h"
 
 
 
@@ -107,9 +108,22 @@
     account.gender = @"F";
     
     [account createNew];
-	// STAssertNotNil(connectionRequest, nil);
+	STAssertNotNil(connectionRequest, @"connectionRequest");
+	STAssertEqualStrings(@"http://localhost:3000/users.json", [[connectionRequest URL] relativeString], @"url");
+	STAssertEqualStrings(@"POST", connectionRequest.HTTPMethod, @"http method");
+    
+    NSData* data = [connectionRequest HTTPBody];
+	
+	NSString* body = [connectionRequest httpBodyAsString];
+  
+    STAssertNotNil([body matchRegex:@"^{\"user\":{"], body);
+    STAssertNotNil([body matchRegex:@"\"email\":\"bobby@bobo.net\""], body);
+    STAssertNotNil([body matchRegex:@"\"login\":\"bobby\""], body);
+    STAssertNotNil([body matchRegex:@"\"password\":\"pingupanga\""], body);
+    STAssertNotNil([body matchRegex:@"\"password_confirmation\":\"pingupanga\""], body);
 
-
+    STAssertNotNil([body matchRegex:@"\"income\":12345"], body, nil);
+    STAssertNotNil([body matchRegex:@"\"gender\":\"F\""], body);
 }
 
 

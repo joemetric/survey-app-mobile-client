@@ -87,6 +87,17 @@ NSDate* fromShortIso8601(NSString *shortDate){
 }
 
 -(void)createNew{
+	NSMutableDictionary* fields = [NSMutableDictionary dictionary];
+	[fields setValue:self.email forKey:@"email"];
+	[fields setValue:self.password forKey:@"password"];
+	[fields setValue:self.password forKey:@"password_confirmation"];
+	[fields setValue:[NSNumber numberWithInteger:self.income] forKey:@"income"];
+	[fields setValue:self.gender forKey:@"gender"];
+	[fields setValue:self.username forKey:@"login"];
+	
+	NSDictionary* container = [NSDictionary dictionaryWithObject:fields forKey:@"user"];
+	
+	[[RestfulRequests restfulRequestsWithObserver:self] POST:@"/users.json" withParams:container];
 }
 
 +(Account*) currentAccount{

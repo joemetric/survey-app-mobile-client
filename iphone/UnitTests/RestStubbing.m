@@ -33,5 +33,12 @@
 @end
 
 
+@implementation NSURLRequest(RestStubbing)
+-(NSString*) httpBodyAsString{
+	return [[[NSString alloc] initWithData:[self HTTPBody] encoding:NSUTF8StringEncoding] autorelease];
+}
+
+@end
+
 NSURLRequest* connectionRequest ;
 id connectionDelegate;

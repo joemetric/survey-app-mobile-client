@@ -88,7 +88,7 @@ RestfulRequests* testee;
 	STAssertEqualStrings(@"http://localhost:3000/wibble/wobble", [[connectionRequest URL] absoluteString], @"url");
 	[self assertHeaders];
 	
-	STAssertEqualStrings(@"{\"obj\":{\"size\":\"big\"}}", connectionRequest.HTTPBody, nil);
+	STAssertEqualStrings(@"{\"obj\":{\"size\":\"big\"}}", connectionRequest.httpBodyAsString, nil);
 
 }
 
