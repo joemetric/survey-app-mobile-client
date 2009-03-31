@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of   :email
   validates_format_of       :email,    :with => Authentication.email_regex, :message => Authentication.bad_email_message
 
+  has_one :wallet
   has_many :answers
 
   # HACK HACK HACK -- how to do attr_accessible from here?
@@ -25,7 +26,7 @@ class User < ActiveRecord::Base
   # anything else you want your user to change should be added here.
   attr_accessible :login, :email, :name, :password, :password_confirmation, :income, :birthdate, :gender
 
-
+  after_create :create_wallet
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   #
@@ -35,7 +36,7 @@ class User < ActiveRecord::Base
   #
   def self.authenticate(login, password)
     return nil if login.blank? || password.blank?
-    u = find_by_login(login) # need to get the salt
+    u = find_by_login(login, :include => :wallet) # need to get the salt
     u && u.authenticated?(password) ? u : nil
   end
 
@@ -54,5 +55,12 @@ class User < ActiveRecord::Base
   def income
     @income ||= self[:income].to_s.extend(Income)
   end
+  
+  def complete_survey( survey )
+    wallet.balance += survey.amount
+  end
 
+  def create_wallet
+    Wallet.create(:user => self) if( self.wallet.nil? )
+  end 
 end
