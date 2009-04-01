@@ -53,6 +53,9 @@ NSDate* fromShortIso8601(NSString *shortDate){
 	return @"user";
 }
 
+-(BOOL)hasErrors {
+	return self.errors != nil && self.errors.count > 0;
+}
 
 -(void)populateFromDictionary:(NSDictionary*)dict{
 	NSDictionary *params = [dict objectForKey:@"user"];

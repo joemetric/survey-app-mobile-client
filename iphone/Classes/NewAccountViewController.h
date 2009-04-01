@@ -28,6 +28,8 @@
 	ProfileViewController* profileView;
 	
 	BOOL keyboardIsShowing;
+	
+	NSDictionary* errors;
 }
 
 - (IBAction) signup;
@@ -49,4 +51,6 @@
 @property (nonatomic, retain) IBOutlet DatePickerViewController* datePicker;
 
 @property (nonatomic) BOOL keyboardIsShowing;
+
+@property (nonatomic, retain) NSDictionary* errors;
 @end

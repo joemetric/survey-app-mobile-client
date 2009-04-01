@@ -30,6 +30,7 @@ typedef enum {
 -(void)onChangeNotify:(SEL)callme on:(id)callMeObj;
 -(void)loadCurrent;
 -(void)createNew;
+-(BOOL)hasErrors;
 
 @property (nonatomic, retain) NSString *username;
 @property (nonatomic, retain) NSString *password;
