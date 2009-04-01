@@ -8,16 +8,26 @@
 
 Account *gAccount;
 NSInteger gProfileViewControllerTableReloadedCount;
+NSInteger gModalViewControllerDismissCount;
 
-@interface ProfileViewController(ProfileViewControllerTest)
-- (NSObject<UITableViewDelegate, UITableViewDataSource>*) tableDelegate;
+@interface ProfileViewController(ProfileViewControllerTestPeek)
+-(NSObject<UITableViewDelegate, UITableViewDataSource>*) tableDelegate;
+-(void)accountLoadStatusChanged:(Account*) _account;
 @end
 
+@interface ProfileViewController(ProfileViewControllerTest)
+@end
+
+@implementation ProfileViewController(ProfileViewControllerTest)
+- (void)dismissModalViewControllerAnimated:(BOOL)animated{
+	gModalViewControllerDismissCount++;
+}
+	
+@end
 
 @interface Account(ProfileViewControllerTest)
 +(Account*) currentAccount;
 -(void)setAccountLoadStatus:(AccountLoadStatus)loadStatus;
-
 @end
 
 @implementation Account(ProfileViewControllerTest)
@@ -56,6 +66,7 @@ NSInteger gProfileViewControllerTableReloadedCount;
 -(void)setUp{
     gAccount = [[Account alloc] init];
 	gProfileViewControllerTableReloadedCount = 0;
+	gModalViewControllerDismissCount = 0;
 	testee = [[ProfileViewController alloc] init];
 	testee.tableView = [[UITableView alloc] init];
 }
@@ -75,6 +86,17 @@ NSInteger gProfileViewControllerTableReloadedCount;
 	
 }
 
+-(void)testModalViewControllerDismissedIfAccountLoadStatusBecomes_accountLoadStatusLoaded{
+	[gAccount  setAccountLoadStatus:accountLoadStatusLoaded];	
+	[testee accountLoadStatusChanged:gAccount];
+	STAssertEquals(1, gModalViewControllerDismissCount, nil);	
+}
+
+-(void)testModalViewControllerNotDismissedIfAccountLoadStatusBecomesNotLoaed{
+	[gAccount  setAccountLoadStatus:accountLoadStatusLoadFailed];	
+	[testee accountLoadStatusChanged:gAccount];
+	STAssertEquals(0, gModalViewControllerDismissCount, nil);	
+}
 
 
 
@@ -90,6 +112,8 @@ NSInteger gProfileViewControllerTableReloadedCount;
 	STAssertEqualStrings(@"Unable to load account details.", [testee tableView:nil titleForFooterInSection:0], nil);
 	[self assertTableDelegateIsExpectedType:[NoCredentialsProfileDataSource class]
 	 	forAccountLoadStatus:accountLoadStatusUnauthorized describedAs:@"unauthorised"];
+	[self assertTableDelegateIsExpectedType:[NoCredentialsProfileDataSource class]
+	 	forAccountLoadStatus:accountLoadStatusFailedValidation describedAs:@"not loaded"];
 }
 
 

@@ -99,6 +99,13 @@
 		DA86C2EA0F79629300CC6EBE /* RestfulRequests.m in Sources */ = {isa = PBXBuildFile; fileRef = DA86C2E80F79629300CC6EBE /* RestfulRequests.m */; };
 		DA86C2F10F7A2E8C00CC6EBE /* RestfulRequestsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DA86C2F00F7A2E8C00CC6EBE /* RestfulRequestsTest.m */; };
 		DA86C3290F7A433B00CC6EBE /* RestStubbing.m in Sources */ = {isa = PBXBuildFile; fileRef = DA86C3280F7A433B00CC6EBE /* RestStubbing.m */; };
+		DAA2E6530F8395AB0004D56E /* NewAccountViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA2E6520F8395AB0004D56E /* NewAccountViewControllerTest.m */; };
+		DAA2E6540F839FA20004D56E /* LabelledTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5420E3120F6E7F5B00DC2BDE /* LabelledTableViewCell.xib */; };
+		DAA2E6680F83A0160004D56E /* LabelledTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5420E3160F6E82E800DC2BDE /* LabelledTableViewCell.m */; };
+		DAA2E6750F83A2970004D56E /* SegmentedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A630350F6EA99B0038382D /* SegmentedTableViewCell.m */; };
+		DAA2E6840F83A3970004D56E /* SegmentedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54A630370F6EAA6D0038382D /* SegmentedTableViewCell.xib */; };
+		DAE91B630F823122009CEE14 /* NSString+Regex.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE91B620F823122009CEE14 /* NSString+Regex.m */; };
+		DAE91B650F823144009CEE14 /* NSString+RegexTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE91B640F823144009CEE14 /* NSString+RegexTest.m */; };
 		FC21C5050F12B3AC00436E7F /* Survey.m in Sources */ = {isa = PBXBuildFile; fileRef = FC21C5040F12B3AC00436E7F /* Survey.m */; };
 		FC9756860F13B2300077926E /* SurveyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC9756850F13B2300077926E /* SurveyListViewController.m */; };
 		FC9756890F13B4070077926E /* SurveyListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC9756880F13B4070077926E /* SurveyListView.xib */; };
@@ -218,6 +225,10 @@
 		DA86C2F00F7A2E8C00CC6EBE /* RestfulRequestsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestfulRequestsTest.m; sourceTree = "<group>"; };
 		DA86C2F80F7A3D4B00CC6EBE /* RestStubbing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestStubbing.h; sourceTree = "<group>"; };
 		DA86C3280F7A433B00CC6EBE /* RestStubbing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestStubbing.m; sourceTree = "<group>"; };
+		DAA2E6520F8395AB0004D56E /* NewAccountViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewAccountViewControllerTest.m; sourceTree = "<group>"; };
+		DAE91B610F823122009CEE14 /* NSString+Regex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Regex.h"; sourceTree = "<group>"; };
+		DAE91B620F823122009CEE14 /* NSString+Regex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Regex.m"; sourceTree = "<group>"; };
+		DAE91B640F823144009CEE14 /* NSString+RegexTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+RegexTest.m"; sourceTree = "<group>"; };
 		FC21C5030F12B3AC00436E7F /* Survey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Survey.h; sourceTree = "<group>"; };
 		FC21C5040F12B3AC00436E7F /* Survey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Survey.m; sourceTree = "<group>"; };
 		FC9756840F13B2300077926E /* SurveyListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurveyListViewController.h; sourceTree = "<group>"; };
@@ -463,6 +474,10 @@
 				DA86C2F00F7A2E8C00CC6EBE /* RestfulRequestsTest.m */,
 				DA86C2F80F7A3D4B00CC6EBE /* RestStubbing.h */,
 				DA86C3280F7A433B00CC6EBE /* RestStubbing.m */,
+				DAE91B610F823122009CEE14 /* NSString+Regex.h */,
+				DAE91B620F823122009CEE14 /* NSString+Regex.m */,
+				DAE91B640F823144009CEE14 /* NSString+RegexTest.m */,
+				DAA2E6520F8395AB0004D56E /* NewAccountViewControllerTest.m */,
 			);
 			path = UnitTests;
 			sourceTree = "<group>";
@@ -563,6 +578,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54A630380F6EAA6D0038382D /* SegmentedTableViewCell.xib in Resources */,
 				28AD73880D9D96C1002E5188 /* MainWindow.xib in Resources */,
 				0D68A3C90EDCD2DB007CE721 /* QuestionListView.xib in Resources */,
 				0D68A3D10EDCD38E007CE721 /* WalletView.xib in Resources */,
@@ -583,7 +599,6 @@
 				54D2A5630F6C53D800C0C316 /* Settings.bundle in Resources */,
 				547608D10F6E5B6B007CCC58 /* NewAccountView.xib in Resources */,
 				5420E3130F6E7F5B00DC2BDE /* LabelledTableViewCell.xib in Resources */,
-				54A630380F6EAA6D0038382D /* SegmentedTableViewCell.xib in Resources */,
 				54A630900F6EB2D20038382D /* DatePickerView.xib in Resources */,
 				DA7F48BC0F7142660001E019 /* LabelledTableViewReadOnlyCell.xib in Resources */,
 				5488C43C0F8241DE00B29C76 /* WalletViewTableCell.xib in Resources */,
@@ -594,6 +609,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAA2E6540F839FA20004D56E /* LabelledTableViewCell.xib in Resources */,
+				DAA2E6840F83A3970004D56E /* SegmentedTableViewCell.xib in Resources */,
 				DA7F49DC0F715E400001E019 /* LabelledTableViewReadOnlyCell.xib in Resources */,
 				FC97568A0F13B4070077926E /* SurveyListView.xib in Resources */,
 			);
@@ -661,7 +678,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAA2E6680F83A0160004D56E /* LabelledTableViewCell.m in Sources */,
 				DA86BE730F72B29C00CC6EBE /* ProfileViewController.m in Sources */,
+				DAA2E6750F83A2970004D56E /* SegmentedTableViewCell.m in Sources */,
 				DA7F49080F71506A0001E019 /* ValidCredentialsProfileDataSource.m in Sources */,
 				D255487C0F13C2950098100B /* Survey.m in Sources */,
 				D2F22BB20EFBF3C30047CBFA /* Question.m in Sources */,
@@ -693,6 +712,9 @@
 				DA86C2E90F79629300CC6EBE /* RestfulRequests.m in Sources */,
 				DA86C2F10F7A2E8C00CC6EBE /* RestfulRequestsTest.m in Sources */,
 				DA86C3290F7A433B00CC6EBE /* RestStubbing.m in Sources */,
+				DAE91B630F823122009CEE14 /* NSString+Regex.m in Sources */,
+				DAE91B650F823144009CEE14 /* NSString+RegexTest.m in Sources */,
+				DAA2E6530F8395AB0004D56E /* NewAccountViewControllerTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

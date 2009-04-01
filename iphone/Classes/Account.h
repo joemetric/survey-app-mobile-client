@@ -1,7 +1,12 @@
 #import "Resource.h"
 #import "RestfulRequests.h"
 
-typedef enum {accountLoadStatusNotLoaded, accountLoadStatusLoaded, accountLoadStatusLoadFailed, accountLoadStatusUnauthorized} AccountLoadStatus;
+typedef enum {
+	accountLoadStatusNotLoaded,
+	accountLoadStatusLoaded, 
+	accountLoadStatusLoadFailed, 
+	accountLoadStatusUnauthorized,
+	accountLoadStatusFailedValidation} AccountLoadStatus;
 
 @interface Account : Resource<RestfulRequestsObserver> {
     NSString *username;

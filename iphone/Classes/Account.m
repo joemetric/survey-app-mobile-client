@@ -10,6 +10,7 @@
 #import "Rest.h"
 #import "JSON.h"
 #import "JoeMetricAppDelegate.h"
+#import "RestConfiguration.h"
 
 NSDate* fromShortIso8601(NSString *shortDate){
 	if ([NSNull null] == (id)shortDate || nil == shortDate) return  nil;
@@ -58,28 +59,50 @@ NSDate* fromShortIso8601(NSString *shortDate){
 
 -(void)populateFromDictionary:(NSDictionary*)dict{
 	NSDictionary *params = [dict objectForKey:@"user"];
-	self.username = [params objectForKey:@"login"];
 	self.email = [params objectForKey:@"email"];
 	self.gender = [params objectForKey:@"gender"];
 	self.income = [[params objectForKey:@"income"] integerValue];
 	self.birthdate = fromShortIso8601([params objectForKey:@"birthdate"]);
 	self.itemId = [[params objectForKey:@"id"] integerValue];   
+}
+
+
+
+-(void)loadFromDictionary:(NSDictionary*)dict{
+	[self populateFromDictionary:dict];
+	[self changeLoadStatusTo: accountLoadStatusLoaded];
+
+	[RestConfiguration setUsername:username];
+	[RestConfiguration setPassword:password];
 
 }
 
-- (void)populateFromReceivedData:(NSData *)data{
-	NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    NSLog(@"populateFromReceivedData: '%@'", str);
-	NSDictionary *dict = (NSDictionary *)[str JSONFragmentValue];
-	[str release];
-	[self populateFromDictionary:dict];
-	[self changeLoadStatusTo: accountLoadStatusLoaded];
+-(void)failedValidation:(NSArray*)array{
+	NSMutableDictionary* newErrors = [NSMutableDictionary dictionary];
+	for (NSArray* error in array){
+		NSLog(@"\n%@", error);
+		NSString* field = [error objectAtIndex:0];
+		NSMutableArray* fieldErrors = [newErrors valueForKey:field];
+		if (nil ==  fieldErrors){
+			fieldErrors = [NSMutableArray array];
+			[newErrors setValue:fieldErrors forKey:field];
+		}
+		[fieldErrors addObject:[error objectAtIndex:1]];
+	}	
+	self.errors = newErrors;
+	[self changeLoadStatusTo:accountLoadStatusFailedValidation];
 }
 
 - (void)finishedLoading:(NSString *)data{
-	NSDictionary *dict = (NSDictionary *)[data JSONFragmentValue];
-	[self populateFromDictionary:dict];
-	[self changeLoadStatusTo: accountLoadStatusLoaded];
+    static const NSString* dictionaryClassName = @"NSCFDictionary";
+	NSLog(@"data:%@", data);
+	NSObject *unpackedJson = [data JSONFragmentValue];
+	if (NSOrderedSame == [dictionaryClassName compare:[unpackedJson className]]){
+		[self loadFromDictionary:(NSDictionary*)unpackedJson];
+	}
+	else{
+		[self failedValidation:(NSArray*) unpackedJson];
+	}
 }
 
 
@@ -90,6 +113,17 @@ NSDate* fromShortIso8601(NSString *shortDate){
 }
 
 -(void)createNew{
+	NSMutableDictionary* fields = [NSMutableDictionary dictionary];
+	[fields setValue:self.email forKey:@"email"];
+	[fields setValue:self.password forKey:@"password"];
+	[fields setValue:self.password forKey:@"password_confirmation"];
+	[fields setValue:[NSNumber numberWithInteger:self.income] forKey:@"income"];
+	[fields setValue:self.gender forKey:@"gender"];
+	[fields setValue:self.username forKey:@"login"];
+
+	NSDictionary* container = [NSDictionary dictionaryWithObject:fields forKey:@"user"];
+
+	[[RestfulRequests restfulRequestsWithObserver:self] POST:@"/users.json" withParams:container];
 }
 
 +(Account*) currentAccount{
@@ -145,7 +179,9 @@ NSDate* fromShortIso8601(NSString *shortDate){
 -(id) init{
 	[super initWithPath:@""];
 	self.errors = [[NSDictionary alloc] init];
-    return self;
+	self.username = [RestConfiguration username];
+	self.password = [RestConfiguration password];
+	return self;
 }
 
 

@@ -175,7 +175,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	NSLog(@"cellForRowAtIndexPath");
+	NSLog(@"tableView:%@ cellForRowAtIndexPath:%d %d", tv, indexPath.section, indexPath.row);
 	if( indexPath.section == 0 )
 	{
 		if( indexPath.row == 0 ) {
@@ -254,6 +254,7 @@
 }
 
 - (LabelledTableViewCell*) loadLabelledCellWthText:(NSString*)labelText {
+	NSLog(@"loadLabelledCellWthText: %@", labelText);
 	NSArray* nib = [[NSBundle mainBundle] loadNibNamed:@"LabelledTableViewCell" owner:self options:nil];
 	LabelledTableViewCell* cell = (LabelledTableViewCell*)[nib objectAtIndex:0];
 	cell.textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
@@ -296,31 +297,16 @@
 #pragma mark Button actions
 
 - (IBAction) signup {
-    [self.activityIndicator startAnimating];
-	
-    Account *account = [Account createWithParams:[self collectParams]];
-	
-    [self.activityIndicator stopAnimating];
-    if (account == nil) {
-		self.errors = [self buildFakeErrors];
-		[tableView reloadData];
-	} else if( [account hasErrors] ) {
-		self.errors = account.errors;
-		[tableView reloadData];
-	} else {
-		self.errors = nil;
-        [RestConfiguration setPassword:password.text];
-        [RestConfiguration setUsername:username.text];
-        
-        /** Hack - create account from currentAccount resource **/
-        [[Account currentAccount] loadCurrent];
-        
-        [self.profileView dismissModalViewControllerAnimated:YES];
-    }   
+	Account* account = [Account currentAccount];
+	account.username = username.text;
+	account.password = password.text;
+	account.email = emailAddress.text;
+	[account createNew];
 }
 
+
 - (IBAction) cancel {
-	[self.profileView dismissModalViewControllerAnimated:YES];
+	[self.parentViewController dismissModalViewControllerAnimated:YES];
 }
 
 

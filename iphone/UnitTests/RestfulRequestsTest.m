@@ -63,7 +63,7 @@ RestfulRequests* testee;
 	STAssertEqualStrings(@"no-cache", [headers valueForKey:@"Pragma"], nil);
 	STAssertEqualStrings(@"text/json", [headers valueForKey:@"Accept"], nil);
 	STAssertEqualStrings(@"close", [headers valueForKey:@"Connection"], nil);
-
+	STAssertEqualStrings(@"application/json", [headers valueForKey:@"Content-Type"], nil);
 }
 
 -(void)testGET{
@@ -88,7 +88,7 @@ RestfulRequests* testee;
 	STAssertEqualStrings(@"http://localhost:3000/wibble/wobble", [[connectionRequest URL] absoluteString], @"url");
 	[self assertHeaders];
 	
-	STAssertEqualStrings(@"{\"obj\":{\"size\":\"big\"}}", connectionRequest.HTTPBody, nil);
+	STAssertEqualStrings(@"{\"obj\":{\"size\":\"big\"}}", connectionRequest.httpBodyAsString, nil);
 
 }
 
@@ -138,6 +138,17 @@ RestfulRequests* testee;
 -(void)testNotificationDataResetAfterFinishedLoading{
 	[testee connection:nil didReceiveData:[@"hello " dataUsingEncoding:NSUTF8StringEncoding]];
 	[testee connectionDidFinishLoading:nil];
+
+	[testee connection:nil didReceiveData:[@"matey" dataUsingEncoding:NSUTF8StringEncoding]];
+	[testee connectionDidFinishLoading:nil];
+	STAssertEqualStrings(@"matey", restObserver->dataFromConnectionFinishedLoading, nil);
+
+}
+
+
+-(void)testNotificationDataResetAfterReceivingResponse{
+	[testee connection:nil didReceiveData:[@"hello " dataUsingEncoding:NSUTF8StringEncoding]];
+	[testee connection:nil didReceiveResponse:[StubNSHTTPURLResponse stubNSHTTPURLResponseWithStatusCode:200]];
 
 	[testee connection:nil didReceiveData:[@"matey" dataUsingEncoding:NSUTF8StringEncoding]];
 	[testee connectionDidFinishLoading:nil];

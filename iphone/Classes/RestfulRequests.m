@@ -1,5 +1,6 @@
 #import "RestfulRequests.h"
 #import "RestConfiguration.h"
+#import "JSON.h"
 
 @implementation RestfulRequests
 @synthesize observer;
@@ -31,6 +32,7 @@
     [result addValue:@"no-cache" forHTTPHeaderField:@"Pragma"];
     [result addValue:@"text/json" forHTTPHeaderField:@"Accept"];
     [result addValue:@"close" forHTTPHeaderField:@"Connection"];
+	[result addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
 	return result;
 }
 
@@ -42,7 +44,7 @@
 
 -(void)POST:(NSString*) path withParams:(NSDictionary*)params{
 	NSMutableURLRequest *req = [self jsonRequestWithHttpMethod:@"POST" andPath:path];    
-	req.HTTPBody = [params JSONRepresentation];
+	req.HTTPBody = [[params JSONRepresentation] dataUsingEncoding:NSUTF8StringEncoding];
 	[NSURLConnection connectionWithRequest:req delegate:self];
 }
 
@@ -71,6 +73,10 @@
 	[buffer appendData:data];
 }
 
+
+-(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
+	[buffer setLength:0];	
+}
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection {
 	NSString *strbuffer = [[[NSString alloc] initWithData:buffer encoding:NSUTF8StringEncoding] autorelease];
