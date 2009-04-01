@@ -11,7 +11,6 @@
 
 @implementation DatePickerViewController
 @synthesize datePicker, tableView, cell, formatter, newAccountView;
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
 }

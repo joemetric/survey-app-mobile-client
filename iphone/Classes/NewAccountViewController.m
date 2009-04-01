@@ -19,6 +19,7 @@
 - (SegmentedTableViewCell*) loadSegmentedCell;
 - (NSDictionary*) collectParams;
 - (void) highlightCell:(LabelledTableViewCell*)cell withErrorForField:(NSString*)field;
+- (NSArray*) validErrorKeysForSection:(NSInteger) section;
 @end
 
 @implementation NewAccountViewController
@@ -26,6 +27,7 @@
 @synthesize activityIndicator, profileView, tableView, datePicker;;
 @synthesize keyboardIsShowing;
 @synthesize errors;
+@synthesize loginCell, passwordCell, passwordConfirmationCell, emailCell, incomeCell, dobCell, genderCell;
 
 - (void)viewWillAppear:(BOOL)animated {
 	[[NSNotificationCenter defaultCenter] addObserver:self
@@ -117,6 +119,13 @@
 }
 
 - (void)dealloc {
+	[loginCell release];
+	[passwordCell release];
+	[passwordConfirmationCell release];
+	[emailCell release];
+	[incomeCell release];
+	[dobCell release];
+	[genderCell release];
 	[tableView release];
 	[username release];
 	[password release];
@@ -142,7 +151,23 @@
 }
 
 - (NSString*)tableView:(UITableView*) tv titleForFooterInSection:(NSInteger) section {
-	return @"footer";
+	NSArray* sectionKeys = [self validErrorKeysForSection:section];
+	NSMutableString* result = [NSMutableString stringWithCapacity:64];
+	for( NSString* key in self.errors ) {
+		if( [sectionKeys containsObject:key] ) {
+			NSArray* messages = (NSArray*)[self.errors objectForKey:key];
+			for( NSString* message in messages ) {
+				[result appendFormat:@"%@ %@\n", key, message];
+			}
+		}
+	}
+	return result;
+}
+
+- (NSArray*) validErrorKeysForSection:(NSInteger) section {
+	if( section == 0 ){ return [NSArray arrayWithObjects:@"login", @"password", @"password_confirmation", @"email", nil]; }
+	else if( section == 1 ) { return [NSArray arrayWithObjects:@"income", @"dob", @"gender", nil];}
+	return [NSArray array];
 }
 
 - (NSInteger)tableView:(UITableView *)tv numberOfRowsInSection:(NSInteger)section {
@@ -154,61 +179,32 @@
 	if( indexPath.section == 0 )
 	{
 		if( indexPath.row == 0 ) {
-			LabelledTableViewCell* cell = [self loadLabelledCellWthText:@"Username"];
-			self.username = cell.textField;	
-			cell.textField.delegate = self;
-			[self highlightCell:cell withErrorForField:@"login"];
-			return cell;
+			[self highlightCell:loginCell withErrorForField:@"login"];
+			return loginCell;
 		}
 		else if( indexPath.row == 1) {
-			LabelledTableViewCell* cell = [self loadLabelledCellWthText:@"Password"];
-			cell.textField.secureTextEntry = YES;
-			self.password = cell.textField;
-			cell.textField.delegate = self;
-			[self highlightCell:cell withErrorForField:@"password"];
-			return cell;
+			[self highlightCell:passwordCell withErrorForField:@"password"];
+			return passwordCell;
 		}
 		else if( indexPath.row == 2) {
-			LabelledTableViewCell* cell = [self loadLabelledCellWthText:@"P/W Confirm"];
-			cell.textField.secureTextEntry = YES;
-			self.passwordConfirmation = cell.textField;
-			cell.textField.delegate = self;
-			[self highlightCell:cell withErrorForField:@"password_confirmation"];
-			return cell;
+			[self highlightCell:passwordConfirmationCell withErrorForField:@"password_confirmation"];
+			return passwordConfirmationCell;
 		}
 		else {
-			LabelledTableViewCell* cell = [self loadLabelledCellWthText:@"Email"];
-			cell.textField.keyboardType = UIKeyboardTypeEmailAddress;
-			self.emailAddress = cell.textField;
-			cell.textField.delegate = self;
-			[self highlightCell:cell withErrorForField:@"email"];
-			return cell;
+			[self highlightCell:emailCell withErrorForField:@"email"];
+			return emailCell;
 		}
 	} else {
 		if( indexPath.row == 0 ) {
-			LabelledTableViewCell* cell = [self loadLabelledCellWthText:@"Income"];
-			cell.textField.placeholder = @"99999";
-			cell.textField.delegate = self;
-			cell.textField.keyboardType = UIKeyboardTypeNumberPad;
-			self.income = cell.textField;
-			[self highlightCell:cell withErrorForField:@"income"];
-			return cell;
+			[self highlightCell:incomeCell withErrorForField:@"income"];
+			return incomeCell;
 		}
 		else if( indexPath.row == 1) {
-			LabelledTableViewCell* cell = [self loadLabelledCellWthText:@"Date of Birth"];
-			cell.textField.placeholder = @"Dec 12, 1971";
-			cell.textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
-			cell.textField.enabled = NO;
-			[self highlightCell:cell withErrorForField:@"dob"];
-			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-			self.dob = cell.textField;
-			return cell;
+			[self highlightCell:dobCell withErrorForField:@"dob"];
+			return dobCell;
 		}
 		else {
-			SegmentedTableViewCell* cell = [self loadSegmentedCell];
-			cell.label.text = @"Gender";	
-			self.gender = cell.segControl;
-			return cell;
+			return genderCell;
 		}
 		
 	}
@@ -219,6 +215,8 @@
 	NSArray* fieldErrors = (NSArray*)[self.errors objectForKey:field];
 	if( fieldErrors != nil || fieldErrors.count > 0 ) {
 		cell.label.textColor = [UIColor redColor];
+	} else {
+		cell.label.textColor = [UIColor blackColor];
 	}
 }
 
@@ -243,8 +241,12 @@
 	} else if( indexPath.section == 1 && indexPath.row == 0 ) {
 		[income becomeFirstResponder];
 	} else if( indexPath.section == 1 && indexPath.row == 1 ) {
-			if( self.datePicker == nil ) {
+		if( self.datePicker == nil ) {
 			self.datePicker = [[[DatePickerViewController alloc] initWithNibName:@"DatePickerView" bundle:nil] autorelease];
+			NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+			[formatter setDateStyle:NSDateFormatterMediumStyle];
+			self.datePicker.datePicker.date = [formatter dateFromString:@"Dec 15, 1971"];
+			[formatter release];
 			self.datePicker.newAccountView = self;
 		}
 		[self presentModalViewController:datePicker	animated:YES];
@@ -273,6 +275,8 @@
 	
 	[result setObject:[NSArray arrayWithObjects:@"too short (minimum 6 character)", @"cannot be empty", nil] forKey: @"login"];
 	[result setObject:[NSArray arrayWithObjects:@"too short (minimum 6 character)", @"cannot be empty", nil] forKey: @"email"];
+	[result setObject:[NSArray arrayWithObjects:@"cannot be empty", nil] forKey: @"income"];
+	[result setObject:[NSArray arrayWithObjects:@"cannot be empty", nil] forKey: @"dob"];
 	
 	return result;
 }
