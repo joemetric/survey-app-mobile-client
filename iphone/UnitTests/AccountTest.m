@@ -87,10 +87,14 @@
 }
 
 -(void)testPopulationWithErors{
-	NSString* data = @"[[\"login\", \"is too short (minimum is 3 characters)\"], [\"email\", \"should look like an email address.\"]]";
+	NSString* data = @"[[\"login\", \"is too short\"], [\"login\", \"should not be bob\"], [\"email\", \"should not be hotmail\"]]";
 
 	[account finishedLoading:data];
 	STAssertEquals(accountLoadStatusFailedValidation, account.accountLoadStatus, @"accountLoadStatus");
+ 	STAssertEquals(2, (NSInteger) account.errors.count, @"error count");
+	STAssertEqualStrings(@"is too short", [[account.errors valueForKey:@"login"] objectAtIndex:0], @"1st login error");
+	STAssertEqualStrings(@"should not be bob", [[account.errors valueForKey:@"login"] objectAtIndex:1], @"2nd login error");
+	STAssertEqualStrings(@"should not be hotmail", [[account.errors valueForKey:@"email"] objectAtIndex:0], @"1st login error");
 	
 }
 
@@ -154,6 +158,8 @@
     STAssertNotNil([body matchRegex:@"\"income\":12345"], body, nil);
     STAssertNotNil([body matchRegex:@"\"gender\":\"F\""], body);
 }
+
+
 
 
 -(void)testProperlyInitialised{

@@ -64,17 +64,8 @@ NSDate* fromShortIso8601(NSString *shortDate){
 	self.income = [[params objectForKey:@"income"] integerValue];
 	self.birthdate = fromShortIso8601([params objectForKey:@"birthdate"]);
 	self.itemId = [[params objectForKey:@"id"] integerValue];   
-
 }
 
-- (void)populateFromReceivedData:(NSData *)data{
-	NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-	NSLog(@"populateFromReceivedData: '%@'", str);
-	NSDictionary *dict = (NSDictionary *)[str JSONFragmentValue];
-	[str release];
-	[self populateFromDictionary:dict];
-	[self changeLoadStatusTo: accountLoadStatusLoaded];
-}
 
 
 -(void)loadFromDictionary:(NSDictionary*)dict{
@@ -86,6 +77,22 @@ NSDate* fromShortIso8601(NSString *shortDate){
 
 }
 
+-(void)failedValidation:(NSArray*)array{
+	NSMutableDictionary* newErrors = [NSMutableDictionary dictionary];
+	[self changeLoadStatusTo:accountLoadStatusFailedValidation];
+	for (NSArray* error in array){
+		NSLog(@"\n%@", error);
+		NSString* field = [error objectAtIndex:0];
+		NSMutableArray* fieldErrors = [newErrors valueForKey:field];
+		if (nil ==  fieldErrors){
+			fieldErrors = [NSMutableArray array];
+			[newErrors setValue:fieldErrors forKey:field];
+		}
+		[fieldErrors addObject:[error objectAtIndex:1]];
+	}	
+	self.errors = newErrors;
+}
+
 - (void)finishedLoading:(NSString *)data{
     static const NSString* dictionaryClassName = @"NSCFDictionary";
 	NSLog(@"data:%@", data);
@@ -94,7 +101,7 @@ NSDate* fromShortIso8601(NSString *shortDate){
 		[self loadFromDictionary:(NSDictionary*)unpackedJson];
 	}
 	else{
-		[self changeLoadStatusTo:accountLoadStatusFailedValidation];
+		[self failedValidation:(NSArray*) unpackedJson];
 	}
 }
 

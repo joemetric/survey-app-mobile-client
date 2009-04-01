@@ -10,6 +10,11 @@ Account *gAccount;
 NSInteger gProfileViewControllerTableReloadedCount;
 NSInteger gModalViewControllerDismissCount;
 
+@interface ProfileViewController(ProfileViewControllerTestPeek)
+-(NSObject<UITableViewDelegate, UITableViewDataSource>*) tableDelegate;
+-(void)accountLoadStatusChanged:(Account*) _account;
+@end
+
 @interface ProfileViewController(ProfileViewControllerTest)
 @end
 
