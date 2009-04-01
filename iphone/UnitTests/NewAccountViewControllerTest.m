@@ -14,6 +14,7 @@
 
 -(void)setUp{
 	testee = [[NewAccountViewController alloc] initWithNibName:@"NewAccountView" bundle:nil];
+	[[NSBundle mainBundle] loadNibNamed:@"NewAccountView" owner:testee options:nil];
 }
 
 -(void)tearDown{
@@ -36,7 +37,7 @@
 -(void)testMainSectionCellLabels{
 	[self assertLabel:@"Login" inLabelledCellForRow:0 inSection:0];
 	[self assertLabel:@"Password" inLabelledCellForRow:1 inSection:0];
-	[self assertLabel:@"Confirm P/W " inLabelledCellForRow:2 inSection:0];
+	[self assertLabel:@"Confirm P/W" inLabelledCellForRow:2 inSection:0];
 	[self assertLabel:@"Email" inLabelledCellForRow:3 inSection:0];   
     STAssertEquals(4, [testee tableView:nil numberOfRowsInSection:0], @"rows in section 0");
 }

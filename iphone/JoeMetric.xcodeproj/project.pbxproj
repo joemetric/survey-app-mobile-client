@@ -104,6 +104,7 @@
 		DAA2E6680F83A0160004D56E /* LabelledTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5420E3160F6E82E800DC2BDE /* LabelledTableViewCell.m */; };
 		DAA2E6750F83A2970004D56E /* SegmentedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A630350F6EA99B0038382D /* SegmentedTableViewCell.m */; };
 		DAA2E6840F83A3970004D56E /* SegmentedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54A630370F6EAA6D0038382D /* SegmentedTableViewCell.xib */; };
+		DAA2E6F80F83B5F40004D56E /* NewAccountView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 547608D00F6E5B6B007CCC58 /* NewAccountView.xib */; };
 		DAE91B630F823122009CEE14 /* NSString+Regex.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE91B620F823122009CEE14 /* NSString+Regex.m */; };
 		DAE91B650F823144009CEE14 /* NSString+RegexTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE91B640F823144009CEE14 /* NSString+RegexTest.m */; };
 		FC21C5050F12B3AC00436E7F /* Survey.m in Sources */ = {isa = PBXBuildFile; fileRef = FC21C5040F12B3AC00436E7F /* Survey.m */; };
@@ -609,8 +610,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DAA2E6540F839FA20004D56E /* LabelledTableViewCell.xib in Resources */,
+				DAA2E6F80F83B5F40004D56E /* NewAccountView.xib in Resources */,
 				DAA2E6840F83A3970004D56E /* SegmentedTableViewCell.xib in Resources */,
+				DAA2E6540F839FA20004D56E /* LabelledTableViewCell.xib in Resources */,
 				DA7F49DC0F715E400001E019 /* LabelledTableViewReadOnlyCell.xib in Resources */,
 				FC97568A0F13B4070077926E /* SurveyListView.xib in Resources */,
 			);

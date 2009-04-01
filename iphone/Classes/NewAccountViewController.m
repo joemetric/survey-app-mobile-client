@@ -271,17 +271,6 @@
 	return cell;
 }
 
-- (NSDictionary*) buildFakeErrors {
-	NSMutableDictionary* result = [NSMutableDictionary dictionary];
-	
-	[result setObject:[NSArray arrayWithObjects:@"too short (minimum 6 character)", @"cannot be empty", nil] forKey: @"login"];
-	[result setObject:[NSArray arrayWithObjects:@"too short (minimum 6 character)", @"cannot be empty", nil] forKey: @"email"];
-	[result setObject:[NSArray arrayWithObjects:@"cannot be empty", nil] forKey: @"income"];
-	[result setObject:[NSArray arrayWithObjects:@"cannot be empty", nil] forKey: @"dob"];
-	
-	return result;
-}
-
 - (NSDictionary*) collectParams {
     NSMutableDictionary *result = [NSMutableDictionary dictionary];
     [result setObject:username.text forKey:@"login"];
