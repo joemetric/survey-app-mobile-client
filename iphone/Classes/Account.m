@@ -112,6 +112,12 @@ NSDate* fromShortIso8601(NSString *shortDate){
 	self.callbackObject = callMeObj;    
 }
 
+-(NSString*) iso8061BirthDate{
+	NSDateFormatter* formatter = [[[NSDateFormatter alloc] init] autorelease];
+	formatter.dateFormat = @"yyyy-MM-dd";
+	return [formatter stringFromDate:self.birthdate];
+}
+
 -(void)createNew{
 	NSMutableDictionary* fields = [NSMutableDictionary dictionary];
 	[fields setValue:self.email forKey:@"email"];
@@ -120,6 +126,7 @@ NSDate* fromShortIso8601(NSString *shortDate){
 	[fields setValue:[NSNumber numberWithInteger:self.income] forKey:@"income"];
 	[fields setValue:self.gender forKey:@"gender"];
 	[fields setValue:self.username forKey:@"login"];
+	[fields setValue:self.iso8061BirthDate forKey:@"birthdate"];
 
 	NSDictionary* container = [NSDictionary dictionaryWithObject:fields forKey:@"user"];
 

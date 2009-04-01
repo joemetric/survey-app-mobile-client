@@ -10,7 +10,7 @@
 	return dateFormatter;
 }
 +(NSString*) dateFromString:(NSString*)str{
-	return @"hello";
+	return [[self formatter] dateFromString:str];
 }
 
 +(NSString*) stringFromDate:(NSDate*)date{

@@ -135,7 +135,7 @@
 
 
 -(void)testCreate{
-	account.birthdate = [DateHelper dateFromString:@"15 July 1969"];
+	account.birthdate = [DateHelper dateFromString:@"15 Jul 1969"];
 	account.email = @"bobby@bobo.net";
 	account.username = @"bobby";
 	account.password = @"pingupanga";
@@ -157,7 +157,7 @@
 	STAssertNotNil([body matchRegex:@"\"login\":\"bobby\""], body);
 	STAssertNotNil([body matchRegex:@"\"password\":\"pingupanga\""], body);
 	STAssertNotNil([body matchRegex:@"\"password_confirmation\":\"wrong\""], body);
-
+    STAssertNotNil([body matchRegex:@"\"birthdate\":\"1969-07-15\""], body);
 	STAssertNotNil([body matchRegex:@"\"income\":12345"], body, nil);
 	STAssertNotNil([body matchRegex:@"\"gender\":\"F\""], body);
 }
