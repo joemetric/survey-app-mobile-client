@@ -44,6 +44,7 @@ NSDate* fromShortIso8601(NSString *shortDate){
 @synthesize accountLoadStatus;
 @synthesize lastLoadError;
 @synthesize errors;
+@synthesize passwordConfirmation;
 
 + (NSString *)resourceName{
 	return @"users";
@@ -80,7 +81,6 @@ NSDate* fromShortIso8601(NSString *shortDate){
 -(void)failedValidation:(NSArray*)array{
 	NSMutableDictionary* newErrors = [NSMutableDictionary dictionary];
 	for (NSArray* error in array){
-		NSLog(@"\n%@", error);
 		NSString* field = [error objectAtIndex:0];
 		NSMutableArray* fieldErrors = [newErrors valueForKey:field];
 		if (nil ==  fieldErrors){
@@ -116,7 +116,7 @@ NSDate* fromShortIso8601(NSString *shortDate){
 	NSMutableDictionary* fields = [NSMutableDictionary dictionary];
 	[fields setValue:self.email forKey:@"email"];
 	[fields setValue:self.password forKey:@"password"];
-	[fields setValue:self.password forKey:@"password_confirmation"];
+	[fields setValue:self.passwordConfirmation forKey:@"password_confirmation"];
 	[fields setValue:[NSNumber numberWithInteger:self.income] forKey:@"income"];
 	[fields setValue:self.gender forKey:@"gender"];
 	[fields setValue:self.username forKey:@"login"];

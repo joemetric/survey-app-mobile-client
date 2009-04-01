@@ -38,5 +38,7 @@
 extern NSURLRequest* connectionRequest ;
 extern id connectionDelegate;
 
+extern void resetRestStubbing();
+
 
 

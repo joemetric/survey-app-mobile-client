@@ -4,11 +4,11 @@
 #import "RestStubbing.h"
 #import "NSString+Regex.h"
 #import "RestConfiguration.h"
+#import "DateHelper.h"
 
 
 
 @interface AccountTest : GTMTestCase{
-	NSDateFormatter *dateFormatter;
 	Account *account;
 	NSInteger accountChangeNotificationCount;
 }
@@ -22,22 +22,24 @@
 @implementation AccountTest
 @synthesize account;
 
+
+-(void)testDM{
+	NSLog(@"%@", [DateHelper class]);
+}
 -(void)accountChanged:(Account*)_account{
 	STAssertEquals(account, _account, nil);
 	accountChangeNotificationCount++;
 }
 
 - (void)setUp{
-	dateFormatter = [[NSDateFormatter alloc] init];
-	dateFormatter.dateFormat = @"dd MMM yyyy";
 	self.account = [[[Account alloc] init] autorelease];
 	[account onChangeNotify:@selector(accountChanged:) on:self];
 	accountChangeNotificationCount = 0;
+	resetRestStubbing();
 
 }
 
 - (void)tearDown{
-	[dateFormatter release];
 	self.account = nil;
 }
 
@@ -63,9 +65,9 @@
 -(void)testOnAccountDetailsLodedUsernameAndPasswordSavedToRestConfiguration{
 	account.username = @"marvin";
 	account.password = @"sue's secret";
-	
+
 	[account finishedLoading:@"{\"user\": { \"id\": 123},\"birthdate\": null}"];
-	
+
 	STAssertEqualStrings(@"marvin", [RestConfiguration username], nil);
 	STAssertEqualStrings(@"sue's secret", [RestConfiguration password], nil);
 }
@@ -81,7 +83,7 @@
 	STAssertEqualStrings(@"marvin@example.com", account.email, nil);
 	STAssertEqualStrings(@"M", account.gender, nil);
 	STAssertEquals(25283, account.income, nil);
-	STAssertEqualStrings(@"27 Mar 1973", [dateFormatter stringFromDate:account.birthdate], nil);
+	STAssertEqualStrings(@"27 Mar 1973", [DateHelper stringFromDate:account.birthdate], nil);
 	STAssertEquals(1, accountChangeNotificationCount, @"accountChangeNotificationCount");
 	STAssertEquals(accountLoadStatusLoaded, account.accountLoadStatus, @"accountLoadStatus");
 }
@@ -91,11 +93,11 @@
 
 	[account finishedLoading:data];
 	STAssertEquals(accountLoadStatusFailedValidation, account.accountLoadStatus, @"accountLoadStatus");
- 	STAssertEquals(2, (NSInteger) account.errors.count, @"error count");
+	STAssertEquals(2, (NSInteger) account.errors.count, @"error count");
 	STAssertEqualStrings(@"is too short", [[account.errors valueForKey:@"login"] objectAtIndex:0], @"1st login error");
 	STAssertEqualStrings(@"should not be bob", [[account.errors valueForKey:@"login"] objectAtIndex:1], @"2nd login error");
 	STAssertEqualStrings(@"should not be hotmail", [[account.errors valueForKey:@"email"] objectAtIndex:0], @"1st login error");
-	
+
 }
 
 -(void)testNewFromDictionaryWith_NSNull_Birthdate{
@@ -133,30 +135,31 @@
 
 
 -(void)testCreate{
-    account.birthdate = [dateFormatter dateFromString:@"15 July 1969"];
-    account.email = @"bobby@bobo.net";
-    account.username = @"bobby";
-    account.password = @"pingupanga";
-    account.income = 12345;
-    account.gender = @"F";
-    
-    [account createNew];
+	account.birthdate = [DateHelper dateFromString:@"15 July 1969"];
+	account.email = @"bobby@bobo.net";
+	account.username = @"bobby";
+	account.password = @"pingupanga";
+	account.passwordConfirmation = @"wrong";
+	account.income = 12345;
+	account.gender = @"F";
+
+	[account createNew];
 	STAssertNotNil(connectionRequest, @"connectionRequest");
 	STAssertEqualStrings(@"http://localhost:3000/users.json", [[connectionRequest URL] relativeString], @"url");
 	STAssertEqualStrings(@"POST", connectionRequest.HTTPMethod, @"http method");
-    
-    NSData* data = [connectionRequest HTTPBody];
-	
-	NSString* body = [connectionRequest httpBodyAsString];
-  
-    STAssertNotNil([body matchRegex:@"^{\"user\":{"], body);
-    STAssertNotNil([body matchRegex:@"\"email\":\"bobby@bobo.net\""], body);
-    STAssertNotNil([body matchRegex:@"\"login\":\"bobby\""], body);
-    STAssertNotNil([body matchRegex:@"\"password\":\"pingupanga\""], body);
-    STAssertNotNil([body matchRegex:@"\"password_confirmation\":\"pingupanga\""], body);
 
-    STAssertNotNil([body matchRegex:@"\"income\":12345"], body, nil);
-    STAssertNotNil([body matchRegex:@"\"gender\":\"F\""], body);
+	NSData* data = [connectionRequest HTTPBody];
+
+	NSString* body = [connectionRequest httpBodyAsString];
+
+	STAssertNotNil([body matchRegex:@"^{\"user\":{"], body);
+	STAssertNotNil([body matchRegex:@"\"email\":\"bobby@bobo.net\""], body);
+	STAssertNotNil([body matchRegex:@"\"login\":\"bobby\""], body);
+	STAssertNotNil([body matchRegex:@"\"password\":\"pingupanga\""], body);
+	STAssertNotNil([body matchRegex:@"\"password_confirmation\":\"wrong\""], body);
+
+	STAssertNotNil([body matchRegex:@"\"income\":12345"], body, nil);
+	STAssertNotNil([body matchRegex:@"\"gender\":\"F\""], body);
 }
 
 

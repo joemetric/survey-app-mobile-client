@@ -13,6 +13,7 @@ typedef enum {
     NSString *password;
     NSString *email;
     NSString *gender;
+	NSString* passwordConfirmation;
     NSInteger income;
     NSDate *birthdate;
 	NSError *lastLoadError;
@@ -34,6 +35,7 @@ typedef enum {
 
 @property (nonatomic, retain) NSString *username;
 @property (nonatomic, retain) NSString *password;
+@property (nonatomic, retain) NSString *passwordConfirmation;
 @property (nonatomic, retain) NSString *email;
 @property (nonatomic, retain) NSString *gender;
 @property (nonatomic, retain) NSError *lastLoadError;

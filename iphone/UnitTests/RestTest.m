@@ -71,8 +71,7 @@
 	restDelegateWithCredentials = [[StubRestDelegateWithCredentials alloc] init];
 	testee = [[Rest alloc] init];
 	testee.delegate = restDelegate;
-	connectionRequest = nil;
-	connectionDelegate = nil;
+	resetRestStubbing();
 }
 
 -(void)tearDown{

@@ -54,3 +54,8 @@
 
 NSURLRequest* connectionRequest ;
 id connectionDelegate;
+
+void resetRestStubbing(){
+	connectionDelegate = nil;
+	connectionRequest = nil;
+}

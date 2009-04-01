@@ -8,14 +8,14 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="48"/>
 			<integer value="60"/>
-			<integer value="1"/>
-			<integer value="66"/>
 			<integer value="42"/>
-			<integer value="72"/>
+			<integer value="1"/>
+			<integer value="48"/>
 			<integer value="36"/>
 			<integer value="54"/>
+			<integer value="72"/>
+			<integer value="66"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -144,6 +144,7 @@
 								<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 								<int key="IBUIContentVerticalAlignment">0</int>
 								<string key="IBUIText"/>
+								<string key="IBUIPlaceholder">Joe Metric</string>
 								<object class="NSColor" key="IBUITextColor">
 									<int key="NSColorSpace">2</int>
 									<bytes key="NSRGB">MC4xOTYwNzg0NSAwLjMwOTgwMzkzIDAuNTIxNTY4NjYAA</bytes>
@@ -153,7 +154,6 @@
 									<double key="NSSize">1.800000e+01</double>
 									<int key="NSfFlags">16</int>
 								</object>
-								<int key="IBUITextAlignment">2</int>
 								<float key="IBUIMinimumFontSize">1.700000e+01</float>
 								<object class="IBUITextInputTraits" key="IBUITextInputTraits">
 									<int key="IBUIAutocorrectionType">1</int>
@@ -218,12 +218,13 @@
 								<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 								<int key="IBUIContentVerticalAlignment">0</int>
 								<string key="IBUIText"/>
+								<string key="IBUIPlaceholder">Required</string>
 								<object class="NSColor" key="IBUITextColor">
 									<int key="NSColorSpace">2</int>
 									<bytes key="NSRGB">MC4xOTYwNzg0NSAwLjMwOTgwMzkzIDAuNTIxNTY4NjYAA</bytes>
 								</object>
 								<reference key="IBUIFont" ref="705096209"/>
-								<int key="IBUITextAlignment">2</int>
+								<bool key="IBUIClearsOnBeginEditing">YES</bool>
 								<float key="IBUIMinimumFontSize">1.700000e+01</float>
 								<object class="IBUITextInputTraits" key="IBUITextInputTraits">
 									<int key="IBUIAutocorrectionType">1</int>
@@ -286,12 +287,13 @@
 								<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 								<int key="IBUIContentVerticalAlignment">0</int>
 								<string key="IBUIText"/>
+								<string key="IBUIPlaceholder">Required</string>
 								<object class="NSColor" key="IBUITextColor">
 									<int key="NSColorSpace">2</int>
 									<bytes key="NSRGB">MC4xOTYwNzg0NSAwLjMwOTgwMzkzIDAuNTIxNTY4NjYAA</bytes>
 								</object>
 								<reference key="IBUIFont" ref="705096209"/>
-								<int key="IBUITextAlignment">2</int>
+								<bool key="IBUIClearsOnBeginEditing">YES</bool>
 								<float key="IBUIMinimumFontSize">1.700000e+01</float>
 								<object class="IBUITextInputTraits" key="IBUITextInputTraits">
 									<int key="IBUIAutocorrectionType">1</int>
@@ -354,12 +356,12 @@
 								<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 								<int key="IBUIContentVerticalAlignment">0</int>
 								<string key="IBUIText"/>
+								<string key="IBUIPlaceholder">joe@example.com</string>
 								<object class="NSColor" key="IBUITextColor">
 									<int key="NSColorSpace">2</int>
 									<bytes key="NSRGB">MC4xOTYwNzg0NSAwLjMwOTgwMzkzIDAuNTIxNTY4NjYAA</bytes>
 								</object>
 								<reference key="IBUIFont" ref="705096209"/>
-								<int key="IBUITextAlignment">2</int>
 								<float key="IBUIMinimumFontSize">1.700000e+01</float>
 								<object class="IBUITextInputTraits" key="IBUITextInputTraits">
 									<int key="IBUIAutocorrectionType">1</int>
@@ -427,7 +429,6 @@
 									<bytes key="NSRGB">MC4xOTYwNzg0NSAwLjMwOTgwMzkzIDAuNTIxNTY4NjYAA</bytes>
 								</object>
 								<reference key="IBUIFont" ref="705096209"/>
-								<int key="IBUITextAlignment">2</int>
 								<float key="IBUIMinimumFontSize">1.700000e+01</float>
 								<object class="IBUITextInputTraits" key="IBUITextInputTraits">
 									<int key="IBUIAutocorrectionType">1</int>
@@ -491,13 +492,12 @@
 								<bool key="IBUIEnabled">NO</bool>
 								<int key="IBUIContentVerticalAlignment">0</int>
 								<string key="IBUIText"/>
-								<string key="IBUIPlaceholder">Oct 27, 2008</string>
+								<string key="IBUIPlaceholder">Oct 27, 1982</string>
 								<object class="NSColor" key="IBUITextColor">
 									<int key="NSColorSpace">2</int>
 									<bytes key="NSRGB">MC4xOTYwNzg0NSAwLjMwOTgwMzkzIDAuNTIxNTY4NjYAA</bytes>
 								</object>
 								<reference key="IBUIFont" ref="705096209"/>
-								<int key="IBUITextAlignment">2</int>
 								<float key="IBUIMinimumFontSize">1.700000e+01</float>
 								<object class="IBUITextInputTraits" key="IBUITextInputTraits"/>
 							</object>
@@ -1209,7 +1209,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>NewAccountViewController</string>
 					<string>UIResponder</string>
-					<string>{{657, 561}, {320, 480}}</string>
+					<string>{{657, 276}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -1238,17 +1238,17 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>LabelledTableViewCell</string>
-					<string>{{280, 802}, {320, 44}}</string>
+					<string>{{280, 712}, {320, 44}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>LabelledTableViewCell</string>
-					<string>{{685, 652}, {320, 44}}</string>
+					<string>{{446, 652}, {320, 44}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>SegmentedTableViewCell</string>
-					<string>{{501, 958}, {320, 44}}</string>
+					<string>{{501, 712}, {320, 44}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>

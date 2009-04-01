@@ -220,11 +220,15 @@
 	}
 }
 
+-(NSDateFormatter*)dateFormatter{
+	NSDateFormatter* dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+	[dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+	return dateFormatter;
+	
+}
+
 - (void) dismissModalViewControllerAnimated:(BOOL) animated {
-	NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
-	[formatter setDateStyle:NSDateFormatterMediumStyle];
-	self.dob.text = [formatter stringFromDate:self.datePicker.datePicker.date];
-	[formatter release];
+	self.dob.text = [[self dateFormatter] stringFromDate:self.datePicker.datePicker.date];
 	[super dismissModalViewControllerAnimated:animated];
 }
 
@@ -282,25 +286,18 @@
 	return result;
 }
 
-- (NSDictionary*) collectParams {
-    NSMutableDictionary *result = [NSMutableDictionary dictionary];
-    [result setObject:username.text forKey:@"login"];
-    [result setObject:emailAddress.text forKey:@"email"];
-    [result setObject:password.text forKey:@"password"];
-    [result setObject:passwordConfirmation.text forKey:@"password_confirmation"];
-    [result setObject:income.text forKey:@"income"];
-    [result setObject:dob.text forKey:@"birthdate"];
-    [result setObject:(gender.selectedSegmentIndex == 0 ? @"M" : @"F") forKey:@"gender"];
-	return result;
-}
 #pragma mark -
 #pragma mark Button actions
 
 - (IBAction) signup {
 	Account* account = [Account currentAccount];
-	account.username = username.text;
-	account.password = password.text;
-	account.email = emailAddress.text;
+	account.username = loginCell.textField.text ;
+	account.password = passwordCell.textField.text;
+	account.email = emailCell.textField.text;
+	account.passwordConfirmation = passwordConfirmationCell.textField.text;
+	account.gender = genderCell.segControl.selectedSegmentIndex == 0? @"M" : @"F";
+	account.income = [incomeCell.textField.text integerValue];
+	account.birthdate = [[self dateFormatter] dateFromString:dobCell.textField.text];
 	[account createNew];
 }
 

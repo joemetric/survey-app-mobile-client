@@ -105,6 +105,8 @@
 		DAA2E6750F83A2970004D56E /* SegmentedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A630350F6EA99B0038382D /* SegmentedTableViewCell.m */; };
 		DAA2E6840F83A3970004D56E /* SegmentedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54A630370F6EAA6D0038382D /* SegmentedTableViewCell.xib */; };
 		DAA2E6F80F83B5F40004D56E /* NewAccountView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 547608D00F6E5B6B007CCC58 /* NewAccountView.xib */; };
+		DAA2E7340F83C3350004D56E /* AccountStubbing.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA2E7330F83C3350004D56E /* AccountStubbing.m */; };
+		DAA2E7550F83D3220004D56E /* DateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA2E7540F83D3220004D56E /* DateHelper.m */; };
 		DAE91B630F823122009CEE14 /* NSString+Regex.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE91B620F823122009CEE14 /* NSString+Regex.m */; };
 		DAE91B650F823144009CEE14 /* NSString+RegexTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE91B640F823144009CEE14 /* NSString+RegexTest.m */; };
 		FC21C5050F12B3AC00436E7F /* Survey.m in Sources */ = {isa = PBXBuildFile; fileRef = FC21C5040F12B3AC00436E7F /* Survey.m */; };
@@ -227,6 +229,10 @@
 		DA86C2F80F7A3D4B00CC6EBE /* RestStubbing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestStubbing.h; sourceTree = "<group>"; };
 		DA86C3280F7A433B00CC6EBE /* RestStubbing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestStubbing.m; sourceTree = "<group>"; };
 		DAA2E6520F8395AB0004D56E /* NewAccountViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewAccountViewControllerTest.m; sourceTree = "<group>"; };
+		DAA2E7320F83C3350004D56E /* AccountStubbing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountStubbing.h; sourceTree = "<group>"; };
+		DAA2E7330F83C3350004D56E /* AccountStubbing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountStubbing.m; sourceTree = "<group>"; };
+		DAA2E7530F83D3220004D56E /* DateHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateHelper.h; sourceTree = "<group>"; };
+		DAA2E7540F83D3220004D56E /* DateHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateHelper.m; sourceTree = "<group>"; };
 		DAE91B610F823122009CEE14 /* NSString+Regex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Regex.h"; sourceTree = "<group>"; };
 		DAE91B620F823122009CEE14 /* NSString+Regex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Regex.m"; sourceTree = "<group>"; };
 		DAE91B640F823144009CEE14 /* NSString+RegexTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+RegexTest.m"; sourceTree = "<group>"; };
@@ -479,6 +485,10 @@
 				DAE91B620F823122009CEE14 /* NSString+Regex.m */,
 				DAE91B640F823144009CEE14 /* NSString+RegexTest.m */,
 				DAA2E6520F8395AB0004D56E /* NewAccountViewControllerTest.m */,
+				DAA2E7320F83C3350004D56E /* AccountStubbing.h */,
+				DAA2E7330F83C3350004D56E /* AccountStubbing.m */,
+				DAA2E7530F83D3220004D56E /* DateHelper.h */,
+				DAA2E7540F83D3220004D56E /* DateHelper.m */,
 			);
 			path = UnitTests;
 			sourceTree = "<group>";
@@ -717,6 +727,8 @@
 				DAE91B630F823122009CEE14 /* NSString+Regex.m in Sources */,
 				DAE91B650F823144009CEE14 /* NSString+RegexTest.m in Sources */,
 				DAA2E6530F8395AB0004D56E /* NewAccountViewControllerTest.m in Sources */,
+				DAA2E7340F83C3350004D56E /* AccountStubbing.m in Sources */,
+				DAA2E7550F83D3220004D56E /* DateHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

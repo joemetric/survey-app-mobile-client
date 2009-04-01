@@ -44,8 +44,7 @@ RestfulRequests* testee;
 	challenge = [StubbedAuthenticationChallenge alloc];
 	challenge.sender = sender;
 	restObserver = [[StubRestfulRequestsObserver alloc] init];
-	connectionRequest = nil;
-	connectionDelegate = nil;
+	resetRestStubbing();
 	testee = [[RestfulRequests restfulRequestsWithObserver:restObserver] retain];
 }
 

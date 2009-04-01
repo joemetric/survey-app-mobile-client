@@ -4,9 +4,9 @@
 #import "NoAccountDataProfileDataSource.h"
 #import "ValidCredentialsProfileDataSource.h"
 #import "NoCredentialsProfileDataSource.h"
+#import "AccountStubbing.h"
 
 
-Account *gAccount;
 NSInteger gProfileViewControllerTableReloadedCount;
 NSInteger gModalViewControllerDismissCount;
 
@@ -25,22 +25,8 @@ NSInteger gModalViewControllerDismissCount;
 	
 @end
 
-@interface Account(ProfileViewControllerTest)
-+(Account*) currentAccount;
--(void)setAccountLoadStatus:(AccountLoadStatus)loadStatus;
-@end
 
-@implementation Account(ProfileViewControllerTest)
 
-+(Account*) currentAccount{
-    return gAccount;
-}
-
--(void)setAccountLoadStatus:(AccountLoadStatus)_status{
-    accountLoadStatus = _status;
-}
-
-@end
 	
 @interface UITableView(ProfileViewControllerTest)
 - (void)reloadData;
