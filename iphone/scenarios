@@ -1,0 +1,45 @@
+Scenarios:
+----------
+Implement Jerry's mock-ups...
+
+Create a New Account with Failing validations    (Card #1)
+  - should view validation message
+  - should maintain my entered data including demographics
+  - should be able to correct and submit successfully
+  - app should sign me in
+  - app should grab available surveys
+
+Sign In using an existing account                     (41)
+  Given the user is male
+  - should display all available surveys for men       (2)
+  - should not display the surveys for women
+  - should not display surveys with photo capture to user's with iPod Touch
+  - app should grab available surveys
+
+Take Survey                                            (4)
+  Given a logged in user
+  - should be able to click into survey and view the show page - survey_show_alt.
+  - should see total number of questions
+  - should see the total number of questions by type
+  - should see name of the survey 
+  - should see description of the survey
+  - should be able to click Start and be taken to the first question
+
+  Answer a Short Answer Free Form Text Question        (9)
+    Given a Survey that contains a Free Form Text Question
+    - should be presented with the question text
+    - should be presented with a text area to type my answer
+  
+  Answer a Photo Capture Question                     (11)
+    Given a Survey that contains a Photo Capture Question
+    - should be presented with instructions 
+    - should be presented with a Take Photo button
+    - should have the option of taking picture or using the library
+
+  Completing the Survey                            (48,53)
+    - should package up the answers and photos and send them to the web app
+    - should mark survey as completed
+    - should display completion message with total earned
+    - should add amount to the spotter's wallet
+
+

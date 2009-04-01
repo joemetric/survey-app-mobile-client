@@ -91,6 +91,25 @@ class UserTest < ActiveSupport::TestCase
     assert users(:quentin).remember_token_expires_at.between?(before, after)
   end
 
+  context "Rendering json" do
+    should "include wallet if first referenced" do
+      user = users(:quentin)
+      user.wallet
+      assert_match /"balance": 123.0/, user.to_json(:include => :wallet)
+    end
+  end
+  context "Completing a survey" do
+    setup do
+      @user = users(:aaron)
+      @survey = surveys(:one)
+    end
+    should "update the wallet" do
+      assert_equal 0, @user.wallet.balance
+      @user.complete_survey(@survey)
+      assert_equal @survey.amount, @user.wallet.balance
+    end
+  end
+  
   context "Demographic data" do
      
     setup do

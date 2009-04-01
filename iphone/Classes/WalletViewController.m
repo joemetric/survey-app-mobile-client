@@ -7,105 +7,49 @@
 //
 
 #import "WalletViewController.h"
+#import "WalletViewTableCell.h"
 
 
 @implementation WalletViewController
 
-/*
-- (id)initWithStyle:(UITableViewStyle)style {
-    // Override initWithStyle: if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-    if (self = [super initWithStyle:style]) {
-    }
-    return self;
-}
-*/
+@synthesize entries;
+@synthesize totalTitle, totalValue;
 
-/*
-// Implement viewDidLoad to do additional setup after loading the view.
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (void) viewWillAppear:(BOOL)animated {
+	totalTitle.text = @"Total";
+	totalValue.text = @"$55.00";
+	[super viewWillAppear:animated];
 }
-*/
-
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    return 5;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    WalletViewTableCell *cell = (WalletViewTableCell*)[tableView dequeueReusableCellWithIdentifier:@"WalletViewTableCell"];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
+		NSArray* nib = [[NSBundle mainBundle] loadNibNamed:@"WalletViewTableCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
     }
     // Configure the cell
+	if (indexPath.row == 3){
+		cell.surveyName.text  = @"Withdrawal";
+		cell.surveyName.textColor = [UIColor redColor];
+		cell.surveyValue.text = @"$-25.00";
+		cell.surveyValue.textColor = [UIColor redColor];
+	}
+	else {
+		cell.surveyName.text = [NSString stringWithFormat:@"Survey %d", indexPath.row+1];
+		cell.surveyValue.text = [NSString stringWithFormat:@"$%d.00", 5*(indexPath.row+1)];
+	}
     return cell;
 }
-
-/*
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-}
-*/
-
-/*
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-    }
-    if (editingStyle == UITableViewCellEditingStyleInsert) {
-    }
-}
-*/
-
-/*
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-*/
-
-/*
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-*/
-
-
-/*
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-}
-*/
-/*
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-}
-*/
-/*
-- (void)viewWillDisappear:(BOOL)animated {
-}
-*/
-/*
-- (void)viewDidDisappear:(BOOL)animated {
-}
-*/
-/*
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-*/
 
 - (void)dealloc {
     [super dealloc];

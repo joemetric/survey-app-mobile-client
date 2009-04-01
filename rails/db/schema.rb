@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090323141724) do
+ActiveRecord::Schema.define(:version => 20090331101510) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -67,5 +67,12 @@ ActiveRecord::Schema.define(:version => 20090323141724) do
   end
 
   add_index "users", ["login"], :name => "index_sams_on_login", :unique => true
+
+  create_table "wallets", :force => true do |t|
+    t.integer  "user_id"
+    t.float    "balance",    :default => 0.0, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

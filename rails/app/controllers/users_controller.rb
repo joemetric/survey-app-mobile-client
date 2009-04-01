@@ -28,7 +28,7 @@ class UsersController < ApplicationController
   end
   
   def show_current
-    render :json=>current_user
+    render :json => current_user.to_json(:include => :wallet)
   end
 
   def create
@@ -51,7 +51,7 @@ class UsersController < ApplicationController
       }
       format.json {
         if status
-          render :json => @user
+          render :json => @user.to_json(:include => :wallet)
         else
           render :json => @user.errors, :status => :unprocessable_entity
         end

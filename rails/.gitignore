@@ -5,7 +5,7 @@
 # *.[oa]
 # *~
 .DS_Store
-log/*
+log/*.log
 config/database.yml
 config/schema.rb
 tmp/*
