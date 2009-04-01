@@ -66,22 +66,33 @@ NSDate* fromShortIso8601(NSString *shortDate){
 
 - (void)populateFromReceivedData:(NSData *)data{
 	NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    NSLog(@"populateFromReceivedData: '%@'", str);
+	NSLog(@"populateFromReceivedData: '%@'", str);
 	NSDictionary *dict = (NSDictionary *)[str JSONFragmentValue];
 	[str release];
 	[self populateFromDictionary:dict];
 	[self changeLoadStatusTo: accountLoadStatusLoaded];
 }
 
-- (void)finishedLoading:(NSString *)data{
-    NSLog(@"data:%@", data);
-	NSDictionary *dict = (NSDictionary *)[data JSONFragmentValue];
 
+-(void)loadFromDictionary:(NSDictionary*)dict{
 	[self populateFromDictionary:dict];
 	[self changeLoadStatusTo: accountLoadStatusLoaded];
 
 	[RestConfiguration setUsername:username];
 	[RestConfiguration setPassword:password];
+
+}
+
+- (void)finishedLoading:(NSString *)data{
+    static const NSString* dictionaryClassName = @"NSCFDictionary";
+	NSLog(@"data:%@", data);
+	NSObject *unpackedJson = [data JSONFragmentValue];
+	if (NSOrderedSame == [dictionaryClassName compare:[unpackedJson className]]){
+		[self loadFromDictionary:(NSDictionary*)unpackedJson];
+	}
+	else{
+		[self changeLoadStatusTo:accountLoadStatusFailedValidation];
+	}
 }
 
 
@@ -99,9 +110,9 @@ NSDate* fromShortIso8601(NSString *shortDate){
 	[fields setValue:[NSNumber numberWithInteger:self.income] forKey:@"income"];
 	[fields setValue:self.gender forKey:@"gender"];
 	[fields setValue:self.username forKey:@"login"];
-	
+
 	NSDictionary* container = [NSDictionary dictionaryWithObject:fields forKey:@"user"];
-	
+
 	[[RestfulRequests restfulRequestsWithObserver:self] POST:@"/users.json" withParams:container];
 }
 
@@ -160,7 +171,7 @@ NSDate* fromShortIso8601(NSString *shortDate){
 	self.errors = [[NSDictionary alloc] init];
 	self.username = [RestConfiguration username];
 	self.password = [RestConfiguration password];
-    return self;
+	return self;
 }
 
 

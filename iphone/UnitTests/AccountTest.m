@@ -86,7 +86,13 @@
 	STAssertEquals(accountLoadStatusLoaded, account.accountLoadStatus, @"accountLoadStatus");
 }
 
+-(void)testPopulationWithErors{
+	NSString* data = @"[[\"login\", \"is too short (minimum is 3 characters)\"], [\"email\", \"should look like an email address.\"]]";
 
+	[account finishedLoading:data];
+	STAssertEquals(accountLoadStatusFailedValidation, account.accountLoadStatus, @"accountLoadStatus");
+	
+}
 
 -(void)testNewFromDictionaryWith_NSNull_Birthdate{
 	NSDictionary *params = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"456", [NSNull null],  nil] forKeys:[NSArray arrayWithObjects:@"id", @"birthdate", nil]];
