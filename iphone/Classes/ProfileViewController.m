@@ -24,6 +24,14 @@
 @synthesize tableView, credentialsController, newAccountController, noCredentials, validCredentials, noAccountData;
 
 -(void)accountLoadStatusChanged:(Account*) _account{
+    /* TODO - REPLACE THIS HACK WITH SOME POLYMORPHISM OR SOMETHING */
+    if (self.modalViewController == self.newAccountController){
+        newAccountController.errors = _account.errors;
+        [newAccountController.tableView reloadData];
+    }
+    /* END HACK*/
+        
+    
 	if (accountLoadStatusLoaded == [Account currentAccount].accountLoadStatus){
 		[self dismissModalViewControllerAnimated:YES];
 	}
@@ -78,6 +86,7 @@
 - (NSObject<UITableViewDelegate, UITableViewDataSource>*) tableDelegate {
 	switch([Account currentAccount].accountLoadStatus){
 		case accountLoadStatusUnauthorized:
+		case accountLoadStatusFailedValidation:
 		return self.noCredentials;
 		case accountLoadStatusNotLoaded:
 		self.noAccountData.message = @"Loading account details.";

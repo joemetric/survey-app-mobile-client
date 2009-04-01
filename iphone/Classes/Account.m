@@ -79,7 +79,6 @@ NSDate* fromShortIso8601(NSString *shortDate){
 
 -(void)failedValidation:(NSArray*)array{
 	NSMutableDictionary* newErrors = [NSMutableDictionary dictionary];
-	[self changeLoadStatusTo:accountLoadStatusFailedValidation];
 	for (NSArray* error in array){
 		NSLog(@"\n%@", error);
 		NSString* field = [error objectAtIndex:0];
@@ -91,6 +90,7 @@ NSDate* fromShortIso8601(NSString *shortDate){
 		[fieldErrors addObject:[error objectAtIndex:1]];
 	}	
 	self.errors = newErrors;
+	[self changeLoadStatusTo:accountLoadStatusFailedValidation];
 }
 
 - (void)finishedLoading:(NSString *)data{

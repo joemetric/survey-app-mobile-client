@@ -150,7 +150,6 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	NSLog(@"cellForRowAtIndexPath");
 	if( indexPath.section == 0 )
 	{
 		if( indexPath.row == 0 ) {
@@ -299,32 +298,9 @@
 	[account createNew];
 }
 
-- (IBAction) xsignup {
-    [self.activityIndicator startAnimating];
-	
-    Account *account = [Account createWithParams:[self collectParams]];
-	
-    [self.activityIndicator stopAnimating];
-    if (account == nil) {
-		self.errors = [self buildFakeErrors];
-		[tableView reloadData];
-	} else if( [account hasErrors] ) {
-		self.errors = account.errors;
-		[tableView reloadData];
-	} else {
-		self.errors = nil;
-        [RestConfiguration setPassword:password.text];
-        [RestConfiguration setUsername:username.text];
-        
-        /** Hack - create account from currentAccount resource **/
-        [[Account currentAccount] loadCurrent];
-        
-        [self.profileView dismissModalViewControllerAnimated:YES];
-    }   
-}
 
 - (IBAction) cancel {
-	[self.profileView dismissModalViewControllerAnimated:YES];
+	[self.parentViewController dismissModalViewControllerAnimated:YES];
 }
 
 

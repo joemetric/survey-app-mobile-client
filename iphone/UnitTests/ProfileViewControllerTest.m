@@ -112,6 +112,8 @@ NSInteger gModalViewControllerDismissCount;
 	STAssertEqualStrings(@"Unable to load account details.", [testee tableView:nil titleForFooterInSection:0], nil);
 	[self assertTableDelegateIsExpectedType:[NoCredentialsProfileDataSource class]
 	 	forAccountLoadStatus:accountLoadStatusUnauthorized describedAs:@"unauthorised"];
+	[self assertTableDelegateIsExpectedType:[NoCredentialsProfileDataSource class]
+	 	forAccountLoadStatus:accountLoadStatusFailedValidation describedAs:@"not loaded"];
 }
 
 
