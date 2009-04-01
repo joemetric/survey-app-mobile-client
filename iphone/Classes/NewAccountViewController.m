@@ -17,12 +17,14 @@
 @interface NewAccountViewController (Private)
 - (LabelledTableViewCell*) loadLabelledCellWthText:(NSString*)labelText;
 - (SegmentedTableViewCell*) loadSegmentedCell;
+- (NSDictionary*) collectParams;
 @end
 
 @implementation NewAccountViewController
 @synthesize username, password, passwordConfirmation, emailAddress, gender, dob, income;
 @synthesize activityIndicator, profileView, tableView, datePicker;;
 @synthesize keyboardIsShowing;
+@synthesize errors;
 
 - (void)viewWillAppear:(BOOL)animated {
 	[[NSNotificationCenter defaultCenter] addObserver:self
@@ -138,12 +140,16 @@
 	return section == 0 ? @"Basics" : @"Demographics";
 }
 
+- (NSString*)tableView:(UITableView*) tv titleForFooterInSection:(NSInteger) section {
+	return @"footer";
+}
+
 - (NSInteger)tableView:(UITableView *)tv numberOfRowsInSection:(NSInteger)section {
 	return section == 0 ? 4 : 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-
+	NSLog(@"cellForRowAtIndexPath");
 	if( indexPath.section == 0 )
 	{
 		if( indexPath.row == 0 ) {
@@ -211,7 +217,7 @@
 }
 
 - (void) tableView:(UITableView*)tv didSelectRowAtIndexPath:(NSIndexPath*)indexPath {
-	NSLog(@"CELL SELECT!");
+	NSLog(@"didSelectRowAtIndexPath");
 	if( indexPath.section == 0 && indexPath.row == 0 ) {
 		[username becomeFirstResponder];
 	} else if( indexPath.section == 0 && indexPath.row == 1 ) {
@@ -248,23 +254,43 @@
 	return cell;
 }
 
+- (NSDictionary*) buildFakeErrors {
+	NSMutableDictionary* result = [NSMutableDictionary dictionary];
+	
+	[result setObject:[NSArray arrayWithObjects:@"too short (minimum 6 character)", @"cannot be empty", nil] forKey: @"login"];
+	[result setObject:[NSArray arrayWithObjects:@"too short (minimum 6 character)", @"cannot be empty", nil] forKey: @"email"];
+	
+	return result;
+}
 
+- (NSDictionary*) collectParams {
+    NSMutableDictionary *result = [NSMutableDictionary dictionary];
+    [result setObject:username.text forKey:@"login"];
+    [result setObject:emailAddress.text forKey:@"email"];
+    [result setObject:password.text forKey:@"password"];
+    [result setObject:passwordConfirmation.text forKey:@"password_confirmation"];
+    [result setObject:income.text forKey:@"income"];
+    [result setObject:dob.text forKey:@"birthdate"];
+    [result setObject:(gender.selectedSegmentIndex == 0 ? @"M" : @"F") forKey:@"gender"];
+	return result;
+}
 #pragma mark -
 #pragma mark Button actions
 
 - (IBAction) signup {
     [self.activityIndicator startAnimating];
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    [params setObject:username.text forKey:@"login"];
-    [params setObject:emailAddress.text forKey:@"email"];
-    [params setObject:password.text forKey:@"password"];
-    [params setObject:passwordConfirmation.text forKey:@"password_confirmation"];
-    [params setObject:income.text forKey:@"income"];
-    [params setObject:dob.text forKey:@"birthdate"];
-    [params setObject:(gender.selectedSegmentIndex == 0 ? @"M" : @"F") forKey:@"gender"];
-    Account *account = [Account createWithParams:params];
+	
+    Account *account = [Account createWithParams:[self collectParams]];
+	
     [self.activityIndicator stopAnimating];
-    if (account) {
+    if (account == nil) {
+		self.errors = [self buildFakeErrors];
+		[tableView reloadData];
+	} else if( [account hasErrors] ) {
+		self.errors = account.errors;
+		[tableView reloadData];
+	} else {
+		self.errors = nil;
         [RestConfiguration setPassword:password.text];
         [RestConfiguration setUsername:username.text];
         
@@ -272,11 +298,7 @@
         [[Account currentAccount] loadCurrent];
         
         [self.profileView dismissModalViewControllerAnimated:YES];
-    } else {
-        UIAlertView* alert = [[[UIAlertView alloc] initWithTitle:@"Account Creation Failed" message:@"We were unable to create an account with those details" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] autorelease];
-        [alert show];
-    }
-    [params release];
+    }   
 }
 
 - (IBAction) cancel {
