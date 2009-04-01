@@ -150,6 +150,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	NSLog(@"tableView:%@ cellForRowAtIndexPath:%d %d", tv, indexPath.section, indexPath.row);
 	if( indexPath.section == 0 )
 	{
 		if( indexPath.row == 0 ) {
@@ -251,6 +252,7 @@
 }
 
 - (LabelledTableViewCell*) loadLabelledCellWthText:(NSString*)labelText {
+	NSLog(@"loadLabelledCellWthText: %@", labelText);
 	NSArray* nib = [[NSBundle mainBundle] loadNibNamed:@"LabelledTableViewCell" owner:self options:nil];
 	LabelledTableViewCell* cell = (LabelledTableViewCell*)[nib objectAtIndex:0];
 	cell.textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
