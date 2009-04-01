@@ -18,6 +18,7 @@
 - (LabelledTableViewCell*) loadLabelledCellWthText:(NSString*)labelText;
 - (SegmentedTableViewCell*) loadSegmentedCell;
 - (NSDictionary*) collectParams;
+- (void) highlightCell:(LabelledTableViewCell*)cell withErrorForField:(NSString*)field;
 @end
 
 @implementation NewAccountViewController
@@ -156,6 +157,7 @@
 			LabelledTableViewCell* cell = [self loadLabelledCellWthText:@"Username"];
 			self.username = cell.textField;	
 			cell.textField.delegate = self;
+			[self highlightCell:cell withErrorForField:@"login"];
 			return cell;
 		}
 		else if( indexPath.row == 1) {
@@ -163,6 +165,7 @@
 			cell.textField.secureTextEntry = YES;
 			self.password = cell.textField;
 			cell.textField.delegate = self;
+			[self highlightCell:cell withErrorForField:@"password"];
 			return cell;
 		}
 		else if( indexPath.row == 2) {
@@ -170,6 +173,7 @@
 			cell.textField.secureTextEntry = YES;
 			self.passwordConfirmation = cell.textField;
 			cell.textField.delegate = self;
+			[self highlightCell:cell withErrorForField:@"password_confirmation"];
 			return cell;
 		}
 		else {
@@ -177,6 +181,7 @@
 			cell.textField.keyboardType = UIKeyboardTypeEmailAddress;
 			self.emailAddress = cell.textField;
 			cell.textField.delegate = self;
+			[self highlightCell:cell withErrorForField:@"email"];
 			return cell;
 		}
 	} else {
@@ -186,6 +191,7 @@
 			cell.textField.delegate = self;
 			cell.textField.keyboardType = UIKeyboardTypeNumberPad;
 			self.income = cell.textField;
+			[self highlightCell:cell withErrorForField:@"income"];
 			return cell;
 		}
 		else if( indexPath.row == 1) {
@@ -193,6 +199,7 @@
 			cell.textField.placeholder = @"Dec 12, 1971";
 			cell.textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
 			cell.textField.enabled = NO;
+			[self highlightCell:cell withErrorForField:@"dob"];
 			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 			self.dob = cell.textField;
 			return cell;
@@ -206,6 +213,13 @@
 		
 	}
 	return nil;
+}
+
+- (void) highlightCell:(LabelledTableViewCell*)cell withErrorForField:(NSString*)field {
+	NSArray* fieldErrors = (NSArray*)[self.errors objectForKey:field];
+	if( fieldErrors != nil || fieldErrors.count > 0 ) {
+		cell.label.textColor = [UIColor redColor];
+	}
 }
 
 - (void) dismissModalViewControllerAnimated:(BOOL) animated {
