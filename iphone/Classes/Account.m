@@ -12,14 +12,6 @@
 #import "JoeMetricAppDelegate.h"
 #import "RestConfiguration.h"
 
-NSDate* fromShortIso8601(NSString *shortDate){
-	if ([NSNull null] == (id)shortDate || nil == shortDate) return  nil;
-	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-	formatter.dateFormat = @"yyyy-MM-dd";
-	NSDate * result = [formatter dateFromString:shortDate];
-	[formatter release];
-	return result;
-}
 
 @interface Account()
 -(void) changeLoadStatusTo:(AccountLoadStatus)status;
@@ -58,12 +50,33 @@ NSDate* fromShortIso8601(NSString *shortDate){
 	return self.errors != nil && self.errors.count > 0;
 }
 
+-(NSDateFormatter*)iso8061DateFormatter{
+	NSDateFormatter* result = [[[NSDateFormatter alloc] init] autorelease];
+	result.dateFormat = @"yyyy-MM-dd";
+	return result;
+}
+
+-(NSString*)iso8061BirthDate{
+	NSDateFormatter* formatter = [[[NSDateFormatter alloc] init] autorelease];
+	formatter.dateFormat = @"yyyy-MM-dd";
+	return [self.iso8061DateFormatter stringFromDate:self.birthdate];
+}
+
+-(void)setIso8061BirthDate:(NSString*)iso8061Date{
+	if ([NSNull null] == (id)iso8061Date || nil == iso8061Date) {
+		self.birthdate = nil;
+	}
+	else {
+		self.birthdate = [self.iso8061DateFormatter dateFromString:iso8061Date];
+	}
+}
+
 -(void)populateFromDictionary:(NSDictionary*)dict{
 	NSDictionary *params = [dict objectForKey:@"user"];
 	self.email = [params objectForKey:@"email"];
 	self.gender = [params objectForKey:@"gender"];
 	self.income = [[params objectForKey:@"income"] integerValue];
-	self.birthdate = fromShortIso8601([params objectForKey:@"birthdate"]);
+	self.iso8061BirthDate=[params objectForKey:@"birthdate"];
 	self.itemId = [[params objectForKey:@"id"] integerValue];   
 }
 
@@ -94,7 +107,7 @@ NSDate* fromShortIso8601(NSString *shortDate){
 }
 
 - (void)finishedLoading:(NSString *)data{
-    static const NSString* dictionaryClassName = @"NSCFDictionary";
+	static const NSString* dictionaryClassName = @"NSCFDictionary";
 	NSLog(@"data:%@", data);
 	NSObject *unpackedJson = [data JSONFragmentValue];
 	if (NSOrderedSame == [dictionaryClassName compare:[unpackedJson className]]){
@@ -112,11 +125,6 @@ NSDate* fromShortIso8601(NSString *shortDate){
 	self.callbackObject = callMeObj;    
 }
 
--(NSString*) iso8061BirthDate{
-	NSDateFormatter* formatter = [[[NSDateFormatter alloc] init] autorelease];
-	formatter.dateFormat = @"yyyy-MM-dd";
-	return [formatter stringFromDate:self.birthdate];
-}
 
 -(void)createNew{
 	NSMutableDictionary* fields = [NSMutableDictionary dictionary];
