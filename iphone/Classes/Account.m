@@ -1,11 +1,3 @@
-//
-//  Account.m
-//  JoeMetric
-//
-//  Created by Scott Barron on 12/22/08.
-//  Copyright 2008 EdgeCase, LLC. All rights reserved.
-//
-
 #import "Account.h"
 #import "Rest.h"
 #import "JSON.h"
@@ -39,17 +31,6 @@
 @synthesize passwordConfirmation;
 @synthesize itemId;
 
-+ (NSString *)resourceName{
-	return @"users";
-}
-
-+ (NSString *)resourceKey{
-	return @"user";
-}
-
--(BOOL)hasErrors {
-	return self.errors != nil && self.errors.count > 0;
-}
 
 -(NSDateFormatter*)iso8061DateFormatter{
 	NSDateFormatter* result = [[[NSDateFormatter alloc] init] autorelease];
@@ -72,24 +53,18 @@
 	}
 }
 
--(void)populateFromDictionary:(NSDictionary*)dict{
+-(void)loadFromDictionary:(NSDictionary*)dict{
 	NSDictionary *params = [dict objectForKey:@"user"];
 	self.email = [params objectForKey:@"email"];
 	self.gender = [params objectForKey:@"gender"];
 	self.income = [[params objectForKey:@"income"] integerValue];
 	self.iso8061BirthDate=[params objectForKey:@"birthdate"];
 	self.itemId = [[params objectForKey:@"id"] integerValue];   
-}
-
-
-
--(void)loadFromDictionary:(NSDictionary*)dict{
-	[self populateFromDictionary:dict];
-	[self changeLoadStatusTo: accountLoadStatusLoaded];
 
 	[RestConfiguration setUsername:username];
 	[RestConfiguration setPassword:password];
 
+	[self changeLoadStatusTo: accountLoadStatusLoaded];
 }
 
 -(void)failedValidation:(NSArray*)array{
@@ -109,7 +84,6 @@
 
 - (void)finishedLoading:(NSString *)data{
 	static const NSString* dictionaryClassName = @"NSCFDictionary";
-	NSLog(@"data:%@", data);
 	NSObject *unpackedJson = [data JSONFragmentValue];
 	if (NSOrderedSame == [dictionaryClassName compare:[unpackedJson className]]){
 		[self loadFromDictionary:(NSDictionary*)unpackedJson];
@@ -159,14 +133,6 @@
 }
 
 
-
-+ (id)newFromDictionary:(NSDictionary *) dict{
-	Account *account = [[Account alloc] init];
-	[account populateFromDictionary:dict];
-	return account;
-}
-
-
 -(void) changeLoadStatusTo:(AccountLoadStatus)status{
 	[self changeLoadStatusTo:status withError:nil];
 }
@@ -187,8 +153,7 @@
 }
 
 
-- (void) dealloc
-{
+- (void) dealloc{
 	[username release];
 	[password release];
 	[errors release];

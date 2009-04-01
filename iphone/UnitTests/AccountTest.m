@@ -100,11 +100,10 @@
 
 }
 
--(void)testNewFromDictionaryWith_NSNull_Birthdate{
-	NSDictionary *params = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"456", [NSNull null],  nil] forKeys:[NSArray arrayWithObjects:@"id", @"birthdate", nil]];
-	NSDictionary *user = [NSDictionary dictionaryWithObject:params forKey:@"user"];
-	self.account = [[Account newFromDictionary:user] autorelease];
-	STAssertEquals(456, account.itemId, nil);
+
+-(void)testNullBirthdateDoesNoCaueErrors{
+	NSString* data = @"{\"user\": { \"birthdate\":null}}";
+	[account finishedLoading:data];
 	STAssertNULL(account.birthdate, nil);
 }
 
@@ -124,14 +123,6 @@
 
 
 
--(void)testNewFromDictionary{
-	NSDictionary *params = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"rita@sue.com", @"456",  nil] forKeys:[NSArray arrayWithObjects:@"email", @"id", nil]];
-	NSDictionary *user = [NSDictionary dictionaryWithObject:params forKey:@"user"];
-	self.account = [[Account newFromDictionary:user] autorelease];
-	STAssertEquals(456, account.itemId, nil);
-	STAssertEqualStrings(@"rita@sue.com", account.email, nil);
-
-}
 
 
 -(void)testCreate{

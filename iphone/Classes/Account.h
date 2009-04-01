@@ -28,11 +28,9 @@ typedef enum {
 
 
 +(Account*) currentAccount;
--(void)populateFromReceivedData:(NSData *)data;
 -(void)onChangeNotify:(SEL)callme on:(id)callMeObj;
 -(void)loadCurrent;
 -(void)createNew;
--(BOOL)hasErrors;
 
 @property (nonatomic) NSInteger itemId;
 @property (nonatomic, retain) NSString *username;
