@@ -13,7 +13,7 @@
 
 }
 +(NSDateFormatter*)formatter;
-+(NSString*) dateFromString:(NSString*)str;
++(NSDate*) dateFromString:(NSString*)str;
 +(NSString*) stringFromDate:(NSDate*)date;
 
 @end

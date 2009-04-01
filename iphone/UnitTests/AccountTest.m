@@ -148,8 +148,6 @@
 	STAssertEqualStrings(@"http://localhost:3000/users.json", [[connectionRequest URL] relativeString], @"url");
 	STAssertEqualStrings(@"POST", connectionRequest.HTTPMethod, @"http method");
 
-	NSData* data = [connectionRequest HTTPBody];
-
 	NSString* body = [connectionRequest httpBodyAsString];
 
 	STAssertNotNil([body matchRegex:@"^{\"user\":{"], body);
@@ -160,6 +158,14 @@
     STAssertNotNil([body matchRegex:@"\"birthdate\":\"1969-07-15\""], body);
 	STAssertNotNil([body matchRegex:@"\"income\":12345"], body, nil);
 	STAssertNotNil([body matchRegex:@"\"gender\":\"F\""], body);
+}
+
+-(void)testCreateWithNothingToSendDoesNotBlowUp{
+	account.username = nil;
+	account.password = nil;
+	[account createNew];
+	// Of course it fails validation, but that's not our concern here.
+	STAssertEqualStrings(@"{\"user\":{\"income\":0}}", [connectionRequest httpBodyAsString], nil); 
 }
 
 

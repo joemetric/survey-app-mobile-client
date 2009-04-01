@@ -9,7 +9,7 @@
 	dateFormatter.dateFormat = @"dd MMM yyyy";
 	return dateFormatter;
 }
-+(NSString*) dateFromString:(NSString*)str{
++(NSDate*) dateFromString:(NSString*)str{
 	return [[self formatter] dateFromString:str];
 }
 
