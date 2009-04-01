@@ -8,7 +8,7 @@ typedef enum {
 	accountLoadStatusUnauthorized,
 	accountLoadStatusFailedValidation} AccountLoadStatus;
 
-@interface Account : Resource<RestfulRequestsObserver> {
+@interface Account : NSObject<RestfulRequestsObserver> {
     NSString *username;
     NSString *password;
     NSString *email;
@@ -18,6 +18,7 @@ typedef enum {
     NSDate *birthdate;
 	NSError *lastLoadError;
 	NSDictionary* errors;
+	NSInteger itemId;
     
     id callbackObject;
     SEL callbackSelector; 
@@ -33,6 +34,7 @@ typedef enum {
 -(void)createNew;
 -(BOOL)hasErrors;
 
+@property (nonatomic) NSInteger itemId;
 @property (nonatomic, retain) NSString *username;
 @property (nonatomic, retain) NSString *password;
 @property (nonatomic, retain) NSString *passwordConfirmation;

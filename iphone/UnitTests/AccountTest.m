@@ -173,7 +173,6 @@
 
 -(void)testProperlyInitialised{
 	STAssertEquals(0, (NSInteger) account.errors.count, nil);
-	STAssertNotNil(account.rest, nil);
 }
 
 @end

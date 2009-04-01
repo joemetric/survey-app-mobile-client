@@ -37,6 +37,7 @@
 @synthesize lastLoadError;
 @synthesize errors;
 @synthesize passwordConfirmation;
+@synthesize itemId;
 
 + (NSString *)resourceName{
 	return @"users";
@@ -166,20 +167,6 @@
 }
 
 
-- (NSDictionary *)toDictionary
-{
-	NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
-	[parameters setObject:self.username forKey:@"name"];
-	[parameters setObject:self.password forKey:@"password"];
-	[parameters setObject:self.email forKey:@"email"];
-
-	NSMutableDictionary *container = [[NSMutableDictionary alloc] init];
-	[container setObject:parameters forKey:[[self class] resourceKey]];
-
-	[parameters release];
-	return [container autorelease];
-}
-
 -(void) changeLoadStatusTo:(AccountLoadStatus)status{
 	[self changeLoadStatusTo:status withError:nil];
 }
@@ -192,7 +179,7 @@
 
 
 -(id) init{
-	[super initWithPath:@""];
+	[super init];
 	self.errors = [[NSDictionary alloc] init];
 	self.username = [RestConfiguration username];
 	self.password = [RestConfiguration password];
