@@ -37,7 +37,8 @@
 	[dateFormatter release];
 }
 
-
+-(void)assertCorrectValue:(NSString*)value forSection:(NSInteger)section row:(NSInteger)row {
+}
 -(void)assertCorrectValue:(NSString*)value forSection:(NSInteger)section row:(NSInteger)row label:(NSString*) label{
 	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:section];
 	LabelledTableViewReadOnlyCell *cell = (LabelledTableViewReadOnlyCell*)[testee tableView:nil cellForRowAtIndexPath:indexPath];
@@ -55,6 +56,12 @@
 	[self assertCorrectValue:@"17 May 1953" forSection:1 row:1 label:@"date of birth"];	
 	[self assertCorrectValue:@"$12,345" forSection:1 row:2 label:@"income"];
 	[self assertCorrectValue:@"F" forSection:1 row:3 label:@"gender"];
+}
+
+-(void)testDefaultBlankValues{
+	account.birthdate = nil;
+	account.income = 0;
+	[self assertCorrectValue:@"" forSection:1 row:0];
 }
 
 

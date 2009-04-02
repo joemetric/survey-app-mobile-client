@@ -1,7 +1,7 @@
 #import <UIKit/UIKit.h>
-#import "LabelledCell.h"
+#import "Labelled.h"
 
-@interface LabelledTableViewReadOnlyCell : UITableViewCell<LabelledCell> {
+@interface LabelledTableViewReadOnlyCell : UITableViewCell<Labelled> {
 	UILabel* label;
 	UILabel* valueField;
 }

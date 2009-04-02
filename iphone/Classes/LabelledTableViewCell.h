@@ -1,7 +1,7 @@
 #import <UIKit/UIKit.h>
-#import "LabelledCell.h"
+#import "Labelled.h"
 
-@interface LabelledTableViewCell : UITableViewCell <UITextFieldDelegate, LabelledCell> {
+@interface LabelledTableViewCell : UITableViewCell <UITextFieldDelegate, Labelled> {
 	UILabel* label;
 	UITextField* textField;
 	UITableView* tableView;

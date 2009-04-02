@@ -18,7 +18,7 @@
 - (LabelledTableViewCell*) loadLabelledCellWthText:(NSString*)labelText;
 - (SegmentedTableViewCell*) loadSegmentedCell;
 - (NSDictionary*) collectParams;
-- (void) highlightCell:(id<LabelledCell>)cell withErrorForField:(NSString*)field;
+- (void) highlightCell:(id<Labelled>)cell withErrorForField:(NSString*)field;
 - (NSArray*) validErrorKeysForSection:(NSInteger) section;
 @property(readonly) NSDictionary* errors;
 @end
@@ -209,7 +209,7 @@
 	return nil;
 }
 
-- (void) highlightCell:(id<LabelledCell>)cell withErrorForField:(NSString*)field {
+- (void) highlightCell:(id<Labelled>)cell withErrorForField:(NSString*)field {
 	NSArray* fieldErrors = (NSArray*)[self.errors objectForKey:field];
 	if( fieldErrors != nil || fieldErrors.count > 0 ) {
 		cell.label.textColor = [UIColor redColor];
