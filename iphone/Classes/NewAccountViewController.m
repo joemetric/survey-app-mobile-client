@@ -110,10 +110,8 @@
 	} else if( textField == passwordConfirmation ) {
 		[tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0] atScrollPosition:UITableViewScrollPositionNone animated:YES];
 	} else if( textField == emailAddress ) {
-		NSLog(@"email");
 		[tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0] atScrollPosition:UITableViewScrollPositionNone animated:YES];
 	} else if( textField == income ) {
-		NSLog(@"income");
 		[tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:1] atScrollPosition:UITableViewScrollPositionNone animated:YES];
 	}
 }
@@ -175,7 +173,6 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	NSLog(@"tableView:%@ cellForRowAtIndexPath:%d %d", tv, indexPath.section, indexPath.row);
 	if( indexPath.section == 0 )
 	{
 		if( indexPath.row == 0 ) {
@@ -234,7 +231,6 @@
 }
 
 - (void) tableView:(UITableView*)tv didSelectRowAtIndexPath:(NSIndexPath*)indexPath {
-	NSLog(@"didSelectRowAtIndexPath");
 	if( indexPath.section == 0 && indexPath.row == 0 ) {
 		[username becomeFirstResponder];
 	} else if( indexPath.section == 0 && indexPath.row == 1 ) {
@@ -258,23 +254,6 @@
 	}
 }
 
-- (LabelledTableViewCell*) loadLabelledCellWthText:(NSString*)labelText {
-	NSLog(@"loadLabelledCellWthText: %@", labelText);
-	NSArray* nib = [[NSBundle mainBundle] loadNibNamed:@"LabelledTableViewCell" owner:self options:nil];
-	LabelledTableViewCell* cell = (LabelledTableViewCell*)[nib objectAtIndex:0];
-	cell.textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-	cell.textField.autocorrectionType = UITextAutocorrectionTypeNo;
-	cell.tableView = self.tableView;
-	cell.label.text = labelText;
-	return cell;
-}
-
-- (SegmentedTableViewCell*) loadSegmentedCell {
-	NSArray* nib = [[NSBundle mainBundle] loadNibNamed:@"SegmentedTableViewCell" owner:self options:nil];
-	SegmentedTableViewCell* cell = (SegmentedTableViewCell*)[nib objectAtIndex:0];
-	cell.tableView = self.tableView;
-	return cell;
-}
 
 
 
