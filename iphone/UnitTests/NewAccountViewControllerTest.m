@@ -34,12 +34,12 @@
 }
 
 
--(LabelledTableViewCell*)labelledCellForRow:(NSInteger)row inSection:(NSInteger)section{
-	return (LabelledTableViewCell*)[testee tableView:testee.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
+-(id<LabelledCell>)labelledCellForRow:(NSInteger)row inSection:(NSInteger)section{
+	return (id<LabelledCell>) [testee tableView:testee.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
 }
 
 -(void)assertLabel:(NSString*)label inLabelledCellForRow:(NSInteger)row inSection:(NSInteger)section{
-	LabelledTableViewCell* cell = [self labelledCellForRow:row inSection:section];
+	id<LabelledCell> cell = [self labelledCellForRow:row inSection:section];
 	STAssertEqualStrings(label, cell.label.text, [NSString stringWithFormat:@"row: %d, section: %d", row, section]);
 	
 }
@@ -132,7 +132,7 @@
 }
 
 -(void)assertRow:(NSInteger)row inSection:(NSInteger)section highlighted:(BOOL)highlighted{
-	LabelledTableViewCell* cell = [self labelledCellForRow:row inSection:section];
+	id<LabelledCell> cell = [self labelledCellForRow:row inSection:section];
 	UIColor* expectedColour = highlighted ? [UIColor redColor] : [UIColor blackColor];
 	STAssertEquals(expectedColour, cell.label.textColor, 
 		[NSString stringWithFormat:@"%@ expected to be%@highlighted.", cell.label.text, 

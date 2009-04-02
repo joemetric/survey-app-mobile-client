@@ -7,16 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LabelledCell.h"
 
-
-@interface SegmentedTableViewCell : UITableViewCell {
+@interface SegmentedTableViewCell : UITableViewCell<LabelledCell> {
 	UILabel* label;
 	UISegmentedControl* segControl;
 	UITableView* tableView;	
 }
 
 @property (nonatomic, retain) UITableView* tableView;
-@property (nonatomic, retain) IBOutlet UILabel* label;
 @property (nonatomic, retain) IBOutlet UISegmentedControl* segControl;
 
 @end

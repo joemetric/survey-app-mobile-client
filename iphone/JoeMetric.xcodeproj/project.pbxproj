@@ -233,6 +233,7 @@
 		DAA2E7330F83C3350004D56E /* AccountStubbing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountStubbing.m; sourceTree = "<group>"; };
 		DAA2E7530F83D3220004D56E /* DateHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateHelper.h; sourceTree = "<group>"; };
 		DAA2E7540F83D3220004D56E /* DateHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateHelper.m; sourceTree = "<group>"; };
+		DADF81390F84C43700DEACA0 /* LabelledCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelledCell.h; sourceTree = "<group>"; };
 		DAE91B610F823122009CEE14 /* NSString+Regex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Regex.h"; sourceTree = "<group>"; };
 		DAE91B620F823122009CEE14 /* NSString+Regex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Regex.m"; sourceTree = "<group>"; };
 		DAE91B640F823144009CEE14 /* NSString+RegexTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+RegexTest.m"; sourceTree = "<group>"; };
@@ -434,6 +435,7 @@
 				DA7F48C00F7143890001E019 /* LabelledTableViewReadOnlyCell.m */,
 				DA86C18A0F778D8300CC6EBE /* NoAccountDataProfileDataSource.h */,
 				DA86C18B0F778D8300CC6EBE /* NoAccountDataProfileDataSource.m */,
+				DADF81390F84C43700DEACA0 /* LabelledCell.h */,
 			);
 			name = "Profile View Controllers";
 			sourceTree = "<group>";
