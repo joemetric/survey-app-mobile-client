@@ -261,6 +261,12 @@
 #pragma mark Button actions
 
 - (IBAction) signup {
+    [username resignFirstResponder];
+    [password resignFirstResponder];
+    [passwordConfirmation resignFirstResponder];
+    [emailAddress resignFirstResponder];
+    [income resignFirstResponder];
+    
 	Account* account = [Account currentAccount];
 	account.username = loginCell.textField.text ;
 	account.password = passwordCell.textField.text;
