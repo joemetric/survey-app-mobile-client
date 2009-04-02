@@ -20,13 +20,13 @@
 - (NSDictionary*) collectParams;
 - (void) highlightCell:(LabelledTableViewCell*)cell withErrorForField:(NSString*)field;
 - (NSArray*) validErrorKeysForSection:(NSInteger) section;
+@property(readonly) NSDictionary* errors;
 @end
 
 @implementation NewAccountViewController
 @synthesize username, password, passwordConfirmation, emailAddress, gender, dob, income;
 @synthesize activityIndicator, profileView, tableView, datePicker;;
 @synthesize keyboardIsShowing;
-@synthesize errors;
 @synthesize loginCell, passwordCell, passwordConfirmationCell, emailCell, incomeCell, dobCell, genderCell;
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -166,7 +166,7 @@
 
 - (NSArray*) validErrorKeysForSection:(NSInteger) section {
 	if( section == 0 ){ return [NSArray arrayWithObjects:@"login", @"password", @"password_confirmation", @"email", nil]; }
-	else if( section == 1 ) { return [NSArray arrayWithObjects:@"income", @"dob", @"gender", nil];}
+	else if( section == 1 ) { return [NSArray arrayWithObjects:@"income", @"birthdate", @"gender", nil];}
 	return [NSArray array];
 }
 
@@ -200,10 +200,11 @@
 			return incomeCell;
 		}
 		else if( indexPath.row == 1) {
-			[self highlightCell:dobCell withErrorForField:@"dob"];
+			[self highlightCell:dobCell withErrorForField:@"birthdate"];
 			return dobCell;
 		}
 		else {
+			[self highlightCell:genderCell withErrorForField:@"gender"];
 			return genderCell;
 		}
 		
@@ -275,6 +276,8 @@
 	return cell;
 }
 
+
+
 #pragma mark -
 #pragma mark Button actions
 
@@ -288,11 +291,21 @@
 	account.income = [incomeCell.textField.text integerValue];
 	account.birthdate = [[self dateFormatter] dateFromString:dobCell.textField.text];
 	[account createNew];
+	[activityIndicator startAnimating];
 }
 
 
 - (IBAction) cancel {
 	[self.parentViewController dismissModalViewControllerAnimated:YES];
+}
+
+-(void) accountChanged{	
+	[activityIndicator stopAnimating];
+	[tableView reloadData];
+}
+
+-(NSDictionary*)errors{
+	return [Account currentAccount].errors;
 }
 
 

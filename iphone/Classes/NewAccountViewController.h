@@ -39,11 +39,11 @@
 	
 	BOOL keyboardIsShowing;
 	
-	NSDictionary* errors;
 }
 
 - (IBAction) signup;
 - (IBAction) cancel;
+-(void) accountChanged;
 
 @property (nonatomic, retain) ProfileViewController* profileView;
 
@@ -73,5 +73,4 @@
 
 @property (nonatomic) BOOL keyboardIsShowing;
 
-@property (nonatomic, retain) NSDictionary* errors;
 @end

@@ -12,20 +12,19 @@
 -(RegexMatch*) matchRegex:(NSString*)regex{
 	regex_t preg;
 	int err=regcomp(&preg,[regex UTF8String],REG_EXTENDED);
-	if(err)
-	{
+	if(err){
 	    char errbuf[256];
 	    regerror(err,&preg,errbuf,sizeof(errbuf));
 	    [NSException raise:@"CSRegexException" format:@"Could not compile regex \"%@\": %s",regex,errbuf];
 	}
     
 	regmatch_t match;
-    BOOL matches = regexec(&preg,[self UTF8String],1,&match,0)==0;
+    NSInteger res = regexec(&preg,[self UTF8String],1,&match,0);
     regfree(&preg);
-	if(matches)
+	if(res == 0)
 	{
 	    return [[[RegexMatch alloc] init] autorelease];
 	}
-    return nil;
+   return nil;
 }
 @end

@@ -27,4 +27,9 @@
 -(void)testReturnsNotNillWhenThereIsAMatch{
     STAssertNotNil([@"hello" matchRegex:@"ll"] ,nil);
 }
+
+
+-(void)testMultiline{
+	STAssertNotNil([@"hello\na matey boy\nwhy why" matchRegex:@"matey boy"], nil);
+}
 @end

@@ -26,8 +26,7 @@
 -(void)accountLoadStatusChanged:(Account*) _account{
     /* TODO - REPLACE THIS HACK WITH SOME POLYMORPHISM OR SOMETHING */
     if (self.modalViewController == self.newAccountController){
-        newAccountController.errors = _account.errors;
-        [newAccountController.tableView reloadData];
+		[newAccountController accountChanged];
     }
     /* END HACK*/
         
