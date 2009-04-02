@@ -49,7 +49,7 @@
 	self.validCredentials.account = [Account currentAccount];
 	self.noAccountData = [[[NoAccountDataProfileDataSource alloc] init] autorelease];
 	[[Account currentAccount] onChangeNotify:@selector(accountLoadStatusChanged:) on:self];
-
+    self.tableView.backgroundColor = [UIColor clearColor];
 	[super viewDidLoad];
 }
 
