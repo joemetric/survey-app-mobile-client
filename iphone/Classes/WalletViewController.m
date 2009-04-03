@@ -15,6 +15,10 @@
 @synthesize entries;
 @synthesize totalTitle, totalValue;
 
+- (void) viewDidLoad {
+	entries.separatorColor = [UIColor darkGrayColor];
+}
+
 - (void) viewWillAppear:(BOOL)animated {
 	totalValue.text = @"$6.00";
 	[super viewWillAppear:animated];
@@ -27,7 +31,6 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 5;
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -48,9 +51,9 @@
 		[cell setupAsCredit];
 	}
 	if( indexPath.row % 2 == 1 ) {
-		cell.backgroundColor = [UIColor lightGrayColor];
+		cell.contentView.backgroundColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1.0];
 	} else {
-		cell.backgroundColor = [UIColor whiteColor];
+		cell.contentView.backgroundColor = [UIColor whiteColor];
 	}
     return cell;
 }
