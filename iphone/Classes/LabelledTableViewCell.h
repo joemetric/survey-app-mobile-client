@@ -1,8 +1,8 @@
 #import <UIKit/UIKit.h>
 #import "Labelled.h"
-#import "HasErrorCell.h"
+#import "HasError.h"
 
-@interface LabelledTableViewCell : UITableViewCell <UITextFieldDelegate, Labelled, HasErrorCell> {
+@interface LabelledTableViewCell : UITableViewCell <UITextFieldDelegate, Labelled, HasError> {
 	UILabel* label;
 	UITextField* textField;
 	UITableView* tableView;

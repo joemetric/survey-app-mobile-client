@@ -1,4 +1,4 @@
-@protocol HasErrorCell
+@protocol HasError
 
 
 @property(nonatomic) BOOL errorHighlighted;

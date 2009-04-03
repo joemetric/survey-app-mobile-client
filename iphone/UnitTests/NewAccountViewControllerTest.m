@@ -7,7 +7,8 @@
 #import "AccountStubbing.h"
 #import "DateHelper.h"
 #import "NSString+Regex.h"
-#import "HasErrorCell.h"
+#import "HasError.h"
+
 
 @interface NewAccountViewControllerTest: GTMTestCase{
 	NewAccountViewController* testee;
@@ -35,8 +36,8 @@
 }
 
 
--(id<Labelled>)labelledCellForRow:(NSInteger)row inSection:(NSInteger)section{
-	return (id<Labelled>) [testee tableView:testee.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
+-(id<Labelled, HasError>)labelledCellForRow:(NSInteger)row inSection:(NSInteger)section{
+	return (id<Labelled, HasError>) [testee tableView:testee.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
 }
 
 -(void)assertLabel:(NSString*)label inLabelledCellForRow:(NSInteger)row inSection:(NSInteger)section{
@@ -133,8 +134,7 @@
 }
 
 -(void)assertRow:(NSInteger)row inSection:(NSInteger)section highlighted:(BOOL)highlighted{
-	id<HasErrorCell, Labelled> cell = [self labelledCellForRow:row inSection:section];
-	UIColor* expectedColour = highlighted ? [UIColor redColor] : [UIColor blackColor];
+	id<HasError, Labelled> cell = [self labelledCellForRow:row inSection:section];
 	STAssertEquals(highlighted, cell.errorHighlighted, 
 		[NSString stringWithFormat:@"%@ expected to be%@highlighted.", cell.label.text, 
 		highlighted ? @" " : @" not "]);
