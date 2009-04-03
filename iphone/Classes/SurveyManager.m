@@ -1,16 +1,10 @@
-//
-//  SurveyManager.m
-//  JoeMetric
-//
-//  Created by Scott Barron on 3/25/09.
-//  Copyright 2009 EdgeCase, LLC. All rights reserved.
-//
-
 #import "SurveyManager.h"
 #import "RestConfiguration.h"
 #import "JSON.h"
 
 @implementation SurveyManager
+
+@synthesize observer;
 
 - (void)cancelConnection {
     [conn cancel];
@@ -51,10 +45,11 @@
         NSString *surveyFilePath = [surveyDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.plist", 
                                                                                     [survey objectForKey:@"id"]]];
         [survey writeToFile:surveyFilePath atomically:YES];
-        NSLog(@"Wrote survey: %@", surveyFilePath);
     }
 
     [dataStr release];
+    
+    [observer surveysStored];
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
@@ -90,6 +85,10 @@
 }
 
 - (id)init {
+    return [self initWithObserver:nil];
+}
+
+- (id)initWithObserver:(NSObject<SurveyManagerObserver> *)delegate {
     if (self = [super init]) {
         host   = [RestConfiguration host];
         port   = [RestConfiguration port];
@@ -107,6 +106,8 @@
                                       timeoutInterval:60.0];
         
         [request setAllHTTPHeaderFields:headers];
+        
+        self.observer = delegate;
     }
     return self;
 }

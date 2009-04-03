@@ -1,13 +1,8 @@
-//
-//  SurveyManager.h
-//  JoeMetric
-//
-//  Created by Scott Barron on 3/25/09.
-//  Copyright 2009 EdgeCase, LLC. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 
+@protocol SurveyManagerObserver
+- (void)surveysStored;
+@end
 
 @interface SurveyManager : NSObject {
     NSString      *host;
@@ -15,9 +10,14 @@
     NSMutableData *buffer;
     NSMutableURLRequest *request;
     NSURLConnection *conn;
+    NSObject<SurveyManagerObserver>* observer;
 }
+
+- (id)initWithObserver:(NSObject<SurveyManagerObserver> *)delegate;
 
 - (BOOL)loadSurveysFromNetwork;
 + (NSArray *)loadSurveysFromLocal;
+
+@property (nonatomic, assign) NSObject<SurveyManagerObserver>* observer;
 
 @end
