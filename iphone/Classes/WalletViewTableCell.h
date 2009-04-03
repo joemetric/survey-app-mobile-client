@@ -12,8 +12,13 @@
 @interface WalletViewTableCell : UITableViewCell {
 	UILabel* surveyName;
 	UILabel* surveyValue;
+	UIImageView* lozengeView;
 }
 
+- (void) setupAsDebit;
+- (void) setupAsCredit;
+	
 @property (nonatomic, retain) IBOutlet UILabel* surveyName;
 @property (nonatomic, retain) IBOutlet UILabel* surveyValue;
+@property (nonatomic, retain) IBOutlet UIImageView* lozengeView;
 @end

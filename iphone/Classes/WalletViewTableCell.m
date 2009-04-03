@@ -11,7 +11,7 @@
 
 @implementation WalletViewTableCell
 
-@synthesize surveyName, surveyValue;
+@synthesize surveyName, surveyValue, lozengeView;
 
 - (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithFrame:frame reuseIdentifier:reuseIdentifier]) {
@@ -20,6 +20,15 @@
     return self;
 }
 
+- (void) setupAsDebit {
+	lozengeView.image = [UIImage imageNamed:@"red_lozenge.png"];
+	surveyValue.textColor = [UIColor whiteColor];
+}
+
+- (void) setupAsCredit {
+	lozengeView.image = [UIImage imageNamed:@"green_lozenge.png"];
+	surveyValue.textColor = [UIColor blackColor];
+}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
 

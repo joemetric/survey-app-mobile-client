@@ -16,8 +16,7 @@
 @synthesize totalTitle, totalValue;
 
 - (void) viewWillAppear:(BOOL)animated {
-	totalTitle.text = @"Total";
-	totalValue.text = @"$55.00";
+	totalValue.text = @"$6.00";
 	[super viewWillAppear:animated];
 }
 
@@ -40,13 +39,18 @@
     // Configure the cell
 	if (indexPath.row == 3){
 		cell.surveyName.text  = @"Withdrawal";
-		cell.surveyName.textColor = [UIColor redColor];
-		cell.surveyValue.text = @"$-25.00";
-		cell.surveyValue.textColor = [UIColor redColor];
+		cell.surveyValue.text = @"$-5.00";
+		[cell setupAsDebit];
 	}
 	else {
 		cell.surveyName.text = [NSString stringWithFormat:@"Survey %d", indexPath.row+1];
-		cell.surveyValue.text = [NSString stringWithFormat:@"$%d.00", 5*(indexPath.row+1)];
+		cell.surveyValue.text = [NSString stringWithFormat:@"$%d.00", (indexPath.row+1)];
+		[cell setupAsCredit];
+	}
+	if( indexPath.row % 2 == 1 ) {
+		cell.backgroundColor = [UIColor lightGrayColor];
+	} else {
+		cell.backgroundColor = [UIColor whiteColor];
 	}
     return cell;
 }

@@ -132,8 +132,8 @@
 
 
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-	return [[self tableDelegate] tableView:tableView viewForHeaderInSection:section];
+- (UIView *)tableView:(UITableView *)tv viewForHeaderInSection:(NSInteger)section{
+	return [[self tableDelegate] tableView:tv viewForHeaderInSection:section];
 }
 
 
@@ -152,7 +152,7 @@
 	[noCredentials release];
 	[validCredentials release];
 	[newAccountController release];
-	[demographicsSectionHeader relase];
+	[demographicsSectionHeader release];
 	[accountSectionHeader release];
 	[super dealloc];
 }

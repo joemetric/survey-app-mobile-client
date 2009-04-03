@@ -44,15 +44,15 @@
 							<object class="IBUILabel" id="754553375">
 								<reference key="NSNextResponder" ref="14081638"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{20, 11}, {149, 22}}</string>
+								<string key="NSFrame">{{69, 12}, {231, 22}}</string>
 								<reference key="NSSuperview" ref="14081638"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="IBUIText">Survey 123</string>
-								<object class="NSFont" key="IBUIFont" id="17807199">
+								<object class="NSFont" key="IBUIFont" id="358806907">
 									<string key="NSName">Helvetica-Bold</string>
-									<double key="NSSize">1.800000e+01</double>
+									<double key="NSSize">1.300000e+01</double>
 									<int key="NSfFlags">16</int>
 								</object>
 								<object class="NSColor" key="IBUITextColor" id="981146091">
@@ -63,24 +63,39 @@
 								<int key="IBUIBaselineAdjustment">1</int>
 								<float key="IBUIMinimumFontSize">1.000000e+01</float>
 							</object>
+							<object class="IBUIImageView" id="683458364">
+								<reference key="NSNextResponder" ref="14081638"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{-5, 12}, {66, 22}}</string>
+								<reference key="NSSuperview" ref="14081638"/>
+								<bool key="IBUIOpaque">NO</bool>
+								<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
+								<int key="IBUIContentMode">4</int>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<object class="NSCustomResource" key="IBUIImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">green_lozenge.png</string>
+								</object>
+							</object>
 							<object class="IBUILabel" id="972640828">
 								<reference key="NSNextResponder" ref="14081638"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{177, 12}, {86, 22}}</string>
+								<string key="NSFrame">{{6, 16}, {43, 12}}</string>
 								<reference key="NSSuperview" ref="14081638"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
-								<string key="IBUIText">$23.00</string>
-								<reference key="IBUIFont" ref="17807199"/>
+								<string key="IBUIText">$2.00</string>
+								<reference key="IBUIFont" ref="358806907"/>
 								<reference key="IBUITextColor" ref="981146091"/>
 								<nil key="IBUIHighlightedColor"/>
 								<int key="IBUIBaselineAdjustment">1</int>
+								<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 								<float key="IBUIMinimumFontSize">1.000000e+01</float>
 								<int key="IBUITextAlignment">2</int>
 							</object>
 						</object>
-						<string key="NSFrameSize">{297, 44}</string>
+						<string key="NSFrameSize">{320, 44}</string>
 						<reference key="NSSuperview" ref="274380110"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
@@ -100,7 +115,6 @@
 				</object>
 				<bool key="IBUIOpaque">NO</bool>
 				<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
-				<int key="IBUIAccessoryType">1</int>
 				<reference key="IBUIContentView" ref="14081638"/>
 				<string key="IBUIReuseIdentifier">WalletViewTableCell</string>
 			</object>
@@ -123,6 +137,14 @@
 						<reference key="destination" ref="754553375"/>
 					</object>
 					<int key="connectionID">10</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">lozengeView</string>
+						<reference key="source" ref="274380110"/>
+						<reference key="destination" ref="683458364"/>
+					</object>
+					<int key="connectionID">12</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -153,6 +175,7 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="754553375"/>
+							<reference ref="683458364"/>
 							<reference ref="972640828"/>
 						</object>
 						<reference key="parent" ref="957960031"/>
@@ -167,6 +190,11 @@
 						<reference key="object" ref="972640828"/>
 						<reference key="parent" ref="274380110"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">11</int>
+						<reference key="object" ref="683458364"/>
+						<reference key="parent" ref="274380110"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -175,6 +203,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>-1.CustomClassName</string>
 					<string>-2.CustomClassName</string>
+					<string>11.IBPluginDependency</string>
 					<string>2.CustomClassName</string>
 					<string>2.IBEditorWindowLastContentRect</string>
 					<string>2.IBPluginDependency</string>
@@ -185,8 +214,9 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>WalletViewController</string>
 					<string>UIResponder</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>WalletViewTableCell</string>
-					<string>{{122, 752}, {320, 44}}</string>
+					<string>{{433, 762}, {320, 44}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -212,7 +242,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">10</int>
+			<int key="maxID">12</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -261,11 +291,13 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSMutableArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>lozengeView</string>
 							<string>surveyName</string>
 							<string>surveyValue</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>UIImageView</string>
 							<string>UILabel</string>
 							<string>UILabel</string>
 						</object>
