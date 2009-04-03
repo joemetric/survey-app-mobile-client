@@ -111,6 +111,9 @@
 		DADF82C70F86267600DEACA0 /* NSDictionary+RemoveNullsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DADF82C60F86267600DEACA0 /* NSDictionary+RemoveNullsTest.m */; };
 		DADF82CA0F8626B200DEACA0 /* NSDictionary+RemoveNulls.m in Sources */ = {isa = PBXBuildFile; fileRef = DADF82C90F8626B200DEACA0 /* NSDictionary+RemoveNulls.m */; };
 		DADF82CB0F8626B200DEACA0 /* NSDictionary+RemoveNulls.m in Sources */ = {isa = PBXBuildFile; fileRef = DADF82C90F8626B200DEACA0 /* NSDictionary+RemoveNulls.m */; };
+		DADF832C0F86333F00DEACA0 /* TableSectionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DADF832B0F86333F00DEACA0 /* TableSectionTest.m */; };
+		DADF83310F86352500DEACA0 /* TableSection.m in Sources */ = {isa = PBXBuildFile; fileRef = DADF83300F86352500DEACA0 /* TableSection.m */; };
+		DADF83320F86352500DEACA0 /* TableSection.m in Sources */ = {isa = PBXBuildFile; fileRef = DADF83300F86352500DEACA0 /* TableSection.m */; };
 		DAE91B630F823122009CEE14 /* NSString+Regex.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE91B620F823122009CEE14 /* NSString+Regex.m */; };
 		DAE91B650F823144009CEE14 /* NSString+RegexTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE91B640F823144009CEE14 /* NSString+RegexTest.m */; };
 		FC21C5050F12B3AC00436E7F /* Survey.m in Sources */ = {isa = PBXBuildFile; fileRef = FC21C5040F12B3AC00436E7F /* Survey.m */; };
@@ -242,6 +245,9 @@
 		DADF82C60F86267600DEACA0 /* NSDictionary+RemoveNullsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+RemoveNullsTest.m"; sourceTree = "<group>"; };
 		DADF82C80F8626B200DEACA0 /* NSDictionary+RemoveNulls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+RemoveNulls.h"; sourceTree = "<group>"; };
 		DADF82C90F8626B200DEACA0 /* NSDictionary+RemoveNulls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+RemoveNulls.m"; sourceTree = "<group>"; };
+		DADF832B0F86333F00DEACA0 /* TableSectionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableSectionTest.m; sourceTree = "<group>"; };
+		DADF832F0F86352500DEACA0 /* TableSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableSection.h; sourceTree = "<group>"; };
+		DADF83300F86352500DEACA0 /* TableSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableSection.m; sourceTree = "<group>"; };
 		DAE91B610F823122009CEE14 /* NSString+Regex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Regex.h"; sourceTree = "<group>"; };
 		DAE91B620F823122009CEE14 /* NSString+Regex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Regex.m"; sourceTree = "<group>"; };
 		DAE91B640F823144009CEE14 /* NSString+RegexTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+RegexTest.m"; sourceTree = "<group>"; };
@@ -298,6 +304,8 @@
 				FC9756830F13B20A0077926E /* Survey View Controllers */,
 				0D68A3E80EDCD5CC007CE721 /* MainWindowViewController.h */,
 				0D68A3E90EDCD5CC007CE721 /* MainWindowViewController.m */,
+				DADF832F0F86352500DEACA0 /* TableSection.h */,
+				DADF83300F86352500DEACA0 /* TableSection.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -503,6 +511,7 @@
 				DAA2E7530F83D3220004D56E /* DateHelper.h */,
 				DAA2E7540F83D3220004D56E /* DateHelper.m */,
 				DADF82C60F86267600DEACA0 /* NSDictionary+RemoveNullsTest.m */,
+				DADF832B0F86333F00DEACA0 /* TableSectionTest.m */,
 			);
 			path = UnitTests;
 			sourceTree = "<group>";
@@ -699,6 +708,7 @@
 				DA86C2EA0F79629300CC6EBE /* RestfulRequests.m in Sources */,
 				5488C4410F8243C500B29C76 /* WalletViewTableCell.m in Sources */,
 				DADF82CB0F8626B200DEACA0 /* NSDictionary+RemoveNulls.m in Sources */,
+				DADF83320F86352500DEACA0 /* TableSection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -747,6 +757,8 @@
 				DAA2E7550F83D3220004D56E /* DateHelper.m in Sources */,
 				DADF82C70F86267600DEACA0 /* NSDictionary+RemoveNullsTest.m in Sources */,
 				DADF82CA0F8626B200DEACA0 /* NSDictionary+RemoveNulls.m in Sources */,
+				DADF832C0F86333F00DEACA0 /* TableSectionTest.m in Sources */,
+				DADF83310F86352500DEACA0 /* TableSection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
