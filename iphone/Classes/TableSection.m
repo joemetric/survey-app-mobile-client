@@ -19,6 +19,7 @@
 }
 
 -(void) dealloc{
+    [self.cells removeAllObjects];
  	self.cells = nil;
     [super dealloc];
 }
