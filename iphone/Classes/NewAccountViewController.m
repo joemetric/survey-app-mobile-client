@@ -42,6 +42,14 @@
 	[super viewWillAppear:animated];
 }
 
+-(void)viewDidLoad{
+	loginCell.errorField = @"login";
+	passwordCell.errorField = @"password";
+    passwordConfirmationCell.errorField = @"password_confirmation";
+    emailCell.errorField = @"email";
+    incomeCell.errorField = @"income";
+    dobCell.errorField = @"birthdate";
+}
 -(void) keyboardWillShow:(NSNotification *)note
 {
     CGRect keyboardBounds;
@@ -172,32 +180,26 @@
 	return section == 0 ? 4 : 3;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+-(UITableViewCell*)cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	if( indexPath.section == 0 )
 	{
 		if( indexPath.row == 0 ) {
-			[self highlightCell:loginCell withErrorForField:@"login"];
 			return loginCell;
 		}
 		else if( indexPath.row == 1) {
-			[self highlightCell:passwordCell withErrorForField:@"password"];
 			return passwordCell;
 		}
 		else if( indexPath.row == 2) {
-			[self highlightCell:passwordConfirmationCell withErrorForField:@"password_confirmation"];
 			return passwordConfirmationCell;
 		}
 		else {
-			[self highlightCell:emailCell withErrorForField:@"email"];
 			return emailCell;
 		}
 	} else {
 		if( indexPath.row == 0 ) {
-			[self highlightCell:incomeCell withErrorForField:@"income"];
 			return incomeCell;
 		}
 		else if( indexPath.row == 1) {
-			[self highlightCell:dobCell withErrorForField:@"birthdate"];
 			return dobCell;
 		}
 		else {
@@ -208,14 +210,21 @@
 	return nil;
 }
 
-- (void) highlightCell:(id<Labelled>)cell withErrorForField:(NSString*)field {
-	NSArray* fieldErrors = (NSArray*)[self.errors objectForKey:field];
-	if( fieldErrors != nil || fieldErrors.count > 0 ) {
-		cell.label.textColor = [UIColor redColor];
-	} else {
-		cell.label.textColor = [UIColor blackColor];
-	}
+-(BOOL) hasErrorsForField:(NSString*)field{
+	NSArray* fieldErrors = [self.errors objectForKey:field];
+	return fieldErrors != nil && fieldErrors.count > 0;
+	
 }
+
+- (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	UITableViewCell* result = [self cellForRowAtIndexPath:indexPath];
+    if ([result conformsToProtocol:@protocol(HasError)]){
+        UITableViewCell<HasError, Labelled>* errorCell = (UITableViewCell<HasError, Labelled>*) result;
+		errorCell.errorHighlighted = [self hasErrorsForField:errorCell.errorField];
+    }
+	return result;
+}
+
 
 -(NSDateFormatter*)dateFormatter{
 	NSDateFormatter* dateFormatter = [[[NSDateFormatter alloc] init] autorelease];

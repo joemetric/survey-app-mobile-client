@@ -25,6 +25,7 @@
 	for (id obj in nib){
 		NSLog(@"Obj: %@", obj);
 	}
+	[testee viewDidLoad];
 	resetRestStubbing();
 	gAccount = [[Account alloc] init];
    
@@ -144,7 +145,7 @@
 	NSString* data = @"[[\"login\", \"silly login\"]]";
 	[gAccount finishedLoading:data];
 	[self assertRow:0 inSection:0 highlighted:YES];
-	[self assertRow:1 inSection:0 highlighted:NO];	
+	[self assertRow:1 inSection:0 highlighted:NO];	 
 }
 
 -(void)testEachFieldHighlightedIfInError{
