@@ -208,7 +208,7 @@ module Rails
     class GemGeneratorSource < AbstractGemSource
       # Yield latest versions of generator gems.
       def each
-        Gem::cache.search(/_generator$/).inject({}) { |latest, gem|
+        Gem::cache.find_name(/_generator$/).inject({}) { |latest, gem|
           hem = latest[gem.name]
           latest[gem.name] = gem if hem.nil? or gem.version > hem.version
           latest
