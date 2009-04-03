@@ -201,7 +201,6 @@
 			return dobCell;
 		}
 		else {
-			[self highlightCell:genderCell withErrorForField:@"gender"];
 			return genderCell;
 		}
 		

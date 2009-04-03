@@ -98,7 +98,7 @@
 }
 
 -(BOOL)isFemale{
-	return [@"F" compare:gender] == NSOrderedSame;
+ 	return [((NSString*)@"F") compare:gender] == NSOrderedSame;
 }
 
 -(void)onChangeNotify:(SEL)callme on:(id)callMeObj{
