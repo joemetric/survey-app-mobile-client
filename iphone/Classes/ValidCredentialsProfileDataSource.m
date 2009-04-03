@@ -49,7 +49,7 @@
 	static NSString *CellIdentifier = @"ValidCredentialsCell";
 	LabelledTableViewReadOnlyCell *cell = (LabelledTableViewReadOnlyCell*)[tv dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil) { cell = [self loadLabelledCell];}
-	// Configure the cell
+ 	// Configure the cell
 	if( indexPath.section == 0 ) {
 		cell.accessoryType = UITableViewCellAccessoryNone;
 		cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -75,7 +75,7 @@
                 cell.label.text = @"income";
 				break;
 			case 3:
-  				cell.valueField.text =[NSString stringWithFormat:@"%@", account.gender];
+ 				cell.valueField.text = account.isFemale ? @"Female" : @"Male";
                 cell.label.text = @"gender";
  				break;
 			default:

@@ -55,7 +55,9 @@
 	[self assertCorrectValue:@"hello@blah.com" forSection:1 row:0 label:@"email"];	
 	[self assertCorrectValue:@"17 May 1953" forSection:1 row:1 label:@"date of birth"];	
 	[self assertCorrectValue:@"$12,345" forSection:1 row:2 label:@"income"];
-	[self assertCorrectValue:@"F" forSection:1 row:3 label:@"gender"];
+	[self assertCorrectValue:@"Female" forSection:1 row:3 label:@"gender"];
+	testee.account.gender = @"M";
+	[self assertCorrectValue:@"Male" forSection:1 row:3 label:@"gender"];
 }
 
 -(void)testDefaultBlankValues{

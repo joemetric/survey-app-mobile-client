@@ -138,12 +138,6 @@
 
 
 
-//
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-//    if (section == 1) return accountSectionHeader;
-//    return nil;
-//}
-
 
 - (void)dealloc {
 	[tableView release];

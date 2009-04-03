@@ -3,6 +3,7 @@
 #import "JSON.h"
 #import "JoeMetricAppDelegate.h"
 #import "RestConfiguration.h"
+#import "NSDictionary+RemoveNulls.h"
 
 
 @interface Account()
@@ -45,7 +46,7 @@
 }
 
 -(void)setIso8061BirthDate:(NSString*)iso8061Date{
-	if ([NSNull null] == (id)iso8061Date || nil == iso8061Date) {
+	if (nil == iso8061Date) {
 		self.birthdate = nil;
 	}
 	else {
@@ -54,7 +55,7 @@
 }
 
 -(void)loadFromDictionary:(NSDictionary*)dict{
-	NSDictionary *params = [dict objectForKey:@"user"];
+	NSDictionary *params = [[dict objectForKey:@"user"] withoutNulls];
 	self.email = [params objectForKey:@"email"];
 	self.gender = [params objectForKey:@"gender"];
 	self.income = [[params objectForKey:@"income"] integerValue];
@@ -96,7 +97,9 @@
 	}
 }
 
-
+-(BOOL)isFemale{
+	return [@"F" compare:gender] == NSOrderedSame;
+}
 
 -(void)onChangeNotify:(SEL)callme on:(id)callMeObj{
 	self.callbackSelector = callme;
