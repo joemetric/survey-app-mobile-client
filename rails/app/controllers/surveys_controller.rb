@@ -2,7 +2,7 @@ class SurveysController < ApplicationController
   # GET /surveys
   # GET /surveys.xml
   def index
-    @surveys = Survey.find(:all)
+    @surveys = Survey.complete
 
     respond_to do |format|
       format.html # index.html.erb
