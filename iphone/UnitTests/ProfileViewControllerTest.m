@@ -26,7 +26,6 @@ NSInteger gModalViewControllerDismissCount;
 @end
 
 
-
 	
 @interface UITableView(ProfileViewControllerTest)
 - (void)reloadData;
@@ -103,7 +102,11 @@ NSInteger gModalViewControllerDismissCount;
 }
 
 
-
+-(void)allDataSourcesImplementTableViewViewForHeaderInSection{
+	for (int i = accountLoadStatusNotLoaded; i < accountLoadStatusFailedValidation; i++){
+		[testee tableView:nil viewForHeaderInSection:0];
+	}
+}
 
 -(void)testTableReloadedWhenAccountChanges{
 	[testee viewDidLoad];

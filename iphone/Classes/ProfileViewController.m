@@ -22,6 +22,7 @@
 
 @implementation ProfileViewController
 @synthesize tableView, credentialsController, newAccountController, noCredentials, validCredentials, noAccountData;
+@synthesize accountSectionHeader, demographicsSectionHeader;
 
 -(void)accountLoadStatusChanged:(Account*) _account{
     /* TODO - REPLACE THIS HACK WITH SOME POLYMORPHISM OR SOMETHING */
@@ -39,7 +40,6 @@
 
 // Implement viewDidLoad to do additional setup after loading the view.
 - (void)viewDidLoad {
-
 
 	self.noCredentials = [[[NoCredentialsProfileDataSource alloc] init] autorelease];
 	self.noCredentials.profileViewController = self;
@@ -81,7 +81,6 @@
 	[self presentModalViewController:self.newAccountController animated:YES];
 }
 
-
 - (NSObject<UITableViewDelegate, UITableViewDataSource>*) tableDelegate {
 	switch([Account currentAccount].accountLoadStatus){
 		case accountLoadStatusUnauthorized:
@@ -97,6 +96,8 @@
 		return self.validCredentials;
 	}
 }
+
+
 
 #pragma mark -
 #pragma mark TableViewDelegate and DataSource methods
@@ -125,6 +126,23 @@
 }
 
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 40.0;
+}
+
+
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+	return [[self tableDelegate] tableView:tableView viewForHeaderInSection:section];
+}
+
+
+
+//
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+//    if (section == 1) return accountSectionHeader;
+//    return nil;
+//}
 
 
 - (void)dealloc {
@@ -134,6 +152,8 @@
 	[noCredentials release];
 	[validCredentials release];
 	[newAccountController release];
+	[demographicsSectionHeader relase];
+	[accountSectionHeader release];
 	[super dealloc];
 }
 @end

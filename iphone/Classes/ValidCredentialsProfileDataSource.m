@@ -38,6 +38,11 @@
 	return (LabelledTableViewReadOnlyCell*)[nib objectAtIndex:0];
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+	if (section == 0) return profileViewController.accountSectionHeader;
+	return profileViewController.demographicsSectionHeader;
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     

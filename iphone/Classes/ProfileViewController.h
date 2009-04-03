@@ -22,6 +22,8 @@
 	NoCredentialsProfileDataSource* noCredentials;
 	ValidCredentialsProfileDataSource* validCredentials;
 	NoAccountDataProfileDataSource* noAccountData;
+    UIView* accountSectionHeader;
+    UIView* demographicsSectionHeader;
 }
 
 - (void) displayModalCredentialsController;
@@ -33,5 +35,7 @@
 @property (nonatomic, retain) NoCredentialsProfileDataSource* noCredentials;
 @property (nonatomic, retain) ValidCredentialsProfileDataSource* validCredentials;
 @property (nonatomic, retain) NoAccountDataProfileDataSource* noAccountData;
+@property (nonatomic, retain) IBOutlet UIView* accountSectionHeader;
+@property (nonatomic, retain) IBOutlet UIView* demographicsSectionHeader;
 
 @end
