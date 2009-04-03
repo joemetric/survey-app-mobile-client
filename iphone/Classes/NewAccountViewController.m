@@ -12,15 +12,14 @@
 #import "DatePickerViewController.h"
 #import "Account.h"
 #import "RestConfiguration.h"
+#import "StaticTable.h"
+#import "TableSection.h"
 
 
-@interface NewAccountViewController (Private)
-- (LabelledTableViewCell*) loadLabelledCellWthText:(NSString*)labelText;
-- (SegmentedTableViewCell*) loadSegmentedCell;
-- (NSDictionary*) collectParams;
-- (void) highlightCell:(id<Labelled>)cell withErrorForField:(NSString*)field;
+@interface NewAccountViewController ()
 - (NSArray*) validErrorKeysForSection:(NSInteger) section;
 @property(readonly) NSDictionary* errors;
+@property(nonatomic, retain) StaticTable* staticTable;
 @end
 
 @implementation NewAccountViewController
@@ -28,6 +27,7 @@
 @synthesize activityIndicator, profileView, tableView, datePicker;;
 @synthesize keyboardIsShowing;
 @synthesize loginCell, passwordCell, passwordConfirmationCell, emailCell, incomeCell, dobCell, genderCell;
+@synthesize staticTable;
 
 - (void)viewWillAppear:(BOOL)animated {
 	[[NSNotificationCenter defaultCenter] addObserver:self
@@ -42,6 +42,43 @@
 	[super viewWillAppear:animated];
 }
 
+-(void)initialiseCells{
+	loginCell.errorField = @"login";
+	passwordCell.errorField = @"password";
+    passwordConfirmationCell.errorField = @"password_confirmation";
+    emailCell.errorField = @"email";
+    incomeCell.errorField = @"income";
+    dobCell.errorField = @"birthdate";
+	
+}
+
+-(void)populateBasicSection{
+	TableSection* section = [TableSection tableSection];
+	[staticTable addSection:section];
+	
+	[section addCell:loginCell];
+	[section addCell:passwordCell];
+	[section addCell:passwordConfirmationCell];
+	[section addCell:emailCell];
+}
+
+-(void)populateDemographicsSection{
+	TableSection* section = [TableSection tableSection];
+	[staticTable addSection:section];
+	
+	[section addCell:incomeCell];
+	[section addCell:dobCell];
+	[section addCell:genderCell];
+}
+
+
+-(void)viewDidLoad{
+	[self initialiseCells];
+	self.staticTable = [StaticTable staticTable];
+	[self populateBasicSection];
+	[self populateDemographicsSection];
+
+ }
 -(void) keyboardWillShow:(NSNotification *)note
 {
     CGRect keyboardBounds;
@@ -135,13 +172,14 @@
 	[activityIndicator release];
 	[profileView release];
 	[datePicker release];
+	self.staticTable = nil;
     [super dealloc];
 }
 
 #pragma mark -
 #pragma mark TableViewDelegate and DataSource methods
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tv {
-	return 2;
+	return [staticTable numberOfSectionsInTableView:tv];
 }
 
 - (NSString*)tableView:(UITableView*) tv titleForHeaderInSection:(NSInteger) section {
@@ -169,54 +207,25 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tv numberOfRowsInSection:(NSInteger)section {
-	return section == 0 ? 4 : 3;
+	return [staticTable tableView:nil numberOfRowsInSection:section];
+}
+
+
+-(BOOL) hasErrorsForField:(NSString*)field{
+	NSArray* fieldErrors = [self.errors objectForKey:field];
+	return fieldErrors != nil && fieldErrors.count > 0;
+	
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	if( indexPath.section == 0 )
-	{
-		if( indexPath.row == 0 ) {
-			[self highlightCell:loginCell withErrorForField:@"login"];
-			return loginCell;
-		}
-		else if( indexPath.row == 1) {
-			[self highlightCell:passwordCell withErrorForField:@"password"];
-			return passwordCell;
-		}
-		else if( indexPath.row == 2) {
-			[self highlightCell:passwordConfirmationCell withErrorForField:@"password_confirmation"];
-			return passwordConfirmationCell;
-		}
-		else {
-			[self highlightCell:emailCell withErrorForField:@"email"];
-			return emailCell;
-		}
-	} else {
-		if( indexPath.row == 0 ) {
-			[self highlightCell:incomeCell withErrorForField:@"income"];
-			return incomeCell;
-		}
-		else if( indexPath.row == 1) {
-			[self highlightCell:dobCell withErrorForField:@"birthdate"];
-			return dobCell;
-		}
-		else {
-			[self highlightCell:genderCell withErrorForField:@"gender"];
-			return genderCell;
-		}
-		
-	}
-	return nil;
+	UITableViewCell* result = [staticTable tableView:tv cellForRowAtIndexPath:indexPath];
+    if ([result conformsToProtocol:@protocol(HasError)]){
+        UITableViewCell<HasError, Labelled>* errorCell = (UITableViewCell<HasError, Labelled>*) result;
+		errorCell.errorHighlighted = [self hasErrorsForField:errorCell.errorField];
+    }
+	return result;
 }
 
-- (void) highlightCell:(id<Labelled>)cell withErrorForField:(NSString*)field {
-	NSArray* fieldErrors = (NSArray*)[self.errors objectForKey:field];
-	if( fieldErrors != nil || fieldErrors.count > 0 ) {
-		cell.label.textColor = [UIColor redColor];
-	} else {
-		cell.label.textColor = [UIColor blackColor];
-	}
-}
 
 -(NSDateFormatter*)dateFormatter{
 	NSDateFormatter* dateFormatter = [[[NSDateFormatter alloc] init] autorelease];

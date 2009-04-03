@@ -12,6 +12,7 @@
 @implementation LabelledTableViewCell
 @synthesize label, textField;
 @synthesize tableView;
+@synthesize errorField;
 
 - (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithFrame:frame reuseIdentifier:reuseIdentifier]) {
@@ -24,6 +25,15 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
     // Configure the view for the selected state
+}
+
+
+-(BOOL)errorHighlighted{
+    return label.textColor == [UIColor redColor];
+}
+
+-(void)setErrorHighlighted:(BOOL)highlighted{
+    label.textColor = highlighted ? [UIColor redColor] : [UIColor blackColor];
 }
 
 #pragma mark -
