@@ -19,7 +19,8 @@
 }
 
 -(void) dealloc{
-	self.cells = nil;
+ 	self.cells = nil;
+    [super dealloc];
 }
 
 -(void)addCell:(UITableViewCell*)cell{

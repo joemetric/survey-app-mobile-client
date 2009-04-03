@@ -12,6 +12,7 @@
 @class DatePickerViewController;
 @class LabelledTableViewCell;
 @class SegmentedTableViewCell;
+@class TableSection;
 
 @interface NewAccountViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate> {
 	UITextField* username;
@@ -38,6 +39,8 @@
 	ProfileViewController* profileView;
 	
 	BOOL keyboardIsShowing;
+    
+
 	
 }
 

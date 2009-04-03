@@ -114,6 +114,8 @@
 		DADF832C0F86333F00DEACA0 /* TableSectionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DADF832B0F86333F00DEACA0 /* TableSectionTest.m */; };
 		DADF83310F86352500DEACA0 /* TableSection.m in Sources */ = {isa = PBXBuildFile; fileRef = DADF83300F86352500DEACA0 /* TableSection.m */; };
 		DADF83320F86352500DEACA0 /* TableSection.m in Sources */ = {isa = PBXBuildFile; fileRef = DADF83300F86352500DEACA0 /* TableSection.m */; };
+		DADF839D0F865A7200DEACA0 /* StaticTable.m in Sources */ = {isa = PBXBuildFile; fileRef = DADF839C0F865A7200DEACA0 /* StaticTable.m */; };
+		DADF839E0F865A7200DEACA0 /* StaticTable.m in Sources */ = {isa = PBXBuildFile; fileRef = DADF839C0F865A7200DEACA0 /* StaticTable.m */; };
 		DAE91B630F823122009CEE14 /* NSString+Regex.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE91B620F823122009CEE14 /* NSString+Regex.m */; };
 		DAE91B650F823144009CEE14 /* NSString+RegexTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE91B640F823144009CEE14 /* NSString+RegexTest.m */; };
 		FC21C5050F12B3AC00436E7F /* Survey.m in Sources */ = {isa = PBXBuildFile; fileRef = FC21C5040F12B3AC00436E7F /* Survey.m */; };
@@ -250,6 +252,8 @@
 		DADF83300F86352500DEACA0 /* TableSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableSection.m; sourceTree = "<group>"; };
 		DADF836F0F86441500DEACA0 /* HasError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HasError.h; sourceTree = "<group>"; };
 		DADF83700F86441500DEACA0 /* Labelled.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Labelled.h; sourceTree = "<group>"; };
+		DADF839B0F865A7200DEACA0 /* StaticTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaticTable.h; sourceTree = "<group>"; };
+		DADF839C0F865A7200DEACA0 /* StaticTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaticTable.m; sourceTree = "<group>"; };
 		DAE91B610F823122009CEE14 /* NSString+Regex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Regex.h"; sourceTree = "<group>"; };
 		DAE91B620F823122009CEE14 /* NSString+Regex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Regex.m"; sourceTree = "<group>"; };
 		DAE91B640F823144009CEE14 /* NSString+RegexTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+RegexTest.m"; sourceTree = "<group>"; };
@@ -308,6 +312,8 @@
 				0D68A3E90EDCD5CC007CE721 /* MainWindowViewController.m */,
 				DADF832F0F86352500DEACA0 /* TableSection.h */,
 				DADF83300F86352500DEACA0 /* TableSection.m */,
+				DADF839B0F865A7200DEACA0 /* StaticTable.h */,
+				DADF839C0F865A7200DEACA0 /* StaticTable.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -713,6 +719,7 @@
 				5488C4410F8243C500B29C76 /* WalletViewTableCell.m in Sources */,
 				DADF82CB0F8626B200DEACA0 /* NSDictionary+RemoveNulls.m in Sources */,
 				DADF83320F86352500DEACA0 /* TableSection.m in Sources */,
+				DADF839E0F865A7200DEACA0 /* StaticTable.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -763,6 +770,7 @@
 				DADF82CA0F8626B200DEACA0 /* NSDictionary+RemoveNulls.m in Sources */,
 				DADF832C0F86333F00DEACA0 /* TableSectionTest.m in Sources */,
 				DADF83310F86352500DEACA0 /* TableSection.m in Sources */,
+				DADF839D0F865A7200DEACA0 /* StaticTable.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

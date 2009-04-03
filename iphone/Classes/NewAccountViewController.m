@@ -14,11 +14,7 @@
 #import "RestConfiguration.h"
 
 
-@interface NewAccountViewController (Private)
-- (LabelledTableViewCell*) loadLabelledCellWthText:(NSString*)labelText;
-- (SegmentedTableViewCell*) loadSegmentedCell;
-- (NSDictionary*) collectParams;
-- (void) highlightCell:(id<Labelled>)cell withErrorForField:(NSString*)field;
+@interface NewAccountViewController ()
 - (NSArray*) validErrorKeysForSection:(NSInteger) section;
 @property(readonly) NSDictionary* errors;
 @end
@@ -49,7 +45,7 @@
     emailCell.errorField = @"email";
     incomeCell.errorField = @"income";
     dobCell.errorField = @"birthdate";
-}
+ }
 -(void) keyboardWillShow:(NSNotification *)note
 {
     CGRect keyboardBounds;

@@ -11,5 +11,6 @@
 
 @property (nonatomic, retain) UITableView* tableView;
 @property (nonatomic, retain) IBOutlet UITextField* textField;
+@property (nonatomic, retain) IBOutlet UILabel* label;
 
 @end
