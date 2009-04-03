@@ -114,10 +114,17 @@
 }
 
 
--(void)testNullBirthdateDoesNoCaueErrors{
+-(void)testNullBirthdateDoesNoCauseErrors{
 	NSString* data = @"{\"user\": { \"birthdate\":null}}";
 	[account finishedLoading:data];
-	STAssertNULL(account.birthdate, nil);
+	STAssertNil(account.birthdate, nil);
+}
+
+-(void)testNullFieldsBecomeNil{
+	NSString* data = @"{\"user\": { \"email\":null}}";
+	[account finishedLoading:data];
+	STAssertNil(account.email, nil);
+	
 }
 
 -(void)testBecomesUnauthorisedWhenUnauthorised{
@@ -178,8 +185,6 @@
 	account.gender = @"M";
 	STAssertFalse(account.isFemale, @"should not be female");
 	account.gender = nil;
-	STAssertFalse(account.isFemale, @"should not be female");
-	account.gender = [NSNull null];
 	STAssertFalse(account.isFemale, @"should not be female");
 }
 
