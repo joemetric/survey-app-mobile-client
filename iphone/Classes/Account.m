@@ -60,9 +60,12 @@
 	self.income = [[params objectForKey:@"income"] integerValue];
 	self.iso8061BirthDate=[params objectForKey:@"birthdate"];
 	self.itemId = [[params objectForKey:@"id"] integerValue];   
+	self.username = [params objectForKey:@"login"];
 
-	[RestConfiguration setUsername:username];
-	[RestConfiguration setPassword:password];
+	if(accountLoadStatusCreatingNew == accountLoadStatus){
+		[RestConfiguration setUsername:username];
+		[RestConfiguration setPassword:password];
+	}
 
 	[self changeLoadStatusTo: accountLoadStatusLoaded];
 }
@@ -113,6 +116,7 @@
 
 	NSDictionary* container = [NSDictionary dictionaryWithObject:fields forKey:@"user"];
 
+	[self changeLoadStatusTo:accountLoadStatusCreatingNew];
 	[[RestfulRequests restfulRequestsWithObserver:self] POST:@"/users.json" withParams:container];
 }
 

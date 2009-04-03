@@ -3,6 +3,7 @@
 
 typedef enum {
 	accountLoadStatusNotLoaded,
+	accountLoadStatusCreatingNew,
 	accountLoadStatusLoaded, 
 	accountLoadStatusLoadFailed, 
 	accountLoadStatusUnauthorized,

@@ -62,24 +62,37 @@
 }
 
 
--(void)testOnAccountDetailsLodedUsernameAndPasswordSavedToRestConfiguration{
+-(void)testWhenCreatingNewOnAccountDetailsLodedUsernameAndPasswordSavedToRestConfiguration{
 	account.username = @"marvin";
 	account.password = @"sue's secret";
 
-	[account finishedLoading:@"{\"user\": { \"id\": 123},\"birthdate\": null}"];
+	[account createNew];
+	[account finishedLoading:@"{\"user\": { \"id\": 123,\"birthdate\": null, \"login\":\"marvin\"}}"];
 
 	STAssertEqualStrings(@"marvin", [RestConfiguration username], nil);
 	STAssertEqualStrings(@"sue's secret", [RestConfiguration password], nil);
 }
 
+-(void)testWhenNotCreatingNewOnAccountDetailsLodedUsernameAndPasswordNotSavedToRestConfiguration{
+	account.username = @"marvin";
+	account.password = @"sue's secret";
+	
+	[RestConfiguration setUsername:@"rita"];
+	[RestConfiguration setPassword:@"rufus"];
+
+	[account finishedLoading:@"{\"user\": { \"id\": 123},\"birthdate\": null}"];
+
+	STAssertEqualStrings(@"rita", [RestConfiguration username], nil);
+	STAssertEqualStrings(@"rufus", [RestConfiguration password], nil);
+}
 
 -(void)testPopulationFromRestDidFinishLoading{
-	NSString *data = @"{\"user\": { \"birthdate\": \"1973-03-27\", \"id\": 123, \"gender\":\"M\", \"login\": \"marvin\", \"income\": \"25283\", \"email\": \"marvin@example.com\"}}";
+	NSString *data = @"{\"user\": { \"birthdate\": \"1973-03-27\", \"id\": 123, \"gender\":\"M\", \"income\": \"25283\", \"email\": \"marvin@example.com\", \"login\": \"marvello\"}}";
 
 	[account finishedLoading:data];
 
 	STAssertEquals(123, account.itemId, nil);
-	STAssertEqualStrings(@"marvin", account.username,nil);
+	STAssertEqualStrings(@"marvello", account.username,nil);
 	STAssertEqualStrings(@"marvin@example.com", account.email, nil);
 	STAssertEqualStrings(@"M", account.gender, nil);
 	STAssertEquals(25283, account.income, nil);
