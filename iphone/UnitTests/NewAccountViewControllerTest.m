@@ -22,9 +22,6 @@
 -(void)setUp{
 	testee = [[NewAccountViewController alloc] initWithNibName:@"NewAccountView" bundle:nil];
 	NSArray* nib = [[NSBundle mainBundle] loadNibNamed:@"NewAccountView" owner:testee options:nil];
-	for (id obj in nib){
-		NSLog(@"Obj: %@", obj);
-	}
 	[testee viewDidLoad];
 	resetRestStubbing();
 	gAccount = [[Account alloc] init];
@@ -146,6 +143,12 @@
 	[gAccount finishedLoading:data];
 	[self assertRow:0 inSection:0 highlighted:YES];
 	[self assertRow:1 inSection:0 highlighted:NO];	 
+}
+
+-(void)testRowsAndSectionCounts{
+	STAssertEquals(2, [testee numberOfSectionsInTableView:nil], @"numberOfSectionsInTableView");
+	STAssertEquals(4, [testee tableView:nil numberOfRowsInSection:0], @"numberOfRowsInSection:0");
+	STAssertEquals(3, [testee tableView:nil numberOfRowsInSection:1], @"numberOfRowsInSection:1");
 }
 
 -(void)testEachFieldHighlightedIfInError{

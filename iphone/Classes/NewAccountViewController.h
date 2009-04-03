@@ -12,7 +12,7 @@
 @class DatePickerViewController;
 @class LabelledTableViewCell;
 @class SegmentedTableViewCell;
-@class TableSection;
+@class StaticTable;
 
 @interface NewAccountViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate> {
 	UITextField* username;
@@ -40,7 +40,7 @@
 	
 	BOOL keyboardIsShowing;
     
-
+	StaticTable* staticTable;
 	
 }
 

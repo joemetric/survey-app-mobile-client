@@ -12,11 +12,14 @@
 #import "DatePickerViewController.h"
 #import "Account.h"
 #import "RestConfiguration.h"
+#import "StaticTable.h"
+#import "TableSection.h"
 
 
 @interface NewAccountViewController ()
 - (NSArray*) validErrorKeysForSection:(NSInteger) section;
 @property(readonly) NSDictionary* errors;
+@property(nonatomic, retain) StaticTable* staticTable;
 @end
 
 @implementation NewAccountViewController
@@ -24,6 +27,7 @@
 @synthesize activityIndicator, profileView, tableView, datePicker;;
 @synthesize keyboardIsShowing;
 @synthesize loginCell, passwordCell, passwordConfirmationCell, emailCell, incomeCell, dobCell, genderCell;
+@synthesize staticTable;
 
 - (void)viewWillAppear:(BOOL)animated {
 	[[NSNotificationCenter defaultCenter] addObserver:self
@@ -38,13 +42,42 @@
 	[super viewWillAppear:animated];
 }
 
--(void)viewDidLoad{
+-(void)initialiseCells{
 	loginCell.errorField = @"login";
 	passwordCell.errorField = @"password";
     passwordConfirmationCell.errorField = @"password_confirmation";
     emailCell.errorField = @"email";
     incomeCell.errorField = @"income";
     dobCell.errorField = @"birthdate";
+	
+}
+
+-(void)populateBasicSection{
+	TableSection* section = [TableSection tableSection];
+	[staticTable addSection:section];
+	
+	[section addCell:loginCell];
+	[section addCell:passwordCell];
+	[section addCell:passwordConfirmationCell];
+	[section addCell:emailCell];
+}
+
+-(void)populateDemographicsSection{
+	TableSection* section = [TableSection tableSection];
+	[staticTable addSection:section];
+	
+	[section addCell:incomeCell];
+	[section addCell:dobCell];
+	[section addCell:genderCell];
+}
+
+
+-(void)viewDidLoad{
+	[self initialiseCells];
+	self.staticTable = [StaticTable staticTable];
+	[self populateBasicSection];
+	[self populateDemographicsSection];
+
  }
 -(void) keyboardWillShow:(NSNotification *)note
 {
@@ -139,13 +172,14 @@
 	[activityIndicator release];
 	[profileView release];
 	[datePicker release];
+	self.staticTable = nil;
     [super dealloc];
 }
 
 #pragma mark -
 #pragma mark TableViewDelegate and DataSource methods
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tv {
-	return 2;
+	return [staticTable numberOfSectionsInTableView:tv];
 }
 
 - (NSString*)tableView:(UITableView*) tv titleForHeaderInSection:(NSInteger) section {
@@ -173,38 +207,9 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tv numberOfRowsInSection:(NSInteger)section {
-	return section == 0 ? 4 : 3;
+	return [staticTable tableView:nil numberOfRowsInSection:section];
 }
 
--(UITableViewCell*)cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	if( indexPath.section == 0 )
-	{
-		if( indexPath.row == 0 ) {
-			return loginCell;
-		}
-		else if( indexPath.row == 1) {
-			return passwordCell;
-		}
-		else if( indexPath.row == 2) {
-			return passwordConfirmationCell;
-		}
-		else {
-			return emailCell;
-		}
-	} else {
-		if( indexPath.row == 0 ) {
-			return incomeCell;
-		}
-		else if( indexPath.row == 1) {
-			return dobCell;
-		}
-		else {
-			return genderCell;
-		}
-		
-	}
-	return nil;
-}
 
 -(BOOL) hasErrorsForField:(NSString*)field{
 	NSArray* fieldErrors = [self.errors objectForKey:field];
@@ -213,7 +218,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	UITableViewCell* result = [self cellForRowAtIndexPath:indexPath];
+	UITableViewCell* result = [staticTable tableView:tv cellForRowAtIndexPath:indexPath];
     if ([result conformsToProtocol:@protocol(HasError)]){
         UITableViewCell<HasError, Labelled>* errorCell = (UITableViewCell<HasError, Labelled>*) result;
 		errorCell.errorHighlighted = [self hasErrorsForField:errorCell.errorField];
