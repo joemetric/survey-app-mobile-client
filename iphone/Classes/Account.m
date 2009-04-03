@@ -96,7 +96,9 @@
 	}
 }
 
-
+-(BOOL)isFemale{
+	return gender != [NSNull null] && [@"F" compare:gender] == NSOrderedSame;
+}
 
 -(void)onChangeNotify:(SEL)callme on:(id)callMeObj{
 	self.callbackSelector = callme;

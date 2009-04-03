@@ -132,17 +132,11 @@
 
 
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-	return [[self tableDelegate] tableView:tableView viewForHeaderInSection:section];
+- (UIView *)tableView:(UITableView *)tv viewForHeaderInSection:(NSInteger)section{
+	return [[self tableDelegate] tableView:tv viewForHeaderInSection:section];
 }
 
 
-
-//
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-//    if (section == 1) return accountSectionHeader;
-//    return nil;
-//}
 
 
 - (void)dealloc {
@@ -152,7 +146,7 @@
 	[noCredentials release];
 	[validCredentials release];
 	[newAccountController release];
-	[demographicsSectionHeader relase];
+	[demographicsSectionHeader release];
 	[accountSectionHeader release];
 	[super dealloc];
 }

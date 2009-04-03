@@ -44,6 +44,7 @@ typedef enum {
 @property (nonatomic, retain) NSDate *birthdate;
 @property(nonatomic, readonly) AccountLoadStatus accountLoadStatus;
 @property (nonatomic, retain) NSDictionary* errors;
+@property(nonatomic) BOOL isFemale;
 
 
 

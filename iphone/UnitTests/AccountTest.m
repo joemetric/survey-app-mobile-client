@@ -172,6 +172,16 @@
 	STAssertEqualStrings(@"{\"user\":{\"income\":0}}", [connectionRequest httpBodyAsString], nil); 
 }
 
+-(void)testIsFemaleIsTrueIfAndOnlyIfGenderIsF{
+	account.gender = @"F";
+	STAssertTrue(account.isFemale, @"should be female");
+	account.gender = @"M";
+	STAssertFalse(account.isFemale, @"should not be female");
+	account.gender = nil;
+	STAssertFalse(account.isFemale, @"should not be female");
+	account.gender = [NSNull null];
+	STAssertFalse(account.isFemale, @"should not be female");
+}
 
 
 
