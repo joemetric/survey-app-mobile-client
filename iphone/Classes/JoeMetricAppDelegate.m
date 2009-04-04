@@ -36,6 +36,8 @@
 		NSDictionary *appDefaults =  [NSDictionary dictionaryWithObjectsAndKeys:
 									  @"", @"username",
 									  @"", @"password",
+                                      @"localhost", @"host",
+                                      @"3000", @"port",
 									  nil];
 		[[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
 		[[NSUserDefaults standardUserDefaults] synchronize];

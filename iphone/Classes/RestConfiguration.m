@@ -12,11 +12,15 @@ void setUserDefaultString(NSString *key, NSString* value){
 @implementation RestConfiguration
 
 +(NSString*) host{     
-	return userDefaultString(@"host");
+	NSString* result =  userDefaultString(@"host");
+    NSLog(@"host: %@", result);
+    return result;
 }
 
 +(NSInteger) port{
- 	return [[NSUserDefaults standardUserDefaults] integerForKey:@"port"];
+ 	NSInteger result= [[NSUserDefaults standardUserDefaults] integerForKey:@"port"];
+    NSLog(@"port: %d", result);
+    return result;
 }
 
 
