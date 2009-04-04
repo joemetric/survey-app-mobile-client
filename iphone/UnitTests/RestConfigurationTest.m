@@ -7,6 +7,11 @@
 
 @implementation RestConfigurationTest
 
+-(void)tearDown{
+	[[NSUserDefaults standardUserDefaults] setObject:@"3000" forKey:@"port"];
+	[[NSUserDefaults standardUserDefaults] setObject:@"localhost" forKey:@"host"];
+	
+}
 
 -(void)testUsernameAndPasswordReadFromUserDefaults{
 	[[NSUserDefaults standardUserDefaults] setObject:@"marvin" forKey:@"username"];
@@ -32,6 +37,14 @@
 
 	STAssertEqualStrings(@"Sue", urlCredential.user, nil);
 	STAssertEqualStrings(@"Moose", urlCredential.password, nil);
+}
+
+-(void)testHostAndPortReadFromUserDefaults{
+	[[NSUserDefaults standardUserDefaults] setObject:@"2301" forKey:@"port"];
+	[[NSUserDefaults standardUserDefaults] setObject:@"ahost" forKey:@"host"];
+
+    STAssertEquals(2301, [RestConfiguration port], nil);
+    STAssertEqualStrings(@"ahost", [RestConfiguration host], nil);
 }
 
 @end

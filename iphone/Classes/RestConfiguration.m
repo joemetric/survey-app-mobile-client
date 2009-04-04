@@ -1,8 +1,5 @@
 #import "RestConfiguration.h"
 
-/*  Should make these build configurable */
-#define REST_HOST @"localhost"
-#define REST_PORT 3000 
 
 NSString* userDefaultString(NSString *key){
 	return [[NSUserDefaults standardUserDefaults] stringForKey:key]; 
@@ -15,11 +12,11 @@ void setUserDefaultString(NSString *key, NSString* value){
 @implementation RestConfiguration
 
 +(NSString*) host{     
-    return REST_HOST;
+	return userDefaultString(@"host");
 }
 
 +(NSInteger) port{
- 	return REST_PORT;
+ 	return [[NSUserDefaults standardUserDefaults] integerForKey:@"port"];
 }
 
 

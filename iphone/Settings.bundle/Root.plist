@@ -44,6 +44,38 @@
 			<key>DefaultValue</key>
 			<string></string>
 		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Host</string>
+			<key>AutocorrectionType</key>
+			<string>No</string>
+			<key>AutocapitalizationType</key>
+			<string>None</string>
+			<key>Key</key>
+			<string>host</string>
+			<key>IsSecure</key>
+			<false/>
+			<key>DefaultValue</key>
+			<string>localhost</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Port</string>
+			<key>AutocorrectionType</key>
+			<string>No</string>
+			<key>AutocapitalizationType</key>
+			<string>None</string>
+			<key>Key</key>
+			<string>port</string>
+			<key>IsSecure</key>
+			<false/>
+			<key>DefaultValue</key>
+			<string>3000</string>
+		</dict>
 	</array>
 </dict>
 </plist>
