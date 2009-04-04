@@ -87,9 +87,8 @@
 }
 
 - (void)finishedLoading:(NSString *)data{
-	static const NSString* dictionaryClassName = @"NSCFDictionary";
 	NSObject *unpackedJson = [data JSONFragmentValue];
-	if (NSOrderedSame == [dictionaryClassName compare:[unpackedJson className]]){
+	if ([unpackedJson isKindOfClass:[NSDictionary class]]){
 		[self loadFromDictionary:(NSDictionary*)unpackedJson];
 	}
 	else{
