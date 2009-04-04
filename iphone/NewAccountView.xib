@@ -43,7 +43,7 @@
 				<int key="NSvFlags">292</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
-					<object class="IBUIImageView" id="707796399">
+					<object class="IBUIImageView" id="1054338936">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{0, -2}, {320, 485}}</string>
@@ -382,6 +382,7 @@
 								<float key="IBUIMinimumFontSize">1.700000e+01</float>
 								<object class="IBUITextInputTraits" key="IBUITextInputTraits">
 									<int key="IBUIAutocorrectionType">1</int>
+									<int key="IBUIKeyboardType">7</int>
 								</object>
 							</object>
 						</object>
@@ -977,7 +978,7 @@
 							<reference ref="492059392"/>
 							<reference ref="672639239"/>
 							<reference ref="681636048"/>
-							<reference ref="707796399"/>
+							<reference ref="1054338936"/>
 						</object>
 						<reference key="parent" ref="360949347"/>
 					</object>
@@ -1173,7 +1174,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">106</int>
-						<reference key="object" ref="707796399"/>
+						<reference key="object" ref="1054338936"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 				</object>
