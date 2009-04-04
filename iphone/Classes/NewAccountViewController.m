@@ -53,7 +53,7 @@
 }
 
 -(void)populateBasicSection{
-	TableSection* section = [TableSection tableSection];
+	TableSection* section = [TableSection tableSectionWithTitle:@"Basics"];
 	[staticTable addSection:section];
 	
 	[section addCell:loginCell];
@@ -63,7 +63,7 @@
 }
 
 -(void)populateDemographicsSection{
-	TableSection* section = [TableSection tableSection];
+	TableSection* section = [TableSection tableSectionWithTitle:@"Demographics"];
 	[staticTable addSection:section];
 	
 	[section addCell:incomeCell];
@@ -77,7 +77,7 @@
 	self.staticTable = [StaticTable staticTable];
 	[self populateBasicSection];
 	[self populateDemographicsSection];
-
+    self.tableView.backgroundColor = [UIColor clearColor];
  }
 -(void) keyboardWillShow:(NSNotification *)note
 {
@@ -186,6 +186,15 @@
 	return section == 0 ? @"Basics" : @"Demographics";
 }
 
+- (UIView *)tableView:(UITableView *)tv viewForHeaderInSection:(NSInteger)section{
+    return [staticTable tableView:tv viewForHeaderInSection:section];
+}
+
+- (CGFloat)tableView:(UITableView *)tv heightForHeaderInSection:(NSInteger)section{
+    return [staticTable tableView:tv heightForHeaderInSection:section];
+}
+
+
 - (NSString*)tableView:(UITableView*) tv titleForFooterInSection:(NSInteger) section {
 	NSArray* sectionKeys = [self validErrorKeysForSection:section];
 	NSMutableString* result = [NSMutableString stringWithCapacity:64];
@@ -199,6 +208,8 @@
 	}
 	return result;
 }
+
+
 
 - (NSArray*) validErrorKeysForSection:(NSInteger) section {
 	if( section == 0 ){ return [NSArray arrayWithObjects:@"login", @"password", @"password_confirmation", @"email", nil]; }
@@ -219,10 +230,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	UITableViewCell* result = [staticTable tableView:tv cellForRowAtIndexPath:indexPath];
-    if ([result conformsToProtocol:@protocol(HasError)]){
-        UITableViewCell<HasError, Labelled>* errorCell = (UITableViewCell<HasError, Labelled>*) result;
-		errorCell.errorHighlighted = [self hasErrorsForField:errorCell.errorField];
-    }
 	return result;
 }
 
@@ -270,12 +277,6 @@
 #pragma mark Button actions
 
 - (IBAction) signup {
-    [username resignFirstResponder];
-    [password resignFirstResponder];
-    [passwordConfirmation resignFirstResponder];
-    [emailAddress resignFirstResponder];
-    [income resignFirstResponder];
-    
 	Account* account = [Account currentAccount];
 	account.username = loginCell.textField.text ;
 	account.password = passwordCell.textField.text;
@@ -294,6 +295,7 @@
 }
 
 -(void) accountChanged{	
+	[staticTable handleErrors:[[Account currentAccount] errors]];
 	[activityIndicator stopAnimating];
 	[tableView reloadData];
 }

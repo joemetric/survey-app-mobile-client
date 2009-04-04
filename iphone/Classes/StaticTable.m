@@ -7,6 +7,7 @@
 //
 
 #import "StaticTable.h"
+#import "TableSection.h"
 
 @interface StaticTable()
 @property(nonatomic, retain) NSMutableArray* sections;
@@ -37,7 +38,7 @@
 
 
 - (NSInteger)tableView:(UITableView *)table numberOfRowsInSection:(NSInteger)section{
-	return [[sections objectAtIndex:section] rowCount];
+    return [[sections objectAtIndex:section] rowCount];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -48,5 +49,23 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
 	return sections.count;
 }
+
+-(void)handleErrors:(NSDictionary*)errors{
+	for (TableSection* section in sections){
+		[section handleErrors:errors];
+	}
+}
+
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+	TableSection* tableSection = [sections objectAtIndex:section];
+	return tableSection.headerView;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 40.0;
+}
+
+
 
 @end

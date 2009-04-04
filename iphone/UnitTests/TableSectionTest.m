@@ -1,5 +1,7 @@
 #import "GTMSenTestCase.h"
 #import "TableSection.h"
+#import "HasError.h"
+#import "StubCellWithError.h"
 
 @interface TableSectionTest : GTMTestCase {
 	TableSection* testee;
@@ -8,11 +10,13 @@
 @end
 
 
+
+
 @implementation TableSectionTest
 
 
 -(void)setUp{
-	testee = [TableSection tableSection];
+	testee = [TableSection tableSectionWithTitle:@"section title"];
 }
 
 -(void)testInitiallyEmpty{
@@ -46,6 +50,28 @@
     [testee release];
     STAssertEquals(1, (NSInteger)[cell retainCount], nil);
     
+}
+
+
+
+
+-(void)assertCellAtIndex:(NSUInteger)index error:(BOOL)error{
+	StubCellWithError* cell = (StubCellWithError*)[testee cellAtIndex:index];
+	STAssertEquals(error, cell.errorHighlighted, cell.text);
+	
+}
+-(void)testErrorsAddedToAppropriateCells{
+	[testee addCell:[StubCellWithError stubCellWithText:@"cell 1" errorField:@"cell1"]];
+	[testee addCell:[self cellWithText:@"cell 2"]];
+	[testee addCell:[StubCellWithError stubCellWithText:@"cell 3" errorField:@"cell3"]];
+	
+	NSMutableDictionary *errors = [NSMutableDictionary dictionary];
+	[errors setObject:[NSArray arrayWithObject:@"cell1err1"] forKey:@"cell1"];
+	
+	[testee handleErrors:errors];
+	
+	[self assertCellAtIndex:0 error:YES];
+	[self assertCellAtIndex:2 error:NO];
 }
 
 @end

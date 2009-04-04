@@ -73,6 +73,7 @@
 		D2F2EFA50F60389D00A8BB57 /* PictureAnswerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2F2EFA40F60389D00A8BB57 /* PictureAnswerView.xib */; };
 		D2F2EFF50F606AB500A8BB57 /* SurveyInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F2EFF40F606AB500A8BB57 /* SurveyInfoViewController.m */; };
 		D2F2EFF70F606ACD00A8BB57 /* SurveyInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2F2EFF60F606ACD00A8BB57 /* SurveyInfoView.xib */; };
+		DA5367DD0F86B817001127B0 /* StubCellWithError.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5367DC0F86B817001127B0 /* StubCellWithError.m */; };
 		DA7F48BC0F7142660001E019 /* LabelledTableViewReadOnlyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA7F48BB0F7142650001E019 /* LabelledTableViewReadOnlyCell.xib */; };
 		DA7F48C10F7143890001E019 /* LabelledTableViewReadOnlyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7F48C00F7143890001E019 /* LabelledTableViewReadOnlyCell.m */; };
 		DA7F49080F71506A0001E019 /* ValidCredentialsProfileDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 54FA56FD0F6E43F100939C65 /* ValidCredentialsProfileDataSource.m */; };
@@ -222,6 +223,8 @@
 		D2F2EFF30F606AB500A8BB57 /* SurveyInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurveyInfoViewController.h; sourceTree = "<group>"; };
 		D2F2EFF40F606AB500A8BB57 /* SurveyInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SurveyInfoViewController.m; sourceTree = "<group>"; };
 		D2F2EFF60F606ACD00A8BB57 /* SurveyInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SurveyInfoView.xib; sourceTree = "<group>"; };
+		DA5367DB0F86B817001127B0 /* StubCellWithError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StubCellWithError.h; sourceTree = "<group>"; };
+		DA5367DC0F86B817001127B0 /* StubCellWithError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StubCellWithError.m; sourceTree = "<group>"; };
 		DA7F48BB0F7142650001E019 /* LabelledTableViewReadOnlyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelledTableViewReadOnlyCell.xib; sourceTree = "<group>"; };
 		DA7F48BF0F7143890001E019 /* LabelledTableViewReadOnlyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelledTableViewReadOnlyCell.h; sourceTree = "<group>"; };
 		DA7F48C00F7143890001E019 /* LabelledTableViewReadOnlyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelledTableViewReadOnlyCell.m; sourceTree = "<group>"; };
@@ -534,6 +537,8 @@
 				DADF82C60F86267600DEACA0 /* NSDictionary+RemoveNullsTest.m */,
 				DADF832B0F86333F00DEACA0 /* TableSectionTest.m */,
 				DADF83AA0F865D9800DEACA0 /* StaticTableTest.m */,
+				DA5367DB0F86B817001127B0 /* StubCellWithError.h */,
+				DA5367DC0F86B817001127B0 /* StubCellWithError.m */,
 			);
 			path = UnitTests;
 			sourceTree = "<group>";
@@ -787,6 +792,7 @@
 				DADF83310F86352500DEACA0 /* TableSection.m in Sources */,
 				DADF839D0F865A7200DEACA0 /* StaticTable.m in Sources */,
 				DADF83AB0F865D9800DEACA0 /* StaticTableTest.m in Sources */,
+				DA5367DD0F86B817001127B0 /* StubCellWithError.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

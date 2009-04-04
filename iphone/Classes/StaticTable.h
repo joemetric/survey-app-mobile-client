@@ -2,11 +2,11 @@
 
 @class TableSection;
 
-@interface StaticTable : NSObject<UITableViewDataSource> {
+@interface StaticTable : NSObject<UITableViewDataSource,UITableViewDelegate> {
 	NSMutableArray* sections;
-
 }
 
 +(id)staticTable;
 -(void)addSection:(TableSection*)section;
+-(void)handleErrors:(NSDictionary*)errors;
 @end
