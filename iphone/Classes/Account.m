@@ -55,6 +55,14 @@
 	}
 }
 
+- (NSDecimalNumber*) walletBalance {
+	return (NSDecimalNumber*)[self.wallet objectForKey:@"balance"];
+}
+
+- (NSInteger) walletTransactionCount {
+	return [[self.wallet objectForKey:@"wallet_transactions"] count];
+}
+
 -(void)loadFromDictionary:(NSDictionary*)dict{
 	NSDictionary *params = [[dict objectForKey:@"user"] withoutNulls];
 	self.email = [params objectForKey:@"email"];

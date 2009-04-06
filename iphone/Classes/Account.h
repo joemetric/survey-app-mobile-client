@@ -44,9 +44,11 @@ typedef enum {
 @property (nonatomic, retain) NSError *lastLoadError;
 @property (nonatomic) NSInteger income;
 @property (nonatomic, retain) NSDate *birthdate;
-@property(nonatomic, readonly) AccountLoadStatus accountLoadStatus;
+@property (nonatomic, readonly) AccountLoadStatus accountLoadStatus;
 @property (nonatomic, retain) NSDictionary* errors;
-@property(nonatomic, readonly) BOOL isFemale;
+@property (nonatomic, readonly) BOOL isFemale;
+@property (nonatomic, readonly) NSDecimalNumber* walletBalance;
+@property (nonatomic, readonly) NSInteger walletTransactionCount;
 
 
 
