@@ -24,6 +24,7 @@
 @synthesize gender;
 @synthesize income;
 @synthesize birthdate;
+@synthesize wallet;
 @synthesize callbackObject;
 @synthesize callbackSelector;
 @synthesize accountLoadStatus;
@@ -62,6 +63,7 @@
 	self.iso8061BirthDate=[params objectForKey:@"birthdate"];
 	self.itemId = [[params objectForKey:@"id"] integerValue];   
 	self.username = [params objectForKey:@"login"];
+	self.wallet = [params objectForKey:@"wallet"];
 
 	if(accountLoadStatusCreatingNew == accountLoadStatus){
 		[RestConfiguration setUsername:username];

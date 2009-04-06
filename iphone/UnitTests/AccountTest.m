@@ -86,8 +86,12 @@
 	STAssertEqualStrings(@"rufus", [RestConfiguration password], nil);
 }
 
+
+//TODO wallet
+
+
 -(void)testPopulationFromRestDidFinishLoading{
-	NSString *data = @"{\"user\": { \"birthdate\": \"1973-03-27\", \"id\": 123, \"gender\":\"M\", \"income\": \"25283\", \"email\": \"marvin@example.com\", \"login\": \"marvello\"}}";
+	NSString *data = @"{\"user\": { \"birthdate\": \"1973-03-27\", \"id\": 123, \"gender\":\"M\", \"income\": \"25283\", \"email\": \"marvin@example.com\", \"login\": \"marvello\", \"wallet\" : {\"balance\" : 12.00}}}";
 
 	[account finishedLoading:data];
 
@@ -99,6 +103,10 @@
 	STAssertEqualStrings(@"27 Mar 1973", [DateHelper stringFromDate:account.birthdate], nil);
 	STAssertEquals(1, accountChangeNotificationCount, @"accountChangeNotificationCount");
 	STAssertEquals(accountLoadStatusLoaded, account.accountLoadStatus, @"accountLoadStatus");
+	NSLog(@"%@",account.wallet);
+	NSLog(@"%@", [[account.wallet objectForKey:@"balance"] class]);
+	
+	STAssertEqualObjects([NSDecimalNumber numberWithFloat:12.00f], [account.wallet objectForKey:@"balance"], @"walletbalance");
 }
 
 -(void)testPopulationWithErors{

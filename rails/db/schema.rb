@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090331101510) do
+ActiveRecord::Schema.define(:version => 20090406095717) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -17,6 +17,14 @@ ActiveRecord::Schema.define(:version => 20090331101510) do
     t.string   "question_type"
     t.text     "answer_string"
     t.string   "answer_file"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "completions", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "survey_id"
+    t.date     "paid_on"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -68,9 +76,16 @@ ActiveRecord::Schema.define(:version => 20090331101510) do
 
   add_index "users", ["login"], :name => "index_sams_on_login", :unique => true
 
+  create_table "wallet_transactions", :force => true do |t|
+    t.integer  "wallet_id"
+    t.float    "amount"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "wallets", :force => true do |t|
     t.integer  "user_id"
-    t.float    "balance",    :default => 0.0, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

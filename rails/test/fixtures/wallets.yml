@@ -2,9 +2,7 @@
 
 quentins_wallet:
   user: quentin
-  balance: 123.0
 
 aarons_wallet:
   user: aaron
-  balance: 0.0
 	

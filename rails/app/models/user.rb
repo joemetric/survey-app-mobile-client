@@ -59,7 +59,7 @@ class User < ActiveRecord::Base
   end
   
   def complete_survey( survey )
-    wallet.balance += survey.amount
+    wallet.record_completed_survey( survey )
   end
 
   def create_wallet
