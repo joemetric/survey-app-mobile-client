@@ -53,7 +53,11 @@
 }
 
 
-
+-(void)testHeader{
+	STAssertNotNil(testee.headerView, @"header");
+	STAssertNotNil([testee.headerView.subviews objectAtIndex:0], @"subview");
+	STAssertEqualStrings(@"section title", [[testee.headerView.subviews objectAtIndex:0] text], nil);
+}
 
 -(void)assertCellAtIndex:(NSUInteger)index error:(BOOL)error{
 	StubCellWithError* cell = (StubCellWithError*)[testee cellAtIndex:index];
