@@ -62,7 +62,7 @@
 }
 
 
--(void)setFooterLines:(NSString*)lines{
+-(void)setFooterLines:(NSArray*)lines{
 	for (NSString* footerline in lines){
 		UILabel* label = [[[UILabel alloc] initWithFrame:CGRectMake(20, 0, 280, 30)] autorelease];
 		label.text = footerline;

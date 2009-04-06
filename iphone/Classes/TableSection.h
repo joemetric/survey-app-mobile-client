@@ -11,7 +11,7 @@
 -(void)addCell:(UITableViewCell*)cell;
 -(UITableViewCell*)cellAtIndex:(NSUInteger)index;
 -(void)handleErrors:(NSDictionary*)errors;
--(void)setFooterLines:(NSString*)lines;
+-(void)setFooterLines:(NSArray*)lines;
 
 @property(readonly) NSUInteger rowCount;
 @property(nonatomic, retain) UIView* headerView;
