@@ -11,17 +11,15 @@
 
 @class Survey;
 
-@interface QuestionListViewController : UITableViewController <ResourceDelegate> {
+@interface QuestionListViewController : UITableViewController {
     Survey *survey;
-    NSArray *questions;
 
     IBOutlet UINavigationItem *surveyName;
 }
 
 @property (nonatomic, retain) Survey *survey;
-@property (nonatomic, retain) NSArray *questions;
 @property (nonatomic, retain) UINavigationItem *surveyName;
 
--(void)refreshQuestions;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil survey:(Survey *)aSurvey;
 
 @end

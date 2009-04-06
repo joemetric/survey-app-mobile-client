@@ -1,13 +1,7 @@
-//
-//  JoeMetricAppDelegate.m
-//  JoeMetric
-//
-//  Created by Joseph OBrien on 11/25/08.
-//  Copyright EdgeCase, LLC 2008. All rights reserved.
-//
-
 #import "JoeMetricAppDelegate.h"
 #import "Account.h"
+#import "SurveyManager.h"
+#import "SurveyListViewController.h"
 
 @interface JoeMetricAppDelegate (Private)
 - (void) initializeSettings;
@@ -21,12 +15,20 @@
 @synthesize navigationController;
 @synthesize currentAccount;
 
+- (void)surveysStored {
+    [surveyListView refreshSurveys];
+}
+
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
     [window addSubview:tabBarController.view];
 	
 	[self initializeSettings];
 	currentAccount = [[Account alloc] init];
 	[currentAccount loadCurrent];
+
+    SurveyManager *sm = [[SurveyManager alloc] initWithObserver:self];
+    [sm loadSurveysFromNetwork];
+    [sm release];
 }
 
 - (void) initializeSettings {

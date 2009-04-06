@@ -8,42 +8,41 @@
 
 #import "Survey.h"
 #import "Question.h"
+#import "SurveyManager.h"
 
 @implementation Survey
 
+@synthesize itemId;
 @synthesize name;
 @synthesize amount;
-
-+ (NSString *)resourceName
-{
-    return @"surveys";
-}
-
-+ (NSString *)resourceKey
-{
-    return @"survey";
-}
+@synthesize questions;
+@synthesize updatedAt;
 
 + (id)newFromDictionary:(NSDictionary *) dict
 {
-    Survey *survey = [[Survey alloc] init];
-    survey.itemId  = [[[dict objectForKey:[self resourceKey]] objectForKey:@"id"] integerValue];
-    survey.name    = [[dict objectForKey:[self resourceKey]] objectForKey:@"name"];
-    survey.amount  = [[dict objectForKey:[self resourceKey]] objectForKey:@"amount"];
+    Survey *survey   = [[Survey alloc] init];
+    survey.itemId    = [[dict objectForKey:@"id"] integerValue];
+    survey.name      = [dict objectForKey:@"name"];
+    survey.amount    = [dict objectForKey:@"amount"];
+    survey.updatedAt = [NSDate dateWithTimeIntervalSince1970:[[dict objectForKey:@"updated_at"] intValue]];
+    
+    for (id question in [dict objectForKey:@"questions"]) {
+        [survey.questions addObject:[Question newFromDictionary:question]];
+    }
+    
     return survey;
 }
+
++ (NSArray *)findAll {
+    NSMutableArray *surveys = [[NSMutableArray alloc] initWithCapacity:0];
     
-- (NSDictionary *)toDictionary
-{
-    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
-    [parameters setObject:self.name forKey:@"name"];
-    [parameters setObject:self.name forKey:@"amount"];
-
-    NSMutableDictionary *container = [[NSMutableDictionary alloc] init];
-    [container setObject:parameters forKey:[[self class] resourceKey]];
-
-    [parameters release];
-    return [container autorelease];
+    for (id surveyDict in [SurveyManager loadSurveysFromLocal]) {
+        Survey *survey = [self newFromDictionary:surveyDict];
+        [surveys addObject:survey];
+        [survey release];
+    }
+    
+    return [surveys autorelease];
 }
 
 - (NSString *)amountAsDollarString
@@ -59,9 +58,18 @@
     return [NSString stringWithFormat:@"%@ : %@", [self amountAsDollarString], self.name];
 }
 
+- (id)init {
+    if (self = [super init]) {
+        self.questions = [[NSMutableArray alloc] initWithCapacity:0];
+    }
+    return self;
+}
+
 - (void)dealloc {
     [name release];
     [amount release];
+    [questions release];
+    [updatedAt release];
     [super dealloc];
 }
 

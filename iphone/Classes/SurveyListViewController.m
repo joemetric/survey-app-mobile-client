@@ -1,19 +1,6 @@
-//
-//  SurveyListViewController.m
-//  JoeMetric
-//
-//  Created by Jon Distad on 1/6/09.
-//  Copyright 2009 EdgeCase LLC. All rights reserved.
-//
-
 #import "SurveyListViewController.h"
 #import "SurveyInfoViewController.h"
 #import "Survey.h"
-#import "ResourceDelegate.h"
-
-@interface SurveyListViewController (Private)
-- (void)refreshSurveys;
-@end
 
 @implementation SurveyListViewController
 
@@ -35,16 +22,13 @@
 }
 
 -(void)refreshSurveys {
-    [Survey findAllWithDelegate:self];
+    NSLog(@"Loading surveys from the disk");
+    self.surveys = [Survey findAll];
+    [self.tableView reloadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [self refreshSurveys];
-}
-
--(void)resource:(Resource*)res itemsReceived:(NSArray *)items {
-    self.surveys = items;
-    [self.tableView reloadData];
 }
     
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

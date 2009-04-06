@@ -1,18 +1,15 @@
-//
-//  JoeMetricAppDelegate.h
-//  JoeMetric
-//
-//  Created by Joseph OBrien on 11/25/08.
-//  Copyright EdgeCase, LLC 2008. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
+#import "SurveyManager.h"
+
 @class Account;
-@interface JoeMetricAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate, UIActionSheetDelegate> {
+@class SurveyListViewController;
+
+@interface JoeMetricAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate, UIActionSheetDelegate, SurveyManagerObserver> {
     UIWindow *window;
     UITabBarController *tabBarController;
     UINavigationController *navigationController;
 	Account* currentAccount;
+    IBOutlet SurveyListViewController *surveyListView;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;

@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(:version => 20090406095717) do
     t.float    "amount"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "complete",   :default => false
   end
 
   create_table "users", :force => true do |t|

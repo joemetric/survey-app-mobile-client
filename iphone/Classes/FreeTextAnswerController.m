@@ -36,22 +36,14 @@
     [params setObject:question.questionType forKey:@"question_type"];
     [params setObject:answerField.text forKey:@"answer_string"];
 
-    Answer *answer = [Answer createWithParams:params];
-
-    if (answer) {
-        NSLog(@"Answer was a success!");
-        [self.navigationController popToViewController:self.questionList animated:YES];
-    } else {
-        UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Answering Failed"
-                                                   message:@"We were unable to create an answer"
-                                                   delegate:nil
-                                                   cancelButtonTitle:@"OK"
-                                                   otherButtonTitles:nil]
-                                 autorelease];
-        [alert show];
-    }
+    Answer *answer = [Answer newFromDictionary:params];
+    [answer store];
+    NSLog(@"Answer: %@", answer);
+    
+    [self.navigationController popToViewController:self.questionList animated:YES];
 
     [params release];
+    [answer release];
 }
 
 /*

@@ -2,12 +2,12 @@ class SurveysController < ApplicationController
   # GET /surveys
   # GET /surveys.xml
   def index
-    @surveys = Survey.find(:all)
+    @surveys = Survey.complete
 
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @surveys }
-      format.json { render :json => @surveys }
+      format.json { render :json => @surveys.map(&:bundle) }
     end
   end
 

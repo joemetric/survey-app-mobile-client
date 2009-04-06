@@ -15,5 +15,6 @@
 +(NSDateFormatter*)formatter;
 +(NSDate*) dateFromString:(NSString*)str;
 +(NSString*) stringFromDate:(NSDate*)date;
++(NSString*)localDateFormatFromDateString:(NSString*)dateString;
 
 @end

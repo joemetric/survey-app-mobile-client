@@ -10,42 +10,19 @@
 
 @implementation Question
 
+@synthesize itemId;
 @synthesize text;
 @synthesize amount;
 @synthesize questionType;
 
-+ (NSString *)resourceName
-{
-    return @"questions";
-}
-
-+ (NSString *)resourceKey
-{
-    return @"question";
-}
-
 + (id)newFromDictionary:(NSDictionary *)dict
 {
     Question *question = [[Question alloc] init];
-    question.itemId       = [[[dict objectForKey:[self resourceKey]] objectForKey:@"id"] integerValue];
-    question.text         = [[dict objectForKey:[self resourceKey]] objectForKey:@"text"];
-    question.amount       = [[dict objectForKey:[self resourceKey]] objectForKey:@"amount"];
-    question.questionType = [[dict objectForKey:[self resourceKey]] objectForKey:@"question_type"];
+    question.itemId       = [[dict objectForKey:@"id"] integerValue];
+    question.text         = [dict objectForKey:@"text"];
+    question.amount       = [dict objectForKey:@"amount"];
+    question.questionType = [dict objectForKey:@"question_type"];
     return question;
-}
-
-- (NSDictionary *)toDictionary
-{
-    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
-    [parameters setObject:self.text forKey:@"text"];
-    [parameters setObject:self.amount forKey:@"amount"];
-    [parameters setObject:self.questionType forKey:@"question_type"];
-
-    NSMutableDictionary *container = [[NSMutableDictionary alloc] init];
-    [container setObject:parameters forKey:[[self class] resourceKey]];
-
-    [parameters release];
-    return [container autorelease];
 }
 
 
