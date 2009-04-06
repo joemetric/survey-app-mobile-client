@@ -56,8 +56,7 @@
 
 -(void) testSectionHeaders{
 	[self assertHeaderViewWithIndex:0 text:@"section 1"];
-	[self assertHeaderViewWithIndex:1 text:@"section 2"];
-	
+	[self assertHeaderViewWithIndex:1 text:@"section 2"];	
 }
 
 
@@ -65,18 +64,10 @@
 	UIView* footerView = [testee tableView:nil  viewForFooterInSection:0];
 	STAssertNotNil(footerView, nil);
 	STAssertEqualStrings(@"section 1 footer", [[footerView.subviews objectAtIndex:0] text], nil);
-	
+	STAssertEquals((float)40, [testee tableView:nil heightForFooterInSection:0], nil);
 }
 
--(void)testA{
-	UIView* parent = [[UIView alloc] init];
-	UIView* child = [[UIView alloc] init];
-	[parent addSubview:child];
-	STAssertEquals(2, (NSInteger)[child retainCount], nil);
-	[parent release];
-	STAssertEquals(1, (NSInteger)[child retainCount], nil);
-	
-}
+
 
 -(void)testSectionRetainedAndReleased{
 	TableSection* section = [TableSection tableSectionWithTitle:@""];

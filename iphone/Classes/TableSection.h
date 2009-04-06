@@ -13,7 +13,8 @@
 -(void)handleErrors:(NSDictionary*)errors;
 -(void)setFooterLines:(NSArray*)lines;
 
-@property(readonly) NSUInteger rowCount;
+@property(readonly) NSInteger rowCount;
+@property(readonly) NSInteger footerHeight;
 @property(nonatomic, retain) UIView* headerView;
 @property(nonatomic, retain) UIView* footerView;
 
