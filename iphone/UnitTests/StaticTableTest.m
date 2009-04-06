@@ -64,7 +64,7 @@
 	UIView* footerView = [testee tableView:nil  viewForFooterInSection:0];
 	STAssertNotNil(footerView, nil);
 	STAssertEqualStrings(@"section 1 footer", [[footerView.subviews objectAtIndex:0] text], nil);
-	STAssertEquals((float)40, [testee tableView:nil heightForFooterInSection:0], nil);
+	STAssertEquals((float)30, [testee tableView:nil heightForFooterInSection:0], nil);
 }
 
 

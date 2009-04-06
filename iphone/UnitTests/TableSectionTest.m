@@ -99,9 +99,9 @@
 -(void)testFooterViewHeightAndPlacementIncreasesWithTheNumberofLines{
 	[self assertFooterHeight:0];
 	[testee setFooterLines:[NSArray arrayWithObject:@"1"]];
-	[self assertFooterHeight:40];
+	[self assertFooterHeight:30];
 	[testee setFooterLines:[NSArray arrayWithObjects:@"original 1", @"original 2", nil]];
-	[self assertFooterHeight:80];
+	[self assertFooterHeight:60];
 }
 
 -(void)assertLabel:(UILabel*)label yPlacement:(CGFloat)yPlacement{
@@ -113,8 +113,8 @@
 	[testee setFooterLines:[NSArray arrayWithObjects:@"1", @"2", @"3", nil]];
 	NSArray* labels = testee.footerView.subviews;
 	[self assertLabel:[labels objectAtIndex:0] yPlacement:0];
-	[self assertLabel:[labels objectAtIndex:1] yPlacement:40];
-	[self assertLabel:[labels objectAtIndex:2] yPlacement:80];
+	[self assertLabel:[labels objectAtIndex:1] yPlacement:30];
+	[self assertLabel:[labels objectAtIndex:2] yPlacement:60];
 	
 }
 

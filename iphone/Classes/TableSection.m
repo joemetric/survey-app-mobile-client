@@ -66,15 +66,17 @@
 }
 
 -(NSInteger)footerHeight{
-	return footerView.subviews.count * 40;
+	return footerView.subviews.count * 30;
 }
 
 -(void)setFooterLines:(NSArray*)lines{
 	for(UIView* subview in  footerView.subviews) [subview removeFromSuperview];
+    footerView.backgroundColor = [UIColor clearColor];
     int lineIx = 0;
 	for (NSString* footerline in lines){
-		UILabel* label = [self createHeaderOrFooterLabelWithFrame:CGRectMake(20, lineIx++ * 40, 280, 30)
+		UILabel* label = [self createHeaderOrFooterLabelWithFrame:CGRectMake(20, lineIx++ * 30, 280, 25)
 			font:[UIFont systemFontOfSize:16.0] text:footerline];
+		label.adjustsFontSizeToFitWidth = YES;
 		[self.footerView addSubview: label];
 	}
 	footerView.frame = CGRectMake(0, 0, 280, self.footerHeight);
