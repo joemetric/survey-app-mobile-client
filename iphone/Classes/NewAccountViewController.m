@@ -194,7 +194,16 @@
     return [staticTable tableView:tv heightForHeaderInSection:section];
 }
 
+-(UIView*) tableView:(UITableView*) tv viewForFooterInSection:(NSInteger)section{
+    return [staticTable tableView:tv viewForFooterInSection:section];
+}
 
+- (CGFloat)tableView:(UITableView *)tv heightForFooterInSection:(NSInteger)section{
+	return [staticTable tableView:tv heightForFooterInSection:section];
+}
+
+
+//** todo - no longer relevant */
 - (NSString*)tableView:(UITableView*) tv titleForFooterInSection:(NSInteger) section {
 	NSArray* sectionKeys = [self validErrorKeysForSection:section];
 	NSMutableString* result = [NSMutableString stringWithCapacity:64];

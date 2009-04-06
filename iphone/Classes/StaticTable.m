@@ -57,6 +57,10 @@
 }
 
 
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+	return [[sections objectAtIndex:section] footerHeight];
+}
+
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
 	TableSection* tableSection = [sections objectAtIndex:section];
 	return tableSection.headerView;
@@ -64,6 +68,10 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 40.0;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+	return [[sections objectAtIndex:section] footerView];
 }
 
 
