@@ -78,7 +78,7 @@
 	testee.passwordConfirmationCell.textField.text = @"rita's slip";
 	testee.emailCell.textField.text = @"rita@ryvita.nyet";
 	testee.incomeCell.textField.text = @"123451";
-	testee.dobCell.textField.text = @"23 Oct 1967";
+	testee.dobCell.textField.text = [DateHelper localDateFormatFromDateString:@"23 Oct 1967"];
 	testee.genderCell.segControl.selectedSegmentIndex = 0;
 			
 	[testee signup];
