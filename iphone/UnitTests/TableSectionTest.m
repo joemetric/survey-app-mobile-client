@@ -59,6 +59,19 @@
 	STAssertEqualStrings(@"section title", [[testee.headerView.subviews objectAtIndex:0] text], nil);
 }
 
+
+-(void)testFooterViewIsInitiallyEmpty{
+	STAssertNotNil(testee.footerView, nil);
+	STAssertEquals(0, (NSInteger) testee.footerView.subviews.count, @"subview count");
+}
+
+-(void)testSettingOneFooter{
+	[testee setFooterLines:[NSArray arrayWithObject:@"a line of footer"]];
+	STAssertEquals(1, (NSInteger) testee.footerView.subviews.count, @"subview count");
+	STAssertEqualStrings(@"a line of footer",  [[testee.footerView.subviews objectAtIndex:0] text], @"label text");
+	
+}
+
 -(void)assertCellAtIndex:(NSUInteger)index error:(BOOL)error{
 	StubCellWithError* cell = (StubCellWithError*)[testee cellAtIndex:index];
 	STAssertEquals(error, cell.errorHighlighted, cell.text);

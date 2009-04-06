@@ -195,6 +195,8 @@
 }
 
 
+
+//** todo - no longer relevant */
 - (NSString*)tableView:(UITableView*) tv titleForFooterInSection:(NSInteger) section {
 	NSArray* sectionKeys = [self validErrorKeysForSection:section];
 	NSMutableString* result = [NSMutableString stringWithCapacity:64];

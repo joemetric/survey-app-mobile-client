@@ -27,6 +27,7 @@
 	[section1 addCell:[self cellWithText:@"s0r0"]];
 	[section1 addCell:[self cellWithText:@"s0r1"]];
 	[section1 addCell:[self cellWithText:@"s0r2"]];
+	[section1 setFooterLines:[NSArray arrayWithObject:@"section 1 footer"]];
 
 	section2 = [TableSection tableSectionWithTitle:@"section 2"];
 	[testee addSection:section2];
@@ -56,6 +57,14 @@
 -(void) testSectionHeaders{
 	[self assertHeaderViewWithIndex:0 text:@"section 1"];
 	[self assertHeaderViewWithIndex:1 text:@"section 2"];
+	
+}
+
+
+-(void) testFooter{
+	UIView* footerView = [testee tableView:nil  viewForFooterInSection:0];
+	STAssertNotNil(footerView, nil);
+	STAssertEqualStrings(@"section 1 footer", [[footerView.subviews objectAtIndex:0] text], nil);
 	
 }
 

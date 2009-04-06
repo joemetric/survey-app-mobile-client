@@ -66,6 +66,10 @@
     return 40.0;
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+	return [[sections objectAtIndex:section] footerView];
+}
+
 
 
 @end
