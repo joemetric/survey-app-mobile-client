@@ -1,4 +1,3 @@
-#import "Resource.h"
 #import "RestfulRequests.h"
 
 typedef enum {

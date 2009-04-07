@@ -14,7 +14,6 @@
 #import "CredentialsViewController.h"
 #import "NewAccountViewController.h"
 #import "Account.h"
-#import "Rest.h"
 
 @interface ProfileViewController (Private)
 - (NSObject<UITableViewDelegate, UITableViewDataSource>*) tableDelegate;

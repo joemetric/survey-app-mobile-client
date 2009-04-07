@@ -1,5 +1,4 @@
 #import "Account.h"
-#import "Rest.h"
 #import "JSON.h"
 #import "JoeMetricAppDelegate.h"
 #import "RestConfiguration.h"

@@ -54,9 +54,7 @@
 		D266E01E0F3A400200C20691 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D266E0160F3A400200C20691 /* NSObject+SBJSON.m */; };
 		D266E01F0F3A400200C20691 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D266E0180F3A400200C20691 /* NSString+SBJSON.m */; };
 		D266E0200F3A400200C20691 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D266E01A0F3A400200C20691 /* SBJSON.m */; };
-		D2955DF80F3A36E6002675C9 /* Resource.m in Sources */ = {isa = PBXBuildFile; fileRef = D2955DF50F3A36E6002675C9 /* Resource.m */; };
 		D2955DF90F3A36E6002675C9 /* Rest.m in Sources */ = {isa = PBXBuildFile; fileRef = D2955DF70F3A36E6002675C9 /* Rest.m */; };
-		D2955DFA0F3A36E6002675C9 /* Resource.m in Sources */ = {isa = PBXBuildFile; fileRef = D2955DF50F3A36E6002675C9 /* Resource.m */; };
 		D2955DFB0F3A36E6002675C9 /* Rest.m in Sources */ = {isa = PBXBuildFile; fileRef = D2955DF70F3A36E6002675C9 /* Rest.m */; };
 		D2A946720F7A75C000E6D9B6 /* SurveyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A946710F7A75C000E6D9B6 /* SurveyManager.m */; };
 		D2A946730F7A75C000E6D9B6 /* SurveyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A946710F7A75C000E6D9B6 /* SurveyManager.m */; };
@@ -198,8 +196,6 @@
 		D266E0180F3A400200C20691 /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
 		D266E0190F3A400200C20691 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
 		D266E01A0F3A400200C20691 /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
-		D2955DF40F3A36E6002675C9 /* Resource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Resource.h; sourceTree = "<group>"; };
-		D2955DF50F3A36E6002675C9 /* Resource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Resource.m; sourceTree = "<group>"; };
 		D2955DF60F3A36E6002675C9 /* Rest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rest.h; sourceTree = "<group>"; };
 		D2955DF70F3A36E6002675C9 /* Rest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rest.m; sourceTree = "<group>"; };
 		D2A946700F7A75C000E6D9B6 /* SurveyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurveyManager.h; sourceTree = "<group>"; };
@@ -339,8 +335,6 @@
 			isa = PBXGroup;
 			children = (
 				548D9B100F6AAE7300629CCE /* RestDelegate.h */,
-				D2955DF40F3A36E6002675C9 /* Resource.h */,
-				D2955DF50F3A36E6002675C9 /* Resource.m */,
 				D2955DF60F3A36E6002675C9 /* Rest.h */,
 				D2955DF70F3A36E6002675C9 /* Rest.m */,
 				0DD8C8400EF33C3E00A20937 /* Question.h */,
@@ -721,7 +715,6 @@
 				D2AD6B1D0EFFF66B00DB13FD /* Account.m in Sources */,
 				FC21C5050F12B3AC00436E7F /* Survey.m in Sources */,
 				FC9756860F13B2300077926E /* SurveyListViewController.m in Sources */,
-				D2955DFA0F3A36E6002675C9 /* Resource.m in Sources */,
 				D2955DFB0F3A36E6002675C9 /* Rest.m in Sources */,
 				D266E01B0F3A400200C20691 /* NSObject+SBJSON.m in Sources */,
 				D266E01C0F3A400200C20691 /* NSString+SBJSON.m in Sources */,
@@ -766,7 +759,6 @@
 				DA86BE760F72B2D400CC6EBE /* CredentialsViewController.m in Sources */,
 				D2AD6B1C0EFFF66B00DB13FD /* Account.m in Sources */,
 				DA86BE780F72B2FB00CC6EBE /* NoCredentialsProfileDataSource.m in Sources */,
-				D2955DF80F3A36E6002675C9 /* Resource.m in Sources */,
 				DA86BE770F72B2E300CC6EBE /* NewAccountViewController.m in Sources */,
 				D2955DF90F3A36E6002675C9 /* Rest.m in Sources */,
 				D266E01E0F3A400200C20691 /* NSObject+SBJSON.m in Sources */,

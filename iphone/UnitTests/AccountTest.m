@@ -1,6 +1,5 @@
 #import "GTMSenTestCase.h"
 #import "Account.h"
-#import "Rest.h"
 #import "RestStubbing.h"
 #import "NSString+Regex.h"
 #import "RestConfiguration.h"
