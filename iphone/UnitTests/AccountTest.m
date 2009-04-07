@@ -7,36 +7,47 @@
 
 
 
-@interface AccountTest : GTMTestCase<AccountObserver>{
-	Account *account;
+
+
+@interface StubAccountObserver : NSObject<AccountObserver>{
+@public 
+	Account* lastAccountNotified;
 	NSInteger accountChangeNotificationCount;
 }
-@property(nonatomic, retain) Account* account;
 @end
 
 
+@implementation StubAccountObserver
+-(void)changeInAccount:(Account*)account{
+	lastAccountNotified = account;
+	accountChangeNotificationCount++;
+}
+@end
 
 
+@interface AccountTest : GTMTestCase{
+	Account *account;
+	StubAccountObserver* observer;
+}
+@property(nonatomic, retain) Account* account;
+@end
 
 @implementation AccountTest
 @synthesize account;
 
 
--(void)changeInAccount:(Account*)_account{
-	STAssertEquals(account, _account, nil);
-	accountChangeNotificationCount++;
-}
 
 - (void)setUp{
+	observer = [[StubAccountObserver alloc] init];
 	self.account = [[[Account alloc] init] autorelease];
-	[account onChangeNotifyObserver:self];
-	accountChangeNotificationCount = 0;
+	[account onChangeNotifyObserver:observer];
 	resetRestStubbing();
 
 }
 
 - (void)tearDown{
 	self.account = nil;
+	[observer release];
 }
 
 
@@ -97,7 +108,7 @@
 	STAssertEqualStrings(@"M", account.gender, nil);
 	STAssertEquals(25283, account.income, nil);
 	STAssertEqualStrings(@"27 Mar 1973", [DateHelper stringFromDate:account.birthdate], nil);
-	STAssertEquals(1, accountChangeNotificationCount, @"accountChangeNotificationCount");
+	STAssertEquals(1, observer->accountChangeNotificationCount, @"accountChangeNotificationCount");
 	STAssertEquals(accountLoadStatusLoaded, account.accountLoadStatus, @"accountLoadStatus");
 	NSLog(@"%@",account.wallet);
 	NSLog(@"%@", [[account.wallet objectForKey:@"balance"] class]);
@@ -134,19 +145,29 @@
 -(void)testBecomesUnauthorisedWhenUnauthorised{
 	[account authenticationFailed];
 	STAssertEquals(accountLoadStatusUnauthorized, account.accountLoadStatus, @"accountLoadStatus");
-	STAssertEquals(1, accountChangeNotificationCount, @"accountChangeNotificationCount");
+	STAssertEquals(1, observer->accountChangeNotificationCount, @"accountChangeNotificationCount");
 }
 
 -(void)testStatusBecomesFailedOnError{
 	NSError *error = [NSError errorWithDomain:@"test.host" code:NSURLErrorTimedOut userInfo:nil];
 	[account failedWithError:error];
 	STAssertEquals(accountLoadStatusLoadFailed, account.accountLoadStatus, @"accountLoadStatus");
-	STAssertEquals(1, accountChangeNotificationCount, @"accountChangeNotificationCount");
+	STAssertEquals(1, observer->accountChangeNotificationCount, @"accountChangeNotificationCount");
 	STAssertEqualStrings(error, account.lastLoadError, @"lastLoadError");
 }
 
 
+-(void)testMultipleObserversMayBeNotifiedOnAccountChange{
+	StubAccountObserver* secondObserver = [[[StubAccountObserver alloc] init] autorelease];
+	[account onChangeNotifyObserver:secondObserver];
+	[account authenticationFailed];
+	STAssertEqualObjects(account, secondObserver->lastAccountNotified, @"2nd observer lastAccount");
+	STAssertEquals(1, secondObserver->accountChangeNotificationCount, @"2nd observer accountChangeNotificationCount");
 
+	STAssertEqualObjects(account, observer->lastAccountNotified, @"1st observer lastAccount");
+	STAssertEquals(1, observer->accountChangeNotificationCount, @"1st observer accountChangeNotificationCount");
+	
+}
 
 
 -(void)testCreate{

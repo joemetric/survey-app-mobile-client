@@ -27,8 +27,7 @@ typedef enum {
 	NSDictionary* errors;
 	NSInteger itemId;
     
-    id callbackObject;
-    SEL callbackSelector; 
+	NSMutableArray* observers;
     AccountLoadStatus accountLoadStatus;
     
 }

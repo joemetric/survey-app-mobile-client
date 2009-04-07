@@ -9,8 +9,7 @@
 -(void) changeLoadStatusTo:(AccountLoadStatus)status;
 -(void) changeLoadStatusTo:(AccountLoadStatus)status withError:(NSError*)error;
 
-@property(nonatomic, retain) id callbackObject;
-@property(nonatomic) SEL callbackSelector; 
+@property(nonatomic, retain) NSMutableArray* observers;
 
 @end
 
@@ -24,13 +23,12 @@
 @synthesize income;
 @synthesize birthdate;
 @synthesize wallet;
-@synthesize callbackObject;
-@synthesize callbackSelector;
 @synthesize accountLoadStatus;
 @synthesize lastLoadError;
 @synthesize errors;
 @synthesize passwordConfirmation;
 @synthesize itemId;
+@synthesize observers;
 
 
 -(NSDateFormatter*)iso8061DateFormatter{
@@ -110,14 +108,10 @@
 }
 
 
--(void)onChangeNotify:(SEL)callme on:(id)callMeObj{
-	self.callbackSelector = callme;
-	self.callbackObject = callMeObj;    
-}
 
 
 -(void)onChangeNotifyObserver:(id<AccountObserver>)observer{
-	[self onChangeNotify:@selector(changeInAccount:) on:observer];
+	[observers addObject:observer];
 }
 
 
@@ -161,7 +155,7 @@
 
 -(void) changeLoadStatusTo:(AccountLoadStatus)status withError:(NSError*)error{
 	accountLoadStatus = status;
-	[callbackObject performSelector:callbackSelector withObject:self];
+	for (id<AccountObserver> observer in observers) [observer changeInAccount:self];
 	self.lastLoadError = error;		
 }
 
@@ -171,6 +165,7 @@
 	self.errors = [[NSDictionary alloc] init];
 	self.username = [RestConfiguration username];
 	self.password = [RestConfiguration password];
+	self.observers = [NSMutableArray array];
 	return self;
 }
 
@@ -182,9 +177,7 @@
 	[email release];
 	[gender release];
 	[birthdate release];
-	self.callbackObject = nil;
-	self.callbackSelector = nil;  
-	self.lastLoadError = nil;
+	self.observers = nil;
 	[super dealloc];
 }
 @end
