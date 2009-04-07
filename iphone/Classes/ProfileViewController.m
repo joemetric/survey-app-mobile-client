@@ -20,7 +20,6 @@
 
 @implementation ProfileViewController
 @synthesize tableView, credentialsController, newAccountController, noCredentials, validCredentials, noAccountData;
-@synthesize accountSectionHeader, demographicsSectionHeader;
 
 -(void)changeInAccount:(Account*) _account{
     /* TODO - REPLACE THIS HACK WITH SOME POLYMORPHISM OR SOMETHING */
@@ -126,6 +125,10 @@
 	return [[self tableDelegate] tableView:tv viewForHeaderInSection:section];
 }
 
+- (UIView *)tableView:(UITableView *)tv viewForFooterInSection:(NSInteger)section{
+	return [[self tableDelegate] tableView:tv viewForFooterInSection:section];
+}
+
 
 
 
@@ -136,8 +139,6 @@
 	[noCredentials release];
 	[validCredentials release];
 	[newAccountController release];
-	[demographicsSectionHeader release];
-	[accountSectionHeader release];
 	[super dealloc];
 }
 @end

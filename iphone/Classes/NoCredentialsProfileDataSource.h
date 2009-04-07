@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "StaticTable.h"
 
 @class ProfileViewController;
 
-@interface NoCredentialsProfileDataSource : NSObject <UITableViewDataSource, UITableViewDelegate> {
+@interface NoCredentialsProfileDataSource : StaticTable {
 	ProfileViewController* profileViewController;
 }
 

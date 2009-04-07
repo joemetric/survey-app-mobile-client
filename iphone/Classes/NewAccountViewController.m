@@ -17,7 +17,6 @@
 
 
 @interface NewAccountViewController ()
-- (NSArray*) validErrorKeysForSection:(NSInteger) section;
 @property(readonly) NSDictionary* errors;
 @property(nonatomic, retain) StaticTable* staticTable;
 @end

@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "StaticTable.h"
 
 
-@interface NoAccountDataProfileDataSource :  NSObject <UITableViewDataSource, UITableViewDelegate>  {
+@interface NoAccountDataProfileDataSource : StaticTable  {
     NSString* message;
 }
 

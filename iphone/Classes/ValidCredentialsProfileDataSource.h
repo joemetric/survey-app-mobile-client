@@ -13,7 +13,7 @@
 @class ProfileViewController;
 @class Account;
 
-@interface ValidCredentialsProfileDataSource : StaticTable {
+@interface ValidCredentialsProfileDataSource : StaticTable<AccountObserver> {
 	ProfileViewController* profileViewController;
     Account *account;
 	NSNumberFormatter *numberFormatter;

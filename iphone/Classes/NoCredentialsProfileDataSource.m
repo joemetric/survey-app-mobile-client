@@ -8,54 +8,36 @@
 
 #import "NoCredentialsProfileDataSource.h"
 #import "ProfileViewController.h"
+#import "TableSection.h"
 
 @implementation NoCredentialsProfileDataSource
 @synthesize profileViewController;
+
+
+-(UITableViewCell*) cellWithText:(NSString*)text{
+	UITableViewCell* cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:@"NoCredentialsCell"] autorelease];
+	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+	cell.selectionStyle = UITableViewCellSelectionStyleNone;
+	cell.text = text;
+	return cell;
+}
+
+
+-(id)init{
+	[super init];
+	TableSection* section = [TableSection tableSectionWithTitle:@"Account"];
+	[self addSection:section];
+	[section addCell:[self cellWithText:@"Login"]];
+	[section addCell:[self cellWithText:@"Signup"]];
+	[section setFooterLines:[NSArray arrayWithObjects:@"We don't seem to have valid account details", @"Please login to your account if you have one or create a new account.", nil]];
+	return self;
+}
 
 - (void) dealloc {
 	[profileViewController release];
 	[super dealloc];
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	NSLog(@"numberOf Sections!");
-    return 1;
-}
-
-- (NSString*)tableView:(UITableView*) tv titleForHeaderInSection:(NSInteger) section {
-	return @"Account";
-}
-
-- (NSString*)tableView:(UITableView*) tv titleForFooterInSection:(NSInteger) section {
-	return @"\n\nWe don't seem to have valid account details\n\nPlease login to your account\nif you have one, or create a new account.";
-}
-
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-	return profileViewController.accountSectionHeader;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    static NSString *CellIdentifier = @"NoCredentialsCell";
-    
-    UITableViewCell *cell = [tv dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
-    }
-    // Configure the cell
-	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-	cell.selectionStyle = UITableViewCellSelectionStyleNone;
-	if( indexPath.row == 0 )
-		cell.text = @"Login";
-	else
-		cell.text = @"Signup";
-    return cell;
-}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	NSLog(@"SELECT");
