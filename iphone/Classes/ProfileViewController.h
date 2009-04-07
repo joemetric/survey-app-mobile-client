@@ -1,12 +1,6 @@
-//
-//  ProfileViewController.h
-//  JoeMetric
-//
-//  Created by Joseph OBrien on 11/25/08.
-//  Copyright 2008 EdgeCase, LLC. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
+#import "Account.h"
+
 
 @class CredentialsViewController;
 @class NewAccountViewController;
@@ -15,7 +9,7 @@
 @class NoAccountDataProfileDataSource;
 @class Account;
 
-@interface ProfileViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
+@interface ProfileViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, AccountObserver> {
 	UITableView* tableView;
 	CredentialsViewController* credentialsController;
 	NewAccountViewController* newAccountController;

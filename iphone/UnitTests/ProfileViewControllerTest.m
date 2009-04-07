@@ -12,7 +12,6 @@ NSInteger gModalViewControllerDismissCount;
 
 @interface ProfileViewController(ProfileViewControllerTestPeek)
 -(NSObject<UITableViewDelegate, UITableViewDataSource>*) tableDelegate;
--(void)accountLoadStatusChanged:(Account*) _account;
 @end
 
 @interface ProfileViewController(ProfileViewControllerTest)
@@ -73,13 +72,13 @@ NSInteger gModalViewControllerDismissCount;
 
 -(void)testModalViewControllerDismissedIfAccountLoadStatusBecomes_accountLoadStatusLoaded{
 	[gAccount  setAccountLoadStatus:accountLoadStatusLoaded];	
-	[testee accountLoadStatusChanged:gAccount];
+	[testee changeInAccount:gAccount];
 	STAssertEquals(1, gModalViewControllerDismissCount, nil);	
 }
 
 -(void)testModalViewControllerNotDismissedIfAccountLoadStatusBecomesNotLoaed{
 	[gAccount  setAccountLoadStatus:accountLoadStatusLoadFailed];	
-	[testee accountLoadStatusChanged:gAccount];
+	[testee changeInAccount:gAccount];
 	STAssertEquals(0, gModalViewControllerDismissCount, nil);	
 }
 

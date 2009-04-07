@@ -7,6 +7,12 @@ typedef enum {
 	accountLoadStatusLoadFailed, 
 	accountLoadStatusUnauthorized,
 	accountLoadStatusFailedValidation} AccountLoadStatus;
+	
+	
+@class Account;
+@protocol AccountObserver
+-(void) changeInAccount:(Account*)account;
+@end
 
 @interface Account : NSObject<RestfulRequestsObserver> {
     NSString *username;
@@ -29,9 +35,9 @@ typedef enum {
 
 
 +(Account*) currentAccount;
--(void)onChangeNotify:(SEL)callme on:(id)callMeObj;
 -(void)loadCurrent;
 -(void)createNew;
+-(void)onChangeNotifyObserver:(id<AccountObserver>)observer;
 
 @property (nonatomic) NSInteger itemId;
 @property (nonatomic, retain) NSString *username;

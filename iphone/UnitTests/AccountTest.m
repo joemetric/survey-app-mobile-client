@@ -7,7 +7,7 @@
 
 
 
-@interface AccountTest : GTMTestCase{
+@interface AccountTest : GTMTestCase<AccountObserver>{
 	Account *account;
 	NSInteger accountChangeNotificationCount;
 }
@@ -22,17 +22,14 @@
 @synthesize account;
 
 
--(void)testDM{
-	NSLog(@"%@", [DateHelper class]);
-}
--(void)accountChanged:(Account*)_account{
+-(void)changeInAccount:(Account*)_account{
 	STAssertEquals(account, _account, nil);
 	accountChangeNotificationCount++;
 }
 
 - (void)setUp{
 	self.account = [[[Account alloc] init] autorelease];
-	[account onChangeNotify:@selector(accountChanged:) on:self];
+	[account onChangeNotifyObserver:self];
 	accountChangeNotificationCount = 0;
 	resetRestStubbing();
 

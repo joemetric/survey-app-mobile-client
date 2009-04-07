@@ -109,10 +109,17 @@
  	return [((NSString*)@"F") compare:gender] == NSOrderedSame;
 }
 
+
 -(void)onChangeNotify:(SEL)callme on:(id)callMeObj{
 	self.callbackSelector = callme;
 	self.callbackObject = callMeObj;    
 }
+
+
+-(void)onChangeNotifyObserver:(id<AccountObserver>)observer{
+	[self onChangeNotify:@selector(changeInAccount:) on:observer];
+}
+
 
 
 -(void)createNew{

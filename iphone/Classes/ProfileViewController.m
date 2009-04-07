@@ -13,7 +13,6 @@
 #import "ValidCredentialsProfileDataSource.h"
 #import "CredentialsViewController.h"
 #import "NewAccountViewController.h"
-#import "Account.h"
 
 @interface ProfileViewController (Private)
 - (NSObject<UITableViewDelegate, UITableViewDataSource>*) tableDelegate;
@@ -23,7 +22,7 @@
 @synthesize tableView, credentialsController, newAccountController, noCredentials, validCredentials, noAccountData;
 @synthesize accountSectionHeader, demographicsSectionHeader;
 
--(void)accountLoadStatusChanged:(Account*) _account{
+-(void)changeInAccount:(Account*) _account{
     /* TODO - REPLACE THIS HACK WITH SOME POLYMORPHISM OR SOMETHING */
     if (self.modalViewController == self.newAccountController){
 		[newAccountController accountChanged];
@@ -47,7 +46,7 @@
 	self.validCredentials.profileViewController = self;
 	self.validCredentials.account = [Account currentAccount];
 	self.noAccountData = [[[NoAccountDataProfileDataSource alloc] init] autorelease];
-	[[Account currentAccount] onChangeNotify:@selector(accountLoadStatusChanged:) on:self];
+	[[Account currentAccount] onChangeNotifyObserver:self];
     self.tableView.backgroundColor = [UIColor clearColor];
 	[super viewDidLoad];
 }
