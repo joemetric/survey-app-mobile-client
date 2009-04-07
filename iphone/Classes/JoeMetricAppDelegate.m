@@ -19,8 +19,17 @@
     [surveyListView refreshSurveys];
 }
 
+-(void)ensureOnlyProfilePageSelectedIfAccountIsInErrorStatus{
+	if (tabBarController.selectedIndex !=2 && [Account currentAccount].isErrorStatus)  tabBarController.selectedIndex = 2;
+	
+}
+
 - (void)changeInAccount:(Account*)account {
-	if (account.isErrorStatus) tabBarController.selectedIndex = 2;
+	[self ensureOnlyProfilePageSelectedIfAccountIsInErrorStatus];
+}
+
+- (void)tabBarController:(UITabBarController *)_tabBarController didSelectViewController:(UIViewController *)viewController{
+	[self ensureOnlyProfilePageSelectedIfAccountIsInErrorStatus];
 }
 
 
