@@ -294,7 +294,6 @@
 	account.gender = genderCell.segControl.selectedSegmentIndex == 0? @"M" : @"F";
 	account.income = [incomeCell.textField.text integerValue];
 	NSDate* date = [[self dateFormatter] dateFromString:dobCell.textField.text];
-	NSLog(@"XXXXXXXXXXXXXXXXXXXXXXXXXXXX %@", date);
 	account.birthdate = [[self dateFormatter] dateFromString:dobCell.textField.text];
 	[account createNew];
 	[activityIndicator startAnimating];

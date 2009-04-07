@@ -67,13 +67,6 @@
 }
 
 
--(void) testNumberFormatter{
-	NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-	// [numberFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
-	[numberFormatter setFormat:@"0.00%;0.00%;-0.00%"];
-	NSNumber *four = [NSNumber numberWithFloat:4.0];
-	NSLog(@"%@", [numberFormatter stringFromNumber:four]);	
-}
 
 
 
