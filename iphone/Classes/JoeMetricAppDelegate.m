@@ -2,6 +2,7 @@
 #import "Account.h"
 #import "SurveyManager.h"
 #import "SurveyListViewController.h"
+#import "RestConfiguration.h"
 
 @interface JoeMetricAppDelegate (Private)
 - (void) initializeSettings;
@@ -48,6 +49,10 @@
 	currentAccount = [[Account alloc] init];
 	[currentAccount loadCurrent];
 	[currentAccount onChangeNotifyObserver:self];
+
+    if ([[RestConfiguration username] isEqualToString:@""] || [[RestConfiguration password] isEqualToString:@""]) {
+        tabBarController.selectedIndex = 2;
+    }
 }
 
 
