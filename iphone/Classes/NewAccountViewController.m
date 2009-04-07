@@ -182,10 +182,6 @@
 	return [staticTable numberOfSectionsInTableView:tv];
 }
 
-- (NSString*)tableView:(UITableView*) tv titleForHeaderInSection:(NSInteger) section {
-	return section == 0 ? @"Basics" : @"Demographics";
-}
-
 - (UIView *)tableView:(UITableView *)tv viewForHeaderInSection:(NSInteger)section{
     return [staticTable tableView:tv viewForHeaderInSection:section];
 }
@@ -203,43 +199,14 @@
 }
 
 
-//** todo - no longer relevant */
-- (NSString*)tableView:(UITableView*) tv titleForFooterInSection:(NSInteger) section {
-	NSArray* sectionKeys = [self validErrorKeysForSection:section];
-	NSMutableString* result = [NSMutableString stringWithCapacity:64];
-	for( NSString* key in self.errors ) {
-		if( [sectionKeys containsObject:key] ) {
-			NSArray* messages = (NSArray*)[self.errors objectForKey:key];
-			for( NSString* message in messages ) {
-				[result appendFormat:@"%@ %@\n", key, message];
-			}
-		}
-	}
-	return result;
-}
-
-
-
-- (NSArray*) validErrorKeysForSection:(NSInteger) section {
-	if( section == 0 ){ return [NSArray arrayWithObjects:@"login", @"password", @"password_confirmation", @"email", nil]; }
-	else if( section == 1 ) { return [NSArray arrayWithObjects:@"income", @"birthdate", @"gender", nil];}
-	return [NSArray array];
-}
-
 - (NSInteger)tableView:(UITableView *)tv numberOfRowsInSection:(NSInteger)section {
 	return [staticTable tableView:nil numberOfRowsInSection:section];
 }
 
 
--(BOOL) hasErrorsForField:(NSString*)field{
-	NSArray* fieldErrors = [self.errors objectForKey:field];
-	return fieldErrors != nil && fieldErrors.count > 0;
-	
-}
 
 - (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	UITableViewCell* result = [staticTable tableView:tv cellForRowAtIndexPath:indexPath];
-	return result;
+	return [staticTable tableView:tv cellForRowAtIndexPath:indexPath];
 }
 
 
@@ -293,7 +260,6 @@
 	account.passwordConfirmation = passwordConfirmationCell.textField.text;
 	account.gender = genderCell.segControl.selectedSegmentIndex == 0? @"M" : @"F";
 	account.income = [incomeCell.textField.text integerValue];
-	NSDate* date = [[self dateFormatter] dateFromString:dobCell.textField.text];
 	account.birthdate = [[self dateFormatter] dateFromString:dobCell.textField.text];
 	[account createNew];
 	[activityIndicator startAnimating];

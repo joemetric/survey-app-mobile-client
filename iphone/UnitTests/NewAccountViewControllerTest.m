@@ -108,28 +108,16 @@
 	STAssertFalse([testee.activityIndicator isAnimating], nil);
 }
 
--(void)assertFooterInSection:(NSInteger)section matchesRegex:(NSString*)regex{
-	NSString *footer = [testee tableView:nil titleForFooterInSection:section];
-	STAssertNotNil([footer matchRegex:regex], [NSString stringWithFormat:@"Looking for '%@' in \n'%@'", regex, footer]);
+
+-(void)testDisplayErrorInFooters{
+	NSString* data = @"[[\"login\", \"silly login\"]]";
+	[gAccount finishedLoading:data];
+	[testee accountChanged];
+	UIView* footer = [testee tableView:nil viewForFooterInSection:0];
+	STAssertEquals((NSUInteger)1, footer.subviews.count, @"footer error count");
+	STAssertEqualStrings(@"login silly login", [[footer.subviews objectAtIndex:0] text], nil);
 }
 
--(void)testDisplayErrorInMainFooter{
-	NSString* data = @"[[\"login\", \"silly login\"], [\"login\", \"should not be bob\"], [\"email\", \"should be cool\"]]";
-	[gAccount finishedLoading:data];
-	[self assertFooterInSection:0 matchesRegex:@"silly login"];
-	[self assertFooterInSection:0 matchesRegex:@"should not be bob"];
-	[self assertFooterInSection:0 matchesRegex:@"should be cool"];
-	STAssertEqualStrings(@"", [testee tableView:nil titleForFooterInSection:1], nil);
-	
-}
-
--(void)testDisplayErrorInDemographicsFooter{
-	NSString* data = @"[[\"birthdate\", \"too young\"], [\"income\", \"too much\"], [\"gender\", \"neuter\"]]";
-	[gAccount finishedLoading:data];
-	[self assertFooterInSection:1 matchesRegex:@"too much"];
-	[self assertFooterInSection:1 matchesRegex:@"neuter"];
-	[self assertFooterInSection:1 matchesRegex:@"too young"];
-}
 
 -(void)assertRow:(NSInteger)row inSection:(NSInteger)section highlighted:(BOOL)highlighted{
 	id<HasError, Labelled> cell = [self labelledCellForRow:row inSection:section];
