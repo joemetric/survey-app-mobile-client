@@ -159,6 +159,16 @@
 	self.lastLoadError = error;		
 }
 
+-(BOOL) isErrorStatus{
+	switch(accountLoadStatus){
+	case accountLoadStatusUnauthorized:
+	case accountLoadStatusLoadFailed:
+		return YES;
+	default:
+		return NO;
+	}
+}
+
 
 -(id) init{
 	[super init];

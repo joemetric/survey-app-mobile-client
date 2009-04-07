@@ -19,12 +19,18 @@
     [surveyListView refreshSurveys];
 }
 
+- (void)changeInAccount:(Account*)account {
+	if (account.isErrorStatus) tabBarController.selectedIndex = 2;
+}
+
+
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
     [window addSubview:tabBarController.view];
 	
 	[self initializeSettings];
 	currentAccount = [[Account alloc] init];
 	[currentAccount loadCurrent];
+	[currentAccount onChangeNotifyObserver:self];
 
     SurveyManager *sm = [[SurveyManager alloc] initWithObserver:self];
     [sm loadSurveysFromNetwork];
@@ -46,9 +52,6 @@
 	}
 }
 
-- (void)authenticationFailed {
-	tabBarController.selectedIndex = 2;
-}
 
 
 - (void)dealloc {

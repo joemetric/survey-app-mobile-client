@@ -7,7 +7,16 @@
 
 
 
+@interface Account(AccountTest)
+-(void) setAccountLoadStatus:(AccountLoadStatus)status;
+@end
 
+@implementation Account(AccountTest)
+-(void) setAccountLoadStatus:(AccountLoadStatus)status{
+	accountLoadStatus = status;
+}
+
+@end
 
 @interface StubAccountObserver : NSObject<AccountObserver>{
 @public 
@@ -154,6 +163,20 @@
 	STAssertEquals(accountLoadStatusLoadFailed, account.accountLoadStatus, @"accountLoadStatus");
 	STAssertEquals(1, observer->accountChangeNotificationCount, @"accountChangeNotificationCount");
 	STAssertEqualStrings(error, account.lastLoadError, @"lastLoadError");
+}
+
+
+-(void)assertAccountLoadStatus:(AccountLoadStatus)status withDescription:(NSString*) description isErrorStatus:(BOOL)errorStatus{
+	account.accountLoadStatus = status;
+	STAssertEquals(errorStatus, account.isErrorStatus, description);
+}
+-(void)testIsErrorStatus{
+	[self assertAccountLoadStatus:accountLoadStatusNotLoaded withDescription:@"accountLoadStatusNotLoaded" isErrorStatus:NO];
+	[self assertAccountLoadStatus:accountLoadStatusCreatingNew withDescription:@"accountLoadStatusCreatingNew" isErrorStatus:NO];
+	[self assertAccountLoadStatus:accountLoadStatusLoaded withDescription:@"accountLoadStatusLoaded" isErrorStatus:NO];
+	[self assertAccountLoadStatus:accountLoadStatusLoadFailed withDescription:@"accountLoadStatusLoadFailed" isErrorStatus:YES];
+	[self assertAccountLoadStatus:accountLoadStatusUnauthorized withDescription:@"accountLoadStatusUnauthorized" isErrorStatus:YES];
+	[self assertAccountLoadStatus:accountLoadStatusFailedValidation withDescription:@"accountLoadStatusFailedValidation" isErrorStatus:NO];
 }
 
 

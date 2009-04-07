@@ -1,4 +1,5 @@
 #import "RestfulRequests.h"
+#import "AccountObserver.h"
 
 typedef enum {
 	accountLoadStatusNotLoaded,
@@ -9,10 +10,6 @@ typedef enum {
 	accountLoadStatusFailedValidation} AccountLoadStatus;
 	
 	
-@class Account;
-@protocol AccountObserver
--(void) changeInAccount:(Account*)account;
-@end
 
 @interface Account : NSObject<RestfulRequestsObserver> {
     NSString *username;
@@ -53,6 +50,7 @@ typedef enum {
 @property (nonatomic, readonly) BOOL isFemale;
 @property (nonatomic, readonly) NSDecimalNumber* walletBalance;
 @property (nonatomic, readonly) NSInteger walletTransactionCount;
+@property(nonatomic, readonly) BOOL isErrorStatus;
 
 
 

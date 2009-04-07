@@ -1,10 +1,11 @@
 #import <UIKit/UIKit.h>
 #import "SurveyManager.h"
+#import "AccountObserver.h"
 
 @class Account;
 @class SurveyListViewController;
 
-@interface JoeMetricAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate, UIActionSheetDelegate, SurveyManagerObserver> {
+@interface JoeMetricAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate, UIActionSheetDelegate, SurveyManagerObserver, AccountObserver> {
     UIWindow *window;
     UITabBarController *tabBarController;
     UINavigationController *navigationController;
@@ -17,6 +18,5 @@
 @property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
 @property (nonatomic, readonly) Account* currentAccount;
 
-- (void)authenticationFailed;
 
 @end
