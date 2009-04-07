@@ -47,4 +47,16 @@
     STAssertEqualStrings(@"ahost", [RestConfiguration host], nil);
 }
 
+-(void) testDefaultValues{
+	for (NSString* key in [NSArray arrayWithObjects:@"username", @"password", @"host", @"port", nil]){
+		[[NSUserDefaults standardUserDefaults]  removeObjectForKey:key];
+	}
+	STAssertEqualStrings(@"", [RestConfiguration username], nil);
+	STAssertEqualStrings(@"", [RestConfiguration password], nil);
+	STAssertEqualStrings(@"localhost", [RestConfiguration host], nil);
+	STAssertEquals(3000, [RestConfiguration port], nil);
+	
+	
+}
+
 @end

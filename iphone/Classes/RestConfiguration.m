@@ -1,8 +1,9 @@
 #import "RestConfiguration.h"
 
 
-NSString* userDefaultString(NSString *key){
-	return [[NSUserDefaults standardUserDefaults] stringForKey:key]; 
+NSString* userDefaultString(NSString *key, NSString* defaultValue){
+	NSString* value =  [[NSUserDefaults standardUserDefaults] stringForKey:key]; 
+	return nil == value ? defaultValue : value;
 }
 
 void setUserDefaultString(NSString *key, NSString* value){
@@ -12,24 +13,23 @@ void setUserDefaultString(NSString *key, NSString* value){
 @implementation RestConfiguration
 
 +(NSString*) host{     
-	NSString* result =  userDefaultString(@"host");
+	NSString* result =  userDefaultString(@"host", @"localhost");
     NSLog(@"host: %@", result);
     return result;
 }
 
 +(NSInteger) port{
- 	NSInteger result= [[NSUserDefaults standardUserDefaults] integerForKey:@"port"];
-    NSLog(@"port: %d", result);
-    return result;
+	NSString* strResult = userDefaultString(@"port", @"3000");
+    return [strResult integerValue];
 }
 
 
 +(NSString*) username{
-	return userDefaultString(@"username");
+	return userDefaultString(@"username", @"");
 }
 
 +(NSString*) password{
-	return userDefaultString(@"password");
+	return userDefaultString(@"password", @"");
 }
 
 +(void) setUsername:(NSString*)username{
