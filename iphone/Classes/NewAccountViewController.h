@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AccountObserver.h"
 
 @class ProfileViewController;
 @class DatePickerViewController;
@@ -14,7 +15,7 @@
 @class SegmentedTableViewCell;
 @class StaticTable;
 
-@interface NewAccountViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate> {
+@interface NewAccountViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, AccountObserver> {
 	UITextField* username;
 	UITextField* password;
 	UITextField* passwordConfirmation;
@@ -46,7 +47,6 @@
 
 - (IBAction) signup;
 - (IBAction) cancel;
--(void) accountChanged;
 
 @property (nonatomic, retain) ProfileViewController* profileView;
 

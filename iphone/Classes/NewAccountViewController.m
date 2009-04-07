@@ -77,6 +77,7 @@
 	[self populateBasicSection];
 	[self populateDemographicsSection];
     self.tableView.backgroundColor = [UIColor clearColor];
+	[[Account currentAccount] onChangeNotifyObserver:self];
  }
 -(void) keyboardWillShow:(NSNotification *)note
 {
@@ -269,7 +270,7 @@
 	[self.parentViewController dismissModalViewControllerAnimated:YES];
 }
 
--(void) accountChanged{	
+-(void) changeInAccount:(Account*)account{	
 	[staticTable handleErrors:[[Account currentAccount] errors]];
 	[activityIndicator stopAnimating];
 	[tableView reloadData];

@@ -22,13 +22,6 @@
 @synthesize tableView, credentialsController, newAccountController, noCredentials, validCredentials, noAccountData;
 
 -(void)changeInAccount:(Account*) _account{
-    /* TODO - REPLACE THIS HACK WITH SOME POLYMORPHISM OR SOMETHING */
-    if (self.modalViewController == self.newAccountController){
-		[newAccountController accountChanged];
-    }
-    /* END HACK*/
-        
-    
 	if (accountLoadStatusLoaded == [Account currentAccount].accountLoadStatus){
 		[self dismissModalViewControllerAnimated:YES];
 	}
@@ -113,8 +106,8 @@
 }
 
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 40.0;
+- (CGFloat)tableView:(UITableView *)tv heightForHeaderInSection:(NSInteger)section{
+    return [[self tableDelegate] tableView:tv heightForHeaderInSection:section];
 }
 
 

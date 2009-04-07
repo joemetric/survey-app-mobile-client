@@ -20,11 +20,11 @@
 @implementation NewAccountViewControllerTest
 
 -(void)setUp{
+	gAccount = [[Account alloc] init];
 	testee = [[NewAccountViewController alloc] initWithNibName:@"NewAccountView" bundle:nil];
 	[[NSBundle mainBundle] loadNibNamed:@"NewAccountView" owner:testee options:nil];
 	[testee viewDidLoad];
 	resetRestStubbing();
-	gAccount = [[Account alloc] init];
    
 }
 
@@ -104,7 +104,7 @@
 
 -(void)testActivityIndicatorStopsAnimatingOnAccountChanged{
 	[testee signup];
-	[testee accountChanged];
+	[testee changeInAccount:gAccount];
 	STAssertFalse([testee.activityIndicator isAnimating], nil);
 }
 
@@ -112,7 +112,6 @@
 -(void)testDisplayErrorInFooters{
 	NSString* data = @"[[\"login\", \"silly login\"]]";
 	[gAccount finishedLoading:data];
-	[testee accountChanged];
 	UIView* footer = [testee tableView:nil viewForFooterInSection:0];
 	STAssertEquals((NSUInteger)1, footer.subviews.count, @"footer error count");
 	STAssertEqualStrings(@"login silly login", [[footer.subviews objectAtIndex:0] text], nil);
@@ -129,7 +128,6 @@
 -(void)testOnlyLabelWithErrorIsHighlighted{
 	NSString* data = @"[[\"login\", \"silly login\"]]";
 	[gAccount finishedLoading:data];
-	[testee accountChanged];
 	[self assertRow:0 inSection:0 highlighted:YES];
 	[self assertRow:1 inSection:0 highlighted:NO];	 
 }
@@ -143,7 +141,6 @@
 -(void)testEachFieldHighlightedIfInError{
 	NSString* data = @"[[\"login\", \"\"], [\"email\", \"\"],[\"password\", \"\"], [\"password_confirmation\", \"\"],[\"birthdate\", \"\"], [\"income\", \"\"], [\"gender\", \"\"]]";
 	[gAccount finishedLoading:data];
-	[testee accountChanged];
 	for (int section = 0; section < [testee numberOfSectionsInTableView:nil]; section++){
 		for (int row = 0; row < [testee tableView:nil numberOfRowsInSection:section]; row++){
 			if (!(section == 1 && row == 2)){ // ignore gender - todo less rubbish
@@ -157,7 +154,6 @@
 -(void)testFieldNotHighligtedIfErrorNoLongerPresent{
 	[gAccount finishedLoading:@"[[\"login\", \"silly login\"]]"];
 	[gAccount finishedLoading:@"[[\"income\", \"too much\"]]"];
-	[testee accountChanged];
 	[self assertRow:0 inSection:0 highlighted:NO];
 	
 }
