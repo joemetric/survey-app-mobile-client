@@ -23,7 +23,7 @@
 }
 
 -(void) dealloc{
-	[self.sections removeAllObjects];
+	[self removeAllSections];
 	self.sections = nil;
 	[super dealloc];	
 }
@@ -35,6 +35,11 @@
 -(void)addSection:(TableSection*)section{
 	[sections addObject:section];
 }
+
+-(void)removeAllSections{
+	[sections removeAllObjects];
+}
+
 
 
 - (NSInteger)tableView:(UITableView *)table numberOfRowsInSection:(NSInteger)section{

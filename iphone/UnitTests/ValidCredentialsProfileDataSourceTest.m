@@ -2,11 +2,11 @@
 #import "ValidCredentialsProfileDataSource.h"
 #import "Account.h"
 #import "LabelledTableViewReadOnlyCell.h"
+#import "AccountStubbing.h"
 
 
 
 @interface ValidCredentialsProfileDataSourceTest : GTMTestCase{
-	Account *account;
 	ValidCredentialsProfileDataSource *testee;
 	NSDateFormatter *dateFormatter;
 }
@@ -20,25 +20,23 @@
 	dateFormatter = [[NSDateFormatter alloc] init];
 	dateFormatter.dateFormat = @"yyyy-MM-dd";
 
-	account = [[Account alloc] init];
-	account.email = @"hello@blah.com";
-	account.username = @"Sue";
-	account.income = 12345;
-	account.gender = @"F";
-	account.birthdate = [dateFormatter dateFromString:@"1953-05-17"];
+	gAccount = [[Account alloc] init];
+	gAccount.email = @"hello@blah.com";
+	gAccount.username = @"Sue";
+	gAccount.income = 12345;
+	gAccount.gender = @"F";
+	gAccount.birthdate = [dateFormatter dateFromString:@"1953-05-17"];
 
 	testee = [[ValidCredentialsProfileDataSource alloc] init];
-	testee.account = account;
+	
 }
 
 -(void) tearDown{
-	[account release];
+	[gAccount release];
 	[testee release];
 	[dateFormatter release];
 }
 
--(void)assertCorrectValue:(NSString*)value forSection:(NSInteger)section row:(NSInteger)row {
-}
 -(void)assertCorrectValue:(NSString*)value forSection:(NSInteger)section row:(NSInteger)row label:(NSString*) label{
 	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:section];
 	LabelledTableViewReadOnlyCell *cell = (LabelledTableViewReadOnlyCell*)[testee tableView:nil cellForRowAtIndexPath:indexPath];
@@ -56,14 +54,23 @@
 	[self assertCorrectValue:@"17 May 1953" forSection:1 row:1 label:@"date of birth"];	
 	[self assertCorrectValue:@"$12,345" forSection:1 row:2 label:@"income"];
 	[self assertCorrectValue:@"Female" forSection:1 row:3 label:@"gender"];
-	testee.account.gender = @"M";
-	[self assertCorrectValue:@"Male" forSection:1 row:3 label:@"gender"];
 }
 
 -(void)testDefaultBlankValues{
-	account.birthdate = nil;
-	account.income = 0;
-	[self assertCorrectValue:@"" forSection:1 row:0];
+	gAccount.birthdate = nil;
+	gAccount.income = 0;
+	[testee changeInAccount:gAccount];
+	[self assertCorrectValue:@"$0" forSection:1 row:2 label:@"income"];
+	[self assertCorrectValue:@"" forSection:1 row:1 label:@"date of birth"];
+}
+
+-(void)testValueChangesIfAccountChanges{
+	gAccount.username = @"Norman";
+	gAccount.gender = @"M";
+	[testee changeInAccount:gAccount];
+	[self assertCorrectValue:@"Norman" forSection:0 row:0 label:@"username"];
+	[self assertCorrectValue:@"Male" forSection:1 row:3 label:@"gender"];
+	STAssertEquals(2, [testee numberOfSectionsInTableView:nil], @"still only 2 sections");
 }
 
 

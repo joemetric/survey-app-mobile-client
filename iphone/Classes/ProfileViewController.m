@@ -44,7 +44,6 @@
 
 	self.validCredentials = [[[ValidCredentialsProfileDataSource alloc] init] autorelease];
 	self.validCredentials.profileViewController = self;
-	self.validCredentials.account = [Account currentAccount];
 	self.noAccountData = [[[NoAccountDataProfileDataSource alloc] init] autorelease];
 	[[Account currentAccount] onChangeNotifyObserver:self];
     self.tableView.backgroundColor = [UIColor clearColor];
@@ -103,13 +102,6 @@
 	return [[self tableDelegate] numberOfSectionsInTableView:tv];
 }
 
-- (NSString*)tableView:(UITableView*) tv titleForHeaderInSection:(NSInteger) section {
-	return [[self tableDelegate] tableView:tv titleForHeaderInSection:section];
-}
-
-- (NSString*)tableView:(UITableView*) tv titleForFooterInSection:(NSInteger) section {
-	return [[self tableDelegate] tableView:tv titleForFooterInSection:section];
-}
 
 - (NSInteger)tableView:(UITableView *)tv numberOfRowsInSection:(NSInteger)section {
 	return [[self tableDelegate] tableView:tv numberOfRowsInSection:section];

@@ -90,4 +90,10 @@
 	STAssertEquals(YES, errorCell.errorHighlighted, nil);
 }
 
+-(void)testRemovingAllSections{
+	[testee removeAllSections];
+	STAssertEquals(0, [testee numberOfSectionsInTableView:nil], @"numberOfSectionsInTableView:");	
+	
+}
+
 @end

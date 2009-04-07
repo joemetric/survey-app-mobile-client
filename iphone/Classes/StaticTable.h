@@ -9,4 +9,5 @@
 +(id)staticTable;
 -(void)addSection:(TableSection*)section;
 -(void)handleErrors:(NSDictionary*)errors;
+-(void)removeAllSections;
 @end

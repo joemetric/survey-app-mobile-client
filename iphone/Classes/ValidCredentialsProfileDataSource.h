@@ -7,11 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "StaticTable.h"
+#import "AccountObserver.h"
 
 @class ProfileViewController;
 @class Account;
 
-@interface ValidCredentialsProfileDataSource : NSObject <UITableViewDataSource, UITableViewDelegate> {
+@interface ValidCredentialsProfileDataSource : StaticTable {
 	ProfileViewController* profileViewController;
     Account *account;
 	NSNumberFormatter *numberFormatter;
@@ -19,5 +21,4 @@
 }
 
 @property (nonatomic, retain) ProfileViewController* profileViewController;
-@property (nonatomic, retain) Account *account;
 @end
