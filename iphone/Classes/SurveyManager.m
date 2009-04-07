@@ -52,6 +52,15 @@
     [observer surveysStored];
 }
 
+- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
+	if ([challenge previousFailureCount] > 0) {
+		[[challenge sender] cancelAuthenticationChallenge:challenge];
+	}
+	else{
+		[[challenge sender] useCredential:[RestConfiguration urlCredential] forAuthenticationChallenge:challenge];
+	}
+}
+
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     NSLog(@"Connection error: %@", error);
 }
@@ -77,7 +86,7 @@
     NSString *surveyDirectory = [documentsDirectory stringByAppendingPathComponent:@"surveys"];
     NSMutableArray *surveys = [[NSMutableArray alloc] initWithCapacity:0];
     
-    for (id surveyFile in [[NSFileManager defaultManager] directoryContentsAtPath:surveyDirectory]) {
+    for (id surveyFile in [[NSFileManager defaultManager] directoryContentsAtPath:surveyDirectory]) {        
         [surveys addObject:[NSDictionary dictionaryWithContentsOfFile:[surveyDirectory stringByAppendingPathComponent:surveyFile]]];
     }
     

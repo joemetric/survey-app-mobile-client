@@ -24,8 +24,17 @@
 	
 }
 
+- (void)loadSurveys {
+    if (![Account currentAccount].isErrorStatus) {
+        SurveyManager *sm = [[SurveyManager alloc] initWithObserver:self];
+        [sm loadSurveysFromNetwork];
+        [sm release];
+    }
+}
+
 - (void)changeInAccount:(Account*)account {
 	[self ensureOnlyProfilePageSelectedIfAccountIsInErrorStatus];
+    [self loadSurveys];
 }
 
 - (void)tabBarController:(UITabBarController *)_tabBarController didSelectViewController:(UIViewController *)viewController{
@@ -39,10 +48,6 @@
 	currentAccount = [[Account alloc] init];
 	[currentAccount loadCurrent];
 	[currentAccount onChangeNotifyObserver:self];
-
-    SurveyManager *sm = [[SurveyManager alloc] initWithObserver:self];
-    [sm loadSurveysFromNetwork];
-    [sm release];
 }
 
 
