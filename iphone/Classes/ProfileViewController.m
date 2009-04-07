@@ -83,11 +83,9 @@
 		case accountLoadStatusFailedValidation:
 		return self.noCredentials;
 		case accountLoadStatusNotLoaded:
-		self.noAccountData.message = @"Loading account details.";
-		return self.noAccountData;	
+		return [NoAccountDataProfileDataSource noAccountDataProfileDataSourceWithMessage:@"Loading account details."];	
 		case accountLoadStatusLoadFailed:
-		self.noAccountData.message = @"Unable to load account details.";
-		return self.noAccountData;
+		return [NoAccountDataProfileDataSource noAccountDataProfileDataSourceWithMessage:@"Unable to load account details."];	
 		default:
 		return self.validCredentials;
 	}

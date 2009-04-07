@@ -10,11 +10,10 @@
 #import "StaticTable.h"
 
 
-@interface NoAccountDataProfileDataSource : StaticTable  {
-    NSString* message;
+@interface NoAccountDataProfileDataSource : NSObject  {
 }
 
-@property(nonatomic,retain) NSString* message;
 
++(id)noAccountDataProfileDataSourceWithMessage:(NSString*)message;
 @end
  

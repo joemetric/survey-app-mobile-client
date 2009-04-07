@@ -1,18 +1,21 @@
 #import "GTMSenTestCase.h"
 #import "NoAccountDataProfileDataSource.h"
 
-@interface NoAccountDataProfileDataSourceTest : GTMTestCase
-    NoAccountDataProfileDataSource* testee;
+@interface NoAccountDataProfileDataSourceTest : GTMTestCase{
+    StaticTable* testee;
+}
+@property(nonatomic, retain)  StaticTable* testee;
 @end
 
 @implementation NoAccountDataProfileDataSourceTest 
+@synthesize testee;
 
 -(void)setUp{
-    testee = [[NoAccountDataProfileDataSource alloc] init];
+    self.testee = [NoAccountDataProfileDataSource noAccountDataProfileDataSourceWithMessage:@"this is the message"];
 }
 
 -(void)tearDown{
-    [testee release];
+	self.testee = nil;
 }
 
 -(void)testOneSectionWithNoRows{
@@ -21,7 +24,8 @@
 }
 
 -(void)testFooterIsMessage{
-    testee.message = @"this is the message";
-    STAssertEqualStrings(@"this is the message", [testee tableView:nil  titleForFooterInSection:0], nil); 
+	UIView* footerView =  [testee tableView:nil  viewForFooterInSection:0];
+	STAssertEquals((NSUInteger)1, footerView.subviews.count, nil);
+	STAssertEqualStrings(@"this is the message", [[footerView.subviews objectAtIndex:0] text], nil);
 }
 @end
