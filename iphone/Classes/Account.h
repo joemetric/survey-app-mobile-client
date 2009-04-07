@@ -34,6 +34,7 @@ typedef enum {
 -(void)loadCurrent;
 -(void)createNew;
 -(void)onChangeNotifyObserver:(id<AccountObserver>)observer;
+-(void)noLongerNotifyObserver:(id<AccountObserver>)observer;
 
 @property (nonatomic) NSInteger itemId;
 @property (nonatomic, retain) NSString *username;

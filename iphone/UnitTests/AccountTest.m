@@ -192,6 +192,12 @@
 	
 }
 
+-(void)testCanDeregisterAsAccountObserver{
+	[account noLongerNotifyObserver:observer];
+	[account authenticationFailed];
+	STAssertEquals(0, observer->accountChangeNotificationCount, nil);
+}
+
 
 -(void)testCreate{
 	account.birthdate = [DateHelper dateFromString:@"15 Jul 1969"];

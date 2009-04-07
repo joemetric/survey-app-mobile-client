@@ -114,6 +114,9 @@
 	[observers addObject:observer];
 }
 
+-(void)noLongerNotifyObserver:(id<AccountObserver>)observer{
+	[observers removeObject:observer];
+}
 
 
 -(void)createNew{
@@ -168,6 +171,7 @@
 		return NO;
 	}
 }
+
 
 
 -(id) init{
