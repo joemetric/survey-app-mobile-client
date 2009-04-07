@@ -6,6 +6,6 @@ class SurveyTest < ActiveSupport::TestCase
     q = Question.new :text => 'bar'
     s.questions << q
     
-    assert_equal({"name" => "foo", "updated_at" => nil, "questions" => [{"updated_at" => nil, "question_type" => nil, "text" => "bar", "survey_id" => nil, "created_at" => nil}], "amount" => nil, "created_at" => nil}, s.bundle)
+    assert_equal({"name"=>"foo", "updated_at"=>0, "questions"=>  [{"updated_at"=>nil,    "question_type"=>nil,    "text"=>"bar",    "survey_id"=>nil,    "created_at"=>nil}], "amount"=>nil, "complete"=>false, "created_at"=>0}, s.bundle)
   end
 end
