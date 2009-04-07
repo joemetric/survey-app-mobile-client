@@ -29,7 +29,7 @@
 }
 
 +(id)staticTable{
-    return [[self alloc] init];
+    return [[[self alloc] init] autorelease];
 }
 
 -(void)addSection:(TableSection*)section{

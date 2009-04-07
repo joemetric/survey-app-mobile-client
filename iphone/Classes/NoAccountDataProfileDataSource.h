@@ -10,7 +10,7 @@
 #import "StaticTable.h"
 
 
-@interface NoAccountDataProfileDataSource : NSObject  {
+@interface NoAccountDataProfileDataSource : StaticTable  {
 }
 
 
