@@ -2,6 +2,7 @@
 #import "Account.h"
 #import "SurveyManager.h"
 #import "SurveyListViewController.h"
+#import "RestConfiguration.h"
 
 @interface JoeMetricAppDelegate (Private)
 - (void) initializeSettings;
@@ -24,8 +25,17 @@
 	
 }
 
+- (void)loadSurveys {
+    if (![Account currentAccount].isErrorStatus) {
+        SurveyManager *sm = [[SurveyManager alloc] initWithObserver:self];
+        [sm loadSurveysFromNetwork];
+        [sm release];
+    }
+}
+
 - (void)changeInAccount:(Account*)account {
 	[self ensureOnlyProfilePageSelectedIfAccountIsInErrorStatus];
+    [self loadSurveys];
 }
 
 - (void)tabBarController:(UITabBarController *)_tabBarController didSelectViewController:(UIViewController *)viewController{
@@ -40,9 +50,9 @@
 	[currentAccount loadCurrent];
 	[currentAccount onChangeNotifyObserver:self];
 
-    SurveyManager *sm = [[SurveyManager alloc] initWithObserver:self];
-    [sm loadSurveysFromNetwork];
-    [sm release];
+    if ([[RestConfiguration username] isEqualToString:@""] || [[RestConfiguration password] isEqualToString:@""]) {
+        tabBarController.selectedIndex = 2;
+    }
 }
 
 

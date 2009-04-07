@@ -109,7 +109,7 @@ class UsersControllerTest < ActionController::TestCase
     should_respond_with_content_type :json
 
     should "return current user in json form" do
-      assert_equal users(:quentin).to_json, @response.body
+      assert_equal users(:quentin).to_json(:include => {:wallet => {:methods => :balance, :include => :wallet_transactions}}), @response.body
     end
   end
   
