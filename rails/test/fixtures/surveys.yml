@@ -10,3 +10,14 @@ two:
   amount: 423.22
   complete: false
 
+three:
+  id: 3
+  name: Test Survey Two
+  amount: 1024.00
+  complete: true
+
+four:
+  id: 4
+  name: Test Survey Three
+  amount: 10000.00
+  complete: true
