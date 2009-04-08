@@ -22,5 +22,6 @@
 
 + (id)newFromDictionary:(NSDictionary *)dict;
 
+- (NSDictionary *)toDictionary;
 - (BOOL)store;
 @end

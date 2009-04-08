@@ -15,7 +15,8 @@
 
 +(id)restfulRequestsWithObserver:(NSObject<RestfulRequestsObserver>*)delegate;
 
-@property (nonatomic, assign) NSObject<RestfulRequestsObserver>* observer;
+@property (nonatomic, retain) NSObject<RestfulRequestsObserver>* observer;
+
 -(void)GET:(NSString*) path;
 -(void)POST:(NSString*) path withParams:(NSDictionary*)params;
 @end

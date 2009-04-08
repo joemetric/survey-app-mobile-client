@@ -38,7 +38,11 @@
     if (self.answerFile)
         [parameters setObject:self.answerFile forKey:@"answer_file"];
     
-    return [parameters autorelease];
+    NSMutableDictionary *container = [[NSMutableDictionary alloc] init];
+    [container setObject:parameters forKey:@"answer"];
+    [parameters release];
+    
+    return [container autorelease];
 }
 
 

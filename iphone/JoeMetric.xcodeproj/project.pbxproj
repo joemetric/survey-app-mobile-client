@@ -56,6 +56,8 @@
 		D266E0200F3A400200C20691 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D266E01A0F3A400200C20691 /* SBJSON.m */; };
 		D2955DF90F3A36E6002675C9 /* Rest.m in Sources */ = {isa = PBXBuildFile; fileRef = D2955DF70F3A36E6002675C9 /* Rest.m */; };
 		D2955DFB0F3A36E6002675C9 /* Rest.m in Sources */ = {isa = PBXBuildFile; fileRef = D2955DF70F3A36E6002675C9 /* Rest.m */; };
+		D2A2AC5D0F8CE91C003973C8 /* AnswerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A2AC5C0F8CE91C003973C8 /* AnswerManager.m */; };
+		D2A2AC5E0F8CE91C003973C8 /* AnswerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A2AC5C0F8CE91C003973C8 /* AnswerManager.m */; };
 		D2A946720F7A75C000E6D9B6 /* SurveyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A946710F7A75C000E6D9B6 /* SurveyManager.m */; };
 		D2A946730F7A75C000E6D9B6 /* SurveyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A946710F7A75C000E6D9B6 /* SurveyManager.m */; };
 		D2AD6B1C0EFFF66B00DB13FD /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AD6B1B0EFFF66B00DB13FD /* Account.m */; };
@@ -201,6 +203,8 @@
 		D266E01A0F3A400200C20691 /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
 		D2955DF60F3A36E6002675C9 /* Rest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rest.h; sourceTree = "<group>"; };
 		D2955DF70F3A36E6002675C9 /* Rest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rest.m; sourceTree = "<group>"; };
+		D2A2AC5B0F8CE91C003973C8 /* AnswerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerManager.h; sourceTree = "<group>"; };
+		D2A2AC5C0F8CE91C003973C8 /* AnswerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswerManager.m; sourceTree = "<group>"; };
 		D2A946700F7A75C000E6D9B6 /* SurveyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurveyManager.h; sourceTree = "<group>"; };
 		D2A946710F7A75C000E6D9B6 /* SurveyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SurveyManager.m; sourceTree = "<group>"; };
 		D2AD6B1A0EFFF66B00DB13FD /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
@@ -317,6 +321,8 @@
 				DADF82C90F8626B200DEACA0 /* NSDictionary+RemoveNulls.m */,
 				D2A946700F7A75C000E6D9B6 /* SurveyManager.h */,
 				D2A946710F7A75C000E6D9B6 /* SurveyManager.m */,
+				D2A2AC5B0F8CE91C003973C8 /* AnswerManager.h */,
+				D2A2AC5C0F8CE91C003973C8 /* AnswerManager.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -752,6 +758,7 @@
 				DADF83320F86352500DEACA0 /* TableSection.m in Sources */,
 				DADF839E0F865A7200DEACA0 /* StaticTable.m in Sources */,
 				D2A946730F7A75C000E6D9B6 /* SurveyManager.m in Sources */,
+				D2A2AC5D0F8CE91C003973C8 /* AnswerManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -807,6 +814,7 @@
 				D2A946720F7A75C000E6D9B6 /* SurveyManager.m in Sources */,
 				DA8351120F8E103C0073F848 /* UIView+EasySubviewLabelAccess.m in Sources */,
 				DA8351210F8E175F0073F848 /* CredentialsViewControllerTest.m in Sources */,
+				D2A2AC5E0F8CE91C003973C8 /* AnswerManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
