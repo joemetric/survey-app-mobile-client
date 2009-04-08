@@ -1,15 +1,11 @@
 #import <Foundation/Foundation.h>
+#import "RestfulRequests.h"
 
 @protocol SurveyManagerObserver
 - (void)surveysStored;
 @end
 
-@interface SurveyManager : NSObject {
-    NSString      *host;
-    NSInteger      port;
-    NSMutableData *buffer;
-    NSMutableURLRequest *request;
-    NSURLConnection *conn;
+@interface SurveyManager : NSObject <RestfulRequestsObserver> {
     NSObject<SurveyManagerObserver>* observer;
 }
 
