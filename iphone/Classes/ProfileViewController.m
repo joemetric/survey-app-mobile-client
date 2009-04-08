@@ -15,16 +15,19 @@
 #import "NewAccountViewController.h"
 
 @interface ProfileViewController (Private)
-- (NSObject<UITableViewDelegate, UITableViewDataSource>*) tableDelegate;
+- (void) setTableDelegate;
 @end
 
 @implementation ProfileViewController
-@synthesize tableView, credentialsController, newAccountController, noCredentials, validCredentials, noAccountData;
+@synthesize tableView, credentialsController, newAccountController, noCredentials, validCredentials, noAccountData, loadingAccountData;
+
+
 
 -(void)changeInAccount:(Account*) _account{
 	if (accountLoadStatusLoaded == [Account currentAccount].accountLoadStatus){
 		[self dismissModalViewControllerAnimated:YES];
 	}
+    [self setTableDelegate];
 	[self.tableView reloadData];
 }
 
@@ -36,9 +39,11 @@
 
 	self.validCredentials = [[[ValidCredentialsProfileDataSource alloc] init] autorelease];
 	self.validCredentials.profileViewController = self;
-	self.noAccountData = [[[NoAccountDataProfileDataSource alloc] init] autorelease];
+	self.noAccountData = [NoAccountDataProfileDataSource noAccountDataProfileDataSourceWithMessage:@"Unable to load account details."];
+	self.loadingAccountData = [NoAccountDataProfileDataSource noAccountDataProfileDataSourceWithMessage:@"Loading account details."];
 	[[Account currentAccount] onChangeNotifyObserver:self];
     self.tableView.backgroundColor = [UIColor clearColor];
+    [self setTableDelegate];
 	[super viewDidLoad];
 }
 
@@ -72,61 +77,29 @@
 
 - (NSObject<UITableViewDelegate, UITableViewDataSource>*) tableDelegate {
 	switch([Account currentAccount].accountLoadStatus){
-		case accountLoadStatusUnauthorized:
-		case accountLoadStatusFailedValidation:
+	case accountLoadStatusUnauthorized:
+	case accountLoadStatusFailedValidation:
 		return self.noCredentials;
-		case accountLoadStatusNotLoaded:
-		return [NoAccountDataProfileDataSource noAccountDataProfileDataSourceWithMessage:@"Loading account details."];	
-		case accountLoadStatusLoadFailed:
-		return [NoAccountDataProfileDataSource noAccountDataProfileDataSourceWithMessage:@"Unable to load account details."];	
-		default:
+	case accountLoadStatusNotLoaded:
+		return loadingAccountData;
+	case accountLoadStatusLoadFailed:
+		return noAccountData;	
+	default:
 		return self.validCredentials;
 	}
 }
 
-
-
-#pragma mark -
-#pragma mark TableViewDelegate and DataSource methods
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tv {
-	return [[self tableDelegate] numberOfSectionsInTableView:tv];
+- (void) setTableDelegate{
+    NSObject<UITableViewDelegate, UITableViewDataSource>* delegate = [self tableDelegate];
+    tableView.delegate = delegate;
+    tableView.dataSource = delegate;
 }
-
-
-- (NSInteger)tableView:(UITableView *)tv numberOfRowsInSection:(NSInteger)section {
-	return [[self tableDelegate] tableView:tv numberOfRowsInSection:section];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	return [[self tableDelegate] tableView:tv cellForRowAtIndexPath:indexPath];
-}
-
-- (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	[[self tableDelegate] tableView:tv didSelectRowAtIndexPath:indexPath];
-}
-
-
-- (CGFloat)tableView:(UITableView *)tv heightForHeaderInSection:(NSInteger)section{
-    return [[self tableDelegate] tableView:tv heightForHeaderInSection:section];
-}
-
-
-
-- (UIView *)tableView:(UITableView *)tv viewForHeaderInSection:(NSInteger)section{
-	return [[self tableDelegate] tableView:tv viewForHeaderInSection:section];
-}
-
-- (UIView *)tableView:(UITableView *)tv viewForFooterInSection:(NSInteger)section{
-	return [[self tableDelegate] tableView:tv viewForFooterInSection:section];
-}
-
-
-
 
 - (void)dealloc {
 	[tableView release];
 	[credentialsController release];
 	[noAccountData release];
+	[loadingAccountData release];
 	[noCredentials release];
 	[validCredentials release];
 	[newAccountController release];

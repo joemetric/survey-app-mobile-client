@@ -84,16 +84,14 @@ NSInteger gModalViewControllerDismissCount;
 
 
 
--(void)XXXXXtestTableDelegateDataSourceIsAppropriateForTheCurrentAccountLoadStatus{
+-(void)testTableDelegateDataSourceIsAppropriateForTheCurrentAccountLoadStatus{
 	[self assertTableDelegateIsExpectedType:[NoAccountDataProfileDataSource class]
 	 	forAccountLoadStatus:accountLoadStatusNotLoaded describedAs:@"not loaded"];
-	STAssertEqualStrings(@"Loading account details.", [testee tableView:nil titleForFooterInSection:0], nil);
 	
 	[self assertTableDelegateIsExpectedType:[ValidCredentialsProfileDataSource class]
 	 	forAccountLoadStatus:accountLoadStatusLoaded describedAs:@"loaded"];
 	[self assertTableDelegateIsExpectedType:[NoAccountDataProfileDataSource class]
 	 	forAccountLoadStatus:accountLoadStatusLoadFailed describedAs:@"load failed"];
-	STAssertEqualStrings(@"Unable to load account details.", [testee tableView:nil titleForFooterInSection:0], nil);
 	[self assertTableDelegateIsExpectedType:[NoCredentialsProfileDataSource class]
 	 	forAccountLoadStatus:accountLoadStatusUnauthorized describedAs:@"unauthorised"];
 	[self assertTableDelegateIsExpectedType:[NoCredentialsProfileDataSource class]
