@@ -85,6 +85,9 @@
 		DA8351120F8E103C0073F848 /* UIView+EasySubviewLabelAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8351110F8E103C0073F848 /* UIView+EasySubviewLabelAccess.m */; };
 		DA8351210F8E175F0073F848 /* CredentialsViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DA83511F0F8E175F0073F848 /* CredentialsViewControllerTest.m */; };
 		DA83513F0F8E208D0073F848 /* CredentialsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 548D9BC10F6AB49900629CCE /* CredentialsView.xib */; };
+		DA83527C0F8E664E0073F848 /* NSObject+CleanUpProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = DA83527B0F8E664E0073F848 /* NSObject+CleanUpProperties.m */; };
+		DA83527D0F8E664E0073F848 /* NSObject+CleanUpProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = DA83527B0F8E664E0073F848 /* NSObject+CleanUpProperties.m */; };
+		DA83527F0F8E66ED0073F848 /* NSObject+CleanUpPropertiesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DA83527E0F8E66ED0073F848 /* NSObject+CleanUpPropertiesTest.m */; };
 		DA86BE730F72B29C00CC6EBE /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D68A3D40EDCD3D6007CE721 /* ProfileViewController.m */; };
 		DA86BE760F72B2D400CC6EBE /* CredentialsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 548D9BC50F6AB5D100629CCE /* CredentialsViewController.m */; };
 		DA86BE770F72B2E300CC6EBE /* NewAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 547608CD0F6E5B37007CCC58 /* NewAccountViewController.m */; };
@@ -234,6 +237,9 @@
 		DA8351100F8E103C0073F848 /* UIView+EasySubviewLabelAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+EasySubviewLabelAccess.h"; sourceTree = "<group>"; };
 		DA8351110F8E103C0073F848 /* UIView+EasySubviewLabelAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+EasySubviewLabelAccess.m"; sourceTree = "<group>"; };
 		DA83511F0F8E175F0073F848 /* CredentialsViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CredentialsViewControllerTest.m; sourceTree = "<group>"; };
+		DA83527A0F8E664E0073F848 /* NSObject+CleanUpProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+CleanUpProperties.h"; sourceTree = "<group>"; };
+		DA83527B0F8E664E0073F848 /* NSObject+CleanUpProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CleanUpProperties.m"; sourceTree = "<group>"; };
+		DA83527E0F8E66ED0073F848 /* NSObject+CleanUpPropertiesTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CleanUpPropertiesTest.m"; sourceTree = "<group>"; };
 		DA86BEBB0F73E42700CC6EBE /* AccountTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountTest.m; sourceTree = "<group>"; };
 		DA86BEBC0F73E42700CC6EBE /* ProfileViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewControllerTest.m; sourceTree = "<group>"; };
 		DA86BEBD0F73E42700CC6EBE /* QuestionTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionTest.h; sourceTree = "<group>"; };
@@ -317,6 +323,8 @@
 				DADF82C90F8626B200DEACA0 /* NSDictionary+RemoveNulls.m */,
 				D2A946700F7A75C000E6D9B6 /* SurveyManager.h */,
 				D2A946710F7A75C000E6D9B6 /* SurveyManager.m */,
+				DA83527A0F8E664E0073F848 /* NSObject+CleanUpProperties.h */,
+				DA83527B0F8E664E0073F848 /* NSObject+CleanUpProperties.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -550,6 +558,7 @@
 				DADF83AA0F865D9800DEACA0 /* StaticTableTest.m */,
 				DA5367DB0F86B817001127B0 /* StubCellWithError.h */,
 				DA5367DC0F86B817001127B0 /* StubCellWithError.m */,
+				DA83527E0F8E66ED0073F848 /* NSObject+CleanUpPropertiesTest.m */,
 			);
 			path = UnitTests;
 			sourceTree = "<group>";
@@ -752,6 +761,7 @@
 				DADF83320F86352500DEACA0 /* TableSection.m in Sources */,
 				DADF839E0F865A7200DEACA0 /* StaticTable.m in Sources */,
 				D2A946730F7A75C000E6D9B6 /* SurveyManager.m in Sources */,
+				DA83527D0F8E664E0073F848 /* NSObject+CleanUpProperties.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -807,6 +817,8 @@
 				D2A946720F7A75C000E6D9B6 /* SurveyManager.m in Sources */,
 				DA8351120F8E103C0073F848 /* UIView+EasySubviewLabelAccess.m in Sources */,
 				DA8351210F8E175F0073F848 /* CredentialsViewControllerTest.m in Sources */,
+				DA83527C0F8E664E0073F848 /* NSObject+CleanUpProperties.m in Sources */,
+				DA83527F0F8E66ED0073F848 /* NSObject+CleanUpPropertiesTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

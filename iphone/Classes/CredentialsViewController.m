@@ -99,10 +99,7 @@
 
 
 - (void)dealloc {
-	self.activityIndicator = nil;
-	self.tableView = nil;
-	self.usernameCell = nil;
-	self.passwordCell = nil;
+	[self setEveryObjCObjectPropertyToNil];
 	[super dealloc];
 }
 
