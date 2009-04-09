@@ -160,9 +160,9 @@
 -(void)testStatusBecomesFailedOnError{
 	NSError *error = [NSError errorWithDomain:@"test.host" code:NSURLErrorTimedOut userInfo:nil];
 	[account failedWithError:error];
+	STAssertEqualObjects(error, account.lastLoadError, @"lastLoadError");
 	STAssertEquals(accountLoadStatusLoadFailed, account.accountLoadStatus, @"accountLoadStatus");
 	STAssertEquals(1, observer->accountChangeNotificationCount, @"accountChangeNotificationCount");
-	STAssertEqualStrings(error, account.lastLoadError, @"lastLoadError");
 }
 
 
@@ -196,6 +196,14 @@
 	[account noLongerNotifyObserver:observer];
 	[account authenticationFailed];
 	STAssertEquals(0, observer->accountChangeNotificationCount, nil);
+}
+
+-(void)testObserverOnlyRegistersOnce{
+	[account onChangeNotifyObserver:observer];
+	
+	[account authenticationFailed];
+
+	STAssertEquals(1, observer->accountChangeNotificationCount, @"accountChangeNotificationCount");
 }
 
 
@@ -241,6 +249,7 @@
 	account.gender = nil;
 	STAssertFalse(account.isFemale, @"should not be female");
 }
+
 
 
 

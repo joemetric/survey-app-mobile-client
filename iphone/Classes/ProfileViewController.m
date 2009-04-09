@@ -61,7 +61,6 @@
 - (void) displayModalCredentialsController {
 	if( self.credentialsController == nil ) {
 		self.credentialsController = [[[CredentialsViewController alloc] initWithNibName:@"CredentialsView" bundle:nil] autorelease];
-		self.credentialsController.profileView = self;
 	}
 	[self presentModalViewController:self.credentialsController animated:YES];
 }

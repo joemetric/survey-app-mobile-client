@@ -82,6 +82,9 @@
 		DA7F49BB0F7155890001E019 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		DA7F49DC0F715E400001E019 /* LabelledTableViewReadOnlyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA7F48BB0F7142650001E019 /* LabelledTableViewReadOnlyCell.xib */; };
 		DA7F49DF0F715EF70001E019 /* LabelledTableViewReadOnlyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7F48C00F7143890001E019 /* LabelledTableViewReadOnlyCell.m */; };
+		DA8351120F8E103C0073F848 /* UIView+EasySubviewLabelAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8351110F8E103C0073F848 /* UIView+EasySubviewLabelAccess.m */; };
+		DA8351210F8E175F0073F848 /* CredentialsViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DA83511F0F8E175F0073F848 /* CredentialsViewControllerTest.m */; };
+		DA83513F0F8E208D0073F848 /* CredentialsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 548D9BC10F6AB49900629CCE /* CredentialsView.xib */; };
 		DA86BE730F72B29C00CC6EBE /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D68A3D40EDCD3D6007CE721 /* ProfileViewController.m */; };
 		DA86BE760F72B2D400CC6EBE /* CredentialsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 548D9BC50F6AB5D100629CCE /* CredentialsViewController.m */; };
 		DA86BE770F72B2E300CC6EBE /* NewAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 547608CD0F6E5B37007CCC58 /* NewAccountViewController.m */; };
@@ -228,6 +231,9 @@
 		DA7F48BB0F7142650001E019 /* LabelledTableViewReadOnlyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelledTableViewReadOnlyCell.xib; sourceTree = "<group>"; };
 		DA7F48BF0F7143890001E019 /* LabelledTableViewReadOnlyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelledTableViewReadOnlyCell.h; sourceTree = "<group>"; };
 		DA7F48C00F7143890001E019 /* LabelledTableViewReadOnlyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelledTableViewReadOnlyCell.m; sourceTree = "<group>"; };
+		DA8351100F8E103C0073F848 /* UIView+EasySubviewLabelAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+EasySubviewLabelAccess.h"; sourceTree = "<group>"; };
+		DA8351110F8E103C0073F848 /* UIView+EasySubviewLabelAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+EasySubviewLabelAccess.m"; sourceTree = "<group>"; };
+		DA83511F0F8E175F0073F848 /* CredentialsViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CredentialsViewControllerTest.m; sourceTree = "<group>"; };
 		DA86BEBB0F73E42700CC6EBE /* AccountTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountTest.m; sourceTree = "<group>"; };
 		DA86BEBC0F73E42700CC6EBE /* ProfileViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewControllerTest.m; sourceTree = "<group>"; };
 		DA86BEBD0F73E42700CC6EBE /* QuestionTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionTest.h; sourceTree = "<group>"; };
@@ -515,6 +521,9 @@
 		D2F22B860EFBF0A60047CBFA /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				DA83511F0F8E175F0073F848 /* CredentialsViewControllerTest.m */,
+				DA8351100F8E103C0073F848 /* UIView+EasySubviewLabelAccess.h */,
+				DA8351110F8E103C0073F848 /* UIView+EasySubviewLabelAccess.m */,
 				DA86BEBB0F73E42700CC6EBE /* AccountTest.m */,
 				DA86BEBC0F73E42700CC6EBE /* ProfileViewControllerTest.m */,
 				DA86BEBD0F73E42700CC6EBE /* QuestionTest.h */,
@@ -676,6 +685,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA83513F0F8E208D0073F848 /* CredentialsView.xib in Resources */,
 				DAA2E6F80F83B5F40004D56E /* NewAccountView.xib in Resources */,
 				DAA2E6840F83A3970004D56E /* SegmentedTableViewCell.xib in Resources */,
 				DAA2E6540F839FA20004D56E /* LabelledTableViewCell.xib in Resources */,
@@ -795,6 +805,8 @@
 				DADF83AB0F865D9800DEACA0 /* StaticTableTest.m in Sources */,
 				DA5367DD0F86B817001127B0 /* StubCellWithError.m in Sources */,
 				D2A946720F7A75C000E6D9B6 /* SurveyManager.m in Sources */,
+				DA8351120F8E103C0073F848 /* UIView+EasySubviewLabelAccess.m in Sources */,
+				DA8351210F8E175F0073F848 /* CredentialsViewControllerTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -2,6 +2,7 @@
 #import "TableSection.h"
 #import "HasError.h"
 #import "StubCellWithError.h"
+#import "UIView+EasySubviewLabelAccess.h"
 
 @interface TableSectionTest : GTMTestCase {
 	TableSection* testee;
@@ -56,7 +57,7 @@
 -(void)testHeader{
 	STAssertNotNil(testee.headerView, @"header");
 	STAssertNotNil([testee.headerView.subviews objectAtIndex:0], @"subview");
-	STAssertEqualStrings(@"section title", [[testee.headerView.subviews objectAtIndex:0] text], nil);
+	STAssertEqualStrings(@"section title", testee.headerView.labelText, nil);
 }
 
 
@@ -67,17 +68,15 @@
 
 -(void)testSettingOneFooter{
 	[testee setFooterLines:[NSArray arrayWithObject:@"a line of footer"]];
-	STAssertEquals(1, (NSInteger) testee.footerView.subviews.count, @"subview count");
-	STAssertEqualStrings(@"a line of footer",  [[testee.footerView.subviews objectAtIndex:0] text], @"label text");
+	STAssertEqualStrings(@"a line of footer",  [testee.footerView labelTextAtIndex:0], @"label text");
 	
 }
 
 
 -(void)testSettingTwoFooters{
 	[testee setFooterLines:[NSArray arrayWithObjects:@"a line of footer", @"a second line of footer", nil]];
-	STAssertEquals(2, (NSInteger) testee.footerView.subviews.count, @"subview count");
-	STAssertEqualStrings(@"a line of footer",  [[testee.footerView.subviews objectAtIndex:0] text], @"label text");
-	STAssertEqualStrings(@"a second line of footer",  [[testee.footerView.subviews objectAtIndex:1] text], @"label text");
+	STAssertEqualStrings(@"a line of footer", [testee.footerView labelTextAtIndex:0], @"label text");
+	STAssertEqualStrings(@"a second line of footer", [testee.footerView labelTextAtIndex:1], @"label text");
 	
 }
 
@@ -85,7 +84,7 @@
 	[testee setFooterLines:[NSArray arrayWithObjects:@"original 1", @"original 2", nil]];
 	[testee setFooterLines:[NSArray arrayWithObject:@"replacement"]];
 	STAssertEquals(1, (NSInteger) testee.footerView.subviews.count, @"subview count");
-	STAssertEqualStrings(@"replacement",  [[testee.footerView.subviews objectAtIndex:0] text], @"label text");
+	STAssertEqualStrings(@"replacement",  [testee.footerView labelTextAtIndex:0], @"label text");
 	
 }
 

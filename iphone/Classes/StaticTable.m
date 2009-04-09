@@ -81,6 +81,9 @@
 	return [[sections objectAtIndex:section] footerView];
 }
 
+-(TableSection*) sectionAtIndex:(NSInteger)index{
+	return [sections objectAtIndex:index];
+}
 
 
 @end

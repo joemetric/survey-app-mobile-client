@@ -12,6 +12,8 @@
 -(UITableViewCell*)cellAtIndex:(NSUInteger)index;
 -(void)handleErrors:(NSDictionary*)errors;
 -(void)setFooterLines:(NSArray*)lines;
+-(void)setFooterLine:(NSString*)line;
+
 
 @property(readonly) NSInteger rowCount;
 @property(readonly) NSInteger footerHeight;
