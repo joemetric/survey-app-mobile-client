@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AccountObserver.h"
 
 
-@interface WalletViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
+@interface WalletViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, AccountObserver> {
 	UITableView* entries;
 	UILabel* totalTitle;
 	UILabel* totalValue;

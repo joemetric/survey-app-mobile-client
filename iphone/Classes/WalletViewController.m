@@ -10,6 +10,10 @@
 #import "WalletViewTableCell.h"
 #import "Account.h"
 
+@interface WalletViewController (Private)
+- (void) updateWallet;
+- (NSString*) balanceString:(NSNumber*)balance;
+@end
 
 @implementation WalletViewController
 
@@ -17,20 +21,37 @@
 @synthesize totalTitle, totalValue;
 
 - (void) viewDidLoad {
-	entries.separatorColor = [UIColor darkGrayColor];
+	[[Account currentAccount] onChangeNotifyObserver:self];
+	[self updateWallet];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
-	if( [Account currentAccount] != nil ) {
-		NSNumberFormatter* numberFormatter = [[NSNumberFormatter alloc] init];
-		[numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
-		[numberFormatter setCurrencySymbol:@"$"];
-		[numberFormatter setMaximumFractionDigits:2];
-		[numberFormatter setMinimumFractionDigits:2];
-		totalValue.text = [numberFormatter stringFromNumber:[[Account currentAccount] walletBalance]];
-		[numberFormatter release];
-	}
 	[super viewWillAppear:animated];
+}
+
+- (void) updateWallet {
+	if( [Account currentAccount] != nil ) {
+		totalValue.text = [self balanceString:[[Account currentAccount] walletBalance]];
+		[entries reloadData];		
+	} else {
+		totalValue.text = @"unknown";
+	}
+}
+
+- (NSString*) balanceString:(NSNumber*)balance {
+	NSNumberFormatter* numberFormatter = [[NSNumberFormatter alloc] init];
+	[numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+	[numberFormatter setCurrencySymbol:@"$"];
+	[numberFormatter setMaximumFractionDigits:2];
+	[numberFormatter setMinimumFractionDigits:2];
+	NSString* balanceString = [numberFormatter stringFromNumber:balance];
+	[numberFormatter release];
+	return balanceString;
+	
+}
+
+-(void) changeInAccount:(Account*)account{	
+	[self updateWallet];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

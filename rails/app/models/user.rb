@@ -63,6 +63,6 @@ class User < ActiveRecord::Base
   end
 
   def create_wallet
-    Wallet.create(:user => self) if( self.wallet.nil? )
+    self.wallet = Wallet.create(:user => self) if self.wallet.nil?
   end 
 end
