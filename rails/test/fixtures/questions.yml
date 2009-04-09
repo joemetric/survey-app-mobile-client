@@ -9,3 +9,27 @@ two:
   survey_id: 1
   text: Picture Question
   question_type: picture
+
+three:
+  id: 3
+  survey_id: 3
+  text: How many children do you have?
+  question_type: freetext
+
+four:
+  id: 4
+  survey_id: 3
+  text: Take a picture of your work space
+  question_type: picture
+
+five:
+  id: 5
+  survey_id: 4
+  text: Do you like this app?
+  question_type: freetext
+
+six:
+  id: 6
+  survey_id: 4
+  text: Take a picture of your dog
+  question_type: picture
