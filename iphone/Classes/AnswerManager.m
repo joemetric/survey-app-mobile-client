@@ -35,9 +35,16 @@
     }
 }
 
-- (void)pushPictureAnswer {
-    // upload picture
+- (void)pictureUploaded:(NSString *)data {
+    answer.pictureId = [data integerValue];
+    NSLog(@"Picture has been uploaded: %@", data);
     [self pushBasicAnswer];
+}
+
+- (void)pushPictureAnswer {
+    NSLog(@"Pushing picture");
+    PictureUploader *uploader = [[PictureUploader alloc] initWithImage:answer.localImageFile andObserver:self];
+    [uploader upload];
 }
 
 - (void)pushBasicAnswer {
@@ -60,22 +67,6 @@
 - (id)initWithAnswer:(Answer *)anAnswer {
     if (self = [super init]) {
         self.answer = anAnswer;
-        host   = [RestConfiguration host];
-        port   = [RestConfiguration port];
-        buffer = [[NSMutableData alloc] init];
-        
-        NSMutableDictionary *headers = [[[NSMutableDictionary alloc] init] autorelease];
-        [headers setValue:@"application/json" forKey:@"Content-Type"];
-        [headers setValue:@"text/json" forKey:@"Accept"];
-        [headers setValue:@"no-cache" forKey:@"Cache-Control"];
-        [headers setValue:@"no-cache" forKey:@"Pragma"];
-        [headers setValue:@"close" forKey:@"Connection"];
-        
-        request = [NSMutableURLRequest requestWithURL:nil
-                                          cachePolicy:NSURLRequestUseProtocolCachePolicy 
-                                      timeoutInterval:60.0];
-        
-        [request setAllHTTPHeaderFields:headers];
     }
     return self;
 }

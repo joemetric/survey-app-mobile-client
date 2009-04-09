@@ -101,9 +101,9 @@
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setObject:[NSNumber numberWithInteger:question.itemId] forKey:@"question_id"];
     [params setObject:question.questionType forKey:@"question_type"];
-    [params setObject:imagePath forKey:@"answer_file"];
     
     Answer *answer = [Answer newFromDictionary:params];
+    answer.localImageFile = imagePath;
     [answer store];
     [AnswerManager pushAnswer:answer];
     

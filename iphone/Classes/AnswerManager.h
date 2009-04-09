@@ -8,16 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "RestfulRequests.h"
+#import "PictureUploader.h"
 
 @class Answer;
 
-@interface AnswerManager : NSObject <RestfulRequestsObserver> {
+@interface AnswerManager : NSObject <RestfulRequestsObserver, PictureUploaderObserver> {
     Answer *answer;
-    NSString      *host;
-    NSInteger      port;
-    NSMutableData *buffer;
-    NSMutableURLRequest *request;
-    NSURLConnection *conn;
 }
 
 @property (nonatomic, retain) Answer *answer;
