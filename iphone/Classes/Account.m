@@ -9,7 +9,7 @@
 -(void) changeLoadStatusTo:(AccountLoadStatus)status;
 -(void) changeLoadStatusTo:(AccountLoadStatus)status withError:(NSError*)error;
 
-@property(nonatomic, retain) NSMutableArray* observers;
+@property(nonatomic, retain) NSMutableSet* observers;
 
 @end
 
@@ -158,8 +158,8 @@
 
 -(void) changeLoadStatusTo:(AccountLoadStatus)status withError:(NSError*)error{
 	accountLoadStatus = status;
-	for (id<AccountObserver> observer in observers) [observer changeInAccount:self];
 	self.lastLoadError = error;		
+	for (id<AccountObserver> observer in [observers copy]) [observer changeInAccount:self];
 }
 
 -(BOOL) isErrorStatus{
@@ -179,7 +179,7 @@
 	self.errors = [[NSDictionary alloc] init];
 	self.username = [RestConfiguration username];
 	self.password = [RestConfiguration password];
-	self.observers = [NSMutableArray array];
+	self.observers = [NSMutableSet set];
 	return self;
 }
 

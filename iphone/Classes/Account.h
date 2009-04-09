@@ -24,7 +24,7 @@ typedef enum {
 	NSDictionary* errors;
 	NSInteger itemId;
     
-	NSMutableArray* observers;
+	NSMutableSet* observers;
     AccountLoadStatus accountLoadStatus;
     
 }

@@ -8,16 +8,24 @@
 
 #import <UIKit/UIKit.h>
 #import "RestDelegate.h"
+#import "AccountObserver.h"
 
 @class ProfileViewController;
+@class StaticTable;
+@class LabelledTableViewCell;
 
-@interface CredentialsViewController : UIViewController<RestDelegate> {
+@interface CredentialsViewController : UIViewController<RestDelegate, AccountObserver> {
 	UITextField* username;
 	UITextField* password;
 	UIActivityIndicatorView* activityIndicator;
 	UILabel* errorLabel;
+	UITableView* tableView;
 	
 	ProfileViewController* profileView;
+    StaticTable *staticTable;
+	
+	LabelledTableViewCell* usernameCell;
+	LabelledTableViewCell* passwordCell;
 }
 
 - (IBAction) login:(id)sender;
@@ -29,4 +37,5 @@
 @property (nonatomic, retain) IBOutlet UITextField* password;
 @property (nonatomic, retain) IBOutlet UIActivityIndicatorView* activityIndicator;
 @property (nonatomic, retain) IBOutlet UILabel* errorLabel;
+@property (nonatomic, retain) IBOutlet UITableView* tableView;
 @end

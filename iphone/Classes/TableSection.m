@@ -82,6 +82,10 @@
 	footerView.frame = CGRectMake(0, 0, 280, self.footerHeight);
 }
 
+-(void)setFooterLine:(NSString*)line{
+	[self setFooterLines:[NSArray arrayWithObject:line]];
+}
+
 
 -(void)handleErrors:(NSDictionary*)errors{
 	NSMutableArray* errorLines = [NSMutableArray arrayWithCapacity:errors.count];
