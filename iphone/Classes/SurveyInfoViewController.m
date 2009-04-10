@@ -29,6 +29,11 @@
     self.surveyAmount.text = [self.survey amountAsDollarString];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+	self.navigationController.navigationBarHidden = false;
+	[super viewWillAppear:animated];
+}
+
 /*
 // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

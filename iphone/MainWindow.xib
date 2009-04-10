@@ -8,8 +8,8 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
+			<integer value="181"/>
 			<integer value="2"/>
-			<integer value="106"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -51,33 +51,45 @@
 			<object class="IBUITabBarController" id="1034742383">
 				<object class="IBUISimulatedTabBarMetrics" key="IBUISimulatedBottomBarMetrics"/>
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
-				<object class="IBUIViewController" key="IBUISelectedViewController" id="464810166">
-					<string key="IBUITitle">Profile Tab</string>
-					<object class="IBUITabBarItem" key="IBUITabBarItem" id="76406765">
-						<string key="IBUITitle">Profile</string>
+				<object class="IBUINavigationController" key="IBUISelectedViewController" id="900058136">
+					<object class="IBUITabBarItem" key="IBUITabBarItem" id="766463702">
+						<string key="IBUITitle">Campaigns</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">user.png</string>
+							<string key="NSResourceName">question.png</string>
 						</object>
 						<reference key="IBUITabBar"/>
 					</object>
 					<reference key="IBUIParentViewController" ref="1034742383"/>
-					<string key="IBUINibName">ProfileView</string>
+					<object class="IBUINavigationBar" key="IBUINavigationBar" id="1039990817">
+						<nil key="NSNextResponder"/>
+						<int key="NSvFlags">256</int>
+						<string key="NSFrameSize">{320, 44}</string>
+						<bool key="IBUIOpaque">NO</bool>
+						<bool key="IBUIClipsSubviews">YES</bool>
+						<bool key="IBUIMultipleTouchEnabled">YES</bool>
+						<object class="NSColor" key="IBUITintColor">
+							<int key="NSColorSpace">2</int>
+							<bytes key="NSRGB">MC4wNjI3NDUxMDIgMC4xOTYwNzg0NSAwLjI5NDExNzY2AA</bytes>
+						</object>
+					</object>
+					<object class="NSMutableArray" key="IBUIViewControllers">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="IBUIViewController" id="170941019">
+							<string key="IBUITitle">Campaigns</string>
+							<object class="IBUINavigationItem" key="IBUINavigationItem" id="968769687">
+								<reference key="IBUINavigationBar"/>
+								<string key="IBUITitle">Item</string>
+							</object>
+							<reference key="IBUIParentViewController" ref="900058136"/>
+							<string key="IBUINibName">SurveyListView</string>
+						</object>
+					</object>
+					<bool key="IBUINavigationBarHidden">YES</bool>
 				</object>
 				<object class="NSMutableArray" key="IBUIViewControllers">
 					<bool key="EncodedWithXMLCoder">YES</bool>
-					<object class="IBUIViewController" id="952538634">
-						<string key="IBUITitle">Campaigns</string>
-						<object class="IBUITabBarItem" key="IBUITabBarItem" id="951061351">
-							<string key="IBUITitle">Campaigns</string>
-							<object class="NSCustomResource" key="IBUIImage">
-								<string key="NSClassName">NSImage</string>
-								<string key="NSResourceName">question.png</string>
-							</object>
-							<reference key="IBUITabBar"/>
-						</object>
-						<reference key="IBUIParentViewController" ref="1034742383"/>
-					</object>
+					<reference ref="900058136"/>
 					<object class="IBUIViewController" id="268481961">
 						<string key="IBUITitle">Wallet Tab</string>
 						<object class="IBUITabBarItem" key="IBUITabBarItem" id="807309489">
@@ -91,7 +103,19 @@
 						<reference key="IBUIParentViewController" ref="1034742383"/>
 						<string key="IBUINibName">WalletView</string>
 					</object>
-					<reference ref="464810166"/>
+					<object class="IBUIViewController" id="464810166">
+						<string key="IBUITitle">Profile Tab</string>
+						<object class="IBUITabBarItem" key="IBUITabBarItem" id="76406765">
+							<string key="IBUITitle">Profile</string>
+							<object class="NSCustomResource" key="IBUIImage">
+								<string key="NSClassName">NSImage</string>
+								<string key="NSResourceName">user.png</string>
+							</object>
+							<reference key="IBUITabBar"/>
+						</object>
+						<reference key="IBUIParentViewController" ref="1034742383"/>
+						<string key="IBUINibName">ProfileView</string>
+					</object>
 				</object>
 				<object class="IBUITabBar" key="IBUITabBar" id="795333663">
 					<nil key="NSNextResponder"/>
@@ -179,7 +203,7 @@
 							<reference ref="795333663"/>
 							<reference ref="268481961"/>
 							<reference ref="464810166"/>
-							<reference ref="952538634"/>
+							<reference ref="900058136"/>
 						</object>
 						<reference key="parent" ref="957960031"/>
 					</object>
@@ -222,18 +246,39 @@
 						<reference key="parent" ref="464810166"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">162</int>
-						<reference key="object" ref="952538634"/>
+						<int key="objectID">178</int>
+						<reference key="object" ref="900058136"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="951061351"/>
+							<reference ref="766463702"/>
+							<reference ref="170941019"/>
+							<reference ref="1039990817"/>
 						</object>
 						<reference key="parent" ref="1034742383"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">163</int>
-						<reference key="object" ref="951061351"/>
-						<reference key="parent" ref="952538634"/>
+						<int key="objectID">179</int>
+						<reference key="object" ref="766463702"/>
+						<reference key="parent" ref="900058136"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">180</int>
+						<reference key="object" ref="170941019"/>
+						<object class="NSMutableArray" key="children">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<reference ref="968769687"/>
+						</object>
+						<reference key="parent" ref="900058136"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">181</int>
+						<reference key="object" ref="968769687"/>
+						<reference key="parent" ref="170941019"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">182</int>
+						<reference key="object" ref="1039990817"/>
+						<reference key="parent" ref="900058136"/>
 					</object>
 				</object>
 			</object>
@@ -251,7 +296,7 @@
 					<string>110.IBPluginDependency</string>
 					<string>124.IBPluginDependency</string>
 					<string>125.CustomClassName</string>
-					<string>162.CustomClassName</string>
+					<string>180.CustomClassName</string>
 					<string>2.IBAttributePlaceholdersKey</string>
 					<string>2.IBEditorWindowLastContentRect</string>
 					<string>2.IBPluginDependency</string>
@@ -262,7 +307,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>MainWindowViewController</string>
 					<string>UIResponder</string>
-					<string>{{522, 566}, {320, 480}}</string>
+					<string>{{542, 476}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>WalletViewController</string>
@@ -306,7 +351,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">164</int>
+			<int key="maxID">182</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -397,6 +442,13 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">Classes/SurveyListViewController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">UIView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">UnitTests/UIView+EasySubviewLabelAccess.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
