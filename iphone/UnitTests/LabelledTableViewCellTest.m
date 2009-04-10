@@ -55,5 +55,9 @@
 	STAssertFalse([testee.textField isFirstResponder], nil);
 }
 
+-(void)testLabel{
+	STAssertEqualStrings(@"the label text", [testee withLabelText:@"the label text"].label.text, nil);
+}
+
 
 @end

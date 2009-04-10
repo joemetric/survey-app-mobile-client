@@ -35,6 +35,12 @@
 }
 
 
+-(LabelledTableViewCell*)withLabelText:(NSString*)text{
+	label.text = text;
+	return self;
+}
+
+
 -(BOOL)errorHighlighted{
     return label.textColor == [UIColor redColor];
 }

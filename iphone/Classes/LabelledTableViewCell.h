@@ -14,6 +14,6 @@
 @property (nonatomic, retain) IBOutlet UILabel* label;
 
 +(LabelledTableViewCell*) loadLabelledCellWithOwner:(id)owner;
-
+-(LabelledTableViewCell*)withLabelText:(NSString*)text;
 
 @end
