@@ -128,4 +128,17 @@
 	STAssertEqualStrings(@"Wrong username or password.", [self sectionFooterText], nil);
 }
 
+-(void)testPasswordShouldHaveAppropriateInputTraits{
+	STAssertTrue([self passwordCell].textField.secureTextEntry, @"secure");
+	STAssertEquals(UITextAutocapitalizationTypeNone, [self passwordCell].textField.autocapitalizationType , @"no capitalisation");
+	STAssertEquals(UITextAutocorrectionTypeNo, [self passwordCell].textField.autocorrectionType , @"no correction");
+}
+
+-(void)testUsernameShouldHaveAppropriateInputTraits{
+	STAssertFalse([self usernameCell].textField.secureTextEntry, @"secure");
+	STAssertEquals(UITextAutocapitalizationTypeNone, [self usernameCell].textField.autocapitalizationType , @"no capitalisation");
+	STAssertEquals(UITextAutocorrectionTypeNo, [self usernameCell].textField.autocorrectionType , @"no correction");
+}
+
+
 @end
