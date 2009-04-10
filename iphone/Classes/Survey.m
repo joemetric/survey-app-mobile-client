@@ -17,6 +17,7 @@
 @synthesize amount;
 @synthesize questions;
 @synthesize updatedAt;
+@synthesize complete;
 
 + (id)newFromDictionary:(NSDictionary *) dict
 {
@@ -38,7 +39,9 @@
     
     for (id surveyDict in [SurveyManager loadSurveysFromLocal]) {
         Survey *survey = [self newFromDictionary:surveyDict];
-        [surveys addObject:survey];
+        if (!survey.complete) {
+            [surveys addObject:survey];
+        }
         [survey release];
     }
     

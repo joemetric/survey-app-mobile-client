@@ -59,6 +59,10 @@
 		D266E0200F3A400200C20691 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D266E01A0F3A400200C20691 /* SBJSON.m */; };
 		D2955DF90F3A36E6002675C9 /* Rest.m in Sources */ = {isa = PBXBuildFile; fileRef = D2955DF70F3A36E6002675C9 /* Rest.m */; };
 		D2955DFB0F3A36E6002675C9 /* Rest.m in Sources */ = {isa = PBXBuildFile; fileRef = D2955DF70F3A36E6002675C9 /* Rest.m */; };
+		D2A2AC5D0F8CE91C003973C8 /* AnswerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A2AC5C0F8CE91C003973C8 /* AnswerManager.m */; };
+		D2A2AC5E0F8CE91C003973C8 /* AnswerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A2AC5C0F8CE91C003973C8 /* AnswerManager.m */; };
+		D2A2AE3D0F8D2689003973C8 /* PictureUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A2AE3C0F8D2689003973C8 /* PictureUploader.m */; };
+		D2A2AE3E0F8D2689003973C8 /* PictureUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A2AE3C0F8D2689003973C8 /* PictureUploader.m */; };
 		D2A946720F7A75C000E6D9B6 /* SurveyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A946710F7A75C000E6D9B6 /* SurveyManager.m */; };
 		D2A946730F7A75C000E6D9B6 /* SurveyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A946710F7A75C000E6D9B6 /* SurveyManager.m */; };
 		D2AD6B1C0EFFF66B00DB13FD /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AD6B1B0EFFF66B00DB13FD /* Account.m */; };
@@ -85,6 +89,9 @@
 		DA7F49BB0F7155890001E019 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		DA7F49DC0F715E400001E019 /* LabelledTableViewReadOnlyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA7F48BB0F7142650001E019 /* LabelledTableViewReadOnlyCell.xib */; };
 		DA7F49DF0F715EF70001E019 /* LabelledTableViewReadOnlyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7F48C00F7143890001E019 /* LabelledTableViewReadOnlyCell.m */; };
+		DA8351120F8E103C0073F848 /* UIView+EasySubviewLabelAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8351110F8E103C0073F848 /* UIView+EasySubviewLabelAccess.m */; };
+		DA8351210F8E175F0073F848 /* CredentialsViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DA83511F0F8E175F0073F848 /* CredentialsViewControllerTest.m */; };
+		DA83513F0F8E208D0073F848 /* CredentialsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 548D9BC10F6AB49900629CCE /* CredentialsView.xib */; };
 		DA86BE730F72B29C00CC6EBE /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D68A3D40EDCD3D6007CE721 /* ProfileViewController.m */; };
 		DA86BE760F72B2D400CC6EBE /* CredentialsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 548D9BC50F6AB5D100629CCE /* CredentialsViewController.m */; };
 		DA86BE770F72B2E300CC6EBE /* NewAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 547608CD0F6E5B37007CCC58 /* NewAccountViewController.m */; };
@@ -205,6 +212,10 @@
 		D266E01A0F3A400200C20691 /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
 		D2955DF60F3A36E6002675C9 /* Rest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rest.h; sourceTree = "<group>"; };
 		D2955DF70F3A36E6002675C9 /* Rest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rest.m; sourceTree = "<group>"; };
+		D2A2AC5B0F8CE91C003973C8 /* AnswerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerManager.h; sourceTree = "<group>"; };
+		D2A2AC5C0F8CE91C003973C8 /* AnswerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswerManager.m; sourceTree = "<group>"; };
+		D2A2AE3B0F8D2689003973C8 /* PictureUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureUploader.h; sourceTree = "<group>"; };
+		D2A2AE3C0F8D2689003973C8 /* PictureUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureUploader.m; sourceTree = "<group>"; };
 		D2A946700F7A75C000E6D9B6 /* SurveyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurveyManager.h; sourceTree = "<group>"; };
 		D2A946710F7A75C000E6D9B6 /* SurveyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SurveyManager.m; sourceTree = "<group>"; };
 		D2AD6B1A0EFFF66B00DB13FD /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
@@ -235,6 +246,9 @@
 		DA7F48BB0F7142650001E019 /* LabelledTableViewReadOnlyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelledTableViewReadOnlyCell.xib; sourceTree = "<group>"; };
 		DA7F48BF0F7143890001E019 /* LabelledTableViewReadOnlyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelledTableViewReadOnlyCell.h; sourceTree = "<group>"; };
 		DA7F48C00F7143890001E019 /* LabelledTableViewReadOnlyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelledTableViewReadOnlyCell.m; sourceTree = "<group>"; };
+		DA8351100F8E103C0073F848 /* UIView+EasySubviewLabelAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+EasySubviewLabelAccess.h"; sourceTree = "<group>"; };
+		DA8351110F8E103C0073F848 /* UIView+EasySubviewLabelAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+EasySubviewLabelAccess.m"; sourceTree = "<group>"; };
+		DA83511F0F8E175F0073F848 /* CredentialsViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CredentialsViewControllerTest.m; sourceTree = "<group>"; };
 		DA86BEBB0F73E42700CC6EBE /* AccountTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountTest.m; sourceTree = "<group>"; };
 		DA86BEBC0F73E42700CC6EBE /* ProfileViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewControllerTest.m; sourceTree = "<group>"; };
 		DA86BEBD0F73E42700CC6EBE /* QuestionTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionTest.h; sourceTree = "<group>"; };
@@ -318,6 +332,10 @@
 				DADF82C90F8626B200DEACA0 /* NSDictionary+RemoveNulls.m */,
 				D2A946700F7A75C000E6D9B6 /* SurveyManager.h */,
 				D2A946710F7A75C000E6D9B6 /* SurveyManager.m */,
+				D2A2AC5B0F8CE91C003973C8 /* AnswerManager.h */,
+				D2A2AC5C0F8CE91C003973C8 /* AnswerManager.m */,
+				D2A2AE3B0F8D2689003973C8 /* PictureUploader.h */,
+				D2A2AE3C0F8D2689003973C8 /* PictureUploader.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -524,6 +542,9 @@
 		D2F22B860EFBF0A60047CBFA /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				DA83511F0F8E175F0073F848 /* CredentialsViewControllerTest.m */,
+				DA8351100F8E103C0073F848 /* UIView+EasySubviewLabelAccess.h */,
+				DA8351110F8E103C0073F848 /* UIView+EasySubviewLabelAccess.m */,
 				DA86BEBB0F73E42700CC6EBE /* AccountTest.m */,
 				DA86BEBC0F73E42700CC6EBE /* ProfileViewControllerTest.m */,
 				DA86BEBD0F73E42700CC6EBE /* QuestionTest.h */,
@@ -689,6 +710,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA83513F0F8E208D0073F848 /* CredentialsView.xib in Resources */,
 				DAA2E6F80F83B5F40004D56E /* NewAccountView.xib in Resources */,
 				DAA2E6840F83A3970004D56E /* SegmentedTableViewCell.xib in Resources */,
 				DAA2E6540F839FA20004D56E /* LabelledTableViewCell.xib in Resources */,
@@ -756,6 +778,8 @@
 				DADF839E0F865A7200DEACA0 /* StaticTable.m in Sources */,
 				D2A946730F7A75C000E6D9B6 /* SurveyManager.m in Sources */,
 				54F817E80F8E64FE00EC1909 /* SurveyListViewTableCell.m in Sources */,
+				D2A2AC5D0F8CE91C003973C8 /* AnswerManager.m in Sources */,
+				D2A2AE3D0F8D2689003973C8 /* PictureUploader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -809,6 +833,10 @@
 				DADF83AB0F865D9800DEACA0 /* StaticTableTest.m in Sources */,
 				DA5367DD0F86B817001127B0 /* StubCellWithError.m in Sources */,
 				D2A946720F7A75C000E6D9B6 /* SurveyManager.m in Sources */,
+				DA8351120F8E103C0073F848 /* UIView+EasySubviewLabelAccess.m in Sources */,
+				DA8351210F8E175F0073F848 /* CredentialsViewControllerTest.m in Sources */,
+				D2A2AC5E0F8CE91C003973C8 /* AnswerManager.m in Sources */,
+				D2A2AE3E0F8D2689003973C8 /* PictureUploader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

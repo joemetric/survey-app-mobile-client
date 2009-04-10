@@ -12,4 +12,8 @@ Account *gAccount;
     accountLoadStatus = _status;
 }
 
+-(BOOL)isObserver:(id<AccountObserver>)observer{
+	return [observers containsObject:observer];
+}
+
 @end

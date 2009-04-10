@@ -12,6 +12,7 @@
     NSDecimalNumber *amount;
     NSMutableArray  *questions;
     NSDate          *updatedAt;
+    BOOL             complete;
 }
 
 @property (nonatomic, assign) NSInteger itemId;
@@ -19,6 +20,7 @@
 @property (nonatomic, retain) NSDecimalNumber *amount;
 @property (nonatomic, retain) NSMutableArray *questions;
 @property (nonatomic, retain) NSDate *updatedAt;
+@property (nonatomic, assign) BOOL complete;
 
 + (id)newFromDictionary:(NSDictionary *) dict;
 + (NSArray *)findAll;

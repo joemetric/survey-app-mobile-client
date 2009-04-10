@@ -6,92 +6,84 @@
 
 @synthesize observer;
 
-- (void)cancelConnection {
-    [conn cancel];
-    [conn release];
-    conn = nil;
++ (NSString *)surveyDirectory {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    return [documentsDirectory stringByAppendingPathComponent:@"surveys"]; 
 }
 
-- (void)startConnection:(NSURLRequest *)aRequest {
-    [self cancelConnection];
-    conn = [[NSURLConnection alloc] initWithRequest:aRequest delegate:self startImmediately:YES];
-    if (!conn) {
-        NSLog(@"Survey load connection failed");
+- (BOOL)loadSurveysFromNetwork {    
+    [[RestfulRequests restfulRequestsWithObserver:self] GET:@"/surveys.json"];
+    return YES;
+}
+
++ (NSArray *)loadSurveysFromLocal {
+    NSMutableArray *surveys = [[NSMutableArray alloc] initWithCapacity:0];
+    
+    for (id surveyFile in [[NSFileManager defaultManager] directoryContentsAtPath:[self surveyDirectory]]) {        
+        [surveys addObject:[NSDictionary dictionaryWithContentsOfFile:[[self surveyDirectory] stringByAppendingPathComponent:surveyFile]]];
     }
+    
+    return [surveys autorelease];
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-    [buffer appendData:data];
+
+
+-(void) authenticationFailed {
+    
 }
 
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    NSString *dataStr;
+-(void) failedWithError:(NSError *)error {
+    
+}
+
+- (void)deleteStaleLocalSurveys:(NSArray *)surveys {
+    NSMutableArray *localSurveys = [[NSMutableArray alloc] initWithCapacity:0];
+    NSMutableArray *remoteSurveys = [[NSMutableArray alloc] initWithCapacity:0];
+    NSString *surveyDirectory = [[self class] surveyDirectory];
+    
+    for (id surveyFile in [[NSFileManager defaultManager] directoryContentsAtPath:surveyDirectory]) {
+        [localSurveys addObject:[NSDecimalNumber 
+                                 decimalNumberWithString:[[surveyFile componentsSeparatedByString:@"."] objectAtIndex:0]]];
+    }
+
+    for (id survey in surveys) {
+        [remoteSurveys addObject:[survey objectForKey:@"id"]];
+    }
+    
+    for (id local in localSurveys) {
+        if (![remoteSurveys containsObject:local]) {
+            NSString *surveyPath = [surveyDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.plist", local]];
+            [[NSFileManager defaultManager] removeFileAtPath:surveyPath handler:nil];
+        }
+    }
+    
+    [remoteSurveys release];
+    [localSurveys release];
+}
+
+-(void) finishedLoading:(NSString *)data {
     NSArray *surveys;
     
-    dataStr = [[NSString alloc] initWithData:buffer encoding:NSASCIIStringEncoding];
-    
-    surveys = [dataStr JSONFragmentValue];
+    surveys = [data JSONFragmentValue];
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSString *surveyDirectory = [documentsDirectory stringByAppendingPathComponent:@"surveys"];
     
-    // Ensure surveys directory exists
     [[NSFileManager defaultManager] createDirectoryAtPath:surveyDirectory attributes:nil];
     
-    // Write one plist file per survey, surveys/n.plist
-    // Can do 'sync' by checking updated_at from the plist
+    [self deleteStaleLocalSurveys:surveys];
     for (id survey in surveys) {
         NSString *surveyFilePath = [surveyDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.plist", 
                                                                                     [survey objectForKey:@"id"]]];
         [survey writeToFile:surveyFilePath atomically:YES];
     }
-
-    [dataStr release];
-    
-    [observer surveysStored];
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
-	if ([challenge previousFailureCount] > 0) {
-		[[challenge sender] cancelAuthenticationChallenge:challenge];
-	}
-	else{
-		[[challenge sender] useCredential:[RestConfiguration urlCredential] forAuthenticationChallenge:challenge];
-	}
-}
-
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    NSLog(@"Connection error: %@", error);
+        
+    [observer surveysStored];    
 }
 
 
-- (BOOL)loadSurveysFromNetwork {
-    // connection to app, download, write plist
-    NSURL *url = [[NSURL alloc] initWithScheme:@"http" host:[NSString stringWithFormat:@"%@:%d", host, port] path:@"/surveys.json"];
-    
-    [request setURL:url];
-    [request setHTTPMethod:@"GET"];
-
-    [self startConnection:request];
-    
-    [url release];
-    
-    return YES;
-}
-
-+ (NSArray *)loadSurveysFromLocal {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *surveyDirectory = [documentsDirectory stringByAppendingPathComponent:@"surveys"];
-    NSMutableArray *surveys = [[NSMutableArray alloc] initWithCapacity:0];
-    
-    for (id surveyFile in [[NSFileManager defaultManager] directoryContentsAtPath:surveyDirectory]) {        
-        [surveys addObject:[NSDictionary dictionaryWithContentsOfFile:[surveyDirectory stringByAppendingPathComponent:surveyFile]]];
-    }
-    
-    return [surveys autorelease];
-}
 
 - (id)init {
     return [self initWithObserver:nil];
@@ -99,30 +91,12 @@
 
 - (id)initWithObserver:(NSObject<SurveyManagerObserver> *)delegate {
     if (self = [super init]) {
-        host   = [RestConfiguration host];
-        port   = [RestConfiguration port];
-        buffer = [[NSMutableData alloc] init];
-        
-        NSMutableDictionary *headers = [[[NSMutableDictionary alloc] init] autorelease];
-        [headers setValue:@"application/json" forKey:@"Content-Type"];
-        [headers setValue:@"text/json" forKey:@"Accept"];
-        [headers setValue:@"no-cache" forKey:@"Cache-Control"];
-        [headers setValue:@"no-cache" forKey:@"Pragma"];
-        [headers setValue:@"close" forKey:@"Connection"];
-        
-        request = [NSMutableURLRequest requestWithURL:nil
-                                          cachePolicy:NSURLRequestUseProtocolCachePolicy 
-                                      timeoutInterval:60.0];
-        
-        [request setAllHTTPHeaderFields:headers];
-        
         self.observer = delegate;
     }
     return self;
 }
 
 - (void)dealloc {
-    [buffer release];
     [super dealloc];
 }
 @end

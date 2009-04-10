@@ -10,4 +10,6 @@
 -(void)addSection:(TableSection*)section;
 -(void)handleErrors:(NSDictionary*)errors;
 -(void)removeAllSections;
+-(TableSection*) sectionAtIndex:(NSInteger)index;
+
 @end

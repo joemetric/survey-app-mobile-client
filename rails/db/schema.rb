@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090406095717) do
+ActiveRecord::Schema.define(:version => 20090409160352) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20090406095717) do
     t.string   "answer_file"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "picture_id"
   end
 
   create_table "completions", :force => true do |t|
@@ -39,6 +40,12 @@ ActiveRecord::Schema.define(:version => 20090406095717) do
     t.string   "state"
     t.string   "zipcode"
     t.string   "country",       :default => "AMERRRRICA! FUCK YYEEAAH!"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "pictures", :force => true do |t|
+    t.string   "path"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

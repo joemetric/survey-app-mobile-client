@@ -13,15 +13,18 @@
 
 @synthesize itemId;
 @synthesize questionId;
+@synthesize pictureId;
 @synthesize questionType;
 @synthesize answerString;
 @synthesize answerFile;
+@synthesize localImageFile;
 
 + (id)newFromDictionary:(NSDictionary *)dict
 {
     Answer *answer = [[Answer alloc] init];
     answer.itemId = [[dict objectForKey:@"id"] integerValue];
     answer.questionId = [[dict objectForKey:@"question_id"] integerValue];
+    answer.pictureId = [[dict objectForKey:@"picture_id"] integerValue];
     answer.questionType = [dict objectForKey:@"question_type"];
     answer.answerString = [dict objectForKey:@"answer_string"];
     answer.answerFile = [dict objectForKey:@"answer_file"];
@@ -32,13 +35,18 @@
 {
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
     [parameters setObject:[NSNumber numberWithInt:self.questionId] forKey:@"question_id"];
+    [parameters setObject:[NSNumber numberWithInt:self.pictureId] forKey:@"picture_id"];
     [parameters setObject:self.questionType forKey:@"question_type"];
     if (self.answerString)
         [parameters setObject:self.answerString forKey:@"answer_string"];
     if (self.answerFile)
         [parameters setObject:self.answerFile forKey:@"answer_file"];
     
-    return [parameters autorelease];
+    NSMutableDictionary *container = [[NSMutableDictionary alloc] init];
+    [container setObject:parameters forKey:@"answer"];
+    [parameters release];
+    
+    return [container autorelease];
 }
 
 

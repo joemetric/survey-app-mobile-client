@@ -10,6 +10,7 @@
 #import "Question.h"
 #import "Answer.h"
 #import "QuestionListViewController.h"
+#import "AnswerManager.h"
 
 @implementation FreeTextAnswerController
 
@@ -38,6 +39,7 @@
 
     Answer *answer = [Answer newFromDictionary:params];
     [answer store];
+    [AnswerManager pushAnswer:answer];
     NSLog(@"Answer: %@", answer);
     
     [self.navigationController popToViewController:self.questionList animated:YES];

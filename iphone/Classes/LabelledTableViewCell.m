@@ -21,6 +21,12 @@
     return self;
 }
 
++(LabelledTableViewCell*) loadLabelledCellWithOwner:(id)owner {
+	NSArray* nib = [[NSBundle mainBundle] loadNibNamed:@"LabelledTableViewCell" owner:owner options:nil];
+	return (LabelledTableViewCell*)[nib objectAtIndex:0];
+}
+
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

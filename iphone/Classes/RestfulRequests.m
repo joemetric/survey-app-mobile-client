@@ -19,7 +19,7 @@
 
 -(void)dealloc{
 	[buffer release];
-	self.observer = nil;
+    [observer release];
 	[super dealloc];
 }
 

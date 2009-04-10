@@ -10,6 +10,7 @@
 #import "QuestionListViewController.h"
 #import "Question.h"
 #import "Answer.h"
+#import "AnswerManager.h"
 
 @implementation PictureAnswerController
 
@@ -71,6 +72,7 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo
 {
     imageView.image = image;
+    // STODO do picture storage here
     [[self parentViewController] dismissModalViewControllerAnimated:YES];
 }
 
@@ -79,18 +81,32 @@
     [[self parentViewController] dismissModalViewControllerAnimated:YES];
 }
 
+- (NSString *)storeImage {
+    int i = 0;
+    NSString *docsFolder = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    NSString *uniquePath = [docsFolder stringByAppendingPathComponent:@"selectedImage.png"];
+    while ([[NSFileManager defaultManager] fileExistsAtPath:uniquePath])
+        uniquePath = [NSString stringWithFormat:@"%@/%@-%d.%@", docsFolder, @"selectedImage", ++i, @"png"];
+    
+    NSLog(@"Writing image to %@", uniquePath);
+    [UIImagePNGRepresentation(imageView.image) writeToFile:uniquePath atomically:YES];
+    return uniquePath;
+}
+
 - (IBAction)sendAnswer:(id)sender
 {
     NSLog(@"Submitting picture");
-    // STODO - upload first, creating answer depends on success of that
+    NSString *imagePath = [self storeImage];
     
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setObject:[NSNumber numberWithInteger:question.itemId] forKey:@"question_id"];
     [params setObject:question.questionType forKey:@"question_type"];
-
     
     Answer *answer = [Answer newFromDictionary:params];
+    answer.localImageFile = imagePath;
     [answer store];
+    [AnswerManager pushAnswer:answer];
+    
     NSLog(@"Answer: %@", answer);
     
     [self.navigationController popToViewController:self.questionList animated:YES];
