@@ -95,6 +95,8 @@
 		DA83527C0F8E664E0073F848 /* NSObject+CleanUpProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = DA83527B0F8E664E0073F848 /* NSObject+CleanUpProperties.m */; };
 		DA83527D0F8E664E0073F848 /* NSObject+CleanUpProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = DA83527B0F8E664E0073F848 /* NSObject+CleanUpProperties.m */; };
 		DA83527F0F8E66ED0073F848 /* NSObject+CleanUpPropertiesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DA83527E0F8E66ED0073F848 /* NSObject+CleanUpPropertiesTest.m */; };
+		DA83533A0F8F7BEB0073F848 /* DatePickerViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8353390F8F7BEB0073F848 /* DatePickerViewControllerTest.m */; };
+		DA8353530F8F8BE90073F848 /* DatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54A6308F0F6EB2D20038382D /* DatePickerView.xib */; };
 		DA86BE730F72B29C00CC6EBE /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D68A3D40EDCD3D6007CE721 /* ProfileViewController.m */; };
 		DA86BE760F72B2D400CC6EBE /* CredentialsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 548D9BC50F6AB5D100629CCE /* CredentialsViewController.m */; };
 		DA86BE770F72B2E300CC6EBE /* NewAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 547608CD0F6E5B37007CCC58 /* NewAccountViewController.m */; };
@@ -255,6 +257,7 @@
 		DA83527A0F8E664E0073F848 /* NSObject+CleanUpProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+CleanUpProperties.h"; sourceTree = "<group>"; };
 		DA83527B0F8E664E0073F848 /* NSObject+CleanUpProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CleanUpProperties.m"; sourceTree = "<group>"; };
 		DA83527E0F8E66ED0073F848 /* NSObject+CleanUpPropertiesTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CleanUpPropertiesTest.m"; sourceTree = "<group>"; };
+		DA8353390F8F7BEB0073F848 /* DatePickerViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewControllerTest.m; sourceTree = "<group>"; };
 		DA86BEBB0F73E42700CC6EBE /* AccountTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountTest.m; sourceTree = "<group>"; };
 		DA86BEBC0F73E42700CC6EBE /* ProfileViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewControllerTest.m; sourceTree = "<group>"; };
 		DA86BEBD0F73E42700CC6EBE /* QuestionTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionTest.h; sourceTree = "<group>"; };
@@ -580,6 +583,7 @@
 				DA5367DB0F86B817001127B0 /* StubCellWithError.h */,
 				DA5367DC0F86B817001127B0 /* StubCellWithError.m */,
 				DA83527E0F8E66ED0073F848 /* NSObject+CleanUpPropertiesTest.m */,
+				DA8353390F8F7BEB0073F848 /* DatePickerViewControllerTest.m */,
 			);
 			path = UnitTests;
 			sourceTree = "<group>";
@@ -720,6 +724,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA83513F0F8E208D0073F848 /* CredentialsView.xib in Resources */,
+				DA8353530F8F8BE90073F848 /* DatePickerView.xib in Resources */,
 				DAA2E6F80F83B5F40004D56E /* NewAccountView.xib in Resources */,
 				DAA2E6840F83A3970004D56E /* SegmentedTableViewCell.xib in Resources */,
 				DAA2E6540F839FA20004D56E /* LabelledTableViewCell.xib in Resources */,
@@ -849,6 +854,7 @@
 				D2A2AE3E0F8D2689003973C8 /* PictureUploader.m in Sources */,
 				DA83527C0F8E664E0073F848 /* NSObject+CleanUpProperties.m in Sources */,
 				DA83527F0F8E66ED0073F848 /* NSObject+CleanUpPropertiesTest.m in Sources */,
+				DA83533A0F8F7BEB0073F848 /* DatePickerViewControllerTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

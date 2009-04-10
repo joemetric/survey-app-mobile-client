@@ -115,7 +115,7 @@
 	[testee login:nil];
 	NSError* error = [NSError errorWithDomain:@"test.host" code:NSURLErrorTimedOut userInfo:nil];
 	[gAccount failedWithError:error];
-	STAssertTrue([[self sectionFooterText] matchRegex:@"Error"], nil);
+	STAssertNotNil([[self sectionFooterText] matchRegex:@"Error"], nil);
 
 }
 

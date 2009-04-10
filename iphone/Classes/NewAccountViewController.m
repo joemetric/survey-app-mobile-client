@@ -14,6 +14,7 @@
 #import "RestConfiguration.h"
 #import "StaticTable.h"
 #import "TableSection.h"
+#import <Foundation/Foundation.h>
 
 
 @interface NewAccountViewController ()
@@ -235,12 +236,8 @@
 		[income becomeFirstResponder];
 	} else if( indexPath.section == 1 && indexPath.row == 1 ) {
 		if( self.datePicker == nil ) {
-			self.datePicker = [[[DatePickerViewController alloc] initWithNibName:@"DatePickerView" bundle:nil] autorelease];
-			NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
-			[formatter setDateStyle:NSDateFormatterMediumStyle];
-			self.datePicker.datePicker.date = [formatter dateFromString:@"Dec 15, 1971"];
-			[formatter release];
-			self.datePicker.newAccountView = self;
+            static const int Dec_15_1970 = 61606800;
+			self.datePicker = [DatePickerViewController datePickerViewControllerWithDate:[NSDate dateWithTimeIntervalSince1970:Dec_15_1970]];
 		}
 		[self presentModalViewController:datePicker	animated:YES];
 	}

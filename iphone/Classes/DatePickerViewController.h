@@ -14,17 +14,17 @@
 	UIDatePicker* datePicker;
 	UITableView* tableView;
 	UITableViewCell* cell;
+    NSDate* initialDate;
 	NSDateFormatter* formatter;
-	NewAccountViewController* newAccountView;
 }
 
 - (IBAction) valueChanged:(UIDatePicker*)sender;
 - (IBAction) done:(UIBarButtonItem*)sender;
++(id)datePickerViewControllerWithDate:(NSDate*)date;
 
-@property (nonatomic, retain) NewAccountViewController* newAccountView;
 @property (nonatomic, retain) NSDateFormatter* formatter;
 @property (nonatomic, retain) UITableViewCell* cell;
 @property (nonatomic, retain) IBOutlet UIDatePicker* datePicker;
 @property (nonatomic, retain) IBOutlet UITableView* tableView;
-
+@property (nonatomic, retain) NSDate* initialDate;
 @end

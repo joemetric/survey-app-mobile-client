@@ -14,6 +14,7 @@
 #import "StaticTable.h"
 #import "TableSection.h"
 #import "LabelledTableViewCell.h"
+#import "NSObject+CleanUpProperties.h"
 
 
 @interface CredentialsViewController ()

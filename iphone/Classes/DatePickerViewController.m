@@ -8,9 +8,10 @@
 
 #import "DatePickerViewController.h"
 #import "NewAccountViewController.h"
+#import "NSObject+CleanUpProperties.h"
 
 @implementation DatePickerViewController
-@synthesize datePicker, tableView, cell, formatter, newAccountView;
+@synthesize datePicker, tableView, cell, formatter, initialDate;
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
 }
@@ -20,9 +21,18 @@
 }
 
 - (IBAction) done:(UIBarButtonItem*)sender {
-	[self.newAccountView dismissModalViewControllerAnimated:YES];
+	[self.parentViewController dismissModalViewControllerAnimated:YES];
 }
 
++(id)datePickerViewControllerWithDate:(NSDate*)date{
+    DatePickerViewController* result = [[[self alloc] initWithNibName:@"DatePickerView" bundle:nil] autorelease];
+    result.initialDate = date;
+    return result;
+}
+
+-(void)viewDidLoad{
+    datePicker.date = initialDate;
+}
 
 #pragma mark -
 #pragma mark TableViewDelegate and DataSource methods
@@ -60,11 +70,7 @@
 
 
 - (void)dealloc {
-	[newAccountView release];
-	[datePicker release];
-	[cell release];
-	[formatter release];
-	[tableView release];
+    [self setEveryObjCObjectPropertyToNil];
     [super dealloc];
 }
 
