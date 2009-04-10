@@ -40,7 +40,6 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-	self.navigationController.navigationBarHidden = true;
 	[super viewWillAppear:animated];
 }
 
@@ -79,12 +78,17 @@
 }
 
 - (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	UINavigationController* surveyController = [[UINavigationController alloc] init];
+	surveyController.navigationBar.tintColor = [UIColor colorWithRed:12.0/256.0 green:43.0/256.0 blue:64.0/256.0 alpha:1.0];
+
+
     SurveyInfoViewController *sivc = [[SurveyInfoViewController alloc] initWithNibName:@"SurveyInfoView"
                                                                        bundle:nil
                                                                        survey:[self.surveys objectAtIndex:indexPath.row]];
-
-    [self.navigationController pushViewController:sivc animated:YES];
-    [sivc release];
+	[surveyController pushViewController:sivc animated:YES];
+	[sivc release];
+    [self presentModalViewController:surveyController animated:YES];
+    [surveyController release];
 }
 
 - (void)dealloc {

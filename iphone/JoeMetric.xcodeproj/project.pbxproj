@@ -40,6 +40,10 @@
 		5488C4410F8243C500B29C76 /* WalletViewTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5488C4400F8243C500B29C76 /* WalletViewTableCell.m */; };
 		548D9BC20F6AB49900629CCE /* CredentialsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 548D9BC10F6AB49900629CCE /* CredentialsView.xib */; };
 		548D9BC60F6AB5D100629CCE /* CredentialsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 548D9BC50F6AB5D100629CCE /* CredentialsViewController.m */; };
+		549A74F00F8F9CBC00D968C4 /* SurveyInfoViewTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 549A74EF0F8F9CBC00D968C4 /* SurveyInfoViewTableCell.xib */; };
+		549A74F50F8F9EEC00D968C4 /* SurveyInfoViewTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 549A74F40F8F9EEC00D968C4 /* SurveyInfoViewTableCell.m */; };
+		549A75020F8FA0CB00D968C4 /* question_freetext.png in Resources */ = {isa = PBXBuildFile; fileRef = 549A75000F8FA0CB00D968C4 /* question_freetext.png */; };
+		549A75030F8FA0CB00D968C4 /* question_picture.png in Resources */ = {isa = PBXBuildFile; fileRef = 549A75010F8FA0CB00D968C4 /* question_picture.png */; };
 		54A630360F6EA99B0038382D /* SegmentedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A630350F6EA99B0038382D /* SegmentedTableViewCell.m */; };
 		54A630380F6EAA6D0038382D /* SegmentedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54A630370F6EAA6D0038382D /* SegmentedTableViewCell.xib */; };
 		54A6308B0F6EB2240038382D /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A6308A0F6EB2240038382D /* DatePickerViewController.m */; };
@@ -190,6 +194,11 @@
 		548D9BC10F6AB49900629CCE /* CredentialsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CredentialsView.xib; sourceTree = "<group>"; };
 		548D9BC40F6AB5D100629CCE /* CredentialsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CredentialsViewController.h; sourceTree = "<group>"; };
 		548D9BC50F6AB5D100629CCE /* CredentialsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CredentialsViewController.m; sourceTree = "<group>"; };
+		549A74EF0F8F9CBC00D968C4 /* SurveyInfoViewTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SurveyInfoViewTableCell.xib; sourceTree = "<group>"; };
+		549A74F30F8F9EEC00D968C4 /* SurveyInfoViewTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SurveyInfoViewTableCell.h; path = ../SurveyInfoViewTableCell.h; sourceTree = "<group>"; };
+		549A74F40F8F9EEC00D968C4 /* SurveyInfoViewTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SurveyInfoViewTableCell.m; path = ../SurveyInfoViewTableCell.m; sourceTree = "<group>"; };
+		549A75000F8FA0CB00D968C4 /* question_freetext.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = question_freetext.png; sourceTree = "<group>"; };
+		549A75010F8FA0CB00D968C4 /* question_picture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = question_picture.png; sourceTree = "<group>"; };
 		54A630340F6EA99B0038382D /* SegmentedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentedTableViewCell.h; sourceTree = "<group>"; };
 		54A630350F6EA99B0038382D /* SegmentedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentedTableViewCell.m; sourceTree = "<group>"; };
 		54A630370F6EAA6D0038382D /* SegmentedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SegmentedTableViewCell.xib; sourceTree = "<group>"; };
@@ -392,6 +401,8 @@
 		0DF9E1EB0EF2ED1800A522A1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				549A75000F8FA0CB00D968C4 /* question_freetext.png */,
+				549A75010F8FA0CB00D968C4 /* question_picture.png */,
 				54F817C60F8E339100EC1909 /* surveylist_header.png */,
 				541654E70F864BFE00B7CCF2 /* wallet_header.png */,
 				541654E00F864AC700B7CCF2 /* green_lozenge.png */,
@@ -465,6 +476,7 @@
 				54A6308F0F6EB2D20038382D /* DatePickerView.xib */,
 				5488C43B0F8241DE00B29C76 /* WalletViewTableCell.xib */,
 				54F817E20F8E347400EC1909 /* SurveyListViewTableCell.xib */,
+				549A74EF0F8F9CBC00D968C4 /* SurveyInfoViewTableCell.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -607,6 +619,8 @@
 		FC9756830F13B20A0077926E /* Survey View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				549A74F30F8F9EEC00D968C4 /* SurveyInfoViewTableCell.h */,
+				549A74F40F8F9EEC00D968C4 /* SurveyInfoViewTableCell.m */,
 				0D68A3C50EDCD2B6007CE721 /* QuestionListViewController.h */,
 				0D68A3C60EDCD2B6007CE721 /* QuestionListViewController.m */,
 				FC9756840F13B2300077926E /* SurveyListViewController.h */,
@@ -712,6 +726,9 @@
 				541654E80F864BFE00B7CCF2 /* wallet_header.png in Resources */,
 				54F817C70F8E339100EC1909 /* surveylist_header.png in Resources */,
 				54F817E30F8E347400EC1909 /* SurveyListViewTableCell.xib in Resources */,
+				549A74F00F8F9CBC00D968C4 /* SurveyInfoViewTableCell.xib in Resources */,
+				549A75020F8FA0CB00D968C4 /* question_freetext.png in Resources */,
+				549A75030F8FA0CB00D968C4 /* question_picture.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -790,6 +807,7 @@
 				D2A2AC5D0F8CE91C003973C8 /* AnswerManager.m in Sources */,
 				D2A2AE3D0F8D2689003973C8 /* PictureUploader.m in Sources */,
 				DA83527D0F8E664E0073F848 /* NSObject+CleanUpProperties.m in Sources */,
+				549A74F50F8F9EEC00D968C4 /* SurveyInfoViewTableCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

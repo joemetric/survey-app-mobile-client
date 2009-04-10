@@ -14,7 +14,7 @@
 @interface PictureAnswerController : UIViewController <UIImagePickerControllerDelegate, UIActionSheetDelegate, UINavigationControllerDelegate> {
     IBOutlet UIImageView *imageView;
     Question *question;
-    QuestionListViewController *questionList;
+    UIViewController *questionList;
     UIActionSheet *menu;
     int snapshotButtonIndex;
     int libraryButtonIndex;
@@ -22,7 +22,7 @@
 }
 
 @property (nonatomic, retain) Question *question;
-@property (nonatomic, retain) QuestionListViewController *questionList;
+@property (nonatomic, retain) UIViewController *questionList;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil question:(Question *)aQuestion;
 
