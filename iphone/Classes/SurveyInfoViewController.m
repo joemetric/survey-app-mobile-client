@@ -29,7 +29,7 @@
     self.surveyAmount.text = [self.survey amountAsDollarString];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated {
 	self.navigationController.navigationBarHidden = false;
 	[super viewWillAppear:animated];
 }

@@ -160,9 +160,9 @@
 						<reference key="object" ref="191373211"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="249727087"/>
-							<reference ref="1048005002"/>
 							<reference ref="264276547"/>
+							<reference ref="1048005002"/>
+							<reference ref="249727087"/>
 						</object>
 						<reference key="parent" ref="360949347"/>
 					</object>
@@ -178,8 +178,8 @@
 						<reference key="parent" ref="360949347"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">4</int>
-						<reference key="object" ref="249727087"/>
+						<int key="objectID">8</int>
+						<reference key="object" ref="264276547"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -188,8 +188,8 @@
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">8</int>
-						<reference key="object" ref="264276547"/>
+						<int key="objectID">4</int>
+						<reference key="object" ref="249727087"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 				</object>
@@ -210,7 +210,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>SurveyInfoViewController</string>
 					<string>UIResponder</string>
-					<string>{{146, 224}, {320, 480}}</string>
+					<string>{{403, 510}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -237,11 +237,18 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">9</int>
+			<int key="maxID">10</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<bool key="EncodedWithXMLCoder">YES</bool>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">Classes/NSObject+CleanUpProperties.h</string>
+					</object>
+				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">NSObject</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
@@ -279,6 +286,13 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">Classes/SurveyInfoViewController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">UIView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">UnitTests/UIView+EasySubviewLabelAccess.h</string>
 					</object>
 				</object>
 			</object>
