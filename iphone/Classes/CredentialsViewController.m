@@ -37,6 +37,12 @@
 
 	usernameCell.label.text = @"username";
     usernameCell.textField.delegate = self;
+	usernameCell.textField.autocorrectionType = UITextAutocorrectionTypeNo;	
+	usernameCell.textField.autocapitalizationType = UITextAutocapitalizationTypeNone;	
+
+	passwordCell.textField.secureTextEntry = YES;	
+	passwordCell.textField.autocorrectionType = UITextAutocorrectionTypeNo;	
+	passwordCell.textField.autocapitalizationType = UITextAutocapitalizationTypeNone;	
 	passwordCell.label.text = @"password";
 
 	[section addCell:usernameCell];
@@ -99,10 +105,7 @@
 
 
 - (void)dealloc {
-	self.activityIndicator = nil;
-	self.tableView = nil;
-	self.usernameCell = nil;
-	self.passwordCell = nil;
+	[self setEveryObjCObjectPropertyToNil];
 	[super dealloc];
 }
 

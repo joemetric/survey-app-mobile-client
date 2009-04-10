@@ -159,7 +159,7 @@
 -(void) changeLoadStatusTo:(AccountLoadStatus)status withError:(NSError*)error{
 	accountLoadStatus = status;
 	self.lastLoadError = error;		
-	for (id<AccountObserver> observer in [observers copy]) [observer changeInAccount:self];
+	for (id<AccountObserver> observer in [[observers copy] autorelease]) [observer changeInAccount:self];
 }
 
 -(BOOL) isErrorStatus{
