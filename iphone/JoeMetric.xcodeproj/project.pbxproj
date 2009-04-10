@@ -45,6 +45,9 @@
 		54A6308B0F6EB2240038382D /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A6308A0F6EB2240038382D /* DatePickerViewController.m */; };
 		54A630900F6EB2D20038382D /* DatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54A6308F0F6EB2D20038382D /* DatePickerView.xib */; };
 		54D2A5630F6C53D800C0C316 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 54D2A5620F6C53D800C0C316 /* Settings.bundle */; };
+		54F817C70F8E339100EC1909 /* surveylist_header.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F817C60F8E339100EC1909 /* surveylist_header.png */; };
+		54F817E30F8E347400EC1909 /* SurveyListViewTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54F817E20F8E347400EC1909 /* SurveyListViewTableCell.xib */; };
+		54F817E80F8E64FE00EC1909 /* SurveyListViewTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F817E70F8E64FE00EC1909 /* SurveyListViewTableCell.m */; };
 		54FA56FB0F6E439200939C65 /* NoCredentialsProfileDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 54FA56FA0F6E439200939C65 /* NoCredentialsProfileDataSource.m */; };
 		54FA56FE0F6E43F100939C65 /* ValidCredentialsProfileDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 54FA56FD0F6E43F100939C65 /* ValidCredentialsProfileDataSource.m */; };
 		D255487C0F13C2950098100B /* Survey.m in Sources */ = {isa = PBXBuildFile; fileRef = FC21C5040F12B3AC00436E7F /* Survey.m */; };
@@ -184,6 +187,10 @@
 		54A6308A0F6EB2240038382D /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
 		54A6308F0F6EB2D20038382D /* DatePickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DatePickerView.xib; sourceTree = "<group>"; };
 		54D2A5620F6C53D800C0C316 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		54F817C60F8E339100EC1909 /* surveylist_header.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = surveylist_header.png; sourceTree = "<group>"; };
+		54F817E20F8E347400EC1909 /* SurveyListViewTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SurveyListViewTableCell.xib; sourceTree = "<group>"; };
+		54F817E60F8E64FE00EC1909 /* SurveyListViewTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurveyListViewTableCell.h; sourceTree = "<group>"; };
+		54F817E70F8E64FE00EC1909 /* SurveyListViewTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SurveyListViewTableCell.m; sourceTree = "<group>"; };
 		54FA56F90F6E439200939C65 /* NoCredentialsProfileDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoCredentialsProfileDataSource.h; sourceTree = "<group>"; };
 		54FA56FA0F6E439200939C65 /* NoCredentialsProfileDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoCredentialsProfileDataSource.m; sourceTree = "<group>"; };
 		54FA56FC0F6E43F100939C65 /* ValidCredentialsProfileDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValidCredentialsProfileDataSource.h; sourceTree = "<group>"; };
@@ -359,6 +366,7 @@
 		0DF9E1EB0EF2ED1800A522A1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				54F817C60F8E339100EC1909 /* surveylist_header.png */,
 				541654E70F864BFE00B7CCF2 /* wallet_header.png */,
 				541654E00F864AC700B7CCF2 /* green_lozenge.png */,
 				541654E10F864AC700B7CCF2 /* red_lozenge.png */,
@@ -430,6 +438,7 @@
 				54A630370F6EAA6D0038382D /* SegmentedTableViewCell.xib */,
 				54A6308F0F6EB2D20038382D /* DatePickerView.xib */,
 				5488C43B0F8241DE00B29C76 /* WalletViewTableCell.xib */,
+				54F817E20F8E347400EC1909 /* SurveyListViewTableCell.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -576,6 +585,8 @@
 				D2F2EF740F6030EB00A8BB57 /* QuestionViewController.m */,
 				D2F2EFF30F606AB500A8BB57 /* SurveyInfoViewController.h */,
 				D2F2EFF40F606AB500A8BB57 /* SurveyInfoViewController.m */,
+				54F817E60F8E64FE00EC1909 /* SurveyListViewTableCell.h */,
+				54F817E70F8E64FE00EC1909 /* SurveyListViewTableCell.m */,
 			);
 			name = "Survey View Controllers";
 			sourceTree = "<group>";
@@ -669,6 +680,8 @@
 				541654E30F864AC700B7CCF2 /* green_lozenge.png in Resources */,
 				541654E40F864AC700B7CCF2 /* red_lozenge.png in Resources */,
 				541654E80F864BFE00B7CCF2 /* wallet_header.png in Resources */,
+				54F817C70F8E339100EC1909 /* surveylist_header.png in Resources */,
+				54F817E30F8E347400EC1909 /* SurveyListViewTableCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -742,6 +755,7 @@
 				DADF83320F86352500DEACA0 /* TableSection.m in Sources */,
 				DADF839E0F865A7200DEACA0 /* StaticTable.m in Sources */,
 				D2A946730F7A75C000E6D9B6 /* SurveyManager.m in Sources */,
+				54F817E80F8E64FE00EC1909 /* SurveyListViewTableCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
