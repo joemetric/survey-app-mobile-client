@@ -16,13 +16,13 @@
     UILabel *amountLabel;
     Question *question;
     UIAlertView *baseAlert;
-    QuestionListViewController *questionList;
+    UIViewController *questionList;
 }
 
 @property (nonatomic, retain) IBOutlet UILabel *questionLabel;
 @property (nonatomic, retain) IBOutlet UILabel *amountLabel;
 @property (nonatomic, retain) Question *question;
-@property (nonatomic, retain) QuestionListViewController *questionList;
+@property (nonatomic, retain) UIViewController *questionList;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil question:(Question *)aQuestion;
 

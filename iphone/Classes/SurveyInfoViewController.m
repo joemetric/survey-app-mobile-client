@@ -7,14 +7,18 @@
 //
 
 #import "SurveyInfoViewController.h"
-#import "QuestionListViewController.h"
+#import "QuestionViewController.h"
 #import "Survey.h"
+#import "Question.h"
+#import "SurveyInfoViewTableCell.h"
 
 @implementation SurveyInfoViewController
 
 @synthesize surveyName;
 @synthesize surveyAmount;
 @synthesize survey;
+@synthesize surveyDescription;
+@synthesize questionList;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil survey:(Survey *)aSurvey {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
@@ -27,11 +31,69 @@
     [super viewDidLoad];
     self.surveyName.text = self.survey.name;
     self.surveyAmount.text = [self.survey amountAsDollarString];
+	UIBarButtonItem* doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(surveyDone:)];
+	UIBarButtonItem* cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(surveyCancel:)];
+	
+	self.navigationItem.rightBarButtonItem = doneButton;
+	self.navigationItem.leftBarButtonItem = cancelButton;
+	self.title = @"Survey";
+	[doneButton release];
+	[cancelButton release];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-	self.navigationController.navigationBarHidden = false;
-	[super viewWillAppear:animated];
+- (void) surveyDone:(id)sender {
+	[self.parentViewController dismissModalViewControllerAnimated:YES];
+}
+
+- (void) surveyCancel:(id)sender {
+	[self.parentViewController dismissModalViewControllerAnimated:YES];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tv {
+	NSLog(@"numSec");
+	return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tv numberOfRowsInSection:(NSInteger)section {
+	NSLog(@"numRow");
+	return [survey.questions count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	NSLog(@"cell");
+    SurveyInfoViewTableCell *cell = (SurveyInfoViewTableCell*)[tv dequeueReusableCellWithIdentifier:@"SurveyInfoViewTableCell"];
+	NSLog(@"cell:deq");
+	
+    if (cell == nil) {
+		NSLog(@"cell:nib");
+		NSArray* nib = [[NSBundle mainBundle] loadNibNamed:@"SurveyInfoViewTableCell" owner:self options:nil];
+		NSLog(@"cell:objAt");
+        cell = [nib objectAtIndex:0];
+		NSLog(@"cell:objAt:done");
+    }
+	NSLog(@"cell:quest");
+
+	Question* q = (Question*)[survey.questions objectAtIndex:indexPath.row]; 
+	NSLog(@"cell:text");
+	cell.textLabel.text = q.text;
+	NSLog(@"cell:image");
+	cell.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"question_%@.png", q.questionType]];
+	NSLog(@"cell:return");
+	return cell;
+}
+
+- (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    QuestionViewController *qvc = 
+	[[QuestionViewController alloc] initWithNibName:@"QuestionView" 
+											 bundle:nil
+										   question:[self.survey.questions objectAtIndex:indexPath.row]];
+    qvc.questionList = self;
+    [self.navigationController pushViewController:qvc animated:YES];  
+    [qvc release];    
+	
+}
+
+- (void)viewWillAppear:(BOOL)animated {
 }
 
 /*
@@ -47,17 +109,6 @@
     // Release anything that's not essential, such as cached data
 }
 
-- (IBAction)takeSurvey:(id) sender {
-    QuestionListViewController *questionListViewController = 
-        [[QuestionListViewController alloc] initWithNibName:@"QuestionListView" 
-                                                     bundle:nil
-                                                     survey:self.survey];
-    
-
-    [self.navigationController pushViewController:questionListViewController animated:YES];
-    
-    [questionListViewController release];
-}
 
 - (void)dealloc {
     [super dealloc];

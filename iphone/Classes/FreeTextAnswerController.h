@@ -13,12 +13,12 @@
 
 @interface FreeTextAnswerController : UIViewController <UITextFieldDelegate> {
     Question *question;
-    QuestionListViewController *questionList;
+    UIViewController *questionList;
     IBOutlet UITextField *answerField;
 }
 
 @property (nonatomic, retain) Question *question;
-@property (nonatomic, retain) QuestionListViewController *questionList;
+@property (nonatomic, retain) UIViewController *questionList;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil question:(Question *)aQuestion;
 

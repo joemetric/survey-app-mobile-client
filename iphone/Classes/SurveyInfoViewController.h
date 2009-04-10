@@ -10,16 +10,19 @@
 
 @class Survey;
 
-@interface SurveyInfoViewController : UIViewController {
+@interface SurveyInfoViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>{
     UILabel *surveyName;
     UILabel *surveyAmount;
+	UITextView *surveyDescription;
+	UITableView *questionList;
     Survey *survey;
 }
 
-- (IBAction)takeSurvey:(id) sender;
-
 @property (nonatomic, assign) IBOutlet UILabel *surveyName;
 @property (nonatomic, assign) IBOutlet UILabel *surveyAmount;
+
+@property (nonatomic, assign) IBOutlet	UITextView *surveyDescription;
+@property (nonatomic, assign) IBOutlet UITableView *questionList;
 @property (nonatomic, assign) Survey *survey;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil survey:(Survey *)aSurvey;
