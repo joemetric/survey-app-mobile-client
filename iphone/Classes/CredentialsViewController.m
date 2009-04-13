@@ -32,8 +32,8 @@
 
 	TableSection* section = [TableSection tableSectionWithTitle:@"Enter existing credentials:"];
 	[staticTable addSection:section];
-	self.usernameCell = [LabelledTableViewCell loadLabelledCellWithOwner:self];
-	self.passwordCell = [LabelledTableViewCell loadLabelledCellWithOwner:self];
+	self.usernameCell = [LabelledTableViewCell loadLabelledCell];
+	self.passwordCell = [LabelledTableViewCell loadLabelledCell];
 
 
 	usernameCell.label.text = @"username";

@@ -35,7 +35,7 @@
 @synthesize testee;
 
 -(void)setUp{
-    self.testee = [LabelledTableViewCell loadLabelledCellWithOwner: self];
+    self.testee = [LabelledTableViewCell loadLabelledCell];
 }
 
 -(void)testInitialised{

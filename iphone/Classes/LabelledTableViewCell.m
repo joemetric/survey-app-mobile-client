@@ -23,7 +23,7 @@
     return self;
 }
 
-+(LabelledTableViewCell*) loadLabelledCellWithOwner:(id)owner {
++(LabelledTableViewCell*) loadLabelledCell {
 	return [LoadsSingleObjectFromNib loadFromNib:@"LabelledTableViewCell"];
 }
 
