@@ -62,6 +62,7 @@
     textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
 	return self;
 }
+
 -(LabelledTableViewCell*)makeEmail{
 	return [[self withoutCorrections] withKeyboardType:UIKeyboardTypeEmailAddress];
 }

@@ -124,8 +124,6 @@
 		DA9A72C20F936EDB00F5580A /* StubEditable.m in Sources */ = {isa = PBXBuildFile; fileRef = DA9A72C00F936EDB00F5580A /* StubEditable.m */; };
 		DA9A72E00F938B3400F5580A /* UITableViewCell+IsEditable.m in Sources */ = {isa = PBXBuildFile; fileRef = DA9A72DF0F938B3400F5580A /* UITableViewCell+IsEditable.m */; };
 		DA9A72E10F938B3400F5580A /* UITableViewCell+IsEditable.m in Sources */ = {isa = PBXBuildFile; fileRef = DA9A72DF0F938B3400F5580A /* UITableViewCell+IsEditable.m */; };
-		DA9A73150F93CC1600F5580A /* DateViewEditableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA9A73140F93CC1600F5580A /* DateViewEditableCell.m */; };
-		DA9A73160F93CC1600F5580A /* DateViewEditableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA9A73140F93CC1600F5580A /* DateViewEditableCell.m */; };
 		DAA2E6530F8395AB0004D56E /* NewAccountViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA2E6520F8395AB0004D56E /* NewAccountViewControllerTest.m */; };
 		DAA2E6540F839FA20004D56E /* LabelledTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5420E3120F6E7F5B00DC2BDE /* LabelledTableViewCell.xib */; };
 		DAA2E6680F83A0160004D56E /* LabelledTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5420E3160F6E82E800DC2BDE /* LabelledTableViewCell.m */; };
@@ -289,8 +287,6 @@
 		DA9A72BF0F936EDB00F5580A /* StubEditable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StubEditable.h; sourceTree = "<group>"; };
 		DA9A72C00F936EDB00F5580A /* StubEditable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StubEditable.m; sourceTree = "<group>"; };
 		DA9A72DF0F938B3400F5580A /* UITableViewCell+IsEditable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+IsEditable.m"; sourceTree = "<group>"; };
-		DA9A73130F93CC1600F5580A /* DateViewEditableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateViewEditableCell.h; sourceTree = "<group>"; };
-		DA9A73140F93CC1600F5580A /* DateViewEditableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateViewEditableCell.m; sourceTree = "<group>"; };
 		DAA2E6520F8395AB0004D56E /* NewAccountViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewAccountViewControllerTest.m; sourceTree = "<group>"; };
 		DAA2E7320F83C3350004D56E /* AccountStubbing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountStubbing.h; sourceTree = "<group>"; };
 		DAA2E7330F83C3350004D56E /* AccountStubbing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountStubbing.m; sourceTree = "<group>"; };
@@ -534,8 +530,6 @@
 				DA86C18A0F778D8300CC6EBE /* NoAccountDataProfileDataSource.h */,
 				DA86C18B0F778D8300CC6EBE /* NoAccountDataProfileDataSource.m */,
 				DA9A72DF0F938B3400F5580A /* UITableViewCell+IsEditable.m */,
-				DA9A73130F93CC1600F5580A /* DateViewEditableCell.h */,
-				DA9A73140F93CC1600F5580A /* DateViewEditableCell.m */,
 			);
 			name = "Profile View Controllers";
 			sourceTree = "<group>";
@@ -816,7 +810,6 @@
 				DA9A72520F93587400F5580A /* LoadsSingleObjectFromNib.m in Sources */,
 				DA9A72C10F936EDB00F5580A /* StubEditable.m in Sources */,
 				DA9A72E00F938B3400F5580A /* UITableViewCell+IsEditable.m in Sources */,
-				DA9A73150F93CC1600F5580A /* DateViewEditableCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -880,7 +873,6 @@
 				DA9A72530F93587400F5580A /* LoadsSingleObjectFromNib.m in Sources */,
 				DA9A72C20F936EDB00F5580A /* StubEditable.m in Sources */,
 				DA9A72E10F938B3400F5580A /* UITableViewCell+IsEditable.m in Sources */,
-				DA9A73160F93CC1600F5580A /* DateViewEditableCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
