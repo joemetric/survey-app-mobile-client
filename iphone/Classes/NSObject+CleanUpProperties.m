@@ -65,8 +65,11 @@ static BOOL PropertyIsSettable(const char* propertyAttributeString) {
 				NSString *setterName = SetterNameFromAttributes(propertyAttrs);
 				if(!setterName){
 					setterName = SetterNameFromPropertyName(property_getName(propertyList[i]));
-				}				
-				[self performSelector:NSSelectorFromString(setterName) withObject:nil];
+				}
+                SEL selector = NSSelectorFromString(setterName);
+				if([self respondsToSelector:selector]){
+                    [self performSelector:selector withObject:nil];
+                }
 			}
 		}
 		free(propertyList);
