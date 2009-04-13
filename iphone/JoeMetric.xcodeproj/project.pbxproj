@@ -119,6 +119,8 @@
 		DA86C2F10F7A2E8C00CC6EBE /* RestfulRequestsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DA86C2F00F7A2E8C00CC6EBE /* RestfulRequestsTest.m */; };
 		DA86C3290F7A433B00CC6EBE /* RestStubbing.m in Sources */ = {isa = PBXBuildFile; fileRef = DA86C3280F7A433B00CC6EBE /* RestStubbing.m */; };
 		DA9A712E0F8F9B7400F5580A /* LabelledTableViewCellTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DA9A712D0F8F9B7400F5580A /* LabelledTableViewCellTest.m */; };
+		DA9A72520F93587400F5580A /* LoadsSingleObjectFromNib.m in Sources */ = {isa = PBXBuildFile; fileRef = DA9A72510F93587400F5580A /* LoadsSingleObjectFromNib.m */; };
+		DA9A72530F93587400F5580A /* LoadsSingleObjectFromNib.m in Sources */ = {isa = PBXBuildFile; fileRef = DA9A72510F93587400F5580A /* LoadsSingleObjectFromNib.m */; };
 		DAA2E6530F8395AB0004D56E /* NewAccountViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA2E6520F8395AB0004D56E /* NewAccountViewControllerTest.m */; };
 		DAA2E6540F839FA20004D56E /* LabelledTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5420E3120F6E7F5B00DC2BDE /* LabelledTableViewCell.xib */; };
 		DAA2E6680F83A0160004D56E /* LabelledTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5420E3160F6E82E800DC2BDE /* LabelledTableViewCell.m */; };
@@ -279,6 +281,8 @@
 		DA86C2F80F7A3D4B00CC6EBE /* RestStubbing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestStubbing.h; sourceTree = "<group>"; };
 		DA86C3280F7A433B00CC6EBE /* RestStubbing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestStubbing.m; sourceTree = "<group>"; };
 		DA9A712D0F8F9B7400F5580A /* LabelledTableViewCellTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelledTableViewCellTest.m; sourceTree = "<group>"; };
+		DA9A72500F93587400F5580A /* LoadsSingleObjectFromNib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadsSingleObjectFromNib.h; sourceTree = "<group>"; };
+		DA9A72510F93587400F5580A /* LoadsSingleObjectFromNib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadsSingleObjectFromNib.m; sourceTree = "<group>"; };
 		DAA2E6520F8395AB0004D56E /* NewAccountViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewAccountViewControllerTest.m; sourceTree = "<group>"; };
 		DAA2E7320F83C3350004D56E /* AccountStubbing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountStubbing.h; sourceTree = "<group>"; };
 		DAA2E7330F83C3350004D56E /* AccountStubbing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountStubbing.m; sourceTree = "<group>"; };
@@ -348,6 +352,8 @@
 				D2A2AE3C0F8D2689003973C8 /* PictureUploader.m */,
 				DA83527A0F8E664E0073F848 /* NSObject+CleanUpProperties.h */,
 				DA83527B0F8E664E0073F848 /* NSObject+CleanUpProperties.m */,
+				DA9A72500F93587400F5580A /* LoadsSingleObjectFromNib.h */,
+				DA9A72510F93587400F5580A /* LoadsSingleObjectFromNib.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -796,6 +802,7 @@
 				D2A2AC5D0F8CE91C003973C8 /* AnswerManager.m in Sources */,
 				D2A2AE3D0F8D2689003973C8 /* PictureUploader.m in Sources */,
 				DA83527D0F8E664E0073F848 /* NSObject+CleanUpProperties.m in Sources */,
+				DA9A72520F93587400F5580A /* LoadsSingleObjectFromNib.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -857,6 +864,7 @@
 				DA83527F0F8E66ED0073F848 /* NSObject+CleanUpPropertiesTest.m in Sources */,
 				DA83533A0F8F7BEB0073F848 /* DatePickerViewControllerTest.m in Sources */,
 				DA9A712E0F8F9B7400F5580A /* LabelledTableViewCellTest.m in Sources */,
+				DA9A72530F93587400F5580A /* LoadsSingleObjectFromNib.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

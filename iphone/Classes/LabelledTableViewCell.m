@@ -7,7 +7,7 @@
 //
 
 #import "LabelledTableViewCell.h"
-
+#import "LoadsSingleObjectFromNib.h"
 
 
 
@@ -24,8 +24,7 @@
 }
 
 +(LabelledTableViewCell*) loadLabelledCellWithOwner:(id)owner {
-	NSArray* nib = [[NSBundle mainBundle] loadNibNamed:@"LabelledTableViewCell" owner:owner options:nil];
-	return (LabelledTableViewCell*)[nib objectAtIndex:0];
+	return [LoadsSingleObjectFromNib loadFromNib:@"LabelledTableViewCell"];
 }
 
 
