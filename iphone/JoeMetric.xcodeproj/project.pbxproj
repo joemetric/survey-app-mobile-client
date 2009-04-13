@@ -292,7 +292,7 @@
 		DADF832B0F86333F00DEACA0 /* TableSectionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableSectionTest.m; sourceTree = "<group>"; };
 		DADF832F0F86352500DEACA0 /* TableSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableSection.h; sourceTree = "<group>"; };
 		DADF83300F86352500DEACA0 /* TableSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableSection.m; sourceTree = "<group>"; };
-		DADF836F0F86441500DEACA0 /* HasError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HasError.h; sourceTree = "<group>"; };
+		DADF836F0F86441500DEACA0 /* Editable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Editable.h; sourceTree = "<group>"; };
 		DADF83700F86441500DEACA0 /* Labelled.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Labelled.h; sourceTree = "<group>"; };
 		DADF839B0F865A7200DEACA0 /* StaticTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaticTable.h; sourceTree = "<group>"; };
 		DADF839C0F865A7200DEACA0 /* StaticTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaticTable.m; sourceTree = "<group>"; };
@@ -497,7 +497,7 @@
 		54FA56FF0F6E444900939C65 /* Profile View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				DADF836F0F86441500DEACA0 /* HasError.h */,
+				DADF836F0F86441500DEACA0 /* Editable.h */,
 				DADF83700F86441500DEACA0 /* Labelled.h */,
 				0D68A3D30EDCD3D6007CE721 /* ProfileViewController.h */,
 				0D68A3D40EDCD3D6007CE721 /* ProfileViewController.m */,

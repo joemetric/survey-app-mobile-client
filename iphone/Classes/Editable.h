@@ -1,4 +1,4 @@
-@protocol HasError
+@protocol Editable
 
 
 @property(nonatomic) BOOL errorHighlighted;

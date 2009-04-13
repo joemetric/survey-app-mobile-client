@@ -7,7 +7,7 @@
 #import "AccountStubbing.h"
 #import "DateHelper.h"
 #import "NSString+Regex.h"
-#import "HasError.h"
+#import "Editable.h"
 
 
 @interface NewAccountViewControllerTest: GTMTestCase{
@@ -34,8 +34,8 @@
 }
 
 
--(id<Labelled, HasError>)labelledCellForRow:(NSInteger)row inSection:(NSInteger)section{
-	return (id<Labelled, HasError>) [testee tableView:testee.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
+-(id<Labelled, Editable>)labelledCellForRow:(NSInteger)row inSection:(NSInteger)section{
+	return (id<Labelled, Editable>) [testee tableView:testee.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
 }
 
 -(void)assertLabel:(NSString*)label inLabelledCellForRow:(NSInteger)row inSection:(NSInteger)section{
@@ -119,7 +119,7 @@
 
 
 -(void)assertRow:(NSInteger)row inSection:(NSInteger)section highlighted:(BOOL)highlighted{
-	id<HasError, Labelled> cell = [self labelledCellForRow:row inSection:section];
+	id<Editable, Labelled> cell = [self labelledCellForRow:row inSection:section];
 	STAssertEquals(highlighted, cell.errorHighlighted, 
 		[NSString stringWithFormat:@"%@ expected to be%@highlighted.", cell.label.text, 
 		highlighted ? @" " : @" not "]);
