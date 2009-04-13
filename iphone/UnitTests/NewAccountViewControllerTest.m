@@ -34,8 +34,8 @@
 }
 
 
--(id<Labelled, Editable>)labelledCellForRow:(NSInteger)row inSection:(NSInteger)section{
-	return (id<Labelled, Editable>) [testee tableView:testee.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
+-(id<Editable>)labelledCellForRow:(NSInteger)row inSection:(NSInteger)section{
+	return (id<Editable>) [testee tableView:testee.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
 }
 
 -(void)assertLabel:(NSString*)label inLabelledCellForRow:(NSInteger)row inSection:(NSInteger)section{
@@ -119,7 +119,7 @@
 
 
 -(void)assertRow:(NSInteger)row inSection:(NSInteger)section highlighted:(BOOL)highlighted{
-	id<Editable, Labelled> cell = [self labelledCellForRow:row inSection:section];
+	id<Editable> cell = [self labelledCellForRow:row inSection:section];
 	STAssertEquals(highlighted, cell.errorHighlighted, 
 		[NSString stringWithFormat:@"%@ expected to be%@highlighted.", cell.label.text, 
 		highlighted ? @" " : @" not "]);

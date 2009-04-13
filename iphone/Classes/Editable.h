@@ -1,4 +1,6 @@
-@protocol Editable
+#import "Labelled.h"
+
+@protocol Editable<Labelled>
 
 
 @property(nonatomic) BOOL errorHighlighted;
