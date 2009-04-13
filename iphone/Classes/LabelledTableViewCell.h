@@ -6,7 +6,8 @@
 	UILabel* label;
 	UITextField* textField;
     NSString* errorField;
-	UITableViewController* datePickerController;
+	UIViewController* datePickerController;
+	UIViewController* parentController;
 }
 
 @property (nonatomic, retain) IBOutlet UITextField* textField;

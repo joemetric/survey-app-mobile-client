@@ -12,12 +12,13 @@
 #import "DatePickerViewController.h"
 
 @interface LabelledTableViewCell()
-@property(nonatomic, retain) UITableViewController* datePickerController;
+@property(nonatomic, retain) UIViewController* datePickerController;
+@property(nonatomic, assign) UIViewController* parentController;
 @end
 
 @implementation LabelledTableViewCell
 @synthesize label, textField;
-@synthesize errorField, datePickerController;
+@synthesize errorField, datePickerController, parentController;
 
 - (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
 	if (self = [super initWithFrame:frame reuseIdentifier:reuseIdentifier]) {
@@ -66,12 +67,10 @@
 	return self;
 }
 
--(LabelledTableViewCell*)makeDateUsingParent:(UIViewController*)parent atInitialDate:(NSDate*)date{
+-(LabelledTableViewCell*)makeDateUsingParent:(UIViewController*)_parent atInitialDate:(NSDate*)date{
 	self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-	if (nil == self.datePickerController){
-		self.datePickerController =  [DatePickerViewController datePickerViewControllerWithDate:date andTextField:textField];
-	}
-	[parent presentModalViewController:self.datePickerController animated:YES];
+	self.datePickerController =  [DatePickerViewController datePickerViewControllerWithDate:date andTextField:textField];
+	self.parentController = _parent;
 	return self;
 }
 
@@ -91,7 +90,11 @@
 }
 
 -(void)activateEditing{
-	[self.textField becomeFirstResponder];
+	if (self.parentController == nil){
+		[self.textField becomeFirstResponder];
+	}else{
+		[self.parentController presentModalViewController:datePickerController animated:YES];
+	}
 }
 
 
