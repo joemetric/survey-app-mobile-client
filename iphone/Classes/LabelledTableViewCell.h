@@ -15,5 +15,8 @@
 
 +(LabelledTableViewCell*) loadLabelledCell;
 -(LabelledTableViewCell*)withLabelText:(NSString*)text;
-
+-(LabelledTableViewCell*)makeSecure;
+-(LabelledTableViewCell*)withoutCorrections;
+-(LabelledTableViewCell*)makeEmail;
+-(LabelledTableViewCell*)withKeyboardType:(UIKeyboardType)keyboardType;
 @end

@@ -44,6 +44,26 @@
     return label.textColor == [UIColor redColor];
 }
 
+-(LabelledTableViewCell*)makeSecure{
+    textField.secureTextEntry = YES;
+	return self;
+}
+
+-(LabelledTableViewCell*)withoutCorrections{
+    textField.autocorrectionType = UITextAutocorrectionTypeNo;
+    textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+	return self;
+}
+-(LabelledTableViewCell*)makeEmail{
+	return [[self withoutCorrections] withKeyboardType:UIKeyboardTypeEmailAddress];
+}
+
+-(LabelledTableViewCell*)withKeyboardType:(UIKeyboardType)keyboardType{
+	textField.keyboardType = UIKeyboardTypeEmailAddress;
+	return self;
+}
+
+
 -(void)setErrorHighlighted:(BOOL)highlighted{
     label.textColor = highlighted ? [UIColor redColor] : [UIColor blackColor];
 }

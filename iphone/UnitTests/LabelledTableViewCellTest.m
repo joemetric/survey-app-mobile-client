@@ -59,5 +59,28 @@
 	STAssertEqualStrings(@"the label text", [testee withLabelText:@"the label text"].label.text, nil);
 }
 
+-(void)testMakeSecure{
+    UITextField* textField = [testee makeSecure].textField;
+    STAssertEquals(UITextAutocapitalizationTypeNone, textField.autocapitalizationType, nil);
+    STAssertEquals(UITextAutocorrectionTypeNo, textField.autocorrectionType, nil);
+	STAssertEquals(UIKeyboardTypeASCIICapable, textField.keyboardType, nil);
+    STAssertTrue(textField.secureTextEntry, nil);    
+}
+
+-(void)testNoCorrections{
+    UITextField* textField = [testee withoutCorrections].textField;
+    STAssertEquals(UITextAutocapitalizationTypeNone, textField.autocapitalizationType, nil);
+    STAssertEquals(UITextAutocorrectionTypeNo, textField.autocorrectionType, nil);
+	STAssertEquals(UIKeyboardTypeDefault, textField.keyboardType, nil);
+}
+
+-(void)testMakeEmail{
+    UITextField* textField = [testee makeEmail].textField;
+    STAssertEquals(UITextAutocapitalizationTypeNone, textField.autocapitalizationType, nil);
+    STAssertEquals(UITextAutocorrectionTypeNo, textField.autocorrectionType, nil);
+	STAssertEquals(UIKeyboardTypeEmailAddress, textField.keyboardType, nil);
+	
+}
+
 
 @end
