@@ -14,14 +14,16 @@
 	UIDatePicker* datePicker;
 	UITableView* tableView;
 	UITableViewCell* cell;
+	UITextField* dateTextField;
     NSDate* initialDate;
 	NSDateFormatter* formatter;
 }
 
 - (IBAction) valueChanged:(UIDatePicker*)sender;
 - (IBAction) done:(UIBarButtonItem*)sender;
-+(id)datePickerViewControllerWithDate:(NSDate*)date;
++(id)datePickerViewControllerWithDate:(NSDate*)date andTextField:(UITextField*)textField;
 
+@property (nonatomic, assign) UITextField* dateTextField;
 @property (nonatomic, retain) NSDateFormatter* formatter;
 @property (nonatomic, retain) UITableViewCell* cell;
 @property (nonatomic, retain) IBOutlet UIDatePicker* datePicker;

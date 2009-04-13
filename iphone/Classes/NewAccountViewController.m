@@ -182,7 +182,6 @@
 }
 
 - (void) dismissModalViewControllerAnimated:(BOOL) animated {
-	self.dob.text = [[self dateFormatter] stringFromDate:self.datePicker.datePicker.date];
 	[super dismissModalViewControllerAnimated:animated];
 }
 
@@ -190,7 +189,8 @@
 	if( indexPath.section == 1 && indexPath.row == 1 ) {
 		if( self.datePicker == nil ) {
             static const int Dec_15_1970 = 61606800;
-			self.datePicker = [DatePickerViewController datePickerViewControllerWithDate:[NSDate dateWithTimeIntervalSince1970:Dec_15_1970]];
+			self.datePicker = 
+            [DatePickerViewController datePickerViewControllerWithDate:[NSDate dateWithTimeIntervalSince1970:Dec_15_1970] andTextField:self.dobCell.textField];
 		}
 		[self presentModalViewController:datePicker	animated:YES];
 	}

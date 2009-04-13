@@ -122,5 +122,15 @@
 	STAssertEqualObjects(date, [parent->presentedModalViewController initialDate], nil);
 }
 
+-(void)testDatePickerControllerHasReferenceToLabelledTableViewCellTextField{
+	StubbedViewController* parent = [[[StubbedViewController alloc] init] autorelease];
+	[testee makeDateUsingParent:parent atInitialDate:[NSDate dateWithTimeIntervalSince1970:0]];
+	[testee activateEditing];
+	DatePickerViewController* datePickerViewController = (DatePickerViewController*) parent->presentedModalViewController;
+	STAssertEqualObjects(testee.textField, datePickerViewController.dateTextField, nil);
+	
+	
+}
+
 
 @end

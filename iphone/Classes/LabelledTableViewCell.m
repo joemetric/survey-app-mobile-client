@@ -69,7 +69,7 @@
 -(LabelledTableViewCell*)makeDateUsingParent:(UIViewController*)parent atInitialDate:(NSDate*)date{
 	self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	if (nil == self.datePickerController){
-		self.datePickerController =  [DatePickerViewController datePickerViewControllerWithDate:date];
+		self.datePickerController =  [DatePickerViewController datePickerViewControllerWithDate:date andTextField:textField];
 	}
 	[parent presentModalViewController:self.datePickerController animated:YES];
 	return self;

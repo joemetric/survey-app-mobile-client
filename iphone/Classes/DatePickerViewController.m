@@ -11,27 +11,34 @@
 #import "NSObject+CleanUpProperties.h"
 
 @implementation DatePickerViewController
-@synthesize datePicker, tableView, cell, formatter, initialDate;
+@synthesize datePicker, tableView, cell, formatter, initialDate, dateTextField;
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
 }
 
 - (IBAction) valueChanged:(UIDatePicker*)sender {
 	self.cell.text = [self.formatter stringFromDate:sender.date];
+	self.dateTextField.text = self.cell.text;
 }
 
 - (IBAction) done:(UIBarButtonItem*)sender {
 	[self.parentViewController dismissModalViewControllerAnimated:YES];
 }
 
-+(id)datePickerViewControllerWithDate:(NSDate*)date{
++(id)datePickerViewControllerWithDate:(NSDate*)date andTextField:(UITextField*)textField{
     DatePickerViewController* result = [[[self alloc] initWithNibName:@"DatePickerView" bundle:nil] autorelease];
     result.initialDate = date;
+	result.dateTextField = textField;
     return result;
 }
 
 -(void)viewDidLoad{
     datePicker.date = initialDate;
+	self.formatter = [[[NSDateFormatter alloc] init] autorelease];
+	[self.formatter setDateStyle:NSDateFormatterMediumStyle];
+	self.cell = [[[UITableViewCell alloc] init] autorelease];
+	self.cell.accessoryType = UITableViewCellAccessoryNone;
+	self.cell.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
 #pragma mark -
@@ -53,13 +60,6 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	if( self.cell == nil ) {
-		self.cell = [[[UITableViewCell alloc] init] autorelease];
-		self.cell.accessoryType = UITableViewCellAccessoryNone;
-		self.cell.selectionStyle = UITableViewCellSelectionStyleNone;
-		self.formatter = [[[NSDateFormatter alloc] init] autorelease];
-		[self.formatter setDateStyle:NSDateFormatterLongStyle];
-	}
 	self.cell.text = [self.formatter stringFromDate:datePicker.date];
 	return self.cell;
 }
