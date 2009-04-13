@@ -1,6 +1,6 @@
 #import "GTMSenTestCase.h"
 #import "TableSection.h"
-#import "HasError.h"
+#import "Editable.h"
 #import "StubCellWithError.h"
 #import "UIView+EasySubviewLabelAccess.h"
 

@@ -64,6 +64,7 @@
 	[RestConfiguration setUsername:@"Petya"];
 	[RestConfiguration setPassword:@"passywordy"];
 	[testee viewDidAppear:YES];
+    STAssertNotNil([self usernameCell].textField, nil);
 	STAssertEqualStrings(@"Petya", [self usernameCell].textField.text, nil);
 	STAssertEqualStrings(@"passywordy", [self passwordCell].textField.text, nil);
 }

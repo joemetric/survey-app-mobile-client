@@ -9,6 +9,8 @@
 #import "LabelledTableViewCell.h"
 
 
+
+
 @implementation LabelledTableViewCell
 @synthesize label, textField;
 @synthesize tableView;
@@ -27,10 +29,15 @@
 }
 
 
-
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+	if (selected) [self.textField becomeFirstResponder];
     [super setSelected:selected animated:animated];
-    // Configure the view for the selected state
+}
+
+
+-(LabelledTableViewCell*)withLabelText:(NSString*)text{
+	label.text = text;
+	return self;
 }
 
 

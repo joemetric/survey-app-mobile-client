@@ -1,8 +1,8 @@
 #import <UIKit/UIKit.h>
 #import "Labelled.h"
-#import "HasError.h"
+#import "Editable.h"
 
-@interface LabelledTableViewCell : UITableViewCell <UITextFieldDelegate, Labelled, HasError> {
+@interface LabelledTableViewCell : UITableViewCell <UITextFieldDelegate, Labelled, Editable> {
 	UILabel* label;
 	UITextField* textField;
 	UITableView* tableView;
@@ -14,6 +14,6 @@
 @property (nonatomic, retain) IBOutlet UILabel* label;
 
 +(LabelledTableViewCell*) loadLabelledCellWithOwner:(id)owner;
-
+-(LabelledTableViewCell*)withLabelText:(NSString*)text;
 
 @end

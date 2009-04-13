@@ -1,5 +1,5 @@
 #import "TableSection.h"
-#import "HasError.h"
+#import "Editable.h"
 
 @interface TableSection()
 @property(nonatomic, retain) NSMutableArray* cells;
@@ -90,13 +90,13 @@
 -(void)handleErrors:(NSDictionary*)errors{
 	NSMutableArray* errorLines = [NSMutableArray arrayWithCapacity:errors.count];
 	for (id cell in cells){
-		if ([cell conformsToProtocol:@protocol(HasError)]){
-			id<HasError> hasError = (id<HasError>) cell;
-			NSArray* errorsForCell = [errors objectForKey:hasError.errorField];
-			hasError.errorHighlighted =  errorsForCell != nil;
-			if (hasError.errorHighlighted) {
+		if ([cell conformsToProtocol:@protocol(Editable)]){
+			id<Editable> Editable = (id<Editable>) cell;
+			NSArray* errorsForCell = [errors objectForKey:Editable.errorField];
+			Editable.errorHighlighted =  errorsForCell != nil;
+			if (Editable.errorHighlighted) {
 					for (NSString* error in  errorsForCell){
-						[errorLines addObject:[NSString stringWithFormat:@"%@ %@", hasError.errorField, error]];
+						[errorLines addObject:[NSString stringWithFormat:@"%@ %@", Editable.errorField, error]];
 					}
 			}
 		}
