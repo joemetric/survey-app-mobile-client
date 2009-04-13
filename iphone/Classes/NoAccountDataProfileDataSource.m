@@ -5,7 +5,7 @@
 @implementation NoAccountDataProfileDataSource
 
 +(id)noAccountDataProfileDataSourceWithMessage:(NSString*)message{
-	NoAccountDataProfileDataSource* result =  [self staticTable];
+	NoAccountDataProfileDataSource* result =  [self staticTableForTableView:nil];
 	TableSection* tableSection = [TableSection tableSectionWithTitle:@"Account"];
 	[result addSection:tableSection];
 	[tableSection setFooterLines:[NSArray arrayWithObject:message]];

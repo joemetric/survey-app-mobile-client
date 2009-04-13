@@ -74,7 +74,7 @@
 
 -(void)viewDidLoad{
 	[self initialiseCells];
-	self.staticTable = [StaticTable staticTable];
+	self.staticTable = [StaticTable staticTableForTableView:tableView];
 	[self populateBasicSection];
 	[self populateDemographicsSection];
     self.tableView.backgroundColor = [UIColor clearColor];
@@ -141,6 +141,7 @@
 }
 
 - (void) textFieldDidBeginEditing:(UITextField *)textField {
+    NSLog(@"textFieldDidBeginEditing");
 	if( textField == username ) {
 		[tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionNone animated:YES];
 	} else if( textField == password ) {
@@ -210,7 +211,6 @@
 	return [staticTable tableView:tv cellForRowAtIndexPath:indexPath];
 }
 
-
 -(NSDateFormatter*)dateFormatter{
 	NSDateFormatter* dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
 	[dateFormatter setDateStyle:NSDateFormatterMediumStyle];
@@ -224,6 +224,7 @@
 }
 
 - (void) tableView:(UITableView*)tv didSelectRowAtIndexPath:(NSIndexPath*)indexPath {
+	NSLog(@"didSelectRowAtIndexPath: row: %d section: %d", indexPath.row, indexPath.section);
 	if( indexPath.section == 0 && indexPath.row == 0 ) {
 		[username becomeFirstResponder];
 	} else if( indexPath.section == 0 && indexPath.row == 1 ) {

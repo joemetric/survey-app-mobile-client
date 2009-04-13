@@ -1,7 +1,7 @@
 #import "GTMSenTestCase.h"
 #import "TableSection.h"
 #import "Editable.h"
-#import "StubCellWithError.h"
+#import "StubEditable.h"
 #import "UIView+EasySubviewLabelAccess.h"
 
 @interface TableSectionTest : GTMTestCase {
@@ -118,14 +118,14 @@
 }
 
 -(void)assertCellAtIndex:(NSUInteger)index error:(BOOL)error{
-	StubCellWithError* cell = (StubCellWithError*)[testee cellAtIndex:index];
+	StubEditable* cell = (StubEditable*)[testee cellAtIndex:index];
 	STAssertEquals(error, cell.errorHighlighted, cell.text);
 	
 }
 -(void)testErrorsAddedToAppropriateCells{
-	[testee addCell:[StubCellWithError stubCellWithText:@"cell 1" errorField:@"cell1"]];
+	[testee addCell:[StubEditable stubCellWithText:@"cell 1" errorField:@"cell1"]];
 	[testee addCell:[self cellWithText:@"cell 2"]];
-	[testee addCell:[StubCellWithError stubCellWithText:@"cell 3" errorField:@"cell3"]];
+	[testee addCell:[StubEditable stubCellWithText:@"cell 3" errorField:@"cell3"]];
 	
 	NSMutableDictionary *errors = [NSMutableDictionary dictionary];
 	[errors setObject:[NSArray arrayWithObject:@"cell1err1"] forKey:@"cell1"];
@@ -137,8 +137,8 @@
 }
 
 -(void)testErrorsThatAffectSectionsCellsAreAddedAsFooterLines{
-	[testee addCell:[StubCellWithError stubCellWithText:@"cell 1" errorField:@"cell1"]];
-	[testee addCell:[StubCellWithError stubCellWithText:@"cell 3" errorField:@"cell2"]];
+	[testee addCell:[StubEditable stubCellWithText:@"cell 1" errorField:@"cell1"]];
+	[testee addCell:[StubEditable stubCellWithText:@"cell 3" errorField:@"cell2"]];
 	
 	NSMutableDictionary *errors = [NSMutableDictionary dictionary];
 	[errors setObject:[NSArray arrayWithObject:@"cell1err1"] forKey:@"cell1"];

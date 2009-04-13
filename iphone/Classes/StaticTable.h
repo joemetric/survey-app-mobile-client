@@ -6,7 +6,7 @@
 	NSMutableArray* sections;
 }
 
-+(id)staticTable;
++(id)staticTableForTableView:(UITableView*)tableView;
 -(void)addSection:(TableSection*)section;
 -(void)handleErrors:(NSDictionary*)errors;
 -(void)removeAllSections;

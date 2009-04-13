@@ -1,7 +1,7 @@
 #import "GTMSenTestCase.h"
 #import "StaticTable.h"
 #import "TableSection.h"
-#import "StubCellWithError.h"
+#import "StubEditable.h"
 
 @interface StaticTableTest : GTMTestCase{
 	StaticTable* testee;
@@ -21,7 +21,7 @@
 
 
 -(void)setUp{
-	testee = [StaticTable staticTable]; 
+	testee = [StaticTable staticTableForTableView:nil]; 
 	section1 = [TableSection tableSectionWithTitle:@"section 1"];
 	[testee addSection:section1];
 	[section1 addCell:[self cellWithText:@"s0r0"]];
@@ -79,7 +79,7 @@
 }
 
 -(void)testHandlesErrors{
-	StubCellWithError* errorCell = [StubCellWithError stubCellWithText:@"" errorField:@"err"];
+	StubEditable* errorCell = [StubEditable stubCellWithText:@"" errorField:@"err"];
 	[section1 addCell:errorCell];
 
 	NSMutableDictionary *errors = [NSMutableDictionary dictionary];

@@ -1,10 +1,10 @@
-#import "StubCellWithError.h"
+#import "StubEditable.h"
 
-@implementation StubCellWithError
+@implementation StubEditable
 @synthesize errorField, errorHighlighted, label;
 
 +(id)stubCellWithText:(NSString*)text errorField:(NSString*)errorField{
-	StubCellWithError* result = [[[StubCellWithError alloc] init] autorelease];
+	StubEditable* result = [[[StubEditable alloc] init] autorelease];
 	result.text = text;
 	result.errorField = errorField;
 	return result;

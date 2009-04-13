@@ -28,7 +28,7 @@
 	[super dealloc];	
 }
 
-+(id)staticTable{
++(id)staticTableForTableView:(UITableView*)tableView{
     return [[[self alloc] init] autorelease];
 }
 

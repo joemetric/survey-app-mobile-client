@@ -28,7 +28,7 @@
 @synthesize usernameCell, passwordCell, tableView, staticTable, activityIndicator;
 
 -(void) viewDidLoad{
-	self.staticTable = [StaticTable staticTable];
+	self.staticTable = [StaticTable staticTableForTableView:tableView];
 
 	TableSection* section = [TableSection tableSectionWithTitle:@"Enter existing credentials:"];
 	[staticTable addSection:section];

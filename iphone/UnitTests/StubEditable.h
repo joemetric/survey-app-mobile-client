@@ -1,7 +1,7 @@
 #import "UIKit/UIKit.h"
 #import "Editable.h"
 
-@interface StubCellWithError : UITableViewCell<Editable>{
+@interface StubEditable : UITableViewCell<Editable>{
 	NSString* errorField;
 	BOOL errorHighlighted;
     UILabel* label;
