@@ -6,6 +6,7 @@
 	UILabel* label;
 	UITextField* textField;
     NSString* errorField;
+	UITableViewController* datePickerController;
 }
 
 @property (nonatomic, retain) UITableView* tableView;
@@ -19,5 +20,6 @@
 -(LabelledTableViewCell*)makeSecure;
 -(LabelledTableViewCell*)withoutCorrections;
 -(LabelledTableViewCell*)makeEmail;
+-(LabelledTableViewCell*)makeDateUsingParent:(UIViewController*)parent atInitialDate:(NSDate*)date;
 -(LabelledTableViewCell*)withKeyboardType:(UIKeyboardType)keyboardType;
 @end

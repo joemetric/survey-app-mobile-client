@@ -1,7 +1,18 @@
 #import "GTMSenTestCase.h"
-
+#import "DatePickerViewController.h"
 #import "LabelledTableViewCell.h"
 
+@interface StubbedViewController : UIViewController{
+@public 
+	UIViewController* presentedModalViewController;
+}
+@end
+
+@implementation StubbedViewController
+- (void)presentModalViewController:(UIViewController *)modalViewController animated:(BOOL)animated{
+	presentedModalViewController = modalViewController;
+}
+@end
 
 @interface StubbedTextView : UITextView{
 	BOOL isFirstResponder;
@@ -96,7 +107,20 @@
 	
 }
 
+-(void)testMakingDateSetsDisclosureAccessory{
+	STAssertEquals(UITableViewCellAccessoryDisclosureIndicator, [testee makeDateUsingParent:nil atInitialDate:[NSDate dateWithTimeIntervalSince1970:0]].accessoryType, nil);
+}
 
+
+-(void)testWhenMadeDateActivatingPresentsDatePickerController{
+	NSDate* date = [NSDate dateWithTimeIntervalSince1970:1000];
+	StubbedViewController* parent = [[[StubbedViewController alloc] init] autorelease];
+	[testee makeDateUsingParent:parent atInitialDate:date];
+	[testee activateEditing];
+	STAssertNotNil(parent->presentedModalViewController, nil);
+	STAssertTrue([parent->presentedModalViewController isKindOfClass:[DatePickerViewController class]], nil);
+	STAssertEqualObjects(date, [parent->presentedModalViewController initialDate], nil);
+}
 
 
 @end
