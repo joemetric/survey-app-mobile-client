@@ -379,8 +379,6 @@
 				DADF83300F86352500DEACA0 /* TableSection.m */,
 				DADF839B0F865A7200DEACA0 /* StaticTable.h */,
 				DADF839C0F865A7200DEACA0 /* StaticTable.m */,
-				DA9A73130F93CC1600F5580A /* DateViewEditableCell.h */,
-				DA9A73140F93CC1600F5580A /* DateViewEditableCell.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -536,6 +534,8 @@
 				DA86C18A0F778D8300CC6EBE /* NoAccountDataProfileDataSource.h */,
 				DA86C18B0F778D8300CC6EBE /* NoAccountDataProfileDataSource.m */,
 				DA9A72DF0F938B3400F5580A /* UITableViewCell+IsEditable.m */,
+				DA9A73130F93CC1600F5580A /* DateViewEditableCell.h */,
+				DA9A73140F93CC1600F5580A /* DateViewEditableCell.m */,
 			);
 			name = "Profile View Controllers";
 			sourceTree = "<group>";
