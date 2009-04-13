@@ -12,5 +12,6 @@
 -(void)handleErrors:(NSDictionary*)errors;
 -(void)removeAllSections;
 -(TableSection*) sectionAtIndex:(NSInteger)index;
+-(void)activeSubsequentTextField:(UITextField*)textField;
 
 @end

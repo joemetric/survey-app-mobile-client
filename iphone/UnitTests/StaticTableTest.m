@@ -107,5 +107,64 @@
 	
 }
 
+-(void)testWhenReturnAndNoSubsequentResponsiveCellNothingBadHappens{
+	[section1 textFieldShouldReturn:[[[UITextField alloc] init] autorelease]];
+	
+}
+
+-(void)testWhenTextFieldReturnsNextCellIsSelectedInSameSection{
+	StubEditableWithTextField* finished = [StubEditableWithTextField stubEditableWithTextField];
+	StubEditableWithTextField* next = [StubEditableWithTextField stubEditableWithTextField];
+	
+	[section1 addCell:finished];
+	[section1 addCell:next];
+	
+	[section1 textFieldShouldReturn:finished.textField];	
+	STAssertTrue(next.activated, nil);	
+}
+
+-(void)testIfNextCellIsNotEditableThenNoCellIsSelected{
+	StubEditableWithTextField* finished = [StubEditableWithTextField stubEditableWithTextField];
+	UITableViewCell* next = [[[UITableViewCell alloc] init] autorelease];
+	StubEditableWithTextField* subsequent = [StubEditableWithTextField stubEditableWithTextField];
+	
+	[section1 addCell:finished];
+	[section1 addCell:next];
+	[section1 addCell:subsequent];
+	
+	[section1 textFieldShouldReturn:finished.textField];	
+	STAssertFalse(subsequent.activated, nil);		
+}
+
+-(void)testNextCellInNextSectionIsActivatedIfLastInSection{
+	StubEditableWithTextField* finished = [StubEditableWithTextField stubEditableWithTextField];
+	StubEditableWithTextField* next = [StubEditableWithTextField stubEditableWithTextField];
+	
+	[section2 addCell:finished];
+	TableSection* section3 = [TableSection tableSectionWithTitle:@""];
+	[testee addSection:section3];
+	[section3 addCell:next];
+	
+	[section2 textFieldShouldReturn:finished.textField];	
+	STAssertTrue(next.activated, nil);	
+	
+}
+
+-(void)testIfLastInSectionAndNextCellIsNotEditableThenSubsequentIsNotEdited{
+	StubEditableWithTextField* finished = [StubEditableWithTextField stubEditableWithTextField];
+	UITableViewCell* next = [[[UITableViewCell alloc] init] autorelease];
+	StubEditableWithTextField* subsequent = [StubEditableWithTextField stubEditableWithTextField];
+	
+	[section2 addCell:finished];
+	TableSection* section3 = [TableSection tableSectionWithTitle:@""];
+	[testee addSection:section3];
+	[section3 addCell:next];
+	[section3 addCell:subsequent];
+	
+	[section2 textFieldShouldReturn:finished.textField];	
+	STAssertFalse(subsequent.activated, nil);	
+	
+}
+
 
 @end

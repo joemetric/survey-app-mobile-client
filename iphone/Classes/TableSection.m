@@ -6,7 +6,7 @@
 @end
 
 @implementation TableSection
-@synthesize cells, headerView, footerView, tableView, section;
+@synthesize cells, headerView, footerView, tableView, section, staticTable;
 
 
 
@@ -51,7 +51,7 @@
 
 -(void)addCell:(UITableViewCell*)cell{
 	[cells addObject:cell];
-	if ([cell conformsToProtocol:@protocol(Editable)] && [cell respondsToSelector:@selector(textField)]){
+	if ([cell isEditableWithTextField]){
 		[[(id<Editable>)cell textField] setDelegate:self];
 	}
 }
@@ -92,12 +92,12 @@
 	NSMutableArray* errorLines = [NSMutableArray arrayWithCapacity:errors.count];
 	for (id cell in cells){
 		if ([cell conformsToProtocol:@protocol(Editable)]){
-			id<Editable> Editable = (id<Editable>) cell;
-			NSArray* errorsForCell = [errors objectForKey:Editable.errorField];
-			Editable.errorHighlighted =  errorsForCell != nil;
-			if (Editable.errorHighlighted) {
+			id<Editable> editable = (id<Editable>) cell;
+			NSArray* errorsForCell = [errors objectForKey:editable.errorField];
+			editable.errorHighlighted =  errorsForCell != nil;
+			if (editable.errorHighlighted) {
 					for (NSString* error in  errorsForCell){
-						[errorLines addObject:[NSString stringWithFormat:@"%@ %@", Editable.errorField, error]];
+						[errorLines addObject:[NSString stringWithFormat:@"%@ %@", editable.errorField, error]];
 					}
 			}
 		}
@@ -109,16 +109,19 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
 	int i = 0;
-	for (id cell in cells){
-		if ([cell conformsToProtocol:@protocol(Editable)] && [cell respondsToSelector:@selector(textField)]){
-			UITextField* other = [(id<Editable>)cell textField];
-			if (textField == other){
-				[tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:section] atScrollPosition:UITableViewScrollPositionNone animated:YES];
-				break;
-			}
+	for (UITableViewCell* cell in cells){
+		if ([cell isMyEditableTextField:textField]){
+			[tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:section] atScrollPosition:UITableViewScrollPositionNone animated:YES];
+			break;
 		}
+		
 		i++;
 	}
+}
+
+- (BOOL) textFieldShouldReturn:(UITextField*)textField {
+	[staticTable activeSubsequentTextField:textField];
+	return YES;
 }
 
 

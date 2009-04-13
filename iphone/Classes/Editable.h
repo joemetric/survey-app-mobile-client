@@ -8,5 +8,11 @@
 @optional
 -(UITextField*)textField;
 -(void)setTextField:(UITextField*)textField;
+-(void)activateEditing;
 
+@end
+
+@interface UITableViewCell(IsEditable)
+-(BOOL)isEditableWithTextField;
+-(BOOL)isMyEditableTextField:(UITextField*)textField;
 @end

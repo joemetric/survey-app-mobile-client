@@ -5,10 +5,12 @@
 	NSString* errorField;
 	BOOL errorHighlighted;
     UILabel* label;
+	BOOL activated;
 }
 
 +(id)stubCellWithText:(NSString*)text errorField:(NSString*)errorField;
 @property(nonatomic, retain) UILabel* label;
+@property(nonatomic, assign) BOOL activated;
 @end
 
 
@@ -16,6 +18,7 @@
 	UITextField* textField;
 }
 @property(nonatomic, assign) UITextField* textField;
+
 
 +(id)stubEditableWithTextField;
 @end
