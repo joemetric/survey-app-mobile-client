@@ -11,10 +11,11 @@
 
 @interface StaticTable()
 @property(nonatomic, retain) NSMutableArray* sections;
+@property(nonatomic, retain) UITableView* tableView;
 @end
 
 @implementation StaticTable
-@synthesize sections;
+@synthesize sections, tableView;
 
 -(id)init{
 	[super init];
@@ -29,10 +30,14 @@
 }
 
 +(id)staticTableForTableView:(UITableView*)tableView{
-    return [[[self alloc] init] autorelease];
+    StaticTable* result =  [[[self alloc] init] autorelease];
+	result.tableView = tableView;
+	return result;
 }
 
 -(void)addSection:(TableSection*)section{
+	section.tableView = tableView;
+	section.section = [sections count];
 	[sections addObject:section];
 }
 

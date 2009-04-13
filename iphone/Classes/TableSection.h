@@ -1,10 +1,12 @@
 #import <UIKit/UIKit.h>
 
 
-@interface TableSection : NSObject {
+@interface TableSection : NSObject<UITextFieldDelegate> {
 	NSMutableArray* cells;
     UIView* headerView;
 	UIView* footerView;
+	UITableView* tableView;
+	NSInteger section;
 }
 
 +(id)tableSectionWithTitle:(NSString*)title;
@@ -19,5 +21,7 @@
 @property(readonly) NSInteger footerHeight;
 @property(nonatomic, retain) UIView* headerView;
 @property(nonatomic, retain) UIView* footerView;
+@property(nonatomic, retain) UITableView* tableView;
+@property(nonatomic, assign) NSInteger section;
 
 @end

@@ -4,6 +4,7 @@
 
 @interface StaticTable : NSObject<UITableViewDataSource,UITableViewDelegate> {
 	NSMutableArray* sections;
+	UITableView* tableView;
 }
 
 +(id)staticTableForTableView:(UITableView*)tableView;

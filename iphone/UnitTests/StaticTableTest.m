@@ -3,13 +3,18 @@
 #import "TableSection.h"
 #import "StubEditable.h"
 
+
+
 @interface StaticTableTest : GTMTestCase{
 	StaticTable* testee;
 	TableSection* section1;
 	TableSection* section2;
+	UITableView* tableView;
 }
 
 @end
+
+
 
 @implementation StaticTableTest 
 
@@ -20,8 +25,10 @@
 }
 
 
+
 -(void)setUp{
-	testee = [StaticTable staticTableForTableView:nil]; 
+	tableView = [[UITableView alloc] init];
+	testee = [StaticTable staticTableForTableView:tableView]; 
 	section1 = [TableSection tableSectionWithTitle:@"section 1"];
 	[testee addSection:section1];
 	[section1 addCell:[self cellWithText:@"s0r0"]];
@@ -36,6 +43,10 @@
 
 }
 
+
+-(void)tearDown{
+	[tableView release];
+}
 
 -(void)testRowAndSectionCount{
 	STAssertEquals(2, [testee numberOfSectionsInTableView:nil], @"numberOfSectionsInTableView:");	
@@ -95,5 +106,6 @@
 	STAssertEquals(0, [testee numberOfSectionsInTableView:nil], @"numberOfSectionsInTableView:");	
 	
 }
+
 
 @end

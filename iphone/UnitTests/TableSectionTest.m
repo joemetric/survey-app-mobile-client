@@ -4,8 +4,26 @@
 #import "StubEditable.h"
 #import "UIView+EasySubviewLabelAccess.h"
 
+
+@interface StubbedUITableView : UITableView{
+@public
+	NSInteger lastScrolledToRow;
+	NSInteger lastScrolledToSection;
+}
+@end
+
+@implementation StubbedUITableView
+- (void)scrollToRowAtIndexPath:(NSIndexPath *)indexPath atScrollPosition:(UITableViewScrollPosition)scrollPosition animated:(BOOL)animated{
+	lastScrolledToRow = indexPath.row;
+	lastScrolledToSection = indexPath.section;
+}
+
+@end
+
+
 @interface TableSectionTest : GTMTestCase {
 	TableSection* testee;
+	StubbedUITableView* tableView;
 }
 
 @end
@@ -17,7 +35,14 @@
 
 
 -(void)setUp{
+	tableView = [[StubbedUITableView alloc] init];
 	testee = [TableSection tableSectionWithTitle:@"section title"];
+	testee.tableView = tableView;
+	testee.section = 8;
+}
+
+-(void)tearDown{
+	[tableView release];
 }
 
 -(void)testInitiallyEmpty{
@@ -152,5 +177,31 @@
 	STAssertEqualStrings(@"cell2 cell2err2", [[testee.footerView.subviews objectAtIndex:2] text], nil);
 	
 }
+
+
+-(void)testBecomesTextFieldDelegateIfAppropriate{
+	StubEditableWithTextField* cell =  [StubEditableWithTextField stubEditableWithTextField];
+	[testee addCell:cell];
+	STAssertEqualObjects(testee, cell.textField.delegate, nil);
+}
+
+
+-(void)testScrollsIntoViewWhenEditing{
+	UITableViewCell* notThis = [StubEditableWithTextField stubEditableWithTextField];
+	UITableViewCell* norThis = [[[UITableViewCell alloc] init] autorelease];
+	StubEditableWithTextField* thisOne = [StubEditableWithTextField stubEditableWithTextField];
+
+	[testee addCell:notThis];
+	[testee addCell:thisOne];
+	[testee addCell:norThis];
+	
+	[testee textFieldDidBeginEditing:thisOne.textField];
+	
+	STAssertEquals(1, tableView->lastScrolledToRow, @"lastScrolledToRow");
+	STAssertEquals(8, tableView->lastScrolledToSection, @"lastScrolledToSection");
+	
+
+}
+
 
 @end

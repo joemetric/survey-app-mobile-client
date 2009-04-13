@@ -6,6 +6,7 @@
 @property(nonatomic, retain) NSString* errorField;
 
 @optional
-@property(nonatomic, assign)id<UITextFieldDelegate> textFieldDelegate;
+-(UITextField*)textField;
+-(void)setTextField:(UITextField*)textField;
 
 @end

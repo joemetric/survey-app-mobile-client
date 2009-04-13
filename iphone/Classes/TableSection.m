@@ -6,9 +6,7 @@
 @end
 
 @implementation TableSection
-@synthesize cells;
-@synthesize headerView;
-@synthesize footerView;
+@synthesize cells, headerView, footerView, tableView, section;
 
 
 
@@ -47,18 +45,21 @@
 
 -(void) dealloc{
     [self.cells removeAllObjects];
- 	self.cells = nil;
-    self.headerView = nil;
+	[self setEveryObjCObjectPropertyToNil];
     [super dealloc];
 }
 
 -(void)addCell:(UITableViewCell*)cell{
 	[cells addObject:cell];
+	if ([cell conformsToProtocol:@protocol(Editable)] && [cell respondsToSelector:@selector(textField)]){
+		[[(id<Editable>)cell textField] setDelegate:self];
+	}
 }
 
 -(UITableViewCell*)cellAtIndex:(NSUInteger)index{
 	return [cells objectAtIndex:index];
 }
+
 
 
 -(NSInteger)rowCount{
@@ -102,6 +103,22 @@
 		}
 	}
 	[self setFooterLines:errorLines];
+}
+
+
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+	int i = 0;
+	for (id cell in cells){
+		if ([cell conformsToProtocol:@protocol(Editable)] && [cell respondsToSelector:@selector(textField)]){
+			UITextField* other = [(id<Editable>)cell textField];
+			if (textField == other){
+				[tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:section] atScrollPosition:UITableViewScrollPositionNone animated:YES];
+				break;
+			}
+		}
+		i++;
+	}
 }
 
 
