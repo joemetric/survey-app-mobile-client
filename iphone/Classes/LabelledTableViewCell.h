@@ -5,7 +5,6 @@
 @interface LabelledTableViewCell : UITableViewCell<Editable> {
 	UILabel* label;
 	UITextField* textField;
-	UITableView* tableView;
     NSString* errorField;
 }
 

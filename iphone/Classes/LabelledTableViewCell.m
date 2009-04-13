@@ -8,12 +8,12 @@
 
 #import "LabelledTableViewCell.h"
 #import "LoadsSingleObjectFromNib.h"
+#import "NSObject+CleanUpProperties.h"
 
 
 
 @implementation LabelledTableViewCell
 @synthesize label, textField;
-@synthesize tableView;
 @synthesize errorField;
 
 - (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
@@ -83,9 +83,7 @@
 
 
 - (void)dealloc {
-	[label release];
-	[textField release];
-	[tableView release];
+	[self setEveryObjCObjectPropertyToNil];
     [super dealloc];
 }
 
