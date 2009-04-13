@@ -1,5 +1,7 @@
 #import "TableSection.h"
 #import "Editable.h"
+#import "NSObject+CleanUpProperties.h"
+#import "StaticTable.h"
 
 @interface TableSection()
 @property(nonatomic, retain) NSMutableArray* cells;
@@ -120,6 +122,7 @@
 }
 
 - (BOOL) textFieldShouldReturn:(UITextField*)textField {
+	[textField resignFirstResponder];
 	[staticTable activeSubsequentTextField:textField];
 	return YES;
 }

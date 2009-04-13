@@ -49,6 +49,12 @@
 	STAssertTrue([testee.textField isFirstResponder], nil);
 }
 
+-(void)testWhenActivatedTextFieldBecomesFirstResponder{
+	testee.textField = [[[StubbedTextView alloc] init] autorelease];
+	[testee activateEditing];
+	STAssertTrue([testee.textField isFirstResponder], nil);	
+}
+
 -(void)testWhenNotSelectedTextfieldDoesNotBecomeFirstResponder{
 	testee.textField = [[[StubbedTextView alloc] init] autorelease];
 	[testee setSelected:NO animated:YES];
@@ -81,6 +87,8 @@
 	STAssertEquals(UIKeyboardTypeEmailAddress, textField.keyboardType, nil);
 	
 }
+
+
 
 
 @end

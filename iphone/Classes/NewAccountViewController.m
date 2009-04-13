@@ -118,28 +118,6 @@
     }
 }
 
-- (BOOL) textFieldShouldReturn:(UITextField*)textField {
-	if( textField == username ) {
-		[password becomeFirstResponder];
-		[username resignFirstResponder];
-	} else if( textField == password ) {
-		[passwordConfirmation becomeFirstResponder];
-		[password resignFirstResponder];
-	} else if( textField == passwordConfirmation ) {
-		[emailAddress becomeFirstResponder];
-		[passwordConfirmation resignFirstResponder];
-	} else if( textField == emailAddress ) {
-		[emailAddress resignFirstResponder];
-		[income becomeFirstResponder];
-		[income becomeFirstResponder];
-	} else if( textField == income ) {
-		[textField resignFirstResponder];
-	}
-	
-
-	return YES;
-}
-
 
 
 - (void)dealloc {

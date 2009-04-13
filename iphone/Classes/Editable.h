@@ -4,11 +4,12 @@
 @protocol Editable<Labelled>
 @property(nonatomic) BOOL errorHighlighted;
 @property(nonatomic, retain) NSString* errorField;
+-(void)activateEditing;
+
 
 @optional
 -(UITextField*)textField;
 -(void)setTextField:(UITextField*)textField;
--(void)activateEditing;
 
 @end
 

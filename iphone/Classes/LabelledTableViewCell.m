@@ -68,6 +68,10 @@
     label.textColor = highlighted ? [UIColor redColor] : [UIColor blackColor];
 }
 
+-(void)activateEditing{
+    [self.textField becomeFirstResponder];
+}
+
 #pragma mark -
 #pragma mark UITextFieldDelegate
 - (BOOL) textFieldShouldReturn:(UITextField*)tf {
