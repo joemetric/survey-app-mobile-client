@@ -65,6 +65,14 @@
 	STAssertEqualStrings(@"the label text", [testee withLabelText:@"the label text"].label.text, nil);
 }
 
+-(void)testErrorField{
+	STAssertEqualStrings(@"Login", [testee withErrorField:@"Login"].errorField, nil);	
+}
+
+-(void)testPlaceholder{
+	STAssertEqualStrings(@"required", [testee withPlaceholder:@"required"].textField.placeholder, nil);	
+}
+
 -(void)testMakeSecure{
     UITextField* textField = [testee makeSecure].textField;
     STAssertEquals(UITextAutocapitalizationTypeNone, textField.autocapitalizationType, nil);

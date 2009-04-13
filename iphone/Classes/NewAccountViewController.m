@@ -14,8 +14,7 @@
 #import "RestConfiguration.h"
 #import "StaticTable.h"
 #import "TableSection.h"
-#import <Foundation/Foundation.h>
-
+#import "NSObject+CleanUpProperties.h"
 
 @interface NewAccountViewController ()
 @property(readonly) NSDictionary* errors;
@@ -23,10 +22,10 @@
 @end
 
 @implementation NewAccountViewController
-@synthesize username, password, passwordConfirmation, emailAddress, gender, dob, income;
+@synthesize  gender, dob;
 @synthesize activityIndicator, profileView, tableView, datePicker;;
 @synthesize keyboardIsShowing;
-@synthesize loginCell, passwordCell, passwordConfirmationCell, emailCell, incomeCell, dobCell, genderCell;
+@synthesize  dobCell, genderCell, loginCell, emailCell, passwordCell, passwordConfirmationCell, incomeCell;
 @synthesize staticTable;
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -42,39 +41,56 @@
 	[super viewWillAppear:animated];
 }
 
--(void)initialiseCells{
-	loginCell.errorField = @"login";
-	passwordCell.errorField = @"password";
-    passwordConfirmationCell.errorField = @"password_confirmation";
-    emailCell.errorField = @"email";
-    incomeCell.errorField = @"income";
-    dobCell.errorField = @"birthdate";
-	
-}
+
 
 -(void)populateBasicSection{
 	TableSection* section = [TableSection tableSectionWithTitle:@"Basics"];
 	[staticTable addSection:section];
 	
-	[section addCell:loginCell];
-	[section addCell:passwordCell];
-	[section addCell:passwordConfirmationCell];
-	[section addCell:emailCell];
+	self.loginCell = [[[[[LabelledTableViewCell loadLabelledCell] 
+		withErrorField:@"login"] 
+		withLabelText:@"Login"] 
+		withPlaceholder:@"joe"] 
+		withoutCorrections];
+	self.passwordCell= [[[[[LabelledTableViewCell loadLabelledCell] 
+		withErrorField:@"password"] 
+		withLabelText:@"Password"] 
+		withPlaceholder:@"min 6 chars"] 
+		makeSecure];
+	self.passwordConfirmationCell= [[[[[LabelledTableViewCell loadLabelledCell] 
+		withErrorField:@"password_confirmation"]
+		withLabelText:@"Confirm P/W"] 
+		withPlaceholder:@"confirm password"] 
+		makeSecure];
+	self.emailCell = [[[[[LabelledTableViewCell loadLabelledCell] 
+		withErrorField:@"email"] 
+		withLabelText:@"Email"] 
+		withPlaceholder:@"joe@example.com"] 
+		makeEmail];
+    [section addCell:loginCell];
+    [section addCell:passwordCell];
+    [section addCell:passwordConfirmationCell];
+    [section addCell:emailCell];
 }
 
 -(void)populateDemographicsSection{
 	TableSection* section = [TableSection tableSectionWithTitle:@"Demographics"];
 	[staticTable addSection:section];
 	
-	[section addCell:incomeCell];
+	self.incomeCell = [[[[[LabelledTableViewCell loadLabelledCell] 
+		withErrorField:@"income"] 
+		withLabelText:@"Income"] 
+		withPlaceholder:@"999999"] 
+		withKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
+    [section addCell:self.incomeCell];
 	[section addCell:dobCell];
 	[section addCell:genderCell];
 }
 
 
 -(void)viewDidLoad{
-	[self initialiseCells];
 	self.staticTable = [StaticTable staticTableForTableView:tableView];
+    [dobCell withErrorField:@"birthdate"];
 	[self populateBasicSection];
 	[self populateDemographicsSection];
     self.tableView.backgroundColor = [UIColor clearColor];
@@ -121,25 +137,7 @@
 
 
 - (void)dealloc {
-	[loginCell release];
-	[passwordCell release];
-	[passwordConfirmationCell release];
-	[emailCell release];
-	[incomeCell release];
-	[dobCell release];
-	[genderCell release];
-	[tableView release];
-	[username release];
-	[password release];
-	[passwordConfirmation release];
-	[emailAddress release];
-	[gender release];
-	[dob release];
-	[income release];
-	[activityIndicator release];
-	[profileView release];
-	[datePicker release];
-	self.staticTable = nil;
+    [self setEveryObjCObjectPropertyToNil];
     [super dealloc];
 }
 
@@ -189,18 +187,7 @@
 }
 
 - (void) tableView:(UITableView*)tv didSelectRowAtIndexPath:(NSIndexPath*)indexPath {
-	NSLog(@"didSelectRowAtIndexPath: row: %d section: %d", indexPath.row, indexPath.section);
-	if( indexPath.section == 0 && indexPath.row == 0 ) {
-		[username becomeFirstResponder];
-	} else if( indexPath.section == 0 && indexPath.row == 1 ) {
-		[password becomeFirstResponder];
-	} else if( indexPath.section == 0 && indexPath.row == 2 ) {
-		[passwordConfirmation becomeFirstResponder];
-	} else if( indexPath.section == 0 && indexPath.row == 3 ) {
-		[emailAddress becomeFirstResponder];
-	} else if( indexPath.section == 1 && indexPath.row == 0 ) {
-		[income becomeFirstResponder];
-	} else if( indexPath.section == 1 && indexPath.row == 1 ) {
+	if( indexPath.section == 1 && indexPath.row == 1 ) {
 		if( self.datePicker == nil ) {
             static const int Dec_15_1970 = 61606800;
 			self.datePicker = [DatePickerViewController datePickerViewControllerWithDate:[NSDate dateWithTimeIntervalSince1970:Dec_15_1970]];

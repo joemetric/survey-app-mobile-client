@@ -33,7 +33,15 @@
     [super setSelected:selected animated:animated];
 }
 
+-(LabelledTableViewCell*)withErrorField:(NSString*)text{
+	self.errorField = text;
+	return self;
+}
 
+-(LabelledTableViewCell*)withPlaceholder:(NSString*)text{
+	self.textField.placeholder = text;
+	return self;
+}
 -(LabelledTableViewCell*)withLabelText:(NSString*)text{
 	label.text = text;
 	return self;
@@ -72,12 +80,6 @@
     [self.textField becomeFirstResponder];
 }
 
-#pragma mark -
-#pragma mark UITextFieldDelegate
-- (BOOL) textFieldShouldReturn:(UITextField*)tf {
-	[tf resignFirstResponder];
-	return YES;
-}
 
 - (void)dealloc {
 	[label release];
