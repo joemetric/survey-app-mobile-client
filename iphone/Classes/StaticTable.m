@@ -8,13 +8,15 @@
 
 #import "StaticTable.h"
 #import "TableSection.h"
+#import "Editable.h"
 
 @interface StaticTable()
 @property(nonatomic, retain) NSMutableArray* sections;
+@property(nonatomic, retain) UITableView* tableView;
 @end
 
 @implementation StaticTable
-@synthesize sections;
+@synthesize sections, tableView;
 
 -(id)init{
 	[super init];
@@ -28,11 +30,16 @@
 	[super dealloc];	
 }
 
-+(id)staticTable{
-    return [[[self alloc] init] autorelease];
++(id)staticTableForTableView:(UITableView*)tableView{
+    StaticTable* result =  [[[self alloc] init] autorelease];
+	result.tableView = tableView;
+	return result;
 }
 
 -(void)addSection:(TableSection*)section{
+	section.tableView = tableView;
+	section.section = [sections count];
+	section.staticTable = self;
 	[sections addObject:section];
 }
 
@@ -40,7 +47,26 @@
 	[sections removeAllObjects];
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+-(void)activeSubsequentTextField:(UITextField*)textField{
+	BOOL activateNext = NO;
+	BOOL subsequentFound = NO;
+	for (TableSection* section in sections){
+		for (int i = 0; i < [section rowCount] && !subsequentFound; i++){
+			UITableViewCell* cell = [section cellAtIndex:i];
+			if (activateNext) {
+				[cell ifEditableActivateEditing];
+				subsequentFound = YES;
+			}
+			if ([cell isMyEditableTextField:textField]) activateNext = YES;
+		}
+		if (subsequentFound) break;
+	}
+}
+
+
+- (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+	UITableViewCell* cell = [self tableView:tv cellForRowAtIndexPath:indexPath];
+	[cell ifEditableActivateEditing];
 }
 
 
@@ -62,6 +88,8 @@
 		[section handleErrors:errors];
 	}
 }
+
+
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{

@@ -1,14 +1,14 @@
 #import "TableSection.h"
 #import "Editable.h"
+#import "NSObject+CleanUpProperties.h"
+#import "StaticTable.h"
 
 @interface TableSection()
 @property(nonatomic, retain) NSMutableArray* cells;
 @end
 
 @implementation TableSection
-@synthesize cells;
-@synthesize headerView;
-@synthesize footerView;
+@synthesize cells, headerView, footerView, tableView, section, staticTable;
 
 
 
@@ -47,18 +47,21 @@
 
 -(void) dealloc{
     [self.cells removeAllObjects];
- 	self.cells = nil;
-    self.headerView = nil;
+	[self setEveryObjCObjectPropertyToNil];
     [super dealloc];
 }
 
 -(void)addCell:(UITableViewCell*)cell{
 	[cells addObject:cell];
+	if ([cell isEditableWithTextField]){
+		[[(id<Editable>)cell textField] setDelegate:self];
+	}
 }
 
 -(UITableViewCell*)cellAtIndex:(NSUInteger)index{
 	return [cells objectAtIndex:index];
 }
+
 
 
 -(NSInteger)rowCount{
@@ -91,17 +94,38 @@
 	NSMutableArray* errorLines = [NSMutableArray arrayWithCapacity:errors.count];
 	for (id cell in cells){
 		if ([cell conformsToProtocol:@protocol(Editable)]){
-			id<Editable> Editable = (id<Editable>) cell;
-			NSArray* errorsForCell = [errors objectForKey:Editable.errorField];
-			Editable.errorHighlighted =  errorsForCell != nil;
-			if (Editable.errorHighlighted) {
+			id<Editable> editable = (id<Editable>) cell;
+			NSArray* errorsForCell = [errors objectForKey:editable.errorField];
+			editable.errorHighlighted =  errorsForCell != nil;
+			if (editable.errorHighlighted) {
 					for (NSString* error in  errorsForCell){
-						[errorLines addObject:[NSString stringWithFormat:@"%@ %@", Editable.errorField, error]];
+						[errorLines addObject:[NSString stringWithFormat:@"%@ %@", editable.errorField, error]];
 					}
 			}
 		}
 	}
 	[self setFooterLines:errorLines];
+}
+
+
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+	int i = 0;
+	for (UITableViewCell* cell in cells){
+		if ([cell isMyEditableTextField:textField]){
+			[tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:section] atScrollPosition:UITableViewScrollPositionNone animated:YES];
+			break;
+		}
+		
+		i++;
+	}
+}
+
+- (BOOL) textFieldShouldReturn:(UITextField*)textField {
+    NSLog(@"textFieldShouldReturn:");
+	[textField resignFirstResponder];
+	[staticTable activeSubsequentTextField:textField];
+	return YES;
 }
 
 

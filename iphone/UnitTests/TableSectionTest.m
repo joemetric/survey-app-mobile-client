@@ -1,11 +1,29 @@
 #import "GTMSenTestCase.h"
 #import "TableSection.h"
 #import "Editable.h"
-#import "StubCellWithError.h"
+#import "StubEditable.h"
 #import "UIView+EasySubviewLabelAccess.h"
+
+
+@interface StubbedUITableView : UITableView{
+@public
+	NSInteger lastScrolledToRow;
+	NSInteger lastScrolledToSection;
+}
+@end
+
+@implementation StubbedUITableView
+- (void)scrollToRowAtIndexPath:(NSIndexPath *)indexPath atScrollPosition:(UITableViewScrollPosition)scrollPosition animated:(BOOL)animated{
+	lastScrolledToRow = indexPath.row;
+	lastScrolledToSection = indexPath.section;
+}
+
+@end
+
 
 @interface TableSectionTest : GTMTestCase {
 	TableSection* testee;
+	StubbedUITableView* tableView;
 }
 
 @end
@@ -17,7 +35,14 @@
 
 
 -(void)setUp{
+	tableView = [[StubbedUITableView alloc] init];
 	testee = [TableSection tableSectionWithTitle:@"section title"];
+	testee.tableView = tableView;
+	testee.section = 8;
+}
+
+-(void)tearDown{
+	[tableView release];
 }
 
 -(void)testInitiallyEmpty{
@@ -118,14 +143,14 @@
 }
 
 -(void)assertCellAtIndex:(NSUInteger)index error:(BOOL)error{
-	StubCellWithError* cell = (StubCellWithError*)[testee cellAtIndex:index];
+	StubEditable* cell = (StubEditable*)[testee cellAtIndex:index];
 	STAssertEquals(error, cell.errorHighlighted, cell.text);
 	
 }
 -(void)testErrorsAddedToAppropriateCells{
-	[testee addCell:[StubCellWithError stubCellWithText:@"cell 1" errorField:@"cell1"]];
+	[testee addCell:[StubEditable stubCellWithText:@"cell 1" errorField:@"cell1"]];
 	[testee addCell:[self cellWithText:@"cell 2"]];
-	[testee addCell:[StubCellWithError stubCellWithText:@"cell 3" errorField:@"cell3"]];
+	[testee addCell:[StubEditable stubCellWithText:@"cell 3" errorField:@"cell3"]];
 	
 	NSMutableDictionary *errors = [NSMutableDictionary dictionary];
 	[errors setObject:[NSArray arrayWithObject:@"cell1err1"] forKey:@"cell1"];
@@ -137,8 +162,8 @@
 }
 
 -(void)testErrorsThatAffectSectionsCellsAreAddedAsFooterLines{
-	[testee addCell:[StubCellWithError stubCellWithText:@"cell 1" errorField:@"cell1"]];
-	[testee addCell:[StubCellWithError stubCellWithText:@"cell 3" errorField:@"cell2"]];
+	[testee addCell:[StubEditable stubCellWithText:@"cell 1" errorField:@"cell1"]];
+	[testee addCell:[StubEditable stubCellWithText:@"cell 3" errorField:@"cell2"]];
 	
 	NSMutableDictionary *errors = [NSMutableDictionary dictionary];
 	[errors setObject:[NSArray arrayWithObject:@"cell1err1"] forKey:@"cell1"];
@@ -152,5 +177,31 @@
 	STAssertEqualStrings(@"cell2 cell2err2", [[testee.footerView.subviews objectAtIndex:2] text], nil);
 	
 }
+
+
+-(void)testBecomesTextFieldDelegateIfAppropriate{
+	StubEditableWithTextField* cell =  [StubEditableWithTextField stubEditableWithTextField];
+	[testee addCell:cell];
+	STAssertEqualObjects(testee, cell.textField.delegate, nil);
+}
+
+
+-(void)testScrollsIntoViewWhenEditing{
+	UITableViewCell* notThis = [StubEditableWithTextField stubEditableWithTextField];
+	UITableViewCell* norThis = [[[UITableViewCell alloc] init] autorelease];
+	StubEditableWithTextField* thisOne = [StubEditableWithTextField stubEditableWithTextField];
+
+	[testee addCell:notThis];
+	[testee addCell:thisOne];
+	[testee addCell:norThis];
+	
+	[testee textFieldDidBeginEditing:thisOne.textField];
+	
+	STAssertEquals(1, tableView->lastScrolledToRow, @"lastScrolledToRow");
+	STAssertEquals(8, tableView->lastScrolledToSection, @"lastScrolledToSection");
+	
+
+}
+
 
 @end

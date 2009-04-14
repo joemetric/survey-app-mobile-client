@@ -1,15 +1,20 @@
 #import "GTMSenTestCase.h"
 #import "StaticTable.h"
 #import "TableSection.h"
-#import "StubCellWithError.h"
+#import "StubEditable.h"
+
+
 
 @interface StaticTableTest : GTMTestCase{
 	StaticTable* testee;
 	TableSection* section1;
 	TableSection* section2;
+	UITableView* tableView;
 }
 
 @end
+
+
 
 @implementation StaticTableTest 
 
@@ -20,8 +25,10 @@
 }
 
 
+
 -(void)setUp{
-	testee = [StaticTable staticTable]; 
+	tableView = [[UITableView alloc] init];
+	testee = [StaticTable staticTableForTableView:tableView]; 
 	section1 = [TableSection tableSectionWithTitle:@"section 1"];
 	[testee addSection:section1];
 	[section1 addCell:[self cellWithText:@"s0r0"]];
@@ -36,6 +43,10 @@
 
 }
 
+
+-(void)tearDown{
+	[tableView release];
+}
 
 -(void)testRowAndSectionCount{
 	STAssertEquals(2, [testee numberOfSectionsInTableView:nil], @"numberOfSectionsInTableView:");	
@@ -79,7 +90,7 @@
 }
 
 -(void)testHandlesErrors{
-	StubCellWithError* errorCell = [StubCellWithError stubCellWithText:@"" errorField:@"err"];
+	StubEditable* errorCell = [StubEditable stubCellWithText:@"" errorField:@"err"];
 	[section1 addCell:errorCell];
 
 	NSMutableDictionary *errors = [NSMutableDictionary dictionary];
@@ -95,5 +106,76 @@
 	STAssertEquals(0, [testee numberOfSectionsInTableView:nil], @"numberOfSectionsInTableView:");	
 	
 }
+
+-(void)testWhenReturnAndNoSubsequentResponsiveCellNothingBadHappens{
+	[section1 textFieldShouldReturn:[[[UITextField alloc] init] autorelease]];
+	
+}
+
+-(void)testWhenTextFieldReturnsNextCellIsSelectedInSameSection{
+	StubEditableWithTextField* finished = [StubEditableWithTextField stubEditableWithTextField];
+	StubEditableWithTextField* next = [StubEditableWithTextField stubEditableWithTextField];
+	
+	[section1 addCell:finished];
+	[section1 addCell:next];
+	
+	[section1 textFieldShouldReturn:finished.textField];	
+	STAssertTrue(next.activated, nil);	
+}
+
+-(void)testIfNextCellIsNotEditableThenNoCellIsSelected{
+	StubEditableWithTextField* finished = [StubEditableWithTextField stubEditableWithTextField];
+	UITableViewCell* next = [[[UITableViewCell alloc] init] autorelease];
+	StubEditableWithTextField* subsequent = [StubEditableWithTextField stubEditableWithTextField];
+	
+	[section1 addCell:finished];
+	[section1 addCell:next];
+	[section1 addCell:subsequent];
+	
+	[section1 textFieldShouldReturn:finished.textField];	
+	STAssertFalse(subsequent.activated, nil);		
+}
+
+-(void)testNextCellInNextSectionIsActivatedIfLastInSection{
+	StubEditableWithTextField* finished = [StubEditableWithTextField stubEditableWithTextField];
+	StubEditableWithTextField* next = [StubEditableWithTextField stubEditableWithTextField];
+	
+	[section2 addCell:finished];
+	TableSection* section3 = [TableSection tableSectionWithTitle:@""];
+	[testee addSection:section3];
+	[section3 addCell:next];
+	
+	[section2 textFieldShouldReturn:finished.textField];	
+	STAssertTrue(next.activated, nil);	
+	
+}
+
+-(void)testIfLastInSectionAndNextCellIsNotEditableThenSubsequentIsNotEdited{
+	StubEditableWithTextField* finished = [StubEditableWithTextField stubEditableWithTextField];
+	UITableViewCell* next = [[[UITableViewCell alloc] init] autorelease];
+	StubEditableWithTextField* subsequent = [StubEditableWithTextField stubEditableWithTextField];
+	
+	[section2 addCell:finished];
+	TableSection* section3 = [TableSection tableSectionWithTitle:@""];
+	[testee addSection:section3];
+	[section3 addCell:next];
+	[section3 addCell:subsequent];
+	
+	[section2 textFieldShouldReturn:finished.textField];	
+	STAssertFalse(subsequent.activated, nil);	
+	
+}
+
+
+-(void)testSelectingRowAtIndexPathActivatesEditableCell{
+	StubEditableWithTextField* editable = [StubEditableWithTextField stubEditableWithTextField];
+	[section1 addCell:editable];
+	[testee tableView:nil didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
+	STAssertTrue(editable.activated, nil);
+}
+-(void)testSelectingRowAtIndexPathIgnoresUneditableCell{
+	[testee tableView:nil didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
+}
+
 
 @end

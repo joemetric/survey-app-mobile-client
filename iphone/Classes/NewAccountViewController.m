@@ -14,8 +14,7 @@
 #import "RestConfiguration.h"
 #import "StaticTable.h"
 #import "TableSection.h"
-#import <Foundation/Foundation.h>
-
+#import "NSObject+CleanUpProperties.h"
 
 @interface NewAccountViewController ()
 @property(readonly) NSDictionary* errors;
@@ -23,10 +22,9 @@
 @end
 
 @implementation NewAccountViewController
-@synthesize username, password, passwordConfirmation, emailAddress, gender, dob, income;
-@synthesize activityIndicator, profileView, tableView, datePicker;;
+@synthesize activityIndicator, profileView, tableView;
 @synthesize keyboardIsShowing;
-@synthesize loginCell, passwordCell, passwordConfirmationCell, emailCell, incomeCell, dobCell, genderCell;
+@synthesize  dobCell, genderCell, loginCell, emailCell, passwordCell, passwordConfirmationCell, incomeCell;
 @synthesize staticTable;
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -42,39 +40,64 @@
 	[super viewWillAppear:animated];
 }
 
--(void)initialiseCells{
-	loginCell.errorField = @"login";
-	passwordCell.errorField = @"password";
-    passwordConfirmationCell.errorField = @"password_confirmation";
-    emailCell.errorField = @"email";
-    incomeCell.errorField = @"income";
-    dobCell.errorField = @"birthdate";
-	
-}
+
 
 -(void)populateBasicSection{
 	TableSection* section = [TableSection tableSectionWithTitle:@"Basics"];
 	[staticTable addSection:section];
 	
-	[section addCell:loginCell];
-	[section addCell:passwordCell];
-	[section addCell:passwordConfirmationCell];
-	[section addCell:emailCell];
+	self.loginCell = [[[[[LabelledTableViewCell loadLabelledCell] 
+		withErrorField:@"login"] 
+		withLabelText:@"Login"] 
+		withPlaceholder:@"joe"] 
+		withoutCorrections];
+	self.passwordCell= [[[[[LabelledTableViewCell loadLabelledCell] 
+		withErrorField:@"password"] 
+		withLabelText:@"Password"] 
+		withPlaceholder:@"min 6 chars"] 
+		makeSecure];
+	self.passwordConfirmationCell= [[[[[LabelledTableViewCell loadLabelledCell] 
+		withErrorField:@"password_confirmation"]
+		withLabelText:@"Confirm P/W"] 
+		withPlaceholder:@"confirm password"] 
+		makeSecure];
+	self.emailCell = [[[[[LabelledTableViewCell loadLabelledCell] 
+		withErrorField:@"email"] 
+		withLabelText:@"Email"] 
+		withPlaceholder:@"joe@example.com"] 
+		makeEmail];
+    [section addCell:loginCell];
+    [section addCell:passwordCell];
+    [section addCell:passwordConfirmationCell];
+    [section addCell:emailCell];
 }
 
 -(void)populateDemographicsSection{
+    static const int Dec_15_1971 = 61606800;
 	TableSection* section = [TableSection tableSectionWithTitle:@"Demographics"];
 	[staticTable addSection:section];
 	
-	[section addCell:incomeCell];
+	self.incomeCell = [[[[[LabelledTableViewCell loadLabelledCell] 
+		withErrorField:@"income"] 
+		withLabelText:@"Income"] 
+		withPlaceholder:@"999999"] 
+		withKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
+	self.dobCell= [[[[[LabelledTableViewCell loadLabelledCell] 
+        withErrorField:@"birthdate"] 
+		withLabelText:@"Birthdate"] 
+		withPlaceholder:@"15 Dec 1971"] 
+		makeDateUsingParent:self atInitialDate:[NSDate dateWithTimeIntervalSince1970:Dec_15_1971]];
+    [section addCell:self.incomeCell];
 	[section addCell:dobCell];
 	[section addCell:genderCell];
 }
 
 
 -(void)viewDidLoad{
-	[self initialiseCells];
-	self.staticTable = [StaticTable staticTable];
+	self.staticTable = [StaticTable staticTableForTableView:tableView];
+	tableView.delegate = staticTable;
+	tableView.dataSource = staticTable;
+    [dobCell withErrorField:@"birthdate"];
 	[self populateBasicSection];
 	[self populateDemographicsSection];
     self.tableView.backgroundColor = [UIColor clearColor];
@@ -118,96 +141,11 @@
     }
 }
 
-- (BOOL) textFieldShouldReturn:(UITextField*)textField {
-	if( textField == username ) {
-		[password becomeFirstResponder];
-		[username resignFirstResponder];
-	} else if( textField == password ) {
-		[passwordConfirmation becomeFirstResponder];
-		[password resignFirstResponder];
-	} else if( textField == passwordConfirmation ) {
-		[emailAddress becomeFirstResponder];
-		[passwordConfirmation resignFirstResponder];
-	} else if( textField == emailAddress ) {
-		[emailAddress resignFirstResponder];
-		[income becomeFirstResponder];
-		[income becomeFirstResponder];
-	} else if( textField == income ) {
-		[textField resignFirstResponder];
-	}
-	
 
-	return YES;
-}
-
-- (void) textFieldDidBeginEditing:(UITextField *)textField {
-	if( textField == username ) {
-		[tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionNone animated:YES];
-	} else if( textField == password ) {
-		[tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0] atScrollPosition:UITableViewScrollPositionNone animated:YES];
-	} else if( textField == passwordConfirmation ) {
-		[tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0] atScrollPosition:UITableViewScrollPositionNone animated:YES];
-	} else if( textField == emailAddress ) {
-		[tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0] atScrollPosition:UITableViewScrollPositionNone animated:YES];
-	} else if( textField == income ) {
-		[tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:1] atScrollPosition:UITableViewScrollPositionNone animated:YES];
-	}
-}
 
 - (void)dealloc {
-	[loginCell release];
-	[passwordCell release];
-	[passwordConfirmationCell release];
-	[emailCell release];
-	[incomeCell release];
-	[dobCell release];
-	[genderCell release];
-	[tableView release];
-	[username release];
-	[password release];
-	[passwordConfirmation release];
-	[emailAddress release];
-	[gender release];
-	[dob release];
-	[income release];
-	[activityIndicator release];
-	[profileView release];
-	[datePicker release];
-	self.staticTable = nil;
+    [self setEveryObjCObjectPropertyToNil];
     [super dealloc];
-}
-
-#pragma mark -
-#pragma mark TableViewDelegate and DataSource methods
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tv {
-	return [staticTable numberOfSectionsInTableView:tv];
-}
-
-- (UIView *)tableView:(UITableView *)tv viewForHeaderInSection:(NSInteger)section{
-    return [staticTable tableView:tv viewForHeaderInSection:section];
-}
-
-- (CGFloat)tableView:(UITableView *)tv heightForHeaderInSection:(NSInteger)section{
-    return [staticTable tableView:tv heightForHeaderInSection:section];
-}
-
--(UIView*) tableView:(UITableView*) tv viewForFooterInSection:(NSInteger)section{
-    return [staticTable tableView:tv viewForFooterInSection:section];
-}
-
-- (CGFloat)tableView:(UITableView *)tv heightForFooterInSection:(NSInteger)section{
-	return [staticTable tableView:tv heightForFooterInSection:section];
-}
-
-
-- (NSInteger)tableView:(UITableView *)tv numberOfRowsInSection:(NSInteger)section {
-	return [staticTable tableView:nil numberOfRowsInSection:section];
-}
-
-
-
-- (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	return [staticTable tableView:tv cellForRowAtIndexPath:indexPath];
 }
 
 
@@ -219,31 +157,9 @@
 }
 
 - (void) dismissModalViewControllerAnimated:(BOOL) animated {
-	self.dob.text = [[self dateFormatter] stringFromDate:self.datePicker.datePicker.date];
 	[super dismissModalViewControllerAnimated:animated];
+    [tableView reloadData];
 }
-
-- (void) tableView:(UITableView*)tv didSelectRowAtIndexPath:(NSIndexPath*)indexPath {
-	if( indexPath.section == 0 && indexPath.row == 0 ) {
-		[username becomeFirstResponder];
-	} else if( indexPath.section == 0 && indexPath.row == 1 ) {
-		[password becomeFirstResponder];
-	} else if( indexPath.section == 0 && indexPath.row == 2 ) {
-		[passwordConfirmation becomeFirstResponder];
-	} else if( indexPath.section == 0 && indexPath.row == 3 ) {
-		[emailAddress becomeFirstResponder];
-	} else if( indexPath.section == 1 && indexPath.row == 0 ) {
-		[income becomeFirstResponder];
-	} else if( indexPath.section == 1 && indexPath.row == 1 ) {
-		if( self.datePicker == nil ) {
-            static const int Dec_15_1970 = 61606800;
-			self.datePicker = [DatePickerViewController datePickerViewControllerWithDate:[NSDate dateWithTimeIntervalSince1970:Dec_15_1970]];
-		}
-		[self presentModalViewController:datePicker	animated:YES];
-	}
-}
-
-
 
 
 #pragma mark -

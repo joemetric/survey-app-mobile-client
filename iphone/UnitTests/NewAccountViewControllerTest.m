@@ -35,7 +35,7 @@
 
 
 -(id<Editable>)labelledCellForRow:(NSInteger)row inSection:(NSInteger)section{
-	return (id<Editable>) [testee tableView:testee.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
+	return (id<Editable>) [testee.tableView.delegate tableView:testee.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
 }
 
 -(void)assertLabel:(NSString*)label inLabelledCellForRow:(NSInteger)row inSection:(NSInteger)section{
@@ -50,14 +50,14 @@
 	[self assertLabel:@"Password" inLabelledCellForRow:1 inSection:0];
 	[self assertLabel:@"Confirm P/W" inLabelledCellForRow:2 inSection:0];
 	[self assertLabel:@"Email" inLabelledCellForRow:3 inSection:0];   
-    STAssertEquals(4, [testee tableView:nil numberOfRowsInSection:0], @"rows in section 0");
+    STAssertEquals(4, [testee.tableView numberOfRowsInSection:0], @"rows in section 0");
 }
 
 -(void)testDemographicsSectionCellLabels{
 	[self assertLabel:@"Income" inLabelledCellForRow:0 inSection:1];
 	[self assertLabel:@"Birthdate" inLabelledCellForRow:1 inSection:1];
 	[self assertLabel:@"Gender" inLabelledCellForRow:2 inSection:1];
-    STAssertEquals(3, [testee tableView:nil numberOfRowsInSection:1], @"rows in section 1");
+    STAssertEquals(3, [testee.tableView numberOfRowsInSection:1], @"rows in section 1");
 }
 
 
@@ -112,7 +112,7 @@
 -(void)testDisplayErrorInFooters{
 	NSString* data = @"[[\"login\", \"silly login\"]]";
 	[gAccount finishedLoading:data];
-	UIView* footer = [testee tableView:nil viewForFooterInSection:0];
+	UIView* footer = [testee.tableView.delegate tableView:nil viewForFooterInSection:0];
 	STAssertEquals((NSUInteger)1, footer.subviews.count, @"footer error count");
 	STAssertEqualStrings(@"login silly login", [[footer.subviews objectAtIndex:0] text], nil);
 }
@@ -133,16 +133,16 @@
 }
 
 -(void)testRowsAndSectionCounts{
-	STAssertEquals(2, [testee numberOfSectionsInTableView:nil], @"numberOfSectionsInTableView");
-	STAssertEquals(4, [testee tableView:nil numberOfRowsInSection:0], @"numberOfRowsInSection:0");
-	STAssertEquals(3, [testee tableView:nil numberOfRowsInSection:1], @"numberOfRowsInSection:1");
+	STAssertEquals(2, [testee.tableView numberOfSections], @"numberOfSectionsInTableView");
+	STAssertEquals(4, [testee.tableView numberOfRowsInSection:0], @"numberOfRowsInSection:0");
+	STAssertEquals(3, [testee.tableView numberOfRowsInSection:1], @"numberOfRowsInSection:1");
 }
 
 -(void)testEachFieldHighlightedIfInError{
 	NSString* data = @"[[\"login\", \"\"], [\"email\", \"\"],[\"password\", \"\"], [\"password_confirmation\", \"\"],[\"birthdate\", \"\"], [\"income\", \"\"], [\"gender\", \"\"]]";
 	[gAccount finishedLoading:data];
-	for (int section = 0; section < [testee numberOfSectionsInTableView:nil]; section++){
-		for (int row = 0; row < [testee tableView:nil numberOfRowsInSection:section]; row++){
+	for (int section = 0; section < [testee.tableView numberOfSections]; section++){
+		for (int row = 0; row < [testee.tableView numberOfRowsInSection:section]; row++){
 			if (!(section == 1 && row == 2)){ // ignore gender - todo less rubbish
 				[self assertRow:row inSection:section highlighted:YES];
 			}
