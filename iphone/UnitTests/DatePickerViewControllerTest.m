@@ -35,6 +35,13 @@
     STAssertEqualObjects(self.initialDate, testee.datePicker.date, nil);
 }
 
+-(void)testDatePickerLablesAndTextFieldsInitiallySet{
+	NSString* expectedFormattedDate = [testee.formatter stringFromDate:initialDate];
+	STAssertEqualStrings(expectedFormattedDate, testee.cell.text, @"cell text");
+	STAssertEqualStrings(expectedFormattedDate, textField.text, @"text field text");
+	
+}
+
 -(void)testWhenDatePickerChangesLabelAndTextFieldAreUpdated{
 	NSDate* date = [NSDate dateWithTimeIntervalSince1970:6839494];
 	NSString* expectedFormatted = [testee.formatter stringFromDate:date];

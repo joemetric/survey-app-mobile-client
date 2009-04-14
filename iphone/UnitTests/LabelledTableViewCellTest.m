@@ -107,8 +107,9 @@
 	
 }
 
--(void)testMakingDateSetsDisclosureAccessory{
+-(void)testMakingDateSetsDisclosureAccessoryAndDisablesTextField{
 	STAssertEquals(UITableViewCellAccessoryDisclosureIndicator, [testee makeDateUsingParent:nil atInitialDate:[NSDate dateWithTimeIntervalSince1970:0]].accessoryType, nil);
+	STAssertFalse(testee.textField.enabled, nil);
 }
 
 

@@ -74,6 +74,7 @@
 }
 
 -(void)populateDemographicsSection{
+    static const int Dec_15_1971 = 61606800;
 	TableSection* section = [TableSection tableSectionWithTitle:@"Demographics"];
 	[staticTable addSection:section];
 	
@@ -82,6 +83,11 @@
 		withLabelText:@"Income"] 
 		withPlaceholder:@"999999"] 
 		withKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
+	self.dobCell= [[[[[LabelledTableViewCell loadLabelledCell] 
+        withErrorField:@"birthdate"] 
+		withLabelText:@"Birthdate"] 
+		withPlaceholder:@"15 Dec 1971"] 
+		makeDateUsingParent:self atInitialDate:[NSDate dateWithTimeIntervalSince1970:Dec_15_1971]];
     [section addCell:self.incomeCell];
 	[section addCell:dobCell];
 	[section addCell:genderCell];
@@ -183,18 +189,9 @@
 
 - (void) dismissModalViewControllerAnimated:(BOOL) animated {
 	[super dismissModalViewControllerAnimated:animated];
+    [tableView reloadData];
 }
 
-- (void) tableView:(UITableView*)tv didSelectRowAtIndexPath:(NSIndexPath*)indexPath {
-	if( indexPath.section == 1 && indexPath.row == 1 ) {
-		if( self.datePicker == nil ) {
-            static const int Dec_15_1970 = 61606800;
-			self.datePicker = 
-            [DatePickerViewController datePickerViewControllerWithDate:[NSDate dateWithTimeIntervalSince1970:Dec_15_1970] andTextField:self.dobCell.textField];
-		}
-		[self presentModalViewController:datePicker	animated:YES];
-	}
-}
 
 
 

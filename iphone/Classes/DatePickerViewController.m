@@ -16,9 +16,13 @@
     [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
 }
 
-- (IBAction) valueChanged:(UIDatePicker*)sender {
-	self.cell.text = [self.formatter stringFromDate:sender.date];
+-(void)updateDates{
+	self.cell.text = [self.formatter stringFromDate:datePicker.date];
 	self.dateTextField.text = self.cell.text;
+	
+}
+- (IBAction) valueChanged:(UIDatePicker*)sender {
+	[self updateDates];
 }
 
 - (IBAction) done:(UIBarButtonItem*)sender {
@@ -39,6 +43,7 @@
 	self.cell = [[[UITableViewCell alloc] init] autorelease];
 	self.cell.accessoryType = UITableViewCellAccessoryNone;
 	self.cell.selectionStyle = UITableViewCellSelectionStyleNone;
+	[self updateDates];
 }
 
 #pragma mark -

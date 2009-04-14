@@ -33,6 +33,7 @@
 
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    NSLog(@"%@ setSelected:%d", label.text, selected);
 	if (selected) [self activateEditing];
 	[super setSelected:selected animated:animated];
 }
@@ -71,6 +72,7 @@
 	self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	self.datePickerController =  [DatePickerViewController datePickerViewControllerWithDate:date andTextField:textField];
 	self.parentController = _parent;
+	self.textField.enabled = NO;
 	return self;
 }
 
