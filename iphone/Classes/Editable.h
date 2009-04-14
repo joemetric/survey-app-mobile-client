@@ -16,4 +16,5 @@
 @interface UITableViewCell(IsEditable)
 -(BOOL)isEditableWithTextField;
 -(BOOL)isMyEditableTextField:(UITextField*)textField;
+-(void)ifEditableActivateEditing;
 @end

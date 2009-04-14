@@ -167,4 +167,15 @@
 }
 
 
+-(void)testSelectingRowAtIndexPathActivatesEditableCell{
+	StubEditableWithTextField* editable = [StubEditableWithTextField stubEditableWithTextField];
+	[section1 addCell:editable];
+	[testee tableView:nil didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
+	STAssertTrue(editable.activated, nil);
+}
+-(void)testSelectingRowAtIndexPathIgnoresUneditableCell{
+	[testee tableView:nil didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
+}
+
+
 @end

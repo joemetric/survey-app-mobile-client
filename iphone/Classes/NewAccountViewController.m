@@ -22,8 +22,7 @@
 @end
 
 @implementation NewAccountViewController
-@synthesize  gender, dob;
-@synthesize activityIndicator, profileView, tableView, datePicker;;
+@synthesize activityIndicator, profileView, tableView;
 @synthesize keyboardIsShowing;
 @synthesize  dobCell, genderCell, loginCell, emailCell, passwordCell, passwordConfirmationCell, incomeCell;
 @synthesize staticTable;
@@ -96,6 +95,8 @@
 
 -(void)viewDidLoad{
 	self.staticTable = [StaticTable staticTableForTableView:tableView];
+	tableView.delegate = staticTable;
+	tableView.dataSource = staticTable;
     [dobCell withErrorField:@"birthdate"];
 	[self populateBasicSection];
 	[self populateDemographicsSection];
@@ -147,38 +148,6 @@
     [super dealloc];
 }
 
-#pragma mark -
-#pragma mark TableViewDelegate and DataSource methods
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tv {
-	return [staticTable numberOfSectionsInTableView:tv];
-}
-
-- (UIView *)tableView:(UITableView *)tv viewForHeaderInSection:(NSInteger)section{
-    return [staticTable tableView:tv viewForHeaderInSection:section];
-}
-
-- (CGFloat)tableView:(UITableView *)tv heightForHeaderInSection:(NSInteger)section{
-    return [staticTable tableView:tv heightForHeaderInSection:section];
-}
-
--(UIView*) tableView:(UITableView*) tv viewForFooterInSection:(NSInteger)section{
-    return [staticTable tableView:tv viewForFooterInSection:section];
-}
-
-- (CGFloat)tableView:(UITableView *)tv heightForFooterInSection:(NSInteger)section{
-	return [staticTable tableView:tv heightForFooterInSection:section];
-}
-
-
-- (NSInteger)tableView:(UITableView *)tv numberOfRowsInSection:(NSInteger)section {
-	return [staticTable tableView:nil numberOfRowsInSection:section];
-}
-
-
-
-- (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	return [staticTable tableView:tv cellForRowAtIndexPath:indexPath];
-}
 
 -(NSDateFormatter*)dateFormatter{
 	NSDateFormatter* dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
@@ -191,9 +160,6 @@
 	[super dismissModalViewControllerAnimated:animated];
     [tableView reloadData];
 }
-
-
-
 
 
 #pragma mark -

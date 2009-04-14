@@ -15,9 +15,7 @@
 @class SegmentedTableViewCell;
 @class StaticTable;
 
-@interface NewAccountViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, AccountObserver> {
-	UITextField* dob;
-	UISegmentedControl* gender;
+@interface NewAccountViewController : UIViewController <AccountObserver> {
 	
 	LabelledTableViewCell* dobCell;
 	LabelledTableViewCell* loginCell;
@@ -45,26 +43,19 @@
 
 @property (nonatomic, retain) ProfileViewController* profileView;
 
-@property (nonatomic, retain) IBOutlet UISegmentedControl* gender;
-@property (nonatomic, retain) IBOutlet UITextField* dob;
-
 
 @property (nonatomic, retain)  LabelledTableViewCell* loginCell;
 @property (nonatomic, retain)  LabelledTableViewCell* passwordCell;
 @property (nonatomic, retain)  LabelledTableViewCell* passwordConfirmationCell;
 @property (nonatomic, retain)  LabelledTableViewCell* incomeCell;
 @property (nonatomic, retain)  LabelledTableViewCell* emailCell;
-
-@property (nonatomic, retain)  IBOutlet LabelledTableViewCell* dobCell;
+@property (nonatomic, retain)  LabelledTableViewCell* dobCell;
 @property (nonatomic, retain)  IBOutlet SegmentedTableViewCell* genderCell;
 
 
 
 @property (nonatomic, retain) IBOutlet UIActivityIndicatorView* activityIndicator;
 @property (nonatomic, retain) IBOutlet UITableView* tableView;
-
-@property (nonatomic, retain) IBOutlet DatePickerViewController* datePicker;
-
 @property (nonatomic) BOOL keyboardIsShowing;
 
 @end

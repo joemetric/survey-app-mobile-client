@@ -12,4 +12,11 @@
 	return [(id<Editable>) self textField] == textField;
 }
 
+-(void)ifEditableActivateEditing{
+	if ([self conformsToProtocol:@protocol(Editable)]){
+		[(id<Editable>) self activateEditing];
+	}
+}
+
+
 @end

@@ -54,10 +54,7 @@
 		for (int i = 0; i < [section rowCount] && !subsequentFound; i++){
 			UITableViewCell* cell = [section cellAtIndex:i];
 			if (activateNext) {
-				if([cell conformsToProtocol:@protocol(Editable)]){
-					id<Editable> editable = (id<Editable>) cell;
-					[editable activateEditing];
-				}
+				[cell ifEditableActivateEditing];
 				subsequentFound = YES;
 			}
 			if ([cell isMyEditableTextField:textField]) activateNext = YES;
@@ -68,6 +65,8 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+	UITableViewCell* cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
+	[cell ifEditableActivateEditing];
 }
 
 
@@ -89,6 +88,8 @@
 		[section handleErrors:errors];
 	}
 }
+
+
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{

@@ -52,12 +52,6 @@
 -(void)testInitialised{
     STAssertNotNil(self.testee, nil);
     STAssertTrue([testee isKindOfClass:[LabelledTableViewCell class]], nil);
- }
-
--(void)testWhenSelectedTextfieldBecomesFirstResponder{
-	testee.textField = [[[StubbedTextView alloc] init] autorelease];
-	[testee setSelected:YES animated:YES];
-	STAssertTrue([testee.textField isFirstResponder], nil);
 }
 
 -(void)testWhenActivatedTextFieldBecomesFirstResponder{

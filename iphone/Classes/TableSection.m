@@ -122,6 +122,7 @@
 }
 
 - (BOOL) textFieldShouldReturn:(UITextField*)textField {
+    NSLog(@"textFieldShouldReturn:");
 	[textField resignFirstResponder];
 	[staticTable activeSubsequentTextField:textField];
 	return YES;

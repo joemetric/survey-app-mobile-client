@@ -32,11 +32,6 @@
 }
 
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    NSLog(@"%@ setSelected:%d", label.text, selected);
-	if (selected) [self activateEditing];
-	[super setSelected:selected animated:animated];
-}
 
 -(LabelledTableViewCell*)withErrorField:(NSString*)text{
 	self.errorField = text;
