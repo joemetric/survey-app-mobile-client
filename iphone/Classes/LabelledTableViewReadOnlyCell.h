@@ -9,4 +9,5 @@
 
 
 @property (nonatomic, retain) IBOutlet UILabel* valueField;
+@property (nonatomic, retain) IBOutlet UILabel* label;
 @end

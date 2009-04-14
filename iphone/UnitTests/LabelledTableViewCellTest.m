@@ -114,7 +114,7 @@
 	[testee activateEditing];
 	STAssertNotNil(parent->presentedModalViewController, nil);
 	STAssertTrue([parent->presentedModalViewController isKindOfClass:[DatePickerViewController class]], nil);
-	STAssertEqualObjects(date, [parent->presentedModalViewController initialDate], nil);
+	STAssertEqualObjects(date, [(DatePickerViewController*)parent->presentedModalViewController initialDate], nil);
 }
 
 -(void)testDatePickerControllerHasReferenceToLabelledTableViewCellTextField{
