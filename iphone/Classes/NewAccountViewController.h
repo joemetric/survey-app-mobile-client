@@ -12,7 +12,7 @@
 @class ProfileViewController;
 @class DatePickerViewController;
 @class LabelledTableViewCell;
-@class SegmentedTableViewCell;
+@class MaleFemaleTableViewCell;
 @class StaticTable;
 
 @interface NewAccountViewController : UIViewController <AccountObserver> {
@@ -23,7 +23,7 @@
 	LabelledTableViewCell* emailCell;
 	LabelledTableViewCell* passwordConfirmationCell;
 	LabelledTableViewCell* incomeCell;
-	SegmentedTableViewCell* genderCell;
+	MaleFemaleTableViewCell* genderCell;
 	
 	UIActivityIndicatorView* activityIndicator;
 	UITableView* tableView;
@@ -50,7 +50,7 @@
 @property (nonatomic, retain)  LabelledTableViewCell* incomeCell;
 @property (nonatomic, retain)  LabelledTableViewCell* emailCell;
 @property (nonatomic, retain)  LabelledTableViewCell* dobCell;
-@property (nonatomic, retain)  IBOutlet SegmentedTableViewCell* genderCell;
+@property (nonatomic, retain)  IBOutlet MaleFemaleTableViewCell* genderCell;
 
 
 

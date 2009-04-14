@@ -44,8 +44,8 @@
 		549A74F50F8F9EEC00D968C4 /* SurveyInfoViewTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 549A74F40F8F9EEC00D968C4 /* SurveyInfoViewTableCell.m */; };
 		549A75020F8FA0CB00D968C4 /* question_freetext.png in Resources */ = {isa = PBXBuildFile; fileRef = 549A75000F8FA0CB00D968C4 /* question_freetext.png */; };
 		549A75030F8FA0CB00D968C4 /* question_picture.png in Resources */ = {isa = PBXBuildFile; fileRef = 549A75010F8FA0CB00D968C4 /* question_picture.png */; };
-		54A630360F6EA99B0038382D /* SegmentedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A630350F6EA99B0038382D /* SegmentedTableViewCell.m */; };
-		54A630380F6EAA6D0038382D /* SegmentedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54A630370F6EAA6D0038382D /* SegmentedTableViewCell.xib */; };
+		54A630360F6EA99B0038382D /* MaleFemaleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A630350F6EA99B0038382D /* MaleFemaleTableViewCell.m */; };
+		54A630380F6EAA6D0038382D /* MaleFemaleViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54A630370F6EAA6D0038382D /* MaleFemaleViewCell.xib */; };
 		54A6308B0F6EB2240038382D /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A6308A0F6EB2240038382D /* DatePickerViewController.m */; };
 		54A630900F6EB2D20038382D /* DatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54A6308F0F6EB2D20038382D /* DatePickerView.xib */; };
 		54D2A5630F6C53D800C0C316 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 54D2A5620F6C53D800C0C316 /* Settings.bundle */; };
@@ -131,8 +131,8 @@
 		DAA2E6530F8395AB0004D56E /* NewAccountViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA2E6520F8395AB0004D56E /* NewAccountViewControllerTest.m */; };
 		DAA2E6540F839FA20004D56E /* LabelledTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5420E3120F6E7F5B00DC2BDE /* LabelledTableViewCell.xib */; };
 		DAA2E6680F83A0160004D56E /* LabelledTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5420E3160F6E82E800DC2BDE /* LabelledTableViewCell.m */; };
-		DAA2E6750F83A2970004D56E /* SegmentedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A630350F6EA99B0038382D /* SegmentedTableViewCell.m */; };
-		DAA2E6840F83A3970004D56E /* SegmentedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54A630370F6EAA6D0038382D /* SegmentedTableViewCell.xib */; };
+		DAA2E6750F83A2970004D56E /* MaleFemaleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A630350F6EA99B0038382D /* MaleFemaleTableViewCell.m */; };
+		DAA2E6840F83A3970004D56E /* MaleFemaleViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54A630370F6EAA6D0038382D /* MaleFemaleViewCell.xib */; };
 		DAA2E6F80F83B5F40004D56E /* NewAccountView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 547608D00F6E5B6B007CCC58 /* NewAccountView.xib */; };
 		DAA2E7340F83C3350004D56E /* AccountStubbing.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA2E7330F83C3350004D56E /* AccountStubbing.m */; };
 		DAA2E7550F83D3220004D56E /* DateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA2E7540F83D3220004D56E /* DateHelper.m */; };
@@ -207,9 +207,9 @@
 		549A74F40F8F9EEC00D968C4 /* SurveyInfoViewTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SurveyInfoViewTableCell.m; path = ../SurveyInfoViewTableCell.m; sourceTree = "<group>"; };
 		549A75000F8FA0CB00D968C4 /* question_freetext.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = question_freetext.png; sourceTree = "<group>"; };
 		549A75010F8FA0CB00D968C4 /* question_picture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = question_picture.png; sourceTree = "<group>"; };
-		54A630340F6EA99B0038382D /* SegmentedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentedTableViewCell.h; sourceTree = "<group>"; };
-		54A630350F6EA99B0038382D /* SegmentedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentedTableViewCell.m; sourceTree = "<group>"; };
-		54A630370F6EAA6D0038382D /* SegmentedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SegmentedTableViewCell.xib; sourceTree = "<group>"; };
+		54A630340F6EA99B0038382D /* MaleFemaleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaleFemaleTableViewCell.h; sourceTree = "<group>"; };
+		54A630350F6EA99B0038382D /* MaleFemaleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaleFemaleTableViewCell.m; sourceTree = "<group>"; };
+		54A630370F6EAA6D0038382D /* MaleFemaleViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MaleFemaleViewCell.xib; sourceTree = "<group>"; };
 		54A630890F6EB2240038382D /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		54A6308A0F6EB2240038382D /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
 		54A6308F0F6EB2D20038382D /* DatePickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DatePickerView.xib; sourceTree = "<group>"; };
@@ -486,7 +486,7 @@
 				D2F2EFF60F606ACD00A8BB57 /* SurveyInfoView.xib */,
 				547608D00F6E5B6B007CCC58 /* NewAccountView.xib */,
 				5420E3120F6E7F5B00DC2BDE /* LabelledTableViewCell.xib */,
-				54A630370F6EAA6D0038382D /* SegmentedTableViewCell.xib */,
+				54A630370F6EAA6D0038382D /* MaleFemaleViewCell.xib */,
 				54A6308F0F6EB2D20038382D /* DatePickerView.xib */,
 				5488C43B0F8241DE00B29C76 /* WalletViewTableCell.xib */,
 				54F817E20F8E347400EC1909 /* SurveyListViewTableCell.xib */,
@@ -531,8 +531,8 @@
 				54FA56FD0F6E43F100939C65 /* ValidCredentialsProfileDataSource.m */,
 				547608CC0F6E5B37007CCC58 /* NewAccountViewController.h */,
 				547608CD0F6E5B37007CCC58 /* NewAccountViewController.m */,
-				54A630340F6EA99B0038382D /* SegmentedTableViewCell.h */,
-				54A630350F6EA99B0038382D /* SegmentedTableViewCell.m */,
+				54A630340F6EA99B0038382D /* MaleFemaleTableViewCell.h */,
+				54A630350F6EA99B0038382D /* MaleFemaleTableViewCell.m */,
 				54A630890F6EB2240038382D /* DatePickerViewController.h */,
 				54A6308A0F6EB2240038382D /* DatePickerViewController.m */,
 				5420E3150F6E82E800DC2BDE /* LabelledTableViewCell.h */,
@@ -712,7 +712,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				54A630380F6EAA6D0038382D /* SegmentedTableViewCell.xib in Resources */,
+				54A630380F6EAA6D0038382D /* MaleFemaleViewCell.xib in Resources */,
 				28AD73880D9D96C1002E5188 /* MainWindow.xib in Resources */,
 				0D68A3C90EDCD2DB007CE721 /* QuestionListView.xib in Resources */,
 				0D68A3D10EDCD38E007CE721 /* WalletView.xib in Resources */,
@@ -755,7 +755,7 @@
 				DA83513F0F8E208D0073F848 /* CredentialsView.xib in Resources */,
 				DA8353530F8F8BE90073F848 /* DatePickerView.xib in Resources */,
 				DAA2E6F80F83B5F40004D56E /* NewAccountView.xib in Resources */,
-				DAA2E6840F83A3970004D56E /* SegmentedTableViewCell.xib in Resources */,
+				DAA2E6840F83A3970004D56E /* MaleFemaleViewCell.xib in Resources */,
 				DAA2E6540F839FA20004D56E /* LabelledTableViewCell.xib in Resources */,
 				DA7F49DC0F715E400001E019 /* LabelledTableViewReadOnlyCell.xib in Resources */,
 				FC97568A0F13B4070077926E /* SurveyListView.xib in Resources */,
@@ -810,7 +810,7 @@
 				54FA56FE0F6E43F100939C65 /* ValidCredentialsProfileDataSource.m in Sources */,
 				547608CE0F6E5B37007CCC58 /* NewAccountViewController.m in Sources */,
 				5420E3170F6E82E800DC2BDE /* LabelledTableViewCell.m in Sources */,
-				54A630360F6EA99B0038382D /* SegmentedTableViewCell.m in Sources */,
+				54A630360F6EA99B0038382D /* MaleFemaleTableViewCell.m in Sources */,
 				54A6308B0F6EB2240038382D /* DatePickerViewController.m in Sources */,
 				DA7F48C10F7143890001E019 /* LabelledTableViewReadOnlyCell.m in Sources */,
 				DA86C18D0F778D8400CC6EBE /* NoAccountDataProfileDataSource.m in Sources */,
@@ -837,7 +837,7 @@
 			files = (
 				DAA2E6680F83A0160004D56E /* LabelledTableViewCell.m in Sources */,
 				DA86BE730F72B29C00CC6EBE /* ProfileViewController.m in Sources */,
-				DAA2E6750F83A2970004D56E /* SegmentedTableViewCell.m in Sources */,
+				DAA2E6750F83A2970004D56E /* MaleFemaleTableViewCell.m in Sources */,
 				DA7F49080F71506A0001E019 /* ValidCredentialsProfileDataSource.m in Sources */,
 				D255487C0F13C2950098100B /* Survey.m in Sources */,
 				D2F22BB20EFBF3C30047CBFA /* Question.m in Sources */,

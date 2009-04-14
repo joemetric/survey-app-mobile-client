@@ -9,12 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "Labelled.h"
 
-@interface SegmentedTableViewCell : UITableViewCell<Labelled> {
+@interface MaleFemaleTableViewCell : UITableViewCell<Labelled> {
 	UILabel* label;
 	UISegmentedControl* segControl;
 	UITableView* tableView;	
 }
 
+
++(id)loadMaleFemaleTableViewCell;
 @property (nonatomic, retain) UITableView* tableView;
 @property (nonatomic, retain) IBOutlet UISegmentedControl* segControl;
 @property (nonatomic, retain) IBOutlet UILabel* label;

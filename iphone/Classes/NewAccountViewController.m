@@ -8,7 +8,7 @@
 
 #import "NewAccountViewController.h"
 #import "LabelledTableViewCell.h"
-#import "SegmentedTableViewCell.h"
+#import "MaleFemaleTableViewCell.h"
 #import "DatePickerViewController.h"
 #import "Account.h"
 #import "RestConfiguration.h"
@@ -87,7 +87,8 @@
 		withLabelText:@"Birthdate"] 
 		withPlaceholder:@"15 Dec 1971"] 
 		makeDateUsingParent:self atInitialDate:[NSDate dateWithTimeIntervalSince1970:Dec_15_1971]];
-    [section addCell:self.incomeCell];
+	self.genderCell = [MaleFemaleTableViewCell loadMaleFemaleTableViewCell];
+    [section addCell:incomeCell];
 	[section addCell:dobCell];
 	[section addCell:genderCell];
 }
