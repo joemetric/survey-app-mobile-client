@@ -143,6 +143,7 @@
 		DAA5976F0F96353900DD2EE8 /* TableSection+AccountFields.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA5976E0F96353900DD2EE8 /* TableSection+AccountFields.m */; };
 		DAA597700F96353900DD2EE8 /* TableSection+AccountFields.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA5976E0F96353900DD2EE8 /* TableSection+AccountFields.m */; };
 		DAA597E10F963FBF00DD2EE8 /* StubbedTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA597E00F963FBF00DD2EE8 /* StubbedTextView.m */; };
+		DAA598470F96749300DD2EE8 /* EditProfileDataSourceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA598460F96749300DD2EE8 /* EditProfileDataSourceTest.m */; };
 		DADF81A20F85682F00DEACA0 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = DADF81A10F85682F00DEACA0 /* background.png */; };
 		DADF82C70F86267600DEACA0 /* NSDictionary+RemoveNullsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DADF82C60F86267600DEACA0 /* NSDictionary+RemoveNullsTest.m */; };
 		DADF82CA0F8626B200DEACA0 /* NSDictionary+RemoveNulls.m in Sources */ = {isa = PBXBuildFile; fileRef = DADF82C90F8626B200DEACA0 /* NSDictionary+RemoveNulls.m */; };
@@ -316,6 +317,7 @@
 		DAA5976E0F96353900DD2EE8 /* TableSection+AccountFields.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TableSection+AccountFields.m"; sourceTree = "<group>"; };
 		DAA597DF0F963FBF00DD2EE8 /* StubbedTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StubbedTextView.h; sourceTree = "<group>"; };
 		DAA597E00F963FBF00DD2EE8 /* StubbedTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StubbedTextView.m; sourceTree = "<group>"; };
+		DAA598460F96749300DD2EE8 /* EditProfileDataSourceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileDataSourceTest.m; sourceTree = "<group>"; };
 		DAD6EC300F8B5C950045C2A4 /* AccountObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountObserver.h; sourceTree = "<group>"; };
 		DADF81A10F85682F00DEACA0 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		DADF82C60F86267600DEACA0 /* NSDictionary+RemoveNullsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+RemoveNullsTest.m"; sourceTree = "<group>"; };
@@ -632,6 +634,7 @@
 				DA9A712D0F8F9B7400F5580A /* LabelledTableViewCellTest.m */,
 				DAA597DF0F963FBF00DD2EE8 /* StubbedTextView.h */,
 				DAA597E00F963FBF00DD2EE8 /* StubbedTextView.m */,
+				DAA598460F96749300DD2EE8 /* EditProfileDataSourceTest.m */,
 			);
 			path = UnitTests;
 			sourceTree = "<group>";
@@ -913,6 +916,7 @@
 				DAA597010F96133C00DD2EE8 /* EditProfileDataSource.m in Sources */,
 				DAA5976F0F96353900DD2EE8 /* TableSection+AccountFields.m in Sources */,
 				DAA597E10F963FBF00DD2EE8 /* StubbedTextView.m in Sources */,
+				DAA598470F96749300DD2EE8 /* EditProfileDataSourceTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

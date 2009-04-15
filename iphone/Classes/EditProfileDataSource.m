@@ -7,24 +7,33 @@
 #import "TableSection+AccountFields.h"
 
 @implementation EditProfileDataSource
-@synthesize emailCell, incomeCell, dobCell, genderCell, parent;
+@synthesize emailCell, incomeCell, dobCell, genderCell, parent, loginCell;
 
 
 
 -(void)addAccountSection{
     TableSection* section = [TableSection tableSectionWithTitle:@"Account"];
     [self addSection:section];
-    LabelledTableViewCell* account = [section addLoginCell];
-    account.textField.enabled = false;
+    loginCell = [section addLoginCell];
+    loginCell.textField.enabled = false;
 }
 
 -(void)addDemographicsSection{
     TableSection* section = [TableSection tableSectionWithTitle:@"Account"];
     [self addSection:section];
     self.emailCell = [section addEmailCell];
-    self.incomeCell = [section addIncomeCell];
     self.dobCell = [section addDobCellWithParent:parent];
+    self.incomeCell = [section addIncomeCell];
     self.genderCell = [section addGenderCell];
+}
+
+-(void)setCellValues{
+	Account* account = [Account currentAccount];
+    loginCell.textField.text = account.username;
+    emailCell.textField.text = account.email;
+    incomeCell.textField.text = [NSString stringWithFormat:@"%d", account.income];
+    dobCell.date = account.birthdate;
+	genderCell.gender = account.gender;
 }
 
 -(void)finishedEditing{
@@ -37,6 +46,7 @@
 -(void)populate{
     [self addAccountSection];
     [self addDemographicsSection];
+	[self setCellValues];
 }
 
 

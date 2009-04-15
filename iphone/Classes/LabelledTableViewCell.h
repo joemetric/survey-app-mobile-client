@@ -12,6 +12,7 @@
 
 @property (nonatomic, retain) IBOutlet UITextField* textField;
 @property (nonatomic, retain) IBOutlet UILabel* label;
+@property(nonatomic, assign) NSDate* date;
 
 +(LabelledTableViewCell*)loadLabelledCell;
 -(LabelledTableViewCell*)withLabelText:(NSString*)text;

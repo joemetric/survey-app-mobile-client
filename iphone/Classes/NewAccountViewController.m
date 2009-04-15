@@ -137,7 +137,7 @@
 	account.password = passwordCell.textField.text;
 	account.email = emailCell.textField.text;
 	account.passwordConfirmation = passwordConfirmationCell.textField.text;
-	account.gender = genderCell.segControl.selectedSegmentIndex == 0? @"M" : @"F";
+	account.gender = genderCell.gender;
 	account.income = [incomeCell.textField.text integerValue];
 	account.birthdate = [[self dateFormatter] dateFromString:dobCell.textField.text];
 	[account createNew];

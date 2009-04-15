@@ -81,6 +81,19 @@
 	return self;
 }
 
+-(NSDateFormatter*)dateFormatter{
+	NSDateFormatter* dateFormatter = [[[NSDateFormatter alloc] init]autorelease];
+	dateFormatter.dateStyle = NSDateFormatterMediumStyle;
+	return dateFormatter;
+}
+
+-(void)setDate:(NSDate*)date{
+	textField.text = nil == date ? @"" : [[self dateFormatter] stringFromDate:date];
+}
+
+-(NSDate*)date{
+	return [[self dateFormatter] dateFromString:textField.text];
+}
 
 -(void)setErrorHighlighted:(BOOL)highlighted{
 	label.textColor = highlighted ? [UIColor redColor] : [UIColor blackColor];

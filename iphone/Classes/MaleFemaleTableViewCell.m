@@ -29,10 +29,16 @@
 }
 
 +(id)loadMaleFemaleTableViewCell{
-	return [LoadsSingleObjectFromNib loadFromNib:@"MaleFemaleViewCell"];
-	
+	return [LoadsSingleObjectFromNib loadFromNib:@"MaleFemaleViewCell"];	
 }
 
+-(NSString*)gender{
+	return segControl.selectedSegmentIndex == 0? @"M" : @"F";
+}
+
+-(void)setGender:(NSString*)gender{
+    segControl.selectedSegmentIndex =[gender isEqualToString:@"M"] ? 0 : 1;
+}
 
 - (void)dealloc {
 	[label release];

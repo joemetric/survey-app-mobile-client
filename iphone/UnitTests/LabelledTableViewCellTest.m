@@ -2,6 +2,7 @@
 #import "DatePickerViewController.h"
 #import "LabelledTableViewCell.h"
 #import "StubbedTextView.h"
+#import "DateHelper.h"
 
 @interface StubbedViewController : UIViewController{
 @public 
@@ -105,9 +106,29 @@
 	[testee makeDateUsingParent:parent atInitialDate:[NSDate dateWithTimeIntervalSince1970:0]];
 	[testee activateEditing];
 	DatePickerViewController* datePickerViewController = (DatePickerViewController*) parent->presentedModalViewController;
-	STAssertEqualObjects(testee.textField, datePickerViewController.dateTextField, nil);
+	STAssertEqualObjects(testee.textField, datePickerViewController.dateTextField, nil);	
+}
+
+-(void)testSetDate{
+	NSDate* date = [DateHelper dateFromString:@"18 May 1992"];
+	testee.date = date;
+	STAssertEqualStrings([DateHelper localDateFormatFromDateString:@"18 May 1992"], testee.textField.text, nil);
 	
-	
+}
+
+-(void)testGettingDate{
+	testee.textField.text = [DateHelper localDateFormatFromDateString:@"18 May 1992"];
+	STAssertEqualStrings(@"18 May 1992",[DateHelper stringFromDate:testee.date], nil);	
+}
+
+-(void)testDateNilIfTextFieldBlank{
+	testee.textField.text = @"";
+	STAssertNil(testee.date, nil);		
+}
+
+-(void)testTextBlankIfSetNilDate{
+	testee.date = nil;
+	STAssertEqualStrings(@"", testee.textField.text, nil);
 }
 
 

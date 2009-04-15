@@ -6,6 +6,7 @@
 	LabelledTableViewCell* dobCell;
 	LabelledTableViewCell* emailCell;
 	LabelledTableViewCell* incomeCell;
+    LabelledTableViewCell* loginCell;
 	MaleFemaleTableViewCell* genderCell;
     UIViewController* parent;
     
@@ -15,6 +16,7 @@
 -(void)finishedEditing;
 
 
+@property (nonatomic, retain)  LabelledTableViewCell* loginCell;
 @property (nonatomic, retain)  LabelledTableViewCell* incomeCell;
 @property (nonatomic, retain)  LabelledTableViewCell* emailCell;
 @property (nonatomic, retain)  LabelledTableViewCell* dobCell;

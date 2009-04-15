@@ -20,5 +20,5 @@
 @property (nonatomic, retain) UITableView* tableView;
 @property (nonatomic, retain) IBOutlet UISegmentedControl* segControl;
 @property (nonatomic, retain) IBOutlet UILabel* label;
-
+@property (nonatomic, assign) NSString* gender;
 @end

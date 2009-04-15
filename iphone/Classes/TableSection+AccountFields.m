@@ -16,7 +16,7 @@
 -(LabelledTableViewCell*)addLoginCell{
     return [self addAndReturnCell:[[[[[LabelledTableViewCell loadLabelledCell] 
                                  withErrorField:@"login"] 
-                                withLabelText:@"Login"] 
+                                withLabelText:@"username"] 
                                withPlaceholder:@"joe"] 
                               withoutCorrections]];
 }
@@ -24,7 +24,7 @@
 -(LabelledTableViewCell*)addPasswordCell{
     return [self addAndReturnCell:[[[[[LabelledTableViewCell loadLabelledCell] 
                                       withErrorField:@"password"] 
-                                     withLabelText:@"Password"] 
+                                     withLabelText:@"password"] 
                                     withPlaceholder:@"min 6 chars"] 
                                    makeSecure]];
 }
@@ -32,7 +32,7 @@
 -(LabelledTableViewCell*)addPasswordConfirmationCell{
     return [self addAndReturnCell:[[[[[LabelledTableViewCell loadLabelledCell] 
                                       withErrorField:@"password_confirmation"]
-                                     withLabelText:@"Confirm P/W"] 
+                                     withLabelText:@"confirm P/W"] 
                                     withPlaceholder:@"confirm password"] 
                                    makeSecure]];
 }
@@ -40,7 +40,7 @@
 -(LabelledTableViewCell*)addIncomeCell{
 	return [self addAndReturnCell:[[[[[LabelledTableViewCell loadLabelledCell] 
 		withErrorField:@"income"] 
-		withLabelText:@"Income"] 
+		withLabelText:@"income"] 
 		withPlaceholder:@"999999"] 
 		withKeyboardType:UIKeyboardTypeNumbersAndPunctuation]];
 }
@@ -49,7 +49,7 @@
     static const int Dec_15_1971 = 61606800;
     return [self addAndReturnCell:[[[[[LabelledTableViewCell loadLabelledCell] 
                                       withErrorField:@"birthdate"] 
-                                     withLabelText:@"Birthdate"] 
+                                     withLabelText:@"date of birth"] 
                                     withPlaceholder:@"15 Dec 1971"] 
                                    makeDateUsingParent:parent atInitialDate:[NSDate dateWithTimeIntervalSince1970:Dec_15_1971]]];
 }
@@ -57,7 +57,7 @@
 -(LabelledTableViewCell*)addEmailCell{
     return [self addAndReturnCell:[[[[[LabelledTableViewCell loadLabelledCell] 
                                       withErrorField:@"email"] 
-                                     withLabelText:@"Email"] 
+                                     withLabelText:@"email"] 
                                     withPlaceholder:@"joe@example.com"] 
                                    makeEmail]];
 }
