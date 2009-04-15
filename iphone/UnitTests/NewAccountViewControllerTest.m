@@ -1,7 +1,7 @@
 #import "GTMSenTestCase.h"
 #import "NewAccountViewController.h"
 #import "LabelledTableViewCell.h"
-#import "SegmentedTableViewCell.h"
+#import "MaleFemaleTableViewCell.h"
 #import "RestStubbing.h"
 #import "NSString+Regex.h"
 #import "AccountStubbing.h"
@@ -35,7 +35,8 @@
 
 
 -(id<Editable>)labelledCellForRow:(NSInteger)row inSection:(NSInteger)section{
-	return (id<Editable>) [testee.tableView.delegate tableView:testee.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
+    id<UITableViewDataSource> dataSource = testee.tableView.dataSource;
+	return (id<Editable>) [dataSource tableView:testee.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
 }
 
 -(void)assertLabel:(NSString*)label inLabelledCellForRow:(NSInteger)row inSection:(NSInteger)section{
@@ -56,7 +57,7 @@
 -(void)testDemographicsSectionCellLabels{
 	[self assertLabel:@"Income" inLabelledCellForRow:0 inSection:1];
 	[self assertLabel:@"Birthdate" inLabelledCellForRow:1 inSection:1];
-	[self assertLabel:@"Gender" inLabelledCellForRow:2 inSection:1];
+	[self assertLabel:@"gender" inLabelledCellForRow:2 inSection:1];
     STAssertEquals(3, [testee.tableView numberOfRowsInSection:1], @"rows in section 1");
 }
 

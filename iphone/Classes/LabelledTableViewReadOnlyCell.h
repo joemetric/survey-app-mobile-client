@@ -2,11 +2,11 @@
 #import "Labelled.h"
 
 @interface LabelledTableViewReadOnlyCell : UITableViewCell<Labelled> {
-	UILabel* label;
-	UILabel* valueField;
+	IBOutlet UILabel* label;
+	IBOutlet UILabel* valueField;
 }
 
 
 
-@property (nonatomic, retain) IBOutlet UILabel* valueField;
+@property (nonatomic, retain)  UILabel* valueField;
 @end

@@ -6,10 +6,11 @@
 //  Copyright 2009 Cardboard Software (Scotland), Ltd.. All rights reserved.
 //
 
-#import "SegmentedTableViewCell.h"
+#import "MaleFemaleTableViewCell.h"
+#import "LoadsSingleObjectFromNib.h"
 
 
-@implementation SegmentedTableViewCell
+@implementation MaleFemaleTableViewCell
 @synthesize label, segControl;
 @synthesize tableView;
 
@@ -25,6 +26,11 @@
 
     [super setSelected:selected animated:animated];
     // Configure the view for the selected state
+}
+
++(id)loadMaleFemaleTableViewCell{
+	return [LoadsSingleObjectFromNib loadFromNib:@"MaleFemaleViewCell"];
+	
 }
 
 
