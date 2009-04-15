@@ -11,10 +11,12 @@
 @class Question;
 @class QuestionListViewController;
 
-@interface PictureAnswerController : UIViewController <UIImagePickerControllerDelegate, UIActionSheetDelegate, UINavigationControllerDelegate> {
+@interface PictureAnswerViewController : UIViewController <UIImagePickerControllerDelegate, UIActionSheetDelegate, UINavigationControllerDelegate> {
     IBOutlet UIImageView *imageView;
     Question *question;
     UIViewController *questionList;
+	UILabel *questionLabel;
+	UITextView *questionDetails;
     UIActionSheet *menu;
     int snapshotButtonIndex;
     int libraryButtonIndex;
@@ -23,6 +25,8 @@
 
 @property (nonatomic, retain) Question *question;
 @property (nonatomic, retain) UIViewController *questionList;
+@property (nonatomic, retain) IBOutlet UILabel *questionLabel;
+@property (nonatomic, retain) IBOutlet UITextView *questionDetails;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil question:(Question *)aQuestion;
 

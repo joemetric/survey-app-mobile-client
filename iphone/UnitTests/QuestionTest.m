@@ -32,7 +32,8 @@
 - (void) testQuestionAndAmountAsString
 {
     Question *question = [[Question alloc] init];
-    question.text = @"A question?";
+    question.name = @"A question?";
+    question.text = @"Some explanatory text";
     question.amount = [NSDecimalNumber decimalNumberWithString:@"1925.32"];
     
     STAssertEqualStrings(@"$1,925.32 : A question?", [question questionAndAmountAsString], @"question and amount");

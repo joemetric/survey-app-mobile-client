@@ -8,12 +8,14 @@
 
 @interface Question : NSObject {
     NSInteger        itemId;
+    NSString        *name;
     NSString        *text;
     NSDecimalNumber *amount;
     NSString        *questionType;
 }
 
 @property (nonatomic, assign) NSInteger itemId;
+@property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) NSString *text;
 @property (nonatomic, retain) NSDecimalNumber *amount;
 @property (nonatomic, retain) NSString *questionType;
