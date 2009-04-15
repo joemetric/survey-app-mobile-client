@@ -5,6 +5,8 @@
 #import "ValidCredentialsProfileDataSource.h"
 #import "NoCredentialsProfileDataSource.h"
 #import "AccountStubbing.h"
+#import "NSObject+CleanUpProperties.h"
+#import "EditProfileDataSource.h"
 
 
 NSInteger gProfileViewControllerTableReloadedCount;
@@ -59,9 +61,7 @@ NSInteger gModalViewControllerDismissCount;
 -(void)tearDown{
 	[testee release];
 	[gAccount release];
-    
 }
-
 
 
 
@@ -98,6 +98,13 @@ NSInteger gModalViewControllerDismissCount;
 	 	forAccountLoadStatus:accountLoadStatusFailedValidation describedAs:@"not loaded"];
 }
 
+
+-(void)testTableReloadedWhenAccountChanges{
+	[gAccount authenticationFailed];
+	STAssertEquals(1, gProfileViewControllerTableReloadedCount, nil);	
+}
+
+
 -(void)testEditButtonPresentOnlyIfTableDelegateTypeIsForValidCredentials{
 	[gAccount  setAccountLoadStatus:accountLoadStatusNotLoaded];
 	[testee changeInAccount:gAccount];
@@ -109,13 +116,50 @@ NSInteger gModalViewControllerDismissCount;
 	
 }
 
--(void)testTableReloadedWhenAccountChanges{
-	[gAccount authenticationFailed];
-	STAssertEquals(1, gProfileViewControllerTableReloadedCount, nil);	
+
+
+
+-(void)testDataSourceChangedToEditingWhenEditButtonPressed{
+	[gAccount  setAccountLoadStatus:accountLoadStatusLoaded];
+	STAssertFalse(testee.isEditing, "@view is initially not editing");
+	[testee setEditing:YES animated:YES];
+	STAssertTrue(testee.isEditing, "@view is editing");
+	STAssertEqualObjects([EditProfileDataSource class], [testee.tableView.dataSource class], @"data source"); 		
+}
+
+-(void)testWhenDoneEditingRemainsInEditingStateUntilAccountCallbackReceived{
+	[gAccount  setAccountLoadStatus:accountLoadStatusLoaded];
+	[testee setEditing:YES animated:YES];
+	[testee setEditing:NO animated:YES];
+	STAssertTrue(testee.isEditing, @"view is editing");	
+}
+
+-(void)testBecomesNongerEditingWhenEditingAndAccountStatusChangesToLoaded{
+	[testee setEditing:YES animated:YES];
+	[gAccount  setAccountLoadStatus:accountLoadStatusLoaded];
+	[testee changeInAccount:gAccount];
+	STAssertFalse(testee.isEditing, @"view is editing");		
 }
 
 
+-(void)testWhenEditingAndAccountStatusChangesToLoadedValidViewIsShown{
+	[testee setEditing:YES animated:YES];
+	[gAccount  setAccountLoadStatus:accountLoadStatusLoaded];
+	[testee changeInAccount:gAccount];
+	STAssertEqualObjects([ValidCredentialsProfileDataSource class], [testee.tableView.dataSource class], nil); 
+}
 
+-(void)testWhenEditingAndAccountStatusChangesToFailedValidationEditingViewIsShown{
+	[testee setEditing:YES animated:YES];
+	[gAccount  setAccountLoadStatus:accountLoadStatusFailedValidation];
+	[testee changeInAccount:gAccount];
+	STAssertEqualObjects([EditProfileDataSource class], [testee.tableView.dataSource class], nil); 
+	STAssertTrue(testee.isEditing, @"view is editing");	
+}
+
+// TODO Fails to update
+
+// TODO actually updates
 
 
 @end

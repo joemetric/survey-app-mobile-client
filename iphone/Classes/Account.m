@@ -147,6 +147,11 @@
 	[self changeLoadStatusTo:accountLoadStatusUnauthorized];
 }
 
+-(void)update{
+	// Only pretending
+	[self loadCurrent];
+}
+
 - (void)failedWithError:(NSError *)error{
 	[self changeLoadStatusTo:accountLoadStatusLoadFailed withError:error];
 }

@@ -7,7 +7,9 @@
 @class NoCredentialsProfileDataSource;
 @class ValidCredentialsProfileDataSource;
 @class NoAccountDataProfileDataSource;
+@class EditProfileDataSource;
 @class Account;
+
 
 @interface ProfileViewController : UIViewController <AccountObserver> {
 	UITableView* tableView;
@@ -17,6 +19,7 @@
 	ValidCredentialsProfileDataSource* validCredentials;
 	NoAccountDataProfileDataSource* noAccountData;
 	NoAccountDataProfileDataSource* loadingAccountData;
+	EditProfileDataSource* editProfileDataSource;
 }
 
 - (void) displayModalCredentialsController;
@@ -29,5 +32,5 @@
 @property (nonatomic, retain) ValidCredentialsProfileDataSource* validCredentials;
 @property (nonatomic, retain) NoAccountDataProfileDataSource* noAccountData;
 @property (nonatomic, retain) NoAccountDataProfileDataSource* loadingAccountData;
-
+@property (nonatomic, retain) 	EditProfileDataSource* editProfileDataSource;
 @end
