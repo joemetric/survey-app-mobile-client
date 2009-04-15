@@ -140,6 +140,9 @@
 		DAA2E7550F83D3220004D56E /* DateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA2E7540F83D3220004D56E /* DateHelper.m */; };
 		DAA597000F96133C00DD2EE8 /* EditProfileDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA596FF0F96133C00DD2EE8 /* EditProfileDataSource.m */; };
 		DAA597010F96133C00DD2EE8 /* EditProfileDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA596FF0F96133C00DD2EE8 /* EditProfileDataSource.m */; };
+		DAA5976F0F96353900DD2EE8 /* TableSection+AccountFields.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA5976E0F96353900DD2EE8 /* TableSection+AccountFields.m */; };
+		DAA597700F96353900DD2EE8 /* TableSection+AccountFields.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA5976E0F96353900DD2EE8 /* TableSection+AccountFields.m */; };
+		DAA597E10F963FBF00DD2EE8 /* StubbedTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA597E00F963FBF00DD2EE8 /* StubbedTextView.m */; };
 		DADF81A20F85682F00DEACA0 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = DADF81A10F85682F00DEACA0 /* background.png */; };
 		DADF82C70F86267600DEACA0 /* NSDictionary+RemoveNullsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DADF82C60F86267600DEACA0 /* NSDictionary+RemoveNullsTest.m */; };
 		DADF82CA0F8626B200DEACA0 /* NSDictionary+RemoveNulls.m in Sources */ = {isa = PBXBuildFile; fileRef = DADF82C90F8626B200DEACA0 /* NSDictionary+RemoveNulls.m */; };
@@ -309,6 +312,10 @@
 		DAA2E7540F83D3220004D56E /* DateHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateHelper.m; sourceTree = "<group>"; };
 		DAA596FE0F96133C00DD2EE8 /* EditProfileDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileDataSource.h; sourceTree = "<group>"; };
 		DAA596FF0F96133C00DD2EE8 /* EditProfileDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileDataSource.m; sourceTree = "<group>"; };
+		DAA5976D0F96353900DD2EE8 /* TableSection+AccountFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TableSection+AccountFields.h"; sourceTree = "<group>"; };
+		DAA5976E0F96353900DD2EE8 /* TableSection+AccountFields.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TableSection+AccountFields.m"; sourceTree = "<group>"; };
+		DAA597DF0F963FBF00DD2EE8 /* StubbedTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StubbedTextView.h; sourceTree = "<group>"; };
+		DAA597E00F963FBF00DD2EE8 /* StubbedTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StubbedTextView.m; sourceTree = "<group>"; };
 		DAD6EC300F8B5C950045C2A4 /* AccountObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountObserver.h; sourceTree = "<group>"; };
 		DADF81A10F85682F00DEACA0 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		DADF82C60F86267600DEACA0 /* NSDictionary+RemoveNullsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+RemoveNullsTest.m"; sourceTree = "<group>"; };
@@ -555,6 +562,8 @@
 				DA9A72DF0F938B3400F5580A /* UITableViewCell+IsEditable.m */,
 				DAA596FE0F96133C00DD2EE8 /* EditProfileDataSource.h */,
 				DAA596FF0F96133C00DD2EE8 /* EditProfileDataSource.m */,
+				DAA5976D0F96353900DD2EE8 /* TableSection+AccountFields.h */,
+				DAA5976E0F96353900DD2EE8 /* TableSection+AccountFields.m */,
 			);
 			name = "Profile View Controllers";
 			sourceTree = "<group>";
@@ -621,6 +630,8 @@
 				DA83527E0F8E66ED0073F848 /* NSObject+CleanUpPropertiesTest.m */,
 				DA8353390F8F7BEB0073F848 /* DatePickerViewControllerTest.m */,
 				DA9A712D0F8F9B7400F5580A /* LabelledTableViewCellTest.m */,
+				DAA597DF0F963FBF00DD2EE8 /* StubbedTextView.h */,
+				DAA597E00F963FBF00DD2EE8 /* StubbedTextView.m */,
 			);
 			path = UnitTests;
 			sourceTree = "<group>";
@@ -835,6 +846,7 @@
 				DA9A72C10F936EDB00F5580A /* StubEditable.m in Sources */,
 				DA9A72E00F938B3400F5580A /* UITableViewCell+IsEditable.m in Sources */,
 				DAA597000F96133C00DD2EE8 /* EditProfileDataSource.m in Sources */,
+				DAA597700F96353900DD2EE8 /* TableSection+AccountFields.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -899,6 +911,8 @@
 				DA9A72C20F936EDB00F5580A /* StubEditable.m in Sources */,
 				DA9A72E10F938B3400F5580A /* UITableViewCell+IsEditable.m in Sources */,
 				DAA597010F96133C00DD2EE8 /* EditProfileDataSource.m in Sources */,
+				DAA5976F0F96353900DD2EE8 /* TableSection+AccountFields.m in Sources */,
+				DAA597E10F963FBF00DD2EE8 /* StubbedTextView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

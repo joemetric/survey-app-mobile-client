@@ -7,6 +7,8 @@
 #import "AccountStubbing.h"
 #import "NSObject+CleanUpProperties.h"
 #import "EditProfileDataSource.h"
+#import "StubbedTextView.h"
+#import "LabelledTableViewCell.h"
 
 
 NSInteger gProfileViewControllerTableReloadedCount;
@@ -121,9 +123,9 @@ NSInteger gModalViewControllerDismissCount;
 
 -(void)testDataSourceChangedToEditingWhenEditButtonPressed{
 	[gAccount  setAccountLoadStatus:accountLoadStatusLoaded];
-	STAssertFalse(testee.isEditing, "@view is initially not editing");
+	STAssertFalse(testee.isEditing, @"view is initially not editing");
 	[testee setEditing:YES animated:YES];
-	STAssertTrue(testee.isEditing, "@view is editing");
+	STAssertTrue(testee.isEditing, @"view is editing");
 	STAssertEqualObjects([EditProfileDataSource class], [testee.tableView.dataSource class], @"data source"); 		
 }
 
@@ -155,6 +157,16 @@ NSInteger gModalViewControllerDismissCount;
 	[testee changeInAccount:gAccount];
 	STAssertEqualObjects([EditProfileDataSource class], [testee.tableView.dataSource class], nil); 
 	STAssertTrue(testee.isEditing, @"view is editing");	
+}
+
+-(void)testResignsFirstResponderWhenFinishingEditing{
+	[testee setEditing:YES animated:YES];
+	StubbedTextView* text = [[[StubbedTextView alloc] init] autorelease];
+	testee.editProfileDataSource.emailCell.textField = text;
+	[text becomeFirstResponder];
+	[testee setEditing:NO animated:YES];
+	STAssertFalse(text.isFirstResponder, nil);
+	
 }
 
 // TODO Fails to update

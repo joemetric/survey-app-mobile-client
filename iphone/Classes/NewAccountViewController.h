@@ -17,11 +17,11 @@
 
 @interface NewAccountViewController : UIViewController <AccountObserver> {
 	
-	LabelledTableViewCell* dobCell;
 	LabelledTableViewCell* loginCell;
 	LabelledTableViewCell* passwordCell;
-	LabelledTableViewCell* emailCell;
 	LabelledTableViewCell* passwordConfirmationCell;
+	LabelledTableViewCell* dobCell;
+	LabelledTableViewCell* emailCell;
 	LabelledTableViewCell* incomeCell;
 	MaleFemaleTableViewCell* genderCell;
 	

@@ -15,6 +15,7 @@
 #import "StaticTable.h"
 #import "TableSection.h"
 #import "NSObject+CleanUpProperties.h"
+#import "TableSection+AccountFields.h"
 
 @interface NewAccountViewController ()
 @property(readonly) NSDictionary* errors;
@@ -82,51 +83,19 @@
 	TableSection* section = [TableSection tableSectionWithTitle:@"Basics"];
 	[staticTable addSection:section];
 	
-	self.loginCell = [[[[[LabelledTableViewCell loadLabelledCell] 
-		withErrorField:@"login"] 
-		withLabelText:@"Login"] 
-		withPlaceholder:@"joe"] 
-		withoutCorrections];
-	self.passwordCell= [[[[[LabelledTableViewCell loadLabelledCell] 
-		withErrorField:@"password"] 
-		withLabelText:@"Password"] 
-		withPlaceholder:@"min 6 chars"] 
-		makeSecure];
-	self.passwordConfirmationCell= [[[[[LabelledTableViewCell loadLabelledCell] 
-		withErrorField:@"password_confirmation"]
-		withLabelText:@"Confirm P/W"] 
-		withPlaceholder:@"confirm password"] 
-		makeSecure];
-	self.emailCell = [[[[[LabelledTableViewCell loadLabelledCell] 
-		withErrorField:@"email"] 
-		withLabelText:@"Email"] 
-		withPlaceholder:@"joe@example.com"] 
-		makeEmail];
-    [section addCell:loginCell];
-    [section addCell:passwordCell];
-    [section addCell:passwordConfirmationCell];
-    [section addCell:emailCell];
+	self.loginCell = [section addLoginCell];
+	self.passwordCell= [section addPasswordCell];
+	self.passwordConfirmationCell= [section addPasswordConfirmationCell];
+	self.emailCell = [section addEmailCell];
 }
 
 -(void)populateDemographicsSection{
-    static const int Dec_15_1971 = 61606800;
 	TableSection* section = [TableSection tableSectionWithTitle:@"Demographics"];
 	[staticTable addSection:section];
 	
-	self.incomeCell = [[[[[LabelledTableViewCell loadLabelledCell] 
-		withErrorField:@"income"] 
-		withLabelText:@"Income"] 
-		withPlaceholder:@"999999"] 
-		withKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
-	self.dobCell= [[[[[LabelledTableViewCell loadLabelledCell] 
-        withErrorField:@"birthdate"] 
-		withLabelText:@"Birthdate"] 
-		withPlaceholder:@"15 Dec 1971"] 
-		makeDateUsingParent:self atInitialDate:[NSDate dateWithTimeIntervalSince1970:Dec_15_1971]];
-	self.genderCell = [MaleFemaleTableViewCell loadMaleFemaleTableViewCell];
-    [section addCell:incomeCell];
-	[section addCell:dobCell];
-	[section addCell:genderCell];
+	self.incomeCell = [section addIncomeCell];
+	self.dobCell= [section addDobCellWithParent:self];
+	self.genderCell = [section addGenderCell];
 }
 
 
@@ -135,9 +104,8 @@
     [dobCell withErrorField:@"birthdate"];
 	[self populateBasicSection];
 	[self populateDemographicsSection];
-    self.tableView.backgroundColor = [UIColor clearColor];
 	[[Account currentAccount] onChangeNotifyObserver:self];
- }
+}
 
 
 

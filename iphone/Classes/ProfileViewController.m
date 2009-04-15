@@ -37,7 +37,7 @@
 	self.validCredentials.profileViewController = self;
 	self.noAccountData = [NoAccountDataProfileDataSource noAccountDataProfileDataSourceWithMessage:@"Unable to load account details." andTableView:tableView];
 	self.loadingAccountData = [NoAccountDataProfileDataSource noAccountDataProfileDataSourceWithMessage:@"Loading account details." andTableView:tableView];
-	self.editProfileDataSource = [EditProfileDataSource staticTableForTableView:nil];
+	self.editProfileDataSource = [EditProfileDataSource editProfileDataSourceWithParentViewController:self];
 	[[Account currentAccount] onChangeNotifyObserver:self];
     [self setTableDelegate];
 	[super viewDidLoad];
@@ -120,7 +120,7 @@
 		[super setEditing:editing animated:animated];
 	}
     else{
-        [[Account currentAccount] update];
+        [self.editProfileDataSource finishedEditing];
     }
 	[tableView reloadData];
 }
