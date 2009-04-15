@@ -1,22 +1,21 @@
-//
-//  EditProfileDataSource.m
-//  JoeMetric
-//
-//  Created by Paul Wilson on 15/04/2009.
-//  Copyright 2009 Mere Complexities Limited. All rights reserved.
-//
-
 #import "EditProfileDataSource.h"
 #import "TableSection.h"
+#import "NSObject+CleanUpProperties.h"
 
 @implementation EditProfileDataSource
+@synthesize emailCell, incomeCell, dobCell, genderCell;
 
 -(id)init{
     [super init];
-    
-    
     [self addSection:[TableSection tableSectionWithTitle:@"Editing"]];
     return self;
 }
+
+
+-(void) dealloc{
+    [self setEveryObjCObjectPropertyToNil];
+    [super dealloc];
+}
+
 
 @end
