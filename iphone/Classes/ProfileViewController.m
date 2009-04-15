@@ -19,8 +19,8 @@
 @end
 
 @implementation ProfileViewController
-@synthesize tableView, credentialsController, newAccountController, noCredentials, validCredentials, 
-    noAccountData, loadingAccountData;
+@synthesize tableView;
+@synthesize credentialsController, newAccountController, noCredentials, validCredentials, noAccountData, loadingAccountData;
 
 
 
@@ -74,25 +74,30 @@
 	[self presentModalViewController:self.newAccountController animated:YES];
 }
 
-- (NSObject<UITableViewDelegate, UITableViewDataSource>*) tableDelegate {
+
+- (void) setTableDelegate{
 	switch([Account currentAccount].accountLoadStatus){
-	case accountLoadStatusUnauthorized:
-	case accountLoadStatusFailedValidation:
-		return self.noCredentials;
-	case accountLoadStatusNotLoaded:
-		return loadingAccountData;
-	case accountLoadStatusLoadFailed:
-		return noAccountData;	
-	default:
-		self.navigationItem.rightBarButtonItem = self.editButtonItem;
-		return self.validCredentials;
+        case accountLoadStatusUnauthorized:
+        case accountLoadStatusFailedValidation:
+            [self.noCredentials beDelegateAndDataSourceForThisTableView:self.tableView];
+            break;
+        case accountLoadStatusNotLoaded:
+            [self.loadingAccountData beDelegateAndDataSourceForThisTableView:self.tableView];
+            break;
+        case accountLoadStatusLoadFailed:
+            [self.noAccountData beDelegateAndDataSourceForThisTableView:self.tableView];	
+			break;
+        default:
+            self.navigationItem.rightBarButtonItem = self.editButtonItem;
+            [self.validCredentials beDelegateAndDataSourceForThisTableView:self.tableView];
+            break;
 	}
 }
 
-- (void) setTableDelegate{
-    NSObject<UITableViewDelegate, UITableViewDataSource>* delegate = [self tableDelegate];
-    tableView.delegate = delegate;
-    tableView.dataSource = delegate;
+-(void)setEditing:(BOOL)editing animated:(BOOL)animated{
+    NSLog(@"setEditing:%d animated:%d", editing, animated);
+    self.editButtonItem.enabled = NO;
+    [super setEditing:editing animated:animated];
 }
 
 - (void)dealloc {

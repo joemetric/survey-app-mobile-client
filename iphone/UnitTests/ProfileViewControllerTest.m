@@ -53,6 +53,7 @@ NSInteger gModalViewControllerDismissCount;
 	gModalViewControllerDismissCount = 0;
 	testee = [[ProfileViewController alloc] init];
 	testee.tableView = [[UITableView alloc] init];
+	[testee viewDidLoad];
 }
 
 -(void)tearDown{
@@ -63,12 +64,6 @@ NSInteger gModalViewControllerDismissCount;
 
 
 
--(void)assertTableDelegateIsExpectedType:(Class)expectedType forAccountLoadStatus:(AccountLoadStatus)accountLoadStatus describedAs:(NSString*)description{
-	[gAccount  setAccountLoadStatus:accountLoadStatus];
-	[testee viewDidLoad];
-	STAssertEqualStrings(expectedType, [[testee tableDelegate] class], description); 
-	
-}
 
 -(void)testModalViewControllerDismissedIfAccountLoadStatusBecomes_accountLoadStatusLoaded{
 	[gAccount  setAccountLoadStatus:accountLoadStatusLoaded];	
@@ -82,6 +77,11 @@ NSInteger gModalViewControllerDismissCount;
 	STAssertEquals(0, gModalViewControllerDismissCount, nil);	
 }
 
+-(void)assertTableDelegateIsExpectedType:(Class)expectedType forAccountLoadStatus:(AccountLoadStatus)accountLoadStatus describedAs:(NSString*)description{
+	[gAccount  setAccountLoadStatus:accountLoadStatus];
+	[testee changeInAccount:gAccount];
+	STAssertEqualObjects(expectedType, [testee.tableView.dataSource class], description); 
+}
 
 
 -(void)testTableDelegateDataSourceIsAppropriateForTheCurrentAccountLoadStatus{
@@ -110,7 +110,6 @@ NSInteger gModalViewControllerDismissCount;
 }
 
 -(void)testTableReloadedWhenAccountChanges{
-	[testee viewDidLoad];
 	[gAccount authenticationFailed];
 	STAssertEquals(1, gProfileViewControllerTableReloadedCount, nil);	
 }
