@@ -13,6 +13,7 @@
 #import "ValidCredentialsProfileDataSource.h"
 #import "CredentialsViewController.h"
 #import "NewAccountViewController.h"
+#import "NSObject+CleanUpProperties.h"
 
 @interface ProfileViewController (Private)
 - (void) setTableDelegate;
@@ -96,13 +97,7 @@
 }
 
 - (void)dealloc {
-	[tableView release];
-	[credentialsController release];
-	[noAccountData release];
-	[loadingAccountData release];
-	[noCredentials release];
-	[validCredentials release];
-	[newAccountController release];
+	[self setEveryObjCObjectPropertyToNil];
 	[super dealloc];
 }
 @end

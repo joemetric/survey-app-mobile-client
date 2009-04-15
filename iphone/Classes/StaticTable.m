@@ -31,8 +31,8 @@
 }
 
 
--(void)beDelegateAndDataSourceForThisTableView:(UITableView*)tv{
-	self.tableView = tv;
+-(void)beDelegateAndDataSourceForThisTableView:(UITableView*)_tableView{
+	self.tableView = _tableView;
 	tableView.delegate = self;
 	tableView.dataSource = self;
 	tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];

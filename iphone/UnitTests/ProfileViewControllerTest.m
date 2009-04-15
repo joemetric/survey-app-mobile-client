@@ -5,6 +5,7 @@
 #import "ValidCredentialsProfileDataSource.h"
 #import "NoCredentialsProfileDataSource.h"
 #import "AccountStubbing.h"
+#import "NSObject+CleanUpProperties.h"
 
 
 NSInteger gProfileViewControllerTableReloadedCount;
@@ -58,9 +59,7 @@ NSInteger gModalViewControllerDismissCount;
 -(void)tearDown{
 	[testee release];
 	[gAccount release];
-    
 }
-
 
 
 -(void)assertTableDelegateIsExpectedType:(Class)expectedType forAccountLoadStatus:(AccountLoadStatus)accountLoadStatus describedAs:(NSString*)description{
@@ -98,6 +97,13 @@ NSInteger gModalViewControllerDismissCount;
 	 	forAccountLoadStatus:accountLoadStatusFailedValidation describedAs:@"not loaded"];
 }
 
+-(void)testTableReloadedWhenAccountChanges{
+	[testee viewDidLoad];
+	[gAccount authenticationFailed];
+	STAssertEquals(1, gProfileViewControllerTableReloadedCount, nil);	
+}
+
+
 -(void)testEditButtonPresentOnlyIfTableDelegateTypeIsForValidCredentials{
 	[gAccount  setAccountLoadStatus:accountLoadStatusNotLoaded];
 	[testee changeInAccount:gAccount];
@@ -109,14 +115,11 @@ NSInteger gModalViewControllerDismissCount;
 	
 }
 
--(void)testTableReloadedWhenAccountChanges{
-	[testee viewDidLoad];
-	[gAccount authenticationFailed];
-	STAssertEquals(1, gProfileViewControllerTableReloadedCount, nil);	
+
+
+-(void)testDataSourceChangedToEditingWhenEditButtonPressed{
+	
 }
-
-
-
 
 
 @end
