@@ -1,19 +1,22 @@
 one:
   id: 1
   survey_id: 1
-  text: Free Text Question
+  name: Free Text Question
+  text: This is a free text question. The answer is provided by typing things in.
   question_type: freetext
 
 two:
   id: 2
   survey_id: 1
-  text: Picture Question
+  name: Picture Question
+  text: Tis is a picture question.  The answer is provided by either choosing an existing picture or taking a new one.
   question_type: picture
 
 three:
   id: 3
   survey_id: 3
-  text: How many children do you have?
+  name: How many children do you have?
+  text: This might be some descriptive text about the question, possibly clarifying what we mean by children.  It's optional.
   question_type: freetext
 
 four:

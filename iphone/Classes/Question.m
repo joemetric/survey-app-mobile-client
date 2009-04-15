@@ -11,6 +11,7 @@
 @implementation Question
 
 @synthesize itemId;
+@synthesize name;
 @synthesize text;
 @synthesize amount;
 @synthesize questionType;
@@ -19,7 +20,8 @@
 {
     Question *question = [[Question alloc] init];
     question.itemId       = [[dict objectForKey:@"id"] integerValue];
-    question.text         = [dict objectForKey:@"text"];
+    question.name         = [dict objectForKey:@"name"];
+    question.text      = [dict objectForKey:@"text"];
     question.amount       = [dict objectForKey:@"amount"];
     question.questionType = [dict objectForKey:@"question_type"];
     return question;
@@ -34,7 +36,7 @@
 }
 
 - (NSString *)questionAndAmountAsString {
-    return [NSString stringWithFormat:@"%@ : %@", [self amountAsDollarString], self.text];
+    return [NSString stringWithFormat:@"%@ : %@", [self amountAsDollarString], self.name];
 }
 
 - (void)dealloc {

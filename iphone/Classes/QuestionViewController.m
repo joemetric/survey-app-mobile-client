@@ -8,8 +8,8 @@
 
 #import "QuestionViewController.h"
 #import "Question.h"
-#import "FreeTextAnswerController.h"
-#import "PictureAnswerController.h"
+#import "FreetextAnswerViewController.h"
+#import "PictureAnswerViewController.h"
 #import "QuestionListViewController.h"
 
 @implementation QuestionViewController
@@ -70,7 +70,7 @@
 }
 
 - (void)answerFreeTextQuestion {
-    FreeTextAnswerController *ftac = [[FreeTextAnswerController alloc] initWithNibName:@"FreeTextAnswerView"
+    FreetextAnswerViewController *ftac = [[FreetextAnswerViewController alloc] initWithNibName:@"FreeTextAnswerView"
                                                                        bundle:nil
                                                                        question:self.question];
     ftac.questionList = questionList;
@@ -79,7 +79,7 @@
 }
 
 - (void)answerPictureQuestion {
-    PictureAnswerController *pac = [[PictureAnswerController alloc] initWithNibName:@"PictureAnswerView"
+    PictureAnswerViewController *pac = [[PictureAnswerViewController alloc] initWithNibName:@"PictureAnswerView"
                                                                     bundle:nil
                                                                     question:self.question];
     pac.questionList = questionList;

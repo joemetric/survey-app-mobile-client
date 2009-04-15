@@ -7,7 +7,8 @@
 //
 
 #import "SurveyInfoViewController.h"
-#import "QuestionViewController.h"
+#import "PictureAnswerViewController.h"
+#import "FreetextAnswerViewController.h"
 #import "Survey.h"
 #import "Question.h"
 #import "SurveyInfoViewTableCell.h"
@@ -83,14 +84,21 @@
 }
 
 - (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    QuestionViewController *qvc = 
-	[[QuestionViewController alloc] initWithNibName:@"QuestionView" 
-											 bundle:nil
-										   question:[self.survey.questions objectAtIndex:indexPath.row]];
-    qvc.questionList = self;
-    [self.navigationController pushViewController:qvc animated:YES];  
-    [qvc release];    
-	
+	Question* q = [self.survey.questions objectAtIndex:indexPath.row];
+
+	if( [q.questionType isEqualToString:@"picture"] ) {
+		PictureAnswerViewController* pac = [[PictureAnswerViewController alloc] initWithNibName:@"PictureAnswerView" 
+																				bundle:nil
+																				question:q];
+		[self.navigationController pushViewController:pac animated:YES];  
+		[pac release];    
+	} else 	if( [q.questionType isEqualToString:@"freetext"] ) {
+		FreetextAnswerViewController* fac = [[FreetextAnswerViewController alloc] initWithNibName:@"FreetextAnswerView" 
+																						 bundle:nil
+																					   question:q];
+		[self.navigationController pushViewController:fac animated:YES];  
+		[fac release];    
+	}
 }
 
 - (void)viewWillAppear:(BOOL)animated {

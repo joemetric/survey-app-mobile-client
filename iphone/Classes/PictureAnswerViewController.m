@@ -6,16 +6,17 @@
 //  Copyright 2009 EdgeCase, LLC. All rights reserved.
 //
 
-#import "PictureAnswerController.h"
+#import "PictureAnswerViewController.h"
 #import "QuestionListViewController.h"
 #import "Question.h"
 #import "Answer.h"
 #import "AnswerManager.h"
 
-@implementation PictureAnswerController
+@implementation PictureAnswerViewController
 
 @synthesize question;
 @synthesize questionList;
+@synthesize questionLabel, questionDetails;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil question:(Question *)aQuestion
 {
@@ -66,7 +67,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [menu showInView:[self view]];
+//    [menu showInView:[self view]];
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+	self.questionLabel.text = self.question.name;
+	self.questionDetails.text = self.question.text;
+	 [super viewWillAppear:animated];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo
