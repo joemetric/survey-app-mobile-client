@@ -19,7 +19,8 @@
 @end
 
 @implementation ProfileViewController
-@synthesize tableView, credentialsController, newAccountController, noCredentials, validCredentials, noAccountData, loadingAccountData;
+@synthesize tableView, credentialsController, newAccountController, noCredentials, validCredentials, 
+    noAccountData, loadingAccountData;
 
 
 
@@ -39,10 +40,9 @@
 
 	self.validCredentials = [[[ValidCredentialsProfileDataSource alloc] init] autorelease];
 	self.validCredentials.profileViewController = self;
-	self.noAccountData = [NoAccountDataProfileDataSource noAccountDataProfileDataSourceWithMessage:@"Unable to load account details."];
-	self.loadingAccountData = [NoAccountDataProfileDataSource noAccountDataProfileDataSourceWithMessage:@"Loading account details."];
+	self.noAccountData = [NoAccountDataProfileDataSource noAccountDataProfileDataSourceWithMessage:@"Unable to load account details." andTableView:tableView];
+	self.loadingAccountData = [NoAccountDataProfileDataSource noAccountDataProfileDataSourceWithMessage:@"Loading account details." andTableView:tableView];
 	[[Account currentAccount] onChangeNotifyObserver:self];
-    self.tableView.backgroundColor = [UIColor clearColor];
     [self setTableDelegate];
 	[super viewDidLoad];
 }
@@ -84,6 +84,7 @@
 	case accountLoadStatusLoadFailed:
 		return noAccountData;	
 	default:
+		self.navigationItem.rightBarButtonItem = self.editButtonItem;
 		return self.validCredentials;
 	}
 }

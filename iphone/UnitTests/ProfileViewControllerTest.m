@@ -98,7 +98,16 @@ NSInteger gModalViewControllerDismissCount;
 	 	forAccountLoadStatus:accountLoadStatusFailedValidation describedAs:@"not loaded"];
 }
 
+-(void)testEditButtonPresentOnlyIfTableDelegateTypeIsForValidCredentials{
+	[gAccount  setAccountLoadStatus:accountLoadStatusNotLoaded];
+	[testee changeInAccount:gAccount];
+	STAssertNil(testee.navigationItem.rightBarButtonItem, @"no edit button for not loaded status");
 
+	[gAccount  setAccountLoadStatus:accountLoadStatusLoaded];
+	[testee changeInAccount:gAccount];
+	STAssertNotNil(testee.navigationItem.rightBarButtonItem, @"edit button present if in loaded status");
+	
+}
 
 -(void)testTableReloadedWhenAccountChanges{
 	[testee viewDidLoad];

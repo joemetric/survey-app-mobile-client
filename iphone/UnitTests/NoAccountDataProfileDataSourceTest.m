@@ -3,19 +3,23 @@
 
 @interface NoAccountDataProfileDataSourceTest : GTMTestCase{
     StaticTable* testee;
+	UITableView* tableView;
 }
 @property(nonatomic, retain)  StaticTable* testee;
+@property(nonatomic, retain)  UITableView* tableView;
 @end
 
 @implementation NoAccountDataProfileDataSourceTest 
-@synthesize testee;
+@synthesize testee, tableView;
 
 -(void)setUp{
-    self.testee = [NoAccountDataProfileDataSource noAccountDataProfileDataSourceWithMessage:@"this is the message"];
+	self.tableView = 
+    self.testee = [NoAccountDataProfileDataSource noAccountDataProfileDataSourceWithMessage:@"this is the message" andTableView:tableView];
 }
 
 -(void)tearDown{
 	self.testee = nil;
+    self.tableView = nil;
 }
 
 -(void)testOneSectionWithNoRows{

@@ -12,7 +12,7 @@
 
 @interface StaticTable()
 @property(nonatomic, retain) NSMutableArray* sections;
-@property(nonatomic, retain) UITableView* tableView;
+@property(nonatomic, assign) UITableView* tableView;
 @end
 
 @implementation StaticTable
@@ -30,8 +30,18 @@
 	[super dealloc];	
 }
 
+
+-(void)beDelegateAndDataSourceForThisTableView:(UITableView*)tv{
+	self.tableView = tv;
+	tableView.delegate = self;
+	tableView.dataSource = self;
+	tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
+	
+}
+
 +(id)staticTableForTableView:(UITableView*)tableView{
     StaticTable* result =  [[[self alloc] init] autorelease];
+	[result beDelegateAndDataSourceForThisTableView:tableView];
 	result.tableView = tableView;
 	return result;
 }

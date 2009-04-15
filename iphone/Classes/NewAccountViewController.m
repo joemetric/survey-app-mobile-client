@@ -96,8 +96,6 @@
 
 -(void)viewDidLoad{
 	self.staticTable = [StaticTable staticTableForTableView:tableView];
-	tableView.delegate = staticTable;
-	tableView.dataSource = staticTable;
     [dobCell withErrorField:@"birthdate"];
 	[self populateBasicSection];
 	[self populateDemographicsSection];
