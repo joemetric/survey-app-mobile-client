@@ -1,6 +1,7 @@
 #import "GTMSenTestCase.h"
 #import "DatePickerViewController.h"
 #import "LabelledTableViewCell.h"
+#import "StubbedTextView.h"
 
 @interface StubbedViewController : UIViewController{
 @public 
@@ -14,25 +15,7 @@
 }
 @end
 
-@interface StubbedTextView : UITextView{
-	BOOL isFirstResponder;
-}
 
-- (BOOL)becomeFirstResponder;
-- (BOOL)isFirstResponder;
-
-@end
-
-@implementation StubbedTextView
-- (BOOL)becomeFirstResponder{
-	return isFirstResponder = YES;
-}
-
-- (BOOL)isFirstResponder{
-	return isFirstResponder;
-}
-
-@end
 
 @interface LabelledTableViewCellTest : GTMTestCase{
     LabelledTableViewCell* testee;

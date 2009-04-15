@@ -2,6 +2,7 @@
 #import "StaticTable.h"
 #import "TableSection.h"
 #import "StubEditable.h"
+#import "StubbedTextView.h"
 
 
 
@@ -175,6 +176,17 @@
 }
 -(void)testSelectingRowAtIndexPathIgnoresUneditableCell{
 	[testee tableView:nil didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
+}
+
+-(void)testResignFirstResponder{
+	StubbedTextView* stubbedResponder = [[[StubbedTextView alloc] init] autorelease];
+	StubEditableWithTextField* cell = [StubEditableWithTextField stubEditableWithTextField];
+	cell.textField = stubbedResponder;
+	[section1 addCell:cell];
+	
+	[stubbedResponder becomeFirstResponder];
+	[testee resignFirstResponder];
+	STAssertFalse(stubbedResponder.isFirstResponder, nil);
 }
 
 

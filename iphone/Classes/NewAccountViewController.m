@@ -105,7 +105,7 @@
 	[self populateBasicSection];
 	[self populateDemographicsSection];
 	[[Account currentAccount] onChangeNotifyObserver:self];
- }
+}
 
 
 

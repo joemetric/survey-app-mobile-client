@@ -73,6 +73,18 @@
 	}
 }
 
+-(void)resignFirstResponder{
+	for (TableSection* section in sections){
+		for (int i = 0; i < [section rowCount]; i++){
+			UITableViewCell* cell = [section cellAtIndex:i];
+			if ([cell isEditableWithTextField]){
+				[[(id<Editable>)cell textField] resignFirstResponder];
+			}
+			
+		}
+	}	
+}
+
 
 - (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 	UITableViewCell* cell = [self tableView:tv cellForRowAtIndexPath:indexPath];

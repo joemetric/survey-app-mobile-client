@@ -14,6 +14,7 @@
 -(TableSection*) sectionAtIndex:(NSInteger)index;
 -(void)activeSubsequentTextField:(UITextField*)textField;
 
--(void)beDelegateAndDataSourceForThisTableView:(UITableView*)tableView;
 
+-(void)beDelegateAndDataSourceForThisTableView:(UITableView*)tableView;
+-(void)resignFirstResponder;
 @end
