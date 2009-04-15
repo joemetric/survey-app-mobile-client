@@ -5,6 +5,7 @@
 //  Created by Scott Barron on 3/10/09.
 //  Copyright 2009 EdgeCase, LLC. All rights reserved.
 //
+@class Question;
 
 @interface Answer : NSObject {
     NSInteger itemId;
@@ -25,7 +26,13 @@
 @property (nonatomic, retain) NSString *localImageFile;
 
 + (id)newFromDictionary:(NSDictionary *)dict;
-
++ (NSString*) answerDirectory;
++ (void)clearAllStored;
++ (BOOL)answerExistsForQuestion:(Question*) question;
++ (NSString*) answerFilePathForQuestionId:(NSInteger)questionId;
++ (Answer*) answerForQuestion:(Question*) question;
+	
+- (NSString*) answerFilePath;	
 - (NSDictionary *)toDictionary;
 - (BOOL)store;
 @end

@@ -33,7 +33,22 @@
 	self.questionLabel.text = self.question.name;
 	self.questionDetails.text = self.question.text;
 	
+	if( [Answer answerExistsForQuestion:self.question] == YES ) {
+		NSLog(@"answer exists");
+		Answer* answer = [Answer answerForQuestion:self.question];
+		NSLog(@"answer: %@", answer);
+		self.answerField.text = [answer answerString];
+	}	
 	[super viewWillAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+	NSLog(@"About to disappear");
+	if( self.answerField.text.length > 0 )
+		[self storeAnswer];
+	else
+		[self deleteAnswer];
+	[super viewWillDisappear:animated];
 }
 
 -(void) keyboardWillShow:(NSNotification *)note
@@ -105,8 +120,11 @@
     return YES;
 }
 
-- (void)submitAnswer:(id)sender {
-    NSLog(@"Submitting answer");
+- (void)deleteAnswer {
+	[Answer deleteAnswerForQuestion:self.question];
+}
+
+- (void)storeAnswer {
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setObject:[NSNumber numberWithInteger:question.itemId] forKey:@"question_id"];
     [params setObject:question.questionType forKey:@"question_type"];
@@ -114,10 +132,10 @@
 
     Answer *answer = [Answer newFromDictionary:params];
     [answer store];
-    [AnswerManager pushAnswer:answer];
-    NSLog(@"Answer: %@", answer);
-    
-    [self.navigationController popToViewController:self.questionList animated:YES];
+//    [AnswerManager pushAnswer:answer];
+//    NSLog(@"Answer: %@", answer);
+//    
+//    [self.navigationController popToViewController:self.questionList animated:YES];
 
     [params release];
     [answer release];

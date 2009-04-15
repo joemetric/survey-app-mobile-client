@@ -12,7 +12,7 @@
 @class QuestionListViewController;
 
 @interface PictureAnswerViewController : UIViewController <UIImagePickerControllerDelegate, UIActionSheetDelegate, UINavigationControllerDelegate> {
-    IBOutlet UIImageView *imageView;
+    UIImageView *imageView;
     Question *question;
     UIViewController *questionList;
 	UILabel *questionLabel;
@@ -27,10 +27,11 @@
 @property (nonatomic, retain) UIViewController *questionList;
 @property (nonatomic, retain) IBOutlet UILabel *questionLabel;
 @property (nonatomic, retain) IBOutlet UITextView *questionDetails;
+@property (nonatomic, retain) IBOutlet UIImageView *imageView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil question:(Question *)aQuestion;
 
-- (IBAction)sendAnswer:(id)sender;
+- (void)storeAnswer;
 - (IBAction)changePicture:(id)sender;
 
 @end

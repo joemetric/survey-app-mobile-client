@@ -32,5 +32,5 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil question:(Question *)aQuestion;
 - (void)doneEditing:(id)sender;
 
-- (IBAction)submitAnswer:(id)sender;
+- (void)storeAnswer;
 @end

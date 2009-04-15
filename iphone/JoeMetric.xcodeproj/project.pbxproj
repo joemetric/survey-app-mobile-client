@@ -49,6 +49,9 @@
 		54A630380F6EAA6D0038382D /* SegmentedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54A630370F6EAA6D0038382D /* SegmentedTableViewCell.xib */; };
 		54A6308B0F6EB2240038382D /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A6308A0F6EB2240038382D /* DatePickerViewController.m */; };
 		54A630900F6EB2D20038382D /* DatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54A6308F0F6EB2D20038382D /* DatePickerView.xib */; };
+		54D028510F96203300A9473A /* greentick_overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 54D0284E0F96203300A9473A /* greentick_overlay.png */; };
+		54D028520F96203300A9473A /* question_freetext_done.png in Resources */ = {isa = PBXBuildFile; fileRef = 54D0284F0F96203300A9473A /* question_freetext_done.png */; };
+		54D028530F96203300A9473A /* question_picture_done.png in Resources */ = {isa = PBXBuildFile; fileRef = 54D028500F96203300A9473A /* question_picture_done.png */; };
 		54D2A5630F6C53D800C0C316 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 54D2A5620F6C53D800C0C316 /* Settings.bundle */; };
 		54F817C70F8E339100EC1909 /* surveylist_header.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F817C60F8E339100EC1909 /* surveylist_header.png */; };
 		54F817E30F8E347400EC1909 /* SurveyListViewTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54F817E20F8E347400EC1909 /* SurveyListViewTableCell.xib */; };
@@ -213,6 +216,9 @@
 		54A630890F6EB2240038382D /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		54A6308A0F6EB2240038382D /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
 		54A6308F0F6EB2D20038382D /* DatePickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DatePickerView.xib; sourceTree = "<group>"; };
+		54D0284E0F96203300A9473A /* greentick_overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greentick_overlay.png; sourceTree = "<group>"; };
+		54D0284F0F96203300A9473A /* question_freetext_done.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = question_freetext_done.png; sourceTree = "<group>"; };
+		54D028500F96203300A9473A /* question_picture_done.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = question_picture_done.png; sourceTree = "<group>"; };
 		54D2A5620F6C53D800C0C316 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		54F817C60F8E339100EC1909 /* surveylist_header.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = surveylist_header.png; sourceTree = "<group>"; };
 		54F817E20F8E347400EC1909 /* SurveyListViewTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SurveyListViewTableCell.xib; sourceTree = "<group>"; };
@@ -413,6 +419,9 @@
 		0DF9E1EB0EF2ED1800A522A1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				54D0284E0F96203300A9473A /* greentick_overlay.png */,
+				54D0284F0F96203300A9473A /* question_freetext_done.png */,
+				54D028500F96203300A9473A /* question_picture_done.png */,
 				549A75000F8FA0CB00D968C4 /* question_freetext.png */,
 				549A75010F8FA0CB00D968C4 /* question_picture.png */,
 				54F817C60F8E339100EC1909 /* surveylist_header.png */,
@@ -733,6 +742,9 @@
 				549A75030F8FA0CB00D968C4 /* question_picture.png in Resources */,
 				541645980F95E1110050FC94 /* FreetextAnswerView.xib in Resources */,
 				541645990F95E1110050FC94 /* PictureAnswerView.xib in Resources */,
+				54D028510F96203300A9473A /* greentick_overlay.png in Resources */,
+				54D028520F96203300A9473A /* question_freetext_done.png in Resources */,
+				54D028530F96203300A9473A /* question_picture_done.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

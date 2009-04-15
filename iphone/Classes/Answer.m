@@ -7,6 +7,7 @@
 //
 
 #import "Answer.h"
+#import "Question.h"
 
 
 @implementation Answer
@@ -28,7 +29,49 @@
     answer.questionType = [dict objectForKey:@"question_type"];
     answer.answerString = [dict objectForKey:@"answer_string"];
     answer.answerFile = [dict objectForKey:@"answer_file"];
+    answer.localImageFile = [dict objectForKey:@"local_image_file"];
     return answer;
+}
+
++ (void)clearAllStored {
+	NSLog(@"clearing stored answers");
+	NSString* answersDir = [Answer answerDirectory];
+	if( [[NSFileManager defaultManager] fileExistsAtPath:answersDir] ) {
+		NSArray* answerFiles = [[NSFileManager defaultManager] directoryContentsAtPath:answersDir];
+		
+		for( NSString* answerFile in answerFiles ) {
+			NSString* fullPath = [answersDir stringByAppendingPathComponent:answerFile];
+			NSLog(@"clearing answer: %@", fullPath);
+			[[NSFileManager defaultManager] removeItemAtPath:fullPath error:NULL];
+		}
+	}
+}
+
++ (Answer*) answerForQuestion:(Question*) question {
+	if( [Answer	answerExistsForQuestion:question] == NO )
+		return nil;
+	NSLog(@"retrieving answer");
+	NSString* filepath = [Answer answerFilePathForQuestionId:question.itemId];
+	NSLog(@"retrieve: filepath: %@", filepath);
+	NSDictionary* dic = [NSDictionary dictionaryWithContentsOfFile:filepath];
+	NSLog(@"retrieve: dic: %@", dic);
+	Answer* result = [Answer newFromDictionary:[dic objectForKey:@"answer"]];
+	NSLog(@"retrieve: ans: %@", result);
+	return [result autorelease];
+}
+
++ (BOOL)answerExistsForQuestion:(Question*) question {
+	NSString* filepath = [Answer answerFilePathForQuestionId:question.itemId];
+	NSLog(@"checking if %@ exists", filepath);
+	return [[NSFileManager defaultManager] fileExistsAtPath:filepath];
+}
+
++ (NSString*) answerFilePathForQuestionId:(NSInteger)questionId {
+	return [[Answer answerDirectory] stringByAppendingPathComponent:[NSString stringWithFormat:@"%d.plist", questionId]];
+}
+	
++ (void) deleteAnswerForQuestion:(Question*)question {
+	[[NSFileManager defaultManager] removeItemAtPath:[Answer answerFilePathForQuestionId:question.itemId] error:NULL];
 }
 
 - (NSDictionary *)toDictionary
@@ -41,6 +84,8 @@
         [parameters setObject:self.answerString forKey:@"answer_string"];
     if (self.answerFile)
         [parameters setObject:self.answerFile forKey:@"answer_file"];
+    if (self.localImageFile)
+		[parameters setObject:self.localImageFile forKey:@"local_image_file"];
     
     NSMutableDictionary *container = [[NSMutableDictionary alloc] init];
     [container setObject:parameters forKey:@"answer"];
@@ -64,6 +109,20 @@
     [[self toDictionary] writeToFile:answerFilePath atomically:YES];
     
     return YES;
+}
+
+
+- (NSString*) answerFilePath{
+    return [Answer answerFilePathForQuestionId:self.questionId];
+}
+
+
++ (NSString*) answerDirectory{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *answerDirectory = [documentsDirectory stringByAppendingPathComponent:@"answers"];	
+    [[NSFileManager defaultManager] createDirectoryAtPath:answerDirectory attributes:nil];
+	return answerDirectory;
 }
 
 - (void)dealloc

@@ -17,6 +17,7 @@
 @synthesize question;
 @synthesize questionList;
 @synthesize questionLabel, questionDetails;
+@synthesize imageView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil question:(Question *)aQuestion
 {
@@ -31,12 +32,12 @@
 
         if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
             snapshotButtonIndex = menu.numberOfButtons;
-            [menu addButtonWithTitle:@"Take Snapshot"];
+            [menu addButtonWithTitle:@"Take Photo"];
         }
 
         if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
             libraryButtonIndex = menu.numberOfButtons;
-            [menu addButtonWithTitle:@"Library Photo"];
+            [menu addButtonWithTitle:@"Choose Existing Photo"];
         }
 
         cancelButtonIndex = menu.numberOfButtons;
@@ -73,8 +74,22 @@
 - (void) viewWillAppear:(BOOL)animated {
 	self.questionLabel.text = self.question.name;
 	self.questionDetails.text = self.question.text;
-	 [super viewWillAppear:animated];
+
+	if( [Answer answerExistsForQuestion:self.question] == YES ) {
+		Answer* answer = [Answer answerForQuestion:self.question];
+		self.imageView.image = [UIImage imageWithContentsOfFile:[answer localImageFile]];
+	}
+	[super viewWillAppear:animated];
 }
+
+
+- (void)viewWillDisappear:(BOOL)animated {
+	NSLog(@"About to disappear");
+	if( self.modalViewController == nil && self.imageView.image != nil ) 
+		[self storeAnswer];
+	[super viewWillDisappear:animated];
+}
+
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo
 {
@@ -89,18 +104,15 @@
 }
 
 - (NSString *)storeImage {
-    int i = 0;
-    NSString *docsFolder = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
-    NSString *uniquePath = [docsFolder stringByAppendingPathComponent:@"selectedImage.png"];
-    while ([[NSFileManager defaultManager] fileExistsAtPath:uniquePath])
-        uniquePath = [NSString stringWithFormat:@"%@/%@-%d.%@", docsFolder, @"selectedImage", ++i, @"png"];
+	NSString* filename = [NSString stringWithFormat:@"%d_image.png", question.itemId];
+    NSString *uniquePath = [[Answer answerDirectory] stringByAppendingPathComponent:filename];
     
     NSLog(@"Writing image to %@", uniquePath);
     [UIImagePNGRepresentation(imageView.image) writeToFile:uniquePath atomically:YES];
     return uniquePath;
 }
 
-- (IBAction)sendAnswer:(id)sender
+- (void)storeAnswer
 {
     NSLog(@"Submitting picture");
     NSString *imagePath = [self storeImage];
@@ -112,11 +124,11 @@
     Answer *answer = [Answer newFromDictionary:params];
     answer.localImageFile = imagePath;
     [answer store];
-    [AnswerManager pushAnswer:answer];
-    
-    NSLog(@"Answer: %@", answer);
-    
-    [self.navigationController popToViewController:self.questionList animated:YES];
+//    [AnswerManager pushAnswer:answer];
+//    
+//    NSLog(@"Answer: %@", answer);
+//    
+//    [self.navigationController popToViewController:self.questionList animated:YES];
 
     [params release];
     [answer release];

@@ -11,7 +11,12 @@
 #import "FreetextAnswerViewController.h"
 #import "Survey.h"
 #import "Question.h"
+#import "Answer.h"
 #import "SurveyInfoViewTableCell.h"
+
+@interface SurveyInfoViewController (Private)
+- (BOOL) allQuestionsAnswered;
+@end
 
 @implementation SurveyInfoViewController
 
@@ -32,21 +37,23 @@
     [super viewDidLoad];
     self.surveyName.text = self.survey.name;
     self.surveyAmount.text = [self.survey amountAsDollarString];
-	UIBarButtonItem* doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(surveyDone:)];
+	[Answer clearAllStored];
 	UIBarButtonItem* cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(surveyCancel:)];
-	
-	self.navigationItem.rightBarButtonItem = doneButton;
 	self.navigationItem.leftBarButtonItem = cancelButton;
 	self.title = @"Survey";
-	[doneButton release];
 	[cancelButton release];
 }
 
 - (void) surveyDone:(id)sender {
+	UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"TODO" message:@"Submit answers to the server." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+	[alertView show];
+	[alertView release];
 	[self.parentViewController dismissModalViewControllerAnimated:YES];
 }
 
 - (void) surveyCancel:(id)sender {
+	//TODO show an alert informing the user that all answers deleted if they proceed.
+	[Answer clearAllStored];
 	[self.parentViewController dismissModalViewControllerAnimated:YES];
 }
 
@@ -76,12 +83,17 @@
 
 	Question* q = (Question*)[survey.questions objectAtIndex:indexPath.row]; 
 	NSLog(@"cell:text");
-	cell.textLabel.text = q.text;
+	cell.textLabel.text = q.name;
 	NSLog(@"cell:image");
-	cell.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"question_%@.png", q.questionType]];
+	if( [Answer answerExistsForQuestion:q] )
+		cell.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"question_%@_done.png", q.questionType]];
+	else
+		cell.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"question_%@.png", q.questionType]];
+		
 	NSLog(@"cell:return");
 	return cell;
 }
+
 
 - (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	Question* q = [self.survey.questions objectAtIndex:indexPath.row];
@@ -96,12 +108,28 @@
 		FreetextAnswerViewController* fac = [[FreetextAnswerViewController alloc] initWithNibName:@"FreetextAnswerView" 
 																						 bundle:nil
 																					   question:q];
-		[self.navigationController pushViewController:fac animated:YES];  
+		   [self.navigationController pushViewController:fac animated:YES];  
 		[fac release];    
 	}
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+	[self.questionList reloadData];
+	if( [self allQuestionsAnswered] == YES && self.navigationItem.rightBarButtonItem == nil ) {
+		UIBarButtonItem* doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(surveyDone:)];
+		self.navigationItem.rightBarButtonItem = doneButton;
+		[doneButton release];
+	} else {
+		self.navigationItem.rightBarButtonItem = nil;
+	}
+}
+
+- (BOOL) allQuestionsAnswered {
+	for( Question* q in self.survey.questions ) {
+		if( [Answer answerExistsForQuestion:q] == NO )
+			return NO;
+	}
+	return YES;
 }
 
 /*
