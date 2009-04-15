@@ -14,6 +14,6 @@
 }
 
 
-+(id)noAccountDataProfileDataSourceWithMessage:(NSString*)message;
++(id)noAccountDataProfileDataSourceWithMessage:(NSString*)message andTableView:(UITableView*)tableView;
 @end
  

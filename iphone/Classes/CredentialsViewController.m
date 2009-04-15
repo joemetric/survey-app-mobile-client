@@ -51,8 +51,6 @@
 
 	tableView.delegate = staticTable;
 	tableView.dataSource = staticTable;
-	tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
-
 }
 
 

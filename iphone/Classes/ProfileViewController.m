@@ -13,23 +13,19 @@
 #import "ValidCredentialsProfileDataSource.h"
 #import "CredentialsViewController.h"
 #import "NewAccountViewController.h"
+#import "NSObject+CleanUpProperties.h"
+#import "EditProfileDataSource.h"
 
 @interface ProfileViewController (Private)
 - (void) setTableDelegate;
 @end
 
 @implementation ProfileViewController
-@synthesize tableView, credentialsController, newAccountController, noCredentials, validCredentials, noAccountData, loadingAccountData;
+@synthesize tableView;
+@synthesize credentialsController, newAccountController, noCredentials, validCredentials, noAccountData, loadingAccountData, editProfileDataSource;
 
 
 
--(void)changeInAccount:(Account*) _account{
-	if (accountLoadStatusLoaded == [Account currentAccount].accountLoadStatus){
-		[self dismissModalViewControllerAnimated:YES];
-	}
-    [self setTableDelegate];
-	[self.tableView reloadData];
-}
 
 // Implement viewDidLoad to do additional setup after loading the view.
 - (void)viewDidLoad {
@@ -39,10 +35,10 @@
 
 	self.validCredentials = [[[ValidCredentialsProfileDataSource alloc] init] autorelease];
 	self.validCredentials.profileViewController = self;
-	self.noAccountData = [NoAccountDataProfileDataSource noAccountDataProfileDataSourceWithMessage:@"Unable to load account details."];
-	self.loadingAccountData = [NoAccountDataProfileDataSource noAccountDataProfileDataSourceWithMessage:@"Loading account details."];
+	self.noAccountData = [NoAccountDataProfileDataSource noAccountDataProfileDataSourceWithMessage:@"Unable to load account details." andTableView:tableView];
+	self.loadingAccountData = [NoAccountDataProfileDataSource noAccountDataProfileDataSourceWithMessage:@"Loading account details." andTableView:tableView];
+	self.editProfileDataSource = [EditProfileDataSource staticTableForTableView:nil];
 	[[Account currentAccount] onChangeNotifyObserver:self];
-    self.tableView.backgroundColor = [UIColor clearColor];
     [self setTableDelegate];
 	[super viewDidLoad];
 }
@@ -74,34 +70,63 @@
 	[self presentModalViewController:self.newAccountController animated:YES];
 }
 
-- (NSObject<UITableViewDelegate, UITableViewDataSource>*) tableDelegate {
-	switch([Account currentAccount].accountLoadStatus){
-	case accountLoadStatusUnauthorized:
-	case accountLoadStatusFailedValidation:
-		return self.noCredentials;
-	case accountLoadStatusNotLoaded:
-		return loadingAccountData;
-	case accountLoadStatusLoadFailed:
-		return noAccountData;	
-	default:
-		return self.validCredentials;
+
+- (void) setTableDelegate{
+	if (self.isEditing){
+		switch([Account currentAccount].accountLoadStatus){
+			case accountLoadStatusFailedValidation:
+			// Stay editing
+			break;
+			case accountLoadStatusLoaded:
+			[self.validCredentials beDelegateAndDataSourceForThisTableView:self.tableView];
+			[super setEditing:NO animated:YES];
+			break;
+		}
+
+	}
+	else{
+		switch([Account currentAccount].accountLoadStatus){
+			case accountLoadStatusUnauthorized:
+			case accountLoadStatusFailedValidation:
+			[self.noCredentials beDelegateAndDataSourceForThisTableView:self.tableView];
+			break;
+			case accountLoadStatusNotLoaded:
+			[self.loadingAccountData beDelegateAndDataSourceForThisTableView:self.tableView];
+			break;
+			case accountLoadStatusLoadFailed:
+			[self.noAccountData beDelegateAndDataSourceForThisTableView:self.tableView];	
+			break;
+			default:
+			self.navigationItem.rightBarButtonItem = self.editButtonItem;
+			[self.validCredentials beDelegateAndDataSourceForThisTableView:self.tableView];
+			break;
+		}
 	}
 }
 
-- (void) setTableDelegate{
-    NSObject<UITableViewDelegate, UITableViewDataSource>* delegate = [self tableDelegate];
-    tableView.delegate = delegate;
-    tableView.dataSource = delegate;
+-(void)changeInAccount:(Account*) _account{
+	if (accountLoadStatusLoaded == [Account currentAccount].accountLoadStatus){
+		[self dismissModalViewControllerAnimated:YES];
+	}
+
+    [self setTableDelegate];
+	[self.tableView reloadData];
+}
+
+
+-(void)setEditing:(BOOL)editing animated:(BOOL)animated{
+	if(editing){
+		[self.editProfileDataSource beDelegateAndDataSourceForThisTableView:self.tableView];
+		[super setEditing:editing animated:animated];
+	}
+    else{
+        [[Account currentAccount] update];
+    }
+	[tableView reloadData];
 }
 
 - (void)dealloc {
-	[tableView release];
-	[credentialsController release];
-	[noAccountData release];
-	[loadingAccountData release];
-	[noCredentials release];
-	[validCredentials release];
-	[newAccountController release];
+	[self setEveryObjCObjectPropertyToNil];
 	[super dealloc];
 }
 @end
