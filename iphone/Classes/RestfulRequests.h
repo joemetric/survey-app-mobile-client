@@ -19,4 +19,5 @@
 
 -(void)GET:(NSString*) path;
 -(void)POST:(NSString*) path withParams:(NSDictionary*)params;
+-(void)PUT:(NSString*) path withParams:(NSDictionary*)params;
 @end

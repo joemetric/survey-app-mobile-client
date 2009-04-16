@@ -148,8 +148,15 @@
 }
 
 -(void)update{
-	// Only pretending
-	[self loadCurrent];
+	NSMutableDictionary* fields = [NSMutableDictionary dictionary];
+	[fields setValue:self.email forKey:@"email"];
+	[fields setValue:[NSNumber numberWithInteger:self.income] forKey:@"income"];
+	[fields setValue:self.gender forKey:@"gender"];
+	[fields setValue:self.iso8061BirthDate forKey:@"birthdate"];
+
+	NSDictionary* container = [NSDictionary dictionaryWithObject:fields forKey:@"user"];
+	NSString* path = [NSString stringWithFormat:@"/users/%d.json", itemId];
+	[[RestfulRequests restfulRequestsWithObserver:self] PUT:path withParams:container];
 }
 
 - (void)failedWithError:(NSError *)error{

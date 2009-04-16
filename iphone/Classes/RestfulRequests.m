@@ -41,11 +41,18 @@
  	[NSURLConnection connectionWithRequest:req delegate:self];
 } 
 
-
--(void)POST:(NSString*) path withParams:(NSDictionary*)params{
-	NSMutableURLRequest *req = [self jsonRequestWithHttpMethod:@"POST" andPath:path];    
+-(void)sendWithMethod:(NSString*)method path:(NSString*)path params:(NSDictionary*)params{
+	NSMutableURLRequest *req = [self jsonRequestWithHttpMethod:method andPath:path];    
 	req.HTTPBody = [[params JSONRepresentation] dataUsingEncoding:NSUTF8StringEncoding];
 	[NSURLConnection connectionWithRequest:req delegate:self];
+	
+}
+-(void)POST:(NSString*) path withParams:(NSDictionary*)params{
+	[self sendWithMethod:@"POST" path:path params:params];
+}
+
+-(void)PUT:(NSString*) path withParams:(NSDictionary*)params{
+	[self sendWithMethod:@"PUT" path:path params:params];
 }
 
 

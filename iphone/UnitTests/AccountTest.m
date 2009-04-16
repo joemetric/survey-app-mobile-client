@@ -233,6 +233,28 @@
 	STAssertNotNil([body matchRegex:@"\"gender\":\"F\""], body);
 }
 
+-(void) testUpdate{
+	account.itemId = 54;
+	account.birthdate = [DateHelper dateFromString:@"15 Jul 1969"];
+	account.email = @"bobby@bobo.net";
+	account.income = 12345;
+	account.gender = @"F";
+	
+	[account update];
+	
+	STAssertNotNil(connectionRequest, @"connectionRequest");
+	STAssertEqualStrings(@"http://localhost:3000/users/54.json", [[connectionRequest URL] relativeString], @"url");
+	STAssertEqualStrings(@"PUT", connectionRequest.HTTPMethod, @"http method");
+
+	NSString* body = [connectionRequest httpBodyAsString];
+	
+	STAssertNotNil([body matchRegex:@"^{\"user\":{"], body);
+	STAssertNotNil([body matchRegex:@"\"email\":\"bobby@bobo.net\""], body);
+    STAssertNotNil([body matchRegex:@"\"birthdate\":\"1969-07-15\""], body);
+	STAssertNotNil([body matchRegex:@"\"income\":12345"], body, nil);
+	STAssertNotNil([body matchRegex:@"\"gender\":\"F\""], body);
+}
+
 -(void)testCreateWithNothingToSendDoesNotBlowUp{
 	account.username = nil;
 	account.password = nil;
