@@ -42,6 +42,8 @@
 	account.birthdate = dobCell.date;
 	account.income = incomeCell.integer;
 	account.gender = genderCell.gender;
+	
+	[account onChangeNotifyObserver:self];
 	[account update];
 }
 -(void)finishedEditing{
@@ -65,6 +67,10 @@
     return result;
 }
 
+-(void)changeInAccount:(Account*)account{
+	[account noLongerNotifyObserver:self];
+	[self handleErrors:[account errors]];
+}
 
 -(void) dealloc{
     [self setEveryObjCObjectPropertyToNil];

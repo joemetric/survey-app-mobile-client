@@ -1,8 +1,9 @@
 #import "StaticTable.h"
+#import "Account.h"
 @class LabelledTableViewCell;
 @class MaleFemaleTableViewCell;
 
-@interface EditProfileDataSource : StaticTable {
+@interface EditProfileDataSource : StaticTable<AccountObserver> {
 	LabelledTableViewCell* dobCell;
 	LabelledTableViewCell* emailCell;
 	LabelledTableViewCell* incomeCell;

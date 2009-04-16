@@ -4,6 +4,7 @@
 #import "MaleFemaleTableViewCell.h"
 #import "LabelledTableViewCell.h"
 #import "DateHelper.h"
+#import "RestStubbing.h"
 
 @interface EditProfileDataSourceTest : GTMTestCase {
     EditProfileDataSource* testee;
@@ -15,6 +16,7 @@
 
 -(void)setUp{
     gAccount = [[[Account alloc] init] autorelease];
+	gAccount.itemId = 45;
     gAccount.username = @"Marvin";
     gAccount.email = @"marvin@marvin.nyet";
     gAccount.income = 56789;
@@ -22,6 +24,7 @@
     gAccount.gender = @"F";
     parentController = [[[UIViewController alloc] init] autorelease];
     testee = [EditProfileDataSource editProfileDataSourceWithParentViewController:parentController];
+	resetRestStubbing();
 }
 
 
@@ -60,6 +63,21 @@
     STAssertEqualStrings(@"M", gAccount.gender, @"gender");
 }
 
+-(void)testCallsUpdate{
+	[testee finishedEditing];
+	STAssertNotNil(connectionRequest, @"connectionRequest");
+	STAssertEqualStrings(@"PUT", connectionRequest.HTTPMethod, @"http method");
+}
 
+-(void)testDisplaysValidationFailures{
+	[testee finishedEditing];
+	NSString* data = @"[[\"email\", \"should not be hotmail\"]]";
+	[gAccount finishedLoading:data];
+	UIView* footerView = [testee tableView:nil  viewForFooterInSection:1];
+	STAssertNotNil(footerView, nil);
+	STAssertEqualStrings(@"email should not be hotmail", [[footerView.subviews objectAtIndex:0] text], nil);
+	
+	
+}
 
 @end
