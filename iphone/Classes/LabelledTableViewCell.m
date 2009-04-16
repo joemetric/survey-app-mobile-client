@@ -94,6 +94,13 @@
 -(NSDate*)date{
 	return [[self dateFormatter] dateFromString:textField.text];
 }
+-(void)setInteger:(NSInteger)integer{
+	textField.text = [NSString stringWithFormat:@"%d", integer];
+}
+
+-(NSInteger)integer{
+	return [textField.text integerValue];
+}
 
 -(void)setErrorHighlighted:(BOOL)highlighted{
 	label.textColor = highlighted ? [UIColor redColor] : [UIColor blackColor];

@@ -131,5 +131,15 @@
 	STAssertEqualStrings(@"", testee.textField.text, nil);
 }
 
+-(void)testSettingInteger{
+	testee.integer = 1234;
+	STAssertEqualStrings(@"1234", testee.textField.text, nil);
+}
+
+-(void)testGettingInteger{
+	testee.textField.text = @"54321";
+	STAssertEquals(54321, testee.integer, nil);
+}
+
 
 @end

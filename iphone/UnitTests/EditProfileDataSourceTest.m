@@ -3,6 +3,7 @@
 #import "AccountStubbing.h"
 #import "MaleFemaleTableViewCell.h"
 #import "LabelledTableViewCell.h"
+#import "DateHelper.h"
 
 @interface EditProfileDataSourceTest : GTMTestCase {
     EditProfileDataSource* testee;
@@ -34,6 +35,7 @@
     STAssertEqualStrings(label, cell.label.text, @"label");
     STAssertEqualStrings(value, cell.textField.text, [NSString stringWithFormat:@"value for %@", label]);
 }
+
 -(void)testCorrectFieldsPopulatedInCorrectPlace{
     [self assertCellAtRow:0 inSection:0 hasLabel:@"username" andValue:@"Marvin"];
     [self assertCellAtRow:0 inSection:1 hasLabel:@"email" andValue:@"marvin@marvin.nyet"];
@@ -42,6 +44,20 @@
     MaleFemaleTableViewCell* gender = [testee tableView:nil cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:1]];
     STAssertEqualStrings(@"gender", gender.label.text, @"label");
     STAssertEqualStrings(@"F", gender.gender, @"gender");
+}
+
+-(void)testAccountDetailsChangedOnFinishedEditing{
+	testee.emailCell.textField.text = @"marvinatyahoodotcom@hotmail.com";
+    testee.dobCell.date = [DateHelper dateFromString:@"15 Sep 1993"];
+    testee.incomeCell.textField.text = @"81000";
+    testee.genderCell.gender = @"M";
+    
+    [testee finishedEditing];
+    
+    STAssertEqualStrings(@"marvinatyahoodotcom@hotmail.com", gAccount.email, @"email");
+    STAssertEqualObjects(@"15 Sep 1993", [DateHelper stringFromDate:gAccount.birthdate], @"birthdate");
+    STAssertEquals(81000, gAccount.income, @"income");
+    STAssertEqualStrings(@"M", gAccount.gender, @"gender");
 }
 
 @end

@@ -36,8 +36,16 @@
 	genderCell.gender = account.gender;
 }
 
+-(void)updateAccount{
+	Account* account = [Account currentAccount];
+	account.email = emailCell.textField.text;
+	account.birthdate = dobCell.date;
+	account.income = incomeCell.integer;
+	account.gender = genderCell.gender;
+	[account update];
+}
 -(void)finishedEditing{
-	[[Account currentAccount] update];
+	[self updateAccount];
 	[self resignFirstResponder];
 	
 }
