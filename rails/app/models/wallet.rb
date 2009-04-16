@@ -4,6 +4,7 @@ class Wallet < ActiveRecord::Base
   
   def record_completed_survey( survey )
     wallet_transactions.create( {:amount => survey.amount, :description => survey.name} )
+    
   end
   
   def record_withdrawal( amount )

@@ -12,6 +12,7 @@
 #import "Survey.h"
 #import "Question.h"
 #import "Answer.h"
+#import "AnswerManager.h"
 #import "SurveyInfoViewTableCell.h"
 
 @interface SurveyInfoViewController (Private)
@@ -37,7 +38,6 @@
     [super viewDidLoad];
     self.surveyName.text = self.survey.name;
     self.surveyAmount.text = [self.survey amountAsDollarString];
-	[Answer clearAllStored];
 	UIBarButtonItem* cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(surveyCancel:)];
 	self.navigationItem.leftBarButtonItem = cancelButton;
 	self.title = @"Survey";
@@ -45,15 +45,14 @@
 }
 
 - (void) surveyDone:(id)sender {
-	UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"TODO" message:@"Submit answers to the server." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+	UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"TODO" message:@"Submitting answers to the server." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 	[alertView show];
 	[alertView release];
+	[AnswerManager postCompletion:self.survey];
 	[self.parentViewController dismissModalViewControllerAnimated:YES];
 }
 
 - (void) surveyCancel:(id)sender {
-	//TODO show an alert informing the user that all answers deleted if they proceed.
-	[Answer clearAllStored];
 	[self.parentViewController dismissModalViewControllerAnimated:YES];
 }
 
@@ -115,21 +114,13 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 	[self.questionList reloadData];
-	if( [self allQuestionsAnswered] == YES && self.navigationItem.rightBarButtonItem == nil ) {
+	if( [self.survey allQuestionsAnswered] == YES && self.navigationItem.rightBarButtonItem == nil ) {
 		UIBarButtonItem* doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(surveyDone:)];
 		self.navigationItem.rightBarButtonItem = doneButton;
 		[doneButton release];
 	} else {
 		self.navigationItem.rightBarButtonItem = nil;
 	}
-}
-
-- (BOOL) allQuestionsAnswered {
-	for( Question* q in self.survey.questions ) {
-		if( [Answer answerExistsForQuestion:q] == NO )
-			return NO;
-	}
-	return YES;
 }
 
 /*

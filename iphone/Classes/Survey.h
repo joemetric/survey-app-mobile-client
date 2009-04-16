@@ -27,5 +27,7 @@
 
 - (NSString *)nameAndAmountAsString;
 - (NSString *)amountAsDollarString;
+- (BOOL) allQuestionsAnswered;
+- (NSArray*) retrieveAnswers;
 
 @end

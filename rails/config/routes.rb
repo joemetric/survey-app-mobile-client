@@ -1,6 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :pictures
-
+  map.resources :completions
   map.resources :answers
 
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
@@ -9,7 +9,6 @@ ActionController::Routing::Routes.draw do |map|
   # map.current_user '/users/current/:id', :controller => 'users', :action=>'show_current'
   map.signup '/signup', :controller => 'users', :action => 'new'
   map.resources :users
-  
   map.resource :session
   
 

@@ -6,5 +6,7 @@ class Completion < ActiveRecord::Base
   
   def update_wallet
     user.wallet.record_completed_survey( survey )
+    self.paid_on = Date.today
+    self.save
   end
 end
