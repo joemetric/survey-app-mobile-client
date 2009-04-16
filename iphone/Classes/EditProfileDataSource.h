@@ -13,7 +13,7 @@
     
 }
 
-+(id)editProfileDataSourceWithParentViewController:(UIViewController*)parent;
++(id)editProfileDataSourceWithParentViewController:(UIViewController*)parent andTableView:(UITableView*)tableView;
 -(void)finishedEditing;
 
 
