@@ -60,8 +60,8 @@
 -(TableSection*)createDemographicsSection{
 	TableSection* section = [TableSection tableSectionWithTitle:@"Demographics"];
 	[section addCell:[self cellWithLabel:@"email" text:account.email]];	
-	[section addCell:[self cellWithLabel:@"date of birth" text:[self formattedBirthDate]]];	
 	[section addCell:[self cellWithLabel:@"income" text:[self formattedIncome]]];	
+	[section addCell:[self cellWithLabel:@"date of birth" text:[self formattedBirthDate]]];	
 	[section addCell:[self cellWithLabel:@"gender" text:[self formattedGender]]];	
 	return section;
 }

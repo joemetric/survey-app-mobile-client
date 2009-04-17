@@ -51,8 +51,8 @@
 	[self assertCorrectValue:@"Sue" forSection:0 row:0 label:@"username"];
 
 	[self assertCorrectValue:@"hello@blah.com" forSection:1 row:0 label:@"email"];	
-	[self assertCorrectValue:@"17 May 1953" forSection:1 row:1 label:@"date of birth"];	
-	[self assertCorrectValue:@"$12,345" forSection:1 row:2 label:@"income"];
+	[self assertCorrectValue:@"$12,345" forSection:1 row:1 label:@"income"];
+	[self assertCorrectValue:@"17 May 1953" forSection:1 row:2 label:@"date of birth"];	
 	[self assertCorrectValue:@"Female" forSection:1 row:3 label:@"gender"];
 }
 
@@ -60,8 +60,8 @@
 	gAccount.birthdate = nil;
 	gAccount.income = 0;
 	[testee changeInAccount:gAccount];
-	[self assertCorrectValue:@"$0" forSection:1 row:2 label:@"income"];
-	[self assertCorrectValue:@"" forSection:1 row:1 label:@"date of birth"];
+	[self assertCorrectValue:@"$0" forSection:1 row:1 label:@"income"];
+	[self assertCorrectValue:@"" forSection:1 row:2 label:@"date of birth"];
 }
 
 -(void)testValueChangesIfAccountChanges{

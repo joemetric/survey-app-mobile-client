@@ -22,8 +22,8 @@
     TableSection* section = [TableSection tableSectionWithTitle:@"Account"];
     [self addSection:section];
     self.emailCell = [section addEmailCell];
-    self.dobCell = [section addDobCellWithParent:parent];
     self.incomeCell = [section addIncomeCell];
+    self.dobCell = [section addDobCellWithParent:parent];
     self.genderCell = [section addGenderCell];
 }
 

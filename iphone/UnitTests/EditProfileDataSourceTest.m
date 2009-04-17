@@ -43,8 +43,8 @@
 -(void)testCorrectFieldsPopulatedInCorrectPlace{
     [self assertCellAtRow:0 inSection:0 hasLabel:@"username" andValue:@"Marvin"];
     [self assertCellAtRow:0 inSection:1 hasLabel:@"email" andValue:@"marvin@marvin.nyet"];
-    [self assertCellAtRow:1 inSection:1 hasLabel:@"date of birth" andValue:@"23 Aug 1967"];
-    [self assertCellAtRow:2 inSection:1 hasLabel:@"income" andValue:@"56789"];
+    [self assertCellAtRow:1 inSection:1 hasLabel:@"income" andValue:@"56789"];
+    [self assertCellAtRow:2 inSection:1 hasLabel:@"date of birth" andValue:@"23 Aug 1967"];
     MaleFemaleTableViewCell* gender = [testee tableView:nil cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:1]];
     STAssertEqualStrings(@"gender", gender.label.text, @"label");
     STAssertEqualStrings(@"F", gender.gender, @"gender");
