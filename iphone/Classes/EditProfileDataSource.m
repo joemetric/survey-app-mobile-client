@@ -60,8 +60,8 @@
 }
 
 
-+(id)editProfileDataSourceWithParentViewController:(UIViewController*)parent{
-    EditProfileDataSource* result = [self staticTableForTableView:nil];
++(id)editProfileDataSourceWithParentViewController:(UIViewController*)parent andTableView:(UITableView*)tableView{
+    EditProfileDataSource* result = [self staticTableForTableView:tableView];
     result.parent = parent;
     [result populate];
     return result;

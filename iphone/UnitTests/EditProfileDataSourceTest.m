@@ -23,7 +23,8 @@
     gAccount.birthdate = [NSDate dateWithNaturalLanguageString:@"23 August 1967"];
     gAccount.gender = @"F";
     parentController = [[[UIViewController alloc] init] autorelease];
-    testee = [EditProfileDataSource editProfileDataSourceWithParentViewController:parentController];
+	
+    testee = [EditProfileDataSource editProfileDataSourceWithParentViewController:parentController andTableView:nil];
 	resetRestStubbing();
 }
 

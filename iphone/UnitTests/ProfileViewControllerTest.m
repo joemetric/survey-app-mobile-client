@@ -14,12 +14,6 @@
 NSInteger gProfileViewControllerTableReloadedCount;
 NSInteger gModalViewControllerDismissCount;
 
-@interface ProfileViewController(ProfileViewControllerTestPeek)
--(NSObject<UITableViewDelegate, UITableViewDataSource>*) tableDelegate;
-@end
-
-@interface ProfileViewController(ProfileViewControllerTest)
-@end
 
 @implementation ProfileViewController(ProfileViewControllerTest)
 - (void)dismissModalViewControllerAnimated:(BOOL)animated{
@@ -169,6 +163,16 @@ NSInteger gModalViewControllerDismissCount;
 	
 }
 
+
+-(void)testEditDataViewShowsMostUptoDateVersionOfAccountDetails{
+	gAccount.email = @"new@email.com";
+	[testee setEditing:YES animated:YES];
+	
+	LabelledTableViewCell* cell = [testee.tableView.delegate tableView:nil cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
+	STAssertEqualStrings(@"email", cell.label.text, nil); // double check we're on the right cell
+	STAssertEqualStrings(@"new@email.com", cell.textField.text, nil); // double check we're on the right cell	
+	
+}
 // TODO Fails to update
 
 // TODO actually updates
