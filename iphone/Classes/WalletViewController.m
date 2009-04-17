@@ -26,6 +26,7 @@
 }
 
 - (void) viewWillAppear:(BOOL)animated {
+	[[Account currentAccount] loadCurrent];
 	[super viewWillAppear:animated];
 }
 

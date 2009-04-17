@@ -68,6 +68,7 @@
 	self.iso8061BirthDate=[params objectForKey:@"birthdate"];
 	self.itemId = [[params objectForKey:@"id"] integerValue];   
 	self.username = [params objectForKey:@"login"];
+	NSLog(@"wallet setting: %@", [params objectForKey:@"wallet"]);
 	self.wallet = [params objectForKey:@"wallet"];
 
 	if(accountLoadStatusCreatingNew == accountLoadStatus){
@@ -94,6 +95,7 @@
 }
 
 - (void)finishedLoading:(NSString *)data{
+	NSLog(@"finishedLoading");
 	NSObject *unpackedJson = [data JSONFragmentValue];
 	if ([unpackedJson isKindOfClass:[NSDictionary class]]){
 		[self loadFromDictionary:(NSDictionary*)unpackedJson];
@@ -140,6 +142,7 @@
 }
 
 -(void)loadCurrent{
+	NSLog(@"loadCurrent");
 	[[RestfulRequests restfulRequestsWithObserver:self] GET:@"/users/current.json"];
 }
 

@@ -12,7 +12,9 @@
 #import "Survey.h"
 #import "Question.h"
 #import "Answer.h"
+#import "Account.h"
 #import "AnswerManager.h"
+#import "SurveyManager.h"
 #import "SurveyInfoViewTableCell.h"
 
 @interface SurveyInfoViewController (Private)
@@ -45,10 +47,13 @@
 }
 
 - (void) surveyDone:(id)sender {
-	UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"TODO" message:@"Submitting answers to the server." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-	[alertView show];
-	[alertView release];
-	[AnswerManager postCompletion:self.survey];
+//	UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"TODO" message:@"Submitting answers to the server." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//	[alertView show];
+	
+	[AnswerManager postCompletion:self.survey];	
+	[SurveyManager removeLocalSurvey:self.survey];
+	
+//	[alertView release];
 	[self.parentViewController dismissModalViewControllerAnimated:YES];
 }
 

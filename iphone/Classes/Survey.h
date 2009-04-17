@@ -29,5 +29,6 @@
 - (NSString *)amountAsDollarString;
 - (BOOL) allQuestionsAnswered;
 - (NSArray*) retrieveAnswers;
+- (NSString*)localFilePath;
 
 @end

@@ -1,4 +1,5 @@
 #import "SurveyManager.h"
+#import "Survey.h"
 #import "RestConfiguration.h"
 #import "JSON.h"
 
@@ -27,6 +28,10 @@
     return [surveys autorelease];
 }
 
++ (void) removeLocalSurvey:(Survey*)survey {
+	NSString* path = [survey localFilePath];
+	[[NSFileManager defaultManager] removeItemAtPath:path error:NULL];
+}
 
 
 -(void) authenticationFailed {
@@ -82,7 +87,6 @@
         
     [observer surveysStored];    
 }
-
 
 
 - (id)init {

@@ -62,6 +62,10 @@
     return [NSString stringWithFormat:@"%@ : %@", [self amountAsDollarString], self.name];
 }
 
+- (NSString*)localFilePath { 
+	return [[SurveyManager surveyDirectory] stringByAppendingPathComponent:[NSString stringWithFormat:@"%d.plist", self.itemId]];
+}
+
 
 - (BOOL) allQuestionsAnswered {
 	for( Question* q in self.questions ) {
