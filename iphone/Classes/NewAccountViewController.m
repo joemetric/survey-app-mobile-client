@@ -23,61 +23,11 @@
 @end
 
 @implementation NewAccountViewController
-@synthesize activityIndicator, profileView, tableView;
+@synthesize activityIndicator, profileView;
 @synthesize  dobCell, genderCell, loginCell, emailCell, passwordCell, passwordConfirmationCell, incomeCell;
 @synthesize staticTable;
 
 @synthesize keyboardIsShowing;
-- (void)viewWillAppear:(BOOL)animated {
-	[[NSNotificationCenter defaultCenter] addObserver:self
-										  selector:@selector(keyboardWillShow:)
-										  name:UIKeyboardWillShowNotification
-										  object:nil];
-	
-	[[NSNotificationCenter defaultCenter] addObserver:self
-										  selector:@selector(keyboardWillHide:)
-										  name:UIKeyboardWillHideNotification
-										  object:nil];	
-	[super viewWillAppear:animated];
-}
-
--(void) keyboardWillShow:(NSNotification *)note
-{
-    CGRect keyboardBounds;
-    [[note.userInfo valueForKey:UIKeyboardBoundsUserInfoKey] getValue: &keyboardBounds];
-    CGFloat keyboardHeight = keyboardBounds.size.height;
-    if (self.keyboardIsShowing == NO)
-    {
-        self.keyboardIsShowing = YES;
-        CGRect frame = self.tableView.frame;
-        frame.size.height -= keyboardHeight;
-		
-        [UIView beginAnimations:nil context:NULL];
-        [UIView setAnimationBeginsFromCurrentState:YES];
-        [UIView setAnimationDuration:0.3f];
-        self.tableView.frame = frame;
-        [UIView commitAnimations];
-    }
-}
-
--(void) keyboardWillHide:(NSNotification *)note
-{
-    CGRect keyboardBounds;
-    [[note.userInfo valueForKey:UIKeyboardBoundsUserInfoKey] getValue: &keyboardBounds];
-    CGFloat keyboardHeight = keyboardBounds.size.height;
-    if (self.keyboardIsShowing == YES)
-    {
-        self.keyboardIsShowing = NO;
-        CGRect frame = self.tableView.frame;
-        frame.size.height += keyboardHeight;
-		
-        [UIView beginAnimations:nil context:NULL];
-        [UIView setAnimationBeginsFromCurrentState:YES];
-        [UIView setAnimationDuration:0.3f];
-        self.tableView.frame = frame;
-        [UIView commitAnimations];
-    }
-}
 
 -(void)populateBasicSection{
 	TableSection* section = [TableSection tableSectionWithTitle:@"Basics"];

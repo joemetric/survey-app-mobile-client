@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AccountObserver.h"
+#import "TableShrinksWhenKeyboardIsShownViewController.h"
 
 @class ProfileViewController;
 @class DatePickerViewController;
@@ -15,7 +16,7 @@
 @class MaleFemaleTableViewCell;
 @class StaticTable;
 
-@interface NewAccountViewController : UIViewController <AccountObserver> {
+@interface NewAccountViewController : TableShrinksWhenKeyboardIsShownViewController <AccountObserver> {
 	
 	LabelledTableViewCell* loginCell;
 	LabelledTableViewCell* passwordCell;
@@ -26,13 +27,11 @@
 	MaleFemaleTableViewCell* genderCell;
 	
 	UIActivityIndicatorView* activityIndicator;
-	UITableView* tableView;
 	
 	DatePickerViewController* datePicker;
 	
 	ProfileViewController* profileView;
 	
-	BOOL keyboardIsShowing;
     
 	StaticTable* staticTable;
 	
@@ -55,7 +54,5 @@
 
 
 @property (nonatomic, retain) IBOutlet UIActivityIndicatorView* activityIndicator;
-@property (nonatomic, retain) IBOutlet UITableView* tableView;
-@property (nonatomic) BOOL keyboardIsShowing;
 
 @end

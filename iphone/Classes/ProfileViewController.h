@@ -1,5 +1,6 @@
 #import <UIKit/UIKit.h>
 #import "Account.h"
+#import "TableShrinksWhenKeyboardIsShownViewController.h"
 
 
 @class CredentialsViewController;
@@ -11,8 +12,7 @@
 @class Account;
 
 
-@interface ProfileViewController : UIViewController <AccountObserver> {
-	UITableView* tableView;
+@interface ProfileViewController : TableShrinksWhenKeyboardIsShownViewController <AccountObserver> {
 	CredentialsViewController* credentialsController;
 	NewAccountViewController* newAccountController;
 	NoCredentialsProfileDataSource* noCredentials;
@@ -25,7 +25,6 @@
 - (void) displayModalCredentialsController;
 - (void) displayModalNewAccountController;
 
-@property (nonatomic, retain) IBOutlet UITableView* tableView;
 @property (nonatomic, retain) CredentialsViewController* credentialsController;
 @property (nonatomic, retain) NewAccountViewController* newAccountController;
 @property (nonatomic, retain) NoCredentialsProfileDataSource* noCredentials;

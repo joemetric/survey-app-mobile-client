@@ -21,10 +21,13 @@
 @end
 
 @implementation ProfileViewController
-@synthesize tableView;
 @synthesize credentialsController, newAccountController, noCredentials, validCredentials, noAccountData, loadingAccountData, editProfileDataSource;
 
 
+// Correct for navigation bar
+-(NSInteger) tableShrinkingKeyboardHeightCorrection{
+    return 55;
+}
 
 
 // Implement viewDidLoad to do additional setup after loading the view.
