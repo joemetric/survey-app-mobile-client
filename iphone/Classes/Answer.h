@@ -31,6 +31,7 @@
 + (BOOL)answerExistsForQuestion:(Question*) question;
 + (NSString*) answerFilePathForQuestionId:(NSInteger)questionId;
 + (Answer*) answerForQuestion:(Question*) question;
++ (void) deleteAnswerForQuestion:(Question*)question;
 	
 - (NSString*) answerFilePath;	
 - (NSDictionary *)toDictionary;

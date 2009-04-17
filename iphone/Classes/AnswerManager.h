@@ -11,6 +11,7 @@
 #import "PictureUploader.h"
 
 @class Answer;
+@class Survey;
 
 @interface AnswerManager : NSObject <RestfulRequestsObserver, PictureUploaderObserver> {
     Answer *answer;
@@ -19,7 +20,8 @@
 @property (nonatomic, retain) Answer *answer;
 
 + (void)pushAnswer:(Answer *)answer;
-
++ (void)submitCompleteSurvey:(Survey*) survey;
++ (void)postCompletion:(Survey*)survey;
 - (id)initWithAnswer:(Answer *)answer;
 
 @end

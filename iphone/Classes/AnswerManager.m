@@ -7,6 +7,7 @@
 //
 
 #import "AnswerManager.h"
+#import "Survey.h"
 #import "Answer.h"
 #import "RestConfiguration.h"
 
@@ -19,6 +20,17 @@
 @implementation AnswerManager
 
 @synthesize answer;
+
++ (void)submitCompleteSurvey:(Survey*) survey {
+	if( [survey allQuestionsAnswered] ) {
+		NSArray* answers = [survey retrieveAnswers];
+		for( Answer* answer in answers ) {
+			[AnswerManager pushAnswer:answer];
+		}
+		[AnswerManager postCompletion:survey];
+	}
+	
+}
 
 + (void)pushAnswer:(Answer *)answer {
     NSLog(@"Pushing answer to server %@", answer.questionType);
@@ -51,6 +63,13 @@
     // push answer to server
     NSLog(@"Pushing basics");
     [[RestfulRequests restfulRequestsWithObserver:self] POST:@"/answers.json" withParams:[answer toDictionary]];
+}
+
++ (void) postCompletion:(Survey*)survey {
+	NSDictionary* completion = [NSDictionary dictionaryWithObject:[NSDictionary dictionaryWithObject:[NSNumber numberWithInt:survey.itemId] forKey:@"survey_id"] forKey:@"completion"];
+    AnswerManager *manager = [[AnswerManager alloc] init];
+    [[RestfulRequests restfulRequestsWithObserver:manager] POST:@"/completions.json" withParams:completion];	
+    [manager release];
 }
 
 -(void) authenticationFailed {

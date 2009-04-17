@@ -9,6 +9,7 @@
 #import "Survey.h"
 #import "Question.h"
 #import "SurveyManager.h"
+#import "Answer.h"
 
 @implementation Survey
 
@@ -61,12 +62,35 @@
     return [NSString stringWithFormat:@"%@ : %@", [self amountAsDollarString], self.name];
 }
 
+- (NSString*)localFilePath { 
+	return [[SurveyManager surveyDirectory] stringByAppendingPathComponent:[NSString stringWithFormat:@"%d.plist", self.itemId]];
+}
+
+
+- (BOOL) allQuestionsAnswered {
+	for( Question* q in self.questions ) {
+		if( [Answer answerExistsForQuestion:q] == NO )
+			return NO;
+	}
+	return YES;
+}
+
+- (NSArray*) retrieveAnswers {
+	NSMutableArray* result = [NSMutableArray array];
+	for( Question* q in self.questions ) {
+		if( [Answer answerExistsForQuestion:q] == YES )
+			[result addObject:[Answer answerForQuestion:q]];
+	}
+	return result;
+}
+
 - (id)init {
     if (self = [super init]) {
         self.questions = [[NSMutableArray alloc] initWithCapacity:0];
     }
     return self;
 }
+
 
 - (void)dealloc {
     [name release];

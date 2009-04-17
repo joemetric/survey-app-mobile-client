@@ -12,6 +12,10 @@
 #import "QuestionListViewController.h"
 #import "AnswerManager.h"
 
+@interface FreetextAnswerViewController (Private)
+- (void)deleteAnswer;
+@end
+
 @implementation FreetextAnswerViewController
 
 @synthesize question;
