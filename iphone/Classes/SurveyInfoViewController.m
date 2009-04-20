@@ -50,7 +50,8 @@
 //	UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"TODO" message:@"Submitting answers to the server." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 //	[alertView show];
 	
-	[AnswerManager postCompletion:self.survey];	
+	[AnswerManager submitCompleteSurvey:self.survey];	
+	[AnswerManager removeAnswersForSurvey:self.survey];
 	[SurveyManager removeLocalSurvey:self.survey];
 	
 //	[alertView release];

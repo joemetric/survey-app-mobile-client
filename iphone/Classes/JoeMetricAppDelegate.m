@@ -17,7 +17,9 @@
 @synthesize currentAccount;
 
 - (void)surveysStored {
-    [surveyListView refreshSurveys];
+	NSLog(@"surveysStored");
+	NSLog(@"slv: %@", surveyListView);
+    [surveyListView refreshLocalSurveys];
 }
 
 -(void)ensureOnlyProfilePageSelectedIfAccountIsInErrorStatus{
@@ -26,6 +28,7 @@
 }
 
 - (void)loadSurveys {
+	NSLog(@"loadSurveys");
     if (![Account currentAccount].isErrorStatus) {
         SurveyManager *sm = [[SurveyManager alloc] initWithObserver:self];
         [sm loadSurveysFromNetwork];

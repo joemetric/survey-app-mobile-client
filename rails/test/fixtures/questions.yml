@@ -22,17 +22,20 @@ three:
 four:
   id: 4
   survey_id: 3
-  text: Take a picture of your work space
+  name: Take a picture of your work space
+  text: Please take a picture of the workspace in front of you.  e.g. your desk.
   question_type: picture
 
 five:
   id: 5
   survey_id: 4
-  text: Do you like this app?
+  name: Do you like this app?
+  text: What do you think of the application?
   question_type: freetext
 
 six:
   id: 6
   survey_id: 4
-  text: Take a picture of your dog
+  name: Take a picture of your pet
+  text: We'd like to see what your pets look like.  Do you have a dog or cat ?
   question_type: picture

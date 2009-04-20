@@ -38,11 +38,11 @@
 + (NSArray *)findAll {
     NSMutableArray *surveys = [[NSMutableArray alloc] initWithCapacity:0];
     
-    for (id surveyDict in [SurveyManager loadSurveysFromLocal]) {
+	NSArray* fromDisk = [SurveyManager loadSurveysFromLocal];
+	NSLog(@"fromDisk.count = %d", fromDisk.count);
+    for (id surveyDict in fromDisk) {
         Survey *survey = [self newFromDictionary:surveyDict];
-        if (!survey.complete) {
-            [surveys addObject:survey];
-        }
+        [surveys addObject:survey];
         [survey release];
     }
     

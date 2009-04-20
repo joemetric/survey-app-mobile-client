@@ -1,3 +1,4 @@
+#import "JoeMetricAppDelegate.h"
 #import "SurveyListViewController.h"
 #import "SurveyListViewTableCell.h"
 #import "SurveyInfoViewController.h"
@@ -9,17 +10,23 @@
 
 @implementation SurveyListViewController
 
-@synthesize surveys, tableView, cashLabel ;
+@synthesize surveys, tableView, cashLabel, jmAppDelegate;
 
 - (void)awakeFromNib {
 }
 
--(void)refreshSurveys {
-    NSLog(@"Loading surveys from the disk");
+-(void)refreshLocalSurveys {
+    NSLog(@"Loading surveys from the disk");	
     self.surveys = [Survey findAll];
 	NSLog(@"surveys: %d", self.surveys.count);
     [self.tableView reloadData];
 	self.cashLabel.text = [self surveyTotalAsText];
+}
+
+-(void)refreshSurveys {
+    NSLog(@"Loading surveys from the network");
+	[self.jmAppDelegate loadSurveys];
+//	[self refreshLocalSurveys];
 }
 
 - (NSString*) surveyTotalAsText {
@@ -95,6 +102,7 @@
     [surveys release];
 	[tableView release];
 	[cashLabel release];
+	[jmAppDelegate release];
     [super dealloc];
 }
 

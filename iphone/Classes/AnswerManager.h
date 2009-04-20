@@ -21,6 +21,7 @@
 
 + (void)pushAnswer:(Answer *)answer;
 + (void)submitCompleteSurvey:(Survey*) survey;
++ (void)removeAnswersForSurvey:(Survey*)survey;
 + (void)postCompletion:(Survey*)survey;
 - (id)initWithAnswer:(Answer *)answer;
 

@@ -72,6 +72,14 @@
     [manager release];
 }
 
++ (void) removeAnswersForSurvey:(Survey*)survey {
+	for( Question* q in survey.questions ) {
+		if( [Answer answerExistsForQuestion:q] ) {
+			[Answer deleteAnswerForQuestion:q];
+		}
+	}
+}
+
 -(void) authenticationFailed {
     
 }

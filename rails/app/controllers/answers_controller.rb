@@ -1,6 +1,6 @@
 class AnswersController < ApplicationController
   def create
-    @answer = current_user.answers.new(params[:answer])
+    @answer = current_user.answers.new(params[:answer].reject{|k,v| k == "local_image_file"})
     success = @answer && @answer.save
     status  = success && @answer.errors.empty?
     

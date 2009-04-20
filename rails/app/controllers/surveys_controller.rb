@@ -2,7 +2,7 @@ class SurveysController < ApplicationController
   # GET /surveys
   # GET /surveys.xml
   def index
-    @surveys = Survey.complete
+    @surveys = Survey.complete - current_user.surveys
 
     respond_to do |format|
       format.html # index.html.erb

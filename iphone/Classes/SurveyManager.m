@@ -13,7 +13,8 @@
     return [documentsDirectory stringByAppendingPathComponent:@"surveys"]; 
 }
 
-- (BOOL)loadSurveysFromNetwork {    
+- (BOOL)loadSurveysFromNetwork {   
+	NSLog(@"loadSurveysFromNetwork");
     [[RestfulRequests restfulRequestsWithObserver:self] GET:@"/surveys.json"];
     return YES;
 }
@@ -21,7 +22,9 @@
 + (NSArray *)loadSurveysFromLocal {
     NSMutableArray *surveys = [[NSMutableArray alloc] initWithCapacity:0];
     
-    for (id surveyFile in [[NSFileManager defaultManager] directoryContentsAtPath:[self surveyDirectory]]) {        
+	NSLog(@"looking for surveys in %@", [SurveyManager surveyDirectory]);
+    for (id surveyFile in [[NSFileManager defaultManager] directoryContentsAtPath:[SurveyManager surveyDirectory]]) {
+        NSLog(@"found survey %@", surveyFile);
         [surveys addObject:[NSDictionary dictionaryWithContentsOfFile:[[self surveyDirectory] stringByAppendingPathComponent:surveyFile]]];
     }
     
@@ -45,9 +48,8 @@
 - (void)deleteStaleLocalSurveys:(NSArray *)surveys {
     NSMutableArray *localSurveys = [[NSMutableArray alloc] initWithCapacity:0];
     NSMutableArray *remoteSurveys = [[NSMutableArray alloc] initWithCapacity:0];
-    NSString *surveyDirectory = [[self class] surveyDirectory];
     
-    for (id surveyFile in [[NSFileManager defaultManager] directoryContentsAtPath:surveyDirectory]) {
+    for (id surveyFile in [[NSFileManager defaultManager] directoryContentsAtPath:[SurveyManager surveyDirectory]]) {
         [localSurveys addObject:[NSDecimalNumber 
                                  decimalNumberWithString:[[surveyFile componentsSeparatedByString:@"."] objectAtIndex:0]]];
     }
@@ -58,7 +60,7 @@
     
     for (id local in localSurveys) {
         if (![remoteSurveys containsObject:local]) {
-            NSString *surveyPath = [surveyDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.plist", local]];
+            NSString *surveyPath = [[SurveyManager surveyDirectory] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.plist", local]];
             [[NSFileManager defaultManager] removeFileAtPath:surveyPath handler:nil];
         }
     }
@@ -68,23 +70,24 @@
 }
 
 -(void) finishedLoading:(NSString *)data {
+	NSLog(@"finishedLoading");
     NSArray *surveys;
     
     surveys = [data JSONFragmentValue];
     
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *surveyDirectory = [documentsDirectory stringByAppendingPathComponent:@"surveys"];
-    
-    [[NSFileManager defaultManager] createDirectoryAtPath:surveyDirectory attributes:nil];
+    [[NSFileManager defaultManager] createDirectoryAtPath:[SurveyManager surveyDirectory] attributes:nil];
     
     [self deleteStaleLocalSurveys:surveys];
     for (id survey in surveys) {
-        NSString *surveyFilePath = [surveyDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.plist", 
+        NSString *surveyFilePath = [[SurveyManager surveyDirectory] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.plist", 
                                                                                     [survey objectForKey:@"id"]]];
-        [survey writeToFile:surveyFilePath atomically:YES];
+		NSLog(@"writing survey to file %@\n", surveyFilePath);
+        NSLog(@"written: %d", [survey writeToFile:surveyFilePath atomically:YES]);
+//		[[NSDictionary dictionary] writeToFile:surveyFilePath atomically:YES];
+		NSLog(@"Exists? : %d", [[NSFileManager defaultManager] fileExistsAtPath:surveyFilePath]);
     }
         
+	NSLog(@"callig observer");
     [observer surveysStored];    
 }
 
