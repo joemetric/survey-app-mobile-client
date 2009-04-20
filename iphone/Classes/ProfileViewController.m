@@ -21,7 +21,6 @@
 @end
 
 @implementation ProfileViewController
-@synthesize credentialsController, newAccountController, noCredentials, validCredentials, noAccountData, loadingAccountData, editProfileDataSource;
 @synthesize currentDataSource;
 
 
@@ -33,14 +32,6 @@
 
 // Implement viewDidLoad to do additional setup after loading the view.
 - (void)viewDidLoad {
-
-	self.noCredentials = [[[NoCredentialsProfileDataSource alloc] init] autorelease];
-	self.noCredentials.profileViewController = self;
-
-	self.validCredentials = [[[ValidCredentialsProfileDataSource alloc] init] autorelease];
-	self.validCredentials.profileViewController = self;
-	self.noAccountData = [NoAccountDataProfileDataSource noAccountDataProfileDataSourceWithMessage:@"Unable to load account details." andTableView:tableView];
-	self.loadingAccountData = [NoAccountDataProfileDataSource noAccountDataProfileDataSourceWithMessage:@"Loading account details." andTableView:tableView];
 	[[Account currentAccount] onChangeNotifyObserver:self];
     [self setTableDelegate];
 	[super viewDidLoad];
@@ -58,19 +49,15 @@
 }
 
 - (void) displayModalCredentialsController {
-	if( self.credentialsController == nil ) {
-		self.credentialsController = [[[CredentialsViewController alloc] initWithNibName:@"CredentialsView" bundle:nil] autorelease];
-	}
-	[self presentModalViewController:self.credentialsController animated:YES];
+	CredentialsViewController* credentialsController = [[[CredentialsViewController alloc] initWithNibName:@"CredentialsView" bundle:nil] autorelease];
+	[self presentModalViewController:credentialsController animated:YES];
 }
 
 - (void) displayModalNewAccountController {
 	[self dismissModalViewControllerAnimated:YES];
-	if( self.newAccountController == nil ) {
-		self.newAccountController = [[[NewAccountViewController alloc] initWithNibName:@"NewAccountView" bundle:nil] autorelease];
-		self.newAccountController.profileView = self;
-	}
-	[self presentModalViewController:self.newAccountController animated:YES];
+	NewAccountViewController* newAccountController = [[[NewAccountViewController alloc] initWithNibName:@"NewAccountView" bundle:nil] autorelease];
+	newAccountController.profileView = self;
+	[self presentModalViewController:newAccountController animated:YES];
 }
 
 
@@ -122,11 +109,11 @@
 
 -(void)setEditing:(BOOL)editing animated:(BOOL)animated{
 	if(editing){
-		self.editProfileDataSource = [EditProfileDataSource editProfileDataSourceWithParentViewController:self andTableView:tableView];
+		self.currentDataSource = [EditProfileDataSource editProfileDataSourceWithParentViewController:self andTableView:tableView];
 		[super setEditing:editing animated:animated];
 	}
     else{
-        [self.editProfileDataSource finishedEditing];
+        [(EditProfileDataSource* )self.currentDataSource finishedEditing];
     }
 	[tableView reloadData];
 }
