@@ -41,8 +41,9 @@ void setUserDefaultString(NSString *key, NSString* value){
 }
 
 +(NSURLCredential*) urlCredential{
-	return [NSURLCredential credentialWithUser:[self username] password:[self password]
-	 	persistence:NSURLCredentialPersistenceNone];
+	NSLog(@"requesting a urlcredential");
+	return [[NSURLCredential credentialWithUser:[self username] password:[self password]
+	 	persistence:NSURLCredentialPersistenceNone] autorelease];
 }
 
 

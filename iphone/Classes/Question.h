@@ -20,7 +20,7 @@
 @property (nonatomic, retain) NSDecimalNumber *amount;
 @property (nonatomic, retain) NSString *questionType;
 
-+ (id)newFromDictionary:(NSDictionary *)dict;
++ (id)questionFromDictionary:(NSDictionary *)dict;
 
 - (NSString *)questionAndAmountAsString;
 - (NSString *)amountAsDollarString;

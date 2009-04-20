@@ -61,7 +61,7 @@
     for (id local in localSurveys) {
         if (![remoteSurveys containsObject:local]) {
             NSString *surveyPath = [[SurveyManager surveyDirectory] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.plist", local]];
-            [[NSFileManager defaultManager] removeFileAtPath:surveyPath handler:nil];
+            [[NSFileManager defaultManager] removeItemAtPath:surveyPath error:nil];
         }
     }
     

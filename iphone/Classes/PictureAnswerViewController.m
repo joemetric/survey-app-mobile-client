@@ -114,7 +114,7 @@
 
 - (void)storeAnswer
 {
-    NSLog(@"Submitting picture");
+    NSLog(@"Storing picture");
     NSString *imagePath = [self storeImage];
     
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
