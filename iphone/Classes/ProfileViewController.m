@@ -78,8 +78,8 @@
 		switch([Account currentAccount].accountLoadStatus){
 		case accountLoadStatusUnauthorized:
 		case accountLoadStatusFailedValidation:
-			self.currentDataSource = [NoCredentialsProfileDataSource staticTableForTableView:tableView];
-			((NoCredentialsProfileDataSource*)currentDataSource).profileViewController = self; // todo - smelly
+			// self.currentDataSource = [NoCredentialsProfileDataSource staticTableForTableView:tableView];
+			self.currentDataSource = [NoCredentialsProfileDataSource noCredentialsProfileDataSourceForTableView:tableView profileViewController:self];
 			break;
 		case accountLoadStatusNotLoaded:
 			self.currentDataSource =  [NoAccountDataProfileDataSource noAccountDataProfileDataSourceWithMessage:@"Loading account details." andTableView:tableView];

@@ -15,5 +15,7 @@
 	ProfileViewController* profileViewController;
 }
 
++(id)noCredentialsProfileDataSourceForTableView:(UITableView*) tableView profileViewController:(ProfileViewController*)profileViewController;
+
 @property (nonatomic, retain) ProfileViewController* profileViewController;
 @end
