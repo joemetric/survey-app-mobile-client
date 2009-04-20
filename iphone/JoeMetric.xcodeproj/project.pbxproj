@@ -139,7 +139,7 @@
 		DAA597010F96133C00DD2EE8 /* EditProfileDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA596FF0F96133C00DD2EE8 /* EditProfileDataSource.m */; };
 		DAA5976F0F96353900DD2EE8 /* TableSection+AccountFields.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA5976E0F96353900DD2EE8 /* TableSection+AccountFields.m */; };
 		DAA597700F96353900DD2EE8 /* TableSection+AccountFields.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA5976E0F96353900DD2EE8 /* TableSection+AccountFields.m */; };
-		DAA597E10F963FBF00DD2EE8 /* StubbedTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA597E00F963FBF00DD2EE8 /* StubbedTextView.m */; };
+		DAA597E10F963FBF00DD2EE8 /* StubbedTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA597E00F963FBF00DD2EE8 /* StubbedTextField.m */; };
 		DAA598470F96749300DD2EE8 /* EditProfileDataSourceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA598460F96749300DD2EE8 /* EditProfileDataSourceTest.m */; };
 		DAA598F00F98BE8400DD2EE8 /* TableShrinksWhenKeyboardIsShownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA598EF0F98BE8400DD2EE8 /* TableShrinksWhenKeyboardIsShownViewController.m */; };
 		DAA598F10F98BE8400DD2EE8 /* TableShrinksWhenKeyboardIsShownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA598EF0F98BE8400DD2EE8 /* TableShrinksWhenKeyboardIsShownViewController.m */; };
@@ -311,8 +311,8 @@
 		DAA596FF0F96133C00DD2EE8 /* EditProfileDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileDataSource.m; sourceTree = "<group>"; };
 		DAA5976D0F96353900DD2EE8 /* TableSection+AccountFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TableSection+AccountFields.h"; sourceTree = "<group>"; };
 		DAA5976E0F96353900DD2EE8 /* TableSection+AccountFields.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TableSection+AccountFields.m"; sourceTree = "<group>"; };
-		DAA597DF0F963FBF00DD2EE8 /* StubbedTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StubbedTextView.h; sourceTree = "<group>"; };
-		DAA597E00F963FBF00DD2EE8 /* StubbedTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StubbedTextView.m; sourceTree = "<group>"; };
+		DAA597DF0F963FBF00DD2EE8 /* StubbedTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StubbedTextField.h; sourceTree = "<group>"; };
+		DAA597E00F963FBF00DD2EE8 /* StubbedTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StubbedTextField.m; sourceTree = "<group>"; };
 		DAA598460F96749300DD2EE8 /* EditProfileDataSourceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileDataSourceTest.m; sourceTree = "<group>"; };
 		DAA598EE0F98BE8400DD2EE8 /* TableShrinksWhenKeyboardIsShownViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableShrinksWhenKeyboardIsShownViewController.h; sourceTree = "<group>"; };
 		DAA598EF0F98BE8400DD2EE8 /* TableShrinksWhenKeyboardIsShownViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableShrinksWhenKeyboardIsShownViewController.m; sourceTree = "<group>"; };
@@ -629,8 +629,8 @@
 				DA83527E0F8E66ED0073F848 /* NSObject+CleanUpPropertiesTest.m */,
 				DA8353390F8F7BEB0073F848 /* DatePickerViewControllerTest.m */,
 				DA9A712D0F8F9B7400F5580A /* LabelledTableViewCellTest.m */,
-				DAA597DF0F963FBF00DD2EE8 /* StubbedTextView.h */,
-				DAA597E00F963FBF00DD2EE8 /* StubbedTextView.m */,
+				DAA597DF0F963FBF00DD2EE8 /* StubbedTextField.h */,
+				DAA597E00F963FBF00DD2EE8 /* StubbedTextField.m */,
 				DAA598460F96749300DD2EE8 /* EditProfileDataSourceTest.m */,
 			);
 			path = UnitTests;
@@ -910,7 +910,7 @@
 				DA9A72E10F938B3400F5580A /* UITableViewCell+IsEditable.m in Sources */,
 				DAA597010F96133C00DD2EE8 /* EditProfileDataSource.m in Sources */,
 				DAA5976F0F96353900DD2EE8 /* TableSection+AccountFields.m in Sources */,
-				DAA597E10F963FBF00DD2EE8 /* StubbedTextView.m in Sources */,
+				DAA597E10F963FBF00DD2EE8 /* StubbedTextField.m in Sources */,
 				DAA598470F96749300DD2EE8 /* EditProfileDataSourceTest.m in Sources */,
 				DAA598F00F98BE8400DD2EE8 /* TableShrinksWhenKeyboardIsShownViewController.m in Sources */,
 			);

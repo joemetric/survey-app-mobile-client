@@ -6,6 +6,12 @@
 #import "DateHelper.h"
 #import "RestStubbing.h"
 
+@interface LabelledTableViewCell()
+@property(nonatomic, retain) UIViewController* datePickerController;
+@property(nonatomic, assign) UIViewController* parentController;
+@end
+
+
 @interface EditProfileDataSourceTest : GTMTestCase {
     EditProfileDataSource* testee;
     UIViewController* parentController;
@@ -35,7 +41,7 @@
 
 
 -(void)assertCellAtRow:(NSInteger)row inSection:(NSInteger)section hasLabel:(NSString*)label andValue:(NSString*)value{
-    LabelledTableViewCell* cell = [testee tableView:nil cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
+    LabelledTableViewCell* cell = (LabelledTableViewCell*) [testee tableView:nil cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
     STAssertEqualStrings(label, cell.label.text, @"label");
     STAssertEqualStrings(value, cell.textField.text, [NSString stringWithFormat:@"value for %@", label]);
 }
@@ -45,7 +51,7 @@
     [self assertCellAtRow:0 inSection:1 hasLabel:@"email" andValue:@"marvin@marvin.nyet"];
     [self assertCellAtRow:1 inSection:1 hasLabel:@"income" andValue:@"56789"];
     [self assertCellAtRow:2 inSection:1 hasLabel:@"date of birth" andValue:@"23 Aug 1967"];
-    MaleFemaleTableViewCell* gender = [testee tableView:nil cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:1]];
+    MaleFemaleTableViewCell* gender = (MaleFemaleTableViewCell*)[testee tableView:nil cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:1]];
     STAssertEqualStrings(@"gender", gender.label.text, @"label");
     STAssertEqualStrings(@"F", gender.gender, @"gender");
 }

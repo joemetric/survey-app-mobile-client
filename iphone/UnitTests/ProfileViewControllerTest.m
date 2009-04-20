@@ -7,7 +7,7 @@
 #import "AccountStubbing.h"
 #import "NSObject+CleanUpProperties.h"
 #import "EditProfileDataSource.h"
-#import "StubbedTextView.h"
+#import "StubbedTextField.h"
 #import "LabelledTableViewCell.h"
 
 
@@ -155,9 +155,9 @@ NSInteger gModalViewControllerDismissCount;
 
 -(void)testResignsFirstResponderWhenFinishingEditing{
 	[testee setEditing:YES animated:YES];
-	StubbedTextView* text = [[[StubbedTextView alloc] init] autorelease];
+	StubbedTextField* text = [[[StubbedTextField alloc] init] autorelease];
     LabelledTableViewCell* emailCell = ((EditProfileDataSource* )testee.currentDataSource).emailCell;
-	emailCell.textField = text;
+	emailCell.textField = (UITextField*) text;
 	[text becomeFirstResponder];
 	[testee setEditing:NO animated:YES];
 	STAssertFalse(text.isFirstResponder, nil);
@@ -169,7 +169,8 @@ NSInteger gModalViewControllerDismissCount;
 	gAccount.email = @"new@email.com";
 	[testee setEditing:YES animated:YES];
 	
-	LabelledTableViewCell* cell = [testee.tableView.delegate tableView:nil cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
+    
+	LabelledTableViewCell* cell = (LabelledTableViewCell*) [testee.tableView.dataSource tableView:nil cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
 	STAssertEqualStrings(@"email", cell.label.text, nil); // double check we're on the right cell
 	STAssertEqualStrings(@"new@email.com", cell.textField.text, nil); // double check we're on the right cell	
 	

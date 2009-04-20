@@ -1,7 +1,7 @@
 #import "GTMSenTestCase.h"
 #import "DatePickerViewController.h"
 #import "LabelledTableViewCell.h"
-#import "StubbedTextView.h"
+#import "StubbedTextField.h"
 #import "DateHelper.h"
 
 @interface StubbedViewController : UIViewController{
@@ -39,13 +39,13 @@
 }
 
 -(void)testWhenActivatedTextFieldBecomesFirstResponder{
-	testee.textField = [[[StubbedTextView alloc] init] autorelease];
+	testee.textField = [[[StubbedTextField alloc] init] autorelease];
 	[testee activateEditing];
 	STAssertTrue([testee.textField isFirstResponder], nil);	
 }
 
 -(void)testWhenNotSelectedTextfieldDoesNotBecomeFirstResponder{
-	testee.textField = [[[StubbedTextView alloc] init] autorelease];
+	testee.textField = [[[StubbedTextField alloc] init] autorelease];
 	[testee setSelected:NO animated:YES];
 	STAssertFalse([testee.textField isFirstResponder], nil);
 }
