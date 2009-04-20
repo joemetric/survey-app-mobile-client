@@ -10,15 +10,12 @@
 #import "StaticTable.h"
 #import "AccountObserver.h"
 
-@class ProfileViewController;
 @class Account;
 
 @interface ValidCredentialsProfileDataSource : StaticTable<AccountObserver> {
-	ProfileViewController* profileViewController;
     Account *account;
 	NSNumberFormatter *numberFormatter;
 	NSDateFormatter *dateFormatter;
 }
 
-@property (nonatomic, retain) ProfileViewController* profileViewController;
 @end
