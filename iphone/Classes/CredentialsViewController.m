@@ -8,7 +8,6 @@
 
 #import "CredentialsViewController.h"
 #import "JoeMetricAppDelegate.h"
-#import "Rest.h"
 #import "RestConfiguration.h"
 #import "Account.h"
 #import "StaticTable.h"

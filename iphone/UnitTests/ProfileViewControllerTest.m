@@ -156,7 +156,8 @@ NSInteger gModalViewControllerDismissCount;
 -(void)testResignsFirstResponderWhenFinishingEditing{
 	[testee setEditing:YES animated:YES];
 	StubbedTextView* text = [[[StubbedTextView alloc] init] autorelease];
-	((EditProfileDataSource* )testee.currentDataSource).emailCell.textField = text;
+    LabelledTableViewCell* emailCell = ((EditProfileDataSource* )testee.currentDataSource).emailCell;
+	emailCell.textField = text;
 	[text becomeFirstResponder];
 	[testee setEditing:NO animated:YES];
 	STAssertFalse(text.isFirstResponder, nil);
