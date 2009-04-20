@@ -20,6 +20,7 @@
 	NoAccountDataProfileDataSource* noAccountData;
 	NoAccountDataProfileDataSource* loadingAccountData;
 	EditProfileDataSource* editProfileDataSource;
+	id currentDataSource;
 }
 
 - (void) displayModalCredentialsController;
@@ -32,4 +33,5 @@
 @property (nonatomic, retain) NoAccountDataProfileDataSource* noAccountData;
 @property (nonatomic, retain) NoAccountDataProfileDataSource* loadingAccountData;
 @property (nonatomic, retain) 	EditProfileDataSource* editProfileDataSource;
+@property(nonatomic, retain) id currentDataSource;
 @end

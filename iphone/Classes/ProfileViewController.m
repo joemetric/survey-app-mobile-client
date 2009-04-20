@@ -22,6 +22,7 @@
 
 @implementation ProfileViewController
 @synthesize credentialsController, newAccountController, noCredentials, validCredentials, noAccountData, loadingAccountData, editProfileDataSource;
+@synthesize currentDataSource;
 
 
 // Correct for navigation bar
@@ -80,7 +81,8 @@
 			// Stay editing
 			break;
 			case accountLoadStatusLoaded:
-			[self.validCredentials beDelegateAndDataSourceForThisTableView:self.tableView];
+			self.currentDataSource =  [ValidCredentialsProfileDataSource staticTableForTableView:tableView];			
+			((ValidCredentialsProfileDataSource*)currentDataSource).profileViewController = self; // todo - smelly
 			[super setEditing:NO animated:YES];
 			break;
 		}
@@ -88,19 +90,21 @@
 	}
 	else{
 		switch([Account currentAccount].accountLoadStatus){
-			case accountLoadStatusUnauthorized:
-			case accountLoadStatusFailedValidation:
-			[self.noCredentials beDelegateAndDataSourceForThisTableView:self.tableView];
+		case accountLoadStatusUnauthorized:
+		case accountLoadStatusFailedValidation:
+			self.currentDataSource = [NoCredentialsProfileDataSource staticTableForTableView:tableView];
+			((NoCredentialsProfileDataSource*)currentDataSource).profileViewController = self; // todo - smelly
 			break;
-			case accountLoadStatusNotLoaded:
-			[self.loadingAccountData beDelegateAndDataSourceForThisTableView:self.tableView];
+		case accountLoadStatusNotLoaded:
+			self.currentDataSource =  [NoAccountDataProfileDataSource noAccountDataProfileDataSourceWithMessage:@"Loading account details." andTableView:tableView];
 			break;
-			case accountLoadStatusLoadFailed:
-			[self.noAccountData beDelegateAndDataSourceForThisTableView:self.tableView];	
+		case accountLoadStatusLoadFailed:
+			self.currentDataSource = [NoAccountDataProfileDataSource noAccountDataProfileDataSourceWithMessage:@"Unable to load account details." andTableView:tableView];	
 			break;
-			default:
+		default:
 			self.navigationItem.rightBarButtonItem = self.editButtonItem;
-			[self.validCredentials beDelegateAndDataSourceForThisTableView:self.tableView];
+			self.currentDataSource =  [ValidCredentialsProfileDataSource staticTableForTableView:tableView];			
+			((ValidCredentialsProfileDataSource*)currentDataSource).profileViewController = self; // todo - smelly
 			break;
 		}
 	}
