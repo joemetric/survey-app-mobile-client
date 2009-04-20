@@ -14,10 +14,13 @@
 
 @interface ProfileViewController : TableShrinksWhenKeyboardIsShownViewController <AccountObserver> {
 	id currentDataSource;
+    IBOutlet UIActivityIndicatorView* activityIndicator;
 }
 
 - (void) displayModalCredentialsController;
 - (void) displayModalNewAccountController;
+-(IBAction)refreshAccount;
 
 @property(nonatomic, retain) id currentDataSource;
+@property(nonatomic, retain) UIActivityIndicatorView* activityIndicator;
 @end

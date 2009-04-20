@@ -9,16 +9,19 @@
 #import "EditProfileDataSource.h"
 #import "StubbedTextField.h"
 #import "LabelledTableViewCell.h"
+#import "RestStubbing.h"
 
 
 NSInteger gProfileViewControllerTableReloadedCount;
 NSInteger gModalViewControllerDismissCount;
 
 
+
 @implementation ProfileViewController(ProfileViewControllerTest)
 - (void)dismissModalViewControllerAnimated:(BOOL)animated{
 	gModalViewControllerDismissCount++;
 }
+
 	
 @end
 
@@ -51,7 +54,9 @@ NSInteger gModalViewControllerDismissCount;
 	gModalViewControllerDismissCount = 0;
 	testee = [[ProfileViewController alloc] init];
 	testee.tableView = [[UITableView alloc] init];
+	testee.activityIndicator = [[UIActivityIndicatorView alloc] init];
 	[testee viewDidLoad];
+	resetRestStubbing();
 }
 
 -(void)tearDown{
@@ -108,12 +113,26 @@ NSInteger gModalViewControllerDismissCount;
 
 	[gAccount  setAccountLoadStatus:accountLoadStatusLoaded];
 	[testee changeInAccount:gAccount];
-	STAssertNotNil(testee.navigationItem.rightBarButtonItem, @"edit button present if in loaded status");
+	STAssertNotNil(testee.navigationItem.leftBarButtonItem, @"edit button present if in loaded status");
 	
 }
 
 
+-(void)testRefreshAccountReloadsAccountAndKicksOffActivityIndicator{
+	[testee refreshAccount];
+	STAssertNotNil(connectionRequest, @"connectionRequest");
+	STAssertEqualStrings(@"http://localhost:3000/users/current.json", [[connectionRequest URL] relativeString], @"url");
+	STAssertNotNil([testee activityIndicator], nil);
+	STAssertTrue([[testee activityIndicator] isAnimating], nil);
+	
+}
 
+-(void)testActivityIndicatorStopsAnimatingWhenAccountLoaded{
+	[testee.activityIndicator startAnimating];
+	[testee changeInAccount:gAccount];
+	STAssertFalse([[testee activityIndicator] isAnimating], nil);
+	
+}
 
 -(void)testDataSourceChangedToEditingWhenEditButtonPressed{
 	[gAccount  setAccountLoadStatus:accountLoadStatusLoaded];
@@ -153,7 +172,7 @@ NSInteger gModalViewControllerDismissCount;
 	STAssertTrue(testee.isEditing, @"view is editing");	
 }
 
--(void)testResignsFirstResponderWhenFinishingEditing{
+-(void)testResignsFirstxonderWhenFinishingEditing{
 	[testee setEditing:YES animated:YES];
 	StubbedTextField* text = [[[StubbedTextField alloc] init] autorelease];
     LabelledTableViewCell* emailCell = ((EditProfileDataSource* )testee.currentDataSource).emailCell;

@@ -21,7 +21,7 @@
 @end
 
 @implementation ProfileViewController
-@synthesize currentDataSource;
+@synthesize currentDataSource, activityIndicator;
 
 
 // Correct for navigation bar
@@ -60,6 +60,11 @@
 	[self presentModalViewController:newAccountController animated:YES];
 }
 
+-(IBAction)refreshAccount{
+	[activityIndicator startAnimating];
+	[[Account currentAccount] loadCurrent];
+}
+
 
 - (void) setTableDelegate{
 	if (self.isEditing){
@@ -88,7 +93,7 @@
 			self.currentDataSource = [NoAccountDataProfileDataSource noAccountDataProfileDataSourceWithMessage:@"Unable to load account details." andTableView:tableView];	
 			break;
 		default:
-			self.navigationItem.rightBarButtonItem = self.editButtonItem;
+			self.navigationItem.leftBarButtonItem = self.editButtonItem;
 			self.currentDataSource =  [ValidCredentialsProfileDataSource staticTableForTableView:tableView];			
 			break;
 		}
@@ -96,13 +101,14 @@
 }
 
 -(void)changeInAccount:(Account*) _account{
+	[activityIndicator stopAnimating];
 	if (accountLoadStatusLoaded == [Account currentAccount].accountLoadStatus){
 		[self dismissModalViewControllerAnimated:YES];
 	}
 
     [self setTableDelegate];
 	[self.tableView reloadData];
-}
+} 
 
 
 -(void)setEditing:(BOOL)editing animated:(BOOL)animated{
