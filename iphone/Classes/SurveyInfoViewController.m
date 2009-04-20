@@ -120,10 +120,15 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 	[self.questionList reloadData];
-	if( [self.survey allQuestionsAnswered] == YES && self.navigationItem.rightBarButtonItem == nil ) {
-		UIBarButtonItem* doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(surveyDone:)];
-		self.navigationItem.rightBarButtonItem = doneButton;
-		[doneButton release];
+	NSLog(@"allQuestions: %d", [self.survey allQuestionsAnswered]);
+	NSLog(@"button == %@", self.navigationItem.rightBarButtonItem);
+	NSLog(@"button == nil : %d", self.navigationItem.rightBarButtonItem == nil);
+	if( [self.survey allQuestionsAnswered] == YES ) {
+		if( self.navigationItem.rightBarButtonItem == nil ) {
+			UIBarButtonItem* doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(surveyDone:)];
+			self.navigationItem.rightBarButtonItem = doneButton;
+			[doneButton release];
+		}
 	} else {
 		self.navigationItem.rightBarButtonItem = nil;
 	}

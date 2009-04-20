@@ -29,7 +29,7 @@
     survey.updatedAt = [NSDate dateWithTimeIntervalSince1970:[[dict objectForKey:@"updated_at"] intValue]];
     
     for (id question in [dict objectForKey:@"questions"]) {
-        [survey.questions addObject:[Question newFromDictionary:question]];
+        [survey.questions addObject:[Question questionFromDictionary:question]];
     }
     
     return survey;
@@ -86,7 +86,7 @@
 
 - (id)init {
     if (self = [super init]) {
-        self.questions = [[NSMutableArray alloc] initWithCapacity:0];
+        self.questions = [NSMutableArray array];
     }
     return self;
 }

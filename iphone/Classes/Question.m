@@ -16,7 +16,7 @@
 @synthesize amount;
 @synthesize questionType;
 
-+ (id)newFromDictionary:(NSDictionary *)dict
++ (id)questionFromDictionary:(NSDictionary *)dict
 {
     Question *question = [[Question alloc] init];
     question.itemId       = [[dict objectForKey:@"id"] integerValue];
@@ -24,7 +24,7 @@
     question.text      = [dict objectForKey:@"text"];
     question.amount       = [dict objectForKey:@"amount"];
     question.questionType = [dict objectForKey:@"question_type"];
-    return question;
+    return [question autorelease];
 }
 
 

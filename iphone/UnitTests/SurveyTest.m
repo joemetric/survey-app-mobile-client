@@ -12,7 +12,7 @@
 
 - (void) testSurveyClassExists
 {
-    [[Survey alloc] init];
+    [[[Survey alloc] init] release];
 }
 
 @end
