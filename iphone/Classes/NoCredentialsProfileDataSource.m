@@ -22,6 +22,11 @@
 	return cell;
 }
 
++(id)noCredentialsProfileDataSourceForTableView:(UITableView*) tableView profileViewController:(ProfileViewController*)profileViewController{
+	NoCredentialsProfileDataSource* result = [self staticTableForTableView:tableView];
+	result.profileViewController = profileViewController;
+	return result;
+}
 
 -(id)init{
 	[super init];

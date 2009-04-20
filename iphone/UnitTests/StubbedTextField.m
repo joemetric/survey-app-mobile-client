@@ -1,8 +1,8 @@
 
-#import "StubbedTextView.h"
+#import "StubbedTextField.h"
 
 
-@implementation StubbedTextView
+@implementation StubbedTextField
 - (BOOL)becomeFirstResponder{
 	return isFirstResponder = YES;
 }

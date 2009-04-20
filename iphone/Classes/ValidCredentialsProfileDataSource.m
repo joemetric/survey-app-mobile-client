@@ -7,7 +7,6 @@
 //
 
 #import "ValidCredentialsProfileDataSource.h"
-#import "ProfileViewController.h"
 #import "Account.h"
 #import "LabelledTableViewReadOnlyCell.h"
 #import "TableSection.h"
@@ -17,7 +16,7 @@
 @end
 
 @implementation ValidCredentialsProfileDataSource
-@synthesize profileViewController, account;
+@synthesize account;
 
 - (LabelledTableViewReadOnlyCell*) loadLabelledCell {
 	NSArray* nib = [[NSBundle mainBundle] loadNibNamed:@"LabelledTableViewReadOnlyCell" owner:self options:nil];
@@ -97,7 +96,6 @@
 - (void) dealloc {
 	[numberFormatter release];
 	[dateFormatter release];
-	[profileViewController release];
     self.account = nil;
 	[super dealloc];
 }

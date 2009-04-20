@@ -2,7 +2,7 @@
 #import "StaticTable.h"
 #import "TableSection.h"
 #import "StubEditable.h"
-#import "StubbedTextView.h"
+#import "StubbedTextField.h"
 
 
 
@@ -179,14 +179,14 @@
 }
 
 -(void)testResignFirstResponder{
-	StubbedTextView* stubbedResponder = [[[StubbedTextView alloc] init] autorelease];
+	StubbedTextField* stubbedTextView = [[[StubbedTextField alloc] init] autorelease];
 	StubEditableWithTextField* cell = [StubEditableWithTextField stubEditableWithTextField];
-	cell.textField = stubbedResponder;
+	cell.textField = stubbedTextView;
 	[section1 addCell:cell];
 	
-	[stubbedResponder becomeFirstResponder];
+	[stubbedTextView becomeFirstResponder];
 	[testee resignFirstResponder];
-	STAssertFalse(stubbedResponder.isFirstResponder, nil);
+	STAssertFalse(stubbedTextView.isFirstResponder, nil);
 }
 
 

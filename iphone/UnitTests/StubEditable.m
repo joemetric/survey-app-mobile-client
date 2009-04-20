@@ -1,4 +1,5 @@
 #import "StubEditable.h"
+#import <UIKit/UIKit.h>
 
 @implementation StubEditable
 @synthesize errorField, errorHighlighted, label, activated;

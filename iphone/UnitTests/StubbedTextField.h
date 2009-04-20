@@ -1,7 +1,7 @@
 #import <UIKit/UIKit.h>
  
 
-@interface StubbedTextView : UITextView{
+@interface StubbedTextField : UITextField{
 	BOOL isFirstResponder;
 }
 

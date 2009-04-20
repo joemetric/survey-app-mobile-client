@@ -65,8 +65,6 @@
 		D266E01E0F3A400200C20691 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D266E0160F3A400200C20691 /* NSObject+SBJSON.m */; };
 		D266E01F0F3A400200C20691 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D266E0180F3A400200C20691 /* NSString+SBJSON.m */; };
 		D266E0200F3A400200C20691 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D266E01A0F3A400200C20691 /* SBJSON.m */; };
-		D2955DF90F3A36E6002675C9 /* Rest.m in Sources */ = {isa = PBXBuildFile; fileRef = D2955DF70F3A36E6002675C9 /* Rest.m */; };
-		D2955DFB0F3A36E6002675C9 /* Rest.m in Sources */ = {isa = PBXBuildFile; fileRef = D2955DF70F3A36E6002675C9 /* Rest.m */; };
 		D2A2AC5D0F8CE91C003973C8 /* AnswerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A2AC5C0F8CE91C003973C8 /* AnswerManager.m */; };
 		D2A2AC5E0F8CE91C003973C8 /* AnswerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A2AC5C0F8CE91C003973C8 /* AnswerManager.m */; };
 		D2A2AE3D0F8D2689003973C8 /* PictureUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A2AE3C0F8D2689003973C8 /* PictureUploader.m */; };
@@ -112,7 +110,6 @@
 		DA86BEC40F73E42700CC6EBE /* QuestionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DA86BEBE0F73E42700CC6EBE /* QuestionTest.m */; };
 		DA86BEC50F73E42700CC6EBE /* SurveyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DA86BEC00F73E42700CC6EBE /* SurveyTest.m */; };
 		DA86BEC60F73E42700CC6EBE /* ValidCredentialsProfileDataSourceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DA86BEC10F73E42700CC6EBE /* ValidCredentialsProfileDataSourceTest.m */; };
-		DA86BEC80F73E45D00CC6EBE /* RestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DA86BEC70F73E45D00CC6EBE /* RestTest.m */; };
 		DA86C0020F75C4A200CC6EBE /* RestConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = DA86C0010F75C4A200CC6EBE /* RestConfiguration.m */; };
 		DA86C0040F75C4CA00CC6EBE /* RestConfigurationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DA86C0030F75C4CA00CC6EBE /* RestConfigurationTest.m */; };
 		DA86C0A00F75EB9D00CC6EBE /* RestConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = DA86C0010F75C4A200CC6EBE /* RestConfiguration.m */; };
@@ -142,7 +139,7 @@
 		DAA597010F96133C00DD2EE8 /* EditProfileDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA596FF0F96133C00DD2EE8 /* EditProfileDataSource.m */; };
 		DAA5976F0F96353900DD2EE8 /* TableSection+AccountFields.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA5976E0F96353900DD2EE8 /* TableSection+AccountFields.m */; };
 		DAA597700F96353900DD2EE8 /* TableSection+AccountFields.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA5976E0F96353900DD2EE8 /* TableSection+AccountFields.m */; };
-		DAA597E10F963FBF00DD2EE8 /* StubbedTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA597E00F963FBF00DD2EE8 /* StubbedTextView.m */; };
+		DAA597E10F963FBF00DD2EE8 /* StubbedTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA597E00F963FBF00DD2EE8 /* StubbedTextField.m */; };
 		DAA598470F96749300DD2EE8 /* EditProfileDataSourceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA598460F96749300DD2EE8 /* EditProfileDataSourceTest.m */; };
 		DAA598F00F98BE8400DD2EE8 /* TableShrinksWhenKeyboardIsShownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA598EF0F98BE8400DD2EE8 /* TableShrinksWhenKeyboardIsShownViewController.m */; };
 		DAA598F10F98BE8400DD2EE8 /* TableShrinksWhenKeyboardIsShownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA598EF0F98BE8400DD2EE8 /* TableShrinksWhenKeyboardIsShownViewController.m */; };
@@ -244,8 +241,6 @@
 		D266E0180F3A400200C20691 /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
 		D266E0190F3A400200C20691 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
 		D266E01A0F3A400200C20691 /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
-		D2955DF60F3A36E6002675C9 /* Rest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rest.h; sourceTree = "<group>"; };
-		D2955DF70F3A36E6002675C9 /* Rest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rest.m; sourceTree = "<group>"; };
 		D2A2AC5B0F8CE91C003973C8 /* AnswerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerManager.h; sourceTree = "<group>"; };
 		D2A2AC5C0F8CE91C003973C8 /* AnswerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswerManager.m; sourceTree = "<group>"; };
 		D2A2AE3B0F8D2689003973C8 /* PictureUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureUploader.h; sourceTree = "<group>"; };
@@ -290,7 +285,6 @@
 		DA86BEBF0F73E42700CC6EBE /* SurveyTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurveyTest.h; sourceTree = "<group>"; };
 		DA86BEC00F73E42700CC6EBE /* SurveyTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SurveyTest.m; sourceTree = "<group>"; };
 		DA86BEC10F73E42700CC6EBE /* ValidCredentialsProfileDataSourceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValidCredentialsProfileDataSourceTest.m; sourceTree = "<group>"; };
-		DA86BEC70F73E45D00CC6EBE /* RestTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestTest.m; sourceTree = "<group>"; };
 		DA86C0000F75C4A200CC6EBE /* RestConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestConfiguration.h; sourceTree = "<group>"; };
 		DA86C0010F75C4A200CC6EBE /* RestConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestConfiguration.m; sourceTree = "<group>"; };
 		DA86C0030F75C4CA00CC6EBE /* RestConfigurationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestConfigurationTest.m; sourceTree = "<group>"; };
@@ -317,8 +311,8 @@
 		DAA596FF0F96133C00DD2EE8 /* EditProfileDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileDataSource.m; sourceTree = "<group>"; };
 		DAA5976D0F96353900DD2EE8 /* TableSection+AccountFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TableSection+AccountFields.h"; sourceTree = "<group>"; };
 		DAA5976E0F96353900DD2EE8 /* TableSection+AccountFields.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TableSection+AccountFields.m"; sourceTree = "<group>"; };
-		DAA597DF0F963FBF00DD2EE8 /* StubbedTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StubbedTextView.h; sourceTree = "<group>"; };
-		DAA597E00F963FBF00DD2EE8 /* StubbedTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StubbedTextView.m; sourceTree = "<group>"; };
+		DAA597DF0F963FBF00DD2EE8 /* StubbedTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StubbedTextField.h; sourceTree = "<group>"; };
+		DAA597E00F963FBF00DD2EE8 /* StubbedTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StubbedTextField.m; sourceTree = "<group>"; };
 		DAA598460F96749300DD2EE8 /* EditProfileDataSourceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileDataSourceTest.m; sourceTree = "<group>"; };
 		DAA598EE0F98BE8400DD2EE8 /* TableShrinksWhenKeyboardIsShownViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableShrinksWhenKeyboardIsShownViewController.h; sourceTree = "<group>"; };
 		DAA598EF0F98BE8400DD2EE8 /* TableShrinksWhenKeyboardIsShownViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableShrinksWhenKeyboardIsShownViewController.m; sourceTree = "<group>"; };
@@ -413,8 +407,6 @@
 			isa = PBXGroup;
 			children = (
 				548D9B100F6AAE7300629CCE /* RestDelegate.h */,
-				D2955DF60F3A36E6002675C9 /* Rest.h */,
-				D2955DF70F3A36E6002675C9 /* Rest.m */,
 				0DD8C8400EF33C3E00A20937 /* Question.h */,
 				0DD8C8410EF33C3E00A20937 /* Question.m */,
 				D2AD6B1A0EFFF66B00DB13FD /* Account.h */,
@@ -618,7 +610,6 @@
 				DA86BEBF0F73E42700CC6EBE /* SurveyTest.h */,
 				DA86BEC00F73E42700CC6EBE /* SurveyTest.m */,
 				DA86BEC10F73E42700CC6EBE /* ValidCredentialsProfileDataSourceTest.m */,
-				DA86BEC70F73E45D00CC6EBE /* RestTest.m */,
 				DA86C0030F75C4CA00CC6EBE /* RestConfigurationTest.m */,
 				DA86C1AC0F77983E00CC6EBE /* NoAccountDataProfileDataSourceTest.m */,
 				DA86C2F00F7A2E8C00CC6EBE /* RestfulRequestsTest.m */,
@@ -638,8 +629,8 @@
 				DA83527E0F8E66ED0073F848 /* NSObject+CleanUpPropertiesTest.m */,
 				DA8353390F8F7BEB0073F848 /* DatePickerViewControllerTest.m */,
 				DA9A712D0F8F9B7400F5580A /* LabelledTableViewCellTest.m */,
-				DAA597DF0F963FBF00DD2EE8 /* StubbedTextView.h */,
-				DAA597E00F963FBF00DD2EE8 /* StubbedTextView.m */,
+				DAA597DF0F963FBF00DD2EE8 /* StubbedTextField.h */,
+				DAA597E00F963FBF00DD2EE8 /* StubbedTextField.m */,
 				DAA598460F96749300DD2EE8 /* EditProfileDataSourceTest.m */,
 			);
 			path = UnitTests;
@@ -821,7 +812,6 @@
 				D2AD6B1D0EFFF66B00DB13FD /* Account.m in Sources */,
 				FC21C5050F12B3AC00436E7F /* Survey.m in Sources */,
 				FC9756860F13B2300077926E /* SurveyListViewController.m in Sources */,
-				D2955DFB0F3A36E6002675C9 /* Rest.m in Sources */,
 				D266E01B0F3A400200C20691 /* NSObject+SBJSON.m in Sources */,
 				D266E01C0F3A400200C20691 /* NSString+SBJSON.m in Sources */,
 				D266E01D0F3A400200C20691 /* SBJSON.m in Sources */,
@@ -877,7 +867,6 @@
 				D2AD6B1C0EFFF66B00DB13FD /* Account.m in Sources */,
 				DA86BE780F72B2FB00CC6EBE /* NoCredentialsProfileDataSource.m in Sources */,
 				DA86BE770F72B2E300CC6EBE /* NewAccountViewController.m in Sources */,
-				D2955DF90F3A36E6002675C9 /* Rest.m in Sources */,
 				D266E01E0F3A400200C20691 /* NSObject+SBJSON.m in Sources */,
 				DA86BE7A0F72B31900CC6EBE /* DatePickerViewController.m in Sources */,
 				DA7F49DF0F715EF70001E019 /* LabelledTableViewReadOnlyCell.m in Sources */,
@@ -889,7 +878,6 @@
 				DA86BEC40F73E42700CC6EBE /* QuestionTest.m in Sources */,
 				DA86BEC50F73E42700CC6EBE /* SurveyTest.m in Sources */,
 				DA86BEC60F73E42700CC6EBE /* ValidCredentialsProfileDataSourceTest.m in Sources */,
-				DA86BEC80F73E45D00CC6EBE /* RestTest.m in Sources */,
 				DA86C0020F75C4A200CC6EBE /* RestConfiguration.m in Sources */,
 				DA86C0040F75C4CA00CC6EBE /* RestConfigurationTest.m in Sources */,
 				DA86C18C0F778D8300CC6EBE /* NoAccountDataProfileDataSource.m in Sources */,
@@ -922,7 +910,7 @@
 				DA9A72E10F938B3400F5580A /* UITableViewCell+IsEditable.m in Sources */,
 				DAA597010F96133C00DD2EE8 /* EditProfileDataSource.m in Sources */,
 				DAA5976F0F96353900DD2EE8 /* TableSection+AccountFields.m in Sources */,
-				DAA597E10F963FBF00DD2EE8 /* StubbedTextView.m in Sources */,
+				DAA597E10F963FBF00DD2EE8 /* StubbedTextField.m in Sources */,
 				DAA598470F96749300DD2EE8 /* EditProfileDataSourceTest.m in Sources */,
 				DAA598F00F98BE8400DD2EE8 /* TableShrinksWhenKeyboardIsShownViewController.m in Sources */,
 			);

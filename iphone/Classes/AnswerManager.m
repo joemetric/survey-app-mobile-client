@@ -57,6 +57,7 @@
     NSLog(@"Pushing picture");
     PictureUploader *uploader = [[PictureUploader alloc] initWithImage:answer.localImageFile andObserver:self];
     [uploader upload];
+	[uploader release];
 }
 
 - (void)pushBasicAnswer {
