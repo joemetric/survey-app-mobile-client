@@ -69,7 +69,6 @@
 			break;
 			case accountLoadStatusLoaded:
 			self.currentDataSource =  [ValidCredentialsProfileDataSource staticTableForTableView:tableView];			
-			((ValidCredentialsProfileDataSource*)currentDataSource).profileViewController = self; // todo - smelly
 			[super setEditing:NO animated:YES];
 			break;
 		}
@@ -91,7 +90,6 @@
 		default:
 			self.navigationItem.rightBarButtonItem = self.editButtonItem;
 			self.currentDataSource =  [ValidCredentialsProfileDataSource staticTableForTableView:tableView];			
-			((ValidCredentialsProfileDataSource*)currentDataSource).profileViewController = self; // todo - smelly
 			break;
 		}
 	}
