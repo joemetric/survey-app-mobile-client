@@ -78,6 +78,7 @@
 	if( [Answer answerExistsForQuestion:self.question] == YES ) {
 		Answer* answer = [Answer answerForQuestion:self.question];
 		self.imageView.image = [UIImage imageWithContentsOfFile:[answer localImageFile]];
+		self.imageView.backgroundColor = [UIColor whiteColor];
 	}
 	[super viewWillAppear:animated];
 }
@@ -94,6 +95,7 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo
 {
     imageView.image = image;
+	imageView.backgroundColor = [UIColor whiteColor];
     // STODO do picture storage here
     [[self parentViewController] dismissModalViewControllerAnimated:YES];
 }
@@ -104,8 +106,7 @@
 }
 
 - (NSString *)storeImage {
-	NSString* filename = [NSString stringWithFormat:@"%d_image.png", question.itemId];
-    NSString *uniquePath = [[Answer answerDirectory] stringByAppendingPathComponent:filename];
+    NSString *uniquePath = [[Answer answerDirectory] stringByAppendingPathComponent:[Answer imageFilePathForQuestionId:question.itemId]];
     
     NSLog(@"Writing image to %@", uniquePath);
     [UIImagePNGRepresentation(imageView.image) writeToFile:uniquePath atomically:YES];
@@ -115,20 +116,14 @@
 - (void)storeAnswer
 {
     NSLog(@"Storing picture");
-    NSString *imagePath = [self storeImage];
+    [self storeImage];
     
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setObject:[NSNumber numberWithInteger:question.itemId] forKey:@"question_id"];
     [params setObject:question.questionType forKey:@"question_type"];
     
     Answer *answer = [Answer newFromDictionary:params];
-    answer.localImageFile = imagePath;
     [answer store];
-//    [AnswerManager pushAnswer:answer];
-//    
-//    NSLog(@"Answer: %@", answer);
-//    
-//    [self.navigationController popToViewController:self.questionList animated:YES];
 
     [params release];
     [answer release];

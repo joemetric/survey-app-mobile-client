@@ -28,6 +28,7 @@
 		288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
 		28AD73880D9D96C1002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD73870D9D96C1002E5188 /* MainWindow.xib */; };
 		392676560F61A01600A889B8 /* refresh_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 392676550F61A01600A889B8 /* refresh_icon.png */; };
+		54023F130F9CCEE10006A41E /* camera_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 54023F120F9CCEE10006A41E /* camera_placeholder.png */; };
 		541645980F95E1110050FC94 /* FreetextAnswerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 541645960F95E1110050FC94 /* FreetextAnswerView.xib */; };
 		541645990F95E1110050FC94 /* PictureAnswerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 541645970F95E1110050FC94 /* PictureAnswerView.xib */; };
 		541654E30F864AC700B7CCF2 /* green_lozenge.png in Resources */ = {isa = PBXBuildFile; fileRef = 541654E00F864AC700B7CCF2 /* green_lozenge.png */; };
@@ -37,6 +38,7 @@
 		5420E3170F6E82E800DC2BDE /* LabelledTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5420E3160F6E82E800DC2BDE /* LabelledTableViewCell.m */; };
 		547608CE0F6E5B37007CCC58 /* NewAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 547608CD0F6E5B37007CCC58 /* NewAccountViewController.m */; };
 		547608D10F6E5B6B007CCC58 /* NewAccountView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 547608D00F6E5B6B007CCC58 /* NewAccountView.xib */; };
+		5487F4FB0F9DD37400CEA073 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5487F4FA0F9DD37400CEA073 /* Entitlements.plist */; };
 		5488C43C0F8241DE00B29C76 /* WalletViewTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5488C43B0F8241DE00B29C76 /* WalletViewTableCell.xib */; };
 		5488C4410F8243C500B29C76 /* WalletViewTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5488C4400F8243C500B29C76 /* WalletViewTableCell.m */; };
 		548D9BC20F6AB49900629CCE /* CredentialsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 548D9BC10F6AB49900629CCE /* CredentialsView.xib */; };
@@ -191,6 +193,7 @@
 		28AD73870D9D96C1002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		392676550F61A01600A889B8 /* refresh_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh_icon.png; sourceTree = "<group>"; };
+		54023F120F9CCEE10006A41E /* camera_placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera_placeholder.png; sourceTree = "<group>"; };
 		541645960F95E1110050FC94 /* FreetextAnswerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FreetextAnswerView.xib; sourceTree = "<group>"; };
 		541645970F95E1110050FC94 /* PictureAnswerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PictureAnswerView.xib; sourceTree = "<group>"; };
 		541654E00F864AC700B7CCF2 /* green_lozenge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green_lozenge.png; sourceTree = "<group>"; };
@@ -202,6 +205,7 @@
 		547608CC0F6E5B37007CCC58 /* NewAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewAccountViewController.h; sourceTree = "<group>"; };
 		547608CD0F6E5B37007CCC58 /* NewAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewAccountViewController.m; sourceTree = "<group>"; };
 		547608D00F6E5B6B007CCC58 /* NewAccountView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewAccountView.xib; sourceTree = "<group>"; };
+		5487F4FA0F9DD37400CEA073 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		5488C43B0F8241DE00B29C76 /* WalletViewTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletViewTableCell.xib; sourceTree = "<group>"; };
 		5488C43F0F8243C500B29C76 /* WalletViewTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletViewTableCell.h; sourceTree = "<group>"; };
 		5488C4400F8243C500B29C76 /* WalletViewTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletViewTableCell.m; sourceTree = "<group>"; };
@@ -428,6 +432,7 @@
 		0DF9E1EB0EF2ED1800A522A1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				54023F120F9CCEE10006A41E /* camera_placeholder.png */,
 				54D0284E0F96203300A9473A /* greentick_overlay.png */,
 				54D0284F0F96203300A9473A /* question_freetext_done.png */,
 				54D028500F96203300A9473A /* question_picture_done.png */,
@@ -507,6 +512,7 @@
 				5488C43B0F8241DE00B29C76 /* WalletViewTableCell.xib */,
 				54F817E20F8E347400EC1909 /* SurveyListViewTableCell.xib */,
 				549A74EF0F8F9CBC00D968C4 /* SurveyInfoViewTableCell.xib */,
+				5487F4FA0F9DD37400CEA073 /* Entitlements.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -762,6 +768,8 @@
 				54D028510F96203300A9473A /* greentick_overlay.png in Resources */,
 				54D028520F96203300A9473A /* question_freetext_done.png in Resources */,
 				54D028530F96203300A9473A /* question_picture_done.png in Resources */,
+				54023F130F9CCEE10006A41E /* camera_placeholder.png in Resources */,
+				5487F4FB0F9DD37400CEA073 /* Entitlements.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -936,7 +944,8 @@
 				GCC_PREFIX_HEADER = JoeMetric_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				PRODUCT_NAME = JoeMetric;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F26FE7BA-B8DC-4ABD-B033-3F6FD0AE226C";
+				PROVISIONING_PROFILE = "8BCEA8F5-865F-4B4E-A08D-C05083489658";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8BCEA8F5-865F-4B4E-A08D-C05083489658";
 			};
 			name = Debug;
 		};
@@ -959,10 +968,82 @@
 			};
 			name = Release;
 		};
+		5487F4F20F9DD32300CEA073 /* AdHocDistribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Cardboard Software";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Cardboard Software";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				PROVISIONING_PROFILE = "08C312E9-E62E-4804-A6FF-B47A3C76CC68";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "08C312E9-E62E-4804-A6FF-B47A3C76CC68";
+				SDKROOT = iphoneos2.1;
+			};
+			name = AdHocDistribution;
+		};
+		5487F4F30F9DD32300CEA073 /* AdHocDistribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Cardboard Software";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Cardboard Software";
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../Library/Frameworks\"",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = JoeMetric_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				PRODUCT_NAME = JoeMetric;
+				PROVISIONING_PROFILE = "08C312E9-E62E-4804-A6FF-B47A3C76CC68";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "08C312E9-E62E-4804-A6FF-B47A3C76CC68";
+			};
+			name = AdHocDistribution;
+		};
+		5487F4F40F9DD32300CEA073 /* AdHocDistribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../Library/Frameworks\"",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
+				INFOPLIST_FILE = "Unit Test-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					UIKit,
+					"-lgcov",
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "Unit Test";
+				SDKROOT = iphoneos2.1;
+				ZERO_LINK = NO;
+			};
+			name = AdHocDistribution;
+		};
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Alan Francis";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Alan Francis";
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -1066,6 +1147,7 @@
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
 				1D6058950D05DD3E006BFB54 /* Release */,
+				5487F4F30F9DD32300CEA073 /* AdHocDistribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1075,6 +1157,7 @@
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
 				C01FCF5008A954540054247B /* Release */,
+				5487F4F20F9DD32300CEA073 /* AdHocDistribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1084,6 +1167,7 @@
 			buildConfigurations = (
 				D2F22B360EFBE9F70047CBFA /* Debug */,
 				D2F22B370EFBE9F70047CBFA /* Release */,
+				5487F4F40F9DD32300CEA073 /* AdHocDistribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

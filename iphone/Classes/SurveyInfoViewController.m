@@ -125,7 +125,7 @@
 	NSLog(@"button == nil : %d", self.navigationItem.rightBarButtonItem == nil);
 	if( [self.survey allQuestionsAnswered] == YES ) {
 		if( self.navigationItem.rightBarButtonItem == nil ) {
-			UIBarButtonItem* doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(surveyDone:)];
+			UIBarButtonItem* doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Submit" style:UIBarButtonItemStyleDone target:self action:@selector(surveyDone:)];
 			self.navigationItem.rightBarButtonItem = doneButton;
 			[doneButton release];
 		}

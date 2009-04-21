@@ -29,7 +29,6 @@
     answer.questionType = [dict objectForKey:@"question_type"];
     answer.answerString = [dict objectForKey:@"answer_string"];
     answer.answerFile = [dict objectForKey:@"answer_file"];
-    answer.localImageFile = [dict objectForKey:@"local_image_file"];
     return answer;
 }
 
@@ -69,7 +68,11 @@
 + (NSString*) answerFilePathForQuestionId:(NSInteger)questionId {
 	return [[Answer answerDirectory] stringByAppendingPathComponent:[NSString stringWithFormat:@"%d.plist", questionId]];
 }
-	
+
++ (NSString*) imageFilePathForQuestionId:(NSInteger)questionId {
+	return [[Answer answerDirectory] stringByAppendingPathComponent:[NSString stringWithFormat:@"%d_image.png", questionId]];
+}
+
 + (void) deleteAnswerForQuestion:(Question*)question {
 	[[NSFileManager defaultManager] removeItemAtPath:[Answer answerFilePathForQuestionId:question.itemId] error:NULL];
 }
@@ -94,6 +97,9 @@
     return [container autorelease];
 }
 
+- (NSString*)localImageFile {
+	return [Answer imageFilePathForQuestionId:self.questionId];
+}
 
 - (BOOL)store {
     NSLog(@"Storing answer");

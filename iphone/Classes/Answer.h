@@ -23,13 +23,14 @@
 @property (nonatomic, retain) NSString *questionType;
 @property (nonatomic, retain) NSString *answerString;
 @property (nonatomic, retain) NSString *answerFile;
-@property (nonatomic, retain) NSString *localImageFile;
+@property (nonatomic, readonly) NSString *localImageFile;
 
 + (id)newFromDictionary:(NSDictionary *)dict;
 + (NSString*) answerDirectory;
 + (void)clearAllStored;
 + (BOOL)answerExistsForQuestion:(Question*) question;
 + (NSString*) answerFilePathForQuestionId:(NSInteger)questionId;
++ (NSString*) imageFilePathForQuestionId:(NSInteger)questionId;
 + (Answer*) answerForQuestion:(Question*) question;
 + (void) deleteAnswerForQuestion:(Question*)question;
 	
