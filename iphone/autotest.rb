@@ -29,6 +29,7 @@ module AutoTest
       notice = ['Pass']
     end
     AutoTest::growl *notice
+    puts failure_line.coloured if failure_line
     notice    
   end
   
