@@ -88,7 +88,7 @@
 	account.email = emailCell.textField.text;
 	account.passwordConfirmation = passwordConfirmationCell.textField.text;
 	account.gender = genderCell.gender;
-	account.income = [incomeCell.textField.text integerValue];
+	account.income = incomeCell.integer;
 	account.birthdate = [[self dateFormatter] dateFromString:dobCell.textField.text];
 	[account createNew];
 	[activityIndicator startAnimating];

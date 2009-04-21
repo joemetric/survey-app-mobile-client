@@ -98,8 +98,26 @@
 	textField.text = [NSString stringWithFormat:@"%d", integer];
 }
 
+
+-(NSString*)addToString:(NSString*)string digitsFromSource:(NSString*)source{
+    NSCharacterSet* numerics = [NSCharacterSet characterSetWithCharactersInString:@"0123456789"];
+    NSRange nextCharacterRange = [source rangeOfCharacterFromSet:numerics];
+    if (NSNotFound == nextCharacterRange.location) return string;
+    
+    NSString *nextCharacters = [source substringWithRange:nextCharacterRange];
+    NSString *remaining =  [source substringFromIndex:nextCharacterRange.location + nextCharacterRange.length];
+    
+    return [self addToString:[string stringByAppendingString:nextCharacters] digitsFromSource:remaining];
+}
+
+-(NSString*)toDotFromString:(NSString*)string{
+    NSInteger firstDotLocation = [string rangeOfString:@"."].location;
+    if (NSNotFound == firstDotLocation) return string;
+    return [string substringToIndex:firstDotLocation];
+}
+
 -(NSInteger)integer{
-	return [textField.text integerValue];
+	return [[self addToString:@"" digitsFromSource:[self toDotFromString:textField.text]] integerValue];
 }
 
 -(void)setErrorHighlighted:(BOOL)highlighted{

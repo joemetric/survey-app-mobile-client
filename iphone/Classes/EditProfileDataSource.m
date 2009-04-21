@@ -69,6 +69,16 @@
 
 -(void)changeInAccount:(Account*)account{
 	[account noLongerNotifyObserver:self];
+	if (accountLoadStatusLoadFailed == account.accountLoadStatus){
+		UIAlertView *errorAlert = [[UIAlertView alloc] 
+			initWithTitle: [account.lastLoadError localizedDescription] 
+			message: [account.lastLoadError localizedFailureReason] 
+			delegate:nil 
+			cancelButtonTitle:@"OK" 
+			otherButtonTitles:nil];
+		[errorAlert show];
+		[errorAlert release];
+	}
 	[self handleErrors:[account errors]];
 }
 

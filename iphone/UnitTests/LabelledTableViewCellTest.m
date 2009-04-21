@@ -136,10 +136,23 @@
 	STAssertEqualStrings(@"1234", testee.textField.text, nil);
 }
 
--(void)testGettingInteger{
-	testee.textField.text = @"54321";
-	STAssertEquals(54321, testee.integer, nil);
+
+-(void)assertIntegerResult:(NSInteger)expectedResult forText:(NSString*)text{
+	testee.textField.text = text;
+	STAssertEquals(expectedResult, testee.integer, [NSString stringWithFormat:@"Expecting %d but got %d for '%@'", expectedResult, testee.integer, text]);
+	
 }
+
+-(void)testGettingInteger{
+	[self assertIntegerResult:54321 forText:@"54321"];
+	[self assertIntegerResult:54321 forText:@"$54321"];
+	[self assertIntegerResult:54321 forText:@"$5x4321"];
+	
+	[self assertIntegerResult:54321 forText:@"54321.23"];
+	
+}
+
+
 
 
 @end

@@ -2,34 +2,42 @@
 #import "NoAccountDataProfileDataSource.h"
 
 @interface NoAccountDataProfileDataSourceTest : GTMTestCase{
-    StaticTable* testee;
+	StaticTable* testee;
 	UITableView* tableView;
 }
 @property(nonatomic, retain)  StaticTable* testee;
-@property(nonatomic, retain)  UITableView* tableView;
 @end
 
 @implementation NoAccountDataProfileDataSourceTest 
-@synthesize testee, tableView;
+@synthesize testee;
 
--(void)setUp{
-	self.tableView = 
-    self.testee = [NoAccountDataProfileDataSource noAccountDataProfileDataSourceWithMessage:@"this is the message" andTableView:tableView];
-}
 
 -(void)tearDown{
 	self.testee = nil;
-    self.tableView = nil;
 }
 
--(void)testOneSectionWithNoRows{
-    STAssertEquals(1, [testee numberOfSectionsInTableView:nil], @"numberOfSectionsInTableView");
-    STAssertEquals(0, [testee tableView:nil numberOfRowsInSection:0], @"numberOfRowsInSection");
+-(void)testOneSectionWithOneRowForSingleLineMessage{
+	self.testee = [NoAccountDataProfileDataSource noAccountDataProfileDataSourceWithMessages:[NSArray arrayWithObject:@"this is the message"] andTableView:tableView];
+	STAssertEquals(1, [testee numberOfSectionsInTableView:nil], @"numberOfSectionsInTableView");
+	STAssertEquals(1, [testee tableView:nil numberOfRowsInSection:0], @"numberOfRowsInSection");
 }
 
--(void)testFooterIsMessage{
-	UIView* footerView =  [testee tableView:nil  viewForFooterInSection:0];
-	STAssertEquals((NSUInteger)1, footerView.subviews.count, nil);
-	STAssertEqualStrings(@"this is the message", [[footerView.subviews objectAtIndex:0] text], nil);
+-(NSString*)messageTextAtRow:(NSInteger)row{
+	return [testee tableView:nil cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0]].text;
 }
+
+-(void)testMessageIsInCell{
+	self.testee = [NoAccountDataProfileDataSource noAccountDataProfileDataSourceWithMessages:[NSArray arrayWithObject:@"hello"] andTableView:tableView];
+	UITableViewCell *cell = [testee tableView:nil cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+	STAssertEqualStrings(@"hello", [self messageTextAtRow:0] ,nil);
+}
+
+-(void)testOneCellForMessage{
+	self.testee = [NoAccountDataProfileDataSource noAccountDataProfileDataSourceWithMessages:[NSArray arrayWithObjects:@"hello", @"matey", nil] andTableView:tableView];
+	STAssertEquals(2, [testee tableView:nil numberOfRowsInSection:0], @"numberOfRowsInSection");
+	STAssertEqualStrings(@"hello", [self messageTextAtRow:0] ,nil);
+	STAssertEqualStrings(@"matey", [self messageTextAtRow:1] ,nil);
+
+}
+
 @end
