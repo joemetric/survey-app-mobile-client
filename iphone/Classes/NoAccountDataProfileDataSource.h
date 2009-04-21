@@ -13,7 +13,7 @@
 @interface NoAccountDataProfileDataSource : StaticTable  {
 }
 
++(id)noAccountDataProfileDataSourceWithMessages:(NSArray*)messages andTableView:(UITableView*)tableView;
 
-+(id)noAccountDataProfileDataSourceWithMessage:(NSString*)message andTableView:(UITableView*)tableView;
 @end
  

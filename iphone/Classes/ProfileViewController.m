@@ -83,14 +83,17 @@
 		switch([Account currentAccount].accountLoadStatus){
 		case accountLoadStatusUnauthorized:
 		case accountLoadStatusFailedValidation:
-			// self.currentDataSource = [NoCredentialsProfileDataSource staticTableForTableView:tableView];
 			self.currentDataSource = [NoCredentialsProfileDataSource noCredentialsProfileDataSourceForTableView:tableView profileViewController:self];
 			break;
 		case accountLoadStatusNotLoaded:
-			self.currentDataSource =  [NoAccountDataProfileDataSource noAccountDataProfileDataSourceWithMessage:@"Loading account details." andTableView:tableView];
+			self.currentDataSource =  [NoAccountDataProfileDataSource noAccountDataProfileDataSourceWithMessages:[NSArray arrayWithObject:@"Loading account details."] andTableView:tableView];
 			break;
 		case accountLoadStatusLoadFailed:
-			self.currentDataSource = [NoAccountDataProfileDataSource noAccountDataProfileDataSourceWithMessage:@"Unable to load account details." andTableView:tableView];	
+			self.currentDataSource = [NoAccountDataProfileDataSource 
+				noAccountDataProfileDataSourceWithMessages:
+					[NSArray arrayWithObjects:@"Unable to load account details:", 
+					[[Account currentAccount].lastLoadError localizedDescription] ,nil] 
+				andTableView:tableView];	
 			break;
 		default:
 			self.navigationItem.leftBarButtonItem = self.editButtonItem;
