@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+require File.dirname(__FILE__) + '/autotest'
+
 require 'rubygems'
 
 gem 'paulanthonywilson-osx_watchfolder'
@@ -11,9 +13,8 @@ ARGV.clear
 ARGV << 'auto:test:all'
 
 
-fork do
-  load 'rake'
-end
+AutoTest::test_and_report
+
 OsxWatchfolder::FolderWatcher.new("Classes", "UnitTests") do 
-  fork{load 'rake'}
+  AutoTest::test_and_report
 end.start
