@@ -5,6 +5,8 @@ create database joemetric_dev;
 
 In the rails app:
 
+go to config directory; change database.example.yml to database.yml
+
 rake db:migrate
 rake db:fixtures:load
 ./script/server start
