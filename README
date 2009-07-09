@@ -1,3 +1,8 @@
+In a local mysql install:
+
+mysql -u root
+create database joemetric_dev;
+
 In the rails app:
 
 rake db:migrate
