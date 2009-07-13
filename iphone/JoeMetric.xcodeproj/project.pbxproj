@@ -931,7 +931,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Alan Francis";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Adam Winter (227X2T273N)";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -944,8 +944,7 @@
 				GCC_PREFIX_HEADER = JoeMetric_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				PRODUCT_NAME = JoeMetric;
-				PROVISIONING_PROFILE = "8BCEA8F5-865F-4B4E-A08D-C05083489658";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8BCEA8F5-865F-4B4E-A08D-C05083489658";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6E1A91EB-C139-4B4B-9683-D4E427E21FFD";
 			};
 			name = Debug;
 		};
@@ -989,8 +988,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Cardboard Software";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Cardboard Software";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: JoeMetric, Inc.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: JoeMetric, Inc.";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1001,8 +1000,8 @@
 				GCC_PREFIX_HEADER = JoeMetric_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				PRODUCT_NAME = JoeMetric;
-				PROVISIONING_PROFILE = "08C312E9-E62E-4804-A6FF-B47A3C76CC68";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "08C312E9-E62E-4804-A6FF-B47A3C76CC68";
+				PROVISIONING_PROFILE = "F3173F5E-2A1A-4196-B3EC-BE0145AE343F";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F3173F5E-2A1A-4196-B3EC-BE0145AE343F";
 			};
 			name = AdHocDistribution;
 		};
@@ -1044,15 +1043,15 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Alan Francis";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Alan Francis";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Adam Winter (227X2T273N)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Adam Winter (227X2T273N)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
-				PROVISIONING_PROFILE = "F26FE7BA-B8DC-4ABD-B033-3F6FD0AE226C";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F26FE7BA-B8DC-4ABD-B033-3F6FD0AE226C";
+				PROVISIONING_PROFILE = "6E1A91EB-C139-4B4B-9683-D4E427E21FFD";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6E1A91EB-C139-4B4B-9683-D4E427E21FFD";
 				SDKROOT = iphoneos2.1;
 			};
 			name = Debug;
