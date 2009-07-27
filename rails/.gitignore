@@ -20,3 +20,4 @@ public/stylesheets/all.css
 public/coverage
 public/avatars
 vendor/plugins/selenium-on-rails/log/*
+scratch_directory/*
