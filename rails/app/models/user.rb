@@ -28,17 +28,35 @@ class User < ActiveRecord::Base
   # anything else you want your user to change should be added here.
   attr_accessible :login, :email, :name, :password, :password_confirmation, :income, :birthdate, :gender
 
+  before_create :make_activation_code
   after_create :create_wallet
+
+  def activate!
+    @activated = true
+    self.activated_at = Time.now.utc
+    self.activation_code = nil
+    save(false)
+  end
+
+  # Returns true if the user has just been activated.
+  def recently_activated?
+    @activated
+  end
+
+  def active?
+    # the existence of an activation code means they have not activated yet
+    activation_code.nil?
+  end
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   #
-  # uff.  this is really an authorization, not authentication routine.  
+  # uff.  this is really an authorization, not authentication routine.
   # We really need a Dispatch Chain here or something.
   # This will also let us return a human error message.
   #
   def self.authenticate(login, password)
     return nil if login.blank? || password.blank?
-    u = find_by_login(login, :include => :wallet) # need to get the salt
+    u = find :first, :conditions => ['login = ? and activated_at IS NOT NULL', login] # need to get the salt
     u && u.authenticated?(password) ? u : nil
   end
 
@@ -57,12 +75,16 @@ class User < ActiveRecord::Base
   def income
     @income ||= self[:income].to_s.extend(Income)
   end
-  
+
   def complete_survey( survey )
     wallet.record_completed_survey( survey )
   end
 
   def create_wallet
     self.wallet = Wallet.create(:user => self) if self.wallet.nil?
-  end 
+  end
+
+  def make_activation_code
+    self.activation_code = self.class.make_token
+  end
 end
