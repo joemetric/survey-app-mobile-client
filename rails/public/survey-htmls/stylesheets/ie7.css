@@ -1,0 +1,19 @@
+*:first-child + html .rnav {
+	background: #FF0000 url(../images/iphone.jpg) no-repeat left top;
+	width: 298px;
+	height: 509px;
+	margin-left: 556px;
+}
+#footer ol {
+	position: absolute;
+	width: 420px;
+	top: 10px;
+	right: 10px;
+}
+*:first-child + html .button_div span {
+display:block;
+left:80px;
+position:relative;
+top:-41px;
+width:75px;
+}

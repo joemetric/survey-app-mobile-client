@@ -1,0 +1,354 @@
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td {
+outline:none;
+margin:0;
+padding:0;
+}
+ul,ol{
+list-style:none;
+}
+body {
+	background: #0c273c url(../images/win_bg.jpg);
+	font: 12px Helvetica, Arial, sans-serif;
+	color: #0d558a;
+}
+p {
+	margin-top: 5px;
+	margin-bottom: 10px;
+	line-height: 18px;
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+a:link {
+color:#5c86b6;
+text-decoration:none;
+}
+a:hover {
+	color:#fea21e;
+	text-decoration:none;
+}
+.cls{
+clear:both;
+}
+div.cls{
+clear:both;
+font-size:0;
+height:1px;
+line-height:0;
+width:100%;
+}
+/*Main str Divs*/
+#main {
+	width: 857px;
+	height: 626px;
+	background: #66CCFF;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 14px;
+}
+#header {
+	height: 101px;
+	background: url(../images/ltop_cnr.gif) no-repeat left top;
+}
+#header img {
+	display: block;
+	float: left;
+	border-style: none;
+}
+
+#menu {
+	margin-left: 284px;
+	background: url(../images/menu_btn.gif) repeat-x left 0px;
+	height: 101px;
+}
+#content {
+	height: 525px;
+	background: #FFFFFF url(../images/cnt_wrpbg.gif) repeat-y left top;
+}
+.cnt_wrap {
+	height: 525px;
+	background: url(../images/cnt_bot.gif) no-repeat left bottom;
+}
+.lnav {
+	height: 515px;
+	width: 520px;
+	padding-right: 10px;
+	padding-left: 28px;
+	padding-top: 10px;
+	float: left;
+}
+.tgirls {
+	background: url(../images/two_girls.jpg) no-repeat left bottom;
+}
+.mobgirl {
+	background: url(../images/mobgirl.jpg) no-repeat left bottom;
+}
+
+
+a.linktail:link,a.linktail:visited,a.linktail:hover,a.linktail:active {
+	font: bold 11px Helvetica, Arial, sans-serif;
+	text-decoration: none;
+	color: #2b3949;
+}
+.lnav h2 {
+	font: 46px/47px "Myriad Pro";
+	color: #0e5388;
+	margin-top:-3px;
+	padding-left:3px
+}
+.wrap01 {
+	width: 237px;
+	margin-left: 280px;
+}
+.wrap01 ul li {
+	margin-left: 44px;
+	list-style: disc;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 5px;
+}
+.wrap01 em {
+	font: italic 700 16px "Myriad Pro", Helvetica, Arial, sans-serif;
+	margin-left: 44px;
+	color: #0c273b;
+	display: block;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-top: 10px;
+}
+.wrap01 ol li {
+	list-style: none;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 45px;
+	color: #A5BF28;
+	font: bold 13px Helvetica, Arial, sans-serif;
+}
+.wrap01 a {
+	display: block;
+	height: 78px;
+	width: 76px;
+	background: url(../images/download_btn.gif) no-repeat left top;
+	margin: 20px auto 20px 45px;
+	text-indent: -9999px;
+}
+
+#content h3 {
+	font-size: 14px;
+	font-style: italic;
+}
+
+
+
+.rnav {
+	background: #FF0000 url(../images/iphone.jpg) no-repeat left top;
+	width: 300px;
+	height: 509px;
+	margin-left: 556px;
+}
+.rnav .remote {
+	position:relative;
+	right:-194px;
+	top:18px;
+	width: 81px;
+}
+.rnav .remote li {
+	display: inline;
+}
+.remote input {
+	outline:none;
+}
+
+.win_img {
+	height:280px;
+	left:55px;
+	position:relative;
+	top:103px;
+	width:190px;
+}
+
+
+#footer {
+	height: 50px;
+	padding: 15px 10px;
+	position: relative;
+}
+#footer li {
+	color: #8795a0;
+	font: 10px Helvetica, Arial, sans-serif;
+	letter-spacing: 1px;
+}
+#footer ol {
+	position: absolute;
+	width: 412px;
+	top: 10px;
+	right: 10px;
+}
+#footer ol li {
+	display: inline;
+	padding-right: 12px;
+	padding-left: 12px;
+	font-size: 9px;
+}
+/*Menu page*/
+#menubar {
+	list-style-type:none;
+	margin:0;
+	padding:0;
+}
+#menubar li {
+	float:left;
+	padding:0;
+	margin:0;
+	position:relative;
+	width:143px;
+	height:3em;
+	z-index:100;
+	top: 34px;
+}
+#menubar li dl {position:absolute; top:0; left:0;}
+#menubar li a, #menubar li a:visited {
+	text-decoration:none;
+	width: 117px;
+	color: #0C273C;
+}
+#menubar li dd {
+	display:none;
+	width: 142px;
+	border-right: 1px solid #0c273c;
+	border-bottom: 1px solid #0c273c;
+	border-left: 1px solid #0c273c;
+}
+#menubar li:hover, #menubar li a:hover {border:0;}
+#menubar li:hover dd, #menubar li a:hover dd {display:block;}
+#menubar li:hover dl, #menubar li a:hover dl {padding-bottom:20px;}
+#menubar table {border-collapse:collapse; padding:0; margin:-1px; font-size:1em;}
+#menubar dl {width: 150px; margin: 0; padding: 0; background: url(../images/bottom00.gif) no-repeat bottom left; text-align:center; cursor:pointer;}
+#menubar dt {
+	margin:0;
+	padding: 5px;
+	font-size: 1.1em;
+	color: #fff;
+}
+#menubar .one {	font: bold 11px "Myriad Pro", Helvetica, Arial, sans-serif;}
+.gallery .one a,.gallery .two a,.gallery .three a,.gallery .four a {
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#menubar .two {font: bold 11px "Myriad Pro", Helvetica, Arial, sans-serif;}
+#menubar .three {font: bold 11px "Myriad Pro", Helvetica, Arial, sans-serif;}
+#menubar .four {font: bold 11px "Myriad Pro", Helvetica, Arial, sans-serif;}
+#menubar dd {
+	background:#4477AA;
+	color:#FFFFFF;
+	letter-spacing:1px;
+	margin:0;
+	padding:0;
+	text-align:left;
+	font: bold normal 10px/normal "Myriad Pro", Helvetica, Arial, sans-serif;
+}
+#menubar dd.last {border-bottom:1px solid #444;}
+.gallery dt a, .gallery dt a:visited {display:block; color:#444;}
+.gallery dd a, .gallery dd a:visited {
+	color:#fff;
+	text-decoration:none;
+	display:block;
+	padding:4px 12px 4px 13px;
+	background: #e7e9ec;
+
+
+}
+.gallery dd a:hover {
+	background: #fff;
+	color:#9cf;
+	display:block;
+	padding:4px 12px 4px 13px;
+}
+/*DOWNLOAD APP Styles*/
+.style01 {
+	float:left;
+	font-size-adjust:none;
+	font-stretch:normal;
+	font: 700 normal 15px/28px Helvetica, Arial, sans-serif;
+	width:216px;
+}
+/*Instant Quote*/
+#instantQ {
+	clear:right;
+	float:right;
+	height:500px;
+	width:255px;
+}
+#instantQ label {
+	width : 245px;
+	height : 17px;
+	background-image : url(label_bg.gif);
+	background-repeat : no-repeat;
+	margin-top : 3px;
+	margin-right : 2px;
+	padding-top : 0;
+	padding-left : 0;
+	float : left;
+	display : block;
+	letter-spacing : 1px;
+	color : #0e5388;
+	font : 700 11px/18px Helvetica, Arial, sans-serif;
+}
+#instantQ .form {
+margin : 0;
+padding : 0;
+}
+#instantQ .clear {
+clear : both;
+}
+#instantQ .holder {
+	padding-left : 0;
+	padding-right : 5px;
+	padding-bottom:5px;
+}
+#instantQ .div_texbox {
+width : 202px;
+float : left;
+padding-left : 0;
+}
+.textbox {
+	background-color : #ffffff;
+	width : 245px;
+	font : normal 11px Verdana, Arial, Helvetica, sans-serif;
+	color : #41738c;
+	padding : 2px 3px;
+	border : 1px solid #ced4d8;
+}
+#instantQ .div_texbox select {
+	width : 210px;
+	font : 11px Verdana, Arial, Helvetica, sans-serif;
+	border-style : none;
+	border : 1px solid #ced4d8;
+	color : #41738c;
+}
+#instantQ .div_texbox textarea {
+	border : 1px solid #d0d0d0;
+	color : #41738c;
+	width : 245px;
+}
+.textbox:focus, .textbox:hover, #instantQ .div_texbox textarea:focus, #instantQ .div_texbox textarea:hover, #instantQ .div_texbox select:focus, #instantQ .div_texbox select:hover {
+background-color : #b4ca48;
+color : #fff;
+}
+#instantQ .button_div {
+	width : 102px;
+	float : left;
+	text-align : right;
+	height : 35px;
+	margin-top : -2px;
+	padding-top : 5px;
+	padding-bottom : 3px;
+	padding-left : 0;
+}
+.button_div span {
+display:block;
+left:110px;
+position:relative;
+top:-41px;
+width:75px;
+}
