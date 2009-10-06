@@ -9,6 +9,8 @@
 #import "RestRequest.h"
 #import "NSStringExt.h"
 #import "JSON.h"
+#import "User.h"
+#import "NSDictionary+RemoveNulls.h"
 
 
 static NSString *ServerURL = @"localhost:3000";
@@ -67,9 +69,29 @@ static NSString *ServerURL = @"localhost:3000";
 	if (!result) {		
 		return FALSE;
 	} else {
-		if (response && [response isKindOfClass:[NSHTTPURLResponse class]] && [(NSHTTPURLResponse *)response statusCode] == 201)
+		if (response && [response isKindOfClass:[NSHTTPURLResponse class]] && [(NSHTTPURLResponse *)response statusCode] == 201) {
+			NSString *outstring = [[NSString alloc] initWithData:result
+														encoding:NSUTF8StringEncoding];
+			NSObject *result = [outstring JSONFragmentValue];
+			if ([result isKindOfClass:[NSDictionary class]]) {
+				NSDictionary *dict = [(NSDictionary *)[[(NSDictionary *)result allValues] objectAtIndex:0] withoutNulls];
+				NSString *email = [dict objectForKey:@"email"];
+				NSString *login = [dict objectForKey:@"login"];
+				NSString *income = [dict objectForKey:@"income"];
+				NSString *gender = [dict objectForKey:@"gender"];
+				NSString *name = [dict objectForKey:@"name"];
+				
+				NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+				[dateFormatter setDateFormat:@"yyyy-MM-dd"];
+				NSString *birth = [dict objectForKey:@"birthdate"];
+				NSDate *birthday = nil;
+				if (birth)
+					birthday = [dateFormatter dateFromString:birth];
+				[User saveUserWithEmail:email Login:login Income:income Gender:gender Name:name Password:pass Birthday:birthday];
+				[dateFormatter release];
+			}
 			return TRUE;
-		else {		
+		} else {		
 			[RestRequest failedResponse:result Error:error];
 			return FALSE;
 		}

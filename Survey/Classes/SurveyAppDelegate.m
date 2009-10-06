@@ -2,7 +2,7 @@
 //  SurveyAppDelegate.m
 //  Survey
 //
-//  Created by Ye Dingding on 09-10-1.
+//  Created by Allerin on 09-10-1.
 //  Copyright Allerin 2009. All rights reserved.
 //
 
@@ -21,6 +21,7 @@
 @synthesize tabBarController;
 @synthesize browseController, walletController, profileController, settingsController;
 @synthesize loginController;
+@synthesize metadata;
 
 
 #pragma mark -
@@ -31,7 +32,7 @@
     // Override point for customization after app launch    
 	[window addSubview:tabBarController.view];
 	
-	if ([Metadata getMetadata] == nil) {
+	if ((self.metadata = [Metadata getMetadata]) == nil) {
 		[browseController.navigationController presentModalViewController:self.loginController animated:YES];
 	}
 }

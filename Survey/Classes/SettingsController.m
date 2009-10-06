@@ -2,7 +2,7 @@
 //  SettingsController.m
 //  Survey
 //
-//  Created by Ye Dingding on 09-10-1.
+//  Created by Allerin on 09-10-1.
 //  Copyright 2009 Allerin. All rights reserved.
 //
 
@@ -10,6 +10,10 @@
 
 
 @implementation SettingsController
+@synthesize settingsTable;
+@synthesize newSurveyAlertCell, locationSpecificSurveyCell, sortSurveyCell, fewestQuestionsCell;
+@synthesize locationCell, sortCell, newestQuestionsCell, confirmationCell;
+@synthesize newSurveyAlertButton, locatonSpecificSurveyButton, sortSurveyLabel;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -55,6 +59,18 @@
 - (void)viewDidUnload {
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
+	[settingsTable release]; self.settingsTable = nil;
+	[newSurveyAlertCell release]; self.newSurveyAlertCell = nil;
+	[locationSpecificSurveyCell release]; self.locationSpecificSurveyCell = nil;
+	[sortSurveyCell release]; self.sortSurveyCell = nil;
+	[fewestQuestionsCell release]; self.fewestQuestionsCell = nil;
+	[locationCell release]; self.locationCell = nil;
+	[sortCell release]; self.sortCell = nil;
+	[newestQuestionsCell release]; self.newestQuestionsCell = nil;
+	[confirmationCell release]; self.confirmationCell = nil;
+	[newSurveyAlertButton release]; self.newSurveyAlertButton = nil;
+	[sortSurveyLabel release]; self.sortSurveyLabel = nil;
+	[locatonSpecificSurveyButton release]; self.locatonSpecificSurveyButton = nil;
 }
 
 
@@ -62,5 +78,40 @@
     [super dealloc];
 }
 
+
+#pragma mark -
+#pragma mark LoginTable Delegate
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+	return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+	return 8;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {							
+	switch (indexPath.row) {
+		case 0:
+			return newSurveyAlertCell;
+		case 1:
+			return locationSpecificSurveyCell;
+		case 2:
+			return sortSurveyCell;
+		case 3:
+			return fewestQuestionsCell;
+		case 4:
+			return locationCell;
+		case 5:
+			return sortCell;
+		case 6:
+			return newestQuestionsCell;
+		case 7:
+			return confirmationCell;
+		default:
+			break;
+	}
+	return nil;
+}
 
 @end

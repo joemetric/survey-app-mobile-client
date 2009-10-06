@@ -2,7 +2,7 @@
 //  MetadataTests.h
 //  Survey
 //
-//  Created by Ye Dingding on 09-10-1.
+//  Created by Allerin on 09-10-1.
 //  Copyright 2009 Allerin. All rights reserved.
 //
 //  See Also: http://developer.apple.com/iphone/library/documentation/Xcode/Conceptual/iphone_development/135-Unit_Testing_Applications/unit_testing_applications.html

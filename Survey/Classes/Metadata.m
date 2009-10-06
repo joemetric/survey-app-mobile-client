@@ -14,6 +14,31 @@
 
 @dynamic user;
 
++ (void)saveWithUser:(User *)u {
+	SurveyAppDelegate *delegate = (SurveyAppDelegate *)[[UIApplication sharedApplication] delegate];
+	
+	NSFetchRequest *request = [[NSFetchRequest alloc] init];
+	NSEntityDescription *entity = [NSEntityDescription entityForName:@"Metadata" inManagedObjectContext:delegate.managedObjectContext];
+	[request setEntity:entity];
+	NSError *error;
+	NSMutableArray *mutableFetchResults = [[delegate.managedObjectContext executeFetchRequest:request error:&error] mutableCopy];
+	Metadata *metadata;
+	if (mutableFetchResults == nil) {
+		// Handle the error.
+	} else if ([mutableFetchResults count] == 0) {
+		metadata = (Metadata *)[NSEntityDescription insertNewObjectForEntityForName:@"Metadata" inManagedObjectContext:delegate.managedObjectContext];	
+	} else if ([mutableFetchResults count] > 0) {
+		metadata = (Metadata *)[mutableFetchResults objectAtIndex:0];
+	}
+	[metadata setUser:u];
+	int success = [delegate.managedObjectContext save:&error];
+	if (!success) {
+		// Handle the error.
+	}
+	[request release];
+	[delegate setMetadata:metadata];
+}
+
 + (Metadata *)getMetadata {
 	SurveyAppDelegate *delegate = (SurveyAppDelegate *)[[UIApplication sharedApplication] delegate];
 	

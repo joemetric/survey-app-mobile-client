@@ -2,7 +2,7 @@
 //  WalletController.h
 //  Survey
 //
-//  Created by Ye Dingding on 09-10-1.
+//  Created by Allerin on 09-10-1.
 //  Copyright 2009 Allerin. All rights reserved.
 //
 

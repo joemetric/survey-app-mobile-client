@@ -11,6 +11,7 @@
 
 @interface User :  NSManagedObject  
 {
+	NSDateFormatter *dateFormatter;
 }
 
 @property (nonatomic, retain) NSString * email;
@@ -19,7 +20,14 @@
 @property (nonatomic, retain) NSString * gender;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * password;
+@property (nonatomic, retain) NSDate * birthday;
 
++ (void)finalizeTemplates;
++ (id)saveUserWithEmail:(NSString *)eml Login:(NSString *)log Income:(NSString *)inc 
+				 Gender:(NSString *)gen Name:(NSString *)nm Password:(NSString *)pwd Birthday:(NSDate *)birth;
+
+- (NSString *)birthdate;
+   
 @end
 
 

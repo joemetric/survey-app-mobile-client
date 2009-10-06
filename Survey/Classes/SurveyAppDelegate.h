@@ -2,12 +2,12 @@
 //  SurveyAppDelegate.h
 //  Survey
 //
-//  Created by Ye Dingding on 09-10-1.
+//  Created by Allerin on 09-10-1.
 //  Copyright Allerin 2009. All rights reserved.
 //
 
 @class BrowseController, WalletController, ProfileController, SettingsController;
-@class LoginController;
+@class LoginController, Metadata;
 
 @interface SurveyAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> {
 
@@ -23,6 +23,8 @@
 	ProfileController *profileController;
 	SettingsController *settingsController;
 	LoginController *loginController;
+	
+	Metadata *metadata;
 }
 
 @property (nonatomic, retain, readonly) NSManagedObjectModel *managedObjectModel;
@@ -37,6 +39,8 @@
 @property (nonatomic, retain) IBOutlet ProfileController *profileController;
 @property (nonatomic, retain) IBOutlet SettingsController *settingsController;
 @property (nonatomic, retain) IBOutlet LoginController *loginController;
+
+@property (nonatomic, retain) Metadata *metadata;
 
 - (NSString *)applicationDocumentsDirectory;
 

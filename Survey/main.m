@@ -2,7 +2,7 @@
 //  main.m
 //  Survey
 //
-//  Created by Ye Dingding on 09-10-1.
+//  Created by Allerin on 09-10-1.
 //  Copyright Allerin 2009. All rights reserved.
 //
 

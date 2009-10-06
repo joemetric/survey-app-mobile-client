@@ -2,14 +2,19 @@
 //  ProfileViewController.m
 //  Survey
 //
-//  Created by Ye Dingding on 09-10-1.
+//  Created by Allerin on 09-10-1.
 //  Copyright 2009 Allerin. All rights reserved.
 //
 
 #import "ProfileController.h"
+#import "SurveyAppDelegate.h"
+#import "Model.h"
 
 
 @implementation ProfileController
+
+@synthesize profileTable, emailCell, birthdayCell, genderCell, zipcodeCell, incomeCell;
+@synthesize emailLabel, birthdayLabel, genderLabel, zipcodeLabel, incomeLabel;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -50,6 +55,17 @@
 - (void)viewDidUnload {
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
+	[profileTable release]; self.profileTable = nil;
+	[emailCell release]; self.emailCell = nil;
+	[birthdayCell release]; self.birthdayCell = nil;
+	[genderCell release]; self.genderCell = nil;
+	[zipcodeCell release]; self.zipcodeCell = nil;
+	[incomeCell release]; self.incomeCell = nil;
+	[emailLabel release]; self.emailLabel = nil;
+	[birthdayLabel release]; self.birthdayLabel = nil;
+	[genderLabel release]; self.genderLabel = nil;
+	[zipcodeLabel release]; self.zipcodeLabel = nil;
+	[incomeLabel release]; self.incomeLabel = nil;
 }
 
 
@@ -57,5 +73,41 @@
     [super dealloc];
 }
 
+
+#pragma mark -
+#pragma mark LoginTable Delegate
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+	return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+	return 5;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	SurveyAppDelegate *delegate = (SurveyAppDelegate *)[[UIApplication sharedApplication] delegate];
+	User *user = delegate.metadata.user;								
+	switch (indexPath.row) {
+		case 0:
+			emailLabel.text = user.email;
+			return emailCell;
+		case 1:
+			birthdayLabel.text = [user birthdate];
+			return birthdayCell;
+		case 2:
+			genderLabel.text = user.gender;
+			return genderCell;
+		case 3:
+			// zipcodeLabel.text = @"";
+			return zipcodeCell;
+		case 4:
+			incomeLabel.text = user.income;
+			return incomeCell;
+		default:
+			break;
+	}
+	return nil;
+}
 
 @end

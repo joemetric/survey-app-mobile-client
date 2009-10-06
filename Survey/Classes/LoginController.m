@@ -39,7 +39,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-	[self performSelectorInBackground:@selector(showBrowseViewController) withObject:nil];
+//	[self performSelectorInBackground:@selector(showBrowseViewController) withObject:nil];
 }
 
 - (void)showBrowseViewController {
