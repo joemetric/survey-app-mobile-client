@@ -33,7 +33,8 @@
 	[window addSubview:tabBarController.view];
 	
 	if ((self.metadata = [Metadata getMetadata]) == nil) {
-		[browseController.navigationController presentModalViewController:self.loginController animated:YES];
+		self.tabBarController.selectedIndex = 2;
+		[profileController.navigationController presentModalViewController:self.loginController animated:YES];
 	}
 }
 

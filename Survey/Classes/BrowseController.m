@@ -22,8 +22,15 @@
 */
 
 - (void) awakeFromNib {
+	UIImageView *iv = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo.tiff"]];
+	[iv setFrame:CGRectMake(0, 0, 27, 44)];
+	UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithCustomView:iv];
+	self.navigationItem.leftBarButtonItem = leftButton;
+	[leftButton release];
+	[iv release];
 	self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
 }
+
 
 /*
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.

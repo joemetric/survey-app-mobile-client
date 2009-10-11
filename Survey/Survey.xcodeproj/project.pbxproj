@@ -95,6 +95,7 @@
 		821BE1F9107637CF00584957 /* RestRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 821BE1F7107637CF00584957 /* RestRequest.m */; };
 		821BE296107655AE00584957 /* SignupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 821BE295107655AE00584957 /* SignupController.m */; };
 		821BE298107655C200584957 /* SignupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 821BE297107655C200584957 /* SignupView.xib */; };
+		829C5DE21080832A00983742 /* logo.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 829C5DE11080832A00983742 /* logo.tiff */; };
 		82F8004D107A821B005E330B /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 82F8004C107A821B005E330B /* Model.m */; };
 		82F8009E107B76AB005E330B /* NSDictionary+RemoveNulls.m in Sources */ = {isa = PBXBuildFile; fileRef = 82F8009D107B76AB005E330B /* NSDictionary+RemoveNulls.m */; };
 /* End PBXBuildFile section */
@@ -182,6 +183,7 @@
 		821BE294107655AE00584957 /* SignupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupController.h; sourceTree = "<group>"; };
 		821BE295107655AE00584957 /* SignupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupController.m; sourceTree = "<group>"; };
 		821BE297107655C200584957 /* SignupView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignupView.xib; sourceTree = "<group>"; };
+		829C5DE11080832A00983742 /* logo.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = logo.tiff; sourceTree = "<group>"; };
 		82F8004B107A821B005E330B /* Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Model.h; path = Classes/Model.h; sourceTree = "<group>"; };
 		82F8004C107A821B005E330B /* Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Model.m; path = Classes/Model.m; sourceTree = "<group>"; };
 		82F8009C107B76AB005E330B /* NSDictionary+RemoveNulls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+RemoveNulls.h"; path = "Classes/NSDictionary+RemoveNulls.h"; sourceTree = "<group>"; };
@@ -299,6 +301,7 @@
 		821BDC411074B24200584957 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				829C5DE11080832A00983742 /* logo.tiff */,
 				821BDCDB1074B8B800584957 /* Icon.png */,
 				821BDC421074B24200584957 /* arrow-blue-btn.png */,
 				821BDC431074B24200584957 /* arrow-blue-btn2.png */,
@@ -584,6 +587,7 @@
 				821BE01D1074D17800584957 /* WalletView.xib in Resources */,
 				821BE07E1074E42400584957 /* LoginView.xib in Resources */,
 				821BE298107655C200584957 /* SignupView.xib in Resources */,
+				829C5DE21080832A00983742 /* logo.tiff in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
