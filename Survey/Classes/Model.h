@@ -8,5 +8,6 @@
 
 #import "Metadata.h"
 #import "User.h"
+#import "Question.h"
 
 void finalizeTemplates();

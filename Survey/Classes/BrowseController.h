@@ -8,9 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+@class SurveyController;
 
 @interface BrowseController : UIViewController {
-
+	UILabel *instructionLabel;
+	UITableView *surveyTable;
+	
+	NSMutableArray *surveys;
+	SurveyController *surveyController;
 }
+
+@property (nonatomic, retain) IBOutlet UILabel *instructionLabel;
+@property (nonatomic, retain) IBOutlet UITableView *surveyTable;
+@property (nonatomic, retain) NSMutableArray *surveys;
+@property (nonatomic, retain) SurveyController *surveyController;
 
 @end

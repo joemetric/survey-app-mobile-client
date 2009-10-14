@@ -13,6 +13,8 @@
 #import "SettingsController.h"
 #import "LoginController.h"
 #import "Metadata.h"
+#import "RestRequest.h"
+#import "User.h"
 
 
 @implementation SurveyAppDelegate
@@ -31,10 +33,21 @@
     
     // Override point for customization after app launch    
 	[window addSubview:tabBarController.view];
-	
+
+	NSError *error;
 	if ((self.metadata = [Metadata getMetadata]) == nil) {
 		self.tabBarController.selectedIndex = 2;
 		[profileController.navigationController presentModalViewController:self.loginController animated:YES];
+	} else if (![RestRequest loginWithUser:self.metadata.user.login Password:self.metadata.user.password Error:&error]) {
+		self.tabBarController.selectedIndex = 2;
+		[profileController.navigationController presentModalViewController:self.loginController animated:YES];
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
+														message:@"Login Info has been changed. Please re-login."
+													   delegate:self
+											  cancelButtonTitle:@"OK"
+											  otherButtonTitles:nil];
+		[alert show];
+		[alert release];
 	}
 }
 

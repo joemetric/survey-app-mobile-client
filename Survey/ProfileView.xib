@@ -3,7 +3,7 @@
 	<data>
 		<int key="IBDocument.SystemTarget">768</int>
 		<string key="IBDocument.SystemVersion">10B504</string>
-		<string key="IBDocument.InterfaceBuilderVersion">732</string>
+		<string key="IBDocument.InterfaceBuilderVersion">740</string>
 		<string key="IBDocument.AppKitVersion">1038.2</string>
 		<string key="IBDocument.HIToolboxVersion">437.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
@@ -12,11 +12,11 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="5"/>
-			<integer value="29"/>
-			<integer value="6"/>
 			<integer value="8"/>
 			<integer value="9"/>
+			<integer value="29"/>
+			<integer value="6"/>
+			<integer value="5"/>
 			<integer value="7"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
@@ -208,7 +208,7 @@
 								<int key="IBUITextAlignment">2</int>
 							</object>
 						</object>
-						<string key="NSFrameSize">{320, 43}</string>
+						<string key="NSFrameSize">{300, 43}</string>
 						<reference key="NSSuperview" ref="219347525"/>
 						<reference key="IBUIBackgroundColor" ref="875087053"/>
 						<bool key="IBUIOpaque">NO</bool>
@@ -222,6 +222,7 @@
 				<reference key="IBUIBackgroundColor" ref="74546476"/>
 				<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 				<int key="IBUISeparatorStyle">1</int>
+				<int key="IBUIAccessoryType">1</int>
 				<reference key="IBUIContentView" ref="462279201"/>
 				<string key="IBUIReuseIdentifier">BirthdayCell</string>
 			</object>
@@ -265,7 +266,7 @@
 								<int key="IBUITextAlignment">2</int>
 							</object>
 						</object>
-						<string key="NSFrameSize">{320, 43}</string>
+						<string key="NSFrameSize">{300, 43}</string>
 						<reference key="NSSuperview" ref="880530621"/>
 						<reference key="IBUIBackgroundColor" ref="875087053"/>
 						<bool key="IBUIOpaque">NO</bool>
@@ -279,6 +280,7 @@
 				<reference key="IBUIBackgroundColor" ref="74546476"/>
 				<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 				<int key="IBUISeparatorStyle">1</int>
+				<int key="IBUIAccessoryType">1</int>
 				<reference key="IBUIContentView" ref="720576183"/>
 				<string key="IBUIReuseIdentifier">GenderCell</string>
 			</object>
@@ -323,7 +325,7 @@
 								<int key="IBUITextAlignment">2</int>
 							</object>
 						</object>
-						<string key="NSFrameSize">{320, 43}</string>
+						<string key="NSFrameSize">{300, 43}</string>
 						<reference key="NSSuperview" ref="292363821"/>
 						<reference key="IBUIBackgroundColor" ref="875087053"/>
 						<bool key="IBUIOpaque">NO</bool>
@@ -337,6 +339,7 @@
 				<reference key="IBUIBackgroundColor" ref="74546476"/>
 				<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 				<int key="IBUISeparatorStyle">1</int>
+				<int key="IBUIAccessoryType">1</int>
 				<reference key="IBUIContentView" ref="153599755"/>
 				<string key="IBUIReuseIdentifier">ZipcodeCell</string>
 			</object>
@@ -380,7 +383,7 @@
 								<int key="IBUITextAlignment">2</int>
 							</object>
 						</object>
-						<string key="NSFrameSize">{320, 43}</string>
+						<string key="NSFrameSize">{300, 43}</string>
 						<reference key="NSSuperview" ref="154018059"/>
 						<reference key="IBUIBackgroundColor" ref="875087053"/>
 						<bool key="IBUIOpaque">NO</bool>
@@ -394,6 +397,7 @@
 				<reference key="IBUIBackgroundColor" ref="74546476"/>
 				<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 				<int key="IBUISeparatorStyle">1</int>
+				<int key="IBUIAccessoryType">1</int>
 				<reference key="IBUIContentView" ref="757566259"/>
 				<string key="IBUIReuseIdentifier">IncomeCell</string>
 			</object>
@@ -716,7 +720,7 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>{{587, 596}, {320, 44}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>{{617, 492}, {320, 44}}</string>
+					<string>{{572, 492}, {320, 44}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>{{586, 672}, {320, 44}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>

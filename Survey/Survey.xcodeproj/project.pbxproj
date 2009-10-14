@@ -95,6 +95,18 @@
 		821BE1F9107637CF00584957 /* RestRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 821BE1F7107637CF00584957 /* RestRequest.m */; };
 		821BE296107655AE00584957 /* SignupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 821BE295107655AE00584957 /* SignupController.m */; };
 		821BE298107655C200584957 /* SignupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 821BE297107655C200584957 /* SignupView.xib */; };
+		82264ED71084D6A80095862B /* SurveyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82264ED61084D6A80095862B /* SurveyController.m */; };
+		82264EDC1085AFB40095862B /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 82264EDB1085AFB40095862B /* Question.m */; };
+		82264F011085B4BF0095862B /* QuestionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82264F001085B4BF0095862B /* QuestionCell.m */; };
+		82264F031085B5170095862B /* QuestionCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82264F021085B5170095862B /* QuestionCellView.xib */; };
+		82264F061085B5E70095862B /* SurveyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82264F051085B5E70095862B /* SurveyView.xib */; };
+		82264F681085C6400095862B /* SurveyInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82264F671085C6400095862B /* SurveyInfoCell.m */; };
+		82264F6A1085C68F0095862B /* SurveyInfoCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82264F691085C68F0095862B /* SurveyInfoCellView.xib */; };
+		82264FD710864BE90095862B /* EditBirthdayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82264FD610864BE90095862B /* EditBirthdayView.xib */; };
+		82264FDB10864C470095862B /* EditBirthdayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82264FDA10864C470095862B /* EditBirthdayController.m */; };
+		8252DB2910847BEA00162B02 /* Survey.m in Sources */ = {isa = PBXBuildFile; fileRef = 8252DB2810847BEA00162B02 /* Survey.m */; };
+		8252DB6110847F0D00162B02 /* SurveyCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8252DB6010847F0D00162B02 /* SurveyCellView.xib */; };
+		8252DB7210849F9700162B02 /* SurveyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8252DB7110849F9700162B02 /* SurveyCell.m */; };
 		829C5DE21080832A00983742 /* logo.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 829C5DE11080832A00983742 /* logo.tiff */; };
 		82F8004D107A821B005E330B /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 82F8004C107A821B005E330B /* Model.m */; };
 		82F8009E107B76AB005E330B /* NSDictionary+RemoveNulls.m in Sources */ = {isa = PBXBuildFile; fileRef = 82F8009D107B76AB005E330B /* NSDictionary+RemoveNulls.m */; };
@@ -183,6 +195,25 @@
 		821BE294107655AE00584957 /* SignupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupController.h; sourceTree = "<group>"; };
 		821BE295107655AE00584957 /* SignupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupController.m; sourceTree = "<group>"; };
 		821BE297107655C200584957 /* SignupView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignupView.xib; sourceTree = "<group>"; };
+		82264ED51084D6A80095862B /* SurveyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurveyController.h; sourceTree = "<group>"; };
+		82264ED61084D6A80095862B /* SurveyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SurveyController.m; sourceTree = "<group>"; };
+		82264EDA1085AFB40095862B /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Question.h; path = Classes/Question.h; sourceTree = "<group>"; };
+		82264EDB1085AFB40095862B /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Question.m; path = Classes/Question.m; sourceTree = "<group>"; };
+		82264EFF1085B4BF0095862B /* QuestionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionCell.h; sourceTree = "<group>"; };
+		82264F001085B4BF0095862B /* QuestionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionCell.m; sourceTree = "<group>"; };
+		82264F021085B5170095862B /* QuestionCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionCellView.xib; sourceTree = "<group>"; };
+		82264F051085B5E70095862B /* SurveyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SurveyView.xib; sourceTree = "<group>"; };
+		82264F661085C6400095862B /* SurveyInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurveyInfoCell.h; sourceTree = "<group>"; };
+		82264F671085C6400095862B /* SurveyInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SurveyInfoCell.m; sourceTree = "<group>"; };
+		82264F691085C68F0095862B /* SurveyInfoCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SurveyInfoCellView.xib; sourceTree = "<group>"; };
+		82264FD610864BE90095862B /* EditBirthdayView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditBirthdayView.xib; sourceTree = "<group>"; };
+		82264FD910864C470095862B /* EditBirthdayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditBirthdayController.h; sourceTree = "<group>"; };
+		82264FDA10864C470095862B /* EditBirthdayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditBirthdayController.m; sourceTree = "<group>"; };
+		8252DB2710847BEA00162B02 /* Survey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Survey.h; path = Classes/Survey.h; sourceTree = "<group>"; };
+		8252DB2810847BEA00162B02 /* Survey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Survey.m; path = Classes/Survey.m; sourceTree = "<group>"; };
+		8252DB6010847F0D00162B02 /* SurveyCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SurveyCellView.xib; sourceTree = "<group>"; };
+		8252DB7010849F9700162B02 /* SurveyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurveyCell.h; sourceTree = "<group>"; };
+		8252DB7110849F9700162B02 /* SurveyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SurveyCell.m; sourceTree = "<group>"; };
 		829C5DE11080832A00983742 /* logo.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = logo.tiff; sourceTree = "<group>"; };
 		82F8004B107A821B005E330B /* Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Model.h; path = Classes/Model.h; sourceTree = "<group>"; };
 		82F8004C107A821B005E330B /* Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Model.m; path = Classes/Model.m; sourceTree = "<group>"; };
@@ -274,6 +305,7 @@
 			isa = PBXGroup;
 			children = (
 				821BDC411074B24200584957 /* Images */,
+				8252DB5F10847EF800162B02 /* Common View */,
 				821BE07C1074E3E400584957 /* Account View */,
 				821BE0121074D12300584957 /* Browse View */,
 				821BE0111074D11000584957 /* Wallet View */,
@@ -354,6 +386,7 @@
 		821BE0061074D06700584957 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				8252DB6F10849F8300162B02 /* Common */,
 				821BE0771074E1FA00584957 /* Account Controller */,
 				821BE01F1074D24200584957 /* Browse Controller */,
 				821BE0201074D24B00584957 /* Wallet Controller */,
@@ -373,6 +406,10 @@
 				821BE04C1074DF2500584957 /* User.m */,
 				82F8004B107A821B005E330B /* Model.h */,
 				82F8004C107A821B005E330B /* Model.m */,
+				8252DB2710847BEA00162B02 /* Survey.h */,
+				8252DB2810847BEA00162B02 /* Survey.m */,
+				82264EDA1085AFB40095862B /* Question.h */,
+				82264EDB1085AFB40095862B /* Question.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -389,6 +426,7 @@
 			isa = PBXGroup;
 			children = (
 				821BE0161074D16200584957 /* ProfileView.xib */,
+				82264FD610864BE90095862B /* EditBirthdayView.xib */,
 			);
 			name = "Profile View";
 			sourceTree = "<group>";
@@ -414,6 +452,8 @@
 			children = (
 				821BE0231074D28500584957 /* BrowseController.h */,
 				821BE0241074D28500584957 /* BrowseController.m */,
+				82264ED51084D6A80095862B /* SurveyController.h */,
+				82264ED61084D6A80095862B /* SurveyController.m */,
 			);
 			name = "Browse Controller";
 			sourceTree = "<group>";
@@ -432,6 +472,8 @@
 			children = (
 				821BE0291074D35800584957 /* ProfileController.h */,
 				821BE02A1074D35800584957 /* ProfileController.m */,
+				82264FD910864C470095862B /* EditBirthdayController.h */,
+				82264FDA10864C470095862B /* EditBirthdayController.m */,
 			);
 			name = "Profile Controller";
 			sourceTree = "<group>";
@@ -474,6 +516,30 @@
 				821BE1F5107637CF00584957 /* NSStringExt.m */,
 				821BE1F6107637CF00584957 /* RestRequest.h */,
 				821BE1F7107637CF00584957 /* RestRequest.m */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		8252DB5F10847EF800162B02 /* Common View */ = {
+			isa = PBXGroup;
+			children = (
+				8252DB6010847F0D00162B02 /* SurveyCellView.xib */,
+				82264F021085B5170095862B /* QuestionCellView.xib */,
+				82264F051085B5E70095862B /* SurveyView.xib */,
+				82264F691085C68F0095862B /* SurveyInfoCellView.xib */,
+			);
+			name = "Common View";
+			sourceTree = "<group>";
+		};
+		8252DB6F10849F8300162B02 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				8252DB7010849F9700162B02 /* SurveyCell.h */,
+				8252DB7110849F9700162B02 /* SurveyCell.m */,
+				82264EFF1085B4BF0095862B /* QuestionCell.h */,
+				82264F001085B4BF0095862B /* QuestionCell.m */,
+				82264F661085C6400095862B /* SurveyInfoCell.h */,
+				82264F671085C6400095862B /* SurveyInfoCell.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -588,6 +654,11 @@
 				821BE07E1074E42400584957 /* LoginView.xib in Resources */,
 				821BE298107655C200584957 /* SignupView.xib in Resources */,
 				829C5DE21080832A00983742 /* logo.tiff in Resources */,
+				8252DB6110847F0D00162B02 /* SurveyCellView.xib in Resources */,
+				82264F031085B5170095862B /* QuestionCellView.xib in Resources */,
+				82264F061085B5E70095862B /* SurveyView.xib in Resources */,
+				82264F6A1085C68F0095862B /* SurveyInfoCellView.xib in Resources */,
+				82264FD710864BE90095862B /* EditBirthdayView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -674,6 +745,13 @@
 				821BE296107655AE00584957 /* SignupController.m in Sources */,
 				82F8004D107A821B005E330B /* Model.m in Sources */,
 				82F8009E107B76AB005E330B /* NSDictionary+RemoveNulls.m in Sources */,
+				8252DB2910847BEA00162B02 /* Survey.m in Sources */,
+				8252DB7210849F9700162B02 /* SurveyCell.m in Sources */,
+				82264ED71084D6A80095862B /* SurveyController.m in Sources */,
+				82264EDC1085AFB40095862B /* Question.m in Sources */,
+				82264F011085B4BF0095862B /* QuestionCell.m in Sources */,
+				82264F681085C6400095862B /* SurveyInfoCell.m in Sources */,
+				82264FDB10864C470095862B /* EditBirthdayController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

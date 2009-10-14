@@ -8,14 +8,36 @@
 
 #import "RestRequest.h"
 #import "NSStringExt.h"
+#import "NSDictionary+RemoveNulls.h"
 #import "JSON.h"
 #import "User.h"
-#import "NSDictionary+RemoveNulls.h"
+#import "Survey.h"
+#import "Question.h"
 
 
-static NSString *ServerURL = @"survey.allerin.com";
+static NSString *ServerURL = @"localhost:3000";
 
 @implementation RestRequest
+
++ (NSData *)doGetWithUrl:(NSString *)baseUrl Error:(NSError **)error returningResponse:(NSURLResponse **)response {
+	NSURL *url = [NSURL URLWithString:baseUrl];
+	NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
+	if (!urlRequest)
+	{
+		if (error != NULL) {
+			NSArray *keyArray = [NSArray arrayWithObjects:NSLocalizedDescriptionKey, nil];
+			NSArray *objArray = [NSArray arrayWithObjects:@"Error creating URL Request.", nil];
+			NSDictionary *eDict = [NSDictionary dictionaryWithObjects:objArray forKeys:keyArray];
+			*error = [[[NSError alloc] initWithDomain:NSURLErrorDomain
+												 code:NSURLErrorCannotFindHost userInfo:eDict] autorelease];
+		}
+		return FALSE;
+	}
+
+	[urlRequest setHTTPMethod:@"GET"];
+	return [NSURLConnection sendSynchronousRequest:urlRequest 
+								 returningResponse:response error:error];	
+}
 
 + (NSData *)doPostWithUrl:(NSString *)baseUrl Body:(NSString *)body Error:(NSError **)error returningResponse:(NSURLResponse **)response {
 	NSURL *url = [NSURL URLWithString:baseUrl];
@@ -116,6 +138,65 @@ static NSString *ServerURL = @"survey.allerin.com";
 			return FALSE;
 		}
 	}		
+}
+
++ (NSMutableArray *)getSurveys:(NSError **)error {
+	NSString *baseUrl = [NSString stringWithFormat:@"http://%@/surveys.json", ServerURL];
+	NSURLResponse *response;
+	NSData *result = [RestRequest doGetWithUrl:baseUrl Error:error returningResponse:&response];
+	
+	if (!result) {
+		return nil;
+	} else {
+		if (response && [response isKindOfClass:[NSHTTPURLResponse class]] && [(NSHTTPURLResponse *)response statusCode] == 201) {
+			NSString *outstring = [[NSString alloc] initWithData:result
+														encoding:NSUTF8StringEncoding];
+			NSObject *result = [outstring JSONFragmentValue];
+			NSMutableArray *surveys = [NSMutableArray array];
+			for (NSDictionary *dict in (NSArray *)result) {
+				NSDictionary *surveyDict = [(NSDictionary *)[[dict allValues] objectAtIndex:0] withoutNulls];
+				NSInteger pk = [[surveyDict objectForKey:@"id"] intValue];
+				NSString *name = [surveyDict objectForKey:@"name"];
+				NSString *desc = [surveyDict objectForKey:@"description"];
+				Survey *survey = [[Survey alloc] initWithPk:pk Name:name Description:desc];
+				[surveys addObject:survey];
+				[survey release];
+			}
+			return surveys;
+		} else {
+			[RestRequest failedResponse:result Error:error];		
+			return nil;
+		}
+	}
+}
+
++ (NSMutableArray *)getQuestions:(Survey *)survey Error:(NSError **)error {
+	NSString *baseUrl = [NSString stringWithFormat:@"http://%@/surveys/%d/questions.json", ServerURL, survey.pk];
+	NSURLResponse *response;
+	NSData *result = [RestRequest doGetWithUrl:baseUrl Error:error returningResponse:&response];
+	if (!result) {
+		return nil;
+	} else {
+		if (response && [response isKindOfClass:[NSHTTPURLResponse class]] && [(NSHTTPURLResponse *)response statusCode] == 201) {
+			NSString *outstring = [[NSString alloc] initWithData:result
+														encoding:NSUTF8StringEncoding];
+			NSObject *result = [outstring JSONFragmentValue];
+			NSMutableArray *questions = [NSMutableArray array];
+			for (NSDictionary *dict in (NSArray *)result) {
+				NSDictionary *questionDict = [(NSDictionary *)[[dict allValues] objectAtIndex:0] withoutNulls];
+				NSInteger pk = [[questionDict objectForKey:@"id"] intValue];
+				NSInteger question_type_id = [[questionDict objectForKey:@"question_type_id"] intValue];
+				NSString *name = [questionDict objectForKey:@"name"];
+				Question *question = [[Question alloc] initWithSurvey:survey PK:pk QuestionTypeId:question_type_id Name:name];
+				[questions addObject:question];
+				[question release];
+			}
+			return questions;
+		} else {
+			[RestRequest failedResponse:result Error:error];		
+			return nil;
+		}
+	}
 }
 
 @end
