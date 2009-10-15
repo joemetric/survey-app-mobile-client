@@ -14,6 +14,7 @@
 	NSDateFormatter *dateFormatter;
 }
 
+@property (nonatomic, retain) NSNumber * pk;
 @property (nonatomic, retain) NSString * email;
 @property (nonatomic, retain) NSString * login;
 @property (nonatomic, retain) NSString * income;
@@ -23,10 +24,11 @@
 @property (nonatomic, retain) NSDate * birthday;
 
 + (void)finalizeTemplates;
-+ (id)saveUserWithEmail:(NSString *)eml Login:(NSString *)log Income:(NSString *)inc 
++ (id)saveUserWithPK:(NSNumber *)p Email:(NSString *)eml Login:(NSString *)log Income:(NSString *)inc 
 				 Gender:(NSString *)gen Name:(NSString *)nm Password:(NSString *)pwd Birthday:(NSDate *)birth;
 
 - (NSString *)birthdate;
+- (BOOL)save:(NSError **)error;
    
 @end
 

@@ -19,27 +19,8 @@ static NSString *ServerURL = @"localhost:3000";
 
 @implementation RestRequest
 
-+ (NSData *)doGetWithUrl:(NSString *)baseUrl Error:(NSError **)error returningResponse:(NSURLResponse **)response {
-	NSURL *url = [NSURL URLWithString:baseUrl];
-	NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
-	if (!urlRequest)
-	{
-		if (error != NULL) {
-			NSArray *keyArray = [NSArray arrayWithObjects:NSLocalizedDescriptionKey, nil];
-			NSArray *objArray = [NSArray arrayWithObjects:@"Error creating URL Request.", nil];
-			NSDictionary *eDict = [NSDictionary dictionaryWithObjects:objArray forKeys:keyArray];
-			*error = [[[NSError alloc] initWithDomain:NSURLErrorDomain
-												 code:NSURLErrorCannotFindHost userInfo:eDict] autorelease];
-		}
-		return FALSE;
-	}
-
-	[urlRequest setHTTPMethod:@"GET"];
-	return [NSURLConnection sendSynchronousRequest:urlRequest 
-								 returningResponse:response error:error];	
-}
-
-+ (NSData *)doPostWithUrl:(NSString *)baseUrl Body:(NSString *)body Error:(NSError **)error returningResponse:(NSURLResponse **)response {
++ (NSData *)requestWithUrl:(NSString *)baseUrl Method:(NSString *)method Body:(NSString *)body
+					 Error:(NSError **)error returningResponse:(NSURLResponse **)response {
 	NSURL *url = [NSURL URLWithString:baseUrl];
 	NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
 	if (!urlRequest)
@@ -54,12 +35,27 @@ static NSString *ServerURL = @"localhost:3000";
 		return FALSE;
 	}
 	
-	[urlRequest setHTTPMethod:@"POST"];
-	[urlRequest setHTTPBody:[body dataUsingEncoding:NSUTF8StringEncoding]];
-	[urlRequest setValue:@"application/x-www-form-urlencoded" 
-	  forHTTPHeaderField:@"Content-Type"];
+	[urlRequest setHTTPMethod:method];
+	if (body) {
+		[urlRequest setHTTPBody:[body dataUsingEncoding:NSUTF8StringEncoding]];
+		[urlRequest setValue:@"application/x-www-form-urlencoded" 
+		  forHTTPHeaderField:@"Content-Type"];
+		[urlRequest setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+	}
 	return [NSURLConnection sendSynchronousRequest:urlRequest 
-										   returningResponse:response error:error];
+								 returningResponse:response error:error];	
+}
+
++ (NSData *)doGetWithUrl:(NSString *)baseUrl Error:(NSError **)error returningResponse:(NSURLResponse **)response {
+	return [RestRequest requestWithUrl:baseUrl Method:@"GET" Body:nil Error:error returningResponse:response];
+}
+
++ (NSData *)doPostWithUrl:(NSString *)baseUrl Body:(NSString *)body Error:(NSError **)error returningResponse:(NSURLResponse **)response {
+	return [RestRequest requestWithUrl:baseUrl Method:@"POST" Body:body Error:error returningResponse:response];
+}
+
++ (NSData *)doPutWithUrl:(NSString *)baseUrl Body:(NSString *)body Error:(NSError **)error returningResponse:(NSURLResponse **)response {
+	return [RestRequest requestWithUrl:baseUrl Method:@"PUT" Body:body Error:error returningResponse:response];
 }
 
 + (void)failedResponse:(NSData *)result Error:(NSError **)error {
@@ -83,6 +79,9 @@ static NSString *ServerURL = @"localhost:3000";
 	[outstring release];
 }
 
+#pragma mark -
+#pragma mark User Request
+
 + (BOOL)loginWithUser:(NSString *)user Password:(NSString *)pass Error:(NSError **)error {
 	NSString *body = [NSString stringWithFormat:@"user_session[login]=%@&user_session[password]=%@", [NSString encodeString:user], [NSString encodeString:pass]];
 	NSString *baseUrl = [NSString stringWithFormat:@"http://%@/user_session.json", ServerURL];
@@ -97,6 +96,7 @@ static NSString *ServerURL = @"localhost:3000";
 			NSObject *result = [outstring JSONFragmentValue];
 			if ([result isKindOfClass:[NSDictionary class]]) {
 				NSDictionary *dict = [(NSDictionary *)[[(NSDictionary *)result allValues] objectAtIndex:0] withoutNulls];
+				NSNumber *pk = [dict objectForKey:@"id"];
 				NSString *email = [dict objectForKey:@"email"];
 				NSString *login = [dict objectForKey:@"login"];
 				NSString *income = [dict objectForKey:@"income"];
@@ -109,7 +109,7 @@ static NSString *ServerURL = @"localhost:3000";
 				NSDate *birthday = nil;
 				if (birth)
 					birthday = [dateFormatter dateFromString:birth];
-				[User saveUserWithEmail:email Login:login Income:income Gender:gender Name:name Password:pass Birthday:birthday];
+				[User saveUserWithPK:pk Email:email Login:login Income:income Gender:gender Name:name Password:pass Birthday:birthday];
 				[dateFormatter release];
 			}
 			return TRUE;
@@ -139,6 +139,33 @@ static NSString *ServerURL = @"localhost:3000";
 		}
 	}		
 }
+
++ (BOOL)saveWithUser:(User *)user Error:(NSError **)error {
+	NSMutableString *body = [NSMutableString string];
+	if (user.birthday)
+		[body appendFormat:@"user[birthdate]=%@&", [NSString encodeString:[user birthdate]]];
+	if (user.gender)
+		[body appendFormat:@"user[gender]=%@&", [NSString encodeString:user.gender]];
+	if (user.income)
+		[body appendFormat:@"user[income]=%d&", [user.income intValue]];
+	NSString *baseUrl = [NSString stringWithFormat:@"http://%@/users/%d.json", ServerURL, [user.pk intValue]];
+	NSURLResponse *response;
+	NSData *result = [RestRequest doPutWithUrl:baseUrl Body:body Error:error returningResponse:&response];
+	if (!result) {
+		return FALSE;
+	} else {
+		if (response && [response isKindOfClass:[NSHTTPURLResponse class]] && [(NSHTTPURLResponse *)response statusCode] == 202)
+			return TRUE;
+		else {
+			[RestRequest failedResponse:result Error:error];		
+			return FALSE;
+		}		
+	}
+}
+
+
+#pragma mark -
+#pragma mark Survey Request
 
 + (NSMutableArray *)getSurveys:(NSError **)error {
 	NSString *baseUrl = [NSString stringWithFormat:@"http://%@/surveys.json", ServerURL];

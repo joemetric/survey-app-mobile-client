@@ -9,12 +9,16 @@
 #import "ProfileController.h"
 #import "SurveyAppDelegate.h"
 #import "Model.h"
+#import "EditBirthdayController.h"
+#import "EditGenderController.h"
+#import "EditIncomingController.h"
 
 
 @implementation ProfileController
 
 @synthesize profileTable, emailCell, birthdayCell, genderCell, zipcodeCell, incomeCell;
 @synthesize emailLabel, birthdayLabel, genderLabel, zipcodeLabel, incomeLabel;
+@synthesize editBirthdayController, editGenderController, editIncomingController;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -78,6 +82,10 @@
 
 
 - (void)dealloc {
+	[editBirthdayController release];
+	[editGenderController release];
+	[editIncomingController release];
+	
     [super dealloc];
 }
 
@@ -110,7 +118,7 @@
 			// zipcodeLabel.text = @"";
 			return zipcodeCell;
 		case 4:
-			incomeLabel.text = user.income;
+			incomeLabel.text = [NSString stringWithFormat:@"$%@", user.income];
 			return incomeCell;
 		default:
 			break;
@@ -120,6 +128,47 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[tableView deselectRowAtIndexPath:indexPath animated:NO];
+	
+	switch (indexPath.row) {
+		case 1:
+			[self.navigationController pushViewController:self.editBirthdayController animated:YES];
+			break;
+		case 2:
+			[self.navigationController pushViewController:self.editGenderController animated:YES];
+			break;
+		case 4:
+			[self.navigationController pushViewController:self.editIncomingController animated:YES];
+			break;
+		default:
+			break;
+	}
+}
+
+- (EditBirthdayController *)editBirthdayController {
+	if (editBirthdayController == nil) {
+		EditBirthdayController *ebc = [[EditBirthdayController alloc] initWithNibName:@"EditBirthdayView" bundle:nil];
+		self.editBirthdayController = ebc;
+		[ebc release];
+	}
+	return editBirthdayController;
+}
+
+- (EditGenderController *)editGenderController {
+	if (editGenderController == nil) {
+		EditGenderController *egc = [[EditGenderController alloc] initWithNibName:@"EditGenderView" bundle:nil];
+		self.editGenderController = egc;
+		[egc release];
+	}
+	return editGenderController;
+}
+
+- (EditIncomingController *)editIncomingController {
+	if (editIncomingController == nil) {
+		EditIncomingController *eic = [[EditIncomingController alloc] initWithNibName:@"EditIncomingView" bundle:nil];
+		self.editIncomingController = eic;
+		[eic release];
+	}
+	return editIncomingController;
 }
 
 @end

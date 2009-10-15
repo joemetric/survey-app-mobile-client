@@ -9,12 +9,14 @@
 #import "User.h"
 #import "SurveyAppDelegate.h"
 #import "Metadata.h"
+#import "RestRequest.h"
 
 
 static NSPredicate *loginTemplate = nil;
 
 @implementation User 
 
+@dynamic pk;
 @dynamic email;
 @dynamic login;
 @dynamic income;
@@ -27,7 +29,7 @@ static NSPredicate *loginTemplate = nil;
 	if (loginTemplate) [loginTemplate release];
 }
 
-+ (id)saveUserWithEmail:(NSString *)eml Login:(NSString *)log Income:(NSString *)inc 
++ (id)saveUserWithPK:(NSNumber *)p Email:(NSString *)eml Login:(NSString *)log Income:(NSString *)inc 
 				 Gender:(NSString *)gen Name:(NSString *)nm Password:(NSString *)pwd  Birthday:(NSDate *)birth {
 	SurveyAppDelegate *delegate = (SurveyAppDelegate *)[[UIApplication sharedApplication] delegate];
 
@@ -49,6 +51,7 @@ static NSPredicate *loginTemplate = nil;
 	} else if ([mutableFetchResults count] > 0) {
 		user = (User *)[mutableFetchResults objectAtIndex:0];
 	}
+	[user setPk:p];
 	[user setEmail:eml];
 	[user setLogin:log];
 	[user setIncome:inc];
@@ -80,6 +83,11 @@ static NSPredicate *loginTemplate = nil;
 
 - (void)didTurnIntoFault {
 	[dateFormatter release];
+}
+
+- (BOOL)save:(NSError **)error {
+	// TODO: save the local db or waiting for next sync with the server?
+	return [RestRequest saveWithUser:self Error:error]; 
 }
 
 @end

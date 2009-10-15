@@ -8,15 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@class ProfileController;
-
 @interface EditBirthdayController : UIViewController {
 	UIDatePicker *datePicker;
-	ProfileController *profileController;
 }
 
 @property (nonatomic, retain) IBOutlet UIDatePicker *datePicker;
-@property (nonatomic, retain) ProfileController *profileController;
 
 - (void)cancel;
 - (void)save;

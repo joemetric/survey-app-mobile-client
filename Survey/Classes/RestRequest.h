@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class Survey;
+@class Survey, User;
 
 @interface RestRequest : NSObject {
 
@@ -16,6 +16,8 @@
 
 + (BOOL)loginWithUser:(NSString *)user Password:(NSString *)pass Error:(NSError **)error;
 + (BOOL)signUpWithUser:(NSString *)user Password:(NSString *)pass Email:(NSString *)email Name:(NSString *)name Error:(NSError **)error;
++ (BOOL)saveWithUser:(User *)user Error:(NSError **)error;
+
 
 + (NSMutableArray *)getSurveys:(NSError **)error;
 + (NSMutableArray *)getQuestions:(Survey *)survey Error:(NSError **)error;

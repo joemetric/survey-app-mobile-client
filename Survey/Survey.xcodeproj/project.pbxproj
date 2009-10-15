@@ -104,6 +104,10 @@
 		82264F6A1085C68F0095862B /* SurveyInfoCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82264F691085C68F0095862B /* SurveyInfoCellView.xib */; };
 		82264FD710864BE90095862B /* EditBirthdayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82264FD610864BE90095862B /* EditBirthdayView.xib */; };
 		82264FDB10864C470095862B /* EditBirthdayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82264FDA10864C470095862B /* EditBirthdayController.m */; };
+		822650BB10879ED10095862B /* EditGenderController.m in Sources */ = {isa = PBXBuildFile; fileRef = 822650BA10879ED10095862B /* EditGenderController.m */; };
+		822650BD10879EE00095862B /* EditGenderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 822650BC10879EE00095862B /* EditGenderView.xib */; };
+		822650DD1087A6F50095862B /* EditIncomingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 822650DC1087A6F50095862B /* EditIncomingController.m */; };
+		822650DF1087A7C60095862B /* EditIncomingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 822650DE1087A7C60095862B /* EditIncomingView.xib */; };
 		8252DB2910847BEA00162B02 /* Survey.m in Sources */ = {isa = PBXBuildFile; fileRef = 8252DB2810847BEA00162B02 /* Survey.m */; };
 		8252DB6110847F0D00162B02 /* SurveyCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8252DB6010847F0D00162B02 /* SurveyCellView.xib */; };
 		8252DB7210849F9700162B02 /* SurveyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8252DB7110849F9700162B02 /* SurveyCell.m */; };
@@ -209,6 +213,12 @@
 		82264FD610864BE90095862B /* EditBirthdayView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditBirthdayView.xib; sourceTree = "<group>"; };
 		82264FD910864C470095862B /* EditBirthdayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditBirthdayController.h; sourceTree = "<group>"; };
 		82264FDA10864C470095862B /* EditBirthdayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditBirthdayController.m; sourceTree = "<group>"; };
+		822650B910879ED10095862B /* EditGenderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditGenderController.h; sourceTree = "<group>"; };
+		822650BA10879ED10095862B /* EditGenderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditGenderController.m; sourceTree = "<group>"; };
+		822650BC10879EE00095862B /* EditGenderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditGenderView.xib; sourceTree = "<group>"; };
+		822650DB1087A6F50095862B /* EditIncomingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditIncomingController.h; sourceTree = "<group>"; };
+		822650DC1087A6F50095862B /* EditIncomingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditIncomingController.m; sourceTree = "<group>"; };
+		822650DE1087A7C60095862B /* EditIncomingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditIncomingView.xib; sourceTree = "<group>"; };
 		8252DB2710847BEA00162B02 /* Survey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Survey.h; path = Classes/Survey.h; sourceTree = "<group>"; };
 		8252DB2810847BEA00162B02 /* Survey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Survey.m; path = Classes/Survey.m; sourceTree = "<group>"; };
 		8252DB6010847F0D00162B02 /* SurveyCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SurveyCellView.xib; sourceTree = "<group>"; };
@@ -427,6 +437,8 @@
 			children = (
 				821BE0161074D16200584957 /* ProfileView.xib */,
 				82264FD610864BE90095862B /* EditBirthdayView.xib */,
+				822650BC10879EE00095862B /* EditGenderView.xib */,
+				822650DE1087A7C60095862B /* EditIncomingView.xib */,
 			);
 			name = "Profile View";
 			sourceTree = "<group>";
@@ -474,6 +486,10 @@
 				821BE02A1074D35800584957 /* ProfileController.m */,
 				82264FD910864C470095862B /* EditBirthdayController.h */,
 				82264FDA10864C470095862B /* EditBirthdayController.m */,
+				822650B910879ED10095862B /* EditGenderController.h */,
+				822650BA10879ED10095862B /* EditGenderController.m */,
+				822650DB1087A6F50095862B /* EditIncomingController.h */,
+				822650DC1087A6F50095862B /* EditIncomingController.m */,
 			);
 			name = "Profile Controller";
 			sourceTree = "<group>";
@@ -659,6 +675,8 @@
 				82264F061085B5E70095862B /* SurveyView.xib in Resources */,
 				82264F6A1085C68F0095862B /* SurveyInfoCellView.xib in Resources */,
 				82264FD710864BE90095862B /* EditBirthdayView.xib in Resources */,
+				822650BD10879EE00095862B /* EditGenderView.xib in Resources */,
+				822650DF1087A7C60095862B /* EditIncomingView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -752,6 +770,8 @@
 				82264F011085B4BF0095862B /* QuestionCell.m in Sources */,
 				82264F681085C6400095862B /* SurveyInfoCell.m in Sources */,
 				82264FDB10864C470095862B /* EditBirthdayController.m in Sources */,
+				822650BB10879ED10095862B /* EditGenderController.m in Sources */,
+				822650DD1087A6F50095862B /* EditIncomingController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

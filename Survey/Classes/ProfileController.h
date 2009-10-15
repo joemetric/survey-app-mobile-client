@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+@class EditBirthdayController, EditGenderController, EditIncomingController;
 
 @interface ProfileController : UIViewController {
 	UITableView *profileTable;
@@ -21,6 +22,10 @@
 	UILabel *genderLabel;
 	UILabel *zipcodeLabel;
 	UILabel *incomeLabel;
+	
+	EditBirthdayController *editBirthdayController;
+	EditGenderController *editGenderController;
+	EditIncomingController *editIncomingController;
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *profileTable;
@@ -34,5 +39,9 @@
 @property (nonatomic, retain) IBOutlet UILabel *genderLabel;
 @property (nonatomic, retain) IBOutlet UILabel *zipcodeLabel;
 @property (nonatomic, retain) IBOutlet UILabel *incomeLabel;
+
+@property (nonatomic, retain) EditBirthdayController *editBirthdayController;
+@property (nonatomic, retain) EditGenderController *editGenderController;
+@property (nonatomic, retain) EditIncomingController *editIncomingController;
 
 @end

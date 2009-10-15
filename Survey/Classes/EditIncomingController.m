@@ -1,19 +1,19 @@
 //
-//  EditBirthdayController.m
+//  EditIncomingController.m
 //  Survey
 //
-//  Created by Allerin on 09-10-15.
+//  Created by Allerin on 09-10-16.
 //  Copyright 2009 Allerin. All rights reserved.
 //
 
-#import "EditBirthdayController.h"
+#import "EditIncomingController.h"
 #import "SurveyAppDelegate.h"
 #import "Metadata.h"
 #import "User.h"
 
 
-@implementation EditBirthdayController
-@synthesize datePicker;
+@implementation EditIncomingController
+@synthesize incomingField;
 
 
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -26,10 +26,11 @@
 		UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(save)];
 		self.navigationItem.rightBarButtonItem = saveButton;
 		[saveButton release];
-		self.navigationItem.title = @"Edit Birthday";
+		self.navigationItem.title = @"Edit Incoming";		
     }
     return self;
 }
+
 
 /*
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
@@ -40,13 +41,10 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
+	
+	[incomingField becomeFirstResponder];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-	SurveyAppDelegate *delegate = (SurveyAppDelegate *)[[UIApplication sharedApplication] delegate];
-	if (delegate.metadata.user.birthday)
-		[datePicker setDate:delegate.metadata.user.birthday animated:NO];
-}
 
 /*
 // Override to allow orientations other than the default portrait orientation.
@@ -66,13 +64,14 @@
 - (void)viewDidUnload {
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
-	[datePicker release]; self.datePicker = nil;
+	[incomingField release]; self.incomingField = nil;
 }
 
 
-- (void)dealloc {	
+- (void)dealloc {
     [super dealloc];
 }
+
 
 - (void)cancel {
 	[self.navigationController popViewControllerAnimated:YES];
@@ -81,7 +80,7 @@
 - (void)save {
 	SurveyAppDelegate *delegate = (SurveyAppDelegate *)[[UIApplication sharedApplication] delegate];
 	User *user = delegate.metadata.user;
-	[user setBirthday:datePicker.date];
+	[user setIncome:incomingField.text];
 	
 	NSError *error;
 	BOOL result = [user save:&error];
@@ -95,7 +94,7 @@
 											  otherButtonTitles:nil];
 		[alert show];
 		[alert release];
-	}
+	}	
 }
 
 @end
