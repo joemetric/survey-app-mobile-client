@@ -214,7 +214,8 @@ static NSString *ServerURL = @"localhost:3000";
 				NSInteger pk = [[questionDict objectForKey:@"id"] intValue];
 				NSInteger question_type_id = [[questionDict objectForKey:@"question_type_id"] intValue];
 				NSString *name = [questionDict objectForKey:@"name"];
-				Question *question = [[Question alloc] initWithSurvey:survey PK:pk QuestionTypeId:question_type_id Name:name];
+				NSString *description = [questionDict objectForKey:@"complement"];
+				Question *question = [[Question alloc] initWithSurvey:survey PK:pk QuestionTypeId:question_type_id Name:name Description:description];
 				[questions addObject:question];
 				[question release];
 			}

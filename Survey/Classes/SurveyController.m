@@ -11,15 +11,20 @@
 #import "Question.h"
 #import "QuestionCell.h"
 #import "SurveyInfoCell.h"
+#import "QuestionController.h"
 
 
 @implementation SurveyController
-@synthesize questionsTable, survey;
+@synthesize questionsTable, survey, questionController;
 
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         // Custom initialization
+		UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
+		backButton.title = @"Back";
+		self.navigationItem.backBarButtonItem = backButton;
+		[backButton release];
     }
     return self;
 }
@@ -64,6 +69,7 @@
 
 - (void)dealloc {
 	[survey release];
+	[questionController release];
 	
     [super dealloc];
 }
@@ -111,6 +117,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[tableView deselectRowAtIndexPath:indexPath animated:NO];
+	[self takeSurvey];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -144,7 +151,18 @@
 }
 
 - (IBAction)takeSurvey {
-	NSLog(@"Take Survey");
+	[self.questionController setSurvey:survey];
+	[self.questionController setQuestionIdx:0];
+	[self.navigationController pushViewController:self.questionController animated:YES];
+}
+
+- (QuestionController *)questionController {
+	if (questionController == nil) {
+		QuestionController *qc = [[QuestionController alloc] initWithNibName:@"QuestionView" bundle:nil];
+		self.questionController = qc;
+		[qc release];
+	}
+	return questionController;
 }
 
 @end

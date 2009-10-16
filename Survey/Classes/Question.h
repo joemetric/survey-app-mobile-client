@@ -15,13 +15,15 @@
 	NSInteger pk;
 	NSInteger question_type_id;
 	NSString *name;
+	NSString *description;
 }
 
 @property (nonatomic, retain) Survey *survey;
 @property (nonatomic, assign) NSInteger pk;
 @property (nonatomic, assign) NSInteger question_type_id;
 @property (nonatomic, retain) NSString *name;
+@property (nonatomic, retain) NSString *description;
 
-- (id)initWithSurvey:(Survey *)s PK:(NSInteger)p QuestionTypeId:(NSInteger)qti Name:(NSString *)n;
+- (id)initWithSurvey:(Survey *)s PK:(NSInteger)p QuestionTypeId:(NSInteger)qti Name:(NSString *)n Description:(NSString *)desc;
 
 @end
