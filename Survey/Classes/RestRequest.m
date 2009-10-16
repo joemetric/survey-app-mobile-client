@@ -15,7 +15,7 @@
 #import "Question.h"
 
 
-static NSString *ServerURL = @"localhost:3000";
+static NSString *ServerURL = @"survey.allerin.com";
 
 @implementation RestRequest
 

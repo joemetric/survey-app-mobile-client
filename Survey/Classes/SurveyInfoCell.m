@@ -53,6 +53,7 @@
 	[nameLabel setFrame:nameFrame];
 	CGSize descriptionSize = [survey.description sizeWithFont:[UIFont systemFontOfSize:14.0f] constrainedToSize:textSize lineBreakMode:UILineBreakModeWordWrap];
 	CGRect descFrame = descriptionLabel.frame;
+	descFrame.origin.y = nameFrame.origin.y + nameFrame.size.height + 4;
 	descFrame.size.height = descriptionSize.height + 4;
 	[descriptionLabel setFrame:descFrame];
 	CGRect takeFrame = takeButton.frame;

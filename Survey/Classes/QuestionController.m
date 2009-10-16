@@ -60,6 +60,7 @@
 	[nameLabel setFrame:nameFrame];
 	CGSize descSize = [self.question.description sizeWithFont:[UIFont systemFontOfSize:14.0f] constrainedToSize:textSize lineBreakMode:UILineBreakModeWordWrap];
 	CGRect descFrame = descLabel.frame;
+	descFrame.origin.y = nameFrame.origin.y + nameFrame.size.height + 4;
 	descFrame.size.height = descSize.height + 4;
 	[descLabel setFrame:descFrame];
 
