@@ -17,7 +17,7 @@
 @end
 
 @implementation QuestionController
-@synthesize nameLabel, descLabel, answerField;
+@synthesize nameLabel, descLabel, answerField, takeButton, choicePicker;
 @synthesize survey, questionIdx, question;
 @synthesize nextQuestionController;
 
@@ -62,9 +62,33 @@
 	CGRect descFrame = descLabel.frame;
 	descFrame.size.height = descSize.height + 4;
 	[descLabel setFrame:descFrame];
-	CGRect answerFrame = answerField.frame;
-	answerFrame.origin.y = descFrame.origin.y + descFrame.size.height + 20;
-	[answerField setFrame:answerFrame];
+
+	if ([self.question isShortAnswer]) {
+		CGRect answerFrame = answerField.frame;
+		answerFrame.origin.y = descFrame.origin.y + descFrame.size.height + 20;
+		[answerField setFrame:answerFrame];
+		answerField.hidden = FALSE;
+		takeButton.hidden = TRUE;
+		choicePicker.hidden = TRUE;
+	} else if ([self.question isPhotoUpload]) {
+		CGRect takeFrame = takeButton.frame;
+		takeFrame.origin.y = descFrame.origin.y + descFrame.size.height + 20;
+		[takeButton setFrame:takeFrame];
+		takeButton.hidden = FALSE;
+		answerField.hidden = TRUE;
+		choicePicker.hidden = TRUE;
+	} else if ([self.question isMultipleChoice]) {
+		CGRect choiceFrame = choicePicker.frame;
+		choiceFrame.origin.y = descFrame.origin.y + descFrame.size.height + 20;
+		[choicePicker setFrame:choiceFrame];
+		choicePicker.hidden = FALSE;
+		answerField.hidden = TRUE;
+		takeButton.hidden = TRUE;
+	} else {
+		choicePicker.hidden = TRUE;
+		answerField.hidden = TRUE;
+		takeButton.hidden = TRUE;
+	}
 	
 	nameLabel.text = self.question.name;
 	descLabel.text = self.question.description;
@@ -123,6 +147,38 @@
 		[qc release];
 	}
 	return nextQuestionController;
+}
+
+
+#pragma mark -
+#pragma mark Multiple Choice Picker Delegate
+
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
+	UILabel *retval = (UILabel *)view;
+	if (!retval) {
+		retval= [[[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, 280.0, 44.0)] autorelease];
+	}
+	
+	retval.text = [question.complement objectAtIndex:row];
+	retval.font = [UIFont boldSystemFontOfSize:20];
+	retval.backgroundColor = [UIColor clearColor];
+	retval.textAlignment = UITextAlignmentCenter;
+	
+	return retval;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+	return [question.complement count];
+}
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+	return 1;
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+	
 }
 
 @end

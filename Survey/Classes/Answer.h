@@ -10,13 +10,13 @@
 
 
 @interface Answer : NSObject {
-	NSNumber *pk;
-	NSNumber *question_id;
+	NSInteger pk;
+	NSInteger question_id;
 	NSString *answer;
 }
 
-@property (nonatomic, retain) NSNumber *pk;
-@property (nonatomic, retain) NSNumber *quesiton_id;
+@property (nonatomic, assign) NSInteger pk;
+@property (nonatomic, assign) NSInteger question_id;
 @property (nonatomic, retain) NSString *answer;
 
 @end

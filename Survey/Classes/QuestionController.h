@@ -10,10 +10,12 @@
 
 @class Survey, Question;
 
-@interface QuestionController : UIViewController <UITextFieldDelegate> {
+@interface QuestionController : UIViewController <UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource> {
 	UILabel *nameLabel;
 	UILabel *descLabel;
 	UITextField *answerField;
+	UIButton *takeButton;
+	UIPickerView *choicePicker;
 	Survey *survey;
 	Question *question;
 	NSInteger questionIdx;
@@ -24,6 +26,8 @@
 @property (nonatomic, retain) IBOutlet UILabel *nameLabel;
 @property (nonatomic, retain) IBOutlet UILabel *descLabel;
 @property (nonatomic, retain) IBOutlet UITextField *answerField;
+@property (nonatomic, retain) IBOutlet UIButton *takeButton;
+@property (nonatomic, retain) IBOutlet UIPickerView *choicePicker;
 @property (nonatomic, retain) Survey *survey;
 @property (nonatomic, assign) NSInteger questionIdx;
 @property (nonatomic, retain, readonly) Question *question;

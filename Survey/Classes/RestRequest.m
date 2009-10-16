@@ -212,10 +212,14 @@ static NSString *ServerURL = @"localhost:3000";
 			for (NSDictionary *dict in (NSArray *)result) {
 				NSDictionary *questionDict = [(NSDictionary *)[[dict allValues] objectAtIndex:0] withoutNulls];
 				NSInteger pk = [[questionDict objectForKey:@"id"] intValue];
-				NSInteger question_type_id = [[questionDict objectForKey:@"question_type_id"] intValue];
+				NSString *question_type = [questionDict objectForKey:@"question_type_name"];
 				NSString *name = [questionDict objectForKey:@"name"];
-				NSString *description = [questionDict objectForKey:@"complement"];
-				Question *question = [[Question alloc] initWithSurvey:survey PK:pk QuestionTypeId:question_type_id Name:name Description:description];
+				NSString *description = [questionDict objectForKey:@"description"];
+				Question *question = [[Question alloc] initWithSurvey:survey PK:pk QuestionType:question_type Name:name Description:description];
+				NSObject *complement = [questionDict objectForKey:@"complement"];
+				if (![complement isKindOfClass:[NSNull class]] && [complement isKindOfClass:[NSMutableArray class]]) {
+					[question setComplement:(NSArray *)complement];
+				}
 				[questions addObject:question];
 				[question release];
 			}

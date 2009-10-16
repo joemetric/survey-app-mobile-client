@@ -10,5 +10,15 @@
 
 
 @implementation Answer
+@synthesize pk, question_id, answer;
+
+
+- (void) dealloc
+{
+	[answer release];
+	
+	[super dealloc];
+}
+
 
 @end
