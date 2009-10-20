@@ -8,15 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
+@class Question;
 
 @interface Answer : NSObject {
 	NSInteger pk;
-	NSInteger question_id;
+	Question *question;
 	NSString *answer;
 }
 
 @property (nonatomic, assign) NSInteger pk;
-@property (nonatomic, assign) NSInteger question_id;
+@property (nonatomic, retain) Question *question;
 @property (nonatomic, retain) NSString *answer;
+
+- (id)initWithPK:(NSInteger)p Question:(Question *)ques Answer:(NSString *)ans;
 
 @end

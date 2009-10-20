@@ -13,6 +13,7 @@
 #import "User.h"
 #import "Survey.h"
 #import "Question.h"
+#import "Answer.h"
 
 
 static NSString *ServerURL = @"survey.allerin.com";
@@ -227,6 +228,35 @@ static NSString *ServerURL = @"survey.allerin.com";
 		} else {
 			[RestRequest failedResponse:result Error:error];		
 			return nil;
+		}
+	}
+}
+
++ (BOOL)answerQuestion:(Question *)question Answer:(NSString *)answer Error:(NSError **)error {
+	NSString *body = [NSString stringWithFormat:@"answer[answer]=%@", answer];
+	NSString *baseUrl = [NSString stringWithFormat:@"http://%@/questions/%d/answers", ServerURL, question.pk];
+	NSURLResponse *response;
+	NSData *result = [RestRequest doPostWithUrl:baseUrl Body:body Error:error returningResponse:&response];
+	
+	if (!result) {
+		return FALSE;
+	} else {
+		if (response && [response isKindOfClass:[NSHTTPURLResponse class]] && [(NSHTTPURLResponse *)response statusCode] == 201) {
+			NSString *outstring = [[NSString alloc] initWithData:result	encoding:NSUTF8StringEncoding];
+			NSObject *result = [outstring JSONFragmentValue];
+			if ([result isKindOfClass:[NSDictionary class]]) {
+				NSDictionary *dict = [(NSDictionary *)[[(NSDictionary *)result allValues] objectAtIndex:0] withoutNulls];
+				NSInteger pk = [[dict objectForKey:@"id"] intValue];
+				NSString *text = [dict objectForKey:@"answer"];
+				Answer *answer = [[Answer alloc] initWithPK:pk Question:question Answer:text];
+				[question setAnswer:answer];
+				[answer release];
+			}
+
+			return TRUE;
+		} else {
+			[RestRequest failedResponse:result Error:error];
+			return FALSE;
 		}
 	}
 }

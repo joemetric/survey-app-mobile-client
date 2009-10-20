@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class Survey, User;
+@class Survey, User, Question;
 
 @interface RestRequest : NSObject {
 
@@ -21,5 +21,6 @@
 
 + (NSMutableArray *)getSurveys:(NSError **)error;
 + (NSMutableArray *)getQuestions:(Survey *)survey Error:(NSError **)error;
++ (BOOL)answerQuestion:(Question *)question Answer:(NSString *)answer Error:(NSError **)error;
 
 @end

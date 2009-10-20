@@ -10,7 +10,7 @@
 
 @class Survey, Question;
 
-@interface QuestionController : UIViewController <UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource> {
+@interface QuestionController : UIViewController <UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate> {
 	UILabel *nameLabel;
 	UILabel *descLabel;
 	UITextField *answerField;
@@ -32,5 +32,7 @@
 @property (nonatomic, assign) NSInteger questionIdx;
 @property (nonatomic, retain, readonly) Question *question;
 @property (nonatomic, retain) QuestionController *nextQuestionController;
+
+- (IBAction)takePhoto;
 
 @end

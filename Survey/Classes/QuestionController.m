@@ -9,6 +9,7 @@
 #import "QuestionController.h"
 #import "Survey.h"
 #import "Question.h"
+#import "RestRequest.h"
 
 
 @interface QuestionController (Private)
@@ -96,6 +97,28 @@
 }
 
 - (void)submit {
+	NSString *answer = @"";
+	if ([self.question isShortAnswer]) {
+		answer = answerField.text;
+	} else if ([self.question isPhotoUpload]) {
+	} else if ([self.question isMultipleChoice]) {
+		answer = [self.question.complement objectAtIndex:[choicePicker selectedRowInComponent:0]];
+	} else {
+		return;
+	}
+	
+	NSError *error;
+	if (![RestRequest answerQuestion:self.question Answer:answer Error:&error]) {
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
+														message:[error localizedDescription]
+													   delegate:self
+											  cancelButtonTitle:@"OK"
+											  otherButtonTitles:nil];
+		[alert show];
+		[alert release];
+		return;
+	}
+	
 	if (questionIdx + 1 == [survey.questions count]) {
 		[self.navigationController popToRootViewControllerAnimated:YES];
 	} else {
@@ -123,6 +146,11 @@
 - (void)viewDidUnload {
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
+	[nameLabel release]; self.nameLabel = nil;
+	[descLabel release]; self.descLabel = nil;
+	[answerField release]; self.answerField = nil;
+	[takeButton release]; self.takeButton = nil;
+	[choicePicker release]; self.choicePicker = nil;
 }
 
 
@@ -180,6 +208,26 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
 	
+}
+
+#pragma mark -
+#pragma mark UIImagePickerControllerDelegate
+
+- (IBAction)takePhoto {
+	UIImagePickerController *imgPicker = [[UIImagePickerController alloc] init];
+	imgPicker.delegate = self;
+	if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+		imgPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+	[self presentModalViewController:imgPicker animated:YES];
+	[imgPicker release];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+	
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+	[self dismissModalViewControllerAnimated:YES];
 }
 
 @end
