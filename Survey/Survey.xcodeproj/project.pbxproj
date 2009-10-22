@@ -115,6 +115,7 @@
 		8252DB7210849F9700162B02 /* SurveyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8252DB7110849F9700162B02 /* SurveyCell.m */; };
 		829C5DE21080832A00983742 /* logo.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 829C5DE11080832A00983742 /* logo.tiff */; };
 		82DACA821088658000741B54 /* Answer.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DACA811088658000741B54 /* Answer.m */; };
+		82DAFF631090B607002E2214 /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DAFF621090B607002E2214 /* Common.m */; };
 		82F8004D107A821B005E330B /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 82F8004C107A821B005E330B /* Model.m */; };
 		82F8009E107B76AB005E330B /* NSDictionary+RemoveNulls.m in Sources */ = {isa = PBXBuildFile; fileRef = 82F8009D107B76AB005E330B /* NSDictionary+RemoveNulls.m */; };
 /* End PBXBuildFile section */
@@ -233,6 +234,8 @@
 		829C5DE11080832A00983742 /* logo.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = logo.tiff; sourceTree = "<group>"; };
 		82DACA801088658000741B54 /* Answer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Answer.h; sourceTree = "<group>"; };
 		82DACA811088658000741B54 /* Answer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Answer.m; sourceTree = "<group>"; };
+		82DAFF611090B607002E2214 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Common.h; path = Classes/Common.h; sourceTree = "<group>"; };
+		82DAFF621090B607002E2214 /* Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Common.m; path = Classes/Common.m; sourceTree = "<group>"; };
 		82F8004B107A821B005E330B /* Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
 		82F8004C107A821B005E330B /* Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Model.m; sourceTree = "<group>"; };
 		82F8009C107B76AB005E330B /* NSDictionary+RemoveNulls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+RemoveNulls.h"; path = "Classes/NSDictionary+RemoveNulls.h"; sourceTree = "<group>"; };
@@ -547,6 +550,8 @@
 				821BE1F5107637CF00584957 /* NSStringExt.m */,
 				821BE1F6107637CF00584957 /* RestRequest.h */,
 				821BE1F7107637CF00584957 /* RestRequest.m */,
+				82DAFF611090B607002E2214 /* Common.h */,
+				82DAFF621090B607002E2214 /* Common.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -789,6 +794,7 @@
 				822650DD1087A6F50095862B /* EditIncomingController.m in Sources */,
 				82265100108854E70095862B /* QuestionController.m in Sources */,
 				82DACA821088658000741B54 /* Answer.m in Sources */,
+				82DAFF631090B607002E2214 /* Common.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

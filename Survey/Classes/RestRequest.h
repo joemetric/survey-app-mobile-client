@@ -22,5 +22,6 @@
 + (NSMutableArray *)getSurveys:(NSError **)error;
 + (NSMutableArray *)getQuestions:(Survey *)survey Error:(NSError **)error;
 + (BOOL)answerQuestion:(Question *)question Answer:(NSString *)answer Error:(NSError **)error;
++ (BOOL)answerQuestion:(Question *)question Image:(UIImage *)image Error:(NSError **)error;
 
 @end

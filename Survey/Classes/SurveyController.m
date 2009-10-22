@@ -12,6 +12,7 @@
 #import "QuestionCell.h"
 #import "SurveyInfoCell.h"
 #import "QuestionController.h"
+#import "Answer.h"
 
 
 @implementation SurveyController
@@ -152,7 +153,15 @@
 
 - (IBAction)takeSurvey {
 	[self.questionController setSurvey:survey];
-	[self.questionController setQuestionIdx:0];
+	NSInteger qidx = 0;
+	for (Question *question in survey.questions) {
+		if (question.answer != nil && question.answer.pk > 0) {
+			qidx++;
+		} else {
+			break;
+		}
+	}
+	[self.questionController setQuestionIdx:qidx];
 	[self.navigationController pushViewController:self.questionController animated:YES];
 }
 

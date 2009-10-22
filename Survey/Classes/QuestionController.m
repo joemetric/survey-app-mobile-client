@@ -18,7 +18,7 @@
 @end
 
 @implementation QuestionController
-@synthesize nameLabel, descLabel, answerField, takeButton, choicePicker;
+@synthesize nameLabel, descLabel, answerField, takeButton, choicePicker, imageView;
 @synthesize survey, questionIdx, question;
 @synthesize nextQuestionController;
 
@@ -72,6 +72,7 @@
 		answerField.hidden = FALSE;
 		takeButton.hidden = TRUE;
 		choicePicker.hidden = TRUE;
+		imageView.hidden = TRUE;
 	} else if ([self.question isPhotoUpload]) {
 		CGRect takeFrame = takeButton.frame;
 		takeFrame.origin.y = descFrame.origin.y + descFrame.size.height + 20;
@@ -79,6 +80,11 @@
 		takeButton.hidden = FALSE;
 		answerField.hidden = TRUE;
 		choicePicker.hidden = TRUE;
+		if (self.question.image) {
+			imageView.hidden = FALSE;
+			imageView.image = self.question.image;
+		} else
+			imageView.hidden = TRUE;
 	} else if ([self.question isMultipleChoice]) {
 		CGRect choiceFrame = choicePicker.frame;
 		choiceFrame.origin.y = descFrame.origin.y + descFrame.size.height + 20;
@@ -86,10 +92,12 @@
 		choicePicker.hidden = FALSE;
 		answerField.hidden = TRUE;
 		takeButton.hidden = TRUE;
+		imageView.hidden = TRUE;
 	} else {
 		choicePicker.hidden = TRUE;
 		answerField.hidden = TRUE;
 		takeButton.hidden = TRUE;
+		imageView.hidden = TRUE;
 	}
 	
 	nameLabel.text = self.question.name;
@@ -98,17 +106,31 @@
 
 - (void)submit {
 	NSString *answer = @"";
+	BOOL result = FALSE;
+	NSError *error;
 	if ([self.question isShortAnswer]) {
 		answer = answerField.text;
+		result = [RestRequest answerQuestion:self.question Answer:answer Error:&error];
 	} else if ([self.question isPhotoUpload]) {
+		if (self.question.image == nil) {
+			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
+															message:@"Please take the photo"
+														   delegate:self
+												  cancelButtonTitle:@"OK"
+												  otherButtonTitles:nil];
+			[alert show];
+			[alert release];
+			return;
+		} else
+			result = [RestRequest answerQuestion:self.question Image:imageView.image Error:&error];
 	} else if ([self.question isMultipleChoice]) {
 		answer = [self.question.complement objectAtIndex:[choicePicker selectedRowInComponent:0]];
+		result = [RestRequest answerQuestion:self.question Answer:answer Error:&error];
 	} else {
 		return;
 	}
 	
-	NSError *error;
-	if (![RestRequest answerQuestion:self.question Answer:answer Error:&error]) {
+	if (!result) {
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
 														message:[error localizedDescription]
 													   delegate:self
@@ -151,6 +173,7 @@
 	[answerField release]; self.answerField = nil;
 	[takeButton release]; self.takeButton = nil;
 	[choicePicker release]; self.choicePicker = nil;
+	[imageView release]; self.imageView = nil;
 }
 
 
@@ -223,7 +246,9 @@
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-	
+	UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+	[self.question setImage:image];
+	[self dismissModalViewControllerAnimated:YES];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {

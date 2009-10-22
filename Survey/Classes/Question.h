@@ -25,6 +25,7 @@ typedef enum {
 	NSString *description;
 	NSArray *complement;
 	Answer *answer;
+	UIImage *image;
 }
 
 @property (nonatomic, retain) Survey *survey;
@@ -34,6 +35,7 @@ typedef enum {
 @property (nonatomic, retain) NSString *description;
 @property (nonatomic, retain) NSArray *complement;
 @property (nonatomic, retain) Answer *answer;
+@property (nonatomic, retain) UIImage *image;
 
 - (id)initWithSurvey:(Survey *)s PK:(NSInteger)p QuestionType:(NSString *)qt Name:(NSString *)n Description:(NSString *)desc;
 - (BOOL)isShortAnswer;

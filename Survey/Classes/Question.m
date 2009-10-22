@@ -12,7 +12,7 @@
 
 
 @implementation Question
-@synthesize survey, pk, question_type, name, description, answer, complement; 
+@synthesize survey, pk, question_type, name, description, answer, complement, image; 
 
 - (id)initWithSurvey:(Survey *)s PK:(NSInteger)p QuestionType:(NSString *)qt Name:(NSString *)n Description:(NSString *)desc {
 	if (self = [super init]) {
@@ -40,6 +40,7 @@
 	[name release];
 	[description release];
 	[answer release];
+	[image release];
 	
 	[super dealloc];
 }
