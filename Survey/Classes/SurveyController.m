@@ -161,6 +161,16 @@
 			break;
 		}
 	}
+	if (qidx == [survey.questions count]) {
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
+														message:@"This survey is already taken. Please choose another survey, thanks."
+													   delegate:self
+											  cancelButtonTitle:@"OK"
+											  otherButtonTitles:nil];
+		[alert show];
+		[alert release];
+		return;
+	}
 	[self.questionController setQuestionIdx:qidx];
 	[self.navigationController pushViewController:self.questionController animated:YES];
 }
