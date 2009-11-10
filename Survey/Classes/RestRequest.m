@@ -14,10 +14,11 @@
 #import "Survey.h"
 #import "Question.h"
 #import "Answer.h"
+#import "Income.h"
 #import "Common.h"
 
 
-static NSString *ServerURL = @"survey.allerin.com";
+static NSString *ServerURL = @"localhost:3000";
 
 @implementation RestRequest
 
@@ -101,9 +102,11 @@ static NSString *ServerURL = @"survey.allerin.com";
 				NSNumber *pk = [dict objectForKey:@"id"];
 				NSString *email = [dict objectForKey:@"email"];
 				NSString *login = [dict objectForKey:@"login"];
+				NSNumber *income_id = [dict objectForKey:@"income_id"];
 				NSString *income = [dict objectForKey:@"income"];
 				NSString *gender = [dict objectForKey:@"gender"];
 				NSString *name = [dict objectForKey:@"name"];
+				NSString *zipcode = [dict objectForKey:@"zip_code"];
 				
 				NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 				[dateFormatter setDateFormat:@"yyyy-MM-dd"];
@@ -111,7 +114,7 @@ static NSString *ServerURL = @"survey.allerin.com";
 				NSDate *birthday = nil;
 				if (birth)
 					birthday = [dateFormatter dateFromString:birth];
-				[User saveUserWithPK:pk Email:email Login:login Income:income Gender:gender Name:name Password:pass Birthday:birthday];
+				[User saveUserWithPK:pk Email:email Login:login Income_id:income_id Income:income Gender:gender Name:name Password:pass Birthday:birthday Zipcode:zipcode];
 				[dateFormatter release];
 			}
 			return TRUE;
@@ -148,8 +151,10 @@ static NSString *ServerURL = @"survey.allerin.com";
 		[body appendFormat:@"user[birthdate]=%@&", [NSString encodeString:[user birthdate]]];
 	if (user.gender)
 		[body appendFormat:@"user[gender]=%@&", [NSString encodeString:user.gender]];
-	if (user.income)
-		[body appendFormat:@"user[income]=%d&", [user.income intValue]];
+	if (user.income_id)
+		[body appendFormat:@"user[income_id]=%d&", [user.income_id intValue]];
+	if (user.zipcode)
+		[body appendFormat:@"user[zip_code]=%@&", [NSString encodeString:user.zipcode]];
 	NSString *baseUrl = [NSString stringWithFormat:@"http://%@/users/%d.json", ServerURL, [user.pk intValue]];
 	NSURLResponse *response;
 	NSData *result = [RestRequest doPutWithUrl:baseUrl Body:body Error:error returningResponse:&response];
@@ -318,6 +323,38 @@ static NSString *ServerURL = @"survey.allerin.com";
 		} else {
 			[RestRequest failedResponse:result Error:error];
 			return FALSE;
+		}
+	}	
+}
+
+
+#pragma mark -
+#pragma mark Common Request
+
++ (NSMutableArray *)getIncomeArray:(NSError **)error {
+	NSString *baseUrl = [NSString stringWithFormat:@"http://%@/users/incomes.json", ServerURL];
+	NSURLResponse *response;
+	NSData *result = [RestRequest doGetWithUrl:baseUrl Error:error returningResponse:&response];
+	
+	if (!result) {
+		return nil;
+	} else {
+		if (response && [response isKindOfClass:[NSHTTPURLResponse class]] && [(NSHTTPURLResponse *)response statusCode] == 201) {
+			NSString *outstring = [[NSString alloc] initWithData:result
+														encoding:NSUTF8StringEncoding];
+			NSObject *result = [outstring JSONFragmentValue];
+			NSMutableArray *incomes = [NSMutableArray array];
+			for (NSArray *income in (NSArray *)result) {
+				NSNumber *pk = [income objectAtIndex:0];
+				NSString *desc = [income objectAtIndex:1];
+				Income *income = [[Income alloc] initWithPk:pk Desc:desc];
+				[incomes addObject:income];
+				[income release];
+			}
+			return incomes;
+		} else {
+			[RestRequest failedResponse:result Error:error];		
+			return nil;
 		}
 	}	
 }

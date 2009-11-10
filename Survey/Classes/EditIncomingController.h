@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 
 
-@interface EditIncomingController : UIViewController {
-	UITextField *incomingField;
+@interface EditIncomingController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource> {
+	UIPickerView *incomePicker;
+	NSMutableArray *incomeArray;
 }
 
-@property (nonatomic, retain) IBOutlet UITextField *incomingField;
+@property (nonatomic, retain) IBOutlet UIPickerView *incomePicker;
+@property (nonatomic, retain) NSMutableArray *incomeArray;
 
 - (void)cancel;
 - (void)save;

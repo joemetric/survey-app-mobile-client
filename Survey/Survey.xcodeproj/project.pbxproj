@@ -114,6 +114,9 @@
 		8252DB6110847F0D00162B02 /* SurveyCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8252DB6010847F0D00162B02 /* SurveyCellView.xib */; };
 		8252DB7210849F9700162B02 /* SurveyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8252DB7110849F9700162B02 /* SurveyCell.m */; };
 		829C5DE21080832A00983742 /* logo.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 829C5DE11080832A00983742 /* logo.tiff */; };
+		82D3F6BB1099E65B00493828 /* Income.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D3F6BA1099E65B00493828 /* Income.m */; };
+		82D3F7141099F80900493828 /* EditZipcodeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D3F7131099F80900493828 /* EditZipcodeController.m */; };
+		82D3F7161099F92500493828 /* EditZipcodeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82D3F7151099F92500493828 /* EditZipcodeView.xib */; };
 		82DACA821088658000741B54 /* Answer.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DACA811088658000741B54 /* Answer.m */; };
 		82DAFF631090B607002E2214 /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DAFF621090B607002E2214 /* Common.m */; };
 		82F8004D107A821B005E330B /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 82F8004C107A821B005E330B /* Model.m */; };
@@ -232,6 +235,11 @@
 		8252DB7010849F9700162B02 /* SurveyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurveyCell.h; sourceTree = "<group>"; };
 		8252DB7110849F9700162B02 /* SurveyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SurveyCell.m; sourceTree = "<group>"; };
 		829C5DE11080832A00983742 /* logo.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = logo.tiff; sourceTree = "<group>"; };
+		82D3F6B91099E65B00493828 /* Income.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Income.h; sourceTree = "<group>"; };
+		82D3F6BA1099E65B00493828 /* Income.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Income.m; sourceTree = "<group>"; };
+		82D3F7121099F80900493828 /* EditZipcodeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditZipcodeController.h; sourceTree = "<group>"; };
+		82D3F7131099F80900493828 /* EditZipcodeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditZipcodeController.m; sourceTree = "<group>"; };
+		82D3F7151099F92500493828 /* EditZipcodeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditZipcodeView.xib; sourceTree = "<group>"; };
 		82DACA801088658000741B54 /* Answer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Answer.h; sourceTree = "<group>"; };
 		82DACA811088658000741B54 /* Answer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Answer.m; sourceTree = "<group>"; };
 		82DAFF611090B607002E2214 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Common.h; path = Classes/Common.h; sourceTree = "<group>"; };
@@ -433,6 +441,8 @@
 				82264EDB1085AFB40095862B /* Question.m */,
 				82DACA801088658000741B54 /* Answer.h */,
 				82DACA811088658000741B54 /* Answer.m */,
+				82D3F6B91099E65B00493828 /* Income.h */,
+				82D3F6BA1099E65B00493828 /* Income.m */,
 			);
 			name = Models;
 			path = Classes;
@@ -453,6 +463,7 @@
 				82264FD610864BE90095862B /* EditBirthdayView.xib */,
 				822650BC10879EE00095862B /* EditGenderView.xib */,
 				822650DE1087A7C60095862B /* EditIncomingView.xib */,
+				82D3F7151099F92500493828 /* EditZipcodeView.xib */,
 			);
 			name = "Profile View";
 			sourceTree = "<group>";
@@ -508,6 +519,8 @@
 				822650BA10879ED10095862B /* EditGenderController.m */,
 				822650DB1087A6F50095862B /* EditIncomingController.h */,
 				822650DC1087A6F50095862B /* EditIncomingController.m */,
+				82D3F7121099F80900493828 /* EditZipcodeController.h */,
+				82D3F7131099F80900493828 /* EditZipcodeController.m */,
 			);
 			name = "Profile Controller";
 			sourceTree = "<group>";
@@ -697,6 +710,7 @@
 				822650BD10879EE00095862B /* EditGenderView.xib in Resources */,
 				822650DF1087A7C60095862B /* EditIncomingView.xib in Resources */,
 				82265117108857F30095862B /* QuestionView.xib in Resources */,
+				82D3F7161099F92500493828 /* EditZipcodeView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -795,6 +809,8 @@
 				82265100108854E70095862B /* QuestionController.m in Sources */,
 				82DACA821088658000741B54 /* Answer.m in Sources */,
 				82DAFF631090B607002E2214 /* Common.m in Sources */,
+				82D3F6BB1099E65B00493828 /* Income.m in Sources */,
+				82D3F7141099F80900493828 /* EditZipcodeController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

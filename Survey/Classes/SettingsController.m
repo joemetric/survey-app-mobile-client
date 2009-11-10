@@ -60,22 +60,35 @@
 - (void)viewDidUnload {
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
-	[settingsTable release]; self.settingsTable = nil;
-	[newSurveyAlertCell release]; self.newSurveyAlertCell = nil;
-	[locationSpecificSurveyCell release]; self.locationSpecificSurveyCell = nil;
-	[sortSurveyCell release]; self.sortSurveyCell = nil;
-	[fewestQuestionsCell release]; self.fewestQuestionsCell = nil;
-	[locationCell release]; self.locationCell = nil;
-	[sortCell release]; self.sortCell = nil;
-	[newestQuestionsCell release]; self.newestQuestionsCell = nil;
-	[confirmationCell release]; self.confirmationCell = nil;
-	[newSurveyAlertButton release]; self.newSurveyAlertButton = nil;
-	[sortSurveyLabel release]; self.sortSurveyLabel = nil;
-	[locatonSpecificSurveyButton release]; self.locatonSpecificSurveyButton = nil;
+	self.settingsTable = nil;
+	self.newSurveyAlertCell = nil;
+	self.locationSpecificSurveyCell = nil;
+	self.sortSurveyCell = nil;
+	self.fewestQuestionsCell = nil;
+	self.locationCell = nil;
+	self.sortCell = nil;
+	self.newestQuestionsCell = nil;
+	self.confirmationCell = nil;
+	self.newSurveyAlertButton = nil;
+	self.sortSurveyLabel = nil;
+	self.locatonSpecificSurveyButton = nil;
 }
 
 
 - (void)dealloc {
+	[settingsTable release]; 
+	[newSurveyAlertCell release]; 
+	[locationSpecificSurveyCell release]; 
+	[sortSurveyCell release]; 
+	[fewestQuestionsCell release]; 
+	[locationCell release]; 
+	[sortCell release]; 
+	[newestQuestionsCell release]; 
+	[confirmationCell release]; 
+	[newSurveyAlertButton release]; 
+	[sortSurveyLabel release]; 
+	[locatonSpecificSurveyButton release]; 
+	
     [super dealloc];
 }
 

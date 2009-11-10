@@ -10,10 +10,12 @@
 #import "SurveyAppDelegate.h"
 #import "Metadata.h"
 #import "User.h"
+#import "Income.h"
+#import "RestRequest.h"
 
 
 @implementation EditIncomingController
-@synthesize incomingField;
+@synthesize incomePicker, incomeArray;
 
 
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -41,8 +43,6 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
-	[incomingField becomeFirstResponder];
 }
 
 
@@ -64,12 +64,32 @@
 - (void)viewDidUnload {
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
-	[incomingField release]; self.incomingField = nil;
+	self.incomePicker = nil;
 }
 
 
 - (void)dealloc {
+	[incomePicker release]; 
+	
     [super dealloc];
+}
+
+- (NSMutableArray *)incomeArray {
+	if (incomeArray == nil) {
+		NSError *error;
+		self.incomeArray = [RestRequest getIncomeArray:&error];
+		if (incomeArray == nil) {
+			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
+															message:[error localizedDescription]
+														   delegate:self
+												  cancelButtonTitle:@"OK"
+												  otherButtonTitles:nil];
+			[alert show];
+			[alert release];
+			self.incomeArray = [NSMutableArray array];
+		}
+	}
+	return incomeArray;
 }
 
 
@@ -80,7 +100,9 @@
 - (void)save {
 	SurveyAppDelegate *delegate = (SurveyAppDelegate *)[[UIApplication sharedApplication] delegate];
 	User *user = delegate.metadata.user;
-	[user setIncome:incomingField.text];
+	Income *income = (Income *)[self.incomeArray objectAtIndex:[incomePicker selectedRowInComponent:0]];
+	[user setIncome:income.desc];
+	[user setIncome_id:income.pk];
 	
 	NSError *error;
 	BOOL result = [user save:&error];
@@ -96,5 +118,38 @@
 		[alert release];
 	}	
 }
+
+
+#pragma mark -
+#pragma mark Income Picker Delegate
+
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
+	UILabel *retval = (UILabel *)view;
+	if (!retval) {
+		retval= [[[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, 280.0, 44.0)] autorelease];
+	}
+	
+	Income *income = (Income *)[self.incomeArray objectAtIndex:row];
+	retval.text = income.desc;
+	retval.font = [UIFont boldSystemFontOfSize:20];
+	retval.backgroundColor = [UIColor clearColor];
+	retval.textAlignment = UITextAlignmentCenter;
+	
+	return retval;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+	return [self.incomeArray count];
+}
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+	return 1;
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+}
+
 
 @end

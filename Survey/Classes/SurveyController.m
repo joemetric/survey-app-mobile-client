@@ -64,11 +64,13 @@
 - (void)viewDidUnload {
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
-	[questionsTable release]; self.questionsTable = nil;
+	self.questionsTable = nil;
+	self.questionController = nil;
 }
 
 
 - (void)dealloc {
+	[questionsTable release]; 
 	[survey release];
 	[questionController release];
 	

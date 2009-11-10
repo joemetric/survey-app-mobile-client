@@ -168,16 +168,23 @@
 - (void)viewDidUnload {
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
-	[nameLabel release]; self.nameLabel = nil;
-	[descLabel release]; self.descLabel = nil;
-	[answerField release]; self.answerField = nil;
-	[takeButton release]; self.takeButton = nil;
-	[choicePicker release]; self.choicePicker = nil;
-	[imageView release]; self.imageView = nil;
+	self.nameLabel = nil;
+	self.descLabel = nil;
+	self.answerField = nil;
+	self.takeButton = nil;
+	self.choicePicker = nil;
+	self.imageView = nil;
+	self.nextQuestionController = nil;
 }
 
 
 - (void)dealloc {
+	[nameLabel release]; 
+	[descLabel release]; 
+	[answerField release]; 
+	[takeButton release]; 
+	[choicePicker release]; 
+	[imageView release]; 
 	[survey release];
 	[question release];
 	[nextQuestionController release];

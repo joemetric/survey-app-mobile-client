@@ -12,13 +12,14 @@
 #import "EditBirthdayController.h"
 #import "EditGenderController.h"
 #import "EditIncomingController.h"
+#import "EditZipcodeController.h"
 
 
 @implementation ProfileController
 
 @synthesize profileTable, emailCell, birthdayCell, genderCell, zipcodeCell, incomeCell;
 @synthesize emailLabel, birthdayLabel, genderLabel, zipcodeLabel, incomeLabel;
-@synthesize editBirthdayController, editGenderController, editIncomingController;
+@synthesize editBirthdayController, editGenderController, editIncomingController, editZipcodeController;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -67,24 +68,42 @@
 - (void)viewDidUnload {
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
-	[profileTable release]; self.profileTable = nil;
-	[emailCell release]; self.emailCell = nil;
-	[birthdayCell release]; self.birthdayCell = nil;
-	[genderCell release]; self.genderCell = nil;
-	[zipcodeCell release]; self.zipcodeCell = nil;
-	[incomeCell release]; self.incomeCell = nil;
-	[emailLabel release]; self.emailLabel = nil;
-	[birthdayLabel release]; self.birthdayLabel = nil;
-	[genderLabel release]; self.genderLabel = nil;
-	[zipcodeLabel release]; self.zipcodeLabel = nil;
-	[incomeLabel release]; self.incomeLabel = nil;
+	self.profileTable = nil;
+	self.emailCell = nil;
+	self.birthdayCell = nil;
+	self.genderCell = nil;
+	self.zipcodeCell = nil;
+	self.incomeCell = nil;
+	self.emailLabel = nil;
+	self.birthdayLabel = nil;
+	self.genderLabel = nil;
+	self.zipcodeLabel = nil;
+	self.incomeLabel = nil;
+	
+	self.editBirthdayController = nil;
+	self.editGenderController = nil;
+	self.editIncomingController = nil;
+	self.editZipcodeController = nil;
 }
 
 
 - (void)dealloc {
+	[profileTable release]; 
+	[emailCell release]; 
+	[birthdayCell release]; 
+	[genderCell release]; 
+	[zipcodeCell release]; 
+	[incomeCell release]; 
+	[emailLabel release]; 
+	[birthdayLabel release]; 
+	[genderLabel release]; 
+	[zipcodeLabel release]; 
+	[incomeLabel release]; 
+	
 	[editBirthdayController release];
 	[editGenderController release];
 	[editIncomingController release];
+	[editZipcodeController release];
 	
     [super dealloc];
 }
@@ -115,10 +134,10 @@
 			genderLabel.text = user.gender;
 			return genderCell;
 		case 3:
-			// zipcodeLabel.text = @"";
+			zipcodeLabel.text = user.zipcode;
 			return zipcodeCell;
 		case 4:
-			incomeLabel.text = [NSString stringWithFormat:@"$%@", user.income];
+			incomeLabel.text = user.income;
 			return incomeCell;
 		default:
 			break;
@@ -135,6 +154,9 @@
 			break;
 		case 2:
 			[self.navigationController pushViewController:self.editGenderController animated:YES];
+			break;
+		case 3:
+			[self.navigationController pushViewController:self.editZipcodeController animated:YES];
 			break;
 		case 4:
 			[self.navigationController pushViewController:self.editIncomingController animated:YES];
@@ -160,6 +182,15 @@
 		[egc release];
 	}
 	return editGenderController;
+}
+
+- (EditZipcodeController *)editZipcodeController {
+	if (editZipcodeController == nil) {
+		EditZipcodeController *ezc = [[EditZipcodeController alloc] initWithNibName:@"EditZipcodeView" bundle:nil];
+		self.editZipcodeController = ezc;
+		[ezc release];
+	}
+	return editZipcodeController;
 }
 
 - (EditIncomingController *)editIncomingController {

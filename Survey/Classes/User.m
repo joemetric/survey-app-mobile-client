@@ -19,18 +19,20 @@ static NSPredicate *loginTemplate = nil;
 @dynamic pk;
 @dynamic email;
 @dynamic login;
+@dynamic income_id;
 @dynamic income;
 @dynamic gender;
 @dynamic name;
 @dynamic password;
 @dynamic birthday;
+@dynamic zipcode;
 
 + (void)finalizeTemplates {
 	if (loginTemplate) [loginTemplate release];
 }
 
-+ (id)saveUserWithPK:(NSNumber *)p Email:(NSString *)eml Login:(NSString *)log Income:(NSString *)inc 
-				 Gender:(NSString *)gen Name:(NSString *)nm Password:(NSString *)pwd  Birthday:(NSDate *)birth {
++ (id)saveUserWithPK:(NSNumber *)p Email:(NSString *)eml Login:(NSString *)log Income_id:(NSNumber *)ii Income:(NSString *)inc 
+				 Gender:(NSString *)gen Name:(NSString *)nm Password:(NSString *)pwd  Birthday:(NSDate *)birth Zipcode:(NSString *)zc {
 	SurveyAppDelegate *delegate = (SurveyAppDelegate *)[[UIApplication sharedApplication] delegate];
 
 	NSFetchRequest *request = [[NSFetchRequest alloc] init];
@@ -54,11 +56,13 @@ static NSPredicate *loginTemplate = nil;
 	[user setPk:p];
 	[user setEmail:eml];
 	[user setLogin:log];
+	[user setIncome_id:ii];
 	[user setIncome:inc];
 	[user setGender:gen];
 	[user setName:nm];
 	[user setPassword:pwd];
 	[user setBirthday:birth];
+	[user setZipcode:zc];
 	int success = [delegate.managedObjectContext save:&error];
 	if (!success) {
 		// Handle the error.

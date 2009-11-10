@@ -1,32 +1,32 @@
 //
-//  EditBirthdayController.m
+//  EditZipcodeController.m
 //  Survey
 //
-//  Created by Allerin on 09-10-15.
-//  Copyright 2009 Allerin. All rights reserved.
+//  Created by Ye Dingding on 09-10-30.
+//  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-#import "EditBirthdayController.h"
+#import "EditZipcodeController.h"
 #import "SurveyAppDelegate.h"
 #import "Metadata.h"
 #import "User.h"
 
 
-@implementation EditBirthdayController
-@synthesize datePicker;
+@implementation EditZipcodeController
+@synthesize zipcodeField;
 
-
- // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
+// The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         // Custom initialization
+		// Custom initialization
 		UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel)];
 		self.navigationItem.leftBarButtonItem = cancelButton;
 		[cancelButton release];
 		UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(save)];
 		self.navigationItem.rightBarButtonItem = saveButton;
 		[saveButton release];
-		self.navigationItem.title = @"Edit Birthday";
+		self.navigationItem.title = @"Edit Zip Code";
     }
     return self;
 }
@@ -40,12 +40,8 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-	SurveyAppDelegate *delegate = (SurveyAppDelegate *)[[UIApplication sharedApplication] delegate];
-	if (delegate.metadata.user.birthday)
-		[datePicker setDate:delegate.metadata.user.birthday animated:NO];
+	
+	[zipcodeField becomeFirstResponder];
 }
 
 /*
@@ -66,15 +62,16 @@
 - (void)viewDidUnload {
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
-	self.datePicker = nil;
+	self.zipcodeField = nil;
 }
 
 
-- (void)dealloc {	
-	[datePicker release]; 
+- (void)dealloc {
+	[zipcodeField release];
 	
     [super dealloc];
 }
+
 
 - (void)cancel {
 	[self.navigationController popViewControllerAnimated:YES];
@@ -83,7 +80,7 @@
 - (void)save {
 	SurveyAppDelegate *delegate = (SurveyAppDelegate *)[[UIApplication sharedApplication] delegate];
 	User *user = delegate.metadata.user;
-	[user setBirthday:datePicker.date];
+	[user setZipcode:zipcodeField.text];
 	
 	NSError *error;
 	BOOL result = [user save:&error];
@@ -97,7 +94,7 @@
 											  otherButtonTitles:nil];
 		[alert show];
 		[alert release];
-	}
+	}	
 }
 
 @end

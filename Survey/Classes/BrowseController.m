@@ -79,12 +79,16 @@
 - (void)viewDidUnload {
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
-	[instructionLabel release]; self.instructionLabel = nil;
-	[surveyTable release]; self.surveyTable = nil;
+	self.instructionLabel = nil;
+	self.surveyTable = nil;
+	self.surveyController = nil;
+	self.surveys = nil;
 }
 
 
 - (void)dealloc {
+	[instructionLabel release]; 
+	[surveyTable release]; 
 	[surveys release];
 	[surveyController release];
 	

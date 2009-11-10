@@ -62,11 +62,12 @@
 - (void)viewDidUnload {
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
-	[genderPicker release]; self.genderPicker = nil;
+	self.genderPicker = nil;
 }
 
 
 - (void)dealloc {
+	[genderPicker release]; 
 	[gender release];
 	
     [super dealloc];

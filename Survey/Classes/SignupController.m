@@ -59,21 +59,33 @@
 - (void)viewDidUnload {
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
-	[signupTable release]; self.signupTable = nil;
-	[loginCell release]; self.loginCell = nil;
-	[nameCell release]; self.nameCell = nil;
-	[emailCell release]; self.emailCell = nil;
-	[passwordCell release]; self.passwordCell = nil;
-	[passwordConfirmationCell release]; self.passwordConfirmationCell = nil;
-	[loginField release]; self.loginField = nil;
-	[nameField release]; self.nameField = nil;
-	[emailField release]; self.emailField = nil;
-	[passwordField release]; self.passwordField = nil;
-	[passwordConfirmationField release]; self.passwordConfirmationField = nil;
+	self.signupTable = nil;
+	self.loginCell = nil;
+	self.nameCell = nil;
+	self.emailCell = nil;
+	self.passwordCell = nil;
+	self.passwordConfirmationCell = nil;
+	self.loginField = nil;
+	self.nameField = nil;
+	self.emailField = nil;
+	self.passwordField = nil;
+	self.passwordConfirmationField = nil;
 }
 
 
 - (void)dealloc {
+	[signupTable release]; 
+	[loginCell release]; 
+	[nameCell release]; 
+	[emailCell release]; 
+	[passwordCell release]; 
+	[passwordConfirmationCell release]; 
+	[loginField release]; 
+	[nameField release]; 
+	[emailField release]; 
+	[passwordField release]; 
+	[passwordConfirmationField release]; 
+	
     [super dealloc];
 }
 

@@ -68,15 +68,21 @@
 - (void)viewDidUnload {
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
-	[loginTable release]; self.loginTable = nil;
-	[usernameCell release]; self.usernameCell = nil;
-	[passwordCell release]; self.passwordCell = nil;
-	[usernameField release]; self.usernameField = nil;
-	[passwordField release]; self.passwordField = nil;
+	self.loginTable = nil;
+	self.usernameCell = nil;
+	self.passwordCell = nil;
+	self.usernameField = nil;
+	self.passwordField = nil;
+	self.signupController = nil;
 }
 
 
 - (void)dealloc {
+	[loginTable release]; 
+	[usernameCell release]; 
+	[passwordCell release]; 
+	[usernameField release]; 
+	[passwordField release]; 
 	[signupController release];
 	
     [super dealloc];
