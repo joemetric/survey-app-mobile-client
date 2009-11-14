@@ -108,6 +108,32 @@
 	[pool release];
 }
 
+- (void)builtNavigationTitle {
+	if ([self.surveys count] > 0) {
+		float total_cash = 0.0f;
+		for (Survey *survey in self.surveys) {
+			total_cash += [survey.total_payout floatValue];
+		}
+		UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(50, 0, 220, 44)];
+		UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 220, 22)];
+		titleLabel.backgroundColor = [UIColor clearColor];
+		titleLabel.textColor = [UIColor whiteColor];
+		titleLabel.text = @"TOTAL CASH AVAILABLE";
+		titleLabel.textAlignment = UITextAlignmentCenter;
+		[titleView addSubview:titleLabel];
+		[titleLabel release];
+		UILabel *priceLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 22, 220, 22)];
+		priceLabel.backgroundColor = [UIColor clearColor];
+		priceLabel.textColor = [UIColor yellowColor];
+		priceLabel.text = [NSString stringWithFormat:@"$%.2f", total_cash];
+		priceLabel.textAlignment = UITextAlignmentCenter;
+		[titleView addSubview:priceLabel];
+		[priceLabel release];
+		self.navigationItem.titleView = titleView;
+		[titleView release];
+	}	
+}
+
 - (void)surveyLoaded {
 	if ([surveys count] > 0) {
 		self.instructionLabel.hidden = TRUE;
@@ -116,6 +142,8 @@
 	}
 	
 	[surveyTable reloadData];
+	
+	[self builtNavigationTitle];
 }
 
 #pragma mark -

@@ -11,14 +11,16 @@
 
 
 @implementation Survey
-@synthesize pk, name, description;
+@synthesize pk, name, description, total_payout;
 @synthesize questions;
+@synthesize pricing;
 
-- (id)initWithPk:(NSInteger)p Name:(NSString *)n Description:(NSString *)d {
+- (id)initWithPk:(NSInteger)p Name:(NSString *)n Description:(NSString *)d Payout:(NSNumber *)tp {
 	if (self = [super init]) {
 		self.pk = p;
 		self.name = n;
 		self.description = d;
+		self.total_payout = tp;
 	}
 	return self;
 }
@@ -27,7 +29,9 @@
 {
 	[name release];
 	[description release];
+	[total_payout release];
 	[questions release];
+	[pricing release];
 	
 	[super dealloc];
 }
@@ -38,6 +42,13 @@
 		self.questions = [RestRequest getQuestions:self Error:&error];
 	}
 	return questions;
+}
+
+- (NSString *)pricing {
+	if (pricing == nil) {
+		pricing = [NSString stringWithFormat:@"$%.2f", [total_payout floatValue]];
+	}
+	return pricing;
 }
 
 @end

@@ -61,6 +61,7 @@
 	[takeButton setFrame:takeFrame];
 	nameLabel.text = self.survey.name;
 	descriptionLabel.text = self.survey.description;
+	[self.priceButton setTitle:self.survey.pricing forState:UIControlStateNormal];	
 }
 
 @end

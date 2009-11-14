@@ -41,6 +41,7 @@
 - (void)updateSurvey:(Survey *)s {
 	self.survey = s;
 	self.nameLabel.text = self.survey.name;
+	[self.priceButton setTitle:self.survey.pricing forState:UIControlStateNormal];
 }
 
 @end

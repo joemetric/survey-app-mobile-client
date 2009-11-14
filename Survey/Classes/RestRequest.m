@@ -18,7 +18,7 @@
 #import "Common.h"
 
 
-static NSString *ServerURL = @"localhost:3000";
+static NSString *ServerURL = @"survey.allerin.com";
 
 @implementation RestRequest
 
@@ -192,7 +192,8 @@ static NSString *ServerURL = @"localhost:3000";
 				NSInteger pk = [[surveyDict objectForKey:@"id"] intValue];
 				NSString *name = [surveyDict objectForKey:@"name"];
 				NSString *desc = [surveyDict objectForKey:@"description"];
-				Survey *survey = [[Survey alloc] initWithPk:pk Name:name Description:desc];
+				NSNumber *payout = [surveyDict objectForKey:@"total_payout"];
+				Survey *survey = [[Survey alloc] initWithPk:pk Name:name Description:desc Payout:payout];
 				[surveys addObject:survey];
 				[survey release];
 			}
