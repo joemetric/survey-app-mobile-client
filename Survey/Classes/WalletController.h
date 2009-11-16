@@ -12,12 +12,14 @@
 @interface WalletController : UIViewController {
 	UITableView *paymentTable;
 	UITableViewCell *paymentHeaderCell;
+	UILabel *instructionLabel;
 	
 	NSMutableArray *pendingPayments;
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *paymentTable;
 @property (nonatomic, retain) IBOutlet UITableViewCell *paymentHeaderCell;
+@property (nonatomic, retain) IBOutlet UILabel *instructionLabel;
 @property (nonatomic, retain) NSMutableArray *pendingPayments;
 
 @end

@@ -14,7 +14,7 @@
 
 
 @implementation WalletController
-@synthesize paymentHeaderCell, paymentTable;
+@synthesize paymentHeaderCell, paymentTable, instructionLabel;
 @synthesize pendingPayments;
 
 /*
@@ -56,6 +56,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
+	instructionLabel.hidden = TRUE;
 	[self performSelectorInBackground:@selector(getTransfers) withObject:nil];
 }
 
@@ -79,12 +80,14 @@
 	// e.g. self.myOutlet = nil;
 	self.paymentTable = nil;
 	self.paymentHeaderCell = nil;
+	self.instructionLabel = nil;
 }
 
 
 - (void)dealloc {
 	[paymentTable release];
 	[paymentHeaderCell release];
+	[instructionLabel release];
 	[pendingPayments release];
 	
     [super dealloc];
@@ -99,9 +102,14 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	paymentTable.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-	paymentTable.separatorColor = [UIColor grayColor];
-	return 1 + [pendingPayments count];
+	if ([pendingPayments count] == 0) {
+		paymentTable.separatorStyle = UITableViewCellSeparatorStyleNone;
+		return 0;
+	} else {
+		paymentTable.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+		paymentTable.separatorColor = [UIColor grayColor];
+		return 1 + [pendingPayments count];
+	}
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -141,6 +149,11 @@
 }
 
 - (void)transferLoaded {
+	if ([pendingPayments count] == 0) {
+		instructionLabel.hidden = FALSE;
+	} else {
+		instructionLabel.hidden = TRUE;
+	}
 	[paymentTable reloadData];
 }
 
