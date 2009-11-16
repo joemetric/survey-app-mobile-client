@@ -9,7 +9,7 @@
 #import "QuestionController.h"
 #import "Survey.h"
 #import "Question.h"
-#import "RestRequest.h"
+#import "SurveyRestRequest.h"
 
 
 @interface QuestionController (Private)

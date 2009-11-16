@@ -27,6 +27,8 @@
 @property (nonatomic, retain) NSNumber *total_payout;
 @property (nonatomic, readonly) NSString *pricing;
 
++ (Survey *)loadFromJsonDictionary:(NSDictionary *)surveyDict;
+
 - (id)initWithPk:(NSInteger)p Name:(NSString *)n Description:(NSString *)d Payout:(NSNumber *)tp;
 
 @end

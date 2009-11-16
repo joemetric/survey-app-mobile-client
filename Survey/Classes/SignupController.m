@@ -7,7 +7,7 @@
 //
 
 #import "SignupController.h"
-#import "RestRequest.h"
+#import "UserRestRequest.h"
 #import "LoginController.h"
 
 

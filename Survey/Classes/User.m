@@ -10,6 +10,7 @@
 #import "SurveyAppDelegate.h"
 #import "Metadata.h"
 #import "RestRequest.h"
+#import "UserRestRequest.h"
 
 
 static NSPredicate *loginTemplate = nil;

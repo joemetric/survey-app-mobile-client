@@ -14,6 +14,7 @@
 #import "LoginController.h"
 #import "Metadata.h"
 #import "RestRequest.h"
+#import "UserRestRequest.h"
 #import "User.h"
 
 

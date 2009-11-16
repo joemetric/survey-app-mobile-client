@@ -7,7 +7,7 @@
 //
 
 #import "BrowseController.h"
-#import "RestRequest.h"
+#import "SurveyRestRequest.h"
 #import "Survey.h"
 #import "SurveyCell.h"
 #import "SurveyController.h"

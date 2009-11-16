@@ -11,7 +11,7 @@
 #import "Metadata.h"
 #import "User.h"
 #import "Income.h"
-#import "RestRequest.h"
+#import "MiscRestRequest.h"
 
 
 @implementation EditIncomingController

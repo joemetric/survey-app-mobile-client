@@ -8,22 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-@class Survey, User, Question;
-
 @interface RestRequest : NSObject {
 
 }
 
-+ (BOOL)loginWithUser:(NSString *)user Password:(NSString *)pass Error:(NSError **)error;
-+ (BOOL)signUpWithUser:(NSString *)user Password:(NSString *)pass Email:(NSString *)email Name:(NSString *)name Error:(NSError **)error;
-+ (BOOL)saveWithUser:(User *)user Error:(NSError **)error;
-
-
-+ (NSMutableArray *)getSurveys:(NSError **)error;
-+ (NSMutableArray *)getQuestions:(Survey *)survey Error:(NSError **)error;
-+ (BOOL)answerQuestion:(Question *)question Answer:(NSString *)answer Error:(NSError **)error;
-+ (BOOL)answerQuestion:(Question *)question Image:(UIImage *)image Error:(NSError **)error;
-
-+ (NSMutableArray *)getIncomeArray:(NSError **)error;
++ (NSData *)doGetWithUrl:(NSString *)baseUrl Error:(NSError **)error returningResponse:(NSURLResponse **)response;
++ (NSData *)doPostWithUrl:(NSString *)baseUrl Body:(NSString *)body Error:(NSError **)error returningResponse:(NSURLResponse **)response;
++ (NSData *)doPutWithUrl:(NSString *)baseUrl Body:(NSString *)body Error:(NSError **)error returningResponse:(NSURLResponse **)response;
++ (void)failedResponse:(NSData *)result Error:(NSError **)error;
 
 @end

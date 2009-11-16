@@ -114,6 +114,13 @@
 		8252DB6110847F0D00162B02 /* SurveyCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8252DB6010847F0D00162B02 /* SurveyCellView.xib */; };
 		8252DB7210849F9700162B02 /* SurveyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8252DB7110849F9700162B02 /* SurveyCell.m */; };
 		829C5DE21080832A00983742 /* logo.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 829C5DE11080832A00983742 /* logo.tiff */; };
+		829E457610B080F9004A9CF7 /* PaymentCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 829E457510B080F9004A9CF7 /* PaymentCellView.xib */; };
+		829E457A10B087FA004A9CF7 /* PaymentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 829E457910B087FA004A9CF7 /* PaymentCell.m */; };
+		829E458610B12FC0004A9CF7 /* UserRestRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 829E458510B12FC0004A9CF7 /* UserRestRequest.m */; };
+		829E458910B13023004A9CF7 /* SurveyRestRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 829E458810B13023004A9CF7 /* SurveyRestRequest.m */; };
+		829E458C10B1316A004A9CF7 /* MiscRestRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 829E458B10B1316A004A9CF7 /* MiscRestRequest.m */; };
+		829E45A510B138F9004A9CF7 /* TransferRestRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 829E45A410B138F9004A9CF7 /* TransferRestRequest.m */; };
+		829E45A810B13AEE004A9CF7 /* Transfer.m in Sources */ = {isa = PBXBuildFile; fileRef = 829E45A710B13AEE004A9CF7 /* Transfer.m */; };
 		82D3F6BB1099E65B00493828 /* Income.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D3F6BA1099E65B00493828 /* Income.m */; };
 		82D3F7141099F80900493828 /* EditZipcodeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D3F7131099F80900493828 /* EditZipcodeController.m */; };
 		82D3F7161099F92500493828 /* EditZipcodeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82D3F7151099F92500493828 /* EditZipcodeView.xib */; };
@@ -201,8 +208,8 @@
 		821BE07D1074E42400584957 /* LoginView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
 		821BE1F4107637CF00584957 /* NSStringExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSStringExt.h; path = Classes/NSStringExt.h; sourceTree = "<group>"; };
 		821BE1F5107637CF00584957 /* NSStringExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSStringExt.m; path = Classes/NSStringExt.m; sourceTree = "<group>"; };
-		821BE1F6107637CF00584957 /* RestRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RestRequest.h; path = Classes/RestRequest.h; sourceTree = "<group>"; };
-		821BE1F7107637CF00584957 /* RestRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RestRequest.m; path = Classes/RestRequest.m; sourceTree = "<group>"; };
+		821BE1F6107637CF00584957 /* RestRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestRequest.h; sourceTree = "<group>"; };
+		821BE1F7107637CF00584957 /* RestRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestRequest.m; sourceTree = "<group>"; };
 		821BE294107655AE00584957 /* SignupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupController.h; sourceTree = "<group>"; };
 		821BE295107655AE00584957 /* SignupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupController.m; sourceTree = "<group>"; };
 		821BE297107655C200584957 /* SignupView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignupView.xib; sourceTree = "<group>"; };
@@ -235,6 +242,19 @@
 		8252DB7010849F9700162B02 /* SurveyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurveyCell.h; sourceTree = "<group>"; };
 		8252DB7110849F9700162B02 /* SurveyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SurveyCell.m; sourceTree = "<group>"; };
 		829C5DE11080832A00983742 /* logo.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = logo.tiff; sourceTree = "<group>"; };
+		829E457510B080F9004A9CF7 /* PaymentCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentCellView.xib; sourceTree = "<group>"; };
+		829E457810B087FA004A9CF7 /* PaymentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentCell.h; sourceTree = "<group>"; };
+		829E457910B087FA004A9CF7 /* PaymentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentCell.m; sourceTree = "<group>"; };
+		829E458410B12FC0004A9CF7 /* UserRestRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserRestRequest.h; sourceTree = "<group>"; };
+		829E458510B12FC0004A9CF7 /* UserRestRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserRestRequest.m; sourceTree = "<group>"; };
+		829E458710B13023004A9CF7 /* SurveyRestRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurveyRestRequest.h; sourceTree = "<group>"; };
+		829E458810B13023004A9CF7 /* SurveyRestRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SurveyRestRequest.m; sourceTree = "<group>"; };
+		829E458A10B1316A004A9CF7 /* MiscRestRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiscRestRequest.h; sourceTree = "<group>"; };
+		829E458B10B1316A004A9CF7 /* MiscRestRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MiscRestRequest.m; sourceTree = "<group>"; };
+		829E45A310B138F9004A9CF7 /* TransferRestRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransferRestRequest.h; sourceTree = "<group>"; };
+		829E45A410B138F9004A9CF7 /* TransferRestRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransferRestRequest.m; sourceTree = "<group>"; };
+		829E45A610B13AEE004A9CF7 /* Transfer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transfer.h; sourceTree = "<group>"; };
+		829E45A710B13AEE004A9CF7 /* Transfer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transfer.m; sourceTree = "<group>"; };
 		82D3F6B91099E65B00493828 /* Income.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Income.h; sourceTree = "<group>"; };
 		82D3F6BA1099E65B00493828 /* Income.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Income.m; sourceTree = "<group>"; };
 		82D3F7121099F80900493828 /* EditZipcodeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditZipcodeController.h; sourceTree = "<group>"; };
@@ -443,6 +463,8 @@
 				82DACA811088658000741B54 /* Answer.m */,
 				82D3F6B91099E65B00493828 /* Income.h */,
 				82D3F6BA1099E65B00493828 /* Income.m */,
+				829E45A610B13AEE004A9CF7 /* Transfer.h */,
+				829E45A710B13AEE004A9CF7 /* Transfer.m */,
 			);
 			name = Models;
 			path = Classes;
@@ -472,6 +494,7 @@
 			isa = PBXGroup;
 			children = (
 				821BE01C1074D17800584957 /* WalletView.xib */,
+				829E457510B080F9004A9CF7 /* PaymentCellView.xib */,
 			);
 			name = "Wallet View";
 			sourceTree = "<group>";
@@ -557,12 +580,11 @@
 		821BE1F3107637B600584957 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				829E458310B12FAC004A9CF7 /* Rest Request */,
 				82F8009C107B76AB005E330B /* NSDictionary+RemoveNulls.h */,
 				82F8009D107B76AB005E330B /* NSDictionary+RemoveNulls.m */,
 				821BE1F4107637CF00584957 /* NSStringExt.h */,
 				821BE1F5107637CF00584957 /* NSStringExt.m */,
-				821BE1F6107637CF00584957 /* RestRequest.h */,
-				821BE1F7107637CF00584957 /* RestRequest.m */,
 				82DAFF611090B607002E2214 /* Common.h */,
 				82DAFF621090B607002E2214 /* Common.m */,
 			);
@@ -588,8 +610,28 @@
 				82264F001085B4BF0095862B /* QuestionCell.m */,
 				82264F661085C6400095862B /* SurveyInfoCell.h */,
 				82264F671085C6400095862B /* SurveyInfoCell.m */,
+				829E457810B087FA004A9CF7 /* PaymentCell.h */,
+				829E457910B087FA004A9CF7 /* PaymentCell.m */,
 			);
 			name = Common;
+			sourceTree = "<group>";
+		};
+		829E458310B12FAC004A9CF7 /* Rest Request */ = {
+			isa = PBXGroup;
+			children = (
+				821BE1F6107637CF00584957 /* RestRequest.h */,
+				821BE1F7107637CF00584957 /* RestRequest.m */,
+				829E458410B12FC0004A9CF7 /* UserRestRequest.h */,
+				829E458510B12FC0004A9CF7 /* UserRestRequest.m */,
+				829E458710B13023004A9CF7 /* SurveyRestRequest.h */,
+				829E458810B13023004A9CF7 /* SurveyRestRequest.m */,
+				829E458A10B1316A004A9CF7 /* MiscRestRequest.h */,
+				829E458B10B1316A004A9CF7 /* MiscRestRequest.m */,
+				829E45A310B138F9004A9CF7 /* TransferRestRequest.h */,
+				829E45A410B138F9004A9CF7 /* TransferRestRequest.m */,
+			);
+			name = "Rest Request";
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -711,6 +753,7 @@
 				822650DF1087A7C60095862B /* EditIncomingView.xib in Resources */,
 				82265117108857F30095862B /* QuestionView.xib in Resources */,
 				82D3F7161099F92500493828 /* EditZipcodeView.xib in Resources */,
+				829E457610B080F9004A9CF7 /* PaymentCellView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -811,6 +854,12 @@
 				82DAFF631090B607002E2214 /* Common.m in Sources */,
 				82D3F6BB1099E65B00493828 /* Income.m in Sources */,
 				82D3F7141099F80900493828 /* EditZipcodeController.m in Sources */,
+				829E457A10B087FA004A9CF7 /* PaymentCell.m in Sources */,
+				829E458610B12FC0004A9CF7 /* UserRestRequest.m in Sources */,
+				829E458910B13023004A9CF7 /* SurveyRestRequest.m in Sources */,
+				829E458C10B1316A004A9CF7 /* MiscRestRequest.m in Sources */,
+				829E45A510B138F9004A9CF7 /* TransferRestRequest.m in Sources */,
+				829E45A810B13AEE004A9CF7 /* Transfer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
