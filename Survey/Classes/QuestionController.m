@@ -77,6 +77,11 @@
 		CGRect takeFrame = takeButton.frame;
 		takeFrame.origin.y = descFrame.origin.y + descFrame.size.height + 20;
 		[takeButton setFrame:takeFrame];
+		CGRect imageFrame = imageView.frame;
+		imageFrame.origin.y = takeFrame.origin.y + takeFrame.size.height + 2;
+		imageFrame.size.height = 367 - imageFrame.origin.y;
+		[imageView setFrame:imageFrame];
+		
 		takeButton.hidden = FALSE;
 		answerField.hidden = TRUE;
 		choicePicker.hidden = TRUE;
