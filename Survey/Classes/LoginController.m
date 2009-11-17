@@ -39,14 +39,24 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-//	[self performSelectorInBackground:@selector(showBrowseViewController) withObject:nil];
+	[self performSelectorInBackground:@selector(showBrowseViewController) withObject:nil];
 }
 
 - (void)showBrowseViewController {
 	if (isSignUp) {
-		[self performSelectorOnMainThread:@selector(dismissModalViewControllerAnimated:) withObject:NO waitUntilDone:YES];
+		[self performSelectorOnMainThread:@selector(showSignupAlert:) withObject:NO waitUntilDone:YES];
 	}
 	isSignUp = FALSE;
+}
+
+- (void)showSignupAlert:(BOOL)animated {
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
+													message:@"Please check your email for an activation code."
+												   delegate:self
+										  cancelButtonTitle:@"OK"
+										  otherButtonTitles:nil];
+	[alert show];
+	[alert release];
 }
 
 
