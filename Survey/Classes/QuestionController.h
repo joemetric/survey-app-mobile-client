@@ -33,7 +33,7 @@
 @property (nonatomic, retain) IBOutlet UIImageView *imageView;
 @property (nonatomic, retain) Survey *survey;
 @property (nonatomic, assign) NSInteger questionIdx;
-@property (nonatomic, retain, readonly) Question *question;
+@property (nonatomic, retain) Question *question;
 @property (nonatomic, retain) QuestionController *nextQuestionController;
 
 - (IBAction)takePhoto;

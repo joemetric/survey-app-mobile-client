@@ -49,6 +49,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+	self.question = nil;
 	self.navigationItem.title = [NSString stringWithFormat:@"QUESTION %d OF %d", questionIdx + 1, [survey.questions count]];	
 	[self buildView];
 }
@@ -200,7 +201,7 @@
 
 - (Question *)question {
 	if (question == nil)
-		question = [survey.questions objectAtIndex:questionIdx];
+		self.question = [survey.questions objectAtIndex:questionIdx];
 	return question;
 }
 
