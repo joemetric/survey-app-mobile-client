@@ -13,12 +13,14 @@
 #import "Common.h"
 #import "JSON.h"
 #import "NSDictionary+RemoveNulls.h"
+#import "NSStringExt.h"
 
 
 @implementation RestRequest (SurveyOperation)
 
 + (NSMutableArray *)getSurveys:(NSError **)error {
-	NSString *baseUrl = [NSString stringWithFormat:@"http://%@/surveys.json", ServerURL];
+	NSString *model = [[UIDevice currentDevice] model];
+	NSString *baseUrl = [NSString stringWithFormat:@"http://%@/surveys.json?device=%@", ServerURL, [NSString encodeString:model]];
 	NSURLResponse *response;
 	NSData *result = [RestRequest doGetWithUrl:baseUrl Error:error returningResponse:&response];
 	

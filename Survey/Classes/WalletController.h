@@ -15,11 +15,14 @@
 	UILabel *instructionLabel;
 	
 	NSMutableArray *pendingPayments;
+	
+	BOOL needRefresh;
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *paymentTable;
 @property (nonatomic, retain) IBOutlet UITableViewCell *paymentHeaderCell;
 @property (nonatomic, retain) IBOutlet UILabel *instructionLabel;
 @property (nonatomic, retain) NSMutableArray *pendingPayments;
+@property (nonatomic, assign) BOOL needRefresh;
 
 @end

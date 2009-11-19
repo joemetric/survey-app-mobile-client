@@ -11,6 +11,8 @@
 #import "Survey.h"
 #import "SurveyCell.h"
 #import "SurveyController.h"
+#import "SurveyAppDelegate.h"
+#import "WalletController.h"
 
 
 @implementation BrowseController
@@ -196,6 +198,13 @@
 		[sc release];
 	}
 	return surveyController;
+}
+
+- (void)removeSurvey:(Survey *)survey {
+	[self.surveys removeObject:survey];
+	[surveyTable reloadData];
+	SurveyAppDelegate *appDelegate = (SurveyAppDelegate *)[[UIApplication sharedApplication] delegate];
+	[appDelegate.walletController setNeedRefresh:TRUE];
 }
 
 @end

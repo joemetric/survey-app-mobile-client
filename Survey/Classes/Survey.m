@@ -55,10 +55,11 @@
 }
 
 - (NSString *)pricing {
-	if (pricing == nil) {
-		pricing = [NSString stringWithFormat:@"$%.2f", [total_payout floatValue]];
-	}
-	return pricing;
+//	if (pricing == nil) {
+//		pricing = [NSString stringWithFormat:@"$%.2f", [total_payout floatValue]];
+//	}
+//	return pricing;
+	return [NSString stringWithFormat:@"$%.2f", [total_payout floatValue]];
 }
 
 @end

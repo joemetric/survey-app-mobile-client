@@ -11,11 +11,12 @@
 #import "PaymentCell.h"
 #import "Metadata.h"
 #import "User.h"
+#import "SurveyAppDelegate.h"
 
 
 @implementation WalletController
 @synthesize paymentHeaderCell, paymentTable, instructionLabel;
-@synthesize pendingPayments;
+@synthesize pendingPayments, needRefresh;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -57,7 +58,21 @@
     [super viewDidLoad];
 	
 	instructionLabel.hidden = TRUE;
-	[self performSelectorInBackground:@selector(getTransfers) withObject:nil];
+	needRefresh = TRUE;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+	if (needRefresh) {
+		[self.pendingPayments removeAllObjects];
+		[paymentTable reloadData];
+	}
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+	if (needRefresh) {
+		[self performSelectorInBackground:@selector(getTransfers) withObject:nil];
+		self.needRefresh = FALSE;
+	}
 }
 
 /*

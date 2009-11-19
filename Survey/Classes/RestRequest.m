@@ -61,7 +61,11 @@
 		NSMutableString *errorString = [NSMutableString string];				
 		if ([errorObj isKindOfClass:[NSArray class]]) {
 			for (NSArray* error in (NSArray *)errorObj){
-				[errorString appendFormat:@"%@ %@\n", [error objectAtIndex:0], [error objectAtIndex:1]];
+				if ([[error objectAtIndex:0] isEqualToString:@"base"]) {
+					[errorString appendFormat:@"%@\n", [error objectAtIndex:1]];
+				} else {
+					[errorString appendFormat:@"%@ %@\n", [error objectAtIndex:0], [error objectAtIndex:1]];
+				}
 			}
 		}
 		NSArray *keyArray = [NSArray arrayWithObjects:NSLocalizedDescriptionKey, nil];

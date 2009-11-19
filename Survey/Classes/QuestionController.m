@@ -10,6 +10,7 @@
 #import "Survey.h"
 #import "Question.h"
 #import "SurveyRestRequest.h"
+#import "SurveyAppDelegate.h"
 
 
 @interface QuestionController (Private)
@@ -52,6 +53,18 @@
 	self.question = nil;
 	self.navigationItem.title = [NSString stringWithFormat:@"QUESTION %d OF %d", questionIdx + 1, [survey.questions count]];	
 	[self buildView];
+	
+	if ([self.question isShortAnswer]) {
+		[answerField becomeFirstResponder];
+	}
+	[choicePicker reloadAllComponents];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+	if ([self.question isShortAnswer]) {
+		[answerField resignFirstResponder];
+	}
+	[imageView setImage:nil];
 }
 
 - (void)buildView {
@@ -148,6 +161,8 @@
 	}
 	
 	if (questionIdx + 1 == [survey.questions count]) {
+		SurveyAppDelegate *appDelegate = (SurveyAppDelegate *)[[UIApplication sharedApplication] delegate];
+		[appDelegate.browseController removeSurvey:survey];
 		[self.navigationController popToRootViewControllerAnimated:YES];
 	} else {
 		[self.nextQuestionController setSurvey:survey];

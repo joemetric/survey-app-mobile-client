@@ -155,24 +155,15 @@
 
 - (IBAction)takeSurvey {
 	[self.questionController setSurvey:survey];
+
 	NSInteger qidx = 0;
-	BOOL needCamera = FALSE;
-	for (Question *question in survey.questions) {
-		if ([question isPhotoUpload]) 
-			needCamera = TRUE;
-		
+	for (Question *question in survey.questions) {		
 		if (question.answer != nil && question.answer.pk > 0) {
 			qidx++;
 		} else {
 			break;
 		}
 	}
-	for (int i = qidx+1; i < [survey.questions count]; i++) {
-		Question *q = [survey.questions objectAtIndex:i];
-		if ([q isPhotoUpload])
-			needCamera = TRUE;
-	}
-	
 	if (qidx == [survey.questions count]) {
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
 														message:@"This survey is already taken. Please choose another survey, thanks."
@@ -184,19 +175,6 @@
 		return;
 	}
 	
-	if (needCamera) {
-		NSString *model = [UIDevice currentDevice].model;
-        if (![model isEqualToString:@"iPhone"]) {		
-			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
-															message:@"Only iPhone supported. This survey requires camera."
-														   delegate:self
-												  cancelButtonTitle:@"OK"
-												  otherButtonTitles:nil];
-			[alert show];
-			[alert release];
-			return;
-		}
-	}
 	[self.questionController setQuestionIdx:qidx];
 	[self.navigationController pushViewController:self.questionController animated:YES];
 }

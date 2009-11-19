@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class SurveyController;
+@class SurveyController, Survey;
 
 @interface BrowseController : UIViewController {
 	UILabel *instructionLabel;
@@ -22,5 +22,7 @@
 @property (nonatomic, retain) IBOutlet UITableView *surveyTable;
 @property (nonatomic, retain) NSMutableArray *surveys;
 @property (nonatomic, retain) SurveyController *surveyController;
+
+- (void)removeSurvey:(Survey *)survey;
 
 @end
