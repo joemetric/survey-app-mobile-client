@@ -1,3 +1,3 @@
-#define ServerURL @"localhost:3000"
+#define ServerURL @"survey.allerin.com"
 
 NSData *generatePostDataForData(NSData *uploadData);
