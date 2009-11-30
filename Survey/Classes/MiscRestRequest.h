@@ -13,5 +13,7 @@
 @interface RestRequest (MiscOperation)
 
 + (NSMutableArray *)getIncomeArray:(NSError **)error;
++ (NSMutableArray *)getRaceArray:(NSError **)error;
++ (NSMutableArray *)getMartialArray:(NSError **)error;
 
 @end

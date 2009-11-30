@@ -133,7 +133,9 @@
 		[priceLabel release];
 		self.navigationItem.titleView = titleView;
 		[titleView release];
-	}	
+	} else {
+		self.navigationItem.title = @"BROWSE";
+	}
 }
 
 - (void)surveyLoaded {
@@ -203,6 +205,7 @@
 - (void)removeSurvey:(Survey *)survey {
 	[self.surveys removeObject:survey];
 	[surveyTable reloadData];
+	[self builtNavigationTitle];
 	SurveyAppDelegate *appDelegate = (SurveyAppDelegate *)[[UIApplication sharedApplication] delegate];
 	[appDelegate.walletController setNeedRefresh:TRUE];
 }

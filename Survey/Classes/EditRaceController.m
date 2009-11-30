@@ -6,7 +6,7 @@
 //  Copyright 2009 Allerin. All rights reserved.
 //
 
-#import "EditIncomingController.h"
+#import "EditRaceController.h"
 #import "SurveyAppDelegate.h"
 #import "Metadata.h"
 #import "User.h"
@@ -14,8 +14,8 @@
 #import "MiscRestRequest.h"
 
 
-@implementation EditIncomingController
-@synthesize incomePicker, incomeArray;
+@implementation EditRaceController
+@synthesize racePicker, raceArray;
 
 
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -28,7 +28,7 @@
 		UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(save)];
 		self.navigationItem.rightBarButtonItem = saveButton;
 		[saveButton release];
-		self.navigationItem.title = @"Edit Incoming";		
+		self.navigationItem.title = @"Edit Race";		
     }
     return self;
 }
@@ -64,21 +64,21 @@
 - (void)viewDidUnload {
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
-	self.incomePicker = nil;
+	self.racePicker = nil;
 }
 
 
 - (void)dealloc {
-	[incomePicker release]; 
+	[racePicker release]; 
 	
     [super dealloc];
 }
 
-- (NSMutableArray *)incomeArray {
-	if (incomeArray == nil) {
+- (NSMutableArray *)raceArray {
+	if (raceArray == nil) {
 		NSError *error;
-		self.incomeArray = [RestRequest getIncomeArray:&error];
-		if (incomeArray == nil) {
+		self.raceArray = [RestRequest getRaceArray:&error];
+		if (raceArray == nil) {
 			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
 															message:[error localizedDescription]
 														   delegate:self
@@ -86,10 +86,10 @@
 												  otherButtonTitles:nil];
 			[alert show];
 			[alert release];
-			self.incomeArray = [NSMutableArray array];
+			self.raceArray = [NSMutableArray array];
 		}
 	}
-	return incomeArray;
+	return raceArray;
 }
 
 
@@ -100,9 +100,9 @@
 - (void)save {
 	SurveyAppDelegate *delegate = (SurveyAppDelegate *)[[UIApplication sharedApplication] delegate];
 	User *user = delegate.metadata.user;
-	KVPair *income = (KVPair *)[self.incomeArray objectAtIndex:[incomePicker selectedRowInComponent:0]];
-	[user setIncome:income.desc];
-	[user setIncome_id:income.pk];
+	KVPair *race = (KVPair *)[self.raceArray objectAtIndex:[racePicker selectedRowInComponent:0]];
+	[user setRace:race.desc];
+	[user setRace_id:race.pk];
 	
 	NSError *error;
 	BOOL result = [user save:&error];
@@ -129,9 +129,9 @@
 		retval= [[[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, 280.0, 44.0)] autorelease];
 	}
 	
-	KVPair *income = (KVPair *)[self.incomeArray objectAtIndex:row];
-	retval.text = income.desc;
-	retval.font = [UIFont boldSystemFontOfSize:20];
+	KVPair *race = (KVPair *)[self.raceArray objectAtIndex:row];
+	retval.text = race.desc;
+	retval.font = [UIFont boldSystemFontOfSize:16];
 	retval.backgroundColor = [UIColor clearColor];
 	retval.textAlignment = UITextAlignmentCenter;
 	
@@ -140,7 +140,7 @@
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-	return [self.incomeArray count];
+	return [self.raceArray count];
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView

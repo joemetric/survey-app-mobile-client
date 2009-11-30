@@ -6,10 +6,10 @@
 //  Copyright 2009 Allerin. All rights reserved.
 //
 
-#import "Income.h"
+#import "KVPair.h"
 
 
-@implementation Income
+@implementation KVPair
 @synthesize pk, desc;
 
 - (id)initWithPk:(NSNumber *)p Desc:(NSString *)d {

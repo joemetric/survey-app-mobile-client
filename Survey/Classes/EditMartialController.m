@@ -6,7 +6,7 @@
 //  Copyright 2009 Allerin. All rights reserved.
 //
 
-#import "EditIncomingController.h"
+#import "EditMartialController.h"
 #import "SurveyAppDelegate.h"
 #import "Metadata.h"
 #import "User.h"
@@ -14,8 +14,8 @@
 #import "MiscRestRequest.h"
 
 
-@implementation EditIncomingController
-@synthesize incomePicker, incomeArray;
+@implementation EditMartialController
+@synthesize martialPicker, martialArray;
 
 
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -28,7 +28,7 @@
 		UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(save)];
 		self.navigationItem.rightBarButtonItem = saveButton;
 		[saveButton release];
-		self.navigationItem.title = @"Edit Incoming";		
+		self.navigationItem.title = @"Edit Martial";		
     }
     return self;
 }
@@ -64,21 +64,21 @@
 - (void)viewDidUnload {
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
-	self.incomePicker = nil;
+	self.martialPicker = nil;
 }
 
 
 - (void)dealloc {
-	[incomePicker release]; 
+	[martialPicker release]; 
 	
     [super dealloc];
 }
 
-- (NSMutableArray *)incomeArray {
-	if (incomeArray == nil) {
+- (NSMutableArray *)martialArray {
+	if (martialArray == nil) {
 		NSError *error;
-		self.incomeArray = [RestRequest getIncomeArray:&error];
-		if (incomeArray == nil) {
+		self.martialArray = [RestRequest getMartialArray:&error];
+		if (martialArray == nil) {
 			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
 															message:[error localizedDescription]
 														   delegate:self
@@ -86,10 +86,10 @@
 												  otherButtonTitles:nil];
 			[alert show];
 			[alert release];
-			self.incomeArray = [NSMutableArray array];
+			self.martialArray = [NSMutableArray array];
 		}
 	}
-	return incomeArray;
+	return martialArray;
 }
 
 
@@ -100,9 +100,9 @@
 - (void)save {
 	SurveyAppDelegate *delegate = (SurveyAppDelegate *)[[UIApplication sharedApplication] delegate];
 	User *user = delegate.metadata.user;
-	KVPair *income = (KVPair *)[self.incomeArray objectAtIndex:[incomePicker selectedRowInComponent:0]];
-	[user setIncome:income.desc];
-	[user setIncome_id:income.pk];
+	KVPair *martial = (KVPair *)[self.martialArray objectAtIndex:[martialPicker selectedRowInComponent:0]];
+	[user setMartial:martial.desc];
+	[user setMartial_id:martial.pk];
 	
 	NSError *error;
 	BOOL result = [user save:&error];
@@ -129,8 +129,8 @@
 		retval= [[[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, 280.0, 44.0)] autorelease];
 	}
 	
-	KVPair *income = (KVPair *)[self.incomeArray objectAtIndex:row];
-	retval.text = income.desc;
+	KVPair *martial = (KVPair *)[self.martialArray objectAtIndex:row];
+	retval.text = martial.desc;
 	retval.font = [UIFont boldSystemFontOfSize:20];
 	retval.backgroundColor = [UIColor clearColor];
 	retval.textAlignment = UITextAlignmentCenter;
@@ -140,7 +140,7 @@
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-	return [self.incomeArray count];
+	return [self.martialArray count];
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView

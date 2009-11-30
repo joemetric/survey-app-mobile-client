@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface Income : NSObject {
+@interface KVPair : NSObject {
 	NSNumber *pk;
 	NSString *desc;
 }

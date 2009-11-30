@@ -13,13 +13,15 @@
 #import "EditGenderController.h"
 #import "EditIncomingController.h"
 #import "EditZipcodeController.h"
+#import "EditRaceController.h"
+#import "EditMartialController.h"
 
 
 @implementation ProfileController
 
-@synthesize profileTable, emailCell, birthdayCell, genderCell, zipcodeCell, incomeCell;
-@synthesize emailLabel, birthdayLabel, genderLabel, zipcodeLabel, incomeLabel;
-@synthesize editBirthdayController, editGenderController, editIncomingController, editZipcodeController;
+@synthesize profileTable, emailCell, birthdayCell, genderCell, zipcodeCell, incomeCell, raceCell, martialCell;
+@synthesize emailLabel, birthdayLabel, genderLabel, zipcodeLabel, incomeLabel, raceLabel, martialLabel;
+@synthesize editBirthdayController, editGenderController, editIncomingController, editZipcodeController, editRaceController, editMartialController;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -74,16 +76,22 @@
 	self.genderCell = nil;
 	self.zipcodeCell = nil;
 	self.incomeCell = nil;
+	self.raceCell = nil;
+	self.martialCell = nil;
 	self.emailLabel = nil;
 	self.birthdayLabel = nil;
 	self.genderLabel = nil;
 	self.zipcodeLabel = nil;
 	self.incomeLabel = nil;
+	self.raceLabel = nil;
+	self.martialLabel = nil;
 	
 	self.editBirthdayController = nil;
 	self.editGenderController = nil;
 	self.editIncomingController = nil;
 	self.editZipcodeController = nil;
+	self.editRaceController = nil;
+	self.editMartialController = nil;
 }
 
 
@@ -93,17 +101,23 @@
 	[birthdayCell release]; 
 	[genderCell release]; 
 	[zipcodeCell release]; 
-	[incomeCell release]; 
+	[incomeCell release];
+	[raceCell release];
+	[martialCell release];
 	[emailLabel release]; 
 	[birthdayLabel release]; 
 	[genderLabel release]; 
 	[zipcodeLabel release]; 
 	[incomeLabel release]; 
+	[raceLabel release];
+	[martialLabel release];
 	
 	[editBirthdayController release];
 	[editGenderController release];
 	[editIncomingController release];
 	[editZipcodeController release];
+	[editRaceController release];
+	[editMartialController release];
 	
     [super dealloc];
 }
@@ -117,7 +131,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return 5;
+	return 7;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -139,6 +153,12 @@
 		case 4:
 			incomeLabel.text = user.income;
 			return incomeCell;
+		case 5:
+			raceLabel.text = user.race;
+			return raceCell;
+		case 6:
+			martialLabel.text = user.martial;
+			return martialCell;
 		default:
 			break;
 	}
@@ -160,6 +180,12 @@
 			break;
 		case 4:
 			[self.navigationController pushViewController:self.editIncomingController animated:YES];
+			break;
+		case 5:
+			[self.navigationController pushViewController:self.editRaceController animated:YES];
+			break;
+		case 6:
+			[self.navigationController pushViewController:self.editMartialController animated:YES];
 			break;
 		default:
 			break;
@@ -200,6 +226,24 @@
 		[eic release];
 	}
 	return editIncomingController;
+}
+
+- (EditRaceController *)editRaceController {
+	if (editRaceController == nil) {
+		EditRaceController *erc = [[EditRaceController alloc] initWithNibName:@"EditRaceView" bundle:nil];
+		self.editRaceController = erc;
+		[erc release];
+	}
+	return editRaceController;
+}
+
+- (EditMartialController *)editMartialController {
+	if (editMartialController == nil) {
+		EditMartialController *emc = [[EditMartialController alloc] initWithNibName:@"EditMartialView" bundle:nil];
+		self.editMartialController = emc;
+		[emc release];
+	}
+	return editMartialController;
 }
 
 @end

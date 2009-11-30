@@ -38,6 +38,10 @@
 				NSString *gender = [dict objectForKey:@"gender"];
 				NSString *name = [dict objectForKey:@"name"];
 				NSString *zipcode = [dict objectForKey:@"zip_code"];
+				NSNumber *race_id = [dict objectForKey:@"race_id"];
+				NSString *race = [dict objectForKey:@"race"];
+				NSNumber *martial_id = [dict objectForKey:@"martial_status_id"];
+				NSString *martial = [dict objectForKey:@"martial_status"];
 				
 				NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 				[dateFormatter setDateFormat:@"yyyy-MM-dd"];
@@ -45,7 +49,9 @@
 				NSDate *birthday = nil;
 				if (birth)
 					birthday = [dateFormatter dateFromString:birth];
-				[User saveUserWithPK:pk Email:email Login:login Income_id:income_id Income:income Gender:gender Name:name Password:pass Birthday:birthday Zipcode:zipcode];
+				[User saveUserWithPK:pk Email:email Login:login Income_id:income_id Income:income Gender:gender 
+								Name:name Password:pass Birthday:birthday Zipcode:zipcode Race_id:race_id
+						  Martial_id:martial_id Race:race	Martial:martial];
 				[dateFormatter release];
 			}
 			return TRUE;
@@ -53,7 +59,7 @@
 			[RestRequest failedResponse:result Error:error];
 			return FALSE;
 		}
-	}		
+	}
 }
 
 + (BOOL)signUpWithUser:(NSString *)user Password:(NSString *)pass Email:(NSString *)email 
@@ -86,6 +92,10 @@
 		[body appendFormat:@"user[income_id]=%d&", [user.income_id intValue]];
 	if (user.zipcode)
 		[body appendFormat:@"user[zip_code]=%@&", [NSString encodeString:user.zipcode]];
+	if (user.race_id)
+		[body appendFormat:@"user[race_id]=%d&", [user.race_id intValue]];
+	if (user.martial_id)
+		[body appendFormat:@"user[martial_status_id]=%d&", [user.martial_id intValue]];
 	NSString *baseUrl = [NSString stringWithFormat:@"http://%@/users/%d.json", ServerURL, [user.pk intValue]];
 	NSURLResponse *response;
 	NSData *result = [RestRequest doPutWithUrl:baseUrl Body:body Error:error returningResponse:&response];
