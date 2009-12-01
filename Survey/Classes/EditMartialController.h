@@ -1,5 +1,5 @@
 //
-//  EditIncomingController.h
+//  EditMartialController.h
 //  Survey
 //
 //  Created by Allerin on 09-10-16.

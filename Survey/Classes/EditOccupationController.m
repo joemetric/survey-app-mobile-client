@@ -1,12 +1,12 @@
 //
-//  EditMartialController.m
+//  EditOccupationController.m
 //  Survey
 //
 //  Created by Allerin on 09-10-16.
 //  Copyright 2009 Allerin. All rights reserved.
 //
 
-#import "EditMartialController.h"
+#import "EditOccupationController.h"
 #import "SurveyAppDelegate.h"
 #import "Metadata.h"
 #import "User.h"
@@ -14,8 +14,8 @@
 #import "MiscRestRequest.h"
 
 
-@implementation EditMartialController
-@synthesize martialPicker, martialArray;
+@implementation EditOccupationController
+@synthesize occupationPicker, occupationArray;
 
 
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -28,7 +28,7 @@
 		UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(save)];
 		self.navigationItem.rightBarButtonItem = saveButton;
 		[saveButton release];
-		self.navigationItem.title = @"Edit Martial";		
+		self.navigationItem.title = @"Edit Occupation";		
     }
     return self;
 }
@@ -64,21 +64,21 @@
 - (void)viewDidUnload {
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
-	self.martialPicker = nil;
+	self.occupationPicker = nil;
 }
 
 
 - (void)dealloc {
-	[martialPicker release]; 
+	[occupationPicker release]; 
 	
     [super dealloc];
 }
 
-- (NSMutableArray *)martialArray {
-	if (martialArray == nil) {
+- (NSMutableArray *)occupationArray {
+	if (occupationArray == nil) {
 		NSError *error;
-		self.martialArray = [RestRequest getMartialArray:&error];
-		if (martialArray == nil) {
+		self.occupationArray = [RestRequest getOccupationArray:&error];
+		if (occupationArray == nil) {
 			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
 															message:[error localizedDescription]
 														   delegate:self
@@ -86,10 +86,10 @@
 												  otherButtonTitles:nil];
 			[alert show];
 			[alert release];
-			self.martialArray = [NSMutableArray array];
+			self.occupationArray = [NSMutableArray array];
 		}
 	}
-	return martialArray;
+	return occupationArray;
 }
 
 
@@ -100,9 +100,9 @@
 - (void)save {
 	SurveyAppDelegate *delegate = (SurveyAppDelegate *)[[UIApplication sharedApplication] delegate];
 	User *user = delegate.metadata.user;
-	KVPair *martial = (KVPair *)[self.martialArray objectAtIndex:[martialPicker selectedRowInComponent:0]];
-	[user setMartial:martial.desc];
-	[user setMartial_id:martial.pk];
+	KVPair *occupation = (KVPair *)[self.occupationArray objectAtIndex:[occupationPicker selectedRowInComponent:0]];
+	[user setOccupation:occupation.desc];
+	[user setOccupation_id:occupation.pk];
 	
 	NSError *error;
 	BOOL result = [user save:&error];
@@ -121,7 +121,7 @@
 
 
 #pragma mark -
-#pragma mark Income Picker Delegate
+#pragma mark occupation Picker Delegate
 
 - (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
 	UILabel *retval = (UILabel *)view;
@@ -129,9 +129,9 @@
 		retval= [[[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, 280.0, 44.0)] autorelease];
 	}
 	
-	KVPair *martial = (KVPair *)[self.martialArray objectAtIndex:row];
-	retval.text = martial.desc;
-	retval.font = [UIFont boldSystemFontOfSize:20];
+	KVPair *occupation = (KVPair *)[self.occupationArray objectAtIndex:row];
+	retval.text = occupation.desc;
+	retval.font = [UIFont boldSystemFontOfSize:18];
 	retval.backgroundColor = [UIColor clearColor];
 	retval.textAlignment = UITextAlignmentCenter;
 	
@@ -140,7 +140,7 @@
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-	return [self.martialArray count];
+	return [self.occupationArray count];
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView

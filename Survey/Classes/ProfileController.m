@@ -15,13 +15,18 @@
 #import "EditZipcodeController.h"
 #import "EditRaceController.h"
 #import "EditMartialController.h"
+#import "EditEducationController.h"
+#import "EditOccupationController.h"
 
 
 @implementation ProfileController
 
-@synthesize profileTable, emailCell, birthdayCell, genderCell, zipcodeCell, incomeCell, raceCell, martialCell;
-@synthesize emailLabel, birthdayLabel, genderLabel, zipcodeLabel, incomeLabel, raceLabel, martialLabel;
-@synthesize editBirthdayController, editGenderController, editIncomingController, editZipcodeController, editRaceController, editMartialController;
+@synthesize profileTable, emailCell, birthdayCell, genderCell, zipcodeCell, incomeCell;
+@synthesize raceCell, martialCell, educationCell, occupationCell;
+@synthesize emailLabel, birthdayLabel, genderLabel, zipcodeLabel, incomeLabel;
+@synthesize raceLabel, martialLabel, educationLabel, occupationLabel;
+@synthesize editBirthdayController, editGenderController, editIncomingController, editZipcodeController;
+@synthesize editRaceController, editMartialController, editEducationController, editOccupationController;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -78,6 +83,8 @@
 	self.incomeCell = nil;
 	self.raceCell = nil;
 	self.martialCell = nil;
+	self.educationCell = nil;
+	self.occupationCell = nil;
 	self.emailLabel = nil;
 	self.birthdayLabel = nil;
 	self.genderLabel = nil;
@@ -85,6 +92,8 @@
 	self.incomeLabel = nil;
 	self.raceLabel = nil;
 	self.martialLabel = nil;
+	self.educationLabel = nil;
+	self.occupationLabel = nil;
 	
 	self.editBirthdayController = nil;
 	self.editGenderController = nil;
@@ -92,6 +101,8 @@
 	self.editZipcodeController = nil;
 	self.editRaceController = nil;
 	self.editMartialController = nil;
+	self.editEducationController = nil;
+	self.editOccupationController = nil;
 }
 
 
@@ -104,6 +115,8 @@
 	[incomeCell release];
 	[raceCell release];
 	[martialCell release];
+	[educationCell release];
+	[occupationCell release];
 	[emailLabel release]; 
 	[birthdayLabel release]; 
 	[genderLabel release]; 
@@ -111,6 +124,8 @@
 	[incomeLabel release]; 
 	[raceLabel release];
 	[martialLabel release];
+	[educationLabel release];
+	[occupationLabel release];
 	
 	[editBirthdayController release];
 	[editGenderController release];
@@ -118,6 +133,8 @@
 	[editZipcodeController release];
 	[editRaceController release];
 	[editMartialController release];
+	[editEducationController release];
+	[editOccupationController release];
 	
     [super dealloc];
 }
@@ -131,7 +148,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return 7;
+	return 9;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -159,6 +176,12 @@
 		case 6:
 			martialLabel.text = user.martial;
 			return martialCell;
+		case 7:
+			educationLabel.text = user.education;
+			return educationCell;
+		case 8:
+			occupationLabel.text = user.occupation;
+			return occupationCell;
 		default:
 			break;
 	}
@@ -186,6 +209,12 @@
 			break;
 		case 6:
 			[self.navigationController pushViewController:self.editMartialController animated:YES];
+			break;
+		case 7:
+			[self.navigationController pushViewController:self.editEducationController animated:YES];
+			break;
+		case 8:
+			[self.navigationController pushViewController:self.editOccupationController animated:YES];
 			break;
 		default:
 			break;
@@ -244,6 +273,24 @@
 		[emc release];
 	}
 	return editMartialController;
+}
+
+- (EditEducationController *)editEducationController {
+	if (editEducationController == nil) {
+		EditEducationController *eec = [[EditEducationController alloc] initWithNibName:@"EditEducationView" bundle:nil];
+		self.editEducationController = eec;
+		[eec release];
+	}
+	return editEducationController;
+}
+
+- (EditOccupationController *)editOccupationController {
+	if (editOccupationController == nil) {
+		EditOccupationController *eoc = [[EditOccupationController alloc] initWithNibName:@"EditOccupationView" bundle:nil];
+		self.editOccupationController = eoc;
+		[eoc release];
+	}
+	return editOccupationController;
 }
 
 @end

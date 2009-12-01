@@ -31,6 +31,10 @@ static NSPredicate *loginTemplate = nil;
 @dynamic race;
 @dynamic martial_id;
 @dynamic martial;
+@dynamic education_id;
+@dynamic education;
+@dynamic occupation_id;
+@dynamic occupation;
 
 + (void)finalizeTemplates {
 	if (loginTemplate) [loginTemplate release];
@@ -38,7 +42,8 @@ static NSPredicate *loginTemplate = nil;
 
 + (id)saveUserWithPK:(NSNumber *)p Email:(NSString *)eml Login:(NSString *)log Income_id:(NSNumber *)ii Income:(NSString *)inc 
 			  Gender:(NSString *)gen Name:(NSString *)nm Password:(NSString *)pwd  Birthday:(NSDate *)birth Zipcode:(NSString *)zc 
-			 Race_id:(NSNumber *)ri Martial_id:(NSNumber *)mi Race:(NSString *)ra	Martial:(NSString *)ma {
+			 Race_id:(NSNumber *)ri Martial_id:(NSNumber *)mi Race:(NSString *)ra	Martial:(NSString *)ma 
+		Education_id:(NSNumber *)ei Education:(NSString *)edu Occupation_id:(NSNumber *)oi Occupation:(NSString *)ocp {
 	SurveyAppDelegate *delegate = (SurveyAppDelegate *)[[UIApplication sharedApplication] delegate];
 
 	NSFetchRequest *request = [[NSFetchRequest alloc] init];
@@ -73,6 +78,10 @@ static NSPredicate *loginTemplate = nil;
 	[user setRace:ra];
 	[user setMartial_id:mi];
 	[user setMartial:ma];
+	[user setEducation_id:ei];
+	[user setEducation:edu];
+	[user setOccupation_id:oi];
+	[user setOccupation:ocp];
 	int success = [delegate.managedObjectContext save:&error];
 	if (!success) {
 		// Handle the error.

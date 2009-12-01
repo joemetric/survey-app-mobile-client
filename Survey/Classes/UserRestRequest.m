@@ -42,6 +42,10 @@
 				NSString *race = [dict objectForKey:@"race"];
 				NSNumber *martial_id = [dict objectForKey:@"martial_status_id"];
 				NSString *martial = [dict objectForKey:@"martial_status"];
+				NSNumber *education_id = [dict objectForKey:@"education_id"];
+				NSString *education = [dict objectForKey:@"education"];
+				NSNumber *occupation_id = [dict objectForKey:@"occupation_id"];
+				NSString *occupation = [dict objectForKey:@"occupation"];
 				
 				NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 				[dateFormatter setDateFormat:@"yyyy-MM-dd"];
@@ -51,7 +55,8 @@
 					birthday = [dateFormatter dateFromString:birth];
 				[User saveUserWithPK:pk Email:email Login:login Income_id:income_id Income:income Gender:gender 
 								Name:name Password:pass Birthday:birthday Zipcode:zipcode Race_id:race_id
-						  Martial_id:martial_id Race:race	Martial:martial];
+						  Martial_id:martial_id Race:race	Martial:martial Education_id:education_id
+						   Education:education Occupation_id:occupation_id Occupation:occupation];
 				[dateFormatter release];
 			}
 			return TRUE;
@@ -96,6 +101,10 @@
 		[body appendFormat:@"user[race_id]=%d&", [user.race_id intValue]];
 	if (user.martial_id)
 		[body appendFormat:@"user[martial_status_id]=%d&", [user.martial_id intValue]];
+	if (user.education_id)
+		[body appendFormat:@"user[education_id]=%d&", [user.education_id intValue]];
+	if (user.occupation_id)
+		[body appendFormat:@"user[occupation_id]=%d&", [user.occupation_id intValue]];
 	NSString *baseUrl = [NSString stringWithFormat:@"http://%@/users/%d.json", ServerURL, [user.pk intValue]];
 	NSURLResponse *response;
 	NSData *result = [RestRequest doPutWithUrl:baseUrl Body:body Error:error returningResponse:&response];

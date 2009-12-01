@@ -15,5 +15,7 @@
 + (NSMutableArray *)getIncomeArray:(NSError **)error;
 + (NSMutableArray *)getRaceArray:(NSError **)error;
 + (NSMutableArray *)getMartialArray:(NSError **)error;
++ (NSMutableArray *)getEducationArray:(NSError **)error;
++ (NSMutableArray *)getOccupationArray:(NSError **)error;
 
 @end

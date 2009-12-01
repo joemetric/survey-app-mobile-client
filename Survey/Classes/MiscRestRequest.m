@@ -17,88 +17,57 @@
 #pragma mark -
 #pragma mark Common Request
 
-+ (NSMutableArray *)getIncomeArray:(NSError **)error {
-	NSString *baseUrl = [NSString stringWithFormat:@"http://%@/users/incomes.json", ServerURL];
++ (NSMutableArray *)getKVPairArray:(NSString *)baseUrl Error:(NSError **)error {
 	NSURLResponse *response;
 	NSData *result = [RestRequest doGetWithUrl:baseUrl Error:error returningResponse:&response];
 	
 	if (!result) {
 		return nil;
 	} else {
-		if (response && [response isKindOfClass:[NSHTTPURLResponse class]] && [(NSHTTPURLResponse *)response statusCode] == 201) {
+		if (response && [response isKindOfClass:[NSHTTPURLResponse class]] && [(NSHTTPURLResponse *)response statusCode] == 200) {
 			NSString *outstring = [[NSString alloc] initWithData:result
 														encoding:NSUTF8StringEncoding];
 			NSObject *result = [outstring JSONFragmentValue];
-			NSMutableArray *incomes = [NSMutableArray array];
+			NSMutableArray *pairs = [NSMutableArray array];
 			for (NSArray *res in (NSArray *)result) {
 				NSNumber *pk = [res objectAtIndex:0];
 				NSString *desc = [res objectAtIndex:1];
-				KVPair *income = [[KVPair alloc] initWithPk:pk Desc:desc];
-				[incomes addObject:income];
-				[income release];
+				KVPair *pair = [[KVPair alloc] initWithPk:pk Desc:desc];
+				[pairs addObject:pair];
+				[pair release];
 			}
-			return incomes;
+			return pairs;
 		} else {
 			[RestRequest failedResponse:result Error:error];		
 			return nil;
 		}
-	}	
+	}		
+}
+
++ (NSMutableArray *)getIncomeArray:(NSError **)error {
+	NSString *baseUrl = [NSString stringWithFormat:@"http://%@/users/incomes.json", ServerURL];
+	return [self getKVPairArray:baseUrl Error:error];
 }
 
 + (NSMutableArray *)getRaceArray:(NSError **)error {
 	NSString *baseUrl = [NSString stringWithFormat:@"http://%@/users/races.json", ServerURL];
-	NSURLResponse *response;
-	NSData *result = [RestRequest doGetWithUrl:baseUrl Error:error returningResponse:&response];
-	
-	if (!result) {
-		return nil;
-	} else {
-		if (response && [response isKindOfClass:[NSHTTPURLResponse class]] && [(NSHTTPURLResponse *)response statusCode] == 201) {
-			NSString *outstring = [[NSString alloc] initWithData:result
-														encoding:NSUTF8StringEncoding];
-			NSObject *result = [outstring JSONFragmentValue];
-			NSMutableArray *races = [NSMutableArray array];
-			for (NSArray *res in (NSArray *)result) {
-				NSNumber *pk = [res objectAtIndex:0];
-				NSString *desc = [res objectAtIndex:1];
-				KVPair *race = [[KVPair alloc] initWithPk:pk Desc:desc];
-				[races addObject:race];
-				[race release];
-			}
-			return races;
-		} else {
-			[RestRequest failedResponse:result Error:error];		
-			return nil;
-		}
-	}
+	return [self getKVPairArray:baseUrl Error:error];
 }
 
 + (NSMutableArray *)getMartialArray:(NSError **)error {
 	NSString *baseUrl = [NSString stringWithFormat:@"http://%@/users/martial_statuses.json", ServerURL];
-	NSURLResponse *response;
-	NSData *result = [RestRequest doGetWithUrl:baseUrl Error:error returningResponse:&response];
-	
-	if (!result) {
-		return nil;
-	} else {
-		if (response && [response isKindOfClass:[NSHTTPURLResponse class]] && [(NSHTTPURLResponse *)response statusCode] == 201) {
-			NSString *outstring = [[NSString alloc] initWithData:result
-														encoding:NSUTF8StringEncoding];
-			NSObject *result = [outstring JSONFragmentValue];
-			NSMutableArray *martials = [NSMutableArray array];
-			for (NSArray *res in (NSArray *)result) {
-				NSNumber *pk = [res objectAtIndex:0];
-				NSString *desc = [res objectAtIndex:1];
-				KVPair *martial = [[KVPair alloc] initWithPk:pk Desc:desc];
-				[martials addObject:martial];
-				[martial release];
-			}
-			return martials;
-		} else {
-			[RestRequest failedResponse:result Error:error];		
-			return nil;
-		}
-	}
+	return [self getKVPairArray:baseUrl Error:error];
 }
+
++ (NSMutableArray *)getEducationArray:(NSError **)error {
+	NSString *baseUrl = [NSString stringWithFormat:@"http://%@/users/educations.json", ServerURL];
+	return [self getKVPairArray:baseUrl Error:error];
+}
+
++ (NSMutableArray *)getOccupationArray:(NSError **)error {
+	NSString *baseUrl = [NSString stringWithFormat:@"http://%@/users/occupations.json", ServerURL];
+	return [self getKVPairArray:baseUrl Error:error];
+}
+
 
 @end

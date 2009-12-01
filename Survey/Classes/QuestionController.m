@@ -11,6 +11,7 @@
 #import "Question.h"
 #import "SurveyRestRequest.h"
 #import "SurveyAppDelegate.h"
+#import "BrowseController.h"
 
 
 @interface QuestionController (Private)

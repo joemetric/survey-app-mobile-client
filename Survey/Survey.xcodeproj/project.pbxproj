@@ -19,6 +19,10 @@
 		8211EC7710C46CD300A81E05 /* EditRaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8211EC7510C46CD300A81E05 /* EditRaceController.m */; };
 		8211EC8A10C46D1A00A81E05 /* EditMartialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8211EC8810C46D1A00A81E05 /* EditMartialView.xib */; };
 		8211EC8B10C46D1A00A81E05 /* EditRaceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8211EC8910C46D1A00A81E05 /* EditRaceView.xib */; };
+		8211ED3110C5D05E00A81E05 /* EditEducationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8211ED2F10C5D05E00A81E05 /* EditEducationView.xib */; };
+		8211ED3210C5D05E00A81E05 /* EditOccupationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8211ED3010C5D05E00A81E05 /* EditOccupationView.xib */; };
+		8211ED3710C5D07500A81E05 /* EditEducationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8211ED3410C5D07500A81E05 /* EditEducationController.m */; };
+		8211ED3810C5D07500A81E05 /* EditOccupationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8211ED3610C5D07500A81E05 /* EditOccupationController.m */; };
 		821BDC571074B24200584957 /* arrow-blue-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 821BDC421074B24200584957 /* arrow-blue-btn.png */; };
 		821BDC581074B24200584957 /* arrow-blue-btn2.png in Resources */ = {isa = PBXBuildFile; fileRef = 821BDC431074B24200584957 /* arrow-blue-btn2.png */; };
 		821BDC591074B24200584957 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 821BDC441074B24200584957 /* arrow.png */; };
@@ -162,6 +166,12 @@
 		8211EC7510C46CD300A81E05 /* EditRaceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditRaceController.m; sourceTree = "<group>"; };
 		8211EC8810C46D1A00A81E05 /* EditMartialView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditMartialView.xib; sourceTree = "<group>"; };
 		8211EC8910C46D1A00A81E05 /* EditRaceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditRaceView.xib; sourceTree = "<group>"; };
+		8211ED2F10C5D05E00A81E05 /* EditEducationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditEducationView.xib; sourceTree = "<group>"; };
+		8211ED3010C5D05E00A81E05 /* EditOccupationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditOccupationView.xib; sourceTree = "<group>"; };
+		8211ED3310C5D07500A81E05 /* EditEducationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditEducationController.h; sourceTree = "<group>"; };
+		8211ED3410C5D07500A81E05 /* EditEducationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditEducationController.m; sourceTree = "<group>"; };
+		8211ED3510C5D07500A81E05 /* EditOccupationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditOccupationController.h; sourceTree = "<group>"; };
+		8211ED3610C5D07500A81E05 /* EditOccupationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditOccupationController.m; sourceTree = "<group>"; };
 		821BDC421074B24200584957 /* arrow-blue-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-blue-btn.png"; sourceTree = "<group>"; };
 		821BDC431074B24200584957 /* arrow-blue-btn2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-blue-btn2.png"; sourceTree = "<group>"; };
 		821BDC441074B24200584957 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
@@ -491,6 +501,8 @@
 		821BE0101074D10A00584957 /* Profile View */ = {
 			isa = PBXGroup;
 			children = (
+				8211ED2F10C5D05E00A81E05 /* EditEducationView.xib */,
+				8211ED3010C5D05E00A81E05 /* EditOccupationView.xib */,
 				8211EC8810C46D1A00A81E05 /* EditMartialView.xib */,
 				8211EC8910C46D1A00A81E05 /* EditRaceView.xib */,
 				821BE0161074D16200584957 /* ProfileView.xib */,
@@ -560,6 +572,10 @@
 				822650DC1087A6F50095862B /* EditIncomingController.m */,
 				82D3F7121099F80900493828 /* EditZipcodeController.h */,
 				82D3F7131099F80900493828 /* EditZipcodeController.m */,
+				8211ED3310C5D07500A81E05 /* EditEducationController.h */,
+				8211ED3410C5D07500A81E05 /* EditEducationController.m */,
+				8211ED3510C5D07500A81E05 /* EditOccupationController.h */,
+				8211ED3610C5D07500A81E05 /* EditOccupationController.m */,
 			);
 			name = "Profile Controller";
 			sourceTree = "<group>";
@@ -772,6 +788,8 @@
 				829E457610B080F9004A9CF7 /* PaymentCellView.xib in Resources */,
 				8211EC8A10C46D1A00A81E05 /* EditMartialView.xib in Resources */,
 				8211EC8B10C46D1A00A81E05 /* EditRaceView.xib in Resources */,
+				8211ED3110C5D05E00A81E05 /* EditEducationView.xib in Resources */,
+				8211ED3210C5D05E00A81E05 /* EditOccupationView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -880,6 +898,8 @@
 				829E45A810B13AEE004A9CF7 /* Transfer.m in Sources */,
 				8211EC7610C46CD300A81E05 /* EditMartialController.m in Sources */,
 				8211EC7710C46CD300A81E05 /* EditRaceController.m in Sources */,
+				8211ED3710C5D07500A81E05 /* EditEducationController.m in Sources */,
+				8211ED3810C5D07500A81E05 /* EditOccupationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
