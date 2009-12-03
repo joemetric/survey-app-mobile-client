@@ -44,6 +44,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 	SurveyAppDelegate *delegate = (SurveyAppDelegate *)[[UIApplication sharedApplication] delegate];
+	[datePicker setMaximumDate:[NSDate date]];
 	if (delegate.metadata.user.birthday)
 		[datePicker setDate:delegate.metadata.user.birthday animated:NO];
 }
