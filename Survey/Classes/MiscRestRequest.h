@@ -17,5 +17,6 @@
 + (NSMutableArray *)getMartialArray:(NSError **)error;
 + (NSMutableArray *)getEducationArray:(NSError **)error;
 + (NSMutableArray *)getOccupationArray:(NSError **)error;
++ (NSMutableArray *)getSortArray:(NSError **)error;
 
 @end

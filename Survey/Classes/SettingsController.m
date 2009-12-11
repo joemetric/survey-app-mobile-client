@@ -7,13 +7,17 @@
 //
 
 #import "SettingsController.h"
+#import "SurveyAppDelegate.h"
+#import "Metadata.h"
+#import "User.h"
+#import "EditSortSurveyController.h"
 
 
 @implementation SettingsController
 @synthesize settingsTable;
-@synthesize newSurveyAlertCell, locationSpecificSurveyCell, sortSurveyCell, fewestQuestionsCell;
-@synthesize locationCell, sortCell, newestQuestionsCell, confirmationCell;
-@synthesize newSurveyAlertButton, locatonSpecificSurveyButton, sortSurveyLabel;
+@synthesize newSurveyAlertCell, locationSpecificSurveyCell, sortSurveyCell, locationCell;
+@synthesize newSurveyAlertSwitch, locatonSpecificSurveySwitch, sortSurveyLabel;
+@synthesize editSortSurveyController;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -35,12 +39,14 @@
 	self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
 }
 
-/*
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
 }
-*/
+
+- (void)viewWillAppear:(BOOL)animated {
+	[settingsTable reloadData];
+}
 
 /*
 // Override to allow orientations other than the default portrait orientation.
@@ -64,14 +70,11 @@
 	self.newSurveyAlertCell = nil;
 	self.locationSpecificSurveyCell = nil;
 	self.sortSurveyCell = nil;
-	self.fewestQuestionsCell = nil;
 	self.locationCell = nil;
-	self.sortCell = nil;
-	self.newestQuestionsCell = nil;
-	self.confirmationCell = nil;
-	self.newSurveyAlertButton = nil;
+	self.newSurveyAlertSwitch = nil;
 	self.sortSurveyLabel = nil;
-	self.locatonSpecificSurveyButton = nil;
+	self.locatonSpecificSurveySwitch = nil;
+	self.editSortSurveyController = nil;
 }
 
 
@@ -80,14 +83,11 @@
 	[newSurveyAlertCell release]; 
 	[locationSpecificSurveyCell release]; 
 	[sortSurveyCell release]; 
-	[fewestQuestionsCell release]; 
-	[locationCell release]; 
-	[sortCell release]; 
-	[newestQuestionsCell release]; 
-	[confirmationCell release]; 
-	[newSurveyAlertButton release]; 
+	[locationCell release];  
+	[newSurveyAlertSwitch release]; 
 	[sortSurveyLabel release]; 
-	[locatonSpecificSurveyButton release]; 
+	[locatonSpecificSurveySwitch release]; 
+	[editSortSurveyController release];
 	
     [super dealloc];
 }
@@ -101,31 +101,39 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return 8;
+	return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {							
+	SurveyAppDelegate *delegate = (SurveyAppDelegate *)[[UIApplication sharedApplication] delegate];
+	User *user = delegate.metadata.user;
 	switch (indexPath.row) {
 		case 0:
 			return newSurveyAlertCell;
 		case 1:
 			return locationSpecificSurveyCell;
 		case 2:
+			sortSurveyLabel.text = user.sort;
 			return sortSurveyCell;
 		case 3:
-			return fewestQuestionsCell;
-		case 4:
 			return locationCell;
-		case 5:
-			return sortCell;
-		case 6:
-			return newestQuestionsCell;
-		case 7:
-			return confirmationCell;
 		default:
 			break;
 	}
 	return nil;
+}
+
+- (IBAction)goToSortSurveyController:(id)sender {
+	[self.navigationController pushViewController:self.editSortSurveyController animated:YES];
+}
+
+- (EditSortSurveyController *)editSortSurveyController {
+	if (editSortSurveyController == nil) {
+		EditSortSurveyController *essc = [[EditSortSurveyController alloc] initWithNibName:@"EditSortView" bundle:nil];
+		self.editSortSurveyController = essc;
+		[essc release];
+	}
+	return editSortSurveyController;
 }
 
 @end

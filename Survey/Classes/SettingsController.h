@@ -8,33 +8,32 @@
 
 #import <UIKit/UIKit.h>
 
+@class EditSortSurveyController;
 
 @interface SettingsController : UIViewController {
 	UITableView *settingsTable;
 	UITableViewCell *newSurveyAlertCell;
 	UITableViewCell *locationSpecificSurveyCell;
 	UITableViewCell *sortSurveyCell;
-	UITableViewCell *fewestQuestionsCell;
 	UITableViewCell *locationCell;
-	UITableViewCell *sortCell;
-	UITableViewCell *newestQuestionsCell;
-	UITableViewCell *confirmationCell;
-	UIButton *newSurveyAlertButton;
-	UIButton *locatonSpecificSurveyButton;
+	UISwitch *newSurveyAlertSwitch;
+	UISwitch *locatonSpecificSurveySwitch;
 	UILabel *sortSurveyLabel;
+	
+	EditSortSurveyController *editSortSurveyController;
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *settingsTable;
 @property (nonatomic, retain) IBOutlet UITableViewCell *newSurveyAlertCell;
 @property (nonatomic, retain) IBOutlet UITableViewCell *locationSpecificSurveyCell;
 @property (nonatomic, retain) IBOutlet UITableViewCell *sortSurveyCell;
-@property (nonatomic, retain) IBOutlet UITableViewCell *fewestQuestionsCell;
 @property (nonatomic, retain) IBOutlet UITableViewCell *locationCell;
-@property (nonatomic, retain) IBOutlet UITableViewCell *sortCell;
-@property (nonatomic, retain) IBOutlet UITableViewCell *newestQuestionsCell;
-@property (nonatomic, retain) IBOutlet UITableViewCell *confirmationCell;
-@property (nonatomic, retain) IBOutlet UIButton *newSurveyAlertButton;
-@property (nonatomic, retain) IBOutlet UIButton *locatonSpecificSurveyButton;
+@property (nonatomic, retain) IBOutlet UISwitch *newSurveyAlertSwitch;
+@property (nonatomic, retain) IBOutlet UISwitch *locatonSpecificSurveySwitch;
 @property (nonatomic, retain) IBOutlet UILabel *sortSurveyLabel;
+
+@property (nonatomic, retain) EditSortSurveyController *editSortSurveyController;
+
+- (IBAction)goToSortSurveyController:(id)sender;
 
 @end

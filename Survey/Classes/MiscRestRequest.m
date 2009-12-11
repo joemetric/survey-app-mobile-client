@@ -69,5 +69,9 @@
 	return [self getKVPairArray:baseUrl Error:error];
 }
 
++ (NSMutableArray *)getSortArray:(NSError **)error {
+	NSString *baseUrl = [NSString stringWithFormat:@"http://%@/users/sorts.json", ServerURL];
+	return [self getKVPairArray:baseUrl Error:error];
+}
 
 @end

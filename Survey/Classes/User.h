@@ -32,12 +32,15 @@
 @property (nonatomic, retain) NSNumber * education_id;
 @property (nonatomic, retain) NSString * occupation;
 @property (nonatomic, retain) NSNumber * occupation_id;
+@property (nonatomic, retain) NSString * sort;
+@property (nonatomic, retain) NSNumber * sort_id;
 
 + (void)finalizeTemplates;
 + (id)saveUserWithPK:(NSNumber *)p Email:(NSString *)eml Login:(NSString *)log Income_id:(NSNumber *)ii Income:(NSString *)inc 
 			  Gender:(NSString *)gen Name:(NSString *)nm Password:(NSString *)pwd Birthday:(NSDate *)birth Zipcode:(NSString *)zc
 			 Race_id:(NSNumber *)ri Martial_id:(NSNumber *)mi Race:(NSString *)ra	Martial:(NSString *)ma
-		Education_id:(NSNumber *)ei Education:(NSString *)edu Occupation_id:(NSNumber *)oi Occupation:(NSString *)ocp;
+		Education_id:(NSNumber *)ei Education:(NSString *)edu Occupation_id:(NSNumber *)oi Occupation:(NSString *)ocp
+			 Sort_id:(NSNumber *)si Sort:(NSString *)so;
 
 - (NSString *)birthdate;
 - (BOOL)save:(NSError **)error;

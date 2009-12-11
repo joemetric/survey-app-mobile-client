@@ -17,7 +17,11 @@
 @implementation RestRequest (UserOperation)
 
 + (BOOL)loginWithUser:(NSString *)user Password:(NSString *)pass Error:(NSError **)error {
-	NSString *body = [NSString stringWithFormat:@"user_session[login]=%@&user_session[password]=%@", [NSString encodeString:user], [NSString encodeString:pass]];
+	NSBundle* mainBundle = [NSBundle mainBundle];
+	NSNumber *version = [mainBundle objectForInfoDictionaryKey:@"CFBundleVersion"];
+	UIDevice *device = [UIDevice currentDevice];
+	NSString *body = [NSString stringWithFormat:@"user_session[login]=%@&user_session[password]=%@&client_version=%.1f&device_id=%@", 
+					  [NSString encodeString:user], [NSString encodeString:pass], [version floatValue], [device uniqueIdentifier]];
 	NSString *baseUrl = [NSString stringWithFormat:@"http://%@/user_session.json", ServerURL];
 	NSURLResponse *response;
 	NSData *result = [RestRequest doPostWithUrl:baseUrl Body:body Error:error returningResponse:&response];
@@ -46,6 +50,8 @@
 				NSString *education = [dict objectForKey:@"education"];
 				NSNumber *occupation_id = [dict objectForKey:@"occupation_id"];
 				NSString *occupation = [dict objectForKey:@"occupation"];
+				NSNumber *sort_id = [dict objectForKey:@"sort_id"];
+				NSString *sort = [dict objectForKey:@"sort"];
 				
 				NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 				[dateFormatter setDateFormat:@"yyyy-MM-dd"];
@@ -56,7 +62,8 @@
 				[User saveUserWithPK:pk Email:email Login:login Income_id:income_id Income:income Gender:gender 
 								Name:name Password:pass Birthday:birthday Zipcode:zipcode Race_id:race_id
 						  Martial_id:martial_id Race:race	Martial:martial Education_id:education_id
-						   Education:education Occupation_id:occupation_id Occupation:occupation];
+						   Education:education Occupation_id:occupation_id Occupation:occupation
+							 Sort_id:sort_id Sort:sort];
 				[dateFormatter release];
 			}
 			return TRUE;
@@ -105,6 +112,8 @@
 		[body appendFormat:@"user[education_id]=%d&", [user.education_id intValue]];
 	if (user.occupation_id)
 		[body appendFormat:@"user[occupation_id]=%d&", [user.occupation_id intValue]];
+	if (user.sort_id)
+		[body appendFormat:@"user[sort_id]=%d&", [user.sort_id intValue]];
 	NSString *baseUrl = [NSString stringWithFormat:@"http://%@/users/%d.json", ServerURL, [user.pk intValue]];
 	NSURLResponse *response;
 	NSData *result = [RestRequest doPutWithUrl:baseUrl Body:body Error:error returningResponse:&response];

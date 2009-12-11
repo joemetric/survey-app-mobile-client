@@ -136,6 +136,7 @@
 	} else {
 		self.navigationItem.title = @"BROWSE";
 	}
+	[[UIApplication sharedApplication] setApplicationIconBadgeNumber:[self.surveys count]];
 }
 
 - (void)surveyLoaded {

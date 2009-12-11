@@ -43,7 +43,7 @@
 		self.tabBarController.selectedIndex = 2;
 		[profileController.navigationController presentModalViewController:self.loginController animated:YES];
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
-														message:@"Login Info has been changed. Please re-login."
+														message:[error localizedDescription]
 													   delegate:self
 											  cancelButtonTitle:@"OK"
 											  otherButtonTitles:nil];
