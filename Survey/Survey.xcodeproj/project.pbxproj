@@ -103,6 +103,8 @@
 		821BE1F9107637CF00584957 /* RestRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 821BE1F7107637CF00584957 /* RestRequest.m */; };
 		821BE296107655AE00584957 /* SignupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 821BE295107655AE00584957 /* SignupController.m */; };
 		821BE298107655C200584957 /* SignupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 821BE297107655C200584957 /* SignupView.xib */; };
+		82256BC710D2253C00F0D191 /* EditSortSurveyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82256BC610D2253C00F0D191 /* EditSortSurveyController.m */; };
+		82256BC910D2274F00F0D191 /* EditSortView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82256BC810D2274F00F0D191 /* EditSortView.xib */; };
 		82264ED71084D6A80095862B /* SurveyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82264ED61084D6A80095862B /* SurveyController.m */; };
 		82264EDC1085AFB40095862B /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 82264EDB1085AFB40095862B /* Question.m */; };
 		82264F011085B4BF0095862B /* QuestionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82264F001085B4BF0095862B /* QuestionCell.m */; };
@@ -233,6 +235,9 @@
 		821BE294107655AE00584957 /* SignupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupController.h; sourceTree = "<group>"; };
 		821BE295107655AE00584957 /* SignupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupController.m; sourceTree = "<group>"; };
 		821BE297107655C200584957 /* SignupView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignupView.xib; sourceTree = "<group>"; };
+		82256BC510D2253C00F0D191 /* EditSortSurveyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditSortSurveyController.h; sourceTree = "<group>"; };
+		82256BC610D2253C00F0D191 /* EditSortSurveyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditSortSurveyController.m; sourceTree = "<group>"; };
+		82256BC810D2274F00F0D191 /* EditSortView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditSortView.xib; sourceTree = "<group>"; };
 		82264ED51084D6A80095862B /* SurveyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurveyController.h; sourceTree = "<group>"; };
 		82264ED61084D6A80095862B /* SurveyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SurveyController.m; sourceTree = "<group>"; };
 		82264EDA1085AFB40095862B /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Question.h; sourceTree = "<group>"; };
@@ -493,6 +498,7 @@
 		821BE00F1074D0F900584957 /* Settings View */ = {
 			isa = PBXGroup;
 			children = (
+				82256BC810D2274F00F0D191 /* EditSortView.xib */,
 				821BE0131074D14D00584957 /* SettingsView.xib */,
 			);
 			name = "Settings View";
@@ -585,6 +591,8 @@
 			children = (
 				821BE02C1074D36300584957 /* SettingsController.h */,
 				821BE02D1074D36300584957 /* SettingsController.m */,
+				82256BC510D2253C00F0D191 /* EditSortSurveyController.h */,
+				82256BC610D2253C00F0D191 /* EditSortSurveyController.m */,
 			);
 			name = "Settings Controller";
 			sourceTree = "<group>";
@@ -790,6 +798,7 @@
 				8211EC8B10C46D1A00A81E05 /* EditRaceView.xib in Resources */,
 				8211ED3110C5D05E00A81E05 /* EditEducationView.xib in Resources */,
 				8211ED3210C5D05E00A81E05 /* EditOccupationView.xib in Resources */,
+				82256BC910D2274F00F0D191 /* EditSortView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -900,6 +909,7 @@
 				8211EC7710C46CD300A81E05 /* EditRaceController.m in Sources */,
 				8211ED3710C5D07500A81E05 /* EditEducationController.m in Sources */,
 				8211ED3810C5D07500A81E05 /* EditOccupationController.m in Sources */,
+				82256BC710D2253C00F0D191 /* EditSortSurveyController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
