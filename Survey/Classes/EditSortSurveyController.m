@@ -44,6 +44,10 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
+	
+	SurveyAppDelegate *delegate = (SurveyAppDelegate *)[[UIApplication sharedApplication] delegate];
+	User *user = delegate.metadata.user;
+	[sortPicker selectRow:([user.sort_id intValue]-1) inComponent:0 animated:NO];
 }
 
 
@@ -108,6 +112,7 @@
 	NSError *error;
 	BOOL result = [user save:&error];
 	if (result) {
+		[delegate.browseController setNeedRefresh:TRUE];
 		[self cancel];
 	} else {
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""

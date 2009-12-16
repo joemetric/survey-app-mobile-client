@@ -101,7 +101,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return 4;
+	return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {							
@@ -109,14 +109,14 @@
 	User *user = delegate.metadata.user;
 	switch (indexPath.row) {
 		case 0:
-			return newSurveyAlertCell;
-		case 1:
-			return locationSpecificSurveyCell;
-		case 2:
+//			return newSurveyAlertCell;
+//		case 1:
+//			return locationSpecificSurveyCell;
+//		case 2:
 			sortSurveyLabel.text = user.sort;
 			return sortSurveyCell;
-		case 3:
-			return locationCell;
+//		case 3:
+//			return locationCell;
 		default:
 			break;
 	}

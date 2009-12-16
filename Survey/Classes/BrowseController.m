@@ -20,6 +20,7 @@
 @synthesize surveyTable, instructionLabel;
 @synthesize surveys;
 @synthesize surveyController;
+@synthesize needRefresh;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -60,7 +61,21 @@
     [super viewDidLoad];
 	
 	instructionLabel.hidden = YES;
-	[self performSelectorInBackground:@selector(getSurveys) withObject:nil];
+	needRefresh = TRUE;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+	if (needRefresh) {
+		[self.surveys removeAllObjects];
+		[surveyTable reloadData];
+	}
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+	if (needRefresh) {
+		[self performSelectorInBackground:@selector(getSurveys) withObject:nil];
+		self.needRefresh = FALSE;
+	}
 }
 
 /*
