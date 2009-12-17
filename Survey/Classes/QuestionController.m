@@ -20,7 +20,7 @@
 @end
 
 @implementation QuestionController
-@synthesize nameLabel, descLabel, answerField, takeButton, choicePicker, imageView;
+@synthesize nameLabel, descLabel, answerBackground, answerField, takeButton, choicePicker, imageView;
 @synthesize survey, questionIdx, question;
 @synthesize nextQuestionController;
 
@@ -81,9 +81,13 @@
 	[descLabel setFrame:descFrame];
 
 	if ([self.question isShortAnswer]) {
+		CGRect answerBackgroundFrame = answerBackground.frame;
+		answerBackgroundFrame.origin.y = descFrame.origin.y + descFrame.size.height + 20;
+		[answerBackground setFrame:answerBackgroundFrame];
 		CGRect answerFrame = answerField.frame;
-		answerFrame.origin.y = descFrame.origin.y + descFrame.size.height + 20;
+		answerFrame.origin.y = answerBackgroundFrame.origin.y + 1;
 		[answerField setFrame:answerFrame];
+		answerBackground.hidden = FALSE;
 		answerField.hidden = FALSE;
 		takeButton.hidden = TRUE;
 		choicePicker.hidden = TRUE;
@@ -98,6 +102,7 @@
 		[imageView setFrame:imageFrame];
 		
 		takeButton.hidden = FALSE;
+		answerBackground.hidden = TRUE;
 		answerField.hidden = TRUE;
 		choicePicker.hidden = TRUE;
 		if (self.question.image) {
@@ -110,11 +115,13 @@
 		choiceFrame.origin.y = descFrame.origin.y + descFrame.size.height + 20;
 		[choicePicker setFrame:choiceFrame];
 		choicePicker.hidden = FALSE;
+		answerBackground.hidden = TRUE;
 		answerField.hidden = TRUE;
 		takeButton.hidden = TRUE;
 		imageView.hidden = TRUE;
 	} else {
 		choicePicker.hidden = TRUE;
+		answerBackground.hidden = TRUE;
 		answerField.hidden = TRUE;
 		takeButton.hidden = TRUE;
 		imageView.hidden = TRUE;
@@ -192,6 +199,7 @@
 	// e.g. self.myOutlet = nil;
 	self.nameLabel = nil;
 	self.descLabel = nil;
+	self.answerBackground = nil;
 	self.answerField = nil;
 	self.takeButton = nil;
 	self.choicePicker = nil;
@@ -203,6 +211,7 @@
 - (void)dealloc {
 	[nameLabel release]; 
 	[descLabel release]; 
+	[answerBackground release];
 	[answerField release]; 
 	[takeButton release]; 
 	[choicePicker release]; 

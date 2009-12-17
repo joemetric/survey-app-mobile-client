@@ -17,9 +17,10 @@
 @implementation RestRequest (TransferOperation)
 
 + (NSMutableArray *)getPendingTransfers:(User *)user Error:(NSError **)error {
-	NSString *baseUrl = [NSString stringWithFormat:@"http://%@/users/%d/transfers/pending.json", ServerURL, [user.pk intValue]];
+	NSString *baseUrl = [[NSString alloc] initWithFormat:@"http://%@/users/%d/transfers/pending.json", ServerURL, [user.pk intValue]];
 	NSURLResponse *response;
 	NSData *result = [RestRequest doGetWithUrl:baseUrl Error:error returningResponse:&response];
+	[baseUrl release];
 
 	if (!result) {
 		return nil;
@@ -28,6 +29,7 @@
 			NSString *outstring = [[NSString alloc] initWithData:result
 														encoding:NSUTF8StringEncoding];
 			NSObject *result = [outstring JSONFragmentValue];
+			[outstring release];
 			NSMutableArray *transfers = [NSMutableArray array];
 			for (NSDictionary *dict in (NSArray *)result) {
 				NSDictionary *transferDict = [(NSDictionary *)[[dict allValues] objectAtIndex:0] withoutNulls];

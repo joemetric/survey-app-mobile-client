@@ -115,6 +115,14 @@
 
 - (void)getSurveys {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	
+	SurveyAppDelegate *appDelegate = (SurveyAppDelegate *)[[UIApplication sharedApplication] delegate];
+	NSRunLoop *loop = [NSRunLoop currentRunLoop];
+	while (!appDelegate.logined) {
+		NSLog(@"Waiting for login");
+		[loop runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:1.0]];
+	}	
+	
 	[(UIActivityIndicatorView *)self.navigationItem.rightBarButtonItem.customView startAnimating];
 	
 	NSError *error;
@@ -149,6 +157,7 @@
 		self.navigationItem.titleView = titleView;
 		[titleView release];
 	} else {
+		self.navigationItem.titleView = nil;
 		self.navigationItem.title = @"BROWSE";
 	}
 	[[UIApplication sharedApplication] setApplicationIconBadgeNumber:[self.surveys count]];

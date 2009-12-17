@@ -28,6 +28,7 @@
 			NSString *outstring = [[NSString alloc] initWithData:result
 														encoding:NSUTF8StringEncoding];
 			NSObject *result = [outstring JSONFragmentValue];
+			[outstring release];
 			NSMutableArray *pairs = [NSMutableArray array];
 			for (NSArray *res in (NSArray *)result) {
 				NSNumber *pk = [res objectAtIndex:0];
@@ -44,34 +45,35 @@
 	}		
 }
 
++ (NSMutableArray *)getKVArray:(NSString *)key Error:(NSError **)error {
+	NSString *baseUrl = [[NSString alloc] initWithFormat:@"http://%@/users/%@.json", ServerURL, key];
+	NSMutableArray *results = [self getKVPairArray:baseUrl Error:error];
+	[baseUrl release];
+	return results;
+}
+
 + (NSMutableArray *)getIncomeArray:(NSError **)error {
-	NSString *baseUrl = [NSString stringWithFormat:@"http://%@/users/incomes.json", ServerURL];
-	return [self getKVPairArray:baseUrl Error:error];
+	return [self getKVArray:@"incomes" Error:error];
 }
 
 + (NSMutableArray *)getRaceArray:(NSError **)error {
-	NSString *baseUrl = [NSString stringWithFormat:@"http://%@/users/races.json", ServerURL];
-	return [self getKVPairArray:baseUrl Error:error];
+	return [self getKVArray:@"races" Error:error];
 }
 
 + (NSMutableArray *)getMartialArray:(NSError **)error {
-	NSString *baseUrl = [NSString stringWithFormat:@"http://%@/users/martial_statuses.json", ServerURL];
-	return [self getKVPairArray:baseUrl Error:error];
+	return [self getKVArray:@"martial_statuses" Error:error];
 }
 
 + (NSMutableArray *)getEducationArray:(NSError **)error {
-	NSString *baseUrl = [NSString stringWithFormat:@"http://%@/users/educations.json", ServerURL];
-	return [self getKVPairArray:baseUrl Error:error];
+	return [self getKVArray:@"educations" Error:error];
 }
 
 + (NSMutableArray *)getOccupationArray:(NSError **)error {
-	NSString *baseUrl = [NSString stringWithFormat:@"http://%@/users/occupations.json", ServerURL];
-	return [self getKVPairArray:baseUrl Error:error];
+	return [self getKVArray:@"occupations" Error:error];
 }
 
 + (NSMutableArray *)getSortArray:(NSError **)error {
-	NSString *baseUrl = [NSString stringWithFormat:@"http://%@/users/sorts.json", ServerURL];
-	return [self getKVPairArray:baseUrl Error:error];
+	return [self getKVArray:@"sorts" Error:error];
 }
 
 @end

@@ -10,6 +10,7 @@
 #import "NSStringExt.h"
 #import "NSDictionary+RemoveNulls.h"
 #import "JSON.h"
+#import "Common.h"
 
 @implementation RestRequest
 
@@ -28,6 +29,12 @@
 		}
 		return FALSE;
 	}
+	
+	NSString *urlHost = [[NSString alloc] initWithFormat:@"http://%@", ServerURL];
+	NSArray * availableCookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:[NSURL URLWithString:urlHost]];
+	NSDictionary * headers = [NSHTTPCookie requestHeaderFieldsWithCookies:availableCookies];
+	[urlRequest setAllHTTPHeaderFields:headers];
+	[urlHost release];
 	
 	[urlRequest setHTTPMethod:method];
 	if (body) {
@@ -52,29 +59,31 @@
 	return [RestRequest requestWithUrl:baseUrl Method:@"PUT" Body:body Error:error returningResponse:response];
 }
 
-+ (void)failedResponse:(NSData *)result Error:(NSError **)error {
++ (NSData *)failedResponse:(NSData *)result Error:(NSError **)error {
+	if (error == NULL) 
+		return nil;
+	
 	// Check to see if there was an authentication error. If so, report it.
 	NSString *outstring = [[NSString alloc] initWithData:result
-												 encoding:NSUTF8StringEncoding];
-	if (error != NULL) {
-		NSObject *errorObj = [outstring JSONFragmentValue];
-		NSMutableString *errorString = [NSMutableString string];				
-		if ([errorObj isKindOfClass:[NSArray class]]) {
-			for (NSArray* error in (NSArray *)errorObj){
-				if ([[error objectAtIndex:0] isEqualToString:@"base"]) {
-					[errorString appendFormat:@"%@\n", [error objectAtIndex:1]];
-				} else {
-					[errorString appendFormat:@"%@ %@\n", [error objectAtIndex:0], [error objectAtIndex:1]];
-				}
+												encoding:NSUTF8StringEncoding];
+	NSObject *errorObj = [outstring JSONFragmentValue];
+	NSMutableString *errorString = [NSMutableString string];				
+	if ([errorObj isKindOfClass:[NSArray class]]) {
+		for (NSArray* error in (NSArray *)errorObj){
+			if ([[error objectAtIndex:0] isEqualToString:@"base"]) {
+				[errorString appendFormat:@"%@\n", [error objectAtIndex:1]];
+			} else {
+				[errorString appendFormat:@"%@ %@\n", [error objectAtIndex:0], [error objectAtIndex:1]];
 			}
 		}
-		NSArray *keyArray = [NSArray arrayWithObjects:NSLocalizedDescriptionKey, nil];
-		NSArray *objArray = [NSArray arrayWithObjects:errorString, nil];
-		NSDictionary *eDict = [NSDictionary dictionaryWithObjects:objArray forKeys:keyArray];
-		*error = [[[NSError alloc] initWithDomain:NSURLErrorDomain
-											 code:NSURLErrorCancelled userInfo:eDict] autorelease];
 	}
+	NSArray *keyArray = [NSArray arrayWithObjects:NSLocalizedDescriptionKey, nil];
+	NSArray *objArray = [NSArray arrayWithObjects:errorString, nil];
+	NSDictionary *eDict = [NSDictionary dictionaryWithObjects:objArray forKeys:keyArray];
+	*error = [[[NSError alloc] initWithDomain:NSURLErrorDomain
+										 code:NSURLErrorCancelled userInfo:eDict] autorelease];
 	[outstring release];
+	return result;
 }
 
 @end

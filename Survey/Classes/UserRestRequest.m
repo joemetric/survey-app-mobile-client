@@ -20,11 +20,15 @@
 	NSBundle* mainBundle = [NSBundle mainBundle];
 	NSNumber *version = [mainBundle objectForInfoDictionaryKey:@"CFBundleVersion"];
 	UIDevice *device = [UIDevice currentDevice];
-	NSString *body = [NSString stringWithFormat:@"user_session[login]=%@&user_session[password]=%@&client_version=%.1f&device_id=%@", 
+	NSString *body = [[NSString alloc] initWithFormat:@"user_session[login]=%@&user_session[password]=%@&client_version=%.1f&device_id=%@", 
 					  [NSString encodeString:user], [NSString encodeString:pass], [version floatValue], [device uniqueIdentifier]];
-	NSString *baseUrl = [NSString stringWithFormat:@"http://%@/user_session.json", ServerURL];
+	NSString *baseUrl = [[NSString alloc] initWithFormat:@"http://%@/user_session.json", ServerURL];
+	
 	NSURLResponse *response;
 	NSData *result = [RestRequest doPostWithUrl:baseUrl Body:body Error:error returningResponse:&response];
+	[body release];
+	[baseUrl release];
+	
 	if (!result) {		
 		return FALSE;
 	} else {
@@ -32,6 +36,7 @@
 			NSString *outstring = [[NSString alloc] initWithData:result
 														encoding:NSUTF8StringEncoding];
 			NSObject *result = [outstring JSONFragmentValue];
+			[outstring release];
 			if ([result isKindOfClass:[NSDictionary class]]) {
 				NSDictionary *dict = [(NSDictionary *)[[(NSDictionary *)result allValues] objectAtIndex:0] withoutNulls];
 				NSNumber *pk = [dict objectForKey:@"id"];
@@ -52,6 +57,7 @@
 				NSString *occupation = [dict objectForKey:@"occupation"];
 				NSNumber *sort_id = [dict objectForKey:@"sort_id"];
 				NSString *sort = [dict objectForKey:@"sort"];
+				NSString *warning = [dict objectForKey:@"warn_preference"];
 				
 				NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 				[dateFormatter setDateFormat:@"yyyy-MM-dd"];
@@ -64,10 +70,26 @@
 						  Martial_id:martial_id Race:race	Martial:martial Education_id:education_id
 						   Education:education Occupation_id:occupation_id Occupation:occupation
 							 Sort_id:sort_id Sort:sort];
+				if (warning) {
+					UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
+																	message:warning
+																   delegate:self
+														  cancelButtonTitle:@"OK"
+														  otherButtonTitles:nil];
+					[alert show];
+					[alert release];
+				}
 				[dateFormatter release];
 			}
+			
+			// If you want to get all of the cookies:
+			NSString *urlHost = [[NSString alloc] initWithFormat:@"http://%@", ServerURL];
+			NSArray * all = [NSHTTPCookie cookiesWithResponseHeaderFields:[(NSHTTPURLResponse *)response allHeaderFields] forURL:[NSURL URLWithString:urlHost]];
+			[[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookies:all forURL:[NSURL URLWithString:urlHost] mainDocumentURL:nil];
+			[urlHost release];
+			
 			return TRUE;
-		} else {		
+		} else {
 			[RestRequest failedResponse:result Error:error];
 			return FALSE;
 		}
@@ -76,11 +98,13 @@
 
 + (BOOL)signUpWithUser:(NSString *)user Password:(NSString *)pass Email:(NSString *)email 
 				  Name:(NSString *)name Error:(NSError **)error {
-	NSString *body = [NSString stringWithFormat:@"user[login]=%@&user[email]=%@&user[password]=%@&user[password_confirmation]=%@&user[name]=%@",
+	NSString *body = [[NSString alloc] initWithFormat:@"user[login]=%@&user[email]=%@&user[password]=%@&user[password_confirmation]=%@&user[name]=%@",
 					  [NSString encodeString:user], [NSString encodeString:email], [NSString encodeString:pass], [NSString encodeString:pass], [NSString encodeString:name]];
-	NSString *baseUrl = [NSString stringWithFormat:@"http://%@/users.json", ServerURL];
+	NSString *baseUrl = [[NSString alloc] initWithFormat:@"http://%@/users.json", ServerURL];
 	NSURLResponse *response;
 	NSData *result = [RestRequest doPostWithUrl:baseUrl Body:body Error:error returningResponse:&response];
+	[body release];
+	[baseUrl release];
 	
 	if (!result) {
 		return FALSE;
@@ -95,7 +119,7 @@
 }
 
 + (BOOL)saveWithUser:(User *)user Error:(NSError **)error {
-	NSMutableString *body = [NSMutableString string];
+	NSMutableString *body = [[NSMutableString alloc] init];
 	if (user.birthday)
 		[body appendFormat:@"user[birthdate]=%@&", [NSString encodeString:[user birthdate]]];
 	if (user.gender)
@@ -114,9 +138,12 @@
 		[body appendFormat:@"user[occupation_id]=%d&", [user.occupation_id intValue]];
 	if (user.sort_id)
 		[body appendFormat:@"user[sort_id]=%d&", [user.sort_id intValue]];
-	NSString *baseUrl = [NSString stringWithFormat:@"http://%@/users/%d.json", ServerURL, [user.pk intValue]];
+	NSString *baseUrl = [[NSString alloc] initWithFormat:@"http://%@/users/%d.json", ServerURL, [user.pk intValue]];
 	NSURLResponse *response;
 	NSData *result = [RestRequest doPutWithUrl:baseUrl Body:body Error:error returningResponse:&response];
+	[body release];
+	[baseUrl release];
+	
 	if (!result) {
 		return FALSE;
 	} else {

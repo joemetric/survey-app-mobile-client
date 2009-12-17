@@ -9,6 +9,7 @@
 #import "LoginController.h"
 #import "UserRestRequest.h"
 #import "SignupController.h"
+#import "SurveyAppDelegate.h"
 
 
 @implementation LoginController
@@ -147,6 +148,8 @@
 	BOOL result = [RestRequest loginWithUser:usernameField.text Password:passwordField.text Error:&error];
 	if (result) {
 		[self dismissModalViewControllerAnimated:YES];
+		SurveyAppDelegate *appDelegate = (SurveyAppDelegate *)[[UIApplication sharedApplication] delegate];
+		[appDelegate setLogined:TRUE];
 	} else {
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
 														message:[error localizedDescription]

@@ -53,13 +53,13 @@ static NSPredicate *loginTemplate = nil;
 	NSEntityDescription *entity = [NSEntityDescription entityForName:@"User" inManagedObjectContext:delegate.managedObjectContext];
 	[request setEntity:entity];
 	if (loginTemplate == nil) {
-		 [[NSPredicate predicateWithFormat:@"login = $login"] retain];
+		loginTemplate = [[NSPredicate predicateWithFormat:@"login = $login"] retain];
 	}
 	NSPredicate *predicate = [loginTemplate predicateWithSubstitutionVariables:[NSDictionary dictionaryWithObject:log forKey:@"login"]];
 	[request setPredicate:predicate];
 	NSError *error;
 	NSMutableArray *mutableFetchResults = [[delegate.managedObjectContext executeFetchRequest:request error:&error] mutableCopy];
-	User *user;
+	User *user = nil;
 	if (mutableFetchResults == nil) {
 		// Handle the error.
 	} else if ([mutableFetchResults count] == 0) {

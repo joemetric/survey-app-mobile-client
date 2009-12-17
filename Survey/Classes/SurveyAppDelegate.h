@@ -25,6 +25,8 @@
 	LoginController *loginController;
 	
 	Metadata *metadata;
+	
+	BOOL logined;
 }
 
 @property (nonatomic, retain, readonly) NSManagedObjectModel *managedObjectModel;
@@ -41,6 +43,7 @@
 @property (nonatomic, retain) IBOutlet LoginController *loginController;
 
 @property (nonatomic, retain) Metadata *metadata;
+@property (nonatomic, assign) BOOL logined;
 
 - (NSString *)applicationDocumentsDirectory;
 

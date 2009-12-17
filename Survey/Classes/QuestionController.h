@@ -10,10 +10,11 @@
 
 @class Survey, Question;
 
-@interface QuestionController : UIViewController <UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate> {
+@interface QuestionController : UIViewController <UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate> {
 	UILabel *nameLabel;
 	UILabel *descLabel;
-	UITextField *answerField;
+	UIButton *answerBackground;
+	UITextView *answerField;
 	UIButton *takeButton;
 	UIPickerView *choicePicker;
 	UIImageView *imageView;
@@ -27,7 +28,8 @@
 
 @property (nonatomic, retain) IBOutlet UILabel *nameLabel;
 @property (nonatomic, retain) IBOutlet UILabel *descLabel;
-@property (nonatomic, retain) IBOutlet UITextField *answerField;
+@property (nonatomic, retain) IBOutlet UIButton *answerBackground;
+@property (nonatomic, retain) IBOutlet UITextView *answerField;
 @property (nonatomic, retain) IBOutlet UIButton *takeButton;
 @property (nonatomic, retain) IBOutlet UIPickerView *choicePicker;
 @property (nonatomic, retain) IBOutlet UIImageView *imageView;

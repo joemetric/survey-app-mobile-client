@@ -22,7 +22,7 @@
 	[request setEntity:entity];
 	NSError *error;
 	NSMutableArray *mutableFetchResults = [[delegate.managedObjectContext executeFetchRequest:request error:&error] mutableCopy];
-	Metadata *metadata;
+	Metadata *metadata = nil;
 	if (mutableFetchResults == nil) {
 		// Handle the error.
 	} else if ([mutableFetchResults count] == 0) {

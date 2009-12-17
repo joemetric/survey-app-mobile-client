@@ -20,9 +20,10 @@
 
 + (NSMutableArray *)getSurveys:(NSError **)error {
 	NSString *model = [[UIDevice currentDevice] model];
-	NSString *baseUrl = [NSString stringWithFormat:@"http://%@/surveys.json?device=%@", ServerURL, [NSString encodeString:model]];
+	NSString *baseUrl = [[NSString alloc] initWithFormat:@"http://%@/surveys.json?device=%@", ServerURL, [NSString encodeString:model]];
 	NSURLResponse *response;
 	NSData *result = [RestRequest doGetWithUrl:baseUrl Error:error returningResponse:&response];
+	[baseUrl release];
 	
 	if (!result) {
 		return nil;
@@ -31,6 +32,7 @@
 			NSString *outstring = [[NSString alloc] initWithData:result
 														encoding:NSUTF8StringEncoding];
 			NSObject *result = [outstring JSONFragmentValue];
+			[outstring release];
 			NSMutableArray *surveys = [NSMutableArray array];
 			for (NSDictionary *dict in (NSArray *)result) {
 				NSDictionary *surveyDict = [(NSDictionary *)[[dict allValues] objectAtIndex:0] withoutNulls];
@@ -45,9 +47,11 @@
 }
 
 + (NSMutableArray *)getQuestions:(Survey *)survey Error:(NSError **)error {
-	NSString *baseUrl = [NSString stringWithFormat:@"http://%@/surveys/%d/questions.json", ServerURL, survey.pk];
+	NSString *baseUrl = [[NSString alloc] initWithFormat:@"http://%@/surveys/%d/questions.json", ServerURL, survey.pk];
 	NSURLResponse *response;
 	NSData *result = [RestRequest doGetWithUrl:baseUrl Error:error returningResponse:&response];
+	[baseUrl release];
+	
 	if (!result) {
 		return nil;
 	} else {
@@ -55,6 +59,7 @@
 			NSString *outstring = [[NSString alloc] initWithData:result
 														encoding:NSUTF8StringEncoding];
 			NSObject *result = [outstring JSONFragmentValue];
+			[outstring release];
 			NSMutableArray *questions = [NSMutableArray array];
 			for (NSDictionary *dict in (NSArray *)result) {
 				NSDictionary *questionDict = [(NSDictionary *)[[dict allValues] objectAtIndex:0] withoutNulls];
@@ -88,10 +93,12 @@
 }
 
 + (BOOL)answerQuestion:(Question *)question Answer:(NSString *)answer Error:(NSError **)error {
-	NSString *body = [NSString stringWithFormat:@"answer[answer]=%@", answer];
-	NSString *baseUrl = [NSString stringWithFormat:@"http://%@/questions/%d/answers", ServerURL, question.pk];
+	NSString *body = [[NSString alloc] initWithFormat:@"answer[answer]=%@", answer];
+	NSString *baseUrl = [[NSString alloc] initWithFormat:@"http://%@/questions/%d/answers", ServerURL, question.pk];
 	NSURLResponse *response;
 	NSData *result = [RestRequest doPostWithUrl:baseUrl Body:body Error:error returningResponse:&response];
+	[body release];
+	[baseUrl release];
 	
 	if (!result) {
 		return FALSE;
@@ -99,6 +106,7 @@
 		if (response && [response isKindOfClass:[NSHTTPURLResponse class]] && [(NSHTTPURLResponse *)response statusCode] == 201) {
 			NSString *outstring = [[NSString alloc] initWithData:result	encoding:NSUTF8StringEncoding];
 			NSObject *result = [outstring JSONFragmentValue];
+			[outstring release];
 			if ([result isKindOfClass:[NSDictionary class]]) {
 				NSDictionary *dict = [(NSDictionary *)[[(NSDictionary *)result allValues] objectAtIndex:0] withoutNulls];
 				NSInteger pk = [[dict objectForKey:@"id"] intValue];
@@ -117,9 +125,11 @@
 }
 
 + (BOOL)answerQuestion:(Question *)question Image:(UIImage *)image Error:(NSError **)error {
-	NSString *baseUrl = [NSString stringWithFormat:@"http://%@/questions/%d/answers", ServerURL, question.pk];
+	NSString *baseUrl = [[NSString alloc] initWithFormat:@"http://%@/questions/%d/answers", ServerURL, question.pk];
 	NSURL *url = [NSURL URLWithString:baseUrl];
 	NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
+	[baseUrl release];
+	
 	if (!urlRequest)
 	{
 		if (error != NULL) {
@@ -150,6 +160,7 @@
 		if (response && [response isKindOfClass:[NSHTTPURLResponse class]] && [(NSHTTPURLResponse *)response statusCode] == 201) {
 			NSString *outstring = [[NSString alloc] initWithData:result	encoding:NSUTF8StringEncoding];
 			NSObject *result = [outstring JSONFragmentValue];
+			[outstring release];
 			if ([result isKindOfClass:[NSDictionary class]]) {
 				NSDictionary *dict = [(NSDictionary *)[[(NSDictionary *)result allValues] objectAtIndex:0] withoutNulls];
 				NSInteger pk = [[dict objectForKey:@"id"] intValue];

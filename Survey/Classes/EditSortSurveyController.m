@@ -10,6 +10,7 @@
 #import "RestRequest.h"
 #import "MiscRestRequest.h"
 #import "SurveyAppDelegate.h"
+#import "BrowseController.h"
 #import "User.h"
 #import "Metadata.h"
 #import "KVPair.h"

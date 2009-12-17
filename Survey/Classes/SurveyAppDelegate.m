@@ -25,6 +25,7 @@
 @synthesize browseController, walletController, profileController, settingsController;
 @synthesize loginController;
 @synthesize metadata;
+@synthesize logined;
 
 
 #pragma mark -
@@ -35,20 +36,12 @@
     // Override point for customization after app launch    
 	[window addSubview:tabBarController.view];
 
-	NSError *error;
+	logined = FALSE;
 	if ((self.metadata = [Metadata getMetadata]) == nil) {
 		self.tabBarController.selectedIndex = 2;
 		[profileController.navigationController presentModalViewController:self.loginController animated:YES];
-	} else if (![RestRequest loginWithUser:self.metadata.user.login Password:self.metadata.user.password Error:&error]) {
-		self.tabBarController.selectedIndex = 2;
-		[profileController.navigationController presentModalViewController:self.loginController animated:YES];
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
-														message:[error localizedDescription]
-													   delegate:self
-											  cancelButtonTitle:@"OK"
-											  otherButtonTitles:nil];
-		[alert show];
-		[alert release];
+	} else {
+		[self performSelectorInBackground:@selector(tryLogin:) withObject:self.metadata.user];
 	}
 }
 
@@ -197,6 +190,30 @@
 	[super dealloc];
 }
 
+- (void)tryLogin:(User *)user {
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	
+	NSError *error;
+	if (![RestRequest loginWithUser:user.login Password:user.password Error:&error]) {
+		[self performSelectorOnMainThread:@selector(failLogin:) withObject:error waitUntilDone:YES];
+	} else {
+		logined = TRUE;
+	}
+	
+	[pool drain];
+}
+
+- (void)failLogin:(NSError *)error {
+	self.tabBarController.selectedIndex = 2;
+	[profileController.navigationController presentModalViewController:self.loginController animated:YES];
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
+													message:[error localizedDescription]
+												   delegate:self
+										  cancelButtonTitle:@"OK"
+										  otherButtonTitles:nil];
+	[alert show];
+	[alert release];
+}
 
 @end
 
