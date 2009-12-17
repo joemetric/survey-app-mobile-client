@@ -30,11 +30,11 @@
 		return FALSE;
 	}
 	
-	NSString *urlHost = [[NSString alloc] initWithFormat:@"http://%@", ServerURL];
-	NSArray * availableCookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:[NSURL URLWithString:urlHost]];
-	NSDictionary * headers = [NSHTTPCookie requestHeaderFieldsWithCookies:availableCookies];
-	[urlRequest setAllHTTPHeaderFields:headers];
-	[urlHost release];
+//	NSString *urlHost = [[NSString alloc] initWithFormat:@"http://%@", ServerURL];
+//	NSArray * availableCookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:[NSURL URLWithString:urlHost]];
+//	NSDictionary * headers = [NSHTTPCookie requestHeaderFieldsWithCookies:availableCookies];
+//	[urlRequest setAllHTTPHeaderFields:headers];
+//	[urlHost release];
 	
 	[urlRequest setHTTPMethod:method];
 	if (body) {

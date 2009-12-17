@@ -83,10 +83,10 @@
 			}
 			
 			// If you want to get all of the cookies:
-			NSString *urlHost = [[NSString alloc] initWithFormat:@"http://%@", ServerURL];
-			NSArray * all = [NSHTTPCookie cookiesWithResponseHeaderFields:[(NSHTTPURLResponse *)response allHeaderFields] forURL:[NSURL URLWithString:urlHost]];
-			[[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookies:all forURL:[NSURL URLWithString:urlHost] mainDocumentURL:nil];
-			[urlHost release];
+//			NSString *urlHost = [[NSString alloc] initWithFormat:@"http://%@", ServerURL];
+//			NSArray * all = [NSHTTPCookie cookiesWithResponseHeaderFields:[(NSHTTPURLResponse *)response allHeaderFields] forURL:[NSURL URLWithString:urlHost]];
+//			[[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookies:all forURL:[NSURL URLWithString:urlHost] mainDocumentURL:nil];
+//			[urlHost release];
 			
 			return TRUE;
 		} else {
