@@ -76,6 +76,8 @@
 				[errorString appendFormat:@"%@ %@\n", [error objectAtIndex:0], [error objectAtIndex:1]];
 			}
 		}
+	} else {
+		[errorString appendString:@"To have no errors\nWould be life without meaning\nNo struggle, no joy"];
 	}
 	NSArray *keyArray = [NSArray arrayWithObjects:NSLocalizedDescriptionKey, nil];
 	NSArray *objArray = [NSArray arrayWithObjects:errorString, nil];

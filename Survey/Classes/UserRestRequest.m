@@ -70,7 +70,7 @@
 						  Martial_id:martial_id Race:race	Martial:martial Education_id:education_id
 						   Education:education Occupation_id:occupation_id Occupation:occupation
 							 Sort_id:sort_id Sort:sort];
-				if (warning) {
+				if (warning && ![warning isEqualToString:@""]) {
 					UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
 																	message:warning
 																   delegate:self
