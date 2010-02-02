@@ -15,6 +15,7 @@
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28C3AD8A0F43EF2300507BA6 /* Survey.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 28C3AD890F43EF2300507BA6 /* Survey.xcdatamodel */; };
 		28D801B40F44B63D00FB423F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28D801B30F44B63D00FB423F /* CoreData.framework */; };
+		79EC79D411187CCA00D85FE2 /* PercentageToDonateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79EC79D311187CCA00D85FE2 /* PercentageToDonateController.m */; };
 		8211EC7610C46CD300A81E05 /* EditMartialController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8211EC7310C46CD300A81E05 /* EditMartialController.m */; };
 		8211EC7710C46CD300A81E05 /* EditRaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8211EC7510C46CD300A81E05 /* EditRaceController.m */; };
 		8211EC8A10C46D1A00A81E05 /* EditMartialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8211EC8810C46D1A00A81E05 /* EditMartialView.xib */; };
@@ -162,6 +163,8 @@
 		28D801B30F44B63D00FB423F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Survey_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Survey_Prefix.pch; sourceTree = "<group>"; };
+		79EC79D211187CCA00D85FE2 /* PercentageToDonateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PercentageToDonateController.h; sourceTree = "<group>"; };
+		79EC79D311187CCA00D85FE2 /* PercentageToDonateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PercentageToDonateController.m; sourceTree = "<group>"; };
 		8211EC7210C46CD300A81E05 /* EditMartialController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditMartialController.h; sourceTree = "<group>"; };
 		8211EC7310C46CD300A81E05 /* EditMartialController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditMartialController.m; sourceTree = "<group>"; };
 		8211EC7410C46CD300A81E05 /* EditRaceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditRaceController.h; sourceTree = "<group>"; };
@@ -593,6 +596,8 @@
 				821BE02D1074D36300584957 /* SettingsController.m */,
 				82256BC510D2253C00F0D191 /* EditSortSurveyController.h */,
 				82256BC610D2253C00F0D191 /* EditSortSurveyController.m */,
+				79EC79D211187CCA00D85FE2 /* PercentageToDonateController.h */,
+				79EC79D311187CCA00D85FE2 /* PercentageToDonateController.m */,
 			);
 			name = "Settings Controller";
 			sourceTree = "<group>";
@@ -910,6 +915,7 @@
 				8211ED3710C5D07500A81E05 /* EditEducationController.m in Sources */,
 				8211ED3810C5D07500A81E05 /* EditOccupationController.m in Sources */,
 				82256BC710D2253C00F0D191 /* EditSortSurveyController.m in Sources */,
+				79EC79D411187CCA00D85FE2 /* PercentageToDonateController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
