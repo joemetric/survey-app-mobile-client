@@ -19,7 +19,7 @@
 
 @synthesize surveyTable, instructionLabel;
 @synthesize surveys;
-@synthesize surveyController;
+@synthesize surveyController,surveyController,surveyAmt;
 @synthesize needRefresh;
 
 /*
@@ -63,6 +63,7 @@
 	instructionLabel.hidden = YES;
 	needRefresh = TRUE;
 }
+
 
 - (void)viewWillAppear:(BOOL)animated {
 	if (needRefresh) {
@@ -136,8 +137,8 @@
 - (void)builtNavigationTitle {
 	if ([self.surveys count] > 0) {
 		float total_cash = 0.0f;
-		for (Survey *survey in self.surveys) {
-			total_cash += [survey.total_payout floatValue];
+		for (surveyAmt in self.surveys) {
+			total_cash += [surveyAmt.total_payout floatValue];
 		}
 		UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(50, 0, 220, 44)];
 		UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 220, 22)];
@@ -210,7 +211,13 @@
 	[tableView deselectRowAtIndexPath:indexPath animated:NO];
 
 	Survey *survey = [surveys objectAtIndex:indexPath.row];
+	///////////////
+	amt = survey.total_payout;
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"amountPerSurvey" object:amt];
+	///////////////
 	[self.surveyController setSurvey:survey];
+
+		
 	[self.navigationController pushViewController:self.surveyController animated:YES];
 }
 
@@ -224,7 +231,7 @@
 		self.surveyController = sc;
 		[sc release];
 	}
-	return surveyController;
+		return surveyController;
 }
 
 - (void)removeSurvey:(Survey *)survey {

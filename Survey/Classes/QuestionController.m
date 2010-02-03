@@ -12,6 +12,7 @@
 #import "SurveyRestRequest.h"
 #import "SurveyAppDelegate.h"
 #import "BrowseController.h"
+#import "SurveyCompletion.h"
 
 
 @interface QuestionController (Private)
@@ -22,7 +23,7 @@
 @implementation QuestionController
 @synthesize nameLabel, descLabel, answerBackground, answerField, takeButton, choicePicker, imageView;
 @synthesize survey, questionIdx, question;
-@synthesize nextQuestionController;
+@synthesize nextQuestionController,surveyCompleted,survey;
 
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -132,6 +133,16 @@
 }
 
 - (void)submit {
+
+	//Mine Code
+	
+	SurveyAppDelegate* appDelegate = (SurveyAppDelegate*)[[UIApplication sharedApplication] delegate];
+	UIViewController* viewC = [self surveyCompleted];
+	[[appDelegate window] addSubview:viewC.view];
+	[self.navigationController popToRootViewControllerAnimated:YES]; // it will move to main Screen
+				
+	//>>>>>>>>>>
+	
 	NSString *answer = @"";
 	BOOL result = FALSE;
 	NSError *error;
@@ -291,6 +302,18 @@
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
 	[self dismissModalViewControllerAnimated:YES];
+}
+
+#pragma mark Adddin SurveyCompletionController
+
+- (SurveyCompletion *)surveyCompleted 
+{
+	if (surveyCompleted == nil) {
+		SurveyCompletion *sc = [[SurveyCompletion alloc] initWithNibName:@"SurveyCompletion" bundle:nil];
+		self.surveyCompleted = sc;
+		[sc release];
+	}
+	return surveyCompleted;
 }
 
 @end

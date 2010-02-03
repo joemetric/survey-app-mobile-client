@@ -16,7 +16,7 @@
 	NSNumber *total_payout;
 	
 	NSMutableArray *questions;
-	
+	NSNumber * amt;
 	NSString *pricing;
 }
 

@@ -16,8 +16,9 @@
 	
 	NSMutableArray *surveys;
 	SurveyController *surveyController;
-	
+	Survey *surveyAmt;
 	BOOL needRefresh;
+	NSNumber *amt;
 }
 
 @property (nonatomic, retain) IBOutlet UILabel *instructionLabel;
@@ -25,6 +26,7 @@
 @property (nonatomic, retain) NSMutableArray *surveys;
 @property (nonatomic, retain) SurveyController *surveyController;
 @property (nonatomic, assign) BOOL needRefresh;
+@property (nonatomic, assign) 	Survey *surveyAmt;
 
 - (void)removeSurvey:(Survey *)survey;
 

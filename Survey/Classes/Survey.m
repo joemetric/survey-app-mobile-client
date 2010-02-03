@@ -22,6 +22,7 @@
 	NSString *desc = [surveyDict objectForKey:@"description"];
 	NSNumber *payout = [surveyDict objectForKey:@"total_payout"];
 	Survey *survey = [[Survey alloc] initWithPk:pk Name:name Description:desc Payout:payout];
+	
 	return [survey autorelease];
 }
 
@@ -59,6 +60,7 @@
 //		pricing = [NSString stringWithFormat:@"$%.2f", [total_payout floatValue]];
 //	}
 //	return pricing;
+	
 	return [NSString stringWithFormat:@"$%.2f", [total_payout floatValue]];
 }
 

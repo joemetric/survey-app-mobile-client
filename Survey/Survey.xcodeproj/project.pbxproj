@@ -15,7 +15,12 @@
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28C3AD8A0F43EF2300507BA6 /* Survey.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 28C3AD890F43EF2300507BA6 /* Survey.xcdatamodel */; };
 		28D801B40F44B63D00FB423F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28D801B30F44B63D00FB423F /* CoreData.framework */; };
+		79C971A811193B9900EBC938 /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79C971A711193B9900EBC938 /* SettingsView.xib */; };
+		79C971DD1119462F00EBC938 /* SurveyCompletion.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C971DC1119462F00EBC938 /* SurveyCompletion.m */; };
+		79C971DF1119464300EBC938 /* SurveyCompletion.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79C971DE1119464300EBC938 /* SurveyCompletion.xib */; };
 		79EC79D411187CCA00D85FE2 /* PercentageToDonateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79EC79D311187CCA00D85FE2 /* PercentageToDonateController.m */; };
+		79EC79DE1118841000D85FE2 /* PercentageToDonateController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79EC79DD1118841000D85FE2 /* PercentageToDonateController.xib */; };
+		79EC79E21118845300D85FE2 /* SettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79EC79E11118845300D85FE2 /* SettingsController.m */; };
 		8211EC7610C46CD300A81E05 /* EditMartialController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8211EC7310C46CD300A81E05 /* EditMartialController.m */; };
 		8211EC7710C46CD300A81E05 /* EditRaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8211EC7510C46CD300A81E05 /* EditRaceController.m */; };
 		8211EC8A10C46D1A00A81E05 /* EditMartialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8211EC8810C46D1A00A81E05 /* EditMartialView.xib */; };
@@ -84,8 +89,6 @@
 		821BDDFD1074BEDE00584957 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28D801B30F44B63D00FB423F /* CoreData.framework */; };
 		821BDE581074C6D800584957 /* MetadataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 821BDCBB1074B6F400584957 /* MetadataTests.m */; };
 		821BDE681074C75700584957 /* UnitTests.octest in Resources */ = {isa = PBXBuildFile; fileRef = 821BDE531074C6A000584957 /* UnitTests.octest */; };
-		821BE0141074D14D00584957 /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 821BE0131074D14D00584957 /* SettingsView.xib */; };
-		821BE0151074D14D00584957 /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 821BE0131074D14D00584957 /* SettingsView.xib */; };
 		821BE0171074D16200584957 /* ProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 821BE0161074D16200584957 /* ProfileView.xib */; };
 		821BE0181074D16200584957 /* ProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 821BE0161074D16200584957 /* ProfileView.xib */; };
 		821BE01A1074D16F00584957 /* BrowseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 821BE0191074D16F00584957 /* BrowseView.xib */; };
@@ -95,7 +98,6 @@
 		821BE0251074D28500584957 /* BrowseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 821BE0241074D28500584957 /* BrowseController.m */; };
 		821BE0281074D29000584957 /* WalletController.m in Sources */ = {isa = PBXBuildFile; fileRef = 821BE0271074D29000584957 /* WalletController.m */; };
 		821BE02B1074D35800584957 /* ProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 821BE02A1074D35800584957 /* ProfileController.m */; };
-		821BE02E1074D36300584957 /* SettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 821BE02D1074D36300584957 /* SettingsController.m */; };
 		821BE04D1074DF2500584957 /* Metadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 821BE04A1074DF2500584957 /* Metadata.m */; };
 		821BE04E1074DF2500584957 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 821BE04C1074DF2500584957 /* User.m */; };
 		821BE07A1074E21F00584957 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 821BE0791074E21F00584957 /* LoginController.m */; };
@@ -163,8 +165,15 @@
 		28D801B30F44B63D00FB423F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Survey_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Survey_Prefix.pch; sourceTree = "<group>"; };
+		79C971A711193B9900EBC938 /* SettingsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
+		79C971DB1119462F00EBC938 /* SurveyCompletion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurveyCompletion.h; sourceTree = "<group>"; };
+		79C971DC1119462F00EBC938 /* SurveyCompletion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SurveyCompletion.m; sourceTree = "<group>"; };
+		79C971DE1119464300EBC938 /* SurveyCompletion.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SurveyCompletion.xib; sourceTree = "<group>"; };
 		79EC79D211187CCA00D85FE2 /* PercentageToDonateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PercentageToDonateController.h; sourceTree = "<group>"; };
 		79EC79D311187CCA00D85FE2 /* PercentageToDonateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PercentageToDonateController.m; sourceTree = "<group>"; };
+		79EC79DD1118841000D85FE2 /* PercentageToDonateController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PercentageToDonateController.xib; sourceTree = "<group>"; };
+		79EC79E01118845300D85FE2 /* SettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsController.h; sourceTree = "<group>"; };
+		79EC79E11118845300D85FE2 /* SettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsController.m; sourceTree = "<group>"; };
 		8211EC7210C46CD300A81E05 /* EditMartialController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditMartialController.h; sourceTree = "<group>"; };
 		8211EC7310C46CD300A81E05 /* EditMartialController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditMartialController.m; sourceTree = "<group>"; };
 		8211EC7410C46CD300A81E05 /* EditRaceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditRaceController.h; sourceTree = "<group>"; };
@@ -212,7 +221,6 @@
 		821BDE031074BEDE00584957 /* Survey-Info copy.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Survey-Info copy.plist"; sourceTree = "<group>"; };
 		821BDE531074C6A000584957 /* UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		821BDE541074C6A100584957 /* UnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnitTests-Info.plist"; sourceTree = "<group>"; };
-		821BE0131074D14D00584957 /* SettingsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
 		821BE0161074D16200584957 /* ProfileView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileView.xib; sourceTree = "<group>"; };
 		821BE0191074D16F00584957 /* BrowseView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BrowseView.xib; sourceTree = "<group>"; };
 		821BE01C1074D17800584957 /* WalletView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletView.xib; sourceTree = "<group>"; };
@@ -222,8 +230,6 @@
 		821BE0271074D29000584957 /* WalletController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletController.m; sourceTree = "<group>"; };
 		821BE0291074D35800584957 /* ProfileController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileController.h; sourceTree = "<group>"; };
 		821BE02A1074D35800584957 /* ProfileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileController.m; sourceTree = "<group>"; };
-		821BE02C1074D36300584957 /* SettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsController.h; sourceTree = "<group>"; };
-		821BE02D1074D36300584957 /* SettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsController.m; sourceTree = "<group>"; };
 		821BE0491074DF2500584957 /* Metadata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Metadata.h; sourceTree = "<group>"; };
 		821BE04A1074DF2500584957 /* Metadata.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Metadata.m; sourceTree = "<group>"; };
 		821BE04B1074DF2500584957 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
@@ -501,8 +507,10 @@
 		821BE00F1074D0F900584957 /* Settings View */ = {
 			isa = PBXGroup;
 			children = (
+				79C971DE1119464300EBC938 /* SurveyCompletion.xib */,
+				79C971A711193B9900EBC938 /* SettingsView.xib */,
+				79EC79DD1118841000D85FE2 /* PercentageToDonateController.xib */,
 				82256BC810D2274F00F0D191 /* EditSortView.xib */,
-				821BE0131074D14D00584957 /* SettingsView.xib */,
 			);
 			name = "Settings View";
 			sourceTree = "<group>";
@@ -592,12 +600,14 @@
 		821BE0221074D26700584957 /* Settings Controller */ = {
 			isa = PBXGroup;
 			children = (
-				821BE02C1074D36300584957 /* SettingsController.h */,
-				821BE02D1074D36300584957 /* SettingsController.m */,
+				79EC79E01118845300D85FE2 /* SettingsController.h */,
+				79EC79E11118845300D85FE2 /* SettingsController.m */,
 				82256BC510D2253C00F0D191 /* EditSortSurveyController.h */,
 				82256BC610D2253C00F0D191 /* EditSortSurveyController.m */,
 				79EC79D211187CCA00D85FE2 /* PercentageToDonateController.h */,
 				79EC79D311187CCA00D85FE2 /* PercentageToDonateController.m */,
+				79C971DB1119462F00EBC938 /* SurveyCompletion.h */,
+				79C971DC1119462F00EBC938 /* SurveyCompletion.m */,
 			);
 			name = "Settings Controller";
 			sourceTree = "<group>";
@@ -782,7 +792,6 @@
 				821BDC6A1074B24200584957 /* thumb-up.png in Resources */,
 				821BDDD61074BD0D00584957 /* Icon.png in Resources */,
 				821BDC6B1074B24200584957 /* tick.png in Resources */,
-				821BE0141074D14D00584957 /* SettingsView.xib in Resources */,
 				821BE0171074D16200584957 /* ProfileView.xib in Resources */,
 				821BE01A1074D16F00584957 /* BrowseView.xib in Resources */,
 				821BE01D1074D17800584957 /* WalletView.xib in Resources */,
@@ -804,6 +813,9 @@
 				8211ED3110C5D05E00A81E05 /* EditEducationView.xib in Resources */,
 				8211ED3210C5D05E00A81E05 /* EditOccupationView.xib in Resources */,
 				82256BC910D2274F00F0D191 /* EditSortView.xib in Resources */,
+				79EC79DE1118841000D85FE2 /* PercentageToDonateController.xib in Resources */,
+				79C971A811193B9900EBC938 /* SettingsView.xib in Resources */,
+				79C971DF1119464300EBC938 /* SurveyCompletion.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -835,7 +847,6 @@
 				821BDDEF1074BEDE00584957 /* thumb-up.png in Resources */,
 				821BDDF01074BEDE00584957 /* Icon.png in Resources */,
 				821BDDF11074BEDE00584957 /* tick.png in Resources */,
-				821BE0151074D14D00584957 /* SettingsView.xib in Resources */,
 				821BE0181074D16200584957 /* ProfileView.xib in Resources */,
 				821BE01B1074D16F00584957 /* BrowseView.xib in Resources */,
 				821BE01E1074D17800584957 /* WalletView.xib in Resources */,
@@ -881,7 +892,6 @@
 				821BE0251074D28500584957 /* BrowseController.m in Sources */,
 				821BE0281074D29000584957 /* WalletController.m in Sources */,
 				821BE02B1074D35800584957 /* ProfileController.m in Sources */,
-				821BE02E1074D36300584957 /* SettingsController.m in Sources */,
 				821BE04D1074DF2500584957 /* Metadata.m in Sources */,
 				821BE04E1074DF2500584957 /* User.m in Sources */,
 				821BE07A1074E21F00584957 /* LoginController.m in Sources */,
@@ -916,6 +926,8 @@
 				8211ED3810C5D07500A81E05 /* EditOccupationController.m in Sources */,
 				82256BC710D2253C00F0D191 /* EditSortSurveyController.m in Sources */,
 				79EC79D411187CCA00D85FE2 /* PercentageToDonateController.m in Sources */,
+				79EC79E21118845300D85FE2 /* SettingsController.m in Sources */,
+				79C971DD1119462F00EBC938 /* SurveyCompletion.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

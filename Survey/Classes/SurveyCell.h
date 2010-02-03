@@ -14,6 +14,7 @@
 	UIButton *priceButton;
 	UILabel *nameLabel;
 	Survey *survey;
+
 }
 
 @property (nonatomic, retain) IBOutlet UIButton *priceButton;

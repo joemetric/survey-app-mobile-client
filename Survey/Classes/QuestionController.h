@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class Survey, Question;
+@class Survey, Question,SurveyCompletion;
 
 @interface QuestionController : UIViewController <UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate> {
 	UILabel *nameLabel;
@@ -22,7 +22,8 @@
 	Survey *survey;
 	Question *question;
 	NSInteger questionIdx;
-	
+	SurveyCompletion *surveyCompleted; 
+
 	QuestionController *nextQuestionController;
 }
 
@@ -36,7 +37,10 @@
 @property (nonatomic, retain) Survey *survey;
 @property (nonatomic, assign) NSInteger questionIdx;
 @property (nonatomic, retain) Question *question;
+@property (nonatomic, retain) SurveyCompletion *surveyCompleted; 
+
 @property (nonatomic, retain) QuestionController *nextQuestionController;
+
 
 - (IBAction)takePhoto;
 

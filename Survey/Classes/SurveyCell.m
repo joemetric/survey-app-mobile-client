@@ -21,6 +21,11 @@
 }
 
 - (void)awakeFromNib {
+	
+}
+
+- (void) viewDidLoad{
+	
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

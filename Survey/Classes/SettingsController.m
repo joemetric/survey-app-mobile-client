@@ -5,6 +5,7 @@
 //  Created by Allerin on 09-10-1.
 //  Copyright 2009 Allerin. All rights reserved.
 //
+#import "PercentageToDonateController.h"
 
 #import "SettingsController.h"
 #import "SurveyAppDelegate.h"
@@ -12,12 +13,12 @@
 #import "User.h"
 #import "EditSortSurveyController.h"
 
-
 @implementation SettingsController
 @synthesize settingsTable;
 @synthesize newSurveyAlertCell, locationSpecificSurveyCell, sortSurveyCell, locationCell;
 @synthesize newSurveyAlertSwitch, locatonSpecificSurveySwitch, sortSurveyLabel;
 @synthesize editSortSurveyController;
+@synthesize additionalCharityContributionCell,selectedPercentage,percentageToDonateController;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -39,9 +40,19 @@
 	self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
 }
 
+- (void) selectedPercentageToDonate: (NSNotification*) notification{
+	selectedPercentage.textColor = [UIColor whiteColor];
+	selectedPercentage.text = notification.object;//percentages;
+}
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectedPercentageToDonate:)
+												 name:@"selectedPercentageToDonate" object:nil];
+
+	selectedPercentage.text = @"0%";
+	selectedPercentage.textColor = [UIColor whiteColor];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -75,6 +86,9 @@
 	self.sortSurveyLabel = nil;
 	self.locatonSpecificSurveySwitch = nil;
 	self.editSortSurveyController = nil;
+	self.additionalCharityContributionCell = nil;
+	self.selectedPercentage = nil;
+	self.percentageToDonateController = nil;
 }
 
 
@@ -88,6 +102,9 @@
 	[sortSurveyLabel release]; 
 	[locatonSpecificSurveySwitch release]; 
 	[editSortSurveyController release];
+	[additionalCharityContributionCell release];
+	[selectedPercentage release];
+	[percentageToDonateController release];
 	
     [super dealloc];
 }
@@ -96,15 +113,26 @@
 #pragma mark -
 #pragma mark LoginTable Delegate
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	if (indexPath.row == 1)
+		return 174;
+	else
+		return 44;
+}
+
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 	return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return 1;
+	return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {							
+	[settingsTable deselectRowAtIndexPath:indexPath animated:NO];
+
 	SurveyAppDelegate *delegate = (SurveyAppDelegate *)[[UIApplication sharedApplication] delegate];
 	User *user = delegate.metadata.user;
 	switch (indexPath.row) {
@@ -115,6 +143,8 @@
 //		case 2:
 			sortSurveyLabel.text = user.sort;
 			return sortSurveyCell;
+		case 1:
+			return additionalCharityContributionCell;
 //		case 3:
 //			return locationCell;
 		default:
@@ -122,6 +152,9 @@
 	}
 	return nil;
 }
+
+#pragma mark -
+#pragma mark bring XIBs
 
 - (IBAction)goToSortSurveyController:(id)sender {
 	[self.navigationController pushViewController:self.editSortSurveyController animated:YES];
@@ -135,5 +168,19 @@
 	}
 	return editSortSurveyController;
 }
+
+- (IBAction) goToSelectPercentageSlider:(id) sender {
+	[self.navigationController pushViewController:self.percentageToDonateController animated:YES];
+}
+
+- (PercentageToDonateController *)percentageToDonateController {
+	if (percentageToDonateController == nil) {
+		PercentageToDonateController *ptdc = [[PercentageToDonateController alloc] initWithNibName:@"PercentageToDonateController" bundle:nil];
+		self.percentageToDonateController = ptdc;
+		[ptdc release];
+	}
+	return percentageToDonateController;
+}
+
 
 @end

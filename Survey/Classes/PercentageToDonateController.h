@@ -10,15 +10,16 @@
 
 
 @interface PercentageToDonateController : UIViewController {
-	UIPickerView *percentageToDonatePicker;
-	NSString *percentageToDonate;
-	NSString *percentage;
-	NSInteger selectedRow;
+	UIPickerView	*percentageToDonatePicker;
+	NSString		*percentageToDonate;
+	NSString		*percentage;
+	NSInteger		selectedRow;
 }
 
-@property (nonatomic, retain) IBOutlet UIPickerView *percentageToDonatePicker;
 @property (nonatomic, retain) NSString *percentageToDonate;
 @property (nonatomic, retain) NSString *percentage;
+
+@property (nonatomic, retain) IBOutlet UIPickerView *percentageToDonatePicker;
 
 - (void)doneButtonClicked;
 
