@@ -127,7 +127,6 @@
 		takeButton.hidden = TRUE;
 		imageView.hidden = TRUE;
 	}
-	
 	nameLabel.text = self.question.name;
 	descLabel.text = self.question.description;
 }
@@ -135,14 +134,14 @@
 - (void)submit {
 
 	//Mine Code
-	
-	SurveyAppDelegate* appDelegate = (SurveyAppDelegate*)[[UIApplication sharedApplication] delegate];
-	UIViewController* viewC = [self surveyCompleted];
-	[[appDelegate window] addSubview:viewC.view];
-	[self.navigationController popToRootViewControllerAnimated:YES]; // it will move to main Screen
+
+//	SurveyAppDelegate* appDelegate = (SurveyAppDelegate*)[[UIApplication sharedApplication] delegate];
+//	UIViewController* viewC = [self surveyCompleted];
+//	[[appDelegate window] addSubview:viewC.view];
+//	[self.navigationController popToRootViewControllerAnimated:YES]; // it will move to main Screen
 				
 	//>>>>>>>>>>
-	
+
 	NSString *answer = @"";
 	BOOL result = FALSE;
 	NSError *error;
@@ -181,8 +180,12 @@
 	
 	if (questionIdx + 1 == [survey.questions count]) {
 		SurveyAppDelegate *appDelegate = (SurveyAppDelegate *)[[UIApplication sharedApplication] delegate];
+		UIViewController* viewC = [self surveyCompleted];
+		[[appDelegate window] addSubview:viewC.view];
+		[viewC viewDidLoad];
 		[appDelegate.browseController removeSurvey:survey];
 		[self.navigationController popToRootViewControllerAnimated:YES];
+
 	} else {
 		[self.nextQuestionController setSurvey:survey];
 		[self.nextQuestionController setQuestionIdx:questionIdx+1];
@@ -259,7 +262,6 @@
 	if (!retval) {
 		retval= [[[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, 280.0, 44.0)] autorelease];
 	}
-	
 	retval.text = [question.complement objectAtIndex:row];
 	retval.font = [UIFont boldSystemFontOfSize:20];
 	retval.backgroundColor = [UIColor clearColor];

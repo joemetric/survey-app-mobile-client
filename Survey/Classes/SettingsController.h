@@ -28,6 +28,7 @@
 
 	PercentageToDonateController	*percentageToDonateController;
 	EditSortSurveyController		*editSortSurveyController;
+	BOOL sliderBottonOn;
 }
 
 @property (nonatomic, retain) IBOutlet UITableView	*settingsTable;
@@ -45,7 +46,7 @@
 
 @property (nonatomic, retain) EditSortSurveyController *editSortSurveyController;
 @property (nonatomic, retain) PercentageToDonateController *percentageToDonateController;
-
+@property (nonatomic) 	BOOL sliderBottonOn;
 
 
 - (IBAction)goToSortSurveyController:(id)sender;

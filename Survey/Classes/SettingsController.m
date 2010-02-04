@@ -17,7 +17,7 @@
 @synthesize settingsTable;
 @synthesize newSurveyAlertCell, locationSpecificSurveyCell, sortSurveyCell, locationCell;
 @synthesize newSurveyAlertSwitch, locatonSpecificSurveySwitch, sortSurveyLabel;
-@synthesize editSortSurveyController;
+@synthesize editSortSurveyController,sliderBottonOn;
 @synthesize additionalCharityContributionCell,selectedPercentage,percentageToDonateController;
 
 /*
@@ -157,6 +157,7 @@
 #pragma mark bring XIBs
 
 - (IBAction)goToSortSurveyController:(id)sender {
+	self.sliderBottonOn = YES;
 	[self.navigationController pushViewController:self.editSortSurveyController animated:YES];
 }
 
@@ -177,6 +178,8 @@
 	if (percentageToDonateController == nil) {
 		PercentageToDonateController *ptdc = [[PercentageToDonateController alloc] initWithNibName:@"PercentageToDonateController" bundle:nil];
 		self.percentageToDonateController = ptdc;
+		sliderBottonOn = YES;
+
 		[ptdc release];
 	}
 	return percentageToDonateController;

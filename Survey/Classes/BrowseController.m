@@ -209,15 +209,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[tableView deselectRowAtIndexPath:indexPath animated:NO];
-
-	Survey *survey = [surveys objectAtIndex:indexPath.row];
-	///////////////
-	amt = survey.total_payout;
-	[[NSNotificationCenter defaultCenter] postNotificationName:@"amountPerSurvey" object:amt];
-	///////////////
-	[self.surveyController setSurvey:survey];
-
-		
+	surveyAmt = [surveys objectAtIndex:indexPath.row];
+	[self.surveyController setSurvey:surveyAmt];
 	[self.navigationController pushViewController:self.surveyController animated:YES];
 }
 

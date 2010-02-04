@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class BrowseController,Survey;
+@class BrowseController,Survey,SettingsController;
 @interface SurveyCompletion : UIViewController {
 	UIButton	*charityOrganizationImage1;
 	UIButton	*charityOrganizationImage2;
@@ -23,8 +23,11 @@
 	NSString	*donatedPercernatge;
 	NSInteger   selectedPercentage;
 	BrowseController *browseController;
+	SettingsController *settingsController;
 	NSNumber *amt;
 	float percetageCheck;
+	float surveyAmount;
+	float initialAmount;
 }
 
 @property(nonatomic,retain) IBOutlet UIButton	*charityOrganizationImage1;
@@ -39,6 +42,8 @@
 
 @property(nonatomic,retain) BrowseController	*browseController;
 @property(nonatomic,retain) NSString			*donatedPercernatge;
+
+@property(nonatomic,retain) 	SettingsController *settingsController;
 
 
 
