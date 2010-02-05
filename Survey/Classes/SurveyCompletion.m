@@ -47,7 +47,6 @@
 		genourisityLabel.hidden = YES;
 		earnedAmountLabel.text = [NSString stringWithFormat:@"$%0.2f",earnedAmount];
 	}
-		
 }
 	
 - (float) earnedAmountByUser:(float) percentage {

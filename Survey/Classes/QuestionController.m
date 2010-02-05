@@ -135,10 +135,10 @@
 
 	//Mine Code
 
-//	SurveyAppDelegate* appDelegate = (SurveyAppDelegate*)[[UIApplication sharedApplication] delegate];
-//	UIViewController* viewC = [self surveyCompleted];
-//	[[appDelegate window] addSubview:viewC.view];
-//	[self.navigationController popToRootViewControllerAnimated:YES]; // it will move to main Screen
+	SurveyAppDelegate* appDelegate = (SurveyAppDelegate*)[[UIApplication sharedApplication] delegate];
+	UIViewController* viewC = [self surveyCompleted];
+	[[appDelegate window] addSubview:viewC.view];
+	[self.navigationController popToRootViewControllerAnimated:YES]; // it will move to main Screen
 				
 	//>>>>>>>>>>
 
@@ -179,12 +179,12 @@
 	}
 	
 	if (questionIdx + 1 == [survey.questions count]) {
-		SurveyAppDelegate *appDelegate = (SurveyAppDelegate *)[[UIApplication sharedApplication] delegate];
-		UIViewController* viewC = [self surveyCompleted];
-		[[appDelegate window] addSubview:viewC.view];
-		[viewC viewDidLoad];
-		[appDelegate.browseController removeSurvey:survey];
-		[self.navigationController popToRootViewControllerAnimated:YES];
+		//SurveyAppDelegate *appDelegate = (SurveyAppDelegate *)[[UIApplication sharedApplication] delegate];
+	//	UIViewController* viewC = [self surveyCompleted];
+		//[[appDelegate window] addSubview:viewC.view];
+//		[viewC viewDidLoad];
+//		[appDelegate.browseController removeSurvey:survey];
+//		[self.navigationController popToRootViewControllerAnimated:YES];
 
 	} else {
 		[self.nextQuestionController setSurvey:survey];

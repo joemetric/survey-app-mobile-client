@@ -8,12 +8,12 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="46"/>
-			<integer value="12"/>
-			<integer value="1"/>
-			<integer value="9"/>
-			<integer value="52"/>
 			<integer value="10"/>
+			<integer value="52"/>
+			<integer value="12"/>
+			<integer value="46"/>
+			<integer value="9"/>
+			<integer value="1"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -390,7 +390,7 @@
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
-								<string key="IBUIText">Additional Charity </string>
+								<string key="IBUIText">Select percentage of your </string>
 								<reference key="IBUITextColor" ref="150116607"/>
 								<nil key="IBUIHighlightedColor"/>
 								<int key="IBUIBaselineAdjustment">1</int>
@@ -437,12 +437,12 @@
 							<object class="IBUILabel" id="404512781">
 								<reference key="NSNextResponder" ref="1042170359"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{6, 51}, {105, 21}}</string>
+								<string key="NSFrame">{{6, 51}, {209, 21}}</string>
 								<reference key="NSSuperview" ref="1042170359"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
-								<string key="IBUIText">Contributions:</string>
+								<string key="IBUIText">payout to donate to charity:</string>
 								<reference key="IBUITextColor" ref="150116607"/>
 								<nil key="IBUIHighlightedColor"/>
 								<int key="IBUIBaselineAdjustment">1</int>
@@ -456,7 +456,7 @@
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
-								<string key="IBUIText">NOTE: JoeMetric will pay on </string>
+								<string key="IBUIText">NOTE: JoeMetric will pay an </string>
 								<reference key="IBUIFont" ref="532705310"/>
 								<reference key="IBUITextColor" ref="150116607"/>
 								<nil key="IBUIHighlightedColor"/>
@@ -466,17 +466,18 @@
 							<object class="IBUILabel" id="661432952">
 								<reference key="NSNextResponder" ref="1042170359"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{7, 118}, {318, 21}}</string>
+								<string key="NSFrame">{{4, 111}, {248, 35}}</string>
 								<reference key="NSSuperview" ref="1042170359"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
-								<string key="IBUIText">additional 10% on top of your contribution</string>
+								<string key="IBUIText">additional 10% of your earnings on top of your contribution</string>
 								<reference key="IBUIFont" ref="532705310"/>
 								<reference key="IBUITextColor" ref="150116607"/>
 								<nil key="IBUIHighlightedColor"/>
 								<int key="IBUIBaselineAdjustment">1</int>
 								<float key="IBUIMinimumFontSize">1.000000e+01</float>
+								<int key="IBUINumberOfLines">2</int>
 							</object>
 						</object>
 						<string key="NSFrameSize">{320, 173}</string>
