@@ -3,7 +3,9 @@
 #define ServerPort 80
 //#define ServerURL @"survey.joemetric.com"
 
-//#define ServerURL @"203.129.204.130:3000"
+// For Static Server
+
+//#define ServerURL @"203.129.204.130:3000" 
 //#define ServerHost @"203.129.204.130:3000"
 
 

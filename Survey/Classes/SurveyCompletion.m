@@ -19,10 +19,7 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	initialAmount  = [settingsController.selectedPercentage.text floatValue];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(donationPercentageChanged:)
-												 name:@"selectedPercentageToDonate" object:nil];
-	[[NSNotificationCenter defaultCenter] postNotificationName:@"broadcastDonationpercentage" object:nil];
+	
 	SurveyAppDelegate* delegate = (SurveyAppDelegate*)[[UIApplication sharedApplication]  delegate];
 	Survey* survey = delegate.browseController.surveyAmt;
 	surveyAmount = [survey.total_payout floatValue]; 
@@ -30,35 +27,57 @@
 	donationAmountToCharityLabel.text =	@"$0.0";
 	earnedAmountLabel.text = [NSString stringWithFormat:@"$%0.2f",surveyAmount];
 	
+	//initialAmount  = [settingsController.selectedPercentage.text floatValue];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(donationPercentageChanged:)
+												 name:@"selectedPercentageToDonate" object:nil];
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"broadcastDonationpercentage" object:nil];
+	
+	
 }
 
 - (void) donationPercentageChanged:(NSNotification*) notification {
+	
+	
+	SurveyAppDelegate* delegate = (SurveyAppDelegate*)[[UIApplication sharedApplication]  delegate];
+	Survey* survey = delegate.browseController.surveyAmt;
+	surveyAmount = [survey.total_payout floatValue]; 
 	donatedPercernatge = [notification object];
 	percetageCheck = [donatedPercernatge floatValue];
 	float earnedAmount = 	[self earnedAmountByUser:percetageCheck];
+	float amountToDonate = [self amountToDonate:surveyAmount];
 	if (percetageCheck == 100) {
 		earnedAmountMessageLabel.hidden = YES;
 		earnedAmountLabel.hidden = YES;
 		genourisityLabel.hidden = NO;
+		donationAmountToCharityLabel.hidden = YES; 
 		genourisityLabel.text = @"Thank You For Your Generousity";
+		
 	}else {
 		earnedAmountMessageLabel.hidden = NO;
 		earnedAmountLabel.hidden = NO;
+		donationAmountToCharityLabel.hidden = NO; 
+
 		genourisityLabel.hidden = YES;
 		earnedAmountLabel.text = [NSString stringWithFormat:@"$%0.2f",earnedAmount];
+    	donationAmountToCharityLabel.text = [NSString stringWithFormat:@"$%0.2f",amountToDonate];
 	}
 }
 	
+- (float) amountToDonate:(float) amount
+{
+	float percentage = [donatedPercernatge floatValue];
+	float totalAmountToDonated = 0.0;
+	totalAmountToDonated = (amount * (percentage + 10.0)) / 100.0;
+	return totalAmountToDonated;
+} 
+
 - (float) earnedAmountByUser:(float) percentage {
 	float earnedAmount = 0.0; 
-	float totalAmountToDonated = 0.0;
 	SurveyAppDelegate* delegate = (SurveyAppDelegate*)[[UIApplication sharedApplication]  delegate];
 	Survey* survey = delegate.browseController.surveyAmt;
 	surveyAmount = [survey.total_payout floatValue]; 
 	percentage = [donatedPercernatge floatValue];
 	earnedAmount = surveyAmount - (percentage * surveyAmount) / 100.0;  
-	totalAmountToDonated = (surveyAmount * (percentage + 10.0)) / 100.0;
-	donationAmountToCharityLabel.text = [NSString stringWithFormat:@"$%0.2f",totalAmountToDonated];
 	return earnedAmount;
 }
 

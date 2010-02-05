@@ -11,14 +11,14 @@
 @class Survey, QuestionController;
 
 @interface SurveyController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
-	UITableView *questionsTable;
+	Survey				*survey;
+	QuestionController	*questionController;
+	UITableView			*questionsTable;
 	
-	Survey *survey;
-	QuestionController *questionController;
 }
 
-@property (nonatomic, retain) IBOutlet UITableView *questionsTable;
 @property (nonatomic, retain) Survey *survey;
+@property (nonatomic, retain) IBOutlet UITableView *questionsTable;
 @property (nonatomic, retain) QuestionController *questionController;
 
 - (IBAction)takeSurvey;

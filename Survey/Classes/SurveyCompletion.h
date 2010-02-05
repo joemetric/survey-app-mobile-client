@@ -24,7 +24,6 @@
 	NSInteger   selectedPercentage;
 	BrowseController *browseController;
 	SettingsController *settingsController;
-	NSNumber *amt;
 	float percetageCheck;
 	float surveyAmount;
 	float initialAmount;
@@ -49,4 +48,6 @@
 
 - (IBAction) saveAmountAndGotoMainScreenClicked:(UIButton*)image;
 - (float) earnedAmountByUser:(float) percentage;
+- (float) amountToDonate:(float) amount;
+
 @end

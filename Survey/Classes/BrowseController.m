@@ -14,9 +14,7 @@
 #import "SurveyAppDelegate.h"
 #import "WalletController.h"
 
-
 @implementation BrowseController
-
 @synthesize surveyTable, instructionLabel;
 @synthesize surveys;
 @synthesize surveyController,surveyController,surveyAmt;
@@ -59,7 +57,6 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
 	instructionLabel.hidden = YES;
 	needRefresh = TRUE;
 }
@@ -101,15 +98,16 @@
 	self.surveyTable = nil;
 	self.surveyController = nil;
 	self.surveys = nil;
+	self.surveyAmt = nil;
 }
 
 
 - (void)dealloc {
 	[instructionLabel release]; 
 	[surveyTable release]; 
-	[surveys release];
 	[surveyController release];
-	
+	[surveys release];
+	[surveyAmt release];
     [super dealloc];
 }
 
@@ -121,10 +119,11 @@
 	NSRunLoop *loop = [NSRunLoop currentRunLoop];
 	while (!appDelegate.logined) {
 		NSLog(@"Waiting for login");
+		[(UIActivityIndicatorView *)self.navigationItem.rightBarButtonItem.customView startAnimating];
 		[loop runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:1.0]];
 	}	
 	
-	[(UIActivityIndicatorView *)self.navigationItem.rightBarButtonItem.customView startAnimating];
+//	[(UIActivityIndicatorView *)self.navigationItem.rightBarButtonItem.customView startAnimating];
 	
 	NSError *error;
 	self.surveys = [RestRequest getSurveys:&error];

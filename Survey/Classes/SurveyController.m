@@ -66,12 +66,13 @@
 	// e.g. self.myOutlet = nil;
 	self.questionsTable = nil;
 	self.questionController = nil;
+	self.survey = nil;
 }
 
 
 - (void)dealloc {
-	[questionsTable release]; 
 	[survey release];
+	[questionsTable release]; 
 	[questionController release];
 	
     [super dealloc];
