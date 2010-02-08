@@ -48,6 +48,5 @@
 
 - (IBAction) saveAmountAndGotoMainScreenClicked:(UIButton*)image;
 - (float) earnedAmountByUser:(float) percentage;
-- (float) amountToDonate:(float) amount;
 
 @end

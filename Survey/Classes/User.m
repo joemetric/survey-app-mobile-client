@@ -94,7 +94,8 @@ static NSPredicate *loginTemplate = nil;
 		[Metadata saveWithUser:user];
 	}
 	[request release];
-		
+	[mutableFetchResults release];
+	[loginTemplate release];
 	return user;	
 }
 

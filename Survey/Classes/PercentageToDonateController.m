@@ -43,6 +43,7 @@
 
 #pragma mark -
 #pragma mark Sending Notification
+
 - (void) broadcastDonationpercentage:(NSNotification*) notification
 {
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"selectedPercentageToDonate" object:percentage];	
@@ -58,12 +59,13 @@
 	self.percentageToDonatePicker = nil;
 }
 
-- (void)dealloc {
+- (void)dealloc 
+{
 	[percentage release];
 
 	[percentageToDonate release];
 	[percentageToDonatePicker release];
-	[[NSNotificationCenter defaultCenter] removeObserver:self name:@"broadcastDonationpercentage" object:nil];
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
     [super dealloc];
 }
 

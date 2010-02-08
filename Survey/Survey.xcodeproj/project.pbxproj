@@ -15,6 +15,7 @@
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28C3AD8A0F43EF2300507BA6 /* Survey.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 28C3AD890F43EF2300507BA6 /* Survey.xcdatamodel */; };
 		28D801B40F44B63D00FB423F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28D801B30F44B63D00FB423F /* CoreData.framework */; };
+		79BF85DB111FE2BA0076B4FC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79BF85DA111FE2BA0076B4FC /* CoreLocation.framework */; };
 		79C971A811193B9900EBC938 /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79C971A711193B9900EBC938 /* SettingsView.xib */; };
 		79C971DD1119462F00EBC938 /* SurveyCompletion.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C971DC1119462F00EBC938 /* SurveyCompletion.m */; };
 		79C971DF1119464300EBC938 /* SurveyCompletion.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79C971DE1119464300EBC938 /* SurveyCompletion.xib */; };
@@ -165,6 +166,7 @@
 		28D801B30F44B63D00FB423F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Survey_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Survey_Prefix.pch; sourceTree = "<group>"; };
+		79BF85DA111FE2BA0076B4FC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		79C971A711193B9900EBC938 /* SettingsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
 		79C971DB1119462F00EBC938 /* SurveyCompletion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurveyCompletion.h; sourceTree = "<group>"; };
 		79C971DC1119462F00EBC938 /* SurveyCompletion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SurveyCompletion.m; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
 				28D801B40F44B63D00FB423F /* CoreData.framework in Frameworks */,
+				79BF85DB111FE2BA0076B4FC /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,6 +408,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				79BF85DA111FE2BA0076B4FC /* CoreLocation.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765A40DF7441C002DB57D /* CoreGraphics.framework */,

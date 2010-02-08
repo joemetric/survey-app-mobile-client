@@ -36,6 +36,7 @@
 		// Handle the error.
 	}
 	[request release];
+	[mutableFetchResults release];
 	[delegate setMetadata:metadata];
 }
 

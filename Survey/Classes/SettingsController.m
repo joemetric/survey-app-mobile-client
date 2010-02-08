@@ -48,12 +48,13 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
+	selectedPercentage.text = @"0%";
+	selectedPercentage.textColor = [UIColor whiteColor];
+
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectedPercentageToDonate:)
 												 name:@"selectedPercentageToDonate" object:nil];
 
-	selectedPercentage.text = @"0%";
-	selectedPercentage.textColor = [UIColor whiteColor];
-}
+	}
 
 - (void)viewWillAppear:(BOOL)animated {
 	[settingsTable reloadData];
@@ -106,6 +107,7 @@
 	[selectedPercentage release];
 	[percentageToDonateController release];
 	
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
     [super dealloc];
 }
 
@@ -115,7 +117,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	if (indexPath.row == 1)
+	if (indexPath.row == 2)
 		return 174;
 	else
 		return 44;
@@ -127,7 +129,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return 2;
+	return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {							
@@ -137,16 +139,15 @@
 	User *user = delegate.metadata.user;
 	switch (indexPath.row) {
 		case 0:
-//			return newSurveyAlertCell;
-//		case 1:
-//			return locationSpecificSurveyCell;
-//		case 2:
 			sortSurveyLabel.text = user.sort;
 			return sortSurveyCell;
+			//			return newSurveyAlertCell;
 		case 1:
+			return locationSpecificSurveyCell;
+		case 2:
 			return additionalCharityContributionCell;
-//		case 3:
-//			return locationCell;
+			//		case 3:
+			//			return locationCell;
 		default:
 			break;
 	}

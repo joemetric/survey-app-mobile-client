@@ -20,13 +20,6 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	
-	SurveyAppDelegate* delegate = (SurveyAppDelegate*)[[UIApplication sharedApplication]  delegate];
-	Survey* survey = delegate.browseController.surveyAmt;
-	surveyAmount = [survey.total_payout floatValue]; 
-	
-	donationAmountToCharityLabel.text =	@"$0.0";
-	earnedAmountLabel.text = [NSString stringWithFormat:@"$%0.2f",surveyAmount];
-	
 	//initialAmount  = [settingsController.selectedPercentage.text floatValue];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(donationPercentageChanged:)
 												 name:@"selectedPercentageToDonate" object:nil];
@@ -43,15 +36,19 @@
 	surveyAmount = [survey.total_payout floatValue]; 
 	donatedPercernatge = [notification object];
 	percetageCheck = [donatedPercernatge floatValue];
+	
+	float amountToDonate = 0.0;
+	amountToDonate =  (surveyAmount * (percetageCheck + 10.0)) / 100.0;
 	float earnedAmount = 	[self earnedAmountByUser:percetageCheck];
-	float amountToDonate = [self amountToDonate:surveyAmount];
+	
 	if (percetageCheck == 100) {
 		earnedAmountMessageLabel.hidden = YES;
 		earnedAmountLabel.hidden = YES;
 		genourisityLabel.hidden = NO;
-		donationAmountToCharityLabel.hidden = YES; 
+		donationAmountToCharityLabel.hidden = NO; 
 		genourisityLabel.text = @"Thank You For Your Generousity";
-		
+    	donationAmountToCharityLabel.text = [NSString stringWithFormat:@"$%0.2f",amountToDonate];
+
 	}else {
 		earnedAmountMessageLabel.hidden = NO;
 		earnedAmountLabel.hidden = NO;
@@ -63,13 +60,7 @@
 	}
 }
 	
-- (float) amountToDonate:(float) amount
-{
-	float percentage = [donatedPercernatge floatValue];
-	float totalAmountToDonated = 0.0;
-	totalAmountToDonated = (amount * (percentage + 10.0)) / 100.0;
-	return totalAmountToDonated;
-} 
+
 
 - (float) earnedAmountByUser:(float) percentage {
 	float earnedAmount = 0.0; 
@@ -104,8 +95,7 @@
 	[earnedAmountLabel release];
 	[donationAmountToCharityLabel release];
 	
-	[[NSNotificationCenter defaultCenter] removeObserver:self name:@"selectedPercentageToDonate" object:nil];
-	[[NSNotificationCenter defaultCenter] removeObserver:self name:@"amountPerSurvey" object:nil];
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 
 	[super dealloc];
 }
