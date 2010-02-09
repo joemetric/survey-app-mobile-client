@@ -14,7 +14,6 @@
 #import "BrowseController.h"
 #import "SurveyCompletion.h"
 
-
 @interface QuestionController (Private)
 - (void)buildView;
 - (void)submit;
@@ -23,7 +22,7 @@
 @implementation QuestionController
 @synthesize nameLabel, descLabel, answerBackground, answerField, takeButton, choicePicker, imageView;
 @synthesize survey, questionIdx, question;
-@synthesize nextQuestionController,surveyCompleted,survey;
+@synthesize nextQuestionController,surveyCompleted;
 
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -133,13 +132,14 @@
 
 - (void)submit {
 
+	//SurveyAppDelegate *appDelegate = (SurveyAppDelegate *)[[UIApplication sharedApplication] delegate];
+	//[appDelegate.browseController removeSurvey:survey];
 	//Mine Code
-
 	//SurveyAppDelegate* appDelegate = (SurveyAppDelegate*)[[UIApplication sharedApplication] delegate];
 //	UIViewController* viewC = [self surveyCompleted];
 //	[[appDelegate window] addSubview:viewC.view];
 //	[self.navigationController popToRootViewControllerAnimated:YES]; // it will move to main Screen
-				
+////				
 	//>>>>>>>>>>
 
 	NSString *answer = @"";
@@ -182,14 +182,14 @@
 		SurveyAppDelegate *appDelegate = (SurveyAppDelegate *)[[UIApplication sharedApplication] delegate];
 		UIViewController* viewC = [self surveyCompleted];
 		[[appDelegate window] addSubview:viewC.view];
-		[appDelegate.browseController removeSurvey:survey];
 		[self.navigationController popToRootViewControllerAnimated:YES];
-
+    	
 	} else {
 		[self.nextQuestionController setSurvey:survey];
 		[self.nextQuestionController setQuestionIdx:questionIdx+1];
 		[self.navigationController pushViewController:self.nextQuestionController animated:YES];
 	}
+			
 }
 
 /*
@@ -219,6 +219,7 @@
 	self.imageView = nil;
 	self.nextQuestionController = nil;
 	self.surveyCompleted = nil;
+	self.survey = nil;
 }
 
 
@@ -245,7 +246,8 @@
 }
 
 - (QuestionController *)nextQuestionController {
-	if (nextQuestionController == nil) {
+	if (nextQuestionController == nil) 
+	{
 		QuestionController *qc = [[QuestionController alloc] initWithNibName:@"QuestionView" bundle:nil];
 		self.nextQuestionController = qc;
 		[qc release];

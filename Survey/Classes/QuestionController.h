@@ -41,7 +41,6 @@
 
 @property (nonatomic, retain) QuestionController *nextQuestionController;
 
-
 - (IBAction)takePhoto;
 
 @end

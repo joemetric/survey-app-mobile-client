@@ -22,6 +22,7 @@
 	UILabel		*genourisityLabel;
 	NSString	*donatedPercernatge;
 	NSInteger   selectedPercentage;
+	Survey *sur;
 	BrowseController *browseController;
 	SettingsController *settingsController;
 	float percetageCheck;
@@ -48,5 +49,6 @@
 
 - (IBAction) saveAmountAndGotoMainScreenClicked:(UIButton*)image;
 - (float) earnedAmountByUser:(float) percentage;
+- (void) calulateAmount;
 
 @end

@@ -5,6 +5,8 @@
 //  Created by mobile06 on 22/01/10.
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
+#import "QuestionController.h"
+#import "SurveyController.h"
 #import "SurveyAppDelegate.h"
 #import "SurveyCompletion.h"
 #import "BrowseController.h"
@@ -24,20 +26,21 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(donationPercentageChanged:)
 												 name:@"selectedPercentageToDonate" object:nil];
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"broadcastDonationpercentage" object:nil];
-	
-	
+
 }
 
 - (void) donationPercentageChanged:(NSNotification*) notification {
-	
-	
+	donatedPercernatge = [[notification object] retain];
+	[self calulateAmount];
+}
+
+- (void) calulateAmount{
+	float amountToDonate;
 	SurveyAppDelegate* delegate = (SurveyAppDelegate*)[[UIApplication sharedApplication]  delegate];
 	Survey* survey = delegate.browseController.surveyAmt;
 	surveyAmount = [survey.total_payout floatValue]; 
-	donatedPercernatge = [notification object];
 	percetageCheck = [donatedPercernatge floatValue];
 	
-	float amountToDonate = 0.0;
 	amountToDonate =  (surveyAmount * (percetageCheck + 10.0)) / 100.0;
 	float earnedAmount = 	[self earnedAmountByUser:percetageCheck];
 	
@@ -45,10 +48,8 @@
 		earnedAmountMessageLabel.hidden = YES;
 		earnedAmountLabel.hidden = YES;
 		genourisityLabel.hidden = NO;
-		donationAmountToCharityLabel.hidden = NO; 
 		genourisityLabel.text = @"Thank You For Your Generousity";
-    	donationAmountToCharityLabel.text = [NSString stringWithFormat:@"$%0.2f",amountToDonate];
-
+		donationAmountToCharityLabel.text = [NSString stringWithFormat:@"$%0.2f",amountToDonate];
 	}else {
 		earnedAmountMessageLabel.hidden = NO;
 		earnedAmountLabel.hidden = NO;
@@ -60,8 +61,6 @@
 	}
 }
 	
-
-
 - (float) earnedAmountByUser:(float) percentage {
 	float earnedAmount = 0.0; 
 	SurveyAppDelegate* delegate = (SurveyAppDelegate*)[[UIApplication sharedApplication]  delegate];
@@ -84,6 +83,7 @@
 	self.charityOrganizationImage5 = nil;
 	self.earnedAmountLabel = nil;
 	self.donationAmountToCharityLabel = nil;
+	self.donatedPercernatge = nil;
 }
 
 - (void)dealloc {
@@ -94,6 +94,7 @@
 	[charityOrganizationImage5 release];
 	[earnedAmountLabel release];
 	[donationAmountToCharityLabel release];
+	[donatedPercernatge release];
 	
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 
@@ -105,6 +106,10 @@
 
 - (IBAction) saveAmountAndGotoMainScreenClicked:(UIButton*)image {
 		if(image == charityOrganizationImage1) {
+			//SurveyAppDelegate* delegate = (SurveyAppDelegate*)[[UIApplication sharedApplication]  delegate];
+//			QuestionController* ques = delegate.browseController.surveyController.questionController;
+//			Survey *surveyToDelete = ques.survey;
+//			[delegate.browseController removeSurvey:surveyToDelete];
 			[self.view removeFromSuperview];
 		}
 		else if(image == charityOrganizationImage2) {

@@ -27,7 +27,7 @@
 
 - (void)doneButtonClicked 
 {	
-	percentage = [NSString stringWithFormat:@"%d%%", selectedRow * 10];
+	percentage = [[NSString stringWithFormat:@"%d%%", selectedRow * 10] retain];
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"selectedPercentageToDonate" object:percentage];	
 	[self.navigationController popViewControllerAnimated:YES];
 }

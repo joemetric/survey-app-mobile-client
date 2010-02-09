@@ -16,7 +16,6 @@
 	NSMutableArray		*surveys;
 	SurveyController	*surveyController;
 	Survey				*surveyAmt;
-
 	BOOL needRefresh;
 }
 
