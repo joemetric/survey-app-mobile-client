@@ -15,7 +15,7 @@
 	UIButton	*charityOrganizationImage3;
 	UIButton	*charityOrganizationImage4;
 	UIButton	*charityOrganizationImage5;
-	
+	  
 	UILabel		*earnedAmountLabel;
 	UILabel		*donationAmountToCharityLabel;
 	UILabel		*earnedAmountMessageLabel;
