@@ -15,7 +15,6 @@
 #import "Metadata.h"
 #import "KVPair.h"
 
-
 @implementation EditSortSurveyController
 @synthesize sortPicker, sortArray;
 
@@ -134,7 +133,7 @@
 	if (!retval) {
 		retval= [[[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, 280.0, 44.0)] autorelease];
 	}
-	
+
 	KVPair *sort = (KVPair *)[self.sortArray objectAtIndex:row];
 	retval.text = sort.desc;
 	retval.font = [UIFont boldSystemFontOfSize:20];

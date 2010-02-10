@@ -132,15 +132,10 @@
 
 - (void)submit {
 
-	//SurveyAppDelegate *appDelegate = (SurveyAppDelegate *)[[UIApplication sharedApplication] delegate];
-	//[appDelegate.browseController removeSurvey:survey];
-	//Mine Code
-	//SurveyAppDelegate* appDelegate = (SurveyAppDelegate*)[[UIApplication sharedApplication] delegate];
-//	UIViewController* viewC = [self surveyCompleted];
-//	[[appDelegate window] addSubview:viewC.view];
-//	[self.navigationController popToRootViewControllerAnimated:YES]; // it will move to main Screen
-////				
-	//>>>>>>>>>>
+	SurveyAppDelegate *appDelegate = (SurveyAppDelegate *)[[UIApplication sharedApplication] delegate];
+	UIViewController* viewC = [self surveyCompleted];
+	[[appDelegate window] addSubview:viewC.view];
+	[self.navigationController popToRootViewControllerAnimated:YES];
 
 	NSString *answer = @"";
 	BOOL result = FALSE;
@@ -179,10 +174,10 @@
 	}
 	
 	if (questionIdx + 1 == [survey.questions count]) {
-		SurveyAppDelegate *appDelegate = (SurveyAppDelegate *)[[UIApplication sharedApplication] delegate];
-		UIViewController* viewC = [self surveyCompleted];
-		[[appDelegate window] addSubview:viewC.view];
-		[self.navigationController popToRootViewControllerAnimated:YES];
+//		SurveyAppDelegate *appDelegate = (SurveyAppDelegate *)[[UIApplication sharedApplication] delegate];
+//		UIViewController* viewC = [self surveyCompleted];
+//		[[appDelegate window] addSubview:viewC.view];
+//		[self.navigationController popToRootViewControllerAnimated:YES];
     	
 	} else {
 		[self.nextQuestionController setSurvey:survey];
@@ -313,8 +308,15 @@
 - (SurveyCompletion *)surveyCompleted 
 {
 	if (surveyCompleted == nil) {
-		surveyCompleted = [[SurveyCompletion alloc] initWithNibName:@"SurveyCompletion" bundle:nil];
+		SurveyCompletion	*sc = [[SurveyCompletion alloc] initWithNibName:@"SurveyCompletion" bundle:nil];
+		self.surveyCompleted  = sc;
+		[sc release];
 	}
+	else{
+		SurveyCompletion	*sc = [[SurveyCompletion alloc] initWithNibName:@"SurveyCompletion" bundle:nil];
+		self.surveyCompleted  = sc;
+		[sc release];
+}
 	return surveyCompleted;
 }
 

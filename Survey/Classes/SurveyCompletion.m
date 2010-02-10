@@ -21,7 +21,11 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	
+	SurveyAppDelegate* delegate = (SurveyAppDelegate*)[[UIApplication sharedApplication]  delegate];
+	Survey* survey = delegate.browseController.surveyAmt;
+	surveyAmount = [survey.total_payout floatValue]; 
+	earnedAmountLabel.text = [NSString stringWithFormat:@"$%0.2f",surveyAmount];
+	donationAmountToCharityLabel.text = @"$0.0";
 	//initialAmount  = [settingsController.selectedPercentage.text floatValue];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(donationPercentageChanged:)
 												 name:@"selectedPercentageToDonate" object:nil];
@@ -105,23 +109,29 @@
 #pragma mark own class's FUNCTION
 
 - (IBAction) saveAmountAndGotoMainScreenClicked:(UIButton*)image {
-		if(image == charityOrganizationImage1) {
-			//SurveyAppDelegate* delegate = (SurveyAppDelegate*)[[UIApplication sharedApplication]  delegate];
-//			QuestionController* ques = delegate.browseController.surveyController.questionController;
-//			Survey *surveyToDelete = ques.survey;
-//			[delegate.browseController removeSurvey:surveyToDelete];
+	SurveyAppDelegate* delegate = (SurveyAppDelegate*)[[UIApplication sharedApplication]  delegate];
+	QuestionController* ques = delegate.browseController.surveyController.questionController;
+	Survey *surveyToDelete = ques.survey;
+	
+	if(image == charityOrganizationImage1) {
+			[delegate.browseController removeSurvey:surveyToDelete];
 			[self.view removeFromSuperview];
 		}
 		else if(image == charityOrganizationImage2) {
+			[delegate.browseController removeSurvey:surveyToDelete];
 			[self.view removeFromSuperview];
 		}
 		else if(image == charityOrganizationImage3){
+			[delegate.browseController removeSurvey:surveyToDelete];
 			[self.view removeFromSuperview];
 		}
 		else if(image == charityOrganizationImage4){
+			[delegate.browseController removeSurvey:surveyToDelete];
+
 			[self.view removeFromSuperview];
 		}
 		else{
+			[delegate.browseController removeSurvey:surveyToDelete];
 			[self.view removeFromSuperview];
 		}
 }
