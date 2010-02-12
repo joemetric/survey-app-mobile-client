@@ -53,7 +53,6 @@
 
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectedPercentageToDonate:)
 												 name:@"selectedPercentageToDonate" object:nil];
-
 	}
 
 - (void)viewWillAppear:(BOOL)animated {

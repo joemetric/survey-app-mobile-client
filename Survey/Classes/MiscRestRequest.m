@@ -47,6 +47,7 @@
 
 + (NSMutableArray *)getKVArray:(NSString *)key Error:(NSError **)error {
 	NSString *baseUrl = [[NSString alloc] initWithFormat:@"http://%@/users/%@.json", ServerURL, key];
+	NSLog(baseUrl);
 	NSMutableArray *results = [self getKVPairArray:baseUrl Error:error];
 	[baseUrl release];
 	return results;

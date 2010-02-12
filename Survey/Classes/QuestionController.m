@@ -132,11 +132,13 @@
 
 - (void)submit {
 
+#if 0	
 	SurveyAppDelegate *appDelegate = (SurveyAppDelegate *)[[UIApplication sharedApplication] delegate];
 	UIViewController* viewC = [self surveyCompleted];
 	[[appDelegate window] addSubview:viewC.view];
 	[self.navigationController popToRootViewControllerAnimated:YES];
-
+#endif
+	
 	NSString *answer = @"";
 	BOOL result = FALSE;
 	NSError *error;
@@ -174,10 +176,10 @@
 	}
 	
 	if (questionIdx + 1 == [survey.questions count]) {
-//		SurveyAppDelegate *appDelegate = (SurveyAppDelegate *)[[UIApplication sharedApplication] delegate];
-//		UIViewController* viewC = [self surveyCompleted];
-//		[[appDelegate window] addSubview:viewC.view];
-//		[self.navigationController popToRootViewControllerAnimated:YES];
+		SurveyAppDelegate *appDelegate = (SurveyAppDelegate *)[[UIApplication sharedApplication] delegate];
+		UIViewController* viewC = [self surveyCompleted];
+		[[appDelegate window] addSubview:viewC.view];
+		[self.navigationController popToRootViewControllerAnimated:YES];
     	
 	} else {
 		[self.nextQuestionController setSurvey:survey];
