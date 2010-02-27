@@ -12,11 +12,9 @@
 #import "RestRequest.h"
 #import "UserRestRequest.h"
 
-
 static NSPredicate *loginTemplate = nil;
 
 @implementation User 
-
 @dynamic pk;
 @dynamic email;
 @dynamic login;

@@ -16,7 +16,6 @@
 
 + (void)saveWithUser:(User *)u {
 	SurveyAppDelegate *delegate = (SurveyAppDelegate *)[[UIApplication sharedApplication] delegate];
-	
 	NSFetchRequest *request = [[NSFetchRequest alloc] init];
 	NSEntityDescription *entity = [NSEntityDescription entityForName:@"Metadata" inManagedObjectContext:delegate.managedObjectContext];
 	[request setEntity:entity];

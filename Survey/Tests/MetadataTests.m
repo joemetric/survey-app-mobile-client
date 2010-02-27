@@ -22,7 +22,5 @@
 - (void) testMath {    
     STAssertTrue((1+1)==2, @"Compiler isn't feeling well today :-(" );
 }
-
 #endif
-
 @end

@@ -18,6 +18,7 @@
 
 + (NSMutableArray *)getPendingTransfers:(User *)user Error:(NSError **)error {
 	NSString *baseUrl = [[NSString alloc] initWithFormat:@"http://%@/users/%d/transfers/pending.json", ServerURL, [user.pk intValue]];
+
 	NSURLResponse *response;
 	NSData *result = [RestRequest doGetWithUrl:baseUrl Error:error returningResponse:&response];
 	[baseUrl release];

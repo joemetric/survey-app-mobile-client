@@ -6,6 +6,8 @@
 //  Copyright 2009 Allerin. All rights reserved.
 //
 
+#import "User.h"
+
 #import "ProfileController.h"
 #import "SurveyAppDelegate.h"
 #import "Model.h"
@@ -18,7 +20,6 @@
 #import "EditEducationController.h"
 #import "EditOccupationController.h"
 
-
 @implementation ProfileController
 
 @synthesize profileTable, emailCell, birthdayCell, genderCell, zipcodeCell, incomeCell;
@@ -27,7 +28,7 @@
 @synthesize raceLabel, martialLabel, educationLabel, occupationLabel;
 @synthesize editBirthdayController, editGenderController, editIncomingController, editZipcodeController;
 @synthesize editRaceController, editMartialController, editEducationController, editOccupationController;
-
+@synthesize userPk;
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {

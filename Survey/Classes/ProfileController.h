@@ -10,7 +10,7 @@
 
 @class EditBirthdayController, EditGenderController, EditIncomingController;
 @class EditRaceController, EditMartialController, EditZipcodeController;
-@class EditEducationController, EditOccupationController;
+@class EditEducationController, EditOccupationController,User;
 
 @interface ProfileController : UIViewController {
 	UITableView *profileTable;
@@ -33,6 +33,7 @@
 	UILabel *educationLabel;
 	UILabel *occupationLabel;
 	
+	User* userPk;
 	EditBirthdayController *editBirthdayController;
 	EditGenderController *editGenderController;
 	EditZipcodeController *editZipcodeController;
@@ -71,5 +72,7 @@
 @property (nonatomic, retain) EditMartialController *editMartialController;
 @property (nonatomic, retain) EditEducationController *editEducationController;
 @property (nonatomic, retain) EditOccupationController *editOccupationController;
+@property (nonatomic, retain) User* userPk;
+
 
 @end

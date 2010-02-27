@@ -107,7 +107,7 @@
 			NSString *outstring = [[NSString alloc] initWithData:result	encoding:NSUTF8StringEncoding];
 			NSObject *result = [outstring JSONFragmentValue];
 			[outstring release];
-			if ([result isKindOfClass:[NSDictionary class]]) {
+					if ([result isKindOfClass:[NSDictionary class]]) {
 				NSDictionary *dict = [(NSDictionary *)[[(NSDictionary *)result allValues] objectAtIndex:0] withoutNulls];
 				NSInteger pk = [[dict objectForKey:@"id"] intValue];
 				NSString *text = [dict objectForKey:@"answer"];
@@ -117,6 +117,36 @@
 			}
 			
 			return TRUE;
+		} else {
+			[RestRequest failedResponse:result Error:error];
+			return FALSE;
+		}
+	}
+}
+
++ (BOOL)OrganizationId:(int)org_id SurveyId:(int)sur_id UserId:(int)user_id amount_earned:(NSString*)amount_earned Error:(NSError **)error {
+	
+	NSString *s = [NSString stringWithFormat:@"%@",amount_earned];
+	NSString *body = [[NSString alloc] initWithFormat:@"nonprofit_org_id=%d&survey_id=%d&user_id=%d&action[action]=create&controller[controller]=charityorgs&earnings[amount_earned]=%@& ",
+					  org_id,sur_id,user_id,[NSString encodeString:s]];
+	NSString *baseUrl = [[NSString alloc] initWithFormat:@"http://%@/charityorgs",ServerURL];
+	NSURLResponse *response;
+	NSData *result = [RestRequest doPostWithUrl:baseUrl Body:body Error:error returningResponse:&response];
+	[body release];
+	[s release];
+	[baseUrl release];
+		if (!result) {
+		return FALSE;
+	} else {
+		if (response && [response isKindOfClass:[NSHTTPURLResponse class]] && [(NSHTTPURLResponse *)response statusCode] == 201) {
+			NSString *outstring = [[NSString alloc] initWithData:result	encoding:NSUTF8StringEncoding];
+			NSObject *result = [outstring JSONFragmentValue];
+			[outstring release];
+			if ([result isKindOfClass:[NSDictionary class]]) {
+				NSDictionary *dict = [(NSDictionary *)[[(NSDictionary *)result allValues] objectAtIndex:0] withoutNulls];
+				NSLog([dict description]);
+				}
+	return TRUE;
 		} else {
 			[RestRequest failedResponse:result Error:error];
 			return FALSE;

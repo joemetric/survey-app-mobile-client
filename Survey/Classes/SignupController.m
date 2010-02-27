@@ -155,6 +155,7 @@
 	}
 	
 	NSError *error;
+	
 	BOOL result = [RestRequest signUpWithUser:loginField.text Password:passwordField.text Email:emailField.text Name:nameField.text Error:&error];
 	if (result) {
 		[self.loginController setIsSignUp:TRUE];

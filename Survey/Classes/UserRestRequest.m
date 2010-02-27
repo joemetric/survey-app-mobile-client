@@ -23,10 +23,9 @@
 	NSString *body = [[NSString alloc] initWithFormat:@"user_session[login]=%@&user_session[password]=%@&client_version=%.1f&device_id=%@", 
 					  [NSString encodeString:user], [NSString encodeString:pass], [version floatValue], [device uniqueIdentifier]];
 	NSString *baseUrl = [[NSString alloc] initWithFormat:@"http://%@/user_session.json", ServerURL];
-	
 	NSURLResponse *response;
 	NSData *result = [RestRequest doPostWithUrl:baseUrl Body:body Error:error returningResponse:&response];
-	[body release];
+		[body release];
 	[baseUrl release];
 	
 	if (!result) {		
@@ -39,6 +38,7 @@
 			[outstring release];
 			if ([result isKindOfClass:[NSDictionary class]]) {
 				NSDictionary *dict = [(NSDictionary *)[[(NSDictionary *)result allValues] objectAtIndex:0] withoutNulls];
+			
 				NSNumber *pk = [dict objectForKey:@"id"];
 				NSString *email = [dict objectForKey:@"email"];
 				NSString *login = [dict objectForKey:@"login"];

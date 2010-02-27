@@ -16,8 +16,10 @@
 
 + (NSData *)requestWithUrl:(NSString *)baseUrl Method:(NSString *)method Body:(NSString *)body
 					 Error:(NSError **)error returningResponse:(NSURLResponse **)response {
+
 	NSURL *url = [NSURL URLWithString:baseUrl];
 	NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
+	
 	if (!urlRequest)
 	{
 		if (error != NULL) {
@@ -38,13 +40,16 @@
 	
 	[urlRequest setHTTPMethod:method];
 	if (body) {
+		
 		[urlRequest setHTTPBody:[body dataUsingEncoding:NSUTF8StringEncoding]];
 		[urlRequest setValue:@"application/x-www-form-urlencoded" 
 		  forHTTPHeaderField:@"Content-Type"];
 		[urlRequest setValue:@"application/json" forHTTPHeaderField:@"Accept"];
 	}
-	return [NSURLConnection sendSynchronousRequest:urlRequest 
-								 returningResponse:response error:error];	
+	
+	NSData *data = [NSURLConnection sendSynchronousRequest:urlRequest 
+										 returningResponse:response error:error];	
+	return 	data;
 }
 
 + (NSData *)doGetWithUrl:(NSString *)baseUrl Error:(NSError **)error returningResponse:(NSURLResponse **)response {

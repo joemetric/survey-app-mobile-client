@@ -12,6 +12,7 @@
 
 @interface Metadata :  NSManagedObject  
 {
+	User * user;
 }
 
 @property (nonatomic, retain) User * user;
