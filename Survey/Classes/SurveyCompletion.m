@@ -174,7 +174,6 @@
 	Survey *surveyToDelete = ques.survey;
 
 	int  image_id1,image_id2,image_id3,image_id4,image_id5;
-	//SurveyAppDelegate* delegate = (SurveyAppDelegate*)[[UIApplication sharedApplication]  delegate];
 	Survey* survey = delegate.browseController.surveyAmt;
 	NSInteger survey_Id =survey.pk ;
 	User* userId = delegate.metadata.user;
@@ -194,7 +193,7 @@
 		NSArray* itemArray = [jsonArray objectAtIndex:i];
 	switch(i)
 		{
-					case 0:
+			case 0:
 				image_id1 =[[itemArray objectAtIndex:0]intValue];
 				break;
 			case 1:

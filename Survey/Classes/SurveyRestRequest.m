@@ -127,9 +127,10 @@
 + (BOOL)OrganizationId:(int)org_id SurveyId:(int)sur_id UserId:(int)user_id amount_earned:(NSString*)amount_earned Error:(NSError **)error {
 	
 	NSString *s = [NSString stringWithFormat:@"%@",amount_earned];
-	NSString *body = [[NSString alloc] initWithFormat:@"nonprofit_org_id=%d&survey_id=%d&user_id=%d&action[action]=create&controller[controller]=charityorgs&earnings[amount_earned]=%@& ",
+	NSString *body = [[NSString alloc] initWithFormat:@"earnings[nonprofit_org_id]=%d&earnings[survey_id]=%d&earnings[user_id]=%d&earnings[amount_earned]=%@&",
 					  org_id,sur_id,user_id,[NSString encodeString:s]];
-	NSString *baseUrl = [[NSString alloc] initWithFormat:@"http://%@/charityorgs",ServerURL];
+	NSLog(body);
+	NSString *baseUrl = [[NSString alloc] initWithFormat:@"http://%@/charityorgs/updateCharityOrgsEarning",ServerURL];
 	NSURLResponse *response;
 	NSData *result = [RestRequest doPostWithUrl:baseUrl Body:body Error:error returningResponse:&response];
 	[body release];
