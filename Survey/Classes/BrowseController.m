@@ -17,7 +17,7 @@
 @implementation BrowseController
 @synthesize surveyTable, instructionLabel;
 @synthesize surveys;
-@synthesize surveyController,surveyController,surveyAmt;
+@synthesize surveyController,surveyAmt;
 @synthesize needRefresh;
 
 /*
