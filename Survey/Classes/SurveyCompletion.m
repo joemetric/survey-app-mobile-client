@@ -6,7 +6,6 @@
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 #import "SurveyRestRequest.h"
-
 #import "RestRequest.h"
 #import "Common.h"
 #import "JSON.h"
@@ -20,13 +19,14 @@
 #import "NSStringExt.h"
 #import "User.h"
 #import "Metadata.h"
+
 @implementation SurveyCompletion
 
 @synthesize charityOrganizationImage1, charityOrganizationImage2, charityOrganizationImage3;
 @synthesize charityOrganizationImage4, charityOrganizationImage5;
 @synthesize earnedAmountLabel,donationAmountToCharityLabel,browseController,donatedPercernatge;
 @synthesize genourisityLabel,earnedAmountMessageLabel,settingsController;
-@synthesize imageLabel1,imageLabel2,imageLabel3,imageLabel4,imageLabel5;
+@synthesize imageLabel1,imageLabel2,imageLabel3,imageLabel4,imageLabel5,metadata;
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	[self displayLogo];
@@ -55,11 +55,12 @@
 	NSString *jsonData = [[NSString alloc] initWithContentsOfURL:jsonURL];
 	SBJSON* json = [SBJSON alloc];
 	NSArray* jsonArray =  [json objectWithString:jsonData error:nil];
+	UIImage* image0 = nil,*image1 = nil, *image2 = nil,*image3 = nil,*image4 = nil;
+
 	for(int i = 0; i < [jsonArray count]; ++i)
 	{
 		NSArray* itemArray = [jsonArray objectAtIndex:i];
 		NSURL* imgUrl = [NSURL URLWithString:[itemArray objectAtIndex:2]];
-		UIImage* image0 = nil,*image1 = nil, *image2 = nil,*image3 = nil,*image4 = nil;
 		switch(i)
 		{
 			case 0:
@@ -107,6 +108,8 @@
 	percetageCheck = [donatedPercernatge floatValue];
 	
 	amountToDonate =  (surveyAmount * (percetageCheck + 10.0)) / 100.0;
+	
+	amount_donated_by_user = ((surveyAmount * percetageCheck) / 100);
 	float earnedAmount = 	[self earnedAmountByUser:percetageCheck];
 	
 	if (percetageCheck == 100) {
@@ -178,7 +181,8 @@
 	NSInteger survey_Id =survey.pk ;
 	User* userId = delegate.metadata.user;
 	int user_Id = [userId.pk intValue];
-	NSString *earned_amount = [NSString stringWithFormat:@"%0.2f",amountToDonate]; 
+
+	//NSString *earned_amount = [NSString stringWithFormat:@"%0.2f",amountToDonate]; 
 	BOOL result = FALSE;
 	NSError *error = nil;
 	
@@ -216,28 +220,32 @@
 	if(image == charityOrganizationImage1) {
 		[delegate.browseController removeSurvey:surveyToDelete];
 		
-		result = [RestRequest OrganizationId:image_id1 SurveyId:survey_Id UserId:user_Id amount_earned:earned_amount Error:&error];
+		result = [RestRequest OrganizationId:image_id1 SurveyId:survey_Id UserId:user_Id amount_earned:amountToDonate amount_donated_by_user:amount_donated_by_user Error:&error];
 
 			[self.view removeFromSuperview];
 		}
 		else if(image == charityOrganizationImage2) {
 			[delegate.browseController removeSurvey:surveyToDelete];
-			result = [RestRequest OrganizationId:image_id2 SurveyId:survey_Id UserId:user_Id amount_earned:earned_amount Error:&error];
+			result = [RestRequest OrganizationId:image_id1 SurveyId:survey_Id UserId:user_Id amount_earned:amountToDonate amount_donated_by_user:amount_donated_by_user Error:&error];
+
+		//	result = [RestRequest OrganizationId:image_id2 SurveyId:survey_Id UserId:user_Id amount_earned:amountToDonate Error:&error];
 
 			[self.view removeFromSuperview];
 		}
 		else if(image == charityOrganizationImage3){
 			[delegate.browseController removeSurvey:surveyToDelete];
+			result = [RestRequest OrganizationId:image_id1 SurveyId:survey_Id UserId:user_Id amount_earned:amountToDonate amount_donated_by_user:amount_donated_by_user Error:&error];
 			
-			result = [RestRequest OrganizationId:image_id3 SurveyId:survey_Id UserId:user_Id amount_earned:earned_amount Error:&error];
+		//	result = [RestRequest OrganizationId:image_id3 SurveyId:survey_Id UserId:user_Id amount_earned:amountToDonate Error:&error];
 			
 			
 			[self.view removeFromSuperview];
 		}
 		else if(image == charityOrganizationImage4){
 			[delegate.browseController removeSurvey:surveyToDelete];
+			result = [RestRequest OrganizationId:image_id1 SurveyId:survey_Id UserId:user_Id amount_earned:amountToDonate amount_donated_by_user:amount_donated_by_user Error:&error];
 			
-			result = [RestRequest OrganizationId:image_id4 SurveyId:survey_Id UserId:user_Id amount_earned:earned_amount Error:&error];
+		//	result = [RestRequest OrganizationId:image_id4 SurveyId:survey_Id UserId:user_Id amount_earned:amountToDonate Error:&error];
 			
 			
 			[self.view removeFromSuperview];
@@ -245,9 +253,10 @@
 		else{
 			[delegate.browseController removeSurvey:surveyToDelete];
 			
-			result = [RestRequest OrganizationId:image_id5 SurveyId:survey_Id UserId:user_Id amount_earned:earned_amount Error:&error];
+		//	result = [RestRequest OrganizationId:image_id5 SurveyId:survey_Id UserId:user_Id amount_earned:amountToDonate Error:&error];
 			
-			
+			result = [RestRequest OrganizationId:image_id1 SurveyId:survey_Id UserId:user_Id amount_earned:amountToDonate amount_donated_by_user:amount_donated_by_user Error:&error];
+
 			[self.view removeFromSuperview];
 		}
 }

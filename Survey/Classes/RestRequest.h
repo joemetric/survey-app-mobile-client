@@ -8,9 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface RestRequest : NSObject {
-
+@interface RestRequest : NSObject 
+{
 }
+
 
 + (NSData *)doGetWithUrl:(NSString *)baseUrl Error:(NSError **)error returningResponse:(NSURLResponse **)response;
 + (NSData *)doPostWithUrl:(NSString *)baseUrl Body:(NSString *)body Error:(NSError **)error returningResponse:(NSURLResponse **)response;

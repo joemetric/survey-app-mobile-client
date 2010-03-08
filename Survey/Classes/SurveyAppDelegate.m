@@ -25,7 +25,7 @@
 @synthesize browseController, walletController, profileController, settingsController;
 @synthesize loginController;
 @synthesize metadata;
-@synthesize logined;
+@synthesize logined, locationSpecificSurvey;
 
 
 #pragma mark -

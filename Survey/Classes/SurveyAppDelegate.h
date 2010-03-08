@@ -27,6 +27,7 @@
 	Metadata *metadata;
 	
 	BOOL logined;
+	BOOL locationSpecificSurvey; 
 }
 
 @property (nonatomic, retain, readonly) NSManagedObjectModel *managedObjectModel;
@@ -44,6 +45,7 @@
 
 @property (nonatomic, retain) Metadata *metadata;
 @property (nonatomic, assign) BOOL logined;
+@property (nonatomic, assign) BOOL locationSpecificSurvey;
 
 - (NSString *)applicationDocumentsDirectory;
 

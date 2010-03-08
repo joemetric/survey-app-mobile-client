@@ -11,8 +11,10 @@
 #import "NSDictionary+RemoveNulls.h"
 #import "JSON.h"
 #import "Common.h"
+#import <CoreLocation/CoreLocation.h>
 
-@implementation RestRequest
+
+@implementation RestRequest 
 
 + (NSData *)requestWithUrl:(NSString *)baseUrl Method:(NSString *)method Body:(NSString *)body
 					 Error:(NSError **)error returningResponse:(NSURLResponse **)response {

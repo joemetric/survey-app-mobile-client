@@ -36,7 +36,14 @@ static NSPredicate *loginTemplate = nil;
 @dynamic sort_id;
 @dynamic sort;
 
+
+
+
+#pragma mark -
+#pragma mark Sending Notification
+
 + (void)finalizeTemplates {
+	
 	if (loginTemplate) [loginTemplate release];
 }
 

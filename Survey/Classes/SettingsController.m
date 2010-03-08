@@ -6,18 +6,26 @@
 //  Copyright 2009 Allerin. All rights reserved.
 //
 #import "PercentageToDonateController.h"
-
+#import "Common.h"
 #import "SettingsController.h"
 #import "SurveyAppDelegate.h"
 #import "Metadata.h"
 #import "User.h"
 #import "EditSortSurveyController.h"
+#import <CoreLocation/CoreLocation.h>
+#import "RestRequest.h"
+#import "UserRestRequest.h"
+#import "SurveyRestRequest.h"
+#import "JSON.h"
+#import "User.h"
+
 
 @implementation SettingsController
 @synthesize settingsTable;
 @synthesize newSurveyAlertCell, locationSpecificSurveyCell, sortSurveyCell, locationCell;
 @synthesize newSurveyAlertSwitch, locatonSpecificSurveySwitch, sortSurveyLabel;
-@synthesize editSortSurveyController,sliderBottonOn;
+@synthesize editSortSurveyController,sliderBottonOn,get_geographical_location_targeted_surveys;
+@synthesize user;
 @synthesize additionalCharityContributionCell,selectedPercentage,percentageToDonateController;
 
 /*
@@ -29,6 +37,47 @@
     return self;
 }
 */
+
+- (void) locationSpecificSurveyButtonStatus {
+
+	SurveyAppDelegate* delegate = (SurveyAppDelegate*)[[UIApplication sharedApplication]  delegate];
+	Metadata* metadata = delegate.metadata;
+	user = metadata.user;
+	
+	NSString *baseUrl = [[NSString alloc] initWithFormat:@"http://%@/users/%d.json", ServerURL,[user.pk intValue]];
+	NSURL *jsonURL = [NSURL URLWithString:baseUrl];
+	NSString *jsonData = [[NSString alloc] initWithContentsOfURL:jsonURL];
+	SBJSON* json = [SBJSON alloc];
+	NSDictionary* jsonArray =  [json objectWithString:jsonData error:nil];
+	NSDictionary* userDict = [jsonArray objectForKey:@"user"];
+	BOOL locationSurveyOn = [[userDict objectForKey:@"get_geographical_location_targeted_surveys"] boolValue];
+
+	if(locationSurveyOn == 1)
+		locatonSpecificSurveySwitch.on = YES;
+	else
+		locatonSpecificSurveySwitch.on = NO;
+
+	[json release];
+	[jsonData release];
+	[baseUrl release];
+}
+
+- (IBAction) locationSpecificSurveyOn:(id)sender{
+	NSError *error;
+	SurveyAppDelegate* delegate = (SurveyAppDelegate*)[[UIApplication sharedApplication]  delegate];
+	Metadata* metadata = delegate.metadata;
+	user = metadata.user;
+	if(locatonSpecificSurveySwitch.on)
+	{
+		get_geographical_location_targeted_surveys = YES;
+		[RestRequest locationSpecificSurveyInformation];	
+	}
+	else{
+		get_geographical_location_targeted_surveys = NO;
+	}
+	
+	[RestRequest saveWithUser:user get_geographical_location_targeted_surveys:get_geographical_location_targeted_surveys Error:&error]; 
+} 
 
 - (void) awakeFromNib {
 	UIImageView *iv = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo.tiff"]];
@@ -53,7 +102,9 @@
 
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectedPercentageToDonate:)
 												 name:@"selectedPercentageToDonate" object:nil];
-	}
+	[self locationSpecificSurveyButtonStatus];
+}
+
 
 - (void)viewWillAppear:(BOOL)animated {
 	[settingsTable reloadData];
@@ -88,6 +139,7 @@
 	self.additionalCharityContributionCell = nil;
 	self.selectedPercentage = nil;
 	self.percentageToDonateController = nil;
+//	self.locationManager = nil;
 }
 
 
@@ -134,7 +186,8 @@
 	[settingsTable deselectRowAtIndexPath:indexPath animated:NO];
 
 	SurveyAppDelegate *delegate = (SurveyAppDelegate *)[[UIApplication sharedApplication] delegate];
-	User *user = delegate.metadata.user;
+	user = delegate.metadata.user;
+
 	switch (indexPath.row) {
 		case 0:
 			sortSurveyLabel.text = user.sort;

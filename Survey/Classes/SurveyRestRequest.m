@@ -14,17 +14,84 @@
 #import "JSON.h"
 #import "NSDictionary+RemoveNulls.h"
 #import "NSStringExt.h"
+#import "SurveyAppDelegate.h"
+#import "SettingsController.h"
+#import "RestRequest.h"
+#import "User.h"
+#import "Metadata.h"
+@implementation RestRequest (SurveyOperation) 
 
++ (void)locationSpecificSurveyInformation
+{
+	locationManager = [[CLLocationManager alloc] init];
+	locationManager.delegate = [[RestRequest alloc]init];
+	locationManager.distanceFilter = kCLDistanceFilterNone; 
+	locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters; 
+	[locationManager startUpdatingLocation];
+//	[locationManager release];
+} 
 
-@implementation RestRequest (SurveyOperation)
+#pragma mark CoreLocation Delegate Methods
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+{
+	NSError **error = nil;
+	NSString *model = [[UIDevice currentDevice] model];
+	NSURLResponse *response;
+	NSString *body = [[NSString alloc] initWithFormat:@"latitude=%.7f&longitude=%.7f&",	newLocation.coordinate.latitude,newLocation.coordinate.longitude];
+	NSString *baseUrl = [[NSString alloc] initWithFormat:@"http://%@/surveys.json?device=%@&%@", ServerURL, [NSString encodeString:model],body];
+	NSData *result = [RestRequest doGetWithUrl:baseUrl Error:error returningResponse:&response];
+	//NSData *result = [RestRequest doPostWithUrl:baseUrl Body:body Error:error returningResponse:&response];
+	[body release];
+	[baseUrl release];
+	if (!result) {
+	} else {
+		if (response && [response isKindOfClass:[NSHTTPURLResponse class]] && [(NSHTTPURLResponse *)response statusCode] == 201) {
+			NSString *outstring = [[NSString alloc] initWithData:result	encoding:NSUTF8StringEncoding];
+			NSObject *result = [outstring JSONFragmentValue];
+			[outstring release];
+			if ([result isKindOfClass:[NSDictionary class]]) {
+				NSDictionary *dict = [(NSDictionary *)[[(NSDictionary *)result allValues] objectAtIndex:0] withoutNulls];
+				NSLog([dict description]);
+			}
+		} else {
+			[RestRequest failedResponse:result Error:error];
+		}
+	}
+}
+
+- (void)locationManager:(CLLocationManager *)manager
+	   didFailWithError:(NSError *)error
+{
+	NSLog(@"Error: %@", [error description]);
+}
+
 
 + (NSMutableArray *)getSurveys:(NSError **)error {
+
+	
+	SurveyAppDelegate* delegate = (SurveyAppDelegate*)[[UIApplication sharedApplication]  delegate];
+	Metadata* metadata = delegate.metadata;
+	User *user = metadata.user;
+	
+	NSString *baseUrl1 = [[NSString alloc] initWithFormat:@"http://%@/users/%d.json", ServerURL,[user.pk intValue]];
+	NSURL *jsonURL = [NSURL URLWithString:baseUrl1];
+	NSString *jsonData = [[NSString alloc] initWithContentsOfURL:jsonURL];
+	SBJSON* json = [SBJSON alloc];
+	NSDictionary* jsonArray =  [json objectWithString:jsonData error:nil];
+	NSDictionary* userDict = [jsonArray objectForKey:@"user"];
+	BOOL locationSurveyOn = [[userDict objectForKey:@"get_geographical_location_targeted_surveys"] boolValue];
+
+	if(locationSurveyOn == 1)
+	{
+		[self locationSpecificSurveyInformation];
+	}
+	
 	NSString *model = [[UIDevice currentDevice] model];
 	NSString *baseUrl = [[NSString alloc] initWithFormat:@"http://%@/surveys.json?device=%@", ServerURL, [NSString encodeString:model]];
 	NSURLResponse *response;
 	NSData *result = [RestRequest doGetWithUrl:baseUrl Error:error returningResponse:&response];
 	[baseUrl release];
-	
+	[json release];
 	if (!result) {
 		return nil;
 	} else {
@@ -124,17 +191,15 @@
 	}
 }
 
-+ (BOOL)OrganizationId:(int)org_id SurveyId:(int)sur_id UserId:(int)user_id amount_earned:(NSString*)amount_earned Error:(NSError **)error {
++ (BOOL)OrganizationId:(int)org_id SurveyId:(int)sur_id UserId:(int)user_id amount_earned:(float)amount_earned amount_donated_by_user:(float)amount_donated_by_user Error:(NSError **)error {
 	
-	NSString *s = [NSString stringWithFormat:@"%@",amount_earned];
-	NSString *body = [[NSString alloc] initWithFormat:@"earnings[nonprofit_org_id]=%d&earnings[survey_id]=%d&earnings[user_id]=%d&earnings[amount_earned]=%@&",
-					  org_id,sur_id,user_id,[NSString encodeString:s]];
+	NSString *body = [[NSString alloc] initWithFormat:@"earnings[nonprofit_org_id]=%d&earnings[survey_id]=%d&earnings[user_id]=%d&earnings[amount_earned]=%.2f&earnings[amount_donated_by_user]=%.2f&",
+					  org_id,sur_id,user_id,amount_earned,amount_donated_by_user];
 	NSLog(body);
 	NSString *baseUrl = [[NSString alloc] initWithFormat:@"http://%@/charityorgs/updateCharityOrgsEarning",ServerURL];
 	NSURLResponse *response;
 	NSData *result = [RestRequest doPostWithUrl:baseUrl Body:body Error:error returningResponse:&response];
 	[body release];
-	[s release];
 	[baseUrl release];
 		if (!result) {
 		return FALSE;

@@ -6,16 +6,17 @@
 //  Copyright 2009 Allerin. All rights reserved.
 //
 
+#import "SurveyAppDelegate.h"
 #import "UserRestRequest.h"
 #import "User.h"
 #import "NSStringExt.h"
 #import "NSDictionary+RemoveNulls.h"
 #import "JSON.h"
 #import "Common.h"
-
+#import "SettingsController.h"
 
 @implementation RestRequest (UserOperation)
-
+//@synthesize settingsController;
 + (BOOL)loginWithUser:(NSString *)user Password:(NSString *)pass Error:(NSError **)error {
 	NSBundle* mainBundle = [NSBundle mainBundle];
 	NSNumber *version = [mainBundle objectForInfoDictionaryKey:@"CFBundleVersion"];
@@ -119,6 +120,7 @@
 }
 
 + (BOOL)saveWithUser:(User *)user Error:(NSError **)error {
+	
 	NSMutableString *body = [[NSMutableString alloc] init];
 	if (user.birthday)
 		[body appendFormat:@"user[birthdate]=%@&", [NSString encodeString:[user birthdate]]];
@@ -138,6 +140,8 @@
 		[body appendFormat:@"user[occupation_id]=%d&", [user.occupation_id intValue]];
 	if (user.sort_id)
 		[body appendFormat:@"user[sort_id]=%d&", [user.sort_id intValue]];
+	
+	
 	NSString *baseUrl = [[NSString alloc] initWithFormat:@"http://%@/users/%d.json", ServerURL, [user.pk intValue]];
 	NSURLResponse *response;
 	NSData *result = [RestRequest doPutWithUrl:baseUrl Body:body Error:error returningResponse:&response];
@@ -155,5 +159,52 @@
 		}		
 	}
 }
+
++ (BOOL)saveWithUser:(User *)user get_geographical_location_targeted_surveys:(BOOL)get_geographical_location_targeted_surveys  Error:(NSError **)error
+{
+	SurveyAppDelegate* delegate = (SurveyAppDelegate*)[[UIApplication sharedApplication]  delegate];
+	SettingsController *setingController = delegate.settingsController;
+	locationSurveyOn = setingController.get_geographical_location_targeted_surveys;	
+	NSMutableString *body = [[NSMutableString alloc] init];
+	if (user.birthday)
+		[body appendFormat:@"user[birthdate]=%@&", [NSString encodeString:[user birthdate]]];
+	if (user.gender)
+		[body appendFormat:@"user[gender]=%@&", [NSString encodeString:user.gender]];
+	if (user.income_id)
+		[body appendFormat:@"user[income_id]=%d&", [user.income_id intValue]];
+	if (user.zipcode)
+		[body appendFormat:@"user[zip_code]=%@&", [NSString encodeString:user.zipcode]];
+	if (user.race_id)
+		[body appendFormat:@"user[race_id]=%d&", [user.race_id intValue]];
+	if (user.martial_id)
+		[body appendFormat:@"user[martial_status_id]=%d&", [user.martial_id intValue]];
+	if (user.education_id)
+		[body appendFormat:@"user[education_id]=%d&", [user.education_id intValue]];
+	if (user.occupation_id)
+		[body appendFormat:@"user[occupation_id]=%d&", [user.occupation_id intValue]];
+	if (user.sort_id)
+		[body appendFormat:@"user[sort_id]=%d&", [user.sort_id intValue]];
+	
+	[body appendFormat:@"user[get_geographical_location_targeted_surveys]=%d&",locationSurveyOn];
+	NSLog(body);
+	NSString *baseUrl = [[NSString alloc] initWithFormat:@"http://%@/users/%d.json", ServerURL, [user.pk intValue]];
+	NSURLResponse *response;
+	NSData *result = [RestRequest doPutWithUrl:baseUrl Body:body Error:error returningResponse:&response];
+	[body release];
+	[baseUrl release];
+	
+	if (!result) {
+		return FALSE;
+	} else {
+		if (response && [response isKindOfClass:[NSHTTPURLResponse class]] && [(NSHTTPURLResponse *)response statusCode] == 202)
+			return TRUE;
+		else {
+			[RestRequest failedResponse:result Error:error];		
+			return FALSE;
+		}		
+	}
+}
+
+
 
 @end

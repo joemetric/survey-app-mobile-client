@@ -46,9 +46,7 @@
 	float amount_earned;
 	float amountToDonate;
 	int organizationId;
-	
-	
-
+	float amount_donated_by_user;
 }
 
 @property(nonatomic,retain) IBOutlet UIButton	*charityOrganizationImage1;
@@ -72,8 +70,10 @@
 
 @property(nonatomic,retain) SettingsController *settingsController;
 @property(nonatomic,retain) Metadata *metadata;
+
 - (void) displayLogo;
 - (IBAction) saveAmountAndGotoMainScreenClicked:(UIButton*)image;
 - (float) earnedAmountByUser:(float) percentage;
 - (void) calulateAmount;
+
 @end

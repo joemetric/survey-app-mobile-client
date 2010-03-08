@@ -14,7 +14,6 @@
 	Survey				*survey;
 	QuestionController	*questionController;
 	UITableView			*questionsTable;
-	
 }
 
 @property (nonatomic, retain) Survey *survey;
